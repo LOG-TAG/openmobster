@@ -1,3 +1,8 @@
-#summary Get Started with Installing the Mobile Cloud Platform and Examples
+#summary Get Started by Installing the Mobile Cloud Platform and Examples
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/getstarted-gadget.xml"/>
+
+===Install Cloud Server===
+
+  * *Step 1:* Download and install JBoss-5.1.0.GA from [http://www.jboss.org/jbossas/downloads/ here]
+
+
