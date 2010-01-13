@@ -39,3 +39,11 @@
 ----
 
 ===Install _Mobile Cloud_ runtime on the Blackberry Device===
+*Mobile Cloud* runtime _MUST_ be installed on each device, before the device can integrate with the *Cloud Server*. Think of them as bootstrap binaries.
+
+
+Each mobile platform will have its corresponding set of artifacts that must be first installed on the device. 
+
+The current release consists of _Blackberry RIM OS 4.3.0+ support_
+
+There are two ways to install the Blackberry binaries: _Over-The-Air (OTA)_, or _Desktop Sync_
