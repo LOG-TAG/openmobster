@@ -13,3 +13,29 @@
     {{{run -c openmobster -b "a real IP address"}}}
 
     _*Note:*_ A real IP address like "192.168.0.1" or something like that is needed for the mobile device to be able to connect to the server. Even in the case of a simulation environment, the device's browser does not connect to a loopback address like "localhost" or "127.0.0.1"
+
+  * *Step 5:* Verify the Cloud Server installation by typing in:
+             {{{http://{cloudserverIp}:{port}/o}}}
+
+
+----
+
+===Provision a Device===
+
+  * *Start the Management Console:* Execute _openmobster.sh_ or _openmobster.bat_ located under _cloudConsole/bin_
+
+  * *Setup 'root' User:* If this the first time being used, use the configure command:
+    {{{configure -a {cloudServer Ip Address} -po 1502 -u root -p {whatever root password you can remember}}}}
+
+   _*Note:*_ This is the user who is allowed to use the *Management Console*, not to be confused with other accounts that will be created.The accounts that will be created are the actual users that will connect to the "Cloud Server" via their Mobile Apps loaded on their respective devices.
+
+  * *Login to the Cloud Server as 'root':*
+    {{{startadmin -u root -p {whatever password was setup}}}} 
+
+  * *Setup a 'User' account to be used by the Mobile Apps:*
+    {{{register -u {email of the user being registered} -p {whatever password that you want to associate with this account}}}}
+
+
+----
+
+===Install _Mobile Cloud_ runtime on the Blackberry Device===
