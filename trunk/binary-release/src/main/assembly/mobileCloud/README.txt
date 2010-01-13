@@ -1,5 +1,5 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform (version 2.0-snapshot)*
+									* OpenMobster - Mobile Cloud Platform (version 2.0-M1)      *
 									*************************************************************
 									
 									
@@ -76,7 +76,7 @@ Important Note:    *
 ********************
 RIM OS Binary Signing:
 -------------------------
-This 2.0-snapshot release supports the Blackberry RIM OS : 4.3.0+ devices.
+This 2.0-M1 release supports the Blackberry RIM OS : 4.3.0+ devices.
 
 Blackberry has a selected set of APIs which require "signing" the binary (.cod) before installing it on the device. The OpenMobster
 binaries makes use of these APIs, and hence requires "signing" before installing it on the device. For more information about the

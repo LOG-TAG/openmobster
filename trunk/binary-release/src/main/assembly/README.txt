@@ -1,5 +1,5 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform (version 2.0-snapshot)*
+									* OpenMobster - Mobile Cloud Platform (version 2.0-M1)      *
 									*************************************************************
 									
 									
@@ -67,7 +67,7 @@ Note:                *
 
 RIM OS Binary Signing:
 -------------------------
-This 2.0-snapshot release supports the Blackberry RIM OS : 4.3.0+ devices.
+This 2.0-M1 release supports the Blackberry RIM OS : 4.3.0+ devices.
 
 The supplied binaries are unsigned and will work perfectly end-to-end with the RIM Simulation Environment.
 
