@@ -1,0 +1,17 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.openmobster.core.mobileCloud</groupId>
+	<artifactId>mobileCloud</artifactId>
+	<packaging>pom</packaging>
+	<version>2.0-snapshot</version>
+	<name>The OpenMobster Core Platform</name>
+	<url>http://www.openmobster.org</url>
+	
+	<modules>
+		<module>rimos</module>										
+	</modules>
+	
+	<properties>
+		<version.net.rim.api>4.3.0</version.net.rim.api>	    
+	</properties>
+</project>
