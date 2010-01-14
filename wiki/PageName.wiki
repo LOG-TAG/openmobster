@@ -1,3 +1,3 @@
 #summary Blog
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/blog-gadget.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/blog-gadget.xml" width="927" height="300"/>
