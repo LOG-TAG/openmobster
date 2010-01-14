@@ -46,7 +46,7 @@
 		  datatype="bool" default_value="false"/>
 	
 	<UserPref name="feeds" display_name="Add a feed" datatype="list"
-		  default_value="__MSG_blogs.googleCode__:http://feeds.feedburner.com/blogspot/Dcni|__MSG_blogs.openSource__:http://google-opensource.blogspot.com/atom.xml|featured:__MSG_featured.projects__:http://google-code-featured.blogspot.com/atom.xml"/>
+		  default_value="__MSG_blogs.googleCode__:http://feeds.feedburner.com/blogspot/Dcni"/>
 	
 	<UserPref name="gadgetTitle" display_name="Gadget Title" datatype="string"
 		  default_value="__MSG_blogs__" />
