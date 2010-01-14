@@ -46,7 +46,7 @@
 		  datatype="bool" default_value="false"/>
 	
 	<UserPref name="feeds" display_name="Add a feed" datatype="list"
-		  default_value="__MSG_blogs.googleCode__:http://feeds.feedburner.com/blogspot/Dcni|OpenMobster - Mobile Cloud Platform:http://openmobster.blogspot.com/atom.xml"/>
+		  default_value="OpenMobster - Mobile Cloud Platform:http://openmobster.blogspot.com/atom.xml"/>
 	
 	<UserPref name="gadgetTitle" display_name="Gadget Title" datatype="string"
 		  default_value="__MSG_blogs__" />
