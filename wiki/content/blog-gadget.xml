@@ -55,22 +55,22 @@
 		  default_value="http://google-code-feed-gadget.googlecode.com/svn/trunk/images/cleardot.gif"/>
 	
 	<UserPref name="maxFeeds" display_name="Max # of Feed Articles"
-		  datatype="string" default_value="3"/>
+		  datatype="string" default_value="10"/>
 	
 	<UserPref name="maxFeaturedFeeds" display_name="Max # of Featured Feed Articles"
-		  datatype="string" default_value="5"/>
+		  datatype="string" default_value="10"/>
 	
 	<UserPref name="minFeaturedChrome" display_name="Less Featured Content Chrome?"
 		  datatype="hidden" default_value="true"/>
 	
 	<UserPref name="animate" display_name="Animate opening and closing"
-		  datatype="bool" default_value="false"/>
+		  datatype="bool" default_value="true"/>
 	
 	<UserPref name="showaddbutton" display_name="Show 'Add to Your Page' button"
 		  datatype="bool" default_value="false"/>
 	
 	<UserPref name="gadgetUrl" display_name="Hidden Gadget URL" datatype="hidden"
-		  default_value="http://google-code-feed-gadget.googlecode.com/svn/trunk/gadget.xml"/>
+		  default_value="http://openmobster.googlecode.com/svn/wiki/content/blog-gadget.xml"/>
 	
 	<UserPref name="debug" display_name="Debug flag" datatype="hidden"
 		  default_value="false"/>
