@@ -1,0 +1,4 @@
+#summary Programming Concepts
+
+
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/concepts-gadget.xml" width="1640" height="2200"/>
