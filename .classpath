@@ -91,6 +91,11 @@
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/apitests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/cloudtests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/ide_hack"/>
+	
+	<classpathentry kind="src" path="mobileCloud/android/2_0/connection/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/mock_tests/src/main/java"/>
+	
 	<classpathentry kind="output" path="bin"/>
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -149,4 +154,7 @@
     
     <!--  RIMOS related dependencies -->
     <classpathentry kind="var" path="M2_REPO/net/rim/net_rim_api/4.3.0/net_rim_api-4.3.0.jar"/>
+    
+    <!-- Android Dependencies -->
+    <classpathentry kind="var" path="M2_REPO/android/android/2.0_r1/android-2.0_r1.jar"/>
 </classpath>
