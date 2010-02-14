@@ -14,7 +14,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
-			<artifactId>api</artifactId>
+			<artifactId>cloud-sdk</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		
 		<dependency>

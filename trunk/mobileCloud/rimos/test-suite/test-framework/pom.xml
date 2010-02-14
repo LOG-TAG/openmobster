@@ -14,13 +14,8 @@
 	<dependencies>
 	    <dependency>
 	    	<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
-	    	<artifactId>moblet-runtime</artifactId>
+	    	<artifactId>device-sdk</artifactId>
 	    	<version>${project.version}</version>
-	    </dependency>
-	    <dependency>
-	    	<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
-	    	<artifactId>native-framework</artifactId>
-	    	<version>${project.version}</version>	  	
 	    </dependency>
 	</dependencies>		
 </project>
