@@ -18,5 +18,6 @@
 		<module>sync-tests</module>
 		<module>apitests</module>
 		<module>cloudtests</module>
+		<module>nativeframework-testdrive</module>
 	</modules>		
 </project>
