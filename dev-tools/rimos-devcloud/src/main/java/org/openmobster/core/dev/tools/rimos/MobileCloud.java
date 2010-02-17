@@ -8,6 +8,8 @@
 
 package org.openmobster.core.dev.tools.rimos;
 
+import java.util.Vector;
+
 import net.rim.device.api.system.Application;
 
 import org.openmobster.core.mobileCloud.sensor.Sensor;
@@ -25,7 +27,7 @@ public final class MobileCloud extends Application
 	
     public MobileCloud() throws Exception
     { 
-    	DeviceContainer.getInstance().startup();
+    	this.startup();
     	ActivationUtil.parseConfig("/activation.properties");
     	
     	//Start a device sensor    	
@@ -62,14 +64,47 @@ public final class MobileCloud extends Application
     		//System.out.println("-------------------------------------------------------");
     	}
     }
+    
+    private void startup() throws Exception
+    {
+    	//System.out.println("Starting the DeviceContainer..");
+    	DeviceContainer.getInstance().startup();
+    	
+    	//Make a local copy of registered channels
+    	//System.out.println("Copying the channels...........");
+    	Configuration configuration = Configuration.getInstance();
+    	Vector myChannels = configuration.getMyChannels();
+    	
+    	//drop the configuration so new one will be generated
+    	//System.out.println("Dropping the configuration.......");
+    	configuration.stop();
+    	Database database = Database.getInstance();
+    	database.dropTable(Database.provisioning_table);
+    	
+    	//restart the configuration
+    	//System.out.println("Restarting the configuration.......");
+    	configuration.start();
+    	
+    	//Now reload the registered channels if any were found
+    	//System.out.println("Reloading the channels.......");
+    	if(myChannels != null && myChannels.size()>0)
+    	{
+	    	configuration = Configuration.getInstance();
+	    	int size = myChannels.size(); 
+	    	for(int i=0; i<size; i++)
+	    	{
+	    		configuration.addMyChannel((String)myChannels.elementAt(i));
+	    	}
+	    	configuration.save();
+    	}
+    	
+    	//System.out.println("Startup successfull.............");
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------
     public static void main(String[] args)
     {
     	try
     	{
-    		Database database = Database.getInstance();
-        	database.dropTable(Database.provisioning_table);
-        	
     		MobileCloud.singleton = new MobileCloud();      	
     		MobileCloud.singleton.enterEventDispatcher();
     	}

@@ -1,0 +1,10 @@
+<moblet-app>
+	<commands>
+		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+		<command id="/demo/rpc">org.openmobster.core.examples.rpc.command.DemoMobileRPC</command>
+	</commands>
+	
+	<screens>	    	     
+		<screen id="home">org.openmobster.core.examples.rpc.screen.HomeScreen</screen>
+	</screens>							
+</moblet-app>

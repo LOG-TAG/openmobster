@@ -112,7 +112,10 @@ public final class DeviceContainer
 																											
 			Registry.getInstance().start(services);									
 			
-			this.notifyDeviceActivated();			
+			this.notifyDeviceActivated();	
+			
+			//Schedules a background task that silently loads proxies from the server
+			LoadProxyDaemon.getInstance().scheduleProxyTask();
 		}
 		catch(Exception e)
 		{
