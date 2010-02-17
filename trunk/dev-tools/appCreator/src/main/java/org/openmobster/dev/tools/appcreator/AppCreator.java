@@ -195,7 +195,9 @@ public class AppCreator
 		File parentPomFile = new File(directory, "pom.xml");
 		this.generateFile(parentPomFile, parentPom);
 		
-		//FIXME: .classpath for Eclipse 
+		//.classpath for Eclipse 
+		this.generateFile(new File(directory, ".classpath"), 
+		this.readTemplateResource("/template/.classpath"));
 	}
 	
 	private void generateRimOsApp(File directory, Map<String, String> userValues) throws Exception
