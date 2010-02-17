@@ -484,9 +484,20 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
 					<aggregate>true</aggregate>
-					<!--
-						<excludePackageNames>org.openmobster.core.common.*:org.openmobster.core.dataService.*:org.openmobster.core.synchronizer.*:org.openmobster.core.frameworks.services.*</excludePackageNames>
-					-->
+					<groups>
+					    <group>
+							<title>Public API for App Developers - Cloud SDK (Server-Side Components)</title>
+							<packages>
+								org.openmobster.server.api.*
+							</packages>
+						</group>
+						<group>
+							<title>Public API for App Developers - RIM OS (version 4.3.0 and higher) Device SDK</title>
+							<packages>
+								org.openmobster.core.mobileCloud.api.*
+							</packages>
+						</group>
+					</groups>
 				</configuration>
 			</plugin>
 			<plugin>

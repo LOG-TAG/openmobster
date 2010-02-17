@@ -44,13 +44,18 @@ public final class Sensor implements RadioStatusListener,SystemListener2
 				return;				
 			}
 			
-			if(service == RadioInfo.NETWORK_SERVICE_DATA)
+			/*if(service == RadioInfo.NETWORK_SERVICE_DATA)
 			{
 				NotificationListener notify = NotificationListener.getInstance();
 				if(notify!=null)
 				{
 					notify.restart();
 				}
+			}*/
+			NotificationListener notify = NotificationListener.getInstance();
+			if(notify!=null)
+			{
+				notify.restart();
 			}
 		}
 		catch(Exception e)
