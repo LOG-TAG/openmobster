@@ -155,7 +155,7 @@ public class AuthenticationFilter extends IoFilterAdapter
 		if(payload.contains(Constants.processorId))
 		{
 			//Allows testsuite requests
-			if(payload.contains("=testsuite"))
+			if(payload.contains("=testsuite") || payload.contains("=/testdrive/"))
 			{
 				session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
 			}

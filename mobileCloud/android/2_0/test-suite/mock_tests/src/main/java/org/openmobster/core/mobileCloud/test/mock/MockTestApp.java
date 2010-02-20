@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import org.openmobster.core.mobileCloud.android.testsuite.TestSuite;
+import org.openmobster.core.mobileCloud.android.testsuite.TestContext;
 
 public class MockTestApp extends Activity
 {
@@ -26,7 +27,7 @@ public class MockTestApp extends Activity
 	        
 	        setContentView(field.getInt(clazz));
 	        
-	        this.executeTestFramework();
+	        this.executeTestFramework();   
     	}
     	catch(Exception e)
     	{
@@ -36,10 +37,29 @@ public class MockTestApp extends Activity
     
     private void executeTestFramework() throws Exception
     {
-    	TestSuite suite = new TestSuite();
-    	
-    	suite.addTest(new StorageTestDrive());
-    	
-    	suite.execute();
+    	Thread t = new Thread(new TestExecutor());
+    	t.start();
+    }
+    
+    private class TestExecutor implements Runnable
+    {
+    	public void run()
+    	{
+    		TestSuite suite = new TestSuite();
+        	TestContext testContext = new TestContext();
+        	suite.setContext(testContext);
+        	suite.getContext().setAttribute("android:context", 
+        	MockTestApp.this);
+        	
+        	suite.addTest(new StorageTestDrive());        	
+        	suite.addTest(new BusTestDrive());
+        	suite.addTest(new BusRPCTestDrive());
+        	suite.addTest(new BackgroundProcessingTestDrive());
+        	
+        	//For network oriented test drive
+        	//suite.addTest(new SocketTestDrive());
+        	
+        	suite.execute();
+    	}
     }
 }

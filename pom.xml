@@ -25,7 +25,8 @@
 		<module>device-agent-simulator</module>
 		<module>device-agent-frameworks</module>
 		<module>server-testsuite</module>	
-		<module>sar</module>							
+		<module>sar</module>
+		<module>testdrive-server</module>							
 	</modules>
 	
 	<properties>	    	    
