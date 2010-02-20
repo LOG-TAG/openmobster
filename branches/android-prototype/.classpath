@@ -65,6 +65,10 @@
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/main/resources"/>
 	<classpathentry kind="src" path="server-testsuite/src/test/java"/>
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/test/resources"/>
+	<classpathentry kind="src" path="testdrive-server/src/main/java"/>
+	<classpathentry excluding="**" kind="src" path="testdrive-server/src/main/resources"/>
+	<classpathentry kind="src" path="testdrive-server/src/test/java"/>
+	<classpathentry excluding="**" kind="src" path="testdrive-server/src/test/resources"/>
 	<classpathentry kind="src" path="examples/offline-app/cloud/src/main/java"/>
 	<classpathentry kind="src" path="examples/offline-app/cloud/src/test/java"/>
 	<classpathentry kind="src" path="examples/offline-app/moblet/src/main/java"/>
@@ -95,6 +99,9 @@
 	<classpathentry kind="src" path="mobileCloud/android/2_0/connection/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-framework/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/mock_tests/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/mock_tests/target/generated-sources/aidl"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/service_testdrive/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/service_testdrive/target/generated-sources/aidl"/>
 	
 	<classpathentry kind="output" path="bin"/>
 	

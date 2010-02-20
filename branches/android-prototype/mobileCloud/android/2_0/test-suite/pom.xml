@@ -17,6 +17,7 @@
     
     <modules>
 		<module>mock_tests</module>
-		<module>test-framework</module>		
+		<module>test-framework</module>
+		<module>service_testdrive</module>		
 	</modules>
 </project>
