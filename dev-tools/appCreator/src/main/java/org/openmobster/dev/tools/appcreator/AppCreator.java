@@ -76,6 +76,9 @@ public class AppCreator
 		String rimosAppGroupId = groupId+".rimos.app"; //derived 
 		String rimosAppName = projectName; //derived
 		String cloudAppName = projectName+"-cloud"; //derived
+		String mobletGroupId = groupId + ".moblet";
+		String mobletName = projectName;
+		String mobletArtifactId = mobletName.toLowerCase();
 		
 		Map<String, String> userValues = new HashMap<String, String>();
 		userValues.put("project.name", projectName);
@@ -95,6 +98,10 @@ public class AppCreator
 		userValues.put("appCreator.cloud.app.groupId", groupId+".cloud.app");
 		userValues.put("appCreator.cloud.app.name", cloudAppName);
 		userValues.put("appCreator.cloud.app.artifactId", cloudAppName.toLowerCase());
+		
+		userValues.put("appCreator.moblet.groupId", mobletGroupId);
+		userValues.put("appCreator.moblet.name", mobletName);
+		userValues.put("appCreator.moblet.artifactId", mobletArtifactId);
 		
 		File projectDir = this.generateWorkspace(userValues);
 		
@@ -147,10 +154,12 @@ public class AppCreator
 		File screen = new File(projectDir, "app-rimos/src/main/java/org/openmobster/core/examples/rpc/screen");
 		File resMetaInf = new File(projectDir, "app-rimos/src/main/resources/META-INF");
 		File appIcon = new File(projectDir, "app-rimos/src/main/resources/moblet-app/icon");
+		File assemble = new File(projectDir, "app-rimos/src/assemble");
 		command.mkdirs();
 		screen.mkdirs();
 		resMetaInf.mkdirs();
 		appIcon.mkdirs();
+		assemble.mkdirs();
 		
 		//Create the cloud tree
 		File src = new File(projectDir, "cloud/src/main/java/org/openmobster/core/examples/rpc");
@@ -162,10 +171,15 @@ public class AppCreator
 		test.mkdirs();
 		testRes.mkdirs();
 		
+		//Create the moblet tree
+		File moblet = new File(projectDir, "moblet/src/assemble");
+		moblet.mkdirs();
+		
 		//Copy project-level files
 		this.generateProject(projectDir, userValues);
 		this.generateRimOsApp(new File(projectDir, "app-rimos"), userValues);
 		this.generateCloudApp(new File(projectDir, "cloud"), userValues);
+		this.generateMoblet(new File(projectDir, "moblet"), userValues);
 		
 		return projectDir;
 	}
@@ -198,6 +212,48 @@ public class AppCreator
 		//.classpath for Eclipse 
 		this.generateFile(new File(directory, ".classpath"), 
 		this.readTemplateResource("/template/.classpath"));
+	}
+	
+	private void generateMoblet(File directory,Map<String, String> userValues) throws Exception
+	{
+		String pom = this.readTemplateResource("/template/moblet/pom.xml");
+		
+		pom = pom.replaceAll("<appCreator.project.version>", 
+				userValues.get("appCreator.project.version"));
+		
+		pom = pom.replaceAll("<appCreator.project.groupId>", 
+				userValues.get("appCreator.project.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.project.artifactId>", 
+				userValues.get("appCreator.project.artifactId"));
+		
+		pom = pom.replaceAll("<appCreator.moblet.groupId>", 
+				userValues.get("appCreator.moblet.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.moblet.name>", 
+				userValues.get("appCreator.moblet.name"));
+		
+		pom = pom.replaceAll("<appCreator.moblet.artifactId>", 
+				userValues.get("appCreator.moblet.artifactId"));
+		
+		pom = pom.replaceAll("<appCreator.cloud.app.groupId>", 
+				userValues.get("appCreator.cloud.app.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.cloud.app.artifactId>", 
+				userValues.get("appCreator.cloud.app.artifactId"));
+		
+		pom = pom.replaceAll("<appCreator.rimos.app.groupId>", 
+				userValues.get("appCreator.rimos.app.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.rimos.app.artifactId>", 
+				userValues.get("appCreator.rimos.app.artifactId"));
+		
+		File pomFile = new File(directory, "pom.xml");
+		this.generateFile(pomFile, pom);
+		
+		//src/assemble/moblet.xml
+		this.generateFile(new File(directory, "src/assemble/moblet.xml"), 
+				this.readTemplateResource("/template/moblet/src/assemble/moblet.xml"));
 	}
 	
 	private void generateRimOsApp(File directory, Map<String, String> userValues) throws Exception
@@ -275,7 +331,19 @@ public class AppCreator
 		this.readTemplateResource("/template/app-rimos/src/main/java/org/openmobster/core/examples/rpc/command/DemoMobileRPC.java"));
 		
 		this.generateFile(new File(directory, "src/main/java/org/openmobster/core/examples/rpc/screen/HomeScreen.java"), 
-		this.readTemplateResource("/template/app-rimos/src/main/java/org/openmobster/core/examples/rpc/screen/HomeScreen.java"));		
+		this.readTemplateResource("/template/app-rimos/src/main/java/org/openmobster/core/examples/rpc/screen/HomeScreen.java"));
+		
+		//Add assembly
+		String bin_xml = this.readTemplateResource("/template/app-rimos/src/assemble/bin.xml");
+		
+		bin_xml = bin_xml.replaceAll("<appCreator.rimos.app.groupId>", 
+				userValues.get("appCreator.rimos.app.groupId"));
+		
+		bin_xml = bin_xml.replaceAll("<appCreator.rimos.app.artifactId>", 
+				userValues.get("appCreator.rimos.app.artifactId"));
+		
+		File binXmlFile = new File(directory, "src/assemble/bin.xml");
+		this.generateFile(binXmlFile, bin_xml);
 	}
 	
 	private void generateCloudApp(File directory, Map<String, String> userValues) throws Exception

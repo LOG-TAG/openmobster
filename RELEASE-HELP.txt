@@ -9,4 +9,7 @@ With Tests:
 mvn -PmobileCloud clean install
 mvn -Pbin-release clean javadoc:javadoc install
 
+Modifying the project version:
+mvn release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=2.0-M2 -Pbin-release
+
 

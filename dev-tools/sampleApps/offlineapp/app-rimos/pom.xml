@@ -1,7 +1,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- User Provided -->	
+	<!-- User Provided -->
 	<parent>
 		<groupId>com.offlineApp</groupId>
 		<artifactId>offlineapp</artifactId>
@@ -16,7 +16,8 @@
 
 	<!-- User Provided -->
 	<properties>
-		<bb.jde.home>C:/openmobster-demos/bb-getstarted/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/
+		<bb.jde.home>
+			C:/openmobster-demos/bb-getstarted/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/
 		</bb.jde.home>
 		<bb.simulator.home>
 			C:/openmobster-demos/bb-getstarted/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/simulator
@@ -24,8 +25,8 @@
 	</properties>
 
 	<dependencies>
-	    <!--
-			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  
+		<!--
+			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
 		-->
 		<dependency>
 			<groupId>org.openmobster.core.mobileCloud.rimos
@@ -50,7 +51,7 @@
 			<artifactId>rimos-devcloud
 				</artifactId>
 		</dependency>
-		
+
 		<!-- 
 			More Dependencies can be added here 
 		-->
@@ -58,7 +59,7 @@
 
 	<build>
 		<!--
-			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  
+			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
 		-->
 		<plugins>
 			<plugin>
@@ -69,11 +70,32 @@
 					<target>1.2</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin
+						</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assemble/bin.xml
+								</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bin</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
 	<!--
-		DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  
+		DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
 	-->
 	<profiles>
 		<profile>
@@ -88,18 +110,32 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins
 						</groupId>
+						<artifactId>maven-compiler-plugin
+						</artifactId>
+						<configuration>
+							<source>1.2</source>
+							<target>1.2</target>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins
+						</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>
 							<execution>
 								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
 								<configuration>
 									<tasks>
 										<property name="preverify_target" value="${basedir}/target/app-binary" />
-										<property name="preverify_src" value="${basedir}/target/${project.artifactId}.jar" />
+										<property name="preverify_src"
+											value="${basedir}/target/${project.artifactId}.jar" />
 										<property name="rapc_src"
 											value="${preverify_target}/${project.artifactId}.jar" />
-										<property name="rapc_config"
-											value="${basedir}/app.rapc" />
+										<property name="rapc_config" value="${basedir}/app.rapc" />
 
 										<delete dir="${preverify_target}" />
 										<delete file="${preverify_src}" />
@@ -200,8 +236,26 @@
 										</copy>
 									</tasks>
 								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-assembly-plugin
+						</artifactId>
+						<version>2.2-beta-5</version>
+						<configuration>
+							<descriptors>
+								<descriptor>src/assemble/bin.xml
+								</descriptor>
+							</descriptors>
+						</configuration>
+						<executions>
+							<execution>
+								<id>bin</id>
+								<phase>package</phase>
 								<goals>
-									<goal>run</goal>
+									<goal>single</goal>
 								</goals>
 							</execution>
 						</executions>

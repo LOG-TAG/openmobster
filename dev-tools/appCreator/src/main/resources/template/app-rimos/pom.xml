@@ -69,6 +69,27 @@
 					<target>1.2</target>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+				<artifactId>maven-assembly-plugin
+						</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assemble/bin.xml
+								</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bin</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -85,6 +106,17 @@
 			</activation>
 			<build>
 				<plugins>
+				    <plugin>
+						<groupId>org.apache.maven.plugins
+						</groupId>
+						<artifactId>maven-compiler-plugin
+						</artifactId>
+						<configuration>
+							<source>1.2</source>
+							<target>1.2</target>
+						</configuration>
+					</plugin>
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins
 						</groupId>
@@ -202,6 +234,27 @@
 								</configuration>
 								<goals>
 									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<plugin>
+						<artifactId>maven-assembly-plugin
+						</artifactId>
+						<version>2.2-beta-5</version>
+						<configuration>
+							<descriptors>
+								<descriptor>src/assemble/bin.xml
+								</descriptor>
+							</descriptors>
+						</configuration>
+						<executions>
+							<execution>
+								<id>bin</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
 								</goals>
 							</execution>
 						</executions>
