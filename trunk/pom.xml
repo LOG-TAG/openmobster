@@ -6,6 +6,10 @@
 	<version>2.0-snapshot</version>
 	<name>The OpenMobster Core Platform</name>
 	<url>http://www.openmobster.org</url>
+	
+	<scm>
+	  <connection>scm:svn:svn+ssh://openmobster@mobster2/home/openmobster/repo/svn/openmobster/trunk</connection>
+	</scm>
 
 	<modules>
 		<module>api</module>
@@ -467,6 +471,11 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-release-plugin</artifactId>
+        		<version>2.0-beta-10-20091219.191259-9</version>
+     		</plugin>
 		</plugins>
 		<extensions>
 			<extension>
@@ -510,14 +519,12 @@
 	</reporting>
 
 	<repositories>
-		<!-- JBoss maven2 repository -->
 		<repository>
 			<id>jboss</id>
 			<url>http://anonsvn.jboss.org/repos/repository.jboss.org/maven2
 			</url>
 		</repository>
 
-		<!-- CodeHaus repository -->
 		<repository>
 			<id>maven-codehaus</id>
 			<name>Public online CodeHaus Maven Repository</name>
@@ -530,6 +537,16 @@
 			<name>Java.net Repository for Maven</name>
 			<url>http://download.java.net/maven/2/
 			</url>
+		</repository>
+		
+		<repository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<!--  
+			<url>https://repository.apache.org/content/groups/public
+			</url>
+			-->
+			<url>https://repository.apache.org/content/groups/snapshots</url>
 		</repository>
 	</repositories>
 
@@ -555,6 +572,15 @@
 			<name>JBoss Repository</name>
 			<url>http://anonsvn.jboss.org/repos/repository.jboss.org/maven2
 			</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<!--  
+			<url>https://repository.apache.org/content/groups/public
+			</url>
+			-->
+			<url>https://repository.apache.org/content/groups/snapshots</url>
 		</pluginRepository>
 	</pluginRepositories>
 
