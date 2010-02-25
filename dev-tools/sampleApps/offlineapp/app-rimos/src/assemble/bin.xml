@@ -26,6 +26,8 @@
 			<includes>
 				<include>*.cod</include>
 				<include>*.jad</include>
+				<include>*.alx</include>
+				<include>*.cs*</include>
 			</includes>
 		</fileSet>
 	</fileSets>

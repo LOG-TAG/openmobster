@@ -1,15 +1,39 @@
 Generate a Binary Release (includes documents, source code, and deployable binaries)
 ------------------------------------------------------------------------------------
+
+Step 1:
+---------------
 Skip Tests:
-mvn -Dmaven.test.skip -PmobileCloud clean install
-mvn -Dmaven.test.skip -Pbin-release clean javadoc:javadoc install
+mvn -Dmaven.test.skip -Pstart-release clean javadoc:aggregate install
 
 
 With Tests:
-mvn -PmobileCloud clean install
-mvn -Pbin-release clean javadoc:javadoc install
+mvn -Pstart-release clean javadoc:aggregate install
 
-Modifying the project version:
+
+Step 2:
+----------------
+Once the start-release is finished, the Blackberry code must be manually signed. The artifacts that need signing are here:
+
+* binary-release/target/openmobster-${project.version}/mobileCloud/blackberry-4.3.0/bin/MobileCloud
+
+* binary-release/target/openmobster-${project.version}/mobileCloud/blackberry-4.3.0/bin/CloudManager
+
+* binary-release/target/openmobster-${project.version}/mobileCloud/blackberry-4.3.0/sampleApps/offlineapp
+
+* binary-release/target/openmobster-${project.version}/mobileCloud/blackberry-4.3.0/sampleApps/rpcdemo
+
+Step 3:
+---------------------
+Finish up the release with:
+
+mvn -Dmaven.test.skip -Pfinish-release install
+
+
+
+
+Modifying the project version for creating a new branch or tag:
+-----------------------------------------------------------------
 mvn release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=2.0-M2 -Pbin-release
 
 
