@@ -54,9 +54,6 @@ public class AppCreator
 		String openMobsterVersion = "2.0-snapshot"; //user with default
 		String projectVersion = "1.0-snapshot"; //user with default
 		
-		String rimosJdeHome = System.getenv("RIM_JDE_HOME").replaceAll("\\\\", "/");
-		String rimosSimulatorHome = !(rimosJdeHome.endsWith("/"))?rimosJdeHome+"/simulator":rimosJdeHome+"simulator"; //user with default
-		
 		
 		projectName = this.askUser("Project Name", projectName);
 		String[] split = projectName.split(" ");
@@ -70,8 +67,6 @@ public class AppCreator
 		projectVersion = this.askUser("Project Version", projectVersion);
 		projectUrl = this.askUser("Project Url", projectUrl);
 		openMobsterVersion = this.askUser("Version of the OpenMobster Platform", openMobsterVersion);
-		rimosJdeHome = this.askUser("RIM OS JDE_Home", rimosJdeHome);
-		rimosSimulatorHome = this.askUser("RIM OS Simulator_Home", rimosSimulatorHome);
 		
 		String rimosAppGroupId = groupId+".rimos.app"; //derived 
 		String rimosAppName = projectName; //derived
@@ -91,9 +86,7 @@ public class AppCreator
 		
 		userValues.put("appCreator.rimos.app.groupId", rimosAppGroupId);
 		userValues.put("appCreator.rimos.app.name", rimosAppName);
-		userValues.put("appCreator.rimos.app.artifactId", rimosAppName.toLowerCase());
-		userValues.put("appCreator.rimos.jde.home", rimosJdeHome);
-		userValues.put("appCreator.rimos.simulator.home", rimosSimulatorHome);
+		userValues.put("appCreator.rimos.app.artifactId", rimosAppName.toLowerCase());		
 		
 		userValues.put("appCreator.cloud.app.groupId", groupId+".cloud.app");
 		userValues.put("appCreator.cloud.app.name", cloudAppName);
@@ -109,9 +102,7 @@ public class AppCreator
 		System.out.println("----------------------------------------------------");
 		System.out.println("Project Name: "+projectName);
 		System.out.println("Project Version: "+projectVersion);
-		System.out.println("OpenMobster Platform: "+openMobsterVersion);
-		System.out.println("RIM OS JDE_HOME: "+rimosJdeHome);
-		System.out.println("RIM OS SIMULATOR_HOME: "+rimosSimulatorHome);
+		System.out.println("OpenMobster Platform: "+openMobsterVersion);		
 		System.out.println("Created at: "+projectDir.getAbsolutePath());
 	}
 	
@@ -212,6 +203,10 @@ public class AppCreator
 		//.classpath for Eclipse 
 		this.generateFile(new File(directory, ".classpath"), 
 		this.readTemplateResource("/template/.classpath"));
+		
+		//README.txt file to help developer
+		this.generateFile(new File(directory, "README.txt"), 
+		this.readTemplateResource("/template/README.txt"));
 	}
 	
 	private void generateMoblet(File directory,Map<String, String> userValues) throws Exception
@@ -279,11 +274,6 @@ public class AppCreator
 		pom = pom.replaceAll("<appCreator.rimos.app.artifactId>", 
 				userValues.get("appCreator.rimos.app.artifactId"));
 		
-		pom = pom.replaceAll("<appCreator.rimos.jde.home>", 
-				userValues.get("appCreator.rimos.jde.home"));
-		
-		pom = pom.replaceAll("<appCreator.rimos.simulator.home>", 
-				userValues.get("appCreator.rimos.simulator.home"));
 		
 		File pomFile = new File(directory, "pom.xml");
 		this.generateFile(pomFile, pom);
@@ -299,6 +289,15 @@ public class AppCreator
 		
 		File rapcFile = new File(directory, "app.rapc");
 		this.generateFile(rapcFile, appRapc);
+		
+		//app.alx
+		String appAlx = this.readTemplateResource("/template/app-rimos/app.alx");
+		
+		appAlx = appAlx.replaceAll("<appCreator.rimos.app.name>", 
+				userValues.get("appCreator.rimos.app.name"));
+		
+		File alxFile = new File(directory, "app.alx");
+		this.generateFile(alxFile, appAlx);
 		
 		//devcloud.rapc
 		this.generateFile(new File(directory, "devcloud.rapc"), 

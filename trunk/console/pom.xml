@@ -40,7 +40,7 @@
    
    <profiles>
    		<profile>
-   			<id>bin-release</id>
+   			<id>start-release</id>
    			<build>
    				<plugins>
    					<plugin>

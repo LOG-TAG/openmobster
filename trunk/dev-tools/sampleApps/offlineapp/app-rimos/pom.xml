@@ -17,10 +17,10 @@
 	<!-- User Provided -->
 	<properties>
 		<bb.jde.home>
-			C:/openmobster-demos/bb-getstarted/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/
+			${env.RIM_JDE_HOME}
 		</bb.jde.home>
 		<bb.simulator.home>
-			C:/openmobster-demos/bb-getstarted/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/simulator
+			${env.RIM_JDE_HOME}\simulator
 		</bb.simulator.home>
 	</properties>
 

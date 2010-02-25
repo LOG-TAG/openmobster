@@ -66,24 +66,28 @@
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target}" executable="preverify">
 											<arg
-												line="-classpath ${basedir}/../../../net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target}" executable="rapc">
 											<arg
-												line="import=${basedir}/../../../net_rim_api.jar codename=cloudManager ${rapc_config} ${rapc_src}" />
+												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=CloudManager ${rapc_config} ${rapc_src}" />
 										</exec>
+										
+										<echo>Generating the Desktop Application Loader......</echo>
+										<copy todir="${preverify_target}" overwrite="true"
+										file="${basedir}/src/main/config/alx/CloudManager.alx"
+										/>
 
-										<copy file="${preverify_target}/cloudManager.cod"
-											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
-											overwrite="true" />
 										<copy
 											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											overwrite="true">
 											<fileset dir="${preverify_target}">
 												<include name="**/*.debug" />
+												<include name="**/*.alx" />
+												<include name="**/*.cod" />
 											</fileset>
 										</copy>
 									</tasks>
@@ -141,14 +145,14 @@
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target}" executable="preverify">
 											<arg
-												line="-classpath ${basedir}/../../../net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target}" executable="rapc">
 											<arg
-												line="import=${basedir}/../../../net_rim_api.jar codename=cloudManager ${rapc_config} ${rapc_src}" />
+												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=cloudManager ${rapc_config} ${rapc_src}" />
 										</exec>
 
 										<copy file="${preverify_target}/cloudManager.cod"

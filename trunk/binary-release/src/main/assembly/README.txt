@@ -6,60 +6,57 @@
 ***********************									
 Component Description:*
 ***********************
-cloudServer - Cloud Server binaries. Supports hsqldb and mysql5
+cloudServer - Contains the Cloud Server binaries. Supports hsqldb and mysql5
 
-cloudConsole - A command line "Management Console"
+cloudConsole - Contains a command line "Management Console"
 
-mobileCloud - Binaries to be installed on the device. Supports Blackberry RIM OS version 4.3.0+
+mobileCloud - Contains the binaries to be installed on the device. Supports Blackberry RIM OS version 4.3.0+
 Note: Other platforms like Google Android, Apple iPhone, Palm WebOS, Symbian, and Windows Mobile are on the project roadmap
 
-examples - A couple of examples to demonstrate some mobile programming concepts
+AppCreator - A Maven-based Mobile App Development Tool along with some sample apps
 
-docs - API docs and an App Developer Guide
+docs - App Developer Guide and API documentation
 
-src - Source Code of the entire project
+src - Source Code of the entire project 
 
 
 *************************
-Getting Started:        *
+Quick Start:            *
 *************************
 Each Component has detailed Installation instructions in README.txt files. Perform the component installations in the following order:
 
 Step 1:
 ----------
 
-Install and Run the cloudServer instance
+Install and Run the "cloudServer" instance on the JBoss AS 5.1.0.GA server. Details are in: "cloudServer/README.txt"
 
 
 Step 2:
 -----------
 
-Provision an account using the cloudConsole "Management Console". Some usage instructions are in cloudConsole/README.txt
+Provision an account using the cloudConsole "Management Console". Details are in: "cloudConsole/README.txt"
 
 Step 3:
 ------------
 
-Install the "mobileCloud" binaries on the actual device or device simulator
+Install the "MobileCloud" binaries, (CloudManager and MobileCloud) on the actual device or device simulator. Details are in: "mobileCloud/README.txt"
 
 Step 4:
 -------------
 
-Activate your device "real" or "simulator" using the "cloudManager" app. Use the account created in Step 2.
+Activate your device "real" or "simulator" using the "CloudManager" app. Use the account created in Step 2.
 
 Step 5:
-------------
+-----------
 
-Install the "examples" on the "cloudServer" instance
+Install the "sample applications" via the "CloudManager" App Store
+
 
 Step 6:
 -----------
 
-Install these "examples" via the "cloudManager" App Store
-
-Step 7:
------------
-
 Welcome to the OpenMobster Community. Your are officially a "Mobster" ;)
+
 
 **********************
 Note:                *
@@ -81,4 +78,3 @@ Future releases of OpenMobster will include signed binaries out-of-the-box so th
 *********************
 Troubleshooting     *
 *********************
-

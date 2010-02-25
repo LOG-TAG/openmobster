@@ -27,24 +27,24 @@ of the device.
 
 Download the following and follow the instructions provided by the device:
 
-* http://<cloudServer IP>:<cloudServer port>/o/apps/rimos/430/mobileCloud.jad
+* http://<cloudServer IP>:<cloudServer port>/o/apps/rimos/430/MobileCloud.jad
 
-* http://<cloudServer IP>:<cloudServer port>/o/apps/rimos/430/cloudManager.jad
+* http://<cloudServer IP>:<cloudServer port>/o/apps/rimos/430/CloudManager.jad
 
 
 Desktop Sync Installation
 -----------------------------------
 
-If you want to install it via desktop synchronization, just install the following 'cod' files.
+If you want to install it via desktop synchronization, just install the following 'alx' files.
 
-* blackberry-4.3.0/bin/mobileCloud.cod
-* blackberry-4.3.0/bin/cloudManager.cod
+* blackberry-4.3.0/bin/MobileCloud/MobileCloud.alx
+* blackberry-4.3.0/bin/CloudManager/CloudManager.cod
 
 
 Device Activation
 -----------------------------------
 
-Step 1: Launch the 'cloudManager' app.
+Step 1: Launch the 'CloudManager' app.
 
 Step 2: Select the 'Activate' function.
 
@@ -55,19 +55,33 @@ Step 3: Follow the wizard and provide the appropriate values
 * Password: The password that was used to register the user via the Management Console
 
 
-Installing Examples
---------------------------------------
 
-Cloud-Side Installation:
+Device-Side Installation of the Sample Applications:
+------------------------------------------------------
 
-* Copy "examples/offline-app/offline-app.jar" to your "{jboss}/server/openmobster/deploy" directory
-
-* Copy "examples/mobile-rpc/mobile-rpc.jar" to your "{jboss}/server/openmobster/deploy" directory
+Using your "CloudManager App", install the deployed Moblets/Apps using the "App Store" function 
 
 
-Device-Side Installation:
 
-Using your "cloudManager App", install the deployed Moblets/Apps using the "App Store" function 
+Using the "App Store" function on a Device Simulator:
+--------------------------------------------------------
+
+Note: This applies only in a simulator setup. The browser on the Simulator needs an "MDS" service to connect to the internet.
+This is provided within the RIM SDK under the "RIM_JDE_HOME/MDS" directory. In a real world scenario, the MDS service is provided seamlessly
+by your carrier along with your data plan
+
+The following things should be kept in mind on a Simulator:
+
+* The OpenMobster Cloud Server must be bound to a real IP address and not 127.0.0.1 or localhost. You can do this with the following
+JBoss AS command:
+run.bat -c openmobster -b 192.168.1.107
+
+* The MD5 service should be running. This is done by running the RIM_JDE_HOME/MDS/run.bat
+
+* When you activate your device using the "CloudManager App", input 192.168.1.107 as the IP address of the cloud server
+
+Note: 192.168.1.107 is used as an example. Your would be something else. You can find it by "ipconfig" command on the DOS prompt.
+
 
 
 

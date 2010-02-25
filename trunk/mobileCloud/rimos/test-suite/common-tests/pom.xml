@@ -86,14 +86,14 @@
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target_app1}" executable="preverify">
 											<arg
-												line="-classpath ${basedir}/../../../../net_rim_api.jar -d ${preverify_target_app1} ${preverify_src_app1}" />
+												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target_app1} ${preverify_src_app1}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target_app1}" executable="rapc">
 											<arg
-												line="import=${basedir}/../../../../net_rim_api.jar codename=${artifact_app1} ${rapc_config_app1} 
+												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${artifact_app1} ${rapc_config_app1} 
 					  				${rapc_src_app1}" />
 										</exec>
 										<copy
@@ -116,14 +116,14 @@
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target_app2}" executable="preverify">
 											<arg
-												line="-classpath ${basedir}/../../../../net_rim_api.jar -d ${preverify_target_app2} ${preverify_src_app2}" />
+												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target_app2} ${preverify_src_app2}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target_app2}" executable="rapc">
 											<arg
-												line="import=${basedir}/../../../../net_rim_api.jar codename=${artifact_app2} ${rapc_config_app2} 
+												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${artifact_app2} ${rapc_config_app2} 
 					  				${rapc_src_app2}" />
 										</exec>
 										<copy

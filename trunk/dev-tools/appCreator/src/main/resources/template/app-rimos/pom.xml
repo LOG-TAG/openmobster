@@ -16,10 +16,10 @@
 
 	<!-- User Provided -->
 	<properties>
-		<bb.jde.home><appCreator.rimos.jde.home>
+		<bb.jde.home>${env.RIM_JDE_HOME}
 		</bb.jde.home>
 		<bb.simulator.home>
-			<appCreator.rimos.simulator.home>
+			${env.RIM_JDE_HOME}\simulator
 		</bb.simulator.home>
 	</properties>
 
@@ -164,6 +164,11 @@
 											<arg
 												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
 										</exec>
+										
+										<echo>Generating the Desktop Application Loader......</echo>
+										<copy todir="${basedir}/target/app-binary" overwrite="true"
+										file="${basedir}/app.alx"
+										/>
 
 										<echo>Deploying into the Simulator....</echo>
 										<copy todir="${bb.simulator.home}" overwrite="true">

@@ -16,10 +16,10 @@
 	
 	<properties>
 		<version.net.rim.api>4.3.0</version.net.rim.api>	
-		<bb.jde.home>C:/dev/blackberry_jde_4.3.0
+		<bb.jde.home>${env.RIM_JDE_HOME}
 		</bb.jde.home>
 		<bb.simulator.home>
-			C:/openmobster-demos/bb-getstarted/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/simulator
+			${env.RIM_JDE_HOME}\simulator
 		</bb.simulator.home>    
 	</properties>
 	
