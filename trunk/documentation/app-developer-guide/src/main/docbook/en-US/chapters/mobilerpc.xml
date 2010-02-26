@@ -81,7 +81,9 @@ public class DemoMobileBeanService implements MobileServiceBean
    <sect1>
    		<title>Putting it altogether</title>
    		<para>
-   		Entire MobileServiceBean Example is located at: src/examples/mobile-rpc/cloud
+   		Entire MobileServiceBean Example is located at: 
+   			<emphasis>src/dev-tools/sampleApps/rpcdemo/cloud</emphasis> and
+   			<emphasis>AppCreator/sampleApps/rpcdemo/cloud</emphasis>
    		</para>
    </sect1>
    <sect1>

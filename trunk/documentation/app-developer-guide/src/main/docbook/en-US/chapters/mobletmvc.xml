@@ -483,8 +483,10 @@ public final class DemoDetails implements RemoteCommand
    			</sect3>
    			<sect3>
    				<title>Putting it all together</title>
-   				<para>Detailed Examples located at: src/examples/offline-app/moblet, src/examples/mobile-rpc/moblet, and
-   				src/mobileCloud/rimos/native-framework/src/test  
+   				<para>Detailed Examples located at: 
+   				<emphasis>src/dev-tools/sampleApps/offlineapp/app-rimos</emphasis>, 
+   				<emphasis>src/dev-tools/sampleApps/rpcdemo/app-rimos</emphasis>, and
+   				<emphasis>src/mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main</emphasis>  
    				</para>
    			</sect3>
    		</sect2>

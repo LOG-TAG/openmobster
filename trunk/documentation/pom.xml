@@ -17,7 +17,8 @@
    <description>OpenMobster Documentation</description>   
    
    <modules> 
-      <module>app-developer-guide</module>          
+      <module>app-developer-guide</module>
+      <module>quick-start-guide</module>          
    </modules> 
    
    <build>

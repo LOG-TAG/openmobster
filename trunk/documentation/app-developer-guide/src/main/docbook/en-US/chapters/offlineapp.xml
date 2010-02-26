@@ -259,14 +259,16 @@ public void delete(MobileBean mobileBean)
    			<sect3>
    				<title>Putting it all together</title>
    				<para>
-   				 	The end-to-end Channel Example is located at : src/examples/offline-app/cloud
+   				 	The end-to-end Channel Example is located at : 
+   				 	<emphasis>src/dev-tools/sampleApps/offlineapp/cloud</emphasis> and
+   				 	<emphasis>AppCreator/sampleApps/offlineapp/cloud</emphasis>
    				</para>
    			</sect3>
    		</sect2>
    		<sect2>
    			<title>Moblet/Device-Side: MobileBean component</title>
    			<para>
-   			On the device side, this data is accessible via the org.openmobster.device.api.model.MobileBean component.
+   			On the device side, this data is accessible via the <emphasis role='bold'>org.openmobster.device.api.model.MobileBean</emphasis> component.
 	The device-side MobileBean is a generic component which exposes a Cloud-side MobileBean information through 
 	a robust interface. Device-side MobileBean component semantic are covered here:<link linkend="mobilebean">Specification</link>
    			</para>
@@ -309,7 +311,8 @@ demoBeans[i].setValue("demoString", "new updated value");
    				</listitem>
    			</itemizedlist>
    			For a more detailed coverage of the MobileBean usage, please see some example code located at:
-   			src/examples/offline-app/moblet
+   			<emphasis>src/dev-tools/sampleApps/offlineapp/app-rimos</emphasis> and
+   			<emphasis>AppCreator/sampleApps/offlineapp/app-rimos</emphasis>
    			</para>
    		</sect2>
    </sect1>

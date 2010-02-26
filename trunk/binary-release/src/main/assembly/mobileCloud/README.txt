@@ -38,7 +38,7 @@ Desktop Sync Installation
 If you want to install it via desktop synchronization, just install the following 'alx' files.
 
 * blackberry-4.3.0/bin/MobileCloud/MobileCloud.alx
-* blackberry-4.3.0/bin/CloudManager/CloudManager.cod
+* blackberry-4.3.0/bin/CloudManager/CloudManager.alx
 
 
 Device Activation
