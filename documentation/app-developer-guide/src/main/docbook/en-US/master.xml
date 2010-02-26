@@ -8,7 +8,7 @@
       <releaseinfo>2.0-snapshot</releaseinfo>
       <author>
          <firstname>openmobster</firstname>
-         <surname>openmobster</surname>
+         <surname>at gmail.com</surname>
          <email>openmobster@gmail.com</email>
       </author>
    </bookinfo>
@@ -17,11 +17,13 @@
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/programmerdilemma.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/concepts.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/architecture.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/hellomobster.xml"/> 
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/installation.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/managementConsole.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/offlineapp.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilebean.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilerpc.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobletmvc.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilebean.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/blackberry.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/android.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/iphone.xml"/>
