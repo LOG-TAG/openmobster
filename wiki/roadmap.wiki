@@ -1,0 +1,81 @@
+#summary Project Roadmap.
+
+Timelines are difficult to anticipate, but here is a rolling list of features that we would like to deliver. This should give some vision about the direction of the project. As the project progresses, this roadmap is bound to be adjusted.
+
+=== Release 2.0 (Actively under development) ===
+
+==== Device Side ====
+    * Blackberry OS version 4.3.0 and above
+
+    * Google Android (baseline version not decided yet). Have been testdriving the 2.0 version of the platform
+	
+    * Connection Module
+      * Socket Management
+      * Server Side Push Notifications
+		
+    * Bus Module
+      * Inter-App communication
+		
+    * Sync Module
+      * Seamless App State/Data Synchronization
+      * Support for all sync modes two-way, oneway-server, oneway-device, bootsync
+		
+    * MobileObject Module
+      * Data Serialization/Deserialization
+      * Object Storage
+      * Object Query Facilities
+      * Support a generic "MobileBean" that mirrors its corresponding POJO/Domain object on the Cloud
+		
+    * Storage Module
+      * Abstracts on-device storage services
+		
+      * Moblet Data Framework
+	
+      * Moblet MVC Framework
+	
+      * CloudManager App
+
+==== Cloud Side ====
+  * Synchronization Engine
+	
+  * Comet-Style Push Engine
+	
+  * Security Services
+    * Device Authorization
+    * User Account Provisioning
+    * Device Provisioning		
+		
+  * App Store Engine		
+	
+  * A Command Line Management Console
+	
+  * Channel Development Framework
+	
+  * Service Development Framework
+
+----
+
+=== Release 2.2 ===
+
+==== Device Side ====
+  * iPhone Support
+
+==== Cloud Side ====
+  * Location Awareness Engine
+
+  * More out-of-the-box Enterprise Channels (Email, Calendar, Exchange Integration, Google Services, etc)
+	
+  * More out-of-the-box Consumer Channels (Facebook, Twitter, Google Services, etc)
+	
+  * A GWT-based Management Console
+	
+  * More device management fuctions for the console, remote wipe, remote lockdown, device tracking, push-based moblet provisioning, etc  
+
+==== Some innovation ideas ====
+  * A Widget Framework to improve management of code portability across multiple platforms
+
+----
+
+=== Release 2.4 ===
+  * Support for Palm webOS, Nokia Symbian
+  * ?????
