@@ -28,6 +28,8 @@ Provides a simple way of exposing your server-side coarse grained business servi
 
 A _Management Console_ is provided to administrate the Cloud Server. It provides security, and account provisioning features. Over time the _Management Console_ will carry device management features like remote wipe, remote tracking, remote lock-down, etc.
 
+Please see [Architecture Platform Architecture] for more details.
+
 ----
 
 === What server-side frameworks are provided? ===
@@ -51,6 +53,8 @@ The *Moblet Data Framework* provides Cloud data-oriented services like seamless 
 ==== Moblet MVC Framework ====
 
 This is a thick client MVC (Model-View-Controller) framework. It is based on a Rich Internet Application design principle. At this point in time of evolution of the mobile space, there isn't a commonly adopted GUI development standard across various mobile platforms. This results in a lot of App porting activity across platforms. Although this framework is not designed for (Write Once, Run Anywhere) approach, it abstracts out a lot of the UI Framework plumbing that would otherwise need to be written, ported and maintained by the developer. The framework abstracts out some of the low level services into the container such as App bootstrapping, screen navigation, graceful error handling, and internationalization.
+
+Please see [Concepts Programming Concepts] for more details.
 
 ----
 
