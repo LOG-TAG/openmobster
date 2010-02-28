@@ -49,6 +49,8 @@
 		      <groupId>net.rim</groupId>
 		      <artifactId>net_rim_api</artifactId>
 		      <version>${version.net.rim.api}</version>
+		      <scope>system</scope>
+		      <systemPath>${env.RIM_JDE_HOME}/lib/net_rim_api.jar</systemPath>
 		   </dependency>
 		</dependencies>	
 	</dependencyManagement>
