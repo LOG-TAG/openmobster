@@ -77,24 +77,28 @@
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target}" executable="preverify">
 											<arg
-												line="-classpath ${basedir}/../../../net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target}" executable="rapc">
 											<arg
-												line="import=${basedir}/../../../net_rim_api.jar codename=mobileCloud ${rapc_config} ${rapc_src}" />
+												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=MobileCloud ${rapc_config} ${rapc_src}" />
 										</exec>
+										
+										<echo>Generating the Desktop Application Loader......</echo>
+										<copy todir="${preverify_target}" overwrite="true"
+										file="${basedir}/src/main/config/alx/MobileCloud.alx"
+										/>
 
-										<copy
-											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
-											file="${preverify_target}/mobileCloud.cod" overwrite="true" />
 										<copy
 											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											overwrite="true">
 											<fileset dir="${preverify_target}">
 												<include name="**/*.debug" />
+												<include name="**/*.alx" />
+												<include name="**/*.cod" />
 											</fileset>
 										</copy>
 									</tasks>
