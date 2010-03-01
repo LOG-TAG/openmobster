@@ -1,4 +1,4 @@
 #summary Get Started - Hello Mobster Tutorial
 
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/getstarted-gadget.xml" width="1640" height="2200"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/getstarted-gadget.xml" width="1640" height="5900"/>
