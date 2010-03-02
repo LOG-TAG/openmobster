@@ -1,4 +1,7 @@
 #summary Installation
 
+*Related Links:* [GetStarted Tutorial]
 
 <wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/installation-gadget.xml" width="1640" height="2440"/>
+
+*Related Links:* [GetStarted Tutorial]
