@@ -1,4 +1,7 @@
 #summary Get Started - Hello Mobster Tutorial
 
+*Related Links:* [installation Production Mode Installation], [Concepts Programming Concepts], [Architecture Architecture], [roadmap Project Roadmap]
 
 <wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/getstarted-gadget.xml" width="1640" height="5900"/>
+
+*Related Links:* [installation Production Mode Installation], [Concepts Programming Concepts], [Architecture Architecture], [roadmap Project Roadmap]
