@@ -26,22 +26,11 @@
 	    <module>native-framework</module>
 	    <module>cloudManager</module>
 	    <module>device-sdk</module>
-	    <module>mobileCloud</module>							
+	    <module>mobileCloud</module>
+	    <module>test-suite</module>							
 	</modules>
 	
-	<profiles>
-		<profile>
-			<activation>
-				<os>
-					<family>windows</family>
-					<arch>x86</arch>
-				</os>
-			</activation>
-			<modules>
-				<module>test-suite</module>
-			</modules>
-		</profile>
-	</profiles>
+	
 	
 	<dependencyManagement>
 		<dependencies>
@@ -49,6 +38,8 @@
 		      <groupId>net.rim</groupId>
 		      <artifactId>net_rim_api</artifactId>
 		      <version>${version.net.rim.api}</version>
+		      <scope>system</scope>
+		      <systemPath>${env.RIM_JDE_HOME}/lib/net_rim_api.jar</systemPath>
 		   </dependency>
 		</dependencies>	
 	</dependencyManagement>

@@ -63,14 +63,12 @@
 	</build>
 	
 	<repositories>
-		<!-- JBoss maven2 repository -->
 		<repository>
 			<id>jboss</id>
 			<url>http://anonsvn.jboss.org/repos/repository.jboss.org/maven2
 			</url>
 		</repository>
 
-		<!-- CodeHaus repository -->
 		<repository>
 			<id>maven-codehaus</id>
 			<name>Public online CodeHaus Maven Repository</name>
@@ -84,7 +82,58 @@
 			<url>http://download.java.net/maven/2/
 			</url>
 		</repository>
+
+		<repository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<url>https://repository.apache.org/content/groups/snapshots
+			</url>
+		</repository>
+
+		<repository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<url>https://repository.apache.org/content/groups/public
+			</url>
+		</repository>
 	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>java.net maven repository</id>
+			<url>http://download.java.net/maven/2/
+			</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>codehaus snapshot repository</id>
+			<url>http://snapshots.repository.codehaus.org/
+			</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mc-release</id>
+			<name>Local Maven repository of releases</name>
+			<url>http://mc-repo.googlecode.com/svn/maven2/releases
+			</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss</id>
+			<name>JBoss Repository</name>
+			<url>http://anonsvn.jboss.org/repos/repository.jboss.org/maven2
+			</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<url>https://repository.apache.org/content/groups/snapshots
+			</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<url>https://repository.apache.org/content/groups/public
+			</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<distributionManagement>
 		<repository>
