@@ -1,5 +1,7 @@
 #summary Project Roadmap.
 
+*Related Links:* [GetStarted Tutorial]
+
 Timelines are difficult to anticipate, but here is a rolling list of features that we would like to deliver. This should give some vision about the direction of the project. As the project progresses, this roadmap is bound to be adjusted.
 
 === Release 2.0 (Actively under development) ===
@@ -79,3 +81,5 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 === Release 2.4 ===
   * Support for Palm webOS, Nokia Symbian
   * ?????
+
+*Related Links:* [GetStarted Tutorial]
