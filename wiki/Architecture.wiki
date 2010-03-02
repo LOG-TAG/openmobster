@@ -1,3 +1,7 @@
 #summary Architecture Overview
 
+*Related Links:* [GetStarted Tutorial], [Concepts Programming Concepts]
+
 <wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/architecture-gadget.xml" width="1640" height="4000"/>
+
+*Related Links:* [GetStarted Tutorial], [Concepts Programming Concepts]
