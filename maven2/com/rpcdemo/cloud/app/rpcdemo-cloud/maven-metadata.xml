@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.rpcdemo.cloud.app</groupId>
+  <artifactId>rpcdemo-cloud</artifactId>
+  <version>2.0-snapshot</version>
+  <versioning>
+    <versions>
+      <version>2.0-snapshot</version>
+    </versions>
+    <lastUpdated>20100303032334</lastUpdated>
+  </versioning>
+</metadata>
