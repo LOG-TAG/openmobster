@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.openmobster.core.common.bus.TestBusReconnection
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.293 sec

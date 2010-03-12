@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.openmobster.core.console.server.TestShowUsersCommand
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.547 sec

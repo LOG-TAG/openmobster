@@ -1,9 +1,0 @@
-MIDlet-Name: database-testsuite-app1
-MIDlet-Version: 2.0
-MIDlet-Vendor: OpenMobster
-MIDlet-Jar-URL: database-testsuite-app1.jar
-MIDlet-Jar-Size: 0
-MicroEdition-Profile: MIDP-2.0
-MicroEdition-Configuration: CLDC-1.1
-MIDlet-1: ,,
-RIM-MIDlet-Flags-1: 1

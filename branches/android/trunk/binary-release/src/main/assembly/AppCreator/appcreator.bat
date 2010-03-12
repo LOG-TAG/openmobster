@@ -1,1 +1,0 @@
-call java -jar appCreator.jar

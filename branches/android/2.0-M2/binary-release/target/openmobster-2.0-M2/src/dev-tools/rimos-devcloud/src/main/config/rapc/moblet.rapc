@@ -1,9 +1,0 @@
-MIDlet-Name: DevCloud
-MIDlet-Version: 2.0
-MIDlet-Vendor: OpenMobster
-MIDlet-Jar-URL: DevCloud.jar
-MIDlet-Jar-Size: 0
-MicroEdition-Profile: MIDP-2.0
-MicroEdition-Configuration: CLDC-1.1
-MIDlet-1: ,icon.png,
-RIM-MIDlet-Flags-1: 3
