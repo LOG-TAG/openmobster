@@ -1,0 +1,12 @@
+Generate a Binary Release (includes documents, source code, and deployable binaries)
+------------------------------------------------------------------------------------
+Skip Tests:
+mvn -Dmaven.test.skip -PmobileCloud clean install
+mvn -Dmaven.test.skip -Pbin-release clean javadoc:javadoc install
+
+
+With Tests:
+mvn -PmobileCloud clean install
+mvn -Pbin-release clean javadoc:javadoc install
+
+

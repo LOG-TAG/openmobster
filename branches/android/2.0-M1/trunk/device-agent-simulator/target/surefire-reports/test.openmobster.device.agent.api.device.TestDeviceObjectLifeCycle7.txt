@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: test.openmobster.device.agent.api.device.TestDeviceObjectLifeCycle7
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.235 sec

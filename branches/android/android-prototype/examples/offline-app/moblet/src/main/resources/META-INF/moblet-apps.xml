@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<moblet-apps>
+	<moblet-app>	    
+	    <name>Offline App Demo</name>
+	    <description>Offline App Demo</description>
+		<bin-loc>/offlineapp.cod</bin-loc>	
+		<config-loc>/offlineapp.jad</config-loc>	
+	</moblet-app>	
+</moblet-apps>

@@ -1,0 +1,14 @@
+<moblet-app>
+	<commands>
+		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+		<command id="/demo/details">org.openmobster.core.examples.offline.command.DemoDetails</command>
+	</commands>
+	
+	<screens>	    	     
+		<screen id="home">org.openmobster.core.examples.offline.screen.HomeScreen</screen>
+	</screens>	
+	
+	<channels>
+		<channel>/offlineapp/demochannel</channel>
+	</channels>						
+</moblet-app>

@@ -1,0 +1,96 @@
+<project>
+	<parent>
+	   <groupId>org.openmobster.core.mobileCloud.rimos</groupId>
+	   <artifactId>mobileCloud-rimos</artifactId>
+	   <version>2.0-M1</version>
+	   <relativePath>../pom.xml</relativePath>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>	
+	<name>moblet-runtime</name>	
+	<artifactId>moblet-runtime</artifactId>	
+	<packaging>jar</packaging>
+	
+	<dependencies>
+	    <dependency>
+	      <groupId>org.openmobster.core.mobileCloud.rimos</groupId>
+	      <artifactId>api</artifactId>
+	      <version>${project.version}</version>
+	    </dependency>	    
+		<dependency>
+	      <groupId>org.openmobster.core.mobileCloud.rimos</groupId>
+	      <artifactId>common</artifactId>
+	      <version>${project.version}</version>
+	    </dependency>	    		
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
+				<artifactId>mobileObject</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
+				<artifactId>bus</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
+				<artifactId>connection</artifactId>
+				<version>${project.version}</version>
+		</dependency>			   
+	</dependencies>
+	
+	<!-- build configuration -->
+	<build>	        
+		<plugins>		        
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+					    <id>package-moblet-runtime</id>
+						<phase>install</phase>
+						<configuration>
+							<tasks>								    
+								<delete file="${basedir}/target/moblet-runtime.jar"/>
+							
+							    <unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/api/${project.version}/api-${project.version}.jar" 
+							    dest="${basedir}/target/thirdparty" overwrite="true"/>
+							    <unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/common/${project.version}/common-${project.version}.jar" 
+							    dest="${basedir}/target/thirdparty" overwrite="true"/>							    
+							    <unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/mobileObject/${project.version}/mobileObject-${project.version}.jar" 
+							    dest="${basedir}/target/thirdparty" overwrite="true"/>
+							    <unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/bus/${project.version}/bus-${project.version}.jar" 
+							    dest="${basedir}/target/thirdparty" overwrite="true"/>
+							    <unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/connection/${project.version}/connection-${project.version}.jar" 
+							    dest="${basedir}/target/thirdparty" overwrite="true"/>	
+							    						   				                                        						        
+								<jar file="${basedir}/target/moblet-runtime.jar">
+							    	<fileset dir="${basedir}/target/classes"/>						        			        								        	
+							        <fileset dir="${basedir}/target/thirdparty">
+							        	<exclude name="**/META-INF/**"/>
+							        </fileset>		        							        								        								    
+							   	</jar>							   						        						        						    						        						        																			
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+					    <id>install-moblet-runtime</id>
+						<phase>install</phase>
+						<configuration>
+							<tasks>	
+								<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/moblet-runtime/${project.version}" 
+								file="${basedir}/target/moblet-runtime.jar" overwrite="true"/>					                                        						        							        						        						        						    						        						        																			
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
