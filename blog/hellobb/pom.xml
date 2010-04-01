@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.hello.bb</groupId>
+	<artifactId>hellobb</artifactId>
+	<name>HelloBB</name>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+
+	<!--
+		Specifies the RIM API version..All RIM device software is backward
+		compatible
+	-->
+	<properties>
+		<version.net.rim.api>4.3.0</version.net.rim.api>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>net.rim</groupId>
+			<artifactId>net_rim_api</artifactId>
+			<version>${version.net.rim.api}</version>
+			<scope>system</scope>
+			<systemPath>${env.RIM_JDE_HOME}/lib/net_rim_api.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<outputDirectory>bin</outputDirectory>
+				</configuration>
+			</plugin>
+			
+			<!--
+				makes sure the Application code is JDK 1.2 compliant since thats
+				what RIM devices mandate
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.2</source>
+					<target>1.2</target>
+				</configuration>
+			</plugin>
+
+			<!-- makes proper environmental setup check -->
+			<plugin>
+				<groupId>org.apache.maven.plugins
+	      						</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>OS_Environment_Validation</id>
+						<phase>validate</phase>
+						<configuration>
+							<tasks>
+								<property environment="env" />								
+								<fail
+									message="RIM_JDE_HOME environment variable must be set to the home directory of the Blackberry JDE Environment. For instance, when using the eclipse JDE plugin, it could look something like: C:\projects\eclipse\plugins\net.rim.eide.componentpack4.5.0_4.5.0.16\components">
+									<condition>
+										<and>
+											<os family="windows" />
+											<not>
+												<isset property="env.RIM_JDE_HOME" />
+											</not>
+										</and>
+									</condition>
+								</fail>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
+					<execution>
+						<id>App_Creation_Deployment</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<property name="preverify_target" value="${basedir}/target/app-binary" />
+								<property name="preverify_src"
+									value="${basedir}/target/${project.artifactId}.jar" />
+								<property name="rapc_src"
+									value="${preverify_target}/${project.artifactId}.jar" />
+								<property name="rapc_config" value="${basedir}/app.rapc" />
+
+								<delete dir="${preverify_target}" />
+								<delete file="${preverify_src}" />
+								<mkdir dir="${preverify_target}" />
+
+
+								<jar file="${preverify_src}">
+									<fileset dir="${basedir}/target/classes" />
+								</jar>
+
+								<echo>Generating the BlackBerry App....
+										</echo>
+
+								<echo>Preverifying....</echo>
+								<exec dir="${preverify_target}" executable="preverify">
+									<arg
+										line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+								</exec>
+
+
+								<echo>Generating the Executable....</echo>
+								<exec dir="${preverify_target}" executable="rapc">
+									<arg
+										line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
+								</exec>
+
+								<echo>Deploying the App into the Simulator....</echo>
+								<copy todir="${env.RIM_JDE_HOME}/simulator" overwrite="true">
+									<fileset dir="${basedir}/target/app-binary">
+										<include name="*.cod" />
+										<include name="*.debug" />
+									</fileset>
+								</copy>
+								
+								<echo>Generating the Desktop Application Loader......</echo>
+								<copy todir="${basedir}/target/app-binary" overwrite="true"
+								file="${basedir}/app.alx"
+								/>			
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

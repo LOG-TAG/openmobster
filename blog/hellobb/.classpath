@@ -1,0 +1,6 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="output" path="bin"/>
+  <classpathentry kind="lib" path="C:/projects/eclipse/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components/lib/net_rim_api.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+</classpath>
