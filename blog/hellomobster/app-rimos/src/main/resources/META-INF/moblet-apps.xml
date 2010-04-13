@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<moblet-apps>
+	<moblet-app>	    
+	    <name>hellomobster</name>
+	    <description>hellomobster</description>
+		<bin-loc>/hellomobster.cod</bin-loc>	
+		<config-loc>/hellomobster.jad</config-loc>	
+	</moblet-app>	
+</moblet-apps>

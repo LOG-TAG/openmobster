@@ -1,0 +1,32 @@
+<moblet-app>
+	<commands>
+		<!--
+			Apps should not need to modify this unless they want to extend the App's bootstrapping behavior
+			As an App developer you should never have to override this behavior
+			
+			In fact during the next iteration, it will not be required to specify this command within the
+			moblet-app.xml configuration file
+			
+			Details: http://code.google.com/p/openmobster/issues/detail?id=10
+		 -->
+		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+		
+		<!--
+			A "RemoteCommand" that fetches Tweets from the Cloud using the RPC Framework 
+		 -->
+		<command id="twitterCommand">org.openmobster.hello.mobster.command.TwitterCommand</command>
+	</commands>
+	
+	<screens>	    	     
+		<!--
+			This represents the "First/Startup Screen" that is displayed when the App is launched.
+			This value is required 
+		 -->
+		<screen id="home">org.openmobster.hello.mobster.screen.HomeScreen</screen>
+		
+		<!--
+			Displays the Tweets that are fetched from the Cloud 
+		 -->
+		<screen id="tweets">org.openmobster.hello.mobster.screen.TweetsScreen</screen>
+	</screens>							
+</moblet-app>
