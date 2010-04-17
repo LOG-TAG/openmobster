@@ -11,7 +11,6 @@ package org.openmobster.core.examples.offlineapp;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
 
 import org.openmobster.core.security.device.Device;
 import org.openmobster.server.api.model.MobileBean;
@@ -59,26 +58,35 @@ public class DemoChannel implements Channel
 		List<MobileBean> list = new ArrayList<MobileBean>();
 		
 		//Just get only the top 5 beans to bootup the service on device side
-		for(int i=0; i<5; i++)
+		for(int i=0; i<1; i++)
 		{
 			DemoBean bean = this.demoRepository.getData().get(""+i);
 			list.add(bean);
 		}
-		
-		mockCounter = 5; //resets pushing
 		
 		return list;
 	}
 	
 	public List<? extends MobileBean> readAll() 
 	{		
-		List<MobileBean> list = new ArrayList<MobileBean>();
+		/*List<MobileBean> list = new ArrayList<MobileBean>();
 		
 		//Just get only the top 5 beans to bootup the service on device side
 		Set<String> beanIds = this.demoRepository.getData().keySet();
 		for(String beanId: beanIds)
 		{
 			list.add(this.demoRepository.getData().get(beanId));
+		}
+		
+		return list;*/
+		
+		List<MobileBean> list = new ArrayList<MobileBean>();
+		
+		//Just get only the top 5 beans to bootup the service on device side
+		for(int i=0; i<1; i++)
+		{
+			DemoBean bean = this.demoRepository.getData().get(""+i);
+			list.add(bean);
 		}
 		
 		return list;
@@ -116,25 +124,31 @@ public class DemoChannel implements Channel
 		this.demoRepository.getData().remove(deletedBean.getBeanId());
 	}
 	//---Comet Lifecycle related callbacks-----------------------------------------------------------------------------------------------
-	private static int mockCounter = 5;
 	public String[] scanForNew(Device device, Date lastScanTimestamp) 
 	{
-		if(mockCounter <= 0)
+		
+		List<DemoBean> newBeans = this.demoRepository.getNewBeans();
+		if(newBeans != null && !newBeans.isEmpty())
 		{
-			return null;
+			System.out.println("Starting Push---------------------------------------------------------------");
+			
+			//Just wait a little to make sure the device is probably in standby after triggering the push
+			//This is used to demonstrate that 'Realtime Push' is delivered even when the device is in standby mode
+			try{Thread.currentThread().sleep(60000);}catch(Exception e){}
+			
+			List<String> newIds = new ArrayList<String>();
+			for(DemoBean newBean:newBeans)
+			{
+				System.out.println("Pushing: "+newBean.getBeanId());
+				newIds.add(newBean.getBeanId());
+			}
+			this.demoRepository.cleanNewBeans();
+			System.out.println("-------------------------------------------------------------------------");
+			
+			return newIds.toArray(new String[0]);
 		}
-		mockCounter --;
 		
-		DemoBean newBean = this.createNewDemoBean();
-		
-		System.out.println("Pushing----------------------------------------------------");
-		System.out.println("MockCounter :"+mockCounter);
-		System.out.println("Device :"+device.getIdentifier());
-		System.out.println("DemoBean :"+newBean.getBeanId());
-		System.out.println("-----------------------------------------------------------");
-		
-		return new String[]{newBean.getBeanId()};
-		//return null;
+		return null;
 	}
 	
 	public String[] scanForDeletions(Device device, Date lastScanTimestamp) 
@@ -145,35 +159,5 @@ public class DemoChannel implements Channel
 	public String[] scanForUpdates(Device device, Date lastScanTimestamp) 
 	{		
 		return null;
-	}
-	//--------------Just mock new bean generation to demo Push functionality----------------------------------------------------------------------
-	private DemoBean createNewDemoBean()
-	{
-		String beanId = ""+this.demoRepository.getData().size();
-		DemoBean bean = new DemoBean();
-		bean.setBeanId(beanId);
-		
-		//Set the demo string
-		bean.setDemoString("/demostring/"+beanId);
-		
-		//Set the demo array
-		String[] demoArray = new String[5];
-		for(int index=0; index<demoArray.length; index++)
-		{
-			demoArray[index] = "/demoarray/"+index+"/"+beanId;
-		}
-		bean.setDemoArray(demoArray);
-		
-		//Set the demo list
-		List<String> demoList = new ArrayList<String>();
-		for(int index=0; index<5; index++)
-		{
-			demoList.add("/demolist/"+index+"/"+beanId);
-		}
-		bean.setDemoList(demoList);
-		
-		this.demoRepository.getData().put(beanId, bean);
-		
-		return bean;
 	}
 }

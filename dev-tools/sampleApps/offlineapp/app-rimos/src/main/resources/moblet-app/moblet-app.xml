@@ -1,7 +1,10 @@
 <moblet-app>
 	<commands>
 		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+		
 		<command id="/demo/details">org.openmobster.core.examples.offline.command.DemoDetails</command>
+		<command id="/offlineapp/pushtrigger">org.openmobster.core.examples.offline.command.PushTrigger</command>
+		<command id="/offlineapp/reset">org.openmobster.core.examples.offline.command.ResetChannel</command>
 	</commands>
 	
 	<screens>	    	     

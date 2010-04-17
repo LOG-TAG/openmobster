@@ -11,6 +11,9 @@ package test.openmobster.core.mobileCloud.rimos.testsuite;
 import java.io.InputStream;
 import java.util.Vector;
 
+import net.rim.device.api.system.Application;
+import net.rim.device.api.ui.component.Dialog;
+
 import org.openmobster.core.mobileCloud.rimos.util.IOUtil;
 import org.openmobster.core.mobileCloud.rimos.util.StringUtil;
 
@@ -87,35 +90,51 @@ public final class TestSuite
 		for(int i=0,size=this.tests.size(); i<size; i++)
 		{
 			Test test = (Test)this.tests.elementAt(i);
+			
+			
 			System.out.println("Starting "+test.getInfo()+"......");
-			try
+			
+			//Show a status on the screen
+			String testName = test.getInfo();
+			if(testName.indexOf('.')!= -1)
 			{
-				test.setTestSuite(this);
-				test.setUp();
-				test.runTest();
-				test.tearDown();
-				test.setTestSuite(null);
+				testName = testName.substring(testName.lastIndexOf('.')+1);
 			}
-			catch(Exception e)
-			{
-				//eat this and keep going
-				this.reportError("Exception:"+test.getInfo()+":"+e.toString()+":"+e.getMessage());
-			}			
+			Dialog dialog = new Dialog("Executing \n"+testName+" ("+(i+1)+" out of "+size+")",
+					null,null,
+					Dialog.NO,
+					null
+			);
+			dialog.setEditable(false);
+			dialog.setEscapeEnabled(false);
+			
+			Thread t = new Thread(new TestExecutor(test,dialog));
+			t.start();
+			
+			dialog.doModal();
 		}
 		
 		//Report the errors
+		StringBuffer buffer = new StringBuffer();
 		if(this.errors.size()>0)
-		{
+		{			
 			System.out.println("Errors---------------------------------");
 			for(int i=0,errSize=this.errors.size(); i<errSize; i++)
 			{
-				System.out.println(this.errors.elementAt(i));
+				String errorStr = this.errors.elementAt(i).toString();
+				System.out.println(errorStr);
+				buffer.append(errorStr+"\n\n\n");
 			}
 		}
 		else
 		{
-			System.out.println("TestSuite succefully executed all tests------------------------------------");
+			String success = "TestSuite succefully executed all tests...";
+			System.out.println(success);
+			buffer.append(success);
 		}
+		
+		//Show the message
+		Dialog.alert(buffer.toString());
 	}
 	
 	public Vector getErrors()
@@ -161,6 +180,46 @@ public final class TestSuite
 		catch(Exception e)
 		{
 			
+		}
+	}
+	//-----------------------------------------------------------------------------------------------------------------------------------
+	private class TestExecutor implements Runnable
+	{
+		Dialog dialog;
+		Test test;
+		
+		private TestExecutor(Test test,Dialog dialog)
+		{
+			this.test = test;
+			this.dialog = dialog;
+		}
+		
+		public void run()
+		{
+			try
+			{				
+				test.setTestSuite(TestSuite.this);				
+				test.setUp();				
+				test.runTest();				
+				test.tearDown();				
+				test.setTestSuite(null);				
+			}
+			catch(Exception e)
+			{
+				//eat this and keep going
+				TestSuite.this.reportError("Exception:"+test.getInfo()+":"+e.toString()+":"+e.getMessage());
+			}	
+			finally
+			{				
+				Application.getApplication().invokeLater(new Runnable()
+					{
+						public void run()
+						{
+							dialog.close();
+						}
+					}
+				);						
+			}
 		}
 	}
 }

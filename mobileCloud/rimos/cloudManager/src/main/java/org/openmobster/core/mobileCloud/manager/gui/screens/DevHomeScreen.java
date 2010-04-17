@@ -30,8 +30,9 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
-
 /**
+ * @deprecated: This class is no longer needed after the AppCreator was introduced in the 2.0-M2 release
+ * 
  * @author openmobster@gmail.com
  */
 public class DevHomeScreen extends Screen

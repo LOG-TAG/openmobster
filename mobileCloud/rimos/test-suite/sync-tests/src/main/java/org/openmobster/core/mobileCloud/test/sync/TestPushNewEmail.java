@@ -51,10 +51,7 @@ public final class TestPushNewEmail extends AbstractNotification
 			this.setUpServerSideSync("sendNewEmail/"+newMailUid);
 			
 			//Block here since a Notification and its Corresponding Sync will occur on a separate background thread(s)
-			while(!EmailPushListener.pushReceived)
-			{
-				Thread.currentThread().sleep(5000);				
-			}
+			this.waitForEmail();
 			
 			//Reseting the listener state
 			EmailPushListener.pushReceived = false;
@@ -62,16 +59,19 @@ public final class TestPushNewEmail extends AbstractNotification
 			//Assert
 			MobileObject newEmail = MobileObjectDatabase.getInstance().read(this.service, newMailUid);
 			this.assertNotNull(newEmail, this.getInfo()+"/NewEmailShouldNotBeNull");
-			this.assertEquals(newEmail.getValue("from"), "from@blah.com", this.getInfo()+"/NewEmail/FromCheck");
-			this.assertEquals(newEmail.getValue("to"), "to@blah.com", this.getInfo()+"/NewEmail/ToCheck");
-			this.assertEquals(newEmail.getValue("subject"), "newSubject", this.getInfo()+"/NewEmail/SubjectCheck");
-			this.assertEquals(newEmail.getValue("message"), "new message", this.getInfo()+"/NewEmail/MessageCheck");
-			
-			System.out.println("New Email received-----------------------------------");
-			System.out.println("From="+newEmail.getValue("from"));
-			System.out.println("To="+newEmail.getValue("to"));
-			System.out.println("Subject="+newEmail.getValue("subject"));
-			System.out.println("Message="+newEmail.getValue("message"));
+			if(newEmail != null)
+			{
+				this.assertEquals(newEmail.getValue("from"), "from@blah.com", this.getInfo()+"/NewEmail/FromCheck");
+				this.assertEquals(newEmail.getValue("to"), "to@blah.com", this.getInfo()+"/NewEmail/ToCheck");
+				this.assertEquals(newEmail.getValue("subject"), "newSubject", this.getInfo()+"/NewEmail/SubjectCheck");
+				this.assertEquals(newEmail.getValue("message"), "new message", this.getInfo()+"/NewEmail/MessageCheck");
+				
+				System.out.println("New Email received-----------------------------------");
+				System.out.println("From="+newEmail.getValue("from"));
+				System.out.println("To="+newEmail.getValue("to"));
+				System.out.println("Subject="+newEmail.getValue("subject"));
+				System.out.println("Message="+newEmail.getValue("message"));
+			}
 			
 			this.tearDown();			
 		}
@@ -79,5 +79,25 @@ public final class TestPushNewEmail extends AbstractNotification
 		{
 			throw new RuntimeException(e.toString());
 		}
-	}	
+	}
+	
+	private void waitForEmail()
+	{
+		try
+		{
+			int retries = 30;
+			do
+			{
+				if(EmailPushListener.pushReceived)
+				{
+					break;
+				}
+				Thread.currentThread().sleep(1000);
+			}while(retries-- > 0);
+		}
+		catch(Exception e)
+		{
+			//nothing to do
+		}
+	}
 }

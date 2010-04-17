@@ -45,7 +45,7 @@ public final class TestQuery extends AbstractAPITest
 			
 			//Download all data associated with the beans (takes care of proxy-lazy loaded beans)						
 			//Wait for proxy loading to load the rest
-			int attempts = 2;
+			int attempts = 5;
 			while(beans.length < 2 && attempts > 0)
 			{
 				System.out.println("Waiting on background proxy loading.........");

@@ -1,0 +1,14 @@
+<loader version="1.0">
+   <application id="HelloWorld">
+      <name/>
+      <description/>
+      <version/>
+      <vendor/>
+      <copyright/>
+      <fileset Java="1.0" _blackberryVersion="[4.3.0,)">
+         <files>
+HelloWorld.cod
+</files>
+      </fileset>
+   </application>
+</loader>

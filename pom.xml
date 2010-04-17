@@ -31,6 +31,7 @@
 		<module>device-agent-simulator</module>
 		<module>device-agent-frameworks</module>
 		<module>server-testsuite</module>
+		<module>testdrive-server</module>
 		<module>sar</module>
 		<module>cloud-sdk</module>
 	</modules>

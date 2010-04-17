@@ -75,8 +75,8 @@ public class SyncProcessor implements Processor
 		{
 			//Using the serverside sync
 			String payload = input.getMessage().trim();
-			log.debug("Received------------------------------------------------------------------------");
-			log.debug(payload);
+			log.info("Received------------------------------------------------------------------------");
+			log.info(payload);
 			
 			SyncAdapterRequest serverRequest = new SyncAdapterRequest();
 			serverRequest.setAttribute(SyncServer.PAYLOAD, payload);
@@ -87,8 +87,8 @@ public class SyncProcessor implements Processor
 			payload = (String) serverResponse
 			.getAttribute(SyncServer.PAYLOAD);	
 			
-			log.debug("Sending------------------------------------------------------------------------");
-			log.debug(payload);
+			log.info("Sending------------------------------------------------------------------------");
+			log.info(payload);
 			
 			return payload;
 		}

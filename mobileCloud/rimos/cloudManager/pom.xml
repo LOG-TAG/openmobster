@@ -80,6 +80,18 @@
 										<copy todir="${preverify_target}" overwrite="true"
 										file="${basedir}/src/main/config/alx/CloudManager.alx"
 										/>
+										
+										<echo>Deploying into the Simulator....</echo>
+										<copy todir="${env.RIM_JDE_HOME}/simulator" overwrite="true">
+											<fileset dir="${preverify_target}">
+												<include name="*.cod" />
+												<include name="*.debug" />
+											</fileset>
+										</copy>
+										<copy todir="${env.RIM_JDE_HOME}/bin" overwrite="true">
+											<fileset dir="${preverify_target}">												
+											</fileset>
+										</copy>
 
 										<copy
 											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"

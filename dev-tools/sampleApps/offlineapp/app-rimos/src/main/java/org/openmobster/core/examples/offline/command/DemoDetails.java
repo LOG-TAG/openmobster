@@ -14,7 +14,7 @@ import net.rim.device.api.ui.component.Status;
 import net.rim.device.api.ui.component.Dialog;
 
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
@@ -25,7 +25,7 @@ import org.openmobster.core.mobileCloud.rimos.util.GenericAttributeManager;
  * @author openmobster@gmail.com
  *
  */
-public final class DemoDetails implements RemoteCommand
+public final class DemoDetails implements LocalCommand
 {
 	public void doViewBefore(CommandContext commandContext)
 	{		
@@ -39,33 +39,17 @@ public final class DemoDetails implements RemoteCommand
 			String selectedBean = (String)commandContext.getAttribute("selectedBean");
 			
 			String details = null;
-			if(selectedBean.endsWith("proxyState"))
-			{
-				//Lookup by beanId
-				String beanId = selectedBean.substring(0,selectedBean.indexOf(':'));
-				MobileBean bean = MobileBean.readById(channel, beanId);
-				
-				StringBuffer buffer = new StringBuffer();
-				
-				//Reading a simple property
-				buffer.append("DemoString: "+bean.getValue("demoString"));
-				
-				
-				details = buffer.toString();
-			}
-			else
-			{
-				//Lookup by state..in this case, that of demoString
-				GenericAttributeManager criteria = new GenericAttributeManager();
-				criteria.setAttribute("demoString", selectedBean);
-				
-				MobileBean[] beans = MobileBean.queryByEqualsAll(channel, criteria);
-				MobileBean unique = beans[0];
-				
-				StringBuffer buffer = new StringBuffer();
-				buffer.append("DemoString: "+unique.getValue("demoString"));
-				details = buffer.toString();
-			}
+			
+			//Lookup by state..in this case, that of demoString
+			GenericAttributeManager criteria = new GenericAttributeManager();
+			criteria.setAttribute("demoString", selectedBean);
+			
+			MobileBean[] beans = MobileBean.queryByEqualsAll(channel, criteria);
+			MobileBean unique = beans[0];
+			
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("DemoString: "+unique.getValue("demoString"));
+			details = buffer.toString();
 			
 			commandContext.setAttribute("details", details);
 		}

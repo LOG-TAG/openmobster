@@ -8,10 +8,7 @@
 
 package org.openmobster.core.mobileCloud.test.sync;
 
-import test.openmobster.core.mobileCloud.rimos.testsuite.TestSuite;
-import test.openmobster.core.mobileCloud.rimos.testsuite.moblet.TestSuiteBootstrapCommand;
-import test.openmobster.core.mobileCloud.rimos.testsuite.moblet.ActivationUtil;
-import test.openmobster.core.mobileCloud.rimos.testsuite.TestContext;
+import net.rim.device.api.ui.component.Dialog;
 
 import org.openmobster.core.mobileCloud.api.system.CometUtil;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
@@ -19,28 +16,41 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.kernel.DeviceContainer;
+import org.openmobster.core.mobileCloud.rim_native.framework.SystemLocaleKeys;
 import org.openmobster.core.mobileCloud.rimos.module.bus.Bus;
 import org.openmobster.core.mobileCloud.rimos.module.bus.InvocationHandler;
 import org.openmobster.core.mobileCloud.api.push.MobilePush;
-
+import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
 
 
 /**
  * @author openmobster@gmail.com
  *
  */
-public final class SyncTestSuiteBootstrapCommand extends TestSuiteBootstrapCommand
+public final class SyncTestSuiteBootstrapCommand implements LocalCommand
 {
+	public void doViewBefore(CommandContext commandContext)
+	{
+		
+	}
+	
 	public void doAction(CommandContext commandContext) 
 	{	
 		try
 		{
 			DeviceContainer.getInstance().startup();
 			Moblet.getInstance().startup();
-			
-			ActivationUtil.activateDevice();
-			
+									
 			CometUtil.subscribeChannels();
+			
+			Bus bus = Bus.getInstance();
+			
+			//Register the ClientStorageListener as a Service Bus InvocationHandler
+			InvocationHandler handler = new TestStorageListener("testServerBean.testMapping");
+			bus.register(handler);
+						
+			//Register New Email Push Listener
+			MobilePush.registerPushListener(new EmailPushListener());
 		}
 		catch(Exception e)
 		{
@@ -50,32 +60,14 @@ public final class SyncTestSuiteBootstrapCommand extends TestSuiteBootstrapComma
 	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		try
-		{
-			Bus bus = Bus.getInstance();
-			
-			//Register the ClientStorageListener as a Service Bus InvocationHandler
-			InvocationHandler handler = new TestStorageListener("testServerBean.testMapping");
-			bus.register(handler);
-						
-			//Register New Email Push Listener
-			MobilePush.registerPushListener(new EmailPushListener());
-			
-			TestSuite suite = new TestSuite();
-			TestContext context = new TestContext();
-			suite.setContext(context);
-			context.setAttribute("service", "testServerBean");
-			context.setAttribute("identifier", "IMEI:8675309");
-			
-			suite.load();
-			suite.execute();
-		
-			Services.getInstance().getNavigationContext().setHome("home");
-			Services.getInstance().getNavigationContext().home();
-		}
-		catch(Exception e)
-		{
-			throw new RuntimeException(e.toString());
-		}
+		Services.getInstance().getNavigationContext().setHome("home");
+		Services.getInstance().getNavigationContext().home();
+	}
+	
+	public void doViewError(CommandContext commandContext)
+	{
+		Dialog.alert(Services.getInstance().getResources().localize(SystemLocaleKeys.moblet_startup_error, 
+		SystemLocaleKeys.moblet_startup_error));			
+		System.exit(1);
 	}
 }
