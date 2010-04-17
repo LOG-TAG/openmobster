@@ -65,6 +65,10 @@
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/main/resources"/>
 	<classpathentry kind="src" path="server-testsuite/src/test/java"/>
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/test/resources"/>
+	<classpathentry kind="src" path="testdrive-server/src/main/java"/>
+	<classpathentry excluding="**" kind="src" path="testdrive-server/src/main/resources"/>
+	<classpathentry kind="src" path="testdrive-server/src/test/java"/>
+	<classpathentry excluding="**" kind="src" path="testdrive-server/src/test/resources"/>
 	
 	<classpathentry kind="src" path="mobileCloud/rimos/cloudManager/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/api/src/main/java"/>
@@ -83,7 +87,7 @@
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/sync-tests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/apitests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/cloudtests/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main/java"/>	
 	<classpathentry kind="src" path="mobileCloud/rimos/ide_hack"/>
 	
 	
@@ -93,6 +97,12 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-rimos/src/main/java" />
+	
+	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworld/app-rimos/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworldsensitive/app-rimos/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/dbtestdrive/app-rimos/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/conntestdrive/app-rimos/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/bustestdrive/app-rimos/src/main/java"/>
 	
 	
 	<classpathentry kind="output" path="bin"/>
@@ -152,5 +162,5 @@
     <classpathentry kind="var" path="M2_REPO/jline/jline/0.9.93/jline-0.9.93.jar"/>
     
     <!--  RIMOS related dependencies -->
-    <classpathentry kind="var" path="M2_REPO/net/rim/net_rim_api/4.3.0/net_rim_api-4.3.0.jar"/>
+    <classpathentry kind="var" path="RIM_JDE_HOME/lib/net_rim_api.jar"/>
 </classpath>

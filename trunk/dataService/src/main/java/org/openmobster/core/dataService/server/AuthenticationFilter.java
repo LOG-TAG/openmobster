@@ -69,14 +69,18 @@ public class AuthenticationFilter extends IoFilterAdapter
 	//-------------------------------------------------------------------------------------------------------------------
 	private boolean handleAuth(IoSession session) throws Exception
 	{
+		System.out.println("Authorization--------------------------------------------------------------------------");
+		
 		String payload = (String)session.getAttribute(Constants.payload);
 		AuthCredential authCredential = this.parseAuthCredential(payload);
 		if(authCredential == null)
 		{
+			System.out.println("AUTHCredential missing: Access Denied");
 			return false;
 		}
 		
 		String deviceId = authCredential.getDeviceId();
+		System.out.println("Device Id: "+deviceId);
 		
 		//check to make sure this isn't the console...console has its own authentication mechanism
 		if(deviceId.startsWith("console:"))
@@ -90,7 +94,11 @@ public class AuthenticationFilter extends IoFilterAdapter
 		Device device = deviceController.read(deviceId);
 		if(device != null && device.getIdentity().isActive())
 		{
-			String storedNonce = device.readAttribute("nonce").getValue();			
+			String storedNonce = device.readAttribute("nonce").getValue();	
+			
+			System.out.println("Incoming Nonce: "+nonce);
+			System.out.println("Stored Nonce: "+storedNonce);
+			
 			if(nonce != null && MessageDigest.isEqual(nonce.getBytes(), storedNonce.getBytes()))
 			{
 				/*MessageDigest digest = MessageDigest.getInstance("SHA-512");
@@ -111,6 +119,10 @@ public class AuthenticationFilter extends IoFilterAdapter
 				return true;
 			}
 		}
+		
+		System.out.println("Access Denied!!");
+		
+		System.out.println("--------------------------------------------------------------------------");
 		
 		return false;
 	}
@@ -155,7 +167,7 @@ public class AuthenticationFilter extends IoFilterAdapter
 		if(payload.contains(Constants.processorId))
 		{
 			//Allows testsuite requests
-			if(payload.contains("=testsuite"))
+			if(payload.contains("=testsuite") || payload.contains("=/testdrive/"))
 			{
 				session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
 			}

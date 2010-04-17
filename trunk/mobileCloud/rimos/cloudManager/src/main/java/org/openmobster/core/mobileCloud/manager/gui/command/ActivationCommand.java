@@ -167,6 +167,7 @@ public class ActivationCommand implements RemoteCommand
 		String authenticationHash = response.getAttribute("authenticationHash");
 		configuration.setEmail(email);
 		configuration.setAuthenticationHash(authenticationHash);
+		configuration.setAuthenticationNonce(authenticationHash);
 		configuration.setActive(true);
 		
 		configuration.save();

@@ -29,6 +29,7 @@ import org.openmobster.core.mobileCloud.invocation.SwitchSecurityMode;
 import org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler;
 import org.openmobster.core.mobileCloud.invocation.CometConfigHandler;
 import org.openmobster.core.mobileCloud.invocation.CometRecycleHandler;
+import org.openmobster.core.mobileCloud.invocation.CometStatusHandler;
 import org.openmobster.core.mobileCloud.invocation.StartCometDaemon;
 import org.openmobster.core.mobileCloud.invocation.ChannelBootupHandler;
 
@@ -108,6 +109,7 @@ public final class DeviceContainer
 			services.addElement(StartCometDaemon.class);
 			services.addElement(SwitchSecurityMode.class);
 			services.addElement(CometRecycleHandler.class);
+			services.addElement(CometStatusHandler.class);
 			services.addElement(ChannelBootupHandler.class);
 																											
 			Registry.getInstance().start(services);									

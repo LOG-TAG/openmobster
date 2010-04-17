@@ -26,11 +26,22 @@
 	    <module>native-framework</module>
 	    <module>cloudManager</module>
 	    <module>device-sdk</module>
-	    <module>mobileCloud</module>
-	    <module>test-suite</module>							
+	    <module>mobileCloud</module>							
 	</modules>
 	
-	
+	<profiles>
+		<profile>
+			<activation>
+				<os>
+					<family>windows</family>
+					<arch>x86</arch>
+				</os>
+			</activation>
+			<modules>
+				<module>test-suite</module>
+			</modules>
+		</profile>
+	</profiles>
 	
 	<dependencyManagement>
 		<dependencies>

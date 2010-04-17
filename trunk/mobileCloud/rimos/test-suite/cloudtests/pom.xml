@@ -79,10 +79,29 @@
 												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=cloudtests ${rapc_config} 
 				  				${rapc_src}" />
 										</exec>
+										
+										<echo>Generating the Desktop Application Loader......</echo>
+										<copy todir="${preverify_target}" overwrite="true"
+										file="${basedir}/app.alx"
+										/>
+										
+										<echo>Deploying into the Simulator....</echo>
+										<copy todir="${env.RIM_JDE_HOME}/simulator" overwrite="true">
+											<fileset dir="${preverify_target}">
+												<include name="*.cod" />
+												<include name="*.debug" />
+											</fileset>
+										</copy>
 
 										<copy
 											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
-											file="${preverify_target}/cloudtests.cod" overwrite="true" />
+											overwrite="true">
+											<fileset dir="${preverify_target}">
+												<include name="**/*.debug" />
+												<include name="**/*.alx" />
+												<include name="**/*.cod" />
+											</fileset>
+										</copy>																					
 									</tasks>
 								</configuration>
 								<goals>

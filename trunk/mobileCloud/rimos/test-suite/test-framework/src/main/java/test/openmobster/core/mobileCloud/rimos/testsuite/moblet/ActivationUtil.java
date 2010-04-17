@@ -66,6 +66,14 @@ public final class ActivationUtil
 		configuration.setActive(true);
 		
 		configuration.save();
+		
+		System.out.println("Device Activation------------------------------------------------------");
+		System.out.println("Email: "+email);
+		System.out.println("AuthenticationHash: "+authenticationHash);
+		System.out.println("Stored Email: "+configuration.getEmail());
+		System.out.println("Stored Hash(Sent for Authorization): "+configuration.getAuthenticationHash());
+		System.out.println("Stored Nonce: "+configuration.getAuthenticationNonce());
+		System.out.println("-----------------------------------------------------------------------");
 	}	
 	
 	private static synchronized void bootup(String deviceIdentifier,String serverIp, String port) 

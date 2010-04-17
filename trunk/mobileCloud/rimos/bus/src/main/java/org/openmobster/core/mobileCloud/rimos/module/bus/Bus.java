@@ -251,6 +251,10 @@ public final class Bus extends Service
 				BusRegistration registration = (BusRegistration)busRegistrations.elementAt(i);
 				if(registration.getBusId() == this.busId)
 				{
+					//System.out.println("Invoking Local Bus-----------------------------------------------");					
+					//System.out.println("Bus: "+registration.getBusId());
+					//System.out.println("------------------------------------------------------------------");
+					
 					//Its a local invocation
 					InvocationHandler handler = this.findInvocationHandler(invocation);
 					if(handler != null)
@@ -263,6 +267,12 @@ public final class Bus extends Service
 					//Its an inter-application invocation
 					long triggerId = this.findTriggerId(registration);				
 					Object trigger = ObjectShareUtil.get(triggerId);
+					
+					if(trigger == null)
+					{
+						//Stale Bus
+						continue;
+					}
 					
 					//System.out.println("Invoking Remote Bus-----------------------------------------------");
 					//System.out.println("InterAppInvocationThread started: "+trigger);
@@ -371,16 +381,26 @@ public final class Bus extends Service
 		{
 			Enumeration records = matchedBuses.elements();
 			
+			//System.out.println("------------------------------------------------");
+			BusRegistration cour = null;
 			while(records.hasMoreElements())
 			{
 				BusRegistration curr = (BusRegistration)records.nextElement();
+				
+				//System.out.println("Bus To Invoke: "+curr.getBusId());
+				
 				if(this.busId == curr.getBusId())
 				{
 					return curr;
 				}
+				else
+				{
+					cour = curr;
+				}
 			}
+			//System.out.println("------------------------------------------------");
 			
-			return (BusRegistration)matchedBuses.elementAt(0);
+			return cour;
 		}
 		
 		return registration;
@@ -613,6 +633,8 @@ public final class Bus extends Service
 						Hashtable curr = (Hashtable)trigger;
 						try
 						{							
+							//FIXME: improve performance by spawning worker threads to handle invocations in parallel 
+							
 							//Start processing the invocations
 							Enumeration invocationIds = curr.keys();
 							while(invocationIds.hasMoreElements())

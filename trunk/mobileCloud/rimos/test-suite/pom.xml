@@ -19,5 +19,6 @@
 		<module>apitests</module>
 		<module>cloudtests</module>
 		<module>nativeframework-testdrive</module>
+		<module>realdevice</module>
 	</modules>		
 </project>

@@ -93,22 +93,39 @@ public class HomeScreen extends Screen
 			public void run()
 			{
 				//UserInteraction/Event Processing...this is where the Commands can be executed
-				HomeScreen.this.handleDetails();
+				int selectedIndex = HomeScreen.this.listField.getSelectedIndex();
+				String selectedBean = (String)HomeScreen.this.actions.elementAt(selectedIndex);
+				
+				CommandContext commandContext = new CommandContext();
+				commandContext.setTarget("/demo/details");
+				commandContext.setAttribute("selectedBean", selectedBean);
+				Services.getInstance().getCommandService().execute(commandContext);
+			}
+		};
+		
+		MenuItem resetChannel = new MenuItem("Reset Channel", 2, 2){
+			public void run()
+			{
+				//UserInteraction/Event Processing...this is where the Commands can be executed
+				CommandContext commandContext = new CommandContext();
+				commandContext.setTarget("/offlineapp/reset");
+				Services.getInstance().getCommandService().execute(commandContext);
+			}
+		}; 
+		
+		MenuItem pushTrigger = new MenuItem("Push Trigger", 3, 3){
+			public void run()
+			{
+				//UserInteraction/Event Processing...this is where the Commands can be executed
+				CommandContext commandContext = new CommandContext();
+				commandContext.setTarget("/offlineapp/pushtrigger");
+				Services.getInstance().getCommandService().execute(commandContext);
 			}
 		}; 
 										
-		this.screen.addMenuItem(detailItem);	
-	}
-	
-	private void handleDetails()
-	{
-		int selectedIndex = this.listField.getSelectedIndex();
-		String selectedBean = (String)this.actions.elementAt(selectedIndex);
-		
-		CommandContext commandContext = new CommandContext();
-		commandContext.setTarget("/demo/details");
-		commandContext.setAttribute("selectedBean", selectedBean);
-		Services.getInstance().getCommandService().execute(commandContext);
+		this.screen.addMenuItem(detailItem);
+		this.screen.addMenuItem(resetChannel);
+		this.screen.addMenuItem(pushTrigger);
 	}
 	
 	private static class ListFieldCallbackImpl implements ListFieldCallback

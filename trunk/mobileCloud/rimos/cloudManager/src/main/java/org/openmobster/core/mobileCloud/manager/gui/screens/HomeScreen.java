@@ -19,6 +19,7 @@ import net.rim.device.api.ui.component.ListField;
 import net.rim.device.api.ui.component.ListFieldCallback;
 import net.rim.device.api.ui.component.PasswordEditField;
 import net.rim.device.api.ui.component.Status;
+import net.rim.device.api.system.DeviceInfo;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.component.Dialog;
 
@@ -56,7 +57,7 @@ public class HomeScreen extends Screen
 		this.screen = new MainScreen();
 		this.screen.setTitle(appResources.localize(LocaleKeys.control_panel, LocaleKeys.control_panel));
 												
-		listField = new ListField(6);
+		listField = new ListField(7);
 		listField.setCallback(new ListFieldCallbackImpl());		
 				
 		this.screen.add(listField);
@@ -172,21 +173,26 @@ public class HomeScreen extends Screen
 					commandContext.setAttribute(CommandKeys.server, configuration.getServerIp());
 					commandContext.setAttribute(CommandKeys.email, configuration.getEmail());					
 									
-					Dialog passwordDialog = new Dialog(Dialog.D_OK,"Email: "+configuration.getEmail(),0,null,0);
+					Dialog passwordDialog = new Dialog(Dialog.D_OK_CANCEL,"Email: "+configuration.getEmail(),0,null,0);
 					passwordDialog.add(passwordLabel);
 					passwordDialog.add(passwordField);
 					passwordDialog.doModal();
+							
+					int selectedValue = passwordDialog.getSelectedValue();
 					
-					String password = passwordField.getText();
-					if(password==null || password.trim().length()==0)
+					if(selectedValue == 0)
 					{
-						Dialog.alert(resources.localize(LocaleKeys.password, LocaleKeys.password)+ " " +
-						resources.localize(LocaleKeys.input_required, LocaleKeys.input_required));
-						return;
+						String password = passwordField.getText();
+						if(password==null || password.trim().length()==0)
+						{
+							Dialog.alert(resources.localize(LocaleKeys.password, LocaleKeys.password)+ " " +
+							resources.localize(LocaleKeys.input_required, LocaleKeys.input_required));
+							return;
+						}
+						
+						commandContext.setAttribute(CommandKeys.password, passwordField.getText());
+						Services.getInstance().getCommandService().execute(commandContext);
 					}
-					
-					commandContext.setAttribute(CommandKeys.password, passwordField.getText());
-					Services.getInstance().getCommandService().execute(commandContext);
 				}
 			break;
 			
@@ -207,7 +213,9 @@ public class HomeScreen extends Screen
 				//Handle Push Settings				
 				if(configuration.isActive())
 				{
-					Services.getInstance().getNavigationContext().navigate("cometConfig");
+					commandContext.setTarget("cometStatus");
+					Services.getInstance().getCommandService().execute(commandContext);
+					
 				}
 				else
 				{
@@ -252,6 +260,11 @@ public class HomeScreen extends Screen
 				}
 			break;
 			
+			case 6:
+				//Handle Check Cloud Status				
+				Dialog.alert("Battery Level: "+DeviceInfo.getBatteryLevel());
+			break;
+			
 			default:
 				//Do nothing					
 			break;
@@ -274,6 +287,7 @@ public class HomeScreen extends Screen
 			this.actions.addElement(resources.localize(LocaleKeys.manual_sync, LocaleKeys.manual_sync));
 			this.actions.addElement(resources.localize(LocaleKeys.security, LocaleKeys.security));
 			this.actions.addElement(resources.localize(LocaleKeys.status, LocaleKeys.status));
+			this.actions.addElement("Check Battery Level");
 		}
 
 		public void drawListRow(ListField listField, Graphics graphics, int index,

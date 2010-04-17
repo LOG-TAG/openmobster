@@ -16,13 +16,16 @@ import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.component.ListField;
 import net.rim.device.api.ui.component.ListFieldCallback;
+import net.rim.device.api.system.Characters;
 import net.rim.device.api.system.Display;
+import net.rim.device.api.system.KeyListener;
 import net.rim.device.api.ui.component.Dialog;
 
 import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
 import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.SystemLocaleKeys;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
@@ -71,6 +74,7 @@ public class ManualSyncScreen extends Screen
 		}
 		
 		this.setMenuItems();
+		this.setUpNavigation();
 	}
 	
 	private void setMenuItems()
@@ -97,7 +101,43 @@ public class ManualSyncScreen extends Screen
 			}
 		};								 												
 		this.screen.addMenuItem(backItem);
-	}	
+	}
+	
+	private void setUpNavigation()
+	{
+		this.screen.addKeyListener(new KeyListener()
+		{
+			public boolean keyChar(char key, int status, int time)
+			{				
+				if(key == Characters.ESCAPE)
+				{
+					NavigationContext.getInstance().back();
+					return true;
+				}
+				return false;
+			}
+			
+			public boolean keyDown(int keyCode, int time)
+			{																
+				return false;
+			}
+			
+			public boolean keyUp(int keyCode, int time)
+			{				
+				return false;
+			}
+			
+			public boolean keyRepeat(int keyCode, int time)
+			{				
+				return false;
+			}
+
+			public boolean keyStatus(int keyCode, int time)
+			{				
+				return false;
+			}						
+		});
+	}
 	
 	private void handle()
 	{

@@ -22,10 +22,12 @@ import java.util.ArrayList;
 public class DemoDataRepository
 {
 	private Map<String, DemoBean> data;
+	private List<DemoBean> newBeans;
 	
 	public DemoDataRepository()
 	{
 		this.data = new HashMap<String, DemoBean>();
+		this.newBeans = new ArrayList<DemoBean>();
 	}
 
 	public Map<String, DemoBean> getData()
@@ -73,5 +75,59 @@ public class DemoDataRepository
 	public void stop()
 	{
 		this.data = null;
+	}
+	
+	public void addNewBean()
+	{
+		DemoBean newBean = this.createNewDemoBean();		
+		this.newBeans.add(newBean);
+	}
+	
+	public List<DemoBean> getNewBeans()
+	{		
+		return this.newBeans;
+	}
+	
+	public void cleanNewBeans()
+	{
+		if(this.newBeans != null && !this.newBeans.isEmpty())
+		{
+			for(DemoBean newBean: this.newBeans)
+			{
+				this.data.put(newBean.getBeanId(), newBean);
+			}
+			this.newBeans.clear();
+		}
+	}
+	
+	private DemoBean createNewDemoBean()
+	{
+		int totalBeans = this.getData().size() + this.newBeans.size();
+		
+		String beanId = ""+totalBeans;
+		DemoBean bean = new DemoBean();
+		bean.setBeanId(beanId);
+		
+		//Set the demo string
+		bean.setDemoString("/demostring/"+beanId);
+		
+		//Set the demo array
+		String[] demoArray = new String[5];
+		for(int index=0; index<demoArray.length; index++)
+		{
+			demoArray[index] = "/demoarray/"+index+"/"+beanId;
+		}
+		bean.setDemoArray(demoArray);
+		
+		//Set the demo list
+		List<String> demoList = new ArrayList<String>();
+		for(int index=0; index<5; index++)
+		{
+			demoList.add("/demolist/"+index+"/"+beanId);
+		}
+		bean.setDemoList(demoList);
+				
+		
+		return bean;
 	}
 }

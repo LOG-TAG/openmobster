@@ -195,10 +195,19 @@ public final class NetSession
 		int startIndex = 0;
 		int endIndex = 0;
 		boolean eofSent = false;
+		
+		//System.out.println("Sending in chunks--------------------------------------------------------------");		
+		
+		
 		while((endIndex=payLoad.indexOf("\n", startIndex))!=-1)
 		{				
 			String packet = payLoad.substring(startIndex, endIndex);
-			os.write((packet+"\n").getBytes());
+			
+			//System.out.println(packet);
+			
+			//os.write((packet+"\n").getBytes());
+			//os.flush();
+			this.sendChunks((packet+"\n").getBytes());
 			
 			startIndex = endIndex +1;
 			
@@ -217,5 +226,39 @@ public final class NetSession
 			os.write((packet+"EOF\n").getBytes());
 			os.flush();
 		}
+		//System.out.println("--------------------------------------------------------------");
+	}
+	
+	private void sendChunks(byte[] allData) throws IOException
+	{
+		if(allData.length <= 1024)
+		{
+			//System.out.println("Chunks Not Needed: "+allData.length);
+			os.write(allData);
+			os.flush();
+			
+			return;
+		}
+		
+		//System.out.println("Chunks Needed: "+allData.length);
+		int offset = 0;
+		int len = 1024;
+		do
+		{
+			os.write(allData, offset, len);
+			os.flush();
+			
+			offset += 1024;
+			len = (allData.length) - 1024;
+			
+			if(len <= 1024)
+			{
+				os.write(allData, offset, len);
+				os.flush();
+				break;
+			}
+			
+			len = 1024;
+		}while(true);
 	}
 }

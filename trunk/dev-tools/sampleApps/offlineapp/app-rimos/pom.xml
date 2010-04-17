@@ -168,12 +168,21 @@
 											<arg
 												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
 										</exec>
+										
+										<echo>Generating the Desktop Application Loader......</echo>
+										<copy todir="${basedir}/target/app-binary" overwrite="true"
+										file="${basedir}/app.alx"
+										/>
 
 										<echo>Deploying into the Simulator....</echo>
 										<copy todir="${bb.simulator.home}" overwrite="true">
 											<fileset dir="${basedir}/target/app-binary">
 												<include name="*.cod" />
 												<include name="*.debug" />
+											</fileset>
+										</copy>
+										<copy todir="${bb.jde.home}/bin" overwrite="true">
+											<fileset dir="${basedir}/target/app-binary">
 											</fileset>
 										</copy>
 
@@ -183,6 +192,7 @@
 											improve development productivity and should not be used in
 											the actual production deployment
 										-->
+										<!--  
 										<property name="preverify_cloud_target" value="${basedir}/target/cloud-binary" />
 										<property name="preverify_cloud_src"
 											value="${basedir}/target/cloud-binary/temp/DevCloud.jar" />
@@ -234,6 +244,7 @@
 												<include name="*.debug" />
 											</fileset>
 										</copy>
+										-->
 									</tasks>
 								</configuration>
 							</execution>

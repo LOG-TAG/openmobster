@@ -274,16 +274,25 @@ public final class SyncService extends Service
 			{
 				break;
 			}			
-			
-			
-			//Send the payload to the server for processing						
-			data = session.sendPayloadTwoWay(payLoad);
+												
+			int retry = 5; //retry package sending 5 times..sometimes on mobile networks there is some packet loss
+			//if the device is moving through coverage areas, changing cells, etc..
+			//if after 5 retries, it still fails, then give up and a new sync session will be tried at a later time
+			do
+			{
+				data = session.sendPayloadTwoWay(payLoad);	
+				if(data.indexOf("status=500") == -1)
+				{
+					//Everything was cool in sending the sync package
+					break;
+				}
+			}while(retry-- > 0);
 		}
 	}
 	
 	private void performSync(NetSession session, String syncType, String deviceService, String serverService, boolean isBackground)
 	throws SyncException, NetworkException
-	{	
+	{
 		SyncAdapter syncAdapter = new SyncAdapter();
 		syncAdapter.setSyncEngine(syncEngine);
 		
@@ -323,8 +332,18 @@ public final class SyncService extends Service
 			}			
 			
 			
-			//Send the payload to the server for processing
-			data = session.sendPayloadTwoWay(payLoad);	
+			int retry = 5; //retry package sending 5 times..sometimes on mobile networks there is some packet loss
+			//if the device is moving through coverage areas, changing cells, etc..
+			//if after 5 retries, it still fails, then give up and a new sync session will be tried at a later time
+			do
+			{
+				data = session.sendPayloadTwoWay(payLoad);	
+				if(data.indexOf("status=500") == -1)
+				{
+					//Everything was cool in sending the sync package
+					break;
+				}
+			}while(retry-- > 0);
 		}
 	}
 	

@@ -8,6 +8,8 @@
 
 package org.openmobster.core.dataService.server;
 
+import org.apache.log4j.Logger;
+
 import org.apache.mina.common.IoFilterAdapter;
 import org.apache.mina.common.IoSession;
 
@@ -17,7 +19,9 @@ import org.openmobster.core.dataService.Constants;
  * @author openmobster@gmail.com
  */
 public class PayloadFilter extends IoFilterAdapter
-{			
+{	
+	private static Logger log = Logger.getLogger(PayloadFilter.class);
+	
 	public PayloadFilter()
 	{
 		
@@ -25,6 +29,9 @@ public class PayloadFilter extends IoFilterAdapter
 		
 	public void messageReceived(NextFilter nextFilter, IoSession session, Object message)
 	{
+		log.debug("RAWSocketMsg---------------------------------------------------------------------------");
+		log.debug(message);
+		log.debug("---------------------------------------------------------------------------------------");
 		if(this.processPayload(session, (String)message))
 		{
 			nextFilter.messageReceived(session, message);
