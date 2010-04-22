@@ -8,6 +8,8 @@
 
 package org.openmobster.core.dataService.server;
 
+import org.apache.log4j.Logger;
+
 import org.apache.mina.common.IoFilterAdapter;
 import org.apache.mina.common.IoSession;
 
@@ -28,6 +30,8 @@ import org.openmobster.core.services.subscription.Subscription;
  */
 public class AuthenticationFilter extends IoFilterAdapter
 {
+	private static Logger log = Logger.getLogger(AuthenticationFilter.class);
+	
 	private DeviceController deviceController;
 	
 	public AuthenticationFilter()
@@ -69,18 +73,18 @@ public class AuthenticationFilter extends IoFilterAdapter
 	//-------------------------------------------------------------------------------------------------------------------
 	private boolean handleAuth(IoSession session) throws Exception
 	{
-		System.out.println("Authorization--------------------------------------------------------------------------");
+		log.debug("Authorization--------------------------------------------------------------------------");
 		
 		String payload = (String)session.getAttribute(Constants.payload);
 		AuthCredential authCredential = this.parseAuthCredential(payload);
 		if(authCredential == null)
 		{
-			System.out.println("AUTHCredential missing: Access Denied");
+			log.debug("AUTHCredential missing: Access Denied");
 			return false;
 		}
 		
 		String deviceId = authCredential.getDeviceId();
-		System.out.println("Device Id: "+deviceId);
+		log.debug("Device Id: "+deviceId);
 		
 		//check to make sure this isn't the console...console has its own authentication mechanism
 		if(deviceId.startsWith("console:"))
@@ -96,8 +100,8 @@ public class AuthenticationFilter extends IoFilterAdapter
 		{
 			String storedNonce = device.readAttribute("nonce").getValue();	
 			
-			System.out.println("Incoming Nonce: "+nonce);
-			System.out.println("Stored Nonce: "+storedNonce);
+			log.debug("Incoming Nonce: "+nonce);
+			log.debug("Stored Nonce: "+storedNonce);
 			
 			if(nonce != null && MessageDigest.isEqual(nonce.getBytes(), storedNonce.getBytes()))
 			{
@@ -120,9 +124,9 @@ public class AuthenticationFilter extends IoFilterAdapter
 			}
 		}
 		
-		System.out.println("Access Denied!!");
+		log.debug("Access Denied!!");
 		
-		System.out.println("--------------------------------------------------------------------------");
+		log.debug("--------------------------------------------------------------------------");
 		
 		return false;
 	}

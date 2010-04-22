@@ -32,6 +32,7 @@ import org.openmobster.core.mobileCloud.invocation.CometRecycleHandler;
 import org.openmobster.core.mobileCloud.invocation.CometStatusHandler;
 import org.openmobster.core.mobileCloud.invocation.StartCometDaemon;
 import org.openmobster.core.mobileCloud.invocation.ChannelBootupHandler;
+import org.openmobster.core.mobileCloud.invocation.StopCometDaemon;
 
 /**
  * Device Container. There should be only a single container instance running on the entire device and is included with the Device Agent installed
@@ -111,6 +112,7 @@ public final class DeviceContainer
 			services.addElement(CometRecycleHandler.class);
 			services.addElement(CometStatusHandler.class);
 			services.addElement(ChannelBootupHandler.class);
+			services.addElement(StopCometDaemon.class);
 																											
 			Registry.getInstance().start(services);									
 			

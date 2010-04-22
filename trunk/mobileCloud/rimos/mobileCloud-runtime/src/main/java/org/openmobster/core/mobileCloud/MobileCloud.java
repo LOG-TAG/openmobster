@@ -13,6 +13,11 @@ import net.rim.device.api.system.Application;
 import org.openmobster.core.mobileCloud.sensor.Sensor;
 import org.openmobster.core.mobileCloud.kernel.DeviceContainer;
 
+/**
+ * FIXME: Implement functionality so that if this System Module crashes, device reboot is not the only way to re-start it.
+ *        May be have the ability to restart it from the CloudManager App which is an external UiApp and accessible via an icon
+ */
+
 
 /**
  * 
@@ -45,6 +50,10 @@ public final class MobileCloud extends Application
     	}
     	catch(Exception e)
     	{
+    		//System.out.println("--------------------------------------------------------------");
+    		//System.out.println("Exception: "+e.getMessage());
+    		//System.out.println("--------------------------------------------------------------");
+    		
     		//non-zero means abnormal termination, due to some system error that cannot be handled by the application
     		System.exit(1);
     	}

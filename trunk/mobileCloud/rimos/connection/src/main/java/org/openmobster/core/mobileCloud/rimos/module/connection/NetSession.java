@@ -108,11 +108,68 @@ public final class NetSession
 	{
 		try
 		{
-			return this.read(this.is);
+			String push = null;
+			boolean condition = true;			
+			do
+			{
+				push = this.read(this.is);
+				
+				if(push != null && push.trim().length()>0)
+				{
+					return push;
+				}
+				/*else
+				{
+					System.out.println("--------------------------------------------------");
+					System.out.println("KeepAlive is active!!!");
+					System.out.println("--------------------------------------------------");
+				}*/
+			}while(condition);
+			
+			return null;
 		}
 		catch(Exception e)
 		{
+			//System.out.println("-------------------------------------------------------------");
+			//System.out.println("Exception: "+e.getMessage());
+			//System.out.println("-------------------------------------------------------------");
 			throw new NetworkException(this.getClass().getName(), "waitForNotification", new Object[]{
+				"Message="+e.getMessage()
+			});
+		}
+	}
+	
+	public String waitForPoll() throws NetworkException
+	{
+		try
+		{
+			String push = null;
+			
+			int pollCounter = 2; //stays open for about 2 minutes to catch a non-keepalive notification to process
+			for(int i=0; i<pollCounter; i++)
+			{
+				push = this.read(this.is);
+				
+				if(push != null && push.trim().length()>0)
+				{
+					return push;
+				}
+				/*else
+				{
+					System.out.println("--------------------------------------------------");
+					System.out.println("KeepAlive is active!!!");
+					System.out.println("--------------------------------------------------");
+				}*/
+			}
+			
+			return null;
+		}
+		catch(Exception e)
+		{
+			//System.out.println("-------------------------------------------------------------");
+			//System.out.println("Exception: "+e.getMessage());
+			//System.out.println("-------------------------------------------------------------");
+			throw new NetworkException(this.getClass().getName(), "waitForPoll", new Object[]{
 				"Message="+e.getMessage()
 			});
 		}

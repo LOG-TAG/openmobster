@@ -38,12 +38,14 @@ public final class CometSessionManager implements EventListener
 	private List<CometSession> cometSessions; //consists of all comet sessions corresponding to
 	//all registered devices in the system
 	
+	@Deprecated
 	private Timer timer; //sends keep-alive heartbeats active connections
+	@Deprecated
+	private long pulseInterval;
 	
 	private DeviceController deviceController;
 	private EventManager eventManager;
-	private long pulseInterval;
-			
+				
 	public DeviceController getDeviceController() 
 	{
 		return deviceController;
@@ -86,10 +88,19 @@ public final class CometSessionManager implements EventListener
 			
 			this.eventManager.addListener(this);
 			
-			this.timer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
+			//Deprecated. The heartbeat will now be controlled by the device side component
+			//This allows different heartbeat intervals to be set by the devices based on what
+			//works out for them
+			
+			//For instance, on the BlackBerry device, a heartbeat of 55 seconds is optimal.
+			//Hopefully for some devices it can be pushed even further to 2 minutes if the on device
+			//TCP stack supports more robust timeout configuration.
+			//Longer the heartbeat interval that keeps the push socket alive, the better it is for 
+			//the battery life on the device
+			/*this.timer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
 			TimerTask heartBeatDaemon = new HeartBeatDaemon();
 			long startDelay = 5000;
-			this.timer.schedule(heartBeatDaemon, startDelay, this.pulseInterval);
+			this.timer.schedule(heartBeatDaemon, startDelay, this.pulseInterval);*/			
 			
 			if(isStartedHere)
 			{
@@ -140,6 +151,18 @@ public final class CometSessionManager implements EventListener
 	public List<CometSession> getCometSessions()
 	{
 		return Collections.unmodifiableList(this.cometSessions); 
+	}
+	
+	public CometSession findCometSession(String deviceId)
+	{
+		for(CometSession deviceSession: this.cometSessions)
+		{
+			if(deviceSession.getUri().equals(deviceId))
+			{
+				return deviceSession;
+			}
+		}
+		return null;
 	}
 	
 	public void reload()
@@ -196,6 +219,7 @@ public final class CometSessionManager implements EventListener
 		this.newDeviceNotification(device);
 	}
 	//---------------------------------------------------------------------------------------------------------
+	@Deprecated
 	private class HeartBeatDaemon extends TimerTask
 	{
 		public void run()

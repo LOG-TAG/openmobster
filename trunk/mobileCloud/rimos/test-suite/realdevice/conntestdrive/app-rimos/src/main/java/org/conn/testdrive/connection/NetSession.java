@@ -14,7 +14,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 import javax.microedition.io.SocketConnection;
-import net.rim.device.api.io.SocketConnectionEnhanced;
+
+//import net.rim.device.api.io.SocketConnectionEnhanced;
 
 
 /**
@@ -26,7 +27,6 @@ public final class NetSession
 	private SocketConnection socket;
 	private DataInputStream is;
 	private OutputStream os;
-	private boolean manuallyClosed;
 	
 	public NetSession(SocketConnection socket) throws NetworkException
 	{
@@ -80,7 +80,6 @@ public final class NetSession
 			this.is.close();
 			this.os.close();
 			this.socket.close();
-			this.manuallyClosed = true;
 		}
 		catch(IOException ioe)
 		{
@@ -132,37 +131,20 @@ public final class NetSession
 	public String waitForNotification() throws NetworkException
 	{
 		try
-		{						
-			/*String push = null;
-			do
-			{
-				push = this.readPush();
-			}while(push == null || push.trim().length()==0);
-			
-			return push;*/
-			
+		{												
 			String push = null;
+			
 			boolean condition = true;
-			while(condition && !this.manuallyClosed)
-			{								
-				int available = this.is.available();
-				System.out.println("-----------------------------------------");
-				System.out.println("# of bytes available: "+available);
-				System.out.println("-----------------------------------------");
-				
-				if(available > 1)
+			while(condition)
+			{
+				push = this.readCloud(this.is);
+				System.out.println("PushReceive---------------------------------------");
+				System.out.println(push);
+				System.out.println("--------------------------------------------------");
+				if(push != null && push.trim().length()>0 && !push.trim().startsWith("@"))
 				{
-					push = this.readCloud(this.is);
-					if(push != null)
-					{
-						return push;
-					}
+					return push;
 				}
-				
-				//otherwise just send a KEEP-ALIVE packet
-				this.os.write("EOF\n".getBytes());
-				this.os.flush();
-				Thread.currentThread().sleep(90000);
 			}
 			
 			return null;
@@ -174,10 +156,12 @@ public final class NetSession
 			});
 		}
 	}
-	
-	public void activatePush() throws NetworkException
+		
+	//some client controlled keep-alive code for persistent connection which did not work on a real device
+	//it should work in theory, but tcp/network stream implementation of bb os is a bit flaky
+	/*public void activatePush() throws NetworkException
 	{
-		/*try
+		try
 		{
 			((SocketConnectionEnhanced)this.socket).setSocketOptionEx(SocketConnectionEnhanced.READ_TIMEOUT, 120000);
 		}
@@ -187,9 +171,9 @@ public final class NetSession
 				"Message="+e.getMessage(),
 				"Exception:"+e.toString()
 			});
-		}*/
+		}
 		
-		/*try
+		try
 		{			
 			System.out.println("---------------------------------------------------");
 			System.out.println("Before KeepAlive: "+this.socket.getSocketOption(SocketConnection.KEEPALIVE));
@@ -203,19 +187,8 @@ public final class NetSession
 				"Message="+e.getMessage(),
 				"Exception:"+e.toString()
 			});
-		}*/
-	}
-	
-	private String readPush() throws IOException
-	{
-		boolean whileCondition = true;
-		while(whileCondition)
-		{
-			this.is.read();
-			this.is.skipBytes(this.is.available());
 		}
-		return null;
-	}
+	}*/
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	private String read(InputStream is) throws IOException
 	{
@@ -279,18 +252,7 @@ public final class NetSession
 				{
 					throw new IOException("InputStream is closed!!");
 				}
-				
-				//Detect a heartbeat
-				if(received == '@')
-				{
-					this.is.skipBytes(this.is.available());
-					
-					bos.reset();
-					carriageFound = false;
-					
-					continue;
-				}
-				
+												
 				if(carriageFound)
 				{
 					carriageFound = false;
