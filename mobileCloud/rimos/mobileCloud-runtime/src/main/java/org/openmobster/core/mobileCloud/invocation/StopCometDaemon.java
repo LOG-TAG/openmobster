@@ -13,19 +13,20 @@ import org.openmobster.core.mobileCloud.rimos.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.rimos.module.bus.InvocationHandler;
 import org.openmobster.core.mobileCloud.rimos.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.rimos.module.connection.NotificationListener;
-import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
 
 import org.openmobster.core.mobileCloud.rimos.service.Service;
 import org.openmobster.core.mobileCloud.rimos.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.rimos.errors.SystemException;
 
+import org.openmobster.core.mobileCloud.kernel.DeviceContainer;
+
 /**
  * @author openmobster@gmail
  *
  */
-public final class CometConfigHandler extends Service implements InvocationHandler 
+public final class StopCometDaemon extends Service implements InvocationHandler 
 {
-	public CometConfigHandler()
+	public StopCometDaemon()
 	{
 		
 	}
@@ -58,71 +59,26 @@ public final class CometConfigHandler extends Service implements InvocationHandl
 		{
 			InvocationResponse response = new InvocationResponse();
 			
-			Configuration configuration = Configuration.getInstance();
-			
-			String cometMode = invocation.getValue("mode");
-			String poll_interval = invocation.getValue("poll_interval");
-			
-			if(cometMode.equalsIgnoreCase("push"))
-			{
-				//Push Mode
-				configuration.setCometMode("push");
-			}
-			else if(cometMode.equalsIgnoreCase("poll"))
-			{
-				//Poll Mode
-				configuration.setCometMode("poll");
-				
-				if(poll_interval != null && poll_interval.trim().length()>0)
-				{
-					configuration.setCometPollInterval(Long.parseLong(poll_interval));
-				}
-				else
-				{
-					configuration.setCometPollInterval(5000); //some system default value should be used
-					//for now, just use every 15 minutes
-				}
-			}
-			configuration.save();
-			
-			//Restart the NotificationListener			
 			NotificationListener notify = NotificationListener.getInstance();
+			if(notify != null && notify.isActive())
+			{
+				notify.stop();
+			}
+			
+			boolean status = false;
 			if(notify != null)
 			{
-				notify.restart();
-			}
-			
-			//Get the status...A new NotificationListener should be started with respect to this invocation
-			boolean status = false;
-			NotificationListener newNotify = NotificationListener.getInstance();
-			if(newNotify != null)
-			{
-				//The regular isActive call to check status will not work, since when this is invoked,
-				//chances are the NetSession is still in the process of being established in the background.
-				//So in this case if a new NotificationListener instance is available in the kernel, 
-				//we can assume, it will be eventually
-				//activated in the background
-				if(notify != null)
-				{
-					if(newNotify.hashCode() != notify.hashCode())
-					{
-						status = true;
-					}
-				}
-				else
-				{
-					status = true;
-				}
+				status = notify.isActive();
 			}
 			
 			response.setValue("status", ""+status);
+			
 			return response;
 		}
 		catch(Exception e)
 		{
 			ErrorHandler.getInstance().handle(new SystemException(
-					this.getClass().getName(), "handleInvocation", new Object[]{
-						"Comet Mode to Switch To="+invocation.getValue("mode"),												
+					this.getClass().getName(), "handleInvocation", new Object[]{																		
 						"Exception="+e.toString(),
 						"Message="+e.getMessage()
 					} 

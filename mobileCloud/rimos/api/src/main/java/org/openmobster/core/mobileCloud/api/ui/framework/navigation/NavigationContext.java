@@ -121,10 +121,13 @@ public final class NavigationContext
 		//Update the history by moving the current screen onto the stack
 		if(currentId != null)
 		{
-			Screen current = ScreenManager.getInstance().find(currentId);
-			if(current != null)
+			if(!currentId.equals(screenId))
 			{
-				this.history.push(currentId);
+				Screen current = ScreenManager.getInstance().find(currentId);
+				if(current != null)
+				{
+					this.history.push(currentId);
+				}
 			}
 		}
 		

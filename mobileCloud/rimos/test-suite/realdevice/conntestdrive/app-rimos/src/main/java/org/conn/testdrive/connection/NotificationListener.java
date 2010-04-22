@@ -6,8 +6,6 @@ package org.conn.testdrive.connection;
 import java.util.TimerTask;
 import java.util.Vector;
 
-import net.rim.device.api.system.EventLogger;
-
 /**
  * @author openmobster@gmail
  *
@@ -165,7 +163,6 @@ public final class NotificationListener
 				//System.out.println("---------------------------------------------------------------------");
 				
 				NetSession session = this.listener.session;
-				session.activatePush();
 				session.establishCloudSession(command);
 				String stream = "<push><caller name='blackberry'/></push>";
 				session.sendTwoWayCloudPayload(stream);
@@ -180,9 +177,9 @@ public final class NotificationListener
 					if(data.trim().length() != 0)
 					{
 						//Used for debugging the daemon messages
-						//System.out.println("PushDaemon---------------------------------------------");
-						//System.out.println(data);
-						//System.out.println("-------------------------------------------------------");
+						System.out.println("PushDaemon---------------------------------------------");
+						System.out.println(data);
+						System.out.println("-------------------------------------------------------");
 						
 						String incomingNotification = data.trim();
 						

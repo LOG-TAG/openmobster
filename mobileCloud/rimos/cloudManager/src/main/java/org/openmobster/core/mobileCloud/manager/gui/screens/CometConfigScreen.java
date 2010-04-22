@@ -14,6 +14,7 @@ import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.MenuItem;
 import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.ListField;
 import net.rim.device.api.ui.component.ListFieldCallback;
 import net.rim.device.api.ui.component.LabelField;
@@ -30,7 +31,7 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
+import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
 
 
 
@@ -64,20 +65,26 @@ public class CometConfigScreen extends Screen
 		listField.setCallback(new ListFieldCallbackImpl());	
 		
 		//Show Push Status
+		Configuration configuration = Configuration.getInstance();
 		String status = (String)navigationContext.getAttribute(this.getId(), "status");
+		String statusLabel = "Push";
+		if(!configuration.isInPushMode())
+		{
+			statusLabel = "Poll";
+		}
 		
 		HorizontalFieldManager bannerField = new HorizontalFieldManager();
 		
 		if(status.equalsIgnoreCase(""+Boolean.TRUE))
 		{
 			EncodedImage statusIcon = (EncodedImage)Services.getInstance().getResources().getImage("/moblet-app/icon/green.png");		
-			bannerField.add(new LabelField("Status: "));
+			bannerField.add(new LabelField(statusLabel+": "));
 			bannerField.add(new BitmapField(statusIcon.getBitmap()));
 		}
 		else
 		{
 			EncodedImage statusIcon = (EncodedImage)Services.getInstance().getResources().getImage("/moblet-app/icon/red.png");		
-			bannerField.add(new LabelField("Status: "));
+			bannerField.add(new LabelField(statusLabel+": "));
 			bannerField.add(new BitmapField(statusIcon.getBitmap()));
 		}
 		
@@ -95,19 +102,20 @@ public class CometConfigScreen extends Screen
 		MenuItem selectItem = new MenuItem(resources.localize(LocaleKeys.select, LocaleKeys.select), 1, 1){
 			public void run()
 			{
-				//UserInteraction/Event Processing...this is where the Commands can be executed
+				//UserInteraction/Event Processing...this is where the Commands can be executed				
 				CometConfigScreen.this.handle();
 			}
 		};
 		
-		MenuItem backItem = new MenuItem(resources.localize(SystemLocaleKeys.back, SystemLocaleKeys.back), 2, 2){
+				
+		MenuItem backItem = new MenuItem(resources.localize(SystemLocaleKeys.back, SystemLocaleKeys.back), 2,2){
 			public void run()
 			{
 				//Go Home
 				Services.getInstance().getNavigationContext().home();
 			}
 		};
-								 										
+										 										
 		this.screen.addMenuItem(selectItem);
 		this.screen.addMenuItem(backItem);
 	}
@@ -157,18 +165,61 @@ public class CometConfigScreen extends Screen
 		{
 			case 0:	
 				//Handle setting push mode
-				commandContext = new CommandContext();
-				commandContext.setTarget("cometConfig");
-				commandContext.setAttribute("mode", "push");				
-				Services.getInstance().getCommandService().execute(commandContext);
+				Object[] pushOptions = new Object[]{"Start", "Stop", "Cancel"}; 
+				int selected = Dialog.ask("Push", pushOptions, 0);	
+				
+				String pushOption = (String)pushOptions[selected];
+				
+				if(pushOption.equals("Start"))
+				{
+					commandContext = new CommandContext();
+					commandContext.setTarget("cometConfig");
+					commandContext.setAttribute("mode", "push");				
+					Services.getInstance().getCommandService().execute(commandContext);
+				}
+				else if(pushOption.equals("Stop"))
+				{
+					//Handle comet stop
+					commandContext = new CommandContext();
+					commandContext.setTarget("cometStop");							
+					Services.getInstance().getCommandService().execute(commandContext);
+				}
 			break;
 			
 			case 1:
-				//Handle setting poll mode
-				commandContext = new CommandContext();
-				commandContext.setTarget("cometConfig");
-				commandContext.setAttribute("mode", "poll");
-				Services.getInstance().getCommandService().execute(commandContext);
+				//Handle setting push mode
+				Object[] pollOptions = new Object[]{"Start", "Stop", "Cancel"}; 
+				int pollSelected = Dialog.ask("Poll", pollOptions, 0);	
+				
+				String pollOption = (String)pollOptions[pollSelected];
+				
+				if(pollOption.equals("Start"))
+				{
+					AppResources resources = Services.getInstance().getResources();
+					Object[] pollChoices = new Object[]{"5","10","15","20","25","30", "Cancel"}; 
+					String pollLabel = resources.localize(LocaleKeys.poll_interval, LocaleKeys.poll_interval);
+					int pollChoice = Dialog.ask(pollLabel+": ", pollChoices, 2);
+					
+					if(pollChoice < pollChoices.length-1)
+					{
+						int pollMinutes = Integer.parseInt((String)pollChoices[pollChoice]);
+						long pollInterval = pollMinutes * 60 * 1000; //minutes converted to milliseconds
+						
+						//Handle setting poll mode
+						commandContext = new CommandContext();
+						commandContext.setTarget("cometConfig");
+						commandContext.setAttribute("mode", "poll");
+						commandContext.setAttribute("poll_interval", ""+pollInterval);
+						Services.getInstance().getCommandService().execute(commandContext);
+					}			
+				}
+				else if(pollOption.equals("Stop"))
+				{
+					//Handle comet stop
+					commandContext = new CommandContext();
+					commandContext.setTarget("cometStop");							
+					Services.getInstance().getCommandService().execute(commandContext);
+				}									
 			break;
 						
 			

@@ -13,6 +13,8 @@ import java.util.Vector;
 import java.util.TimerTask;
 import java.util.Timer;
 
+import net.rim.device.api.system.DeviceInfo; 
+
 import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
 import org.openmobster.core.mobileCloud.rimos.service.Registry;
 import org.openmobster.core.mobileCloud.rimos.service.Service;
@@ -68,7 +70,7 @@ public final class NotificationListener extends Service
 				
 				//Schedule using the specified poll interval
 				this.pollTimer = new Timer();				
-				this.pollTimer.scheduleAtFixedRate(this.worker, 5000, configuration.getCometPollInterval());
+				this.pollTimer.scheduleAtFixedRate(this.worker, 5000, configuration.getCometPollInterval());				
 				
 				//System.out.println("-------------------------------------------");
 				//System.out.println("PollingThread set to run every: "+configuration.getCometPollInterval()+"(ms)");
@@ -120,7 +122,7 @@ public final class NotificationListener extends Service
 	public void restart()
 	{
 		try
-		{
+		{			
 			this.stop();
 		}
 		catch(Exception e)
@@ -136,9 +138,20 @@ public final class NotificationListener extends Service
 			
 	public boolean isActive()
 	{
-		if(this.worker != null && this.worker.notifySession != null)
+		Configuration conf = Configuration.getInstance();
+		if(conf.isInPushMode())
 		{
-			return true;
+			if(this.worker != null && this.worker.notifySession != null && !this.worker.isDead)
+			{			
+				return true;
+			}
+		}
+		else
+		{
+			if(this.worker != null && this.pollTimer != null)
+			{			
+				return true;
+			}
 		}
 		return false;
 	}
@@ -152,6 +165,7 @@ public final class NotificationListener extends Service
 	{
 		private NetSession notifySession;
 		private boolean isContainerStopping;
+		private boolean isDead;
 				
 		public void run()
 		{			
@@ -179,11 +193,15 @@ public final class NotificationListener extends Service
 				
 				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
 				"&command=notify"+
-				"&channel="+channel;
+				"&channel="+channel+
+				"&platform=blackberry&device="+DeviceInfo.getDeviceName(); 
 				
 				//Used for debugging the daemon messages
-				//System.out.println("PushDaemon Start Command---------------------------------------------");
+				//System.out.println("Starting a Push Session---------------------------------------------");
 				//System.out.println(command);
+				//System.out.println("Platform Version: "+DeviceInfo.getPlatformVersion());
+				//System.out.println("Software Version: "+DeviceInfo.getSoftwareVersion());
+				//System.out.println("Device Name: "+DeviceInfo.getDeviceName());
 				//System.out.println("---------------------------------------------------------------------");
 												
 				this.notifySession.sendOneWay(command);
@@ -224,6 +242,10 @@ public final class NotificationListener extends Service
 			}
 			finally
 			{
+				this.isDead = true;
+				//System.out.println("-------------------------------------------------------------");
+				//System.out.println("Stopping the Push Session!!!");
+				//System.out.println("-------------------------------------------------------------");				
 				try
 				{
 					//close the notification net session
@@ -252,54 +274,60 @@ public final class NotificationListener extends Service
 				
 				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
 				"&command=notify"+
-				"&channel="+channel;
+				"&channel="+channel+
+				"&platform=blackberry&device="+DeviceInfo.getDeviceName(); 
 				
 				//Used for debugging the daemon messages
-				//System.out.println("PollDaemon Start Command---------------------------------------------");
+				//System.out.println("Starting a Poll Session---------------------------------------------");
 				//System.out.println(command);
+				//System.out.println("Platform Version: "+DeviceInfo.getPlatformVersion());
+				//System.out.println("Software Version: "+DeviceInfo.getSoftwareVersion());
+				//System.out.println("Device Name: "+DeviceInfo.getDeviceName());
 				//System.out.println("---------------------------------------------------------------------");
 												
 				this.notifySession.sendOneWay(command);
 																				
 				//This is a blocking thread that receives data/commands pushed to it from the server				
-				do
+				String data = this.notifySession.waitForPoll();
+				
+				if(this.isContainerStopping)
 				{					
-					String data = this.notifySession.waitForNotification();
-																									
-					if(this.isContainerStopping)
-					{
-						break;
-					}
-																														
-					//Make sure a stopping of this thread was not ordered before consuming this notification
-					lastNotification = new Date();
-															
-					//Process incoming data packets
-					if(data.trim().length() != 0)
-					{
-						//Used for debugging the daemon messages
-						//System.out.println("PollSession---------------------------------------------");
-						//System.out.println(data);
-						//System.out.println("--------------------------------------------------------");
-						
-						String incomingNotification = data.trim();
-						
-						//send the packet for application processing							
-						if(incomingNotification.indexOf(Constants.command) != -1)
-						{							
-							CommandProcessor.getInstance().process(data.trim());
-							
-							//since this is a poll, don't keep the session alive, close the socket and leave
-							break;
-						}						
-					}					
-				}while(true);			
+					return;
+				}
+																													
+				//Make sure a stopping of this thread was not ordered before consuming this notification
+				lastNotification = new Date();
+														
+				//Process incoming data packets
+				if(data.trim().length() != 0)
+				{
+					//Used for debugging the daemon messages
+					//System.out.println("PollSession---------------------------------------------");
+					//System.out.println(data);
+					//System.out.println("--------------------------------------------------------");
+					
+					String incomingNotification = data.trim();
+					
+					//send the packet for application processing							
+					if(incomingNotification.indexOf(Constants.command) != -1)
+					{							
+						CommandProcessor.getInstance().process(data.trim());														
+					}						
+				}				
 			}			
 			catch(Exception e)
 			{				
 			}
 			finally
 			{
+				if(this.isContainerStopping)
+				{
+					this.cancel();
+				}
+				this.isDead = true;
+				//System.out.println("-------------------------------------------------------------");
+				//System.out.println("Stopping the Poll Session!!!");
+				//System.out.println("-------------------------------------------------------------");			
 				try
 				{
 					//close the notification net session

@@ -29,7 +29,7 @@ import org.openmobster.core.mobileCloud.rimos.module.connection.NotificationList
 public final class ActivationSensor implements RadioStatusListener
 {
 	//---NetworkSensor----------------------------------------------------------------------------------------------------------------------
-	public synchronized void networkStarted(int networkId, int service) 
+	public synchronized void networkServiceChange(int networkId, int service) 
 	{
 		try
 		{
@@ -37,14 +37,15 @@ public final class ActivationSensor implements RadioStatusListener
 			{
 				return;
 			}
-			
-			if(!Configuration.getInstance().isActive())
+									
+			//Detect if the radio is just turning on
+			if((service & RadioInfo.STATE_TURNING_ON) > 0)
 			{
-				ActivationUtil.activateDevice();				
-			}
-			
-			if(service == RadioInfo.NETWORK_SERVICE_DATA)
-			{
+				if(!Configuration.getInstance().isActive())
+				{
+					ActivationUtil.activateDevice();				
+				}
+				
 				NotificationListener notify = NotificationListener.getInstance();
 				if(notify!=null)
 				{
@@ -64,76 +65,6 @@ public final class ActivationSensor implements RadioStatusListener
 			));
 		}
 	}
-
-		
-	public synchronized void radioTurnedOff() 
-	{	
-		try
-		{
-			if(!DeviceContainer.getInstance().isContainerActive())
-			{
-				return;
-			}
-			
-			if(!Configuration.getInstance().isActive())
-			{
-				return;				
-			}
-			
-			NotificationListener notify = NotificationListener.getInstance();
-			if(notify != null)
-			{
-				notify.stop();
-			}
-		}
-		catch(Exception e)
-		{														
-			ErrorHandler.getInstance().handle(new SystemException(
-					this.getClass().getName(), "radioTurnedOff", new Object[]{
-						"Exception="+e.toString(),
-						"Message="+e.getMessage()
-					} 
-			));
-		}
-	}
-	
-	public synchronized void signalLevel(int level) 
-	{	
-		boolean nocoverage = false;
-		try
-		{
-			if(!DeviceContainer.getInstance().isContainerActive())
-			{
-				return;
-			}
-			
-			if(!Configuration.getInstance().isActive())
-			{
-				return;				
-			}
-			
-			NotificationListener notify = NotificationListener.getInstance();
-			if(level == RadioInfo.LEVEL_NO_COVERAGE)
-			{			
-				nocoverage = true;
-				if(notify!=null && notify.isActive())
-				{
-					notify.stop();
-				}
-			}	
-		}
-		catch(Exception e)
-		{														
-			ErrorHandler.getInstance().handle(new SystemException(
-					this.getClass().getName(), "signalLevel", new Object[]{
-						"Exception="+e.toString(),
-						"Message="+e.getMessage(),
-						"Level="+level,
-						"No_Coverage="+nocoverage
-					} 
-			));
-		}
-	}
 	//---------------------------------------------------------------------------------------------------------------------------------------	
 	public void networkStateChange(int state) 
 	{		
@@ -142,12 +73,20 @@ public final class ActivationSensor implements RadioStatusListener
 	public void pdpStateChange(int apn, int state, int cause) 
 	{		
 	}
+	public void radioTurnedOff() 
+	{
+		
+	}
+	public void signalLevel(int level) 
+	{
+		
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	public void baseStationChange() 
 	{		
 	}
 	
-	public void networkServiceChange(int networkId, int service) 
+	public void networkStarted(int networkId, int service) 
 	{		
 	}
 	

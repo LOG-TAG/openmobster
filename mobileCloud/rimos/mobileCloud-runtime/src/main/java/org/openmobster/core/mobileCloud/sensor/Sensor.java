@@ -30,8 +30,8 @@ import org.openmobster.core.mobileCloud.rimos.module.connection.NotificationList
 public final class Sensor implements RadioStatusListener,SystemListener2
 {
 	//---NetworkSensor----------------------------------------------------------------------------------------------------------------------
-	public synchronized void networkStarted(int networkId, int service) 
-	{
+	/*public synchronized void networkServiceChange(int networkId, int service) 
+	{	
 		try
 		{
 			if(!DeviceContainer.getInstance().isContainerActive())
@@ -44,18 +44,14 @@ public final class Sensor implements RadioStatusListener,SystemListener2
 				return;				
 			}
 			
-			/*if(service == RadioInfo.NETWORK_SERVICE_DATA)
+			//Detect if the radio is just turning on
+			if((service & RadioInfo.STATE_TURNING_ON) > 0)
 			{
 				NotificationListener notify = NotificationListener.getInstance();
 				if(notify!=null)
 				{
 					notify.restart();
 				}
-			}*/
-			NotificationListener notify = NotificationListener.getInstance();
-			if(notify!=null)
-			{
-				notify.restart();
 			}
 		}
 		catch(Exception e)
@@ -70,8 +66,7 @@ public final class Sensor implements RadioStatusListener,SystemListener2
 			));
 		}
 	}
-
-		
+	//Not necessary anymore since lack of network activity will automatically stop the push daemon
 	public synchronized void radioTurnedOff() 
 	{	
 		try
@@ -101,9 +96,9 @@ public final class Sensor implements RadioStatusListener,SystemListener2
 					} 
 			));
 		}
-	}
+	}*/
 	
-	public synchronized void signalLevel(int level) 
+	/*public synchronized void signalLevel(int level) 
 	{	
 		boolean nocoverage = false;
 		try
@@ -139,7 +134,7 @@ public final class Sensor implements RadioStatusListener,SystemListener2
 					} 
 			));
 		}
-	}
+	}*/
 	//----Power UnpluggedSensor----------------------------------------------------------------------------------------------------------------------
 	public synchronized void powerUp() 
 	{	
@@ -212,22 +207,34 @@ public final class Sensor implements RadioStatusListener,SystemListener2
 	public void networkStateChange(int state) 
 	{		
 	}
-
-	public void pdpStateChange(int apn, int state, int cause) 
-	{		
+	public void networkStarted(int networkId, int service) 
+	{
+		
+	}
+	public void signalLevel(int level) 
+	{
+		
+	}
+	public void networkServiceChange(int networkId, int service)
+	{
+		
+	}
+	public void radioTurnedOff() 
+	{
+		
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	public void baseStationChange() 
 	{		
 	}
-	
-	public void networkServiceChange(int networkId, int service) 
-	{		
-	}
-	
+			
 	public void networkScanComplete(boolean success) 
 	{		
 	}	
+	public void pdpStateChange(int apn, int state, int cause) 
+	{
+		
+	}
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	public void batteryGood() 
 	{				
