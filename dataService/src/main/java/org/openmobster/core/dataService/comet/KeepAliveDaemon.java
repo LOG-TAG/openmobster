@@ -33,17 +33,17 @@ class KeepAliveDaemon extends TimerTask
 	{
 		if(this.session.isActive())
 		{
-			log.info("---------------------------------------------------------------");
-			log.info("Sender: "+this.hashCode());
-			log.info("Sending a KeepAlive HeartBeat Every: ("+this.pulseInterval+" ms)");
-			log.info("---------------------------------------------------------------");
+			log.debug("---------------------------------------------------------------");
+			log.debug("Sender: "+this.hashCode());
+			log.debug("Sending a KeepAlive HeartBeat Every: ("+this.pulseInterval+" ms)");
+			log.debug("---------------------------------------------------------------");
 			this.session.sendHeartBeat();
 		}
 		else
 		{
-			log.info("-----------------------------------------");
-			log.info("KeepAlive Daemon is done!!!");
-			log.info("-----------------------------------------");
+			log.debug("-----------------------------------------");
+			log.debug("KeepAlive Daemon is done!!!");
+			log.debug("-----------------------------------------");
 			this.cancel(); //unschedules its execution
 		}
 	}	

@@ -80,7 +80,7 @@ public abstract class AbstractAPITest extends Test
 	protected void waitForBeans() throws Exception
 	{
 		Vector all = new Vector();
-		int retries = 30;
+		int retries = 90;
 		do
 		{
 			all = MobileObjectDatabase.getInstance().readAll(this.service);

@@ -59,7 +59,7 @@
 
 	<profiles>
 		<profile>
-			<id>devMode</id>
+			<id>runCloud</id>
 			<build>
 				<plugins>
 					<plugin>

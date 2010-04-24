@@ -8,6 +8,8 @@
 
 package test.openmobster.device.agent.sync.server;
 
+import org.apache.log4j.Logger;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +32,8 @@ import org.openmobster.core.synchronizer.server.SyncContext;
 			   mobileBeanClass="test.openmobster.device.agent.sync.server.Email")
 public class EmailConnector implements Channel
 {
+	private static Logger log = Logger.getLogger(EmailConnector.class);
+	
 	private static Map<String, List<Email>> emailRepo = new HashMap<String, List<Email>>();
 	
 	private static Map<String, List<String>> addHistory = new HashMap<String, List<String>>();
@@ -177,6 +181,16 @@ public class EmailConnector implements Channel
 		{
 			returnValue = ids.toArray(new String[0]);
 			addHistory.get(device.getIdentifier()).clear();
+			
+			if(returnValue.length > 0)
+			{
+				log.info("Pushing New Email--------------------------------------------------");
+				for(String newId:returnValue)
+				{
+					log.info("Email UID: "+newId);
+				}
+				log.info("-------------------------------------------------------------------");
+			}
 		}
 		
 		return returnValue;

@@ -29,9 +29,9 @@ public class PayloadFilter extends IoFilterAdapter
 		
 	public void messageReceived(NextFilter nextFilter, IoSession session, Object message)
 	{
-		log.info("RAWSocketMsg---------------------------------------------------------------------------");
-		log.info(message);
-		log.info("---------------------------------------------------------------------------------------");
+		log.debug("RAWSocketMsg---------------------------------------------------------------------------");
+		log.debug(message);
+		log.debug("---------------------------------------------------------------------------------------");
 		if(this.processPayload(session, (String)message))
 		{
 			nextFilter.messageReceived(session, message);

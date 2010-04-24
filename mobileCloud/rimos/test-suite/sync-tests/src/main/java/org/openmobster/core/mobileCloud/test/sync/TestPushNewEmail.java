@@ -85,7 +85,7 @@ public final class TestPushNewEmail extends AbstractNotification
 	{
 		try
 		{
-			int retries = 30;
+			int retries = 90;
 			do
 			{
 				if(EmailPushListener.pushReceived)
