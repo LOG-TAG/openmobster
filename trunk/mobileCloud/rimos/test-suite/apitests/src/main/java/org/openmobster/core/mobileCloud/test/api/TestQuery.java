@@ -43,6 +43,11 @@ public final class TestQuery extends AbstractAPITest
 			MobileBean[] beans = MobileBean.readAll(this.service);
 			this.assertNotNull(beans, this.getInfo()+"/MustNotBeNull");
 			
+			if(beans == null)
+			{
+				return;
+			}
+			
 			//Download all data associated with the beans (takes care of proxy-lazy loaded beans)						
 			//Wait for proxy loading to load the rest
 			int attempts = 5;

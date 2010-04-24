@@ -88,8 +88,8 @@
 										<echo>Deploying into the Simulator....</echo>
 										<copy todir="${env.RIM_JDE_HOME}/simulator" overwrite="true">
 											<fileset dir="${preverify_target}">
-												<include name="*.cod" />
-												<include name="*.debug" />
+												<include name="**/*.cod" />
+												<include name="**/*.debug" />
 											</fileset>
 										</copy>
 

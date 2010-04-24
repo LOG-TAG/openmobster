@@ -22,14 +22,21 @@ import net.rim.device.api.ui.component.Status;
 import net.rim.device.api.system.DeviceInfo;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.component.Dialog;
+import net.rim.device.api.system.CodeModuleManager; 
+import net.rim.device.api.system.ApplicationManager;
+import net.rim.device.api.system.ApplicationDescriptor;
 
-import org.openmobster.core.mobileCloud.manager.gui.CommandKeys;
-import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
-import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
+
+import org.openmobster.core.mobileCloud.rim_native.framework.SystemLocaleKeys;
+import org.openmobster.core.mobileCloud.rimos.errors.ErrorHandler;
+import org.openmobster.core.mobileCloud.rimos.errors.SystemException;
+import org.openmobster.core.mobileCloud.manager.gui.CommandKeys;
+import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
+import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
 
 
 /**
@@ -57,7 +64,7 @@ public class HomeScreen extends Screen
 		this.screen = new MainScreen();
 		this.screen.setTitle(appResources.localize(LocaleKeys.control_panel, LocaleKeys.control_panel));
 												
-		listField = new ListField(7);
+		listField = new ListField(6);
 		listField.setCallback(new ListFieldCallbackImpl());		
 				
 		this.screen.add(listField);
@@ -69,18 +76,112 @@ public class HomeScreen extends Screen
 		AppResources resources = Services.getInstance().getResources();
 		
 				
-		MenuItem startItem = new MenuItem(resources.localize(LocaleKeys.start, LocaleKeys.start), 1, 1){
+		MenuItem startItem = new MenuItem(resources.localize(LocaleKeys.select, LocaleKeys.select), 1, 1){
 			public void run()
 			{
-				//UserInteraction/Event Processing...this is where the Commands can be executed
-				HomeScreen.this.handleStart();
+				try
+				{
+					//UserInteraction/Event Processing...this is where the Commands can be executed
+					HomeScreen.this.handleStart();
+				}
+				catch(Exception e)
+				{
+					//If an exception bubbled up here, this is not cool
+					SystemException syse = new SystemException(this.getClass().getName(),"setMenuItems/eventThread",
+					new Object[]{
+						"Exception: "+e.getMessage()
+					});
+					ErrorHandler.getInstance().handle(syse);
+					AppResources appResources = Services.getInstance().getResources();
+					Dialog.alert(appResources.localize(SystemLocaleKeys.unknown_system_error, "unknown_system_error"));
+				}
 			}
 		}; 
+		
+		MenuItem cloudItem = new MenuItem("Restore MobileCloud", 3, 3){
+			public void run()
+			{
+				try
+				{
+					//Cloud Restart				
+					int cloudHandle = CodeModuleManager.getModuleHandle("MobileCloud");
+					ApplicationDescriptor[] cloudDesc =  CodeModuleManager.getApplicationDescriptors(cloudHandle);
+					ApplicationManager.getApplicationManager().runApplication(cloudDesc[0]);
+					Status.show("On-Device Cloud successfully restarted");
+				}
+				catch(Exception e)
+				{
+					//If an exception bubbled up here, this is not cool
+					SystemException syse = new SystemException(this.getClass().getName(),"setMenuItems/restoringCloud",
+					new Object[]{
+						"Exception: "+e.getMessage()
+					});
+					ErrorHandler.getInstance().handle(syse);
+					AppResources appResources = Services.getInstance().getResources();
+					Dialog.alert(appResources.localize(SystemLocaleKeys.unknown_system_error, "unknown_system_error"));
+				}
+			}
+		};
+		
+		MenuItem batteryItem = new MenuItem("Battery-Level", 4, 4){
+			public void run()
+			{
+				//Handle Check Cloud Status				
+				Dialog.alert("Battery Level: "+DeviceInfo.getBatteryLevel());
+			}
+		};
+		
+		
+		MenuItem errorLog = new MenuItem("View Error Log", 6, 6){
+			public void run()
+			{
+				String errorLog = ErrorHandler.getInstance().generateReport();
+				
+				if(errorLog != null && errorLog.trim().length()>0)
+				{
+					Dialog.alert(errorLog);
+				}
+				else
+				{
+					Status.show("Error Log is empty");
+				}
+			}
+		};
+		
+		MenuItem uploadLog = new MenuItem("Upload Error Log", 7, 7){
+			public void run()
+			{
+				String errorLog = ErrorHandler.getInstance().generateReport();
+				
+				//FIXME: Add ability to upload the error log to the CloudServer
+				//It can be used to diagonose/debug issues on the on-device moblet apps
+				//ErrorHandler.getInstance().handle(new RuntimeException("Testing ErrorLog Clearing!!!"));
+			}
+		};
+		
+		MenuItem clearLog = new MenuItem("Clear Error Log", 8, 8){
+			public void run()
+			{
+				ErrorHandler.getInstance().clearAll();
+				Status.show("Error Log is now empty");
+			}
+		};
 										
-		this.screen.addMenuItem(startItem);		
+		this.screen.addMenuItem(startItem);
+		this.screen.addMenuItem(MenuItem.separator(2));
+		
+		//System related functions
+		this.screen.addMenuItem(cloudItem);
+		this.screen.addMenuItem(batteryItem);
+		
+		//error log related items
+		this.screen.addMenuItem(MenuItem.separator(5));
+		this.screen.addMenuItem(errorLog);
+		this.screen.addMenuItem(uploadLog);
+		this.screen.addMenuItem(clearLog);
 	}	
 	
-	private void handleStart()
+	private void handleStart() throws Exception
 	{
 		int selectedIndex = this.listField.getSelectedIndex();
 		AppResources resources = Services.getInstance().getResources();
@@ -260,11 +361,6 @@ public class HomeScreen extends Screen
 				}
 			break;
 			
-			case 6:
-				//Handle Check Cloud Status				
-				Dialog.alert("Battery Level: "+DeviceInfo.getBatteryLevel());
-			break;
-			
 			default:
 				//Do nothing					
 			break;
@@ -287,7 +383,6 @@ public class HomeScreen extends Screen
 			this.actions.addElement(resources.localize(LocaleKeys.manual_sync, LocaleKeys.manual_sync));
 			this.actions.addElement(resources.localize(LocaleKeys.security, LocaleKeys.security));
 			this.actions.addElement(resources.localize(LocaleKeys.status, LocaleKeys.status));
-			this.actions.addElement("Check Battery Level");
 		}
 
 		public void drawListRow(ListField listField, Graphics graphics, int index,

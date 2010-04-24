@@ -59,12 +59,11 @@ public class TestPushTestDrive extends TestCase
 				IOUtilities.writePayLoad(stream, os);
 				
 				String response = null;
-				do
+				for(int i=0; i<5; i++)
 				{
-					response = IOUtilities.readServerResponse(is);
-					
+					response = IOUtilities.readServerResponse(is);					
 					log.info(response);
-				}while(!response.contains("close"));			
+				}			
 			}
 			else
 			{

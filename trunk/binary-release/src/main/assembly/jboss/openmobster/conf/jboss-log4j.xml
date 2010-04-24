@@ -358,6 +358,20 @@
    </category>
    -->
    
+   
+   <!-- 
+   	Setup the OpenMobster categories 
+   -->
+   <category name="org.openmobster.core">
+         <priority value="INFO"/>
+   </category>
+   <!--
+   <category name="org.openmobster.core.dataService">
+         <priority value="DEBUG"/>
+   </category>
+   -->
+   
+   
    <!-- ======================= -->
    <!-- Setup the Root category -->
    <!-- ======================= -->

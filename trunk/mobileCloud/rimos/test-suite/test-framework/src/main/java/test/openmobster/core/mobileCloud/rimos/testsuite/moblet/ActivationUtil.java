@@ -15,6 +15,7 @@ import org.openmobster.core.mobileCloud.rimos.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.api.service.MobileService;
 import org.openmobster.core.mobileCloud.api.service.Request;
 import org.openmobster.core.mobileCloud.api.service.ServiceInvocationException;
+import org.openmobster.core.mobileCloud.rimos.module.bus.BusException;
 
 /**
  * @author openmobster@gmail
@@ -56,7 +57,7 @@ public final class ActivationUtil
 		}
 	}
 	
-	private static void processProvisioningSuccess(String email,Response response)
+	private static void processProvisioningSuccess(String email,Response response) throws BusException
 	{		
 		Configuration configuration = Configuration.getInstance();
 		
@@ -74,6 +75,10 @@ public final class ActivationUtil
 		System.out.println("Stored Hash(Sent for Authorization): "+configuration.getAuthenticationHash());
 		System.out.println("Stored Nonce: "+configuration.getAuthenticationNonce());
 		System.out.println("-----------------------------------------------------------------------");
+		
+		//Start the Push Daemon
+		Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.invocation.CometRecycleHandler");
+		Bus.getInstance().invokeService(invocation);
 	}	
 	
 	private static synchronized void bootup(String deviceIdentifier,String serverIp, String port) 
