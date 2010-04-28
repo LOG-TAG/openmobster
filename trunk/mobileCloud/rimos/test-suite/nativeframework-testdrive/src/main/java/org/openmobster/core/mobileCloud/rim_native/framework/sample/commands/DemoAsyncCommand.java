@@ -8,22 +8,22 @@
 
 package org.openmobster.core.mobileCloud.rim_native.framework.sample.commands;
 
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.Status;
 
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
 
 /**
  * @author openmobster@gmail.com
  *
  */
-public final class DemoRemoteCommand implements RemoteCommand
+public final class DemoAsyncCommand implements AsyncCommand
 {
 	public void doViewBefore(CommandContext commandContext)
 	{
-		Status.show("RemoteCommand about to execute........");				
+		Status.show("AsyncCommand about to execute........");				
 	}
 
 	public void doAction(CommandContext commandContext) 
@@ -31,10 +31,9 @@ public final class DemoRemoteCommand implements RemoteCommand
 		try
 		{
 			//Simulate network latency
-			Thread.currentThread().sleep(10000);			
-			
+			Thread.currentThread().sleep(10000);
 			System.out.println("-------------------------------------------------------");
-			System.out.println("Demo Remote Command successfully executed...............");
+			System.out.println("Demo Async Command successfully executed...............");
 			System.out.println("-------------------------------------------------------");						
 		}
 		catch(Exception e)
@@ -45,11 +44,14 @@ public final class DemoRemoteCommand implements RemoteCommand
 	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		Services.getInstance().getNavigationContext().navigate("remote");
+		Dialog.alert("Async Command success...");
+		
+		//An Async Command should not navigate away from the screen that launch it...it can result in yucky UI errors
+		//Services.getInstance().getNavigationContext().navigate("async");
 	}
 	
 	public void doViewError(CommandContext commandContext)
 	{
-		Status.show("DemoRemoteCommand had an error!!");
+		Status.show("DemoAsyncCommand had an error!!");
 	}
 }

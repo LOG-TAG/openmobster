@@ -12,11 +12,13 @@ import java.util.Vector;
 import net.rim.blackberry.api.homescreen.HomeScreen;
 import net.rim.device.api.notification.NotificationsConstants;
 import net.rim.device.api.notification.NotificationsManager;
+import net.rim.device.api.system.Application;
 import net.rim.device.api.system.ApplicationDescriptor;
 import net.rim.device.api.system.EncodedImage;
 import net.rim.device.api.ui.UiApplication;
 
 import org.openmobster.core.mobileCloud.api.push.MobilePush;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.rimos.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.rimos.errors.SystemException;
 import org.openmobster.core.mobileCloud.rimos.util.GeneralTools;
@@ -93,7 +95,7 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 					/*UiEngine ui = Ui.getUiEngine();
 					Screen screen = new Dialog(Dialog.D_OK, "Look out!!!",Dialog.OK,Bitmap.getPredefinedBitmap(Bitmap.EXCLAMATION),
 					Manager.VERTICAL_SCROLL);
-					ui.pushGlobalScreen(screen, 1, UiEngine.GLOBAL_QUEUE);*/
+					ui.pushGlobalScreen(screen, 1, UiEngine.GLOBAL_QUEUE);*/										
 				}
 				catch(Exception e)
 				{
@@ -107,6 +109,29 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 				}
 			}
 		});
+		
+		//Send a notification at the App-Level via a PushCommand invocation
+		if(Application.getApplication().isForeground())
+		{
+			CommandContext commandContext = new CommandContext();
+			commandContext.setTarget("push");
+			commandContext.setPush(newPushInstance);
+			
+			int retry = 5;
+			for(int i=0; i<retry; i++)
+			{				
+				Services.getInstance().getCommandService().execute(commandContext);
+				
+				if(commandContext.getAttribute("validation-error") == null)
+				{
+					//everything went ok.
+					break;
+				}
+				
+				//retry in 30 seconds
+				try{Thread.currentThread().sleep(30000);}catch(Exception e){}
+			}
+		}
 	}
 	
 	public void clearNotification()

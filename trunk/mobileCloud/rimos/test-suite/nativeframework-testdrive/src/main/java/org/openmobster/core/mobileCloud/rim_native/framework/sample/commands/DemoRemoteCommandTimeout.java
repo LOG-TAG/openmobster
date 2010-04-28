@@ -19,11 +19,11 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
  * @author openmobster@gmail.com
  *
  */
-public final class DemoRemoteCommand implements RemoteCommand
+public final class DemoRemoteCommandTimeout implements RemoteCommand
 {
 	public void doViewBefore(CommandContext commandContext)
 	{
-		Status.show("RemoteCommand about to execute........");				
+		Status.show("RemoteCommand(timeout) about to execute........");				
 	}
 
 	public void doAction(CommandContext commandContext) 
@@ -31,10 +31,10 @@ public final class DemoRemoteCommand implements RemoteCommand
 		try
 		{
 			//Simulate network latency
-			Thread.currentThread().sleep(10000);			
+			Thread.currentThread().sleep(30000);			
 			
 			System.out.println("-------------------------------------------------------");
-			System.out.println("Demo Remote Command successfully executed...............");
+			System.out.println("Demo Remote Command Timeout successfully executed...............");
 			System.out.println("-------------------------------------------------------");						
 		}
 		catch(Exception e)
