@@ -83,6 +83,14 @@
 											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											file="${preverify_target}/nativeframework_testdrive.cod"
 											overwrite="true" />
+										
+										<echo>Deploying into the Simulator....</echo>
+										<copy todir="${env.RIM_JDE_HOME}/simulator" overwrite="true">
+											<fileset dir="${preverify_target}">
+												<include name="*.cod" />
+												<include name="*.debug" />
+											</fileset>
+										</copy>
 									</tasks>
 								</configuration>
 								<goals>

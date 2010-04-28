@@ -22,10 +22,30 @@ public abstract class CommandService
 	{		
 	}
 	
-	protected Command find(String commandId)
+	protected UIInitiatedCommand findUICommand(String commandId)
 	{
 		Hashtable commandConfig = AppConfig.getInstance().getAppCommands();		
-		return (Command)commandConfig.get(commandId);
+		
+		Command command = (Command)commandConfig.get(commandId);
+		if(command instanceof UIInitiatedCommand)
+		{
+			return (UIInitiatedCommand)command;
+		}
+		
+		return null;
+	}
+	
+	protected SystemInitiatedCommand findSystemCommand(String commandId)
+	{
+		Hashtable commandConfig = AppConfig.getInstance().getAppCommands();		
+		
+		Command command = (Command)commandConfig.get(commandId);
+		if(command instanceof SystemInitiatedCommand)
+		{
+			return (SystemInitiatedCommand)command;
+		}
+		
+		return null;
 	}
 	
 	protected void reportAppException(CommandContext commandContext, AppException appException)

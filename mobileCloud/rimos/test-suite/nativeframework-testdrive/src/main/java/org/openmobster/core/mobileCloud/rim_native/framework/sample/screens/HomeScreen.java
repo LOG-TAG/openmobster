@@ -14,13 +14,12 @@ import net.rim.device.api.ui.MenuItem;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.rim_native.framework.AppScreen;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 import org.openmobster.core.mobileCloud.rim_native.framework.sample.LocaleKeys;
-import org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.DemoLocalCommand;
-import org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.DemoRemoteCommand;
+import org.openmobster.core.mobileCloud.rimos.module.bus.Bus;
+import org.openmobster.core.mobileCloud.rimos.module.bus.MobilePushInvocation;
+import org.openmobster.core.mobileCloud.rimos.module.bus.MobilePushMetaData;
 
 
 /**
@@ -115,6 +114,26 @@ public class HomeScreen extends Screen
 					Services.getInstance().getCommandService().execute(commandContext);
 				}
 			};
+			
+			MenuItem asyncCommand = new MenuItem("Async Command", 7, 7){
+				public void run()
+				{
+					//UserInteraction/Event Processing.....this is where the Commands can be executed
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/demo/asyncCommand");
+					Services.getInstance().getCommandService().execute(commandContext);
+				}
+			};
+			
+			MenuItem remoteTimeoutCommand = new MenuItem("Timeout Remote Command", 8, 8){
+				public void run()
+				{
+					//UserInteraction/Event Processing.....this is where the Commands can be executed
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/demo/remote/timeout");
+					Services.getInstance().getCommandService().execute(commandContext);
+				}
+			};
 		
 			this.screen.addMenuItem(localCommand);
 			this.screen.addMenuItem(remoteCommand);
@@ -123,6 +142,8 @@ public class HomeScreen extends Screen
 			this.screen.addMenuItem(localExceptionCommand);
 			this.screen.addMenuItem(remoteExceptionCommand);
 			this.screen.addMenuItem(pushNotificationCommand);
+			this.screen.addMenuItem(asyncCommand);
+			this.screen.addMenuItem(remoteTimeoutCommand);
 			
 			isRendered = true;
 		}
@@ -131,6 +152,6 @@ public class HomeScreen extends Screen
 	public Object getContentPane() 
 	{		
 		return this.screen;
-	}			
+	}	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 }
