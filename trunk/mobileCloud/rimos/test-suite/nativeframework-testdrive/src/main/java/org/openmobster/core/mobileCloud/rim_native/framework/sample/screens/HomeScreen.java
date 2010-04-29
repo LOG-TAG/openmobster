@@ -131,6 +131,7 @@ public class HomeScreen extends Screen
 					//UserInteraction/Event Processing.....this is where the Commands can be executed
 					CommandContext commandContext = new CommandContext();
 					commandContext.setTarget("/demo/remote/timeout");
+					commandContext.activateTimeout();
 					Services.getInstance().getCommandService().execute(commandContext);
 				}
 			};

@@ -151,7 +151,7 @@ public class HomeScreen extends Screen
 		MenuItem uploadLog = new MenuItem("Upload Error Log", 7, 7){
 			public void run()
 			{
-				String errorLog = ErrorHandler.getInstance().generateReport();
+				//String errorLog = ErrorHandler.getInstance().generateReport();
 				
 				//FIXME: Add ability to upload the error log to the CloudServer
 				//It can be used to diagonose/debug issues on the on-device moblet apps
