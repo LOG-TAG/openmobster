@@ -432,9 +432,12 @@ final class NativeCommandService extends CommandService
 				try
 				{
 					//Start a timer after which the remote command should not be allowed to execute
-					Timer timer = new Timer();
-					timer.schedule(new RemoteCommandExpiry(this.dialog,commandContext), 
-					15000);
+					if(commandContext.isTimeoutActivated())
+					{
+						Timer timer = new Timer();
+						timer.schedule(new RemoteCommandExpiry(this.dialog,commandContext), 
+						15000);
+					}
 					
 					command.doAction(commandContext);
 					

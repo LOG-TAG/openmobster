@@ -10,15 +10,15 @@ package org.openmobster.core.mobileCloud.rim_native.framework.command;
 
 import net.rim.device.api.ui.component.Dialog;
 
+import org.openmobster.core.mobileCloud.moblet.Moblet;
+import org.openmobster.core.mobileCloud.rim_native.framework.SystemLocaleKeys;
+
 import org.openmobster.core.mobileCloud.api.system.CometUtil;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppPushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
-import org.openmobster.core.mobileCloud.moblet.Moblet;
-import org.openmobster.core.mobileCloud.rim_native.framework.SystemLocaleKeys;
-
 
 
 /**
@@ -38,7 +38,9 @@ public final class MobletBootstrapCommand implements LocalCommand
 		try
 		{
 			Moblet.getInstance().startup();
-			CometUtil.subscribeChannels();
+			boolean wasChannelBootupStarted = CometUtil.subscribeChannels();
+			
+			commandContext.setAttribute("isChannelBootActive", new Boolean(wasChannelBootupStarted));
 		}
 		catch(Exception e)
 		{

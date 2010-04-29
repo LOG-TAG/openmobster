@@ -12,7 +12,9 @@ import java.util.Vector;
 
 import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.MenuItem;
+import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
+import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.component.ListField;
 import net.rim.device.api.ui.component.ListFieldCallback;
 import net.rim.device.api.system.Characters;
@@ -54,9 +56,21 @@ public class SecurityScreen extends Screen
 		this.screen = new MainScreen();
 		this.screen.setTitle(appResources.localize(LocaleKeys.security, LocaleKeys.security));
 		
+		Configuration configuration = Configuration.getInstance();
+		HorizontalFieldManager bannerField = new HorizontalFieldManager();
+		if(configuration.isSSLActivated())
+		{
+			bannerField.add(new LabelField("Current Mode: SSL"));
+		}
+		else
+		{
+			bannerField.add(new LabelField("Current Mode: non-SSL"));
+		}
+		
 		listField = new ListField(1);
 		listField.setCallback(new ListFieldCallbackImpl());
 		
+		this.screen.setBanner(bannerField);
 		this.screen.add(listField);
 		this.setMenuItems();
 		this.setUpNavigation();
@@ -66,7 +80,7 @@ public class SecurityScreen extends Screen
 	{		
 		AppResources resources = Services.getInstance().getResources();
 		
-		MenuItem selectItem = new MenuItem(resources.localize(LocaleKeys.select, LocaleKeys.select), 1, 1){
+		MenuItem selectItem = new MenuItem("Switch", 1, 1){
 			public void run()
 			{
 				//UserInteraction/Event Processing...this is where the Commands can be executed

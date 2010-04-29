@@ -67,4 +67,19 @@ public final class CommandContext
 	{
 		this.attrMgr.setAttribute("push", push);
 	}
+	
+	public void activateTimeout()
+	{
+		this.attrMgr.setAttribute("activate-timeout", "");
+	}
+	
+	public void deactivateTimeout()
+	{
+		this.attrMgr.removeAttribute("activate-timeout");
+	}
+	
+	public boolean isTimeoutActivated()
+	{
+		return (this.attrMgr.getAttribute("activate-timeout")!=null);
+	}
 }

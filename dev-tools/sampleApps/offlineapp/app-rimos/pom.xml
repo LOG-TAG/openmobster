@@ -192,6 +192,7 @@
 											improve development productivity and should not be used in
 											the actual production deployment
 										--> 
+										<!--  
 										<property name="preverify_cloud_target" value="${basedir}/target/cloud-binary" />
 										<property name="preverify_cloud_src"
 											value="${basedir}/target/cloud-binary/temp/DevCloud.jar" />
@@ -243,6 +244,7 @@
 												<include name="*.debug" />
 											</fileset>
 										</copy>
+										-->
 									</tasks>
 								</configuration>
 							</execution>

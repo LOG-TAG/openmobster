@@ -22,12 +22,14 @@ import org.openmobster.core.mobileCloud.rimos.module.bus.Invocation;
  */
 public final class CometUtil 
 {
-	public static void subscribeChannels() throws BusException
+	public static boolean subscribeChannels() throws BusException
 	{
+		boolean wasChannelBootupStarted = false;
+		
 		Configuration configuration = Configuration.getInstance();
 		if(!configuration.isActive())
 		{
-			return;
+			return false;
 		}
 		
 		Vector channels = AppConfig.getInstance().getChannels();
@@ -50,8 +52,11 @@ public final class CometUtil
 			if(newAdded)
 			{
 				CometUtil.performChannelBootup(configuration);
+				wasChannelBootupStarted = true;
 			}
 		}				
+		
+		return wasChannelBootupStarted;
 	}
 	
 	private static synchronized void performChannelBootup(Configuration configuration)
