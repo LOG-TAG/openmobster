@@ -1,4 +1,4 @@
-#summary OpenMobster Mobile Cloud Platform - Overview
+#summary OpenMobster - Open Source Mobile Cloud Platform - Overview
 
 === Introduction ===
 *OpenMobster* is an open source platform for integrating Mobile Apps (on-device apps) with _Cloud_ services. Its goal is to provide the infrastructure for the Mobile App developer
@@ -21,7 +21,7 @@ to function seamlessly in both _online_ as well as _offline_ modes. The data is 
 
 ==== Simple Mobile RPC (Remote Procedure Call) ====
 
-Provides a simple way of exposing your server-side coarse grained business services. These services are invoked via a simple RPC mechanism without any low-level programming like http-client code, client side REST library, etc on the part of the App developer. There is a simple RPC API that is used for making these calls. The RPC calls are _synchronous_ in nature.
+Provides a simple way of exposing your server-side coarse grained business services. These services are invoked via a simple RPC mechanism without any low-level programming like http-client code, client side REST library, etc on the part of the App developer. There is a simple RPC API that is used for making these calls.
 
 
 ==== Management Console ====
@@ -46,11 +46,11 @@ The *Service Framework* is used to expose coarse grained business processes to t
 
 === What device-side frameworks are provided? ===
 
-==== Moblet Data Framework ====
+==== Mobile Data Framework ====
 
-The *Moblet Data Framework* provides Cloud data-oriented services like seamless offline data synchronization, comet-style push notifications, and simple RPC (Remote Procedure Call) mechanism. 
+The *Mobile Data Framework* provides Cloud data-oriented services like seamless offline data synchronization, comet-style push notifications, and simple RPC (Remote Procedure Call) mechanism. 
 
-==== Moblet MVC Framework ====
+==== Mobile MVC Framework ====
 
 This is a thick client MVC (Model-View-Controller) framework. It is based on a Rich Internet Application design principle. At this point in time of evolution of the mobile space, there isn't a commonly adopted GUI development standard across various mobile platforms. This results in a lot of App porting activity across platforms. Although this framework is not designed for (Write Once, Run Anywhere) approach, it abstracts out a lot of the UI Framework plumbing that would otherwise need to be written, ported and maintained by the developer. The framework abstracts out some of the low level services into the container such as App bootstrapping, screen navigation, graceful error handling, and internationalization.
 
@@ -60,7 +60,7 @@ Please see [Concepts Programming Concepts] for more details.
 
 === What mobile platforms are supported? ===
 
-The project is evolving at a rapid pace. At the time of the current release (2.0-M2), the supported mobile platform is *Blackberry OS version 4.3.0 and above*.
+The project is evolving at a rapid pace. At the time of the current release (2.0-M3), the supported mobile platform is *Blackberry OS version 4.3.0 and above*.
 The goal is to support all the major smartphone platforms such as *Google Android*, *Apple iPhone*, *Palm webOS*, *Nokia Symbian*, and *Windows Phone 7 series*.
 More details can be found on our [roadmap project roadmap].
 
