@@ -26,7 +26,7 @@ public final class PushHandler implements PushCommand
 
 	public void doViewAfter(CommandContext commandContext)
 	{
-		NavigationContext.getInstance().home();		
+		NavigationContext.getInstance().refresh();
 	}
 	
 	public void doViewError(CommandContext commandContext)

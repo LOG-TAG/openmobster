@@ -7,7 +7,7 @@
          <email>openmobster@gmail.com</email>
       </author>
    </chapterinfo>
-   <title>Moblet MVC Framework</title>
+   <title>Mobile MVC Framework</title>
    <sect1>
    		<para>
    		This is a thick client MVC (Model-View-Controller) framework. It is based on a 
@@ -62,7 +62,7 @@ public abstract class Screen
    				<title>Command</title>
    				<para>
    				<emphasis>Command</emphasis> is an abstraction for an instance of a GUI Event Handler which receives various callbacks based on the screen's lifecycle.
-             	A command typically puts a business process into motion via accessing various other services like the Moblet Data Framework components,
+             	A command typically puts a business process into motion via accessing various other services like the Mobile Data Framework components,
              	and/or native platform services. Command instances are managed by the built-in <emphasis>EventBus</emphasis> of the MVC framework. A 
              	Command has the following life cycle which is managed by the event bus.
              	<itemizedlist>
@@ -134,6 +134,76 @@ public final class DemoLocalCommand implements LocalCommand
    					</para>
    				</sect4>
    				<sect4>
+   					<title>AsyncCommand</title>
+   					<para>
+	   					This tells the system that the associated business logic executes in the background. This 
+	   					approach is synonymous to the <ulink url='http://en.wikipedia.org/wiki/Ajax_%28programming%29'>Ajax</ulink> 
+	   					approach in the Web Development realm. This is used to make the mobile application more responsive
+	   					and at the same time accomplish some critical task of interacting with the remote cloud. The difference between
+	   					this and the RemoteCommand is that, this command immediately frees up the UI for other interactions. The RemoteCommand
+	   					freezes the UI but shows an <emphasis>in progress</emphasis> dialog. Once the action
+	   					associated with this command finishes execution outside the UI thread, it re-establises the view cycle. Any UI changes
+	   					associated with the execution of this command are then displayed to the user's screen. Below are some of many
+	   					mobile scenarios where an AsyncCommand can come in handy:
+	   					<itemizedlist>
+	   						<listitem>Show validation errors inline with user input</listitem>
+	   						<listitem>Update the current screen with data fetched from the Cloud without showing a busy dialog or freezing the UI</listitem>
+	   					</itemizedlist>
+   					</para>
+   					<para>
+   					<programlisting><![CDATA[
+import net.rim.device.api.ui.component.Status;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
+import org.openmobster.core.mobileCloud.api.service.Request;
+import org.openmobster.core.mobileCloud.api.service.Response;
+import org.openmobster.core.mobileCloud.api.service.MobileService;
+
+public final class DemoMobileRPC implements AsyncCommand
+{
+	public void doViewBefore(CommandContext commandContext)
+	{	
+		//Nothing visual to do before action execution	
+	}
+
+	public void doAction(CommandContext commandContext) 
+	{
+		try
+		{
+			Request request = new Request("/demo/mobile-rpc");	
+			request.setAttribute("param1", "paramValue1");
+			request.setAttribute("param2", "paramValue2");
+			Response response = new MobileService().invoke(request);
+			
+			NavigationContext navigation = Services.getInstance().getNavigationContext();
+			navigation.setAttribute("home", "param1", response.getAttribute("param1"));
+			navigation.setAttribute("home", "param2", response.getAttribute("param2"));
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException(e.toString());
+		}
+	}	
+	
+	public void doViewAfter(CommandContext commandContext)
+	{
+		//Navigate back to home
+		NavigationContext navigation = Services.getInstance().getNavigationContext();
+		navigation.home();
+	}
+	
+	public void doViewError(CommandContext commandContext)
+	{
+		//Show an Error status to the user
+		Status.show(this.getClass().getName()+" had an error!!");
+	}
+}
+   					]]></programlisting>
+   					</para>
+   				</sect4>   				
+   				<sect4>
    					<title>RemoteCommand</title>
    					<para>
    					This tells the system that the associated business logic executes slowly and must execute in the background.
@@ -194,7 +264,41 @@ public final class DemoMobileRPC implements RemoteCommand
    					]]></programlisting>
    					<para>
    					</para>
-   				</sect4>
+   				</sect4> 
+   				<sect4>
+   					<title>PushCommand</title>
+   					<para>
+	   				A <emphasis>PushCommand</emphasis> allows the developer to handle <emphasis>Cloud Push</emphasis> at the App level. When the <link linkend='/concepts/mobileCloud'>Mobile Cloud runtime</link> synchronizes
+	   			    the App state with the Cloud in the background, it decides how to route the push notifications to the respective Apps on the device.
+	   			    An App's <emphasis>PushCommand</emphasis> (if specified) is invoked so that the App can take necessary action such as showing a dialog box, showing some global screen, etc.
+	   			    <emphasis>Note:</emphasis> PushCommand should only be used to perform an App-specific action. The <link linkend='/concepts/mobileCloud'>Mobile Cloud runtime</link> automatically takes
+	   			    care of system level notifications like blinking LED, updating the app's icon with an alert, etc.	
+   					</para>
+   					<para>
+   					<programlisting><![CDATA[
+import net.rim.device.api.ui.component.Dialog;
+
+import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.PushCommand;
+
+public final class AppPushCommand implements PushCommand
+{
+	public void doAction(CommandContext commandContext)
+	{		
+	}
+
+	public void doViewAfter(CommandContext commandContext)
+	{
+		Dialog.alert("App Push received!!!");		
+	}
+	
+	public void doViewError(CommandContext commandContext)
+	{
+	}
+}
+   					]]></programlisting>
+   					</para>
+   				</sect4>  				
    			</sect3>
    		</sect2>
    		<sect2>
@@ -465,15 +569,20 @@ public final class DemoDetails implements RemoteCommand
    				<para>
    				<programlisting><![CDATA[
 <moblet-app>
-	<commands>
-		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+	<bootstrap>
+		<screen>org.openmobster.core.examples.offline.screen.HomeScreen</screen>
+	</bootstrap>
+   
+	<push>
+		<command>org.openmobster.core.examples.offline.command.PushHandler</command>
+	</push>
+   
+	<commands>				
 		<command id="/demo/details">org.openmobster.core.examples.offline.command.DemoDetails</command>
+		<command id="/offlineapp/pushtrigger">org.openmobster.core.examples.offline.command.PushTrigger</command>
+		<command id="/offlineapp/reset">org.openmobster.core.examples.offline.command.ResetChannel</command>
 	</commands>
-	
-	<screens>	    	     
-		<screen id="home">org.openmobster.core.examples.offline.screen.HomeScreen</screen>
-	</screens>	
-	
+		
 	<channels>
 		<channel>/offlineapp/demochannel</channel>
 	</channels>						

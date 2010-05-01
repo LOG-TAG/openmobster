@@ -99,7 +99,6 @@ binaries makes use of these APIs, and hence requires "signing" before installing
 Code Signing is not required for installing/testing Apps in a simulation environment. In fact all the OpenMobster binaries have been
 thoroughly tested on a 4.3.0 OS simulator. All tests have passed without any errors, warnings, or crashes.   		 	
 	   		
-At the time of this first community release, the OpenMobster Blackberry binaries have not been signed or tested on an actual device.
-However, the developer can sign and distribute these binaries along with their Apps, if they
-possess their own signing key. In the future, the binaries should come signed with the keys issued by RIM to OpenMobster Community 
+As of 2.0-M3 community release, all OpenMobster Blackberry binaries have been signed and tested on an actual BlackBerry device. 
+The device used was the BlackBerry Curve 8330 running on the Sprint CDMA network.
 	   		

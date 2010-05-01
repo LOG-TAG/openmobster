@@ -41,13 +41,13 @@
    		</sect2>
    </sect1>
    <sect1>
-   		<title>Moblet</title>
+   		<title>Moblet and App Frameworks</title>
    		<para>
    		A <emphasis>Moblet</emphasis> is a <emphasis role="bold">managed App</emphasis> that executes along-side the on-device <emphasis>OpenMobster Runtime</emphasis> called the, <emphasis role='bold'><link linkend="/concepts/mobileCloud">Mobile Cloud</link></emphasis>. A moblet developer has the following on-device frameworks
    		available to integrate with the Cloud.
    		</para>
    		<sect2>
-   			<title>Moblet Data Framework</title>
+   			<title>Mobile Data Framework</title>
    			<para>
    			The <emphasis>Mobile Data Framework</emphasis> provides <emphasis>Cloud</emphasis> data-oriented services like seamless offline data synchronization, comet-style push
    			notifications, and simple RPC (Remote Procedure Call) mechanism.
@@ -69,7 +69,7 @@
    			</sect3>
    		</sect2>
    		<sect2>
-   			<title>Moblet MVC Framework</title>
+   			<title>Mobile MVC Framework</title>
    			<para>
    			This is a thick client MVC (Model-View-Controller) framework. It is based on a 
            <ulink url="http://en.wikipedia.org/wiki/Rich_Internet_application">Rich Internet Application</ulink> design principle.
@@ -105,7 +105,7 @@
    		<sect2 id="/concepts/mobileCloud">
    			<title>Mobile Cloud</title>
    			<para>
-   			Mobile Cloud is an on-device <emphasis>native system service</emphasis>. It hosts the runtime that is used by the <emphasis role="bold">Moblet Data Framework</emphasis> and the <emphasis role="bold">Moblet MVC Framework</emphasis>.
+   			Mobile Cloud is an on-device <emphasis>native system service</emphasis>. It hosts the runtime that is used by the <emphasis role="bold">Mobile Data Framework</emphasis> and the <emphasis role="bold">Mobile MVC Framework</emphasis>.
   	On platforms that support inter-application communication such as <emphasis>Android</emphasis> and <emphasis>Blackberry</emphasis>, there is a single instance of a Mobile Cloud which is shared by all the Apps/Moblets
   	installed on the device. This helps make better use of device resources like storage, network management, push sockets, background services, etc. On platforms
   	that do not support inter-application communication, an instance of the Mobile Cloud runtime must be installed by bundling it with each 

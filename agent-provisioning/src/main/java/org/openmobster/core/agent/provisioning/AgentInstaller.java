@@ -48,16 +48,16 @@ public class AgentInstaller extends HttpServlet
 			this.agentModules = new HashMap<String, byte[]>();
 			
 			//Parse the JAD file
-			this.parseAgentJAD("rimos/430/mobileCloud.jad");
+			this.parseAgentJAD("rimos/430/MobileCloud.jad");
 			
 			//Parse the Modules
-			this.parseAgentModules("rimos/430/mobileCloud.cod");
+			this.parseAgentModules("rimos/430/MobileCloud.cod");
 			
 			//Parse the JAD file
-			this.parseAgentJAD("rimos/430/cloudManager.jad");
+			this.parseAgentJAD("rimos/430/CloudManager.jad");
 			
 			//Parse the Modules
-			this.parseAgentModules("rimos/430/cloudManager.cod");
+			this.parseAgentModules("rimos/430/CloudManager.cod");
 			
 			log.info("OpenMobster AppStore Successfully Initialized........................");
 		}

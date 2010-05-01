@@ -38,6 +38,14 @@ final class NativeNavigationContextSPI implements NavigationContextSPI
 	{
 		this.display(screen);
 	}
+	
+	public void refresh()
+	{
+		UiApplication uiApplication = UiApplication.getUiApplication();
+		net.rim.device.api.ui.Screen activeScreen = uiApplication.getActiveScreen();
+		
+		activeScreen.invalidate();
+	}
 	//--------------------------------------------------------------------------------------------------------------------------------------
 	private void display(Screen screen)
 	{
