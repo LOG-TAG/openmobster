@@ -68,6 +68,12 @@
 				<module>binary-release</module>
 			</modules>
 		</profile>
+		<profile>
+			<id>deploy-core</id>
+			<modules>
+				<module>mobileCloud</module>
+			</modules>
+		</profile>
 	</profiles>
 
 	<properties>
