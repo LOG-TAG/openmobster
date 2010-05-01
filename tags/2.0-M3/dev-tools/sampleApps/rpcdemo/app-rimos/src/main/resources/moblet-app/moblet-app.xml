@@ -1,0 +1,9 @@
+<moblet-app>
+	<bootstrap>
+		<screen>org.openmobster.core.examples.rpc.screen.HomeScreen</screen>
+	</bootstrap>
+	
+	<commands>
+		<command id="/demo/rpc">org.openmobster.core.examples.rpc.command.DemoMobileRPC</command>
+	</commands>							
+</moblet-app>

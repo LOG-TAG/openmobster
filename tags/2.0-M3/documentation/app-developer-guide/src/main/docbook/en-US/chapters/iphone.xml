@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="iphone">
+   <chapterinfo>
+      <author>
+         <firstname>openmobster</firstname>
+         <surname>at gmail.com</surname>
+         <email>openmobster@gmail.com</email>
+      </author>
+   </chapterinfo>
+   <title>iPhone</title>
+   <sect1>
+   		<title>iPhone</title>
+   		<para>
+   			Support for Apple's iPhone Platform is coming soon!!!. 
+   			It is scheduled for the 2.2-M1 milestone release. See <ulink url='http://code.google.com/p/openmobster/wiki/roadmap'>here</ulink> for more details.
+   		</para>
+   </sect1>
+</chapter>

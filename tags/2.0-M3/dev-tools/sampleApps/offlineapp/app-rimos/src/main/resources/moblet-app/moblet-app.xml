@@ -1,0 +1,19 @@
+<moblet-app>
+    <bootstrap>
+    	<screen>org.openmobster.core.examples.offline.screen.HomeScreen</screen>
+    </bootstrap>
+    
+    <push>
+    	<command>org.openmobster.core.examples.offline.command.PushHandler</command>
+    </push>
+    
+	<commands>				
+		<command id="/demo/details">org.openmobster.core.examples.offline.command.DemoDetails</command>
+		<command id="/offlineapp/pushtrigger">org.openmobster.core.examples.offline.command.PushTrigger</command>
+		<command id="/offlineapp/reset">org.openmobster.core.examples.offline.command.ResetChannel</command>
+	</commands>
+			
+	<channels>
+		<channel>/offlineapp/demochannel</channel>
+	</channels>						
+</moblet-app>
