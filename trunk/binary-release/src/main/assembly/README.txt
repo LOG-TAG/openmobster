@@ -66,13 +66,15 @@ RIM OS Binary Signing:
 -------------------------
 This 2.0-snapshot release supports the Blackberry RIM OS : 4.3.0+ devices.
 
-The supplied binaries are unsigned and will work perfectly end-to-end with the RIM Simulation Environment.
-
-In order to work on an actual device, the binaries must be signed using the signing process mandated by RIM.
-
-Further details about the signing process are available at: http://na.blackberry.com/eng/developers/javaappdev/codekeys.jsp
-
-Future releases of OpenMobster will include signed binaries out-of-the-box so this step will not be necessary anymore.
+Blackberry has a selected set of APIs which require "signing" the binary (.cod) before installing it on the device. The OpenMobster
+binaries makes use of these APIs, and hence requires "signing" before installing it on the device. For more information about the
+"signing" process: http://na.blackberry.com/eng/developers/javaappdev/codekeys.jsp
+	   		 	
+Code Signing is not required for installing/testing Apps in a simulation environment. In fact all the OpenMobster binaries have been
+thoroughly tested on a 4.3.0 OS simulator. All tests have passed without any errors, warnings, or crashes.   		 	
+	   		
+As of 2.0-M3 community release, all OpenMobster Blackberry binaries have been signed and tested on an actual BlackBerry device. 
+The device used was the BlackBerry Curve 8330 running on the Sprint CDMA network.
 
 
 *********************

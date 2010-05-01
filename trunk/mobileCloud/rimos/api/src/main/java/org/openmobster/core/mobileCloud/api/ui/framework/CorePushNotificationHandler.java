@@ -131,6 +131,11 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 				
 				//retry in 30 seconds
 				try{Thread.currentThread().sleep(30000);}catch(Exception e){}
+				
+				if(!Application.getApplication().isForeground())
+				{
+					break;
+				}
 			}
 		}
 	}

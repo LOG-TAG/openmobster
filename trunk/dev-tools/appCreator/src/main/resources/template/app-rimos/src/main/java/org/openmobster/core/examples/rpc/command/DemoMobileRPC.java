@@ -11,7 +11,7 @@ package org.openmobster.core.examples.rpc.command;
 import net.rim.device.api.ui.component.Status;
 
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.service.Request;
@@ -22,7 +22,7 @@ import org.openmobster.core.mobileCloud.api.service.MobileService;
  * @author openmobster@gmail.com
  *
  */
-public final class DemoMobileRPC implements RemoteCommand
+public final class DemoMobileRPC implements AsyncCommand
 {
 	public void doViewBefore(CommandContext commandContext)
 	{		
@@ -49,8 +49,7 @@ public final class DemoMobileRPC implements RemoteCommand
 	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		NavigationContext navigation = Services.getInstance().getNavigationContext();
-		navigation.home();
+		NavigationContext.getInstance().refresh();
 	}
 	
 	public void doViewError(CommandContext commandContext)

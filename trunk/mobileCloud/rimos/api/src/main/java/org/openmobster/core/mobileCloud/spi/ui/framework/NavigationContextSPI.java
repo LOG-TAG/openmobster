@@ -35,5 +35,11 @@ public interface NavigationContextSPI
 	 * 
 	 * @param screen
 	 */
-	public void home(Screen screen);		
+	public void home(Screen screen);	
+	
+	/**
+	 * Refreshes the currently displayed screen
+	 * 
+	 */
+	public void refresh();
 }

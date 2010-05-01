@@ -21,7 +21,7 @@
 				<imagedata fileref="images/mobileCloud.png" format="png" align="center"/>
 			</imageobject>
 		    This is a software stack that is installed on the mobile device. It provides the following services to Mobile Apps:
-		    <emphasis>Sync</emphasis>, <emphasis>Push</emphasis>, <emphasis>OfflineApp</emphasis>, <emphasis>Moblet RPC</emphasis>, <emphasis>Network</emphasis>, <emphasis>Database</emphasis>, <emphasis>Inter-App Bus</emphasis>.
+		    <emphasis>Sync</emphasis>, <emphasis>Push</emphasis>, <emphasis>OfflineApp</emphasis>, <emphasis>Mobile RPC</emphasis>, <emphasis>Network</emphasis>, <emphasis>Database</emphasis>, <emphasis>Inter-App Bus</emphasis>.
 		</para>
 		<sect2>
 			<title>Sync</title>
@@ -55,9 +55,9 @@
 			</para>
 		</sect2>
 		<sect2>
-			<title>Moblet RPC</title>
+			<title>Mobile RPC</title>
 			<para>
-				<emphasis>Moblet RPC</emphasis> facilitates making synchronous RPC (Remote Procedure Call) invocations from the device to the server side 'MobileServiceBean' components.
+				<emphasis>Mobile RPC</emphasis> facilitates making synchronous RPC (Remote Procedure Call) invocations from the device to the server side 'MobileServiceBean' components.
 			</para>
 		</sect2>
 		<sect2>
@@ -88,7 +88,7 @@
 				<imagedata fileref="images/mobileServer.png" format="png"/>
 			</imageobject>
 		    This is a software stack that is installed on the server-side. It provides the following services to Mobile Apps:
-		    <emphasis>Sync</emphasis>, <emphasis>Push</emphasis>, <emphasis>Secure Socket-Based Data Service</emphasis>, <emphasis>Moblet RPC</emphasis>, <emphasis>Security</emphasis>, <emphasis>Management Console</emphasis> 
+		    <emphasis>Sync</emphasis>, <emphasis>Push</emphasis>, <emphasis>Secure Socket-Based Data Service</emphasis>, <emphasis>Mobile RPC</emphasis>, <emphasis>Security</emphasis>, <emphasis>Management Console</emphasis> 
 			<sect2>
 				<title>Sync</title>
 				<para>
@@ -115,11 +115,11 @@
 				</para>
 			</sect2>
 			<sect2>
-				<title>Moblet RPC</title>
+				<title>Mobile RPC</title>
 				<para>
-					<emphasis>Moblet RPC</emphasis> service on the server-side provides a Remote Procedure Call framework for invoking coarse grained
+					<emphasis>Mobile RPC</emphasis> service on the server-side provides a Remote Procedure Call framework for invoking coarse grained
 					business services of an App. The components are plugged in as <emphasis>MobileService Beans</emphasis> and the device-side
-					Moblet RPC service invokes them via a simple synchronous request/response based approach.
+					Mobile RPC service invokes them via a simple synchronous request/response based approach.
 				</para>
 			</sect2>
 			<sect2>

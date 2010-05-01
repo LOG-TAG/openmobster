@@ -584,7 +584,11 @@ final class NativeCommandService extends CommandService
 					Thread.currentThread().sleep(5000); //wait for 5 seconds and try again, till a blocking 
 					//UI thread is finished processing
 				}
-				Application.getApplication().invokeAndWait(viewProcessor);
+				
+				if(Application.getApplication().isAlive() && Application.getApplication().isForeground())
+				{
+					Application.getApplication().invokeLater(viewProcessor);
+				}
 			}
 			catch(Throwable t)
 			{
@@ -594,7 +598,12 @@ final class NativeCommandService extends CommandService
 					"Exception:"+t.toString(),
 					"Target Command:"+this.commandContext.getTarget()
 				}));
-				Application.getApplication().invokeAndWait(new ShowGenericError(commandContext));
+				
+				if(Application.getApplication().isAlive() && Application.getApplication().isForeground())
+				{
+					Application.getApplication().invokeLater(new ShowGenericError(commandContext)); //so there is no UI freezing in the 
+					//background
+				}
 			}
 			finally
 			{

@@ -97,6 +97,9 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-rimos/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/rpcdemo/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/rpcdemo/cloud/src/test/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/rpcdemo/app-rimos/src/main/java" />
 	
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworld/app-rimos/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworldsensitive/app-rimos/src/main/java"/>

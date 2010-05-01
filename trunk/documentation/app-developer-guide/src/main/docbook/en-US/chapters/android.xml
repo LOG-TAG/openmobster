@@ -11,7 +11,8 @@
    <sect1>
    		<title>Android</title>
    		<para>
-   			Support for Google's Android Open Source Platform is coming soon!!!
+   			Support for Google's Android Open Source Platform is coming soon!!!.
+   			It is scheduled for the 2.0-M4 milestone release. See <ulink url='http://code.google.com/p/openmobster/wiki/roadmap'>here</ulink> for more details.
    		</para>
    </sect1>
 </chapter>

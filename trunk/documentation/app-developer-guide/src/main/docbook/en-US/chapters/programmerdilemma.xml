@@ -147,7 +147,7 @@
  native apps. It takes away the hardwork of writing middleware infrastructure, so that the app developer can focus their development effort on
  implementing their business requirements. Here are some of the ways, OpenMobster tries to alleviate some of the disadvantages of native app development
  		<itemizedlist>
- 			<listitem>The pluggable nature of the <link linkend="mobletmvc">Moblet MVC framework</link> makes it easier to port an app across multiple platforms. Most of the GUI level plumbing
+ 			<listitem>The pluggable nature of the <link linkend="mobletmvc">Mobile MVC framework</link> makes it easier to port an app across multiple platforms. Most of the GUI level plumbing
  is provided by the Mobile Cloud runtime. Only thing that requires porting are the Screen and Command components that are implemented using
  the native programming language/API.
    			</listitem>
@@ -168,7 +168,7 @@
    		<title>Back to the Future</title>
    		<para>
    		The ideal scenario would be to have a standard API/programming language across all platform for native apps. This is highly impractical considering
- we still have not achieved this in a desktop environment, and a mobile computer has many differenting factors that prevent this from happening.
+ we still have not achieved this in a desktop environment, and a mobile computer has many differentiating factors that prevent this from happening.
    		</para>
    		<para>
    		However, what is possible are native apps that use HTML, and CSS for the GUI presentation layer, and Javascript for event handling code. This

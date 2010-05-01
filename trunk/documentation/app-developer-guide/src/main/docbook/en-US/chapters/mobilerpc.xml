@@ -7,7 +7,7 @@
          <email>openmobster@gmail.com</email>
       </author>
    </chapterinfo>
-   <title>Moblet RPC (Remote Procedure Call) Development</title>
+   <title>Mobile RPC (Remote Procedure Call) Development</title>
    <para>
    The <emphasis>MobileService</emphasis> component on the Device-side is used to make synchronous remote service invocations on registered <emphasis>MobileServerBean</emphasis> instances
 on the Cloud Server.
