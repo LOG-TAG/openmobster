@@ -34,11 +34,15 @@ mvn -Dmaven.test.skip -Pfinish-release install
 
 Modifying the project version for creating a new branch or tag:
 -----------------------------------------------------------------
-mvn release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=2.0-M2 -Pbin-release
+mvn release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=2.0-M2 -Pall
 
 
 Updating the Source/License Header:
 -----------------------------------------
  mvn -Pall license:format
+ 
+ Deploy artifacts to the Openmobster Maven Repository located at: http://openmobster.googlecode.com/svn/maven2
+ --------------------------------------------------------------------------------------------------------------
+ mvn -PmobileCloud deploy
 
 

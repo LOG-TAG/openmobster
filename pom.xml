@@ -9,7 +9,7 @@
 
 	<scm>
 		<connection>
-			scm:svn:svn+ssh://openmobster@mobster2/home/openmobster/repo/svn/openmobster/trunk
+			scm:svn:https://openmobster.googlecode.com/svn/trunk
 		</connection>
 	</scm>
 
