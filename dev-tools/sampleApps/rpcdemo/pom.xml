@@ -1,14 +1,14 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- User Provided -->
 	<groupId>com.rpcdemo</groupId>
 	<name>rpcdemo-parent</name>
 	<artifactId>rpcdemo</artifactId>
-	<version>2.0-snapshot</version>
+	<version>2.0-M3</version>
 	<url>http://www.myapp.com</url>	
 	<properties>
-		<openmobster.version>2.0-snapshot</openmobster.version>
+		<openmobster.version>2.0-M3</openmobster.version>
 	</properties>
 
 	<packaging>pom</packaging>
