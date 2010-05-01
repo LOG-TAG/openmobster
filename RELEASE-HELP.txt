@@ -43,6 +43,15 @@ Updating the Source/License Header:
  
  Deploy artifacts to the Openmobster Maven Repository located at: http://openmobster.googlecode.com/svn/maven2
  --------------------------------------------------------------------------------------------------------------
- mvn -PmobileCloud deploy
+ mvn -Pdeploy-core deploy
+ 
+ cd dev-tools/appCreator
+ mvn deploy
+ 
+ cd dev-tools/dev-cloudServer
+ mvn deploy
+ 
+ cd dev-tools/rimos-devcloud
+ mvn deploy
 
 
