@@ -34,6 +34,11 @@
 			<artifactId>api-cloudConnector</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>console-server</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>hsqldb</groupId>
@@ -54,7 +59,7 @@
 
 	<profiles>
 		<profile>
-			<id>devMode</id>
+			<id>runCloud</id>
 			<build>
 				<plugins>
 					<plugin>
