@@ -9,7 +9,7 @@
 
 	<scm>
 		<connection>
-			scm:svn:svn+ssh://openmobster@mobster2/home/openmobster/repo/svn/openmobster/trunk
+			scm:svn:https://openmobster.googlecode.com/svn/trunk
 		</connection>
 	</scm>
 
@@ -31,6 +31,7 @@
 		<module>device-agent-simulator</module>
 		<module>device-agent-frameworks</module>
 		<module>server-testsuite</module>
+		<module>testdrive-server</module>
 		<module>sar</module>
 		<module>cloud-sdk</module>
 	</modules>
@@ -65,6 +66,12 @@
 			<id>finish-release</id>
 			<modules>
 				<module>binary-release</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>deploy-core</id>
+			<modules>
+				<module>mobileCloud</module>
 			</modules>
 		</profile>
 	</profiles>
