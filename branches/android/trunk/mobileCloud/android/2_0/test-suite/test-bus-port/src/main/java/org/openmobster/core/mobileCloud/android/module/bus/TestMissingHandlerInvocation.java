@@ -32,6 +32,7 @@ public class TestMissingHandlerInvocation extends Test
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			throw new RuntimeException(e);
 		}
 	}
 	

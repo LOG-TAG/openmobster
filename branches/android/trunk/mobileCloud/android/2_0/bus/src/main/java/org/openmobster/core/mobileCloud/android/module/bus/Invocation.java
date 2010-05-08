@@ -22,6 +22,7 @@ public class Invocation
 	private String target;
 	private Map<String,Object> input;
 	private Object handshake;
+	private String destinationBus;
 	
 	public Invocation(String target)
 	{
@@ -114,4 +115,21 @@ public class Invocation
 		}
 		return this.input;
 	}	
+	//-------------------------------------------------------------------------------------------------------------------
+	public String calculateDestinationBus()
+	{
+		if(this.destinationBus == null)
+		{
+			return Bus.getInstance().findBus(this);
+		}
+		else
+		{
+			return this.destinationBus;
+		}
+	}
+	
+	public void setDestinationBus(String busId)
+	{
+		this.destinationBus = busId;
+	}
 }

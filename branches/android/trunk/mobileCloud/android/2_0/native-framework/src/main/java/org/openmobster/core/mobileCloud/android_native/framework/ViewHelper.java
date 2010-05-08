@@ -11,6 +11,8 @@ import java.lang.reflect.Field;
 
 import android.app.Activity;
 import android.view.View;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 /**
  * @author openmobster@gmail.com
@@ -32,5 +34,29 @@ public class ViewHelper
 		{
 			return null;
 		}
+	}
+	
+	public static AlertDialog getOkModal(Activity currentActivity, String title,
+	String message)
+	{
+		AlertDialog okModal = null;
+		
+		okModal = new AlertDialog.Builder(currentActivity).
+    	setTitle(title).
+    	setMessage(message).
+    	setCancelable(false).
+    	create();    	
+    	okModal.setButton(DialogInterface.BUTTON_POSITIVE, "OK", 
+			new DialogInterface.OnClickListener() 
+			{
+				
+				public void onClick(DialogInterface dialog, int status)
+				{
+					dialog.dismiss();
+				}
+			}
+    	);
+		
+		return okModal;
 	}
 }

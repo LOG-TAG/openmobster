@@ -38,6 +38,14 @@ final class NativeNavigationContextSPI implements NavigationContextSPI
 	{
 		this.display(screen);
 	}
+	
+	public void refresh()
+	{
+		final Activity currentActivity = (Activity)Registry.getActiveInstance().
+		getContext();
+		
+		currentActivity.getWindow().getDecorView().invalidate();
+	}
 	//--------------------------------------------------------------------------------------------------------------------------------------
 	private void display(Screen screen)
 	{

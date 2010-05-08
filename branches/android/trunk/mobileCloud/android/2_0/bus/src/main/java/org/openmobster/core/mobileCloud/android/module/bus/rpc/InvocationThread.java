@@ -10,7 +10,7 @@ package org.openmobster.core.mobileCloud.android.module.bus.rpc;
 import java.util.Map;
 import java.util.Set;
 
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
+import org.openmobster.core.mobileCloud.android.module.bus.BusException;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
@@ -47,8 +47,6 @@ public class InvocationThread implements Runnable
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace(System.out);
-			
 			SystemException se = new SystemException(this.getClass().getName(),
 			"run", new Object[]{
 				"Exception: "+e.toString(),
@@ -68,10 +66,19 @@ public class InvocationThread implements Runnable
 		{
 			IBinderManager binderManager = IBinderManager.getInstance();
 			
-			//TODO: add support for inter-app binders...but just the internal
-			//bus service for now
-			IBinder binder = binderManager.getBinder(Bus.getInstance().getBusId());
+			//Make the appropriate invocation on the proper Bus
+			//IBinder binder = binderManager.getBinder(Bus.getInstance().getBusId());
 			//IBinder binder = binderManager.getBinder("org.openmobster.core.mobileCloud.android.remote.bus");
+			String destinationBus = invocation.calculateDestinationBus();
+			if(destinationBus == null)
+			{
+				BusException busException = new BusException(this.getClass().getName(),
+				"makeInvocation", new Object[]{"DestinationBus not found for handler: "+
+				invocation.getTarget()});
+				throw busException;
+			}
+			
+			IBinder binder = binderManager.getBinder(destinationBus);
 			
 			if(binder != null)
 			{
@@ -105,8 +112,6 @@ public class InvocationThread implements Runnable
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace(System.out);
-			
 			SystemException se = new SystemException(this.getClass().getName(),
 					"onServiceConnected", new Object[]{
 						"Exception: "+e.toString(),

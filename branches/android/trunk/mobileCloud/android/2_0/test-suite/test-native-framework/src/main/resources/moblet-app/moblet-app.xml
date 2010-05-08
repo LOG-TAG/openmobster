@@ -26,14 +26,21 @@
 	-->
 	
 	<commands>
-		<command id="showerror">org.openmobster.core.mobileCloud.android_native.framework.ShowErrorCommand</command>
-		<command id="remoteerror">org.openmobster.core.mobileCloud.android_native.framework.RemoteErrorCommand</command>
 		<command id="runtestsuite">org.openmobster.core.mobileCloud.android.testsuite.RunTestSuiteCommand</command>
+		<command id="/demo/local">org.openmobster.core.mobileCloud.android_native.framework.command.DemoLocalCommand</command>
+		<command id="/demo/localException">org.openmobster.core.mobileCloud.android_native.framework.command.LocalExceptionCommand</command>
+		<command id="/demo/localAppException">org.openmobster.core.mobileCloud.android_native.framework.command.LocalAppExceptionCommand</command>
+		<command id="/demo/remote">org.openmobster.core.mobileCloud.android_native.framework.command.DemoRemoteCommand</command>
+		<command id="/demo/remoteException">org.openmobster.core.mobileCloud.android_native.framework.command.RemoteExceptionCommand</command>
+		<command id="/demo/remoteAppException">org.openmobster.core.mobileCloud.android_native.framework.command.RemoteAppExceptionCommand</command>
+		<command id="/demo/remote/timeout">org.openmobster.core.mobileCloud.android_native.framework.command.DemoRemoteCommandTimeout</command>
+		<command id="/demo/asyncCommand">org.openmobster.core.mobileCloud.android_native.framework.command.DemoAsyncCommand</command>		
 	</commands>
 	
 	<screens>
 		<screen id="home">org.openmobster.core.mobileCloud.android_native.framework.HomeScreen</screen>
 		<screen id="local">org.openmobster.core.mobileCloud.android_native.framework.LocalScreen</screen>
+		<screen id="remote">org.openmobster.core.mobileCloud.android_native.framework.RemoteScreen</screen>
 	</screens>
 				
 	<!-- optional, uses default if absent -->

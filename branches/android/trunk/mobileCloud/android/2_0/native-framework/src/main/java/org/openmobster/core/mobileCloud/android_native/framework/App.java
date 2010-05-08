@@ -9,12 +9,14 @@ package org.openmobster.core.mobileCloud.android_native.framework;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
 /**
@@ -39,11 +41,7 @@ public class App extends Activity
 			SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
 			
 			//Initialize the kernel
-        	DeviceContainer.getInstance(this).startup();
-        	
-        	//Navigate to the home screen
-			Services.getInstance().getNavigationContext().setHome("home");
-			Services.getInstance().getNavigationContext().home();
+        	DeviceContainer.getInstance(this).startup();        	        	
 		} 
 		catch (Exception e)
 		{
@@ -74,6 +72,46 @@ public class App extends Activity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
+    		e.printStackTrace(System.out);
     	}
+	}
+	
+	
+
+	@Override
+	protected void onResume()
+	{
+		try
+		{
+			//Loads the home screen
+			super.onResume();
+			
+			NavigationContext.getInstance().setHome("home");
+	    	NavigationContext.getInstance().home();
+		}
+		catch(Exception e)
+		{
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), 
+			"onResume", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			}));
+			e.printStackTrace(System.out);
+		}
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu)
+	{				
+		menu.clear();
+		
+		super.onPrepareOptionsMenu(menu);
+		
+	    NavigationContext.getInstance().setAttribute("options-menu", menu);
+	    
+	    //FIXME: This should be a refresh so that current screen is refreshed
+	    NavigationContext.getInstance().refresh();
+	    
+	    return true;
 	}
 }

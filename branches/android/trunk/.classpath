@@ -65,7 +65,8 @@
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/main/resources"/>
 	<classpathentry kind="src" path="server-testsuite/src/test/java"/>
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/test/resources"/>
-	 
+	
+	<!--   
 	<classpathentry kind="src" path="mobileCloud/rimos/cloudManager/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/api/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/native-framework/src/main/java"/>
@@ -85,6 +86,7 @@
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/cloudtests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/ide_hack"/>
+	-->
 	
 	<classpathentry kind="src" path="mobileCloud/android/2_0/api/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/native-framework/src/main/java"/>
@@ -104,14 +106,14 @@
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-native-framework/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/ide_hack"/>
 	
-	
+	<!--  
 	<classpathentry kind="src" path="dev-tools/rimos-devcloud/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/dev-cloudServer/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/appCreator/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-rimos/src/main/java" />
-	
+	-->
 	
 	<classpathentry kind="output" path="bin"/>
 	

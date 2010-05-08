@@ -9,6 +9,7 @@ package org.openmobster.core.mobileCloud.android.module.bus.rpc;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
 
 import android.os.IBinder;
 import android.content.ComponentName;
@@ -16,13 +17,10 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.Context;
 
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
+import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.module.bus.BusRegistration;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.service.Registry;
-
-/**
- * TODO: Add support for remote (inter-app) invocations
- */
 
 /**
  * @author openmobster@gmail.com
@@ -37,13 +35,26 @@ public final class IBinderManager extends Service
 	}
 
 	public void start()
-	{				
-		this.liveBinders = new HashMap<String,IBinder>();
-		
-		
-		//Bind the local bus
-		//TODO: add support for remote buses (inter-app invocations)
-		this.bind(Bus.getInstance().getBusId());
+	{
+		try
+		{
+			this.liveBinders = new HashMap<String,IBinder>();
+			
+			
+			//Bind to all the OpenMobster Buses on the device
+			Set<String> allBuses = BusRegistration.allBuses();
+			for(String bus:allBuses)
+			{
+				this.bind(bus);
+			}
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(),"start",new Object[]{
+				"Exception: "+e.toString(),
+				"Message: "+e.getMessage()
+			});
+		}
 	}
 
 	public void stop()

@@ -17,37 +17,29 @@ import org.openmobster.core.mobileCloud.android.module.bus.MobilePushMetaData;
  * @author openmobster
  *
  */
-public class TestBusInvocation extends Test
+public class TestBusBroadcast extends Test
 {	
 	public void runTest()
 	{
 		try
 		{
+			BusRegistration remoteBus = new BusRegistration("org.openmobster.core.mobileCloud.android.remote.bus");
+			remoteBus.addInvocationHandler("org.openmobster.core.mobileCloud.android.remote.bus.MockInvocationHandler");
+			remoteBus.addInvocationHandler(MockBroadcastInvocationHandler.class.getName());
+			remoteBus.save();
+			
 			Bus bus = Bus.getInstance();
-			bus.register(new MockInvocationHandler());
+			bus.register(new MockBroadcastInvocationHandler());
+			
 			
 			MobilePushMetaData metadata = new MobilePushMetaData("emailChannel", "uid:blah@blah.com");
 			metadata.setAdded(true);
 			
 			MobilePushInvocation invocation = new MobilePushInvocation(
-			MockInvocationHandler.class.getName());
+			MockBroadcastInvocationHandler.class.getName());
 			invocation.addMobilePushMetaData(metadata);
 			
-			InvocationResponse response = bus.invokeService(invocation);
-			
-			if(response != null)
-			{
-				Map<String,String> shared = response.getShared();
-				Set<String> keys = shared.keySet();
-				for(String key:keys)
-				{
-					System.out.println(key+": "+shared.get(key));
-				}
-			}
-			else
-			{
-				assertFalse(true,this.getInfo()+"/ResponseMustNotBeNull");
-			}
+			bus.broadcast(invocation);
 		}
 		catch(Exception e)
 		{
