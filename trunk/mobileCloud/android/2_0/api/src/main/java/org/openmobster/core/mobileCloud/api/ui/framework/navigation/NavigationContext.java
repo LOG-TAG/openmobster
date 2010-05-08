@@ -141,6 +141,17 @@ public final class NavigationContext
 		Screen screen = screenManager.find(screenId);
 		SPIServices.getInstance().getNavigationContextSPI().navigate(screen);
 	}
+	
+	public void refresh()
+	{
+		String currentId = (String)this.contextManager.getAttribute("current");
+		
+		ScreenManager screenManager = ScreenManager.getInstance();
+		screenManager.forceRender(currentId);
+		Screen screen = screenManager.find(currentId);
+		screen.postRender();
+		SPIServices.getInstance().getNavigationContextSPI().refresh();
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 	public void setHome(String homeId)
 	{

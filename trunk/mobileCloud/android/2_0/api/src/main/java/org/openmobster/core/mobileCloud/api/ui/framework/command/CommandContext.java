@@ -56,4 +56,29 @@ public final class CommandContext
 	{
 		return (this.attrMgr.getAttribute("error") != null);
 	}
+	//--------------------------------------------------------------------------
+	public void activateTimeout()
+	{
+		this.attrMgr.setAttribute("activate-timeout", "");
+	}
+	
+	public void deactivateTimeout()
+	{
+		this.attrMgr.removeAttribute("activate-timeout");
+	}
+	
+	public boolean isTimeoutActivated()
+	{
+		return (this.attrMgr.getAttribute("activate-timeout")!=null);
+	}
+	//----------------------------------------------------------------------------
+	public Object getAppContext()
+	{
+		return this.attrMgr.getAttribute("app-context");
+	}
+	
+	public void setAppContext(Object appContext)
+	{
+		this.attrMgr.setAttribute("app-context", appContext);
+	}
 }

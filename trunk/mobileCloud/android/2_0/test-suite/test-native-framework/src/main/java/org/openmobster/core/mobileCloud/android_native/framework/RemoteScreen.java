@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.android.testsuite;
+package org.openmobster.core.mobileCloud.android_native.framework;
 
 import java.lang.reflect.Field;
 
@@ -14,13 +14,14 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
 import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
@@ -28,11 +29,11 @@ import android.widget.Button;
 /**
  * @author openmobster@gmail.com
  */
-public class HomeScreen extends Screen
+public class RemoteScreen extends Screen
 {	
 	private Integer screenId;
 	
-	public HomeScreen()
+	public RemoteScreen()
 	{										
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -44,15 +45,13 @@ public class HomeScreen extends Screen
 			getContext();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String main = "tests";
+			String main = "remote";
 			Class clazz = Class.forName(layoutClass);
 			Field field = clazz.getField(main);
 			this.screenId = field.getInt(clazz);
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace(System.out);
-			
 			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
@@ -68,26 +67,22 @@ public class HomeScreen extends Screen
 	}
 	
 	public void postRender()
-	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+	{								
+		//setup menu
+		Menu menu = (Menu)NavigationContext.getInstance().
+		getAttribute("options-menu");
 		
-		//Add the event handlers
-		//Find the run_button
-		Button runTestSuite = (Button)ViewHelper.findViewById(currentActivity, 
-		"runtestsuite");
-		runTestSuite.setOnClickListener(
-				new OnClickListener()
+		if(menu != null)
+		{
+			MenuItem backItem = menu.add(0, 0, 0, "Back");
+			backItem.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
-					public void onClick(View clicked)
-					{
-						//Execute TestSuite
-						CommandService service = Services.getInstance().getCommandService();
-						CommandContext commandContext = new CommandContext();
-						commandContext.setTarget("runtestsuite");
-						service.execute(commandContext);
-					}
+					Services.getInstance().getNavigationContext().back();
+					return true;
 				}
-		);
+			});
+		}
 	}
 }

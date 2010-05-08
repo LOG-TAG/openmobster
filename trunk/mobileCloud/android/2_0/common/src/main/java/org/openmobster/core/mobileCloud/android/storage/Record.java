@@ -111,5 +111,5 @@ public final class Record
 			this.state = new HashMap<String, String>();
 		}
 		return this.state;
-	}	
+	}
 }

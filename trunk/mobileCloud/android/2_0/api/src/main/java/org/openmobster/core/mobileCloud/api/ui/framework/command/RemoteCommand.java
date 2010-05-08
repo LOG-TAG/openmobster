@@ -11,6 +11,6 @@ package org.openmobster.core.mobileCloud.api.ui.framework.command;
 /**
  * @author openmobster@gmail.com
  */
-public interface RemoteCommand extends Command
+public interface RemoteCommand extends UIInitiatedCommand
 {
 }

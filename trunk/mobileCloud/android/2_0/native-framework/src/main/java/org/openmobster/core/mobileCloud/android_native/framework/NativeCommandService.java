@@ -12,7 +12,7 @@ import android.os.Handler;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.Command;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 
@@ -25,10 +25,11 @@ final class NativeCommandService extends CommandService
 	public void execute(CommandContext commandContext) 
 	{
 		try
-		{
-			Command command = find(commandContext.getTarget());
-			
+		{						
 			Handler handler = new Handler();
+			
+			commandContext.setAppContext(Registry.getActiveInstance().
+			getContext());
 			handler.post(new ExecuteOnEDT(commandContext));
 		}
 		catch(Exception e)

@@ -13,8 +13,6 @@ package org.openmobster.core.mobileCloud.api.ui.framework.command;
  */
 public interface Command 
 {	
-	public void doViewBefore(CommandContext commandContext);
-	
 	public void doAction(CommandContext commandContext);	
 	
 	public void doViewAfter(CommandContext commandContext);

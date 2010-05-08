@@ -14,15 +14,16 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 
 /**
  * @author openmobster@gmail.com
@@ -65,22 +66,22 @@ public class LocalScreen extends Screen
 	}
 	
 	public void postRender()
-	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+	{								
+		//setup menu
+		Menu menu = (Menu)NavigationContext.getInstance().
+		getAttribute("options-menu");
 		
-		//Add the event handlers
-		//Find the run_button
-		Button back = (Button)ViewHelper.findViewById(currentActivity, 
-		"back");
-		back.setOnClickListener(
-				new OnClickListener()
+		if(menu != null)
+		{			
+			MenuItem backItem = menu.add(0, 0, 0, "Back");
+			backItem.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
-					public void onClick(View clicked)
-					{
-						Services.getInstance().getNavigationContext().back();
-					}
+					Services.getInstance().getNavigationContext().back();
+					return true;
 				}
-		);
+			});
+		}
 	}
 }

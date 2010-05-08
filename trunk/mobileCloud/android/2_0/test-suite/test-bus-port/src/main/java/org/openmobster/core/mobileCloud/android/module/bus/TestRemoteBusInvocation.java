@@ -3,23 +3,15 @@
  */
 package org.openmobster.core.mobileCloud.android.module.bus;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import android.content.Context;
-import android.os.IBinder;
-
-import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.testsuite.Test;
 
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.android.module.bus.MobilePushInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.MobilePushMetaData;
-import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
-
-import android.content.ServiceConnection;
 
 /**
  * @author openmobster
@@ -31,11 +23,16 @@ public class TestRemoteBusInvocation extends Test
 	{
 		try
 		{
-			Bus bus = Bus.getInstance();
-			IBinderManager bm = IBinderManager.getInstance();
-			bm.bind("org.openmobster.core.mobileCloud.android.remote.bus");
+			//Invoke this to setup testsuite state by registering the remote mockinv
+			//ocation handler
+			BusRegistration remoteBus = new BusRegistration("org.openmobster.core.mobileCloud.android.remote.bus");
+			remoteBus.addInvocationHandler("org.openmobster.core.mobileCloud.android.remote.bus.MockInvocationHandler");
+			remoteBus.save();
 			
-			MobilePushMetaData metadata = new MobilePushMetaData("emailChannel", "uid:blah@blah.com");
+			Bus bus = Bus.getInstance();
+			
+			MobilePushMetaData metadata = new MobilePushMetaData("emailChannel", 
+			"uid:blah@blah.com");
 			metadata.setAdded(true);
 			
 			MobilePushInvocation invocation = new MobilePushInvocation(
@@ -50,7 +47,9 @@ public class TestRemoteBusInvocation extends Test
 				response = bus.invokeService(invocation);
 			}while(response == null && (counter--)>0);
 			
-			if(response != null)
+			if(response != null && 
+			   response.getShared()!=null && 
+			   !response.getShared().isEmpty())
 			{
 				Map<String,String> shared = response.getShared();
 				Set<String> keys = shared.keySet();
@@ -67,6 +66,7 @@ public class TestRemoteBusInvocation extends Test
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			throw new RuntimeException(e);
 		}
 	}
 }

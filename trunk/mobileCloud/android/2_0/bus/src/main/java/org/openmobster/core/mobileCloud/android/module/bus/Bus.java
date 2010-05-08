@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.android.module.bus;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.HashMap;
 
 import android.content.Context;
@@ -28,13 +29,6 @@ import org.openmobster.core.mobileCloud.android.module.bus.rpc.InvocationThread;
  * 
  */
 
-/**
- * FIXME: 
- * 
- * Figure out the appropriate BusId (App) that should be sent the Invocation without
- * introducing this knowledge into an Invocation. Invocation should only carry its InvocationHandler
- * as a target (probably some kind of shared bus registry)
- */
 
 /**
  * Represents the Service Bus installed as part of each mobile application's infrastructure stack. It is used for making inter-application Service Bus 
@@ -66,12 +60,31 @@ public final class Bus extends Service
 			
 			Context context = Registry.getActiveInstance().getContext();
 			this.busId = context.getPackageName();
+			
+			//Load the BusRegistration
+			BusRegistration reg = BusRegistration.query(this.busId);
+			if(reg == null)
+			{
+				//create this registration
+				reg = new BusRegistration(this.busId);
+				reg.save();
+			}
+			else
+			{
+				//load the handlers based on registration
+				Set<String> handlers = reg.getInvocationHandlers();
+				if(handlers != null)
+				{
+					for(String handler:handlers)
+					{
+						this.invocationHandlers.put(handler, 
+						(InvocationHandler)Class.forName(handler).newInstance());
+					}
+				}
+			}
 		}
 		catch(Exception e)
-		{
-			//TODO: clean this
-			e.printStackTrace(System.out);
-			
+		{						
 			throw new SystemException(this.getClass().getName(), "start", new Object[]{e.getMessage()});
 		}
 	}
@@ -84,10 +97,7 @@ public final class Bus extends Service
 			this.busId = null;
 		}
 		catch(Exception e)
-		{
-			//TODO: clean this
-			e.printStackTrace(System.out);
-			
+		{						
 			SystemException syse = new SystemException(this.getClass().getName(), "stop", new Object[]{e.getMessage()});
 			ErrorHandler.getInstance().handle(syse);
 		}
@@ -153,8 +163,28 @@ public final class Bus extends Service
 			//TODO: Make this an async call...Not urgent
 			//Currently this is invoked by background components....so usability should not be affected
 			//by the wait
-			
-			this.invokeService(invocation);
+			String targetHandler = invocation.getTarget();
+			Set<BusRegistration> all = BusRegistration.queryAll();
+			if(all != null)
+			{
+				for(BusRegistration currentBus:all)
+				{
+					if(currentBus.getInvocationHandlers().contains(targetHandler))
+					{
+						//Start an invocation
+						InvocationThread invoker = new InvocationThread();
+						invocation.setDestinationBus(currentBus.getBusId());
+						invoker.setInvocation(invocation);
+				
+						Thread t = new Thread(invoker);
+						t.start();
+									
+						invocation.startHandshake();
+						invocation.setDestinationBus(null);
+						invocation.getShared().remove("response");
+					}
+				}
+			}
 		}
 		catch(Exception e)
 		{
@@ -168,24 +198,59 @@ public final class Bus extends Service
 		}
 	}
 	
-	public InvocationHandler findHandler(String target)
+	public void register(InvocationHandler handler) throws BusException
 	{
-		InvocationHandler handler = this.invocationHandlers.get(target);
-		
-		if(handler == null)
+		try
 		{
-			try
-			{
-				handler = (InvocationHandler)Class.forName(target).newInstance();
-				this.invocationHandlers.put(target, handler);
-			}
-			catch(Exception e)
-			{
-				//some reason handler cannot be found or initialized...bogus class etc
-				return null;
-			}
+			String target = handler.getClass().getName();
+			this.invocationHandlers.put(target, handler);
+			
+			
+			BusRegistration reg = BusRegistration.query(busId);
+			reg.addInvocationHandler(target);
+			reg.save();
 		}
-		
-		return handler;
+		catch(Exception e)
+		{						
+			BusException be = new BusException(this.getClass().getName(),"register",
+			new Object[]{
+				"InvocationHandler: "+handler.getClass().getName(),
+				"Exception: "+e.toString(),
+				"Message: "+e.getMessage()
+			});
+			ErrorHandler.getInstance().handle(be);
+			throw be;
+		}
+	}
+	//---------------------------------------------------------------------------------------------
+	public InvocationHandler findHandler(String target)
+	{					
+		return this.invocationHandlers.get(target);
+	}
+	
+	public String findBus(Invocation invocation)
+	{
+		try
+		{
+			Set<BusRegistration> allBuses = BusRegistration.queryAll();
+			String targetHandler = invocation.getTarget();
+			
+			if(allBuses != null)
+			{
+				for(BusRegistration cour:allBuses)
+				{
+					if(cour.getInvocationHandlers().contains(targetHandler))
+					{
+						return cour.getBusId();
+					}
+				}								
+			}
+			
+			return null;
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 }

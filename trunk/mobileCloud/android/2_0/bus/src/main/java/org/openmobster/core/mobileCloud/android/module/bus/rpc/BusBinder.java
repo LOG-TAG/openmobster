@@ -68,8 +68,6 @@ public final class BusBinder extends Binder implements Serializable
 		}
 		catch(Throwable t)
 		{
-			t.printStackTrace(System.out);
-			
 			SystemException se = new SystemException(this.getClass().getName(),"handleInvocation",
 			new Object[]{
 				"Exception: "+t.toString(),
