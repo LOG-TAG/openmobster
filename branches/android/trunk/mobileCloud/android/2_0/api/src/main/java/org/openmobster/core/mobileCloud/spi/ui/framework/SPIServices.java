@@ -37,6 +37,11 @@ public final class SPIServices
 		}
 		return SPIServices.singleton;
 	}
+	
+	public static void stopSingleton()
+	{
+		SPIServices.singleton = null;
+	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------
 	public NavigationContextSPI getNavigationContextSPI() 
 	{

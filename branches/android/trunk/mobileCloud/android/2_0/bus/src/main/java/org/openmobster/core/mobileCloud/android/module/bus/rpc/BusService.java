@@ -7,15 +7,9 @@
  */
 package org.openmobster.core.mobileCloud.android.module.bus.rpc;
 
-import java.lang.reflect.Method;
-
-import android.content.Context;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-
-import org.openmobster.core.mobileCloud.android.service.Registry;
 
 /**
  * @author openmobster@gmail.com
@@ -35,7 +29,8 @@ public class BusService extends Service
 	@Override
 	public void onCreate()
 	{
-		try
+		super.onCreate();
+		/*try
 		{
 			super.onCreate();		
 			
@@ -50,7 +45,7 @@ public class BusService extends Service
 		catch(Exception e)
 		{
 			throw new RuntimeException(e);
-		}
+		}*/
 	}
 
 
@@ -58,7 +53,8 @@ public class BusService extends Service
 	@Override
 	public void onDestroy()
 	{
-		try
+		super.onDestroy();
+		/*try
 		{						
 			if(Registry.isActive())
 			{
@@ -78,7 +74,7 @@ public class BusService extends Service
 		catch(Exception e)
 		{
 			throw new RuntimeException(e);
-		}
+		}*/
 	}
 
 
@@ -100,7 +96,7 @@ public class BusService extends Service
 		}
 	}
 	
-	private Object getDeviceContainer() throws Exception
+	/*private Object getDeviceContainer() throws Exception
 	{
 		Object deviceContainer = null;
 		Class deviceContainerClass = Class.forName("org.openmobster.core.mobileCloud.android.kernel.DeviceContainer");
@@ -110,5 +106,5 @@ public class BusService extends Service
 		deviceContainer = getInstance.invoke(null, new Object[]{this});
 		
 		return deviceContainer;
-	}
+	}*/
 }

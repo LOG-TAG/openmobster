@@ -21,7 +21,6 @@
 		<module>test-mobileObject-port</module>	
 		<module>test-sync-port</module>	
 		<module>test-bus-port</module>
-		<module>test-remote-bus</module>
 		<module>test-connection-port</module>	
 		<module>test-native-framework</module>
 	</modules>

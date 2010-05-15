@@ -55,6 +55,11 @@ public final class AppConfig
 		return AppConfig.singleton;
 	}
 	
+	public static void stopSingleton()
+	{
+		AppConfig.singleton = null;
+	}
+	
 	public synchronized void init()
 	{
 		try

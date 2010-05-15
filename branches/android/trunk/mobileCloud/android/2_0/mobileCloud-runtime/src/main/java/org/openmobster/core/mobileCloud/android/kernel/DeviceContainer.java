@@ -21,6 +21,9 @@ import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
+
+import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
+import org.openmobster.core.mobileCloud.android.module.bus.MockBroadcastInvocationHandler;
 //import org.openmobster.core.mobileCloud.android.module.connection.CommandProcessor;
 //import org.openmobster.core.mobileCloud.android.module.connection.NotificationListener;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
@@ -144,6 +147,10 @@ public final class DeviceContainer
 			//MobileObject Database services			
 			services.add(new MobileObjectDatabase());
 			
+			//Invocation Handlers
+			services.add(new MockInvocationHandler());
+			services.add(new MockBroadcastInvocationHandler());
+			
 			Registry.getActiveInstance().start(services);
 		}
 		catch(Exception e)
@@ -214,5 +221,11 @@ public final class DeviceContainer
 	public boolean isContainerActive()
 	{
 		return Registry.getActiveInstance().isStarted();
-	}		
+	}	
+	
+	public synchronized void propagateNewContext(Context context)
+	{
+		this.context = context;
+		Registry.getActiveInstance().setContext(context);
+	}
 }

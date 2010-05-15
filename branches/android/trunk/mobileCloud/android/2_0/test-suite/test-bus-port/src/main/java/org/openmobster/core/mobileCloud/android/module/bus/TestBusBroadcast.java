@@ -22,16 +22,7 @@ public class TestBusBroadcast extends Test
 	public void runTest()
 	{
 		try
-		{
-			BusRegistration remoteBus = new BusRegistration("org.openmobster.core.mobileCloud.android.remote.bus");
-			remoteBus.addInvocationHandler("org.openmobster.core.mobileCloud.android.remote.bus.MockInvocationHandler");
-			remoteBus.addInvocationHandler(MockBroadcastInvocationHandler.class.getName());
-			remoteBus.save();
-			
-			Bus bus = Bus.getInstance();
-			bus.register(new MockBroadcastInvocationHandler());
-			
-			
+		{															
 			MobilePushMetaData metadata = new MobilePushMetaData("emailChannel", "uid:blah@blah.com");
 			metadata.setAdded(true);
 			
@@ -39,7 +30,7 @@ public class TestBusBroadcast extends Test
 			MockBroadcastInvocationHandler.class.getName());
 			invocation.addMobilePushMetaData(metadata);
 			
-			bus.broadcast(invocation);
+			Bus.getInstance().broadcast(invocation);
 		}
 		catch(Exception e)
 		{

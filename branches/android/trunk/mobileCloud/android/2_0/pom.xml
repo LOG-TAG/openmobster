@@ -37,6 +37,7 @@
 	</dependencies>
 
 	<modules>
+		<module>cloudManager</module>
 		<module>common</module>
 		<module>mobileObject</module>
 		<module>sync</module>
@@ -44,7 +45,11 @@
 		<module>connection</module>
 		<module>api</module>
 		<module>mobileCloud-runtime</module>
+		<module>moblet-runtime</module>
 		<module>native-framework</module>
 		<module>test-suite</module>
+		<!-- aggregations -->
+		<module>device-sdk</module>
+		<module>mobileCloud</module>
 	</modules>
 </project>

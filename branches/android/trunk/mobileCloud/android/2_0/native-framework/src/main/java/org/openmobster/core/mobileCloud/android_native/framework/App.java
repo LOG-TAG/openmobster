@@ -41,6 +41,7 @@ public class App extends Activity
 			SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
 			
 			//Initialize the kernel
+			DeviceContainer.getInstance(this).propagateNewContext(this);
         	DeviceContainer.getInstance(this).startup();        	        	
 		} 
 		catch (Exception e)
@@ -58,9 +59,7 @@ public class App extends Activity
 	protected void onDestroy()
 	{								
     	try
-    	{    		    		
-    		DeviceContainer.getInstance(this).shutdown();
-    		
+    	{    		    		    		    		
     		//TODO: Destroy other singleton state
     		Configuration.stopSingleton();
     		
