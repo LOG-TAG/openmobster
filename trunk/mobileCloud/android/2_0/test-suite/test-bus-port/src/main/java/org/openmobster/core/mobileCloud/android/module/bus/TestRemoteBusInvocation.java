@@ -24,11 +24,7 @@ public class TestRemoteBusInvocation extends Test
 		try
 		{
 			//Invoke this to setup testsuite state by registering the remote mockinv
-			//ocation handler
-			BusRegistration remoteBus = new BusRegistration("org.openmobster.core.mobileCloud.android.remote.bus");
-			remoteBus.addInvocationHandler("org.openmobster.core.mobileCloud.android.remote.bus.MockInvocationHandler");
-			remoteBus.save();
-			
+			//ocation handler						
 			Bus bus = Bus.getInstance();
 			
 			MobilePushMetaData metadata = new MobilePushMetaData("emailChannel", 
@@ -36,7 +32,7 @@ public class TestRemoteBusInvocation extends Test
 			metadata.setAdded(true);
 			
 			MobilePushInvocation invocation = new MobilePushInvocation(
-			"org.openmobster.core.mobileCloud.android.remote.bus.MockInvocationHandler");
+			"org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler");
 			invocation.addMobilePushMetaData(metadata);
 			
 			InvocationResponse response = null;

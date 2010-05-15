@@ -5,13 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.core.mobileCloud.android.module.bus;
+package org.openmobster.core.mobileCloud.android.invocation;
 
 import java.util.Map;
 import java.util.Set;
 
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.InvocationHandler;
 import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
@@ -20,7 +21,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
  * @author openmobster@gmail.com
  *
  */
-public class MockBroadcastInvocationHandler extends Service implements InvocationHandler
+public class MockInvocationHandler extends Service implements InvocationHandler
 {
 	@Override
 	public void start()
@@ -54,18 +55,8 @@ public class MockBroadcastInvocationHandler extends Service implements Invocatio
 		for(String key:keys)
 		{
 			Object value = input.get(key);			
-			response.setValue(key, "broadcast://"+value.toString());
+			response.setValue(key, "remote://"+value.toString());
 		}
-		
-		//Indicate broadcast invoked..
-		Map<String,String> shared = response.getShared();
-		keys = shared.keySet();
-		System.out.println("---------------------------------");
-		for(String key:keys)
-		{
-			System.out.println(key+": "+shared.get(key));
-		}
-		System.out.println("---------------------------------");
 		
 		return response;
 	}

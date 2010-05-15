@@ -60,6 +60,11 @@ public final class Services
 		}
 		return Services.singleton;
 	}
+	
+	public static void stopSingleton()
+	{
+		Services.singleton = null;
+	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------
 	public AppResources getResources() 
 	{		

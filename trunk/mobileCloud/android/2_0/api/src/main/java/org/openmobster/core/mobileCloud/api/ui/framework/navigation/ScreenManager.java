@@ -40,6 +40,11 @@ final class ScreenManager
 		}
 		return ScreenManager.singleton;
 	}
+	
+	static void stopSingleton()
+	{
+		ScreenManager.singleton = null;
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	void register(String id, Screen screen)
 	{

@@ -77,6 +77,12 @@ public final class NavigationContext
 		
 		return NavigationContext.singleton;
 	}
+	
+	public static void stopSingleton()
+	{
+		NavigationContext.singleton = null;
+		ScreenManager.stopSingleton();
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	public void back()
 	{

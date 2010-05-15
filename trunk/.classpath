@@ -90,6 +90,7 @@
 	
 	<classpathentry kind="src" path="mobileCloud/android/2_0/api/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/native-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/cloudManager/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/common/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/mobileObject/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/bus/src/main/java"/>
@@ -100,7 +101,6 @@
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-common-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-mobileObject-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-bus-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-remote-bus/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-sync-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-connection-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-native-framework/src/main/java"/>
