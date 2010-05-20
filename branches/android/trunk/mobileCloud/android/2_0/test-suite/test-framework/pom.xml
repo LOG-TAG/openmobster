@@ -35,6 +35,11 @@
         	<artifactId>native-framework</artifactId>
         	<version>${project.version}</version>
     	</dependency>
+    	<dependency>
+    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+        	<artifactId>mobileCloud-runtime</artifactId>
+        	<version>${project.version}</version>
+    	</dependency>
     </dependencies>
 
     <build>

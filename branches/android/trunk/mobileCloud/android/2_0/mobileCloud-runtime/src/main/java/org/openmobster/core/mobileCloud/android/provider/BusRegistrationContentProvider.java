@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.core.mobileCloud.android.module.bus.provider;
+package org.openmobster.core.mobileCloud.android.provider;
 
 import java.util.Set;
 import java.util.Map.Entry;

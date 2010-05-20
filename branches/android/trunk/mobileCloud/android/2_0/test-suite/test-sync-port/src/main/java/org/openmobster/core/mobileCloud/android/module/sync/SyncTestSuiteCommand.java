@@ -7,7 +7,6 @@
  */
 package org.openmobster.core.mobileCloud.android.module.sync;
 
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;

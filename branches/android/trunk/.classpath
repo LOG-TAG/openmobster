@@ -97,7 +97,10 @@
 	<classpathentry kind="src" path="mobileCloud/android/2_0/connection/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/sync/src/main/java"/>	
 	<classpathentry kind="src" path="mobileCloud/android/2_0/mobileCloud-runtime/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/moblet-runtime/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-cloudManager/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-api-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-common-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-mobileObject-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-bus-port/src/main/java"/>

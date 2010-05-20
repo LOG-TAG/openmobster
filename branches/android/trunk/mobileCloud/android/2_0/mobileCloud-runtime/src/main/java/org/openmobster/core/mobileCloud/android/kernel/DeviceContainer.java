@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import android.content.Context;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Database;
@@ -22,16 +21,16 @@ import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
 
-import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
-import org.openmobster.core.mobileCloud.android.module.bus.MockBroadcastInvocationHandler;
-//import org.openmobster.core.mobileCloud.android.module.connection.CommandProcessor;
-//import org.openmobster.core.mobileCloud.android.module.connection.NotificationListener;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncObjectGenerator;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.Daemon;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
 import org.openmobster.core.mobileCloud.android.module.sync.engine.SyncDataSource;
+import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
+import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
+import org.openmobster.core.mobileCloud.android.module.bus.MockBroadcastInvocationHandler;
+import org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler;
 
 //TODO: finish porting
 /*import org.openmobster.core.mobileCloud.invocation.SwitchSecurityMode;
@@ -121,7 +120,9 @@ public final class DeviceContainer
 			services.addElement(StartCometDaemon.class);
 			services.addElement(SwitchSecurityMode.class);
 			services.addElement(CometRecycleHandler.class);
+			services.addElement(CometStatusHandler.class);
 			services.addElement(ChannelBootupHandler.class);
+			services.addElement(StopCometDaemon.class);
 																											
 			Registry.getInstance().start(services);									
 			
@@ -147,11 +148,21 @@ public final class DeviceContainer
 			//MobileObject Database services			
 			services.add(new MobileObjectDatabase());
 			
+			//FIXME: add this for handling Push notifications
+			//services.add(new AppNotificationInvocationHandler());
+			
+			//Moblet App State management service			
+			services.add(new AppStateManager());
+			
 			//Invocation Handlers
 			services.add(new MockInvocationHandler());
 			services.add(new MockBroadcastInvocationHandler());
-			
+			services.add(new SyncInvocationHandler());
+									
 			Registry.getActiveInstance().start(services);
+			
+			//Schedules a background task that silently loads proxies from the server
+			LoadProxyDaemon.getInstance().scheduleProxyTask();
 		}
 		catch(Exception e)
 		{

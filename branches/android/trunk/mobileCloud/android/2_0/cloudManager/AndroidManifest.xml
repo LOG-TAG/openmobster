@@ -4,7 +4,7 @@
       android:versionCode="1"
       android:versionName="1.0">
     <application android:label="@string/app_name" android:icon="@drawable/icon">
-        <activity android:name="org.openmobster.core.mobileCloud.android_native.framework.App"
+        <activity android:name="org.openmobster.core.mobileCloud.manager.CloudManagerApp"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,24 @@
         </service>
         
         <!-- central Bus Service storage for all the Buses on the device -->
-        <provider android:name="org.openmobster.core.mobileCloud.android.module.bus.provider.BusRegistrationContentProvider"
+        <provider android:name="org.openmobster.core.mobileCloud.android.provider.BusRegistrationContentProvider"
           android:authorities="org.openmobster.core.mobileCloud.android.module.bus.provider" 
         />
+        
+        <!-- central container status provider -->
+        <provider android:name="org.openmobster.core.mobileCloud.android.provider.ContainerContentProvider"
+          android:authorities="org.openmobster.core.mobileCloud.android.provider.container" 
+        />
+        
+        <!-- central configuration provider -->
+        <provider android:name="org.openmobster.core.mobileCloud.android.provider.ConfigurationProvider"
+          android:authorities="org.openmobster.core.mobileCloud.android.provider.configuration" 
+        />
+        
+        <!-- central provider for mobile channels -->
+        <provider android:name="org.openmobster.core.mobileCloud.android.provider.MobileChannelProvider"
+          android:authorities="org.openmobster.core.mobileCloud.android.provider.mobile.channels" 
+        />
     </application>
-</manifest> 
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

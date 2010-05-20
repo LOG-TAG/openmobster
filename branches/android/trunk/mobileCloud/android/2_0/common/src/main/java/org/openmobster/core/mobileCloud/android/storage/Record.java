@@ -67,7 +67,7 @@ public final class Record
 		}
 		if(value == null)
 		{
-			throw new IllegalArgumentException("Value cannot be Null");
+			value = "";
 		}
 		
 		this.getState().put(name, value);

@@ -23,5 +23,6 @@
 		<module>test-bus-port</module>
 		<module>test-connection-port</module>	
 		<module>test-native-framework</module>
+		<module>test-api-port</module>
 	</modules>
 </project>

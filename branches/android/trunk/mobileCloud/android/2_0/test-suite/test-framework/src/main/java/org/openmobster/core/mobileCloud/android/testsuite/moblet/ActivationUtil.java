@@ -89,6 +89,8 @@ public final class ActivationUtil
 			conf.setPlainServerPort(port);
 		}
 		conf.setActive(false);
+		conf.setAuthenticationHash(null);
+		conf.setAuthenticationNonce(null);
 		
 		conf.save(context);
 		
