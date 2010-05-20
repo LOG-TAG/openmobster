@@ -11,10 +11,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.ContentResolver;
+import android.net.Uri;
+import android.database.Cursor;
+import android.content.ContentValues;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.storage.Database;
-import org.openmobster.core.mobileCloud.android.storage.Record;
 
 /**
  * Concurrency Marker: Inter-App Shared State component
@@ -23,6 +25,14 @@ import org.openmobster.core.mobileCloud.android.storage.Record;
  */
 public class Configuration
 {
+	private static final Uri uri;
+	
+	static
+	{
+		uri = Uri.
+		parse("content://org.openmobster.core.mobileCloud.android.provider.configuration");
+	}
+	
 	private static Configuration singleton;
 	
 	private String deviceId;
@@ -50,21 +60,7 @@ public class Configuration
 	public synchronized void start(Context context) 
 	{
 		try
-		{
-			Database database = Database.getInstance(context);
-			
-			//Initialize the provisioning table
-			if(!database.doesTableExist(Database.provisioning_table))
-			{
-				database.createTable(Database.provisioning_table);	
-			}
-			
-			if(database.isTableEmpty(Database.provisioning_table))
-			{
-				//Create an empty provisioning record
-				database.insert(Database.provisioning_table, new Record());
-			}
-			
+		{						
 			this.load(context);												
 		}
 		catch(Exception dbe)
@@ -340,61 +336,61 @@ public class Configuration
 	{
 		try
 		{			
-			Record provisioningRecord = Database.getInstance(context).selectAll(Database.provisioning_table).
-			iterator().next();
-		
+			ContentResolver resolver = context.getContentResolver();
+			ContentValues provisioningRecord = new ContentValues();
+					
 			if(this.deviceId != null)
 			{
-				provisioningRecord.setValue("deviceId", this.deviceId);
+				provisioningRecord.put("deviceId", this.deviceId);
 			}
 			if(this.serverId != null)
 			{
-				provisioningRecord.setValue("serverId", this.serverId);
+				provisioningRecord.put("serverId", this.serverId);
 			}
 			if(this.serverIp != null)
 			{
-				provisioningRecord.setValue("serverIp", this.serverIp);
+				provisioningRecord.put("serverIp", this.serverIp);
 			}
 			if(this.plainServerPort != null)
 			{
-				provisioningRecord.setValue("plainServerPort", this.plainServerPort);
+				provisioningRecord.put("plainServerPort", this.plainServerPort);
 			}
 			if(this.secureServerPort != null)
 			{
-				provisioningRecord.setValue("secureServerPort", this.secureServerPort);
+				provisioningRecord.put("secureServerPort", this.secureServerPort);
 			}			
 			if(this.authenticationHash != null)
 			{
-				provisioningRecord.setValue("authenticationHash", this.authenticationHash);
+				provisioningRecord.put("authenticationHash", this.authenticationHash);
 			}
 			if(this.authenticationNonce != null)
 			{
-				provisioningRecord.setValue("authenticationNonce", this.authenticationNonce);
+				provisioningRecord.put("authenticationNonce", this.authenticationNonce);
 			}
 			if(this.email != null)
 			{
-				provisioningRecord.setValue("email", this.email);
+				provisioningRecord.put("email", this.email);
 			}			
 			if(this.cometMode != null)
 			{
-				provisioningRecord.setValue("cometMode", this.cometMode);
+				provisioningRecord.put("cometMode", this.cometMode);
 			}
-			provisioningRecord.setValue("cometPollInterval", ""+this.cometPollInterval);
+			provisioningRecord.put("cometPollInterval", ""+this.cometPollInterval);
 			
-			provisioningRecord.setValue("isSSLActive", ""+this.isSSLActive);
-			provisioningRecord.setValue("maxPacketSize", ""+this.maxPacketSize);
-			provisioningRecord.setValue("isActive", ""+this.isActive);
-			provisioningRecord.setValue("isSSLCertStored", ""+this.isSSLCertStored);
+			provisioningRecord.put("isSSLActive", ""+this.isSSLActive);
+			provisioningRecord.put("maxPacketSize", ""+this.maxPacketSize);
+			provisioningRecord.put("isActive", ""+this.isActive);
+			provisioningRecord.put("isSSLCertStored", ""+this.isSSLCertStored);
 			
 			if(this.httpPort != null)
 			{
-				provisioningRecord.setValue("httpPort", this.httpPort);
+				provisioningRecord.put("httpPort", this.httpPort);
 			}		
 									
 			//persist myChannels
 			this.serializeChannels(provisioningRecord);
 			
-			Database.getInstance(context).update(Database.provisioning_table, provisioningRecord);
+			resolver.insert(uri, provisioningRecord);
 		}
 		catch(Exception e)
 		{
@@ -408,50 +404,99 @@ public class Configuration
 	{
 		try
 		{
-			Record provisioningRecord = Database.getInstance(context).
-			selectAll(Database.provisioning_table).iterator().next();
+			ContentResolver resolver = context.getContentResolver();
+							
+			Cursor cursor = resolver.query(uri, 
+			null, 
+			null, 
+			null, 
+			null);
 			
-			this.deviceId = provisioningRecord.getValue("deviceId");
-			this.serverId = provisioningRecord.getValue("serverId");
-			this.serverIp = provisioningRecord.getValue("serverIp");
-			this.plainServerPort = provisioningRecord.getValue("plainServerPort");
-			this.secureServerPort = provisioningRecord.getValue("secureServerPort");						
-			this.authenticationHash = provisioningRecord.getValue("authenticationHash");
-			this.authenticationNonce = provisioningRecord.getValue("authenticationNonce");
-			this.email = provisioningRecord.getValue("email");			
-			this.cometMode = provisioningRecord.getValue("cometMode");
-			this.httpPort = provisioningRecord.getValue("httpPort");
-			
-			String cometPollIntervalStr = provisioningRecord.getValue("cometPollInterval");
-			if(cometPollIntervalStr != null && cometPollIntervalStr.trim().length()>0)
+			if(cursor == null || cursor.getCount()==0)
 			{
-				this.cometPollInterval = Long.parseLong(cometPollIntervalStr);
-			}
-			else
-			{
-				this.cometPollInterval = 0; //interval not set
+				return;
 			}
 			
-			String maxPacketSizeStr = provisioningRecord.getValue("maxPacketSize");
-			if(maxPacketSizeStr != null && maxPacketSizeStr.trim().length()>0)
+			this.myChannels = new ArrayList<String>();
+			int nameIndex = cursor.getColumnIndex("name");
+			int valueIndex = cursor.getColumnIndex("value");
+			cursor.moveToFirst();			
+			do
 			{
-				this.maxPacketSize = Integer.parseInt(maxPacketSizeStr);
-			}
-			else
-			{
-				this.maxPacketSize = 0; //system default value
-			}
-			
-			String sslStatus = provisioningRecord.getValue("isSSLActive");
-			if(sslStatus != null && sslStatus.trim().length()>0)
-			{
-				this.isSSLActive = sslStatus.equals("true")?Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
-			}
-			else
-			{
-				this.isSSLActive = true; //system default value
-			}
-			
+				String name = cursor.getString(nameIndex);
+				String value = cursor.getString(valueIndex);
+				
+				if(name.equals("deviceId"))
+				{
+					this.deviceId = value;
+				}
+				else if(name.equals("serverId"))
+				{
+					this.serverId = value;
+				}
+				else if(name.equals("serverIp"))
+				{
+					this.serverIp = value;
+				}
+				else if(name.equals("plainServerPort"))
+				{
+					this.plainServerPort = value;
+				}
+				else if(name.equals("secureServerPort"))
+				{
+					this.secureServerPort = value;
+				}
+				else if(name.equals("authenticationHash"))
+				{
+					this.authenticationHash = value;
+				}
+				else if(name.equals("authenticationNonce"))
+				{
+					this.authenticationNonce = value;
+				}
+				else if(name.equals("email"))
+				{
+					this.email = value;
+				}
+				else if(name.equals("cometMode"))
+				{
+					this.cometMode = value;
+				}
+				else if(name.equals("httpPort"))
+				{
+					this.httpPort = value;
+				}
+				else if(name.equals("cometPollInterval"))
+				{
+					this.cometPollInterval = Long.parseLong(value);
+				}
+				else if(name.equals("maxPacketSize"))
+				{
+					this.maxPacketSize = Integer.parseInt(value);
+				}
+				else if(name.equals("isSSLActive"))
+				{
+					this.isSSLActive = value.equals("true")?
+					Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
+				}
+				else if(name.equals("isActive"))
+				{
+					this.isActive = value.equals("true")?
+					Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
+				}
+				else if(name.equals("isSSLCertStored"))
+				{
+					this.isSSLCertStored = value.equals("true")?
+					Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
+				}
+				else if(name.startsWith("myChannels["))
+				{
+					this.myChannels.add(value);
+				}
+				
+				cursor.moveToNext();
+			}while(!cursor.isAfterLast());
+																											
 			//This is default out-of-the-box server configuration
 			if(this.plainServerPort == null || this.plainServerPort.trim().length() == 0)
 			{
@@ -466,21 +511,6 @@ public class Configuration
 			{
 				this.httpPort = "80"; //http port by default
 			}
-			
-			String isActiveStr = provisioningRecord.getValue("isActive");
-			if(isActiveStr != null && isActiveStr.trim().length()>0)
-			{
-				this.isActive = isActiveStr.equals("true")?Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
-			}
-			
-			String isSSLCertStoredStr = provisioningRecord.getValue("isSSLCertStored");
-			if(isSSLCertStoredStr != null && isSSLCertStoredStr.trim().length()>0)
-			{
-				this.isSSLCertStored = isSSLCertStoredStr.equals("true")?Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
-			}
-			
-			//load myChannels
-			this.myChannels = this.deserializeChannels(provisioningRecord);
 		}
 		catch(Exception e)
 		{
@@ -489,8 +519,8 @@ public class Configuration
 			});
 		}
 	}
-	//----------------------------------------------------------------------------------------------------------------------
-	private void serializeChannels(Record record)
+	
+	private void serializeChannels(ContentValues record)
 	{
 		if(this.myChannels == null || this.myChannels.isEmpty())
 		{
@@ -498,28 +528,11 @@ public class Configuration
 		}
 		
 		int channelCount = this.myChannels.size();
-		record.setValue("myChannels:size", ""+channelCount);
+		record.put("myChannels:size", ""+channelCount);
 		int i = 0;
 		for(String channel: this.myChannels)
 		{
-			record.setValue("myChannels["+(i++)+"]", channel);
+			record.put("myChannels["+(i++)+"]", channel);
 		}
-	}
-	
-	private List<String> deserializeChannels(Record record)
-	{
-		List<String> channels = new ArrayList<String>();
-		
-		String cour = record.getValue("myChannels:size");
-		if(cour != null && cour.trim().length()>0)
-		{
-			int channelCount = Integer.parseInt(cour);
-			for(int i=0; i<channelCount; i++)
-			{
-				channels.add(record.getValue("myChannels["+i+"]"));
-			}
-		}
-		
-		return channels;
 	}
 }

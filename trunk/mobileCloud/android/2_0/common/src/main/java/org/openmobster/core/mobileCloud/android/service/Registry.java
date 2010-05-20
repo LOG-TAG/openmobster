@@ -13,11 +13,15 @@ import java.util.Set;
 import java.util.ArrayList;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.android.storage.Record;
-import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 
 
 /**
@@ -27,7 +31,14 @@ import android.content.Context;
  *
  */
 public final class Registry
-{	
+{
+	private static final Uri containerUri;
+	
+	static
+	{
+		containerUri = Uri.
+		parse("content://org.openmobster.core.mobileCloud.android.provider.container");
+	}
 	private static String command = "command";
 	private static String status = "status";
 	private static String response = "response";
@@ -254,42 +265,26 @@ public final class Registry
 	}
 	//---Stub Registry Code------------------------------------------------------------------------------------------------------------------------------------	
 	private void waitForContainer()
-	{
-		/*int retry = 15;
-		do
-		{
-			try
-			{								
-				Database database = Database.getInstance();		
-				Enumeration records = database.selectAll(Database.config_table);
-				
-				Record record = (Record)records.nextElement();				
-				String status = record.getValue("container-status");								
-				if(status.equals(String.valueOf(Boolean.TRUE)))
-				{
-					return;
-				}
-												
-				retry--;
-			}
-			catch(Exception e)
-			{				
-				retry--;
-			}
-			finally
-			{
-				//Sleep 1 second and try again
-				try{Thread.currentThread().sleep(1000);}catch(Exception e){}
-			}
-		}while(retry > 0);*/		
+	{	
 		try
 		{
-			Database database = Database.getInstance(this.context);		
-			Set<Record> records = database.selectAll(Database.config_table);
+			ContentResolver resolver = context.getContentResolver();
+			Cursor cursor = resolver.query(containerUri, 
+					null, 
+					null, 
+					null, 
+					null);
 			
-			Record record = records.iterator().next();		
-			String status = record.getValue("container-status");								
-			if(status.equals(String.valueOf(Boolean.TRUE)))
+			boolean status = false;
+			if(cursor!=null && cursor.getCount()>0)
+			{
+				cursor.moveToFirst();
+				int statusIndex = cursor.getColumnIndex("status");
+				String statusVal = cursor.getString(statusIndex);
+				status = Boolean.parseBoolean(statusVal);
+			}
+			
+			if(status)
 			{
 				return;
 			}
@@ -314,21 +309,12 @@ public final class Registry
 	//------------Container Registry code----------------------------------------------------------------------------------------------------
 	private void setContainerStatus(boolean status) throws Exception
 	{
-		Database database = Database.getInstance(this.context);		
-		Set<Record> records = database.selectAll(Database.config_table);
+		ContentResolver resolver = context.getContentResolver();
 		
-		if(records != null)
-		{
-			Record record = records.iterator().next();		
-			record.setValue("container-status", String.valueOf(status));
-			database.update(Database.config_table, record);
-		}
-		else
-		{
-			Record record = new Record();		
-			record.setValue("container-status", String.valueOf(status));
-			database.insert(Database.config_table, record);
-		}
+		ContentValues values = new ContentValues();
+		values.put("status", status);
+		
+		resolver.insert(containerUri, values);
 	}
 	
 	private void registerService(Service service)

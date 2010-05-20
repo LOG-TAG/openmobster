@@ -33,13 +33,13 @@ final class CloudDB
 	private CloudDB(Context context)
 	{
 		List<String> tables = new ArrayList<String>();
-		tables.add(Database.config_table);
+		tables.add(Database.config_table); //exposed via provider
 		tables.add(Database.sync_anchor);
 		tables.add(Database.sync_changelog_table);
 		tables.add(Database.sync_error);
 		tables.add(Database.sync_recordmap);
-		tables.add(Database.bus_registration);
-		tables.add(Database.provisioning_table);
+		tables.add(Database.bus_registration); //exposed via provider
+		tables.add(Database.provisioning_table); //exposed via provider
 		tables.add(Database.system_errors);
 		
 		this.manager = new CloudDBManager(tables, context, "cloudb", 2);

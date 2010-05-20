@@ -10,21 +10,21 @@ package org.openmobster.core.mobileCloud.android.module.mobileObject;
 
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.content.ContentValues;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
-import org.openmobster.core.mobileCloud.android.storage.DBException;
-import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.android.storage.Record;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
-
 
 /**
  * @author openmobster@gmail.com
@@ -53,53 +53,24 @@ public final class MobileObjectDatabase extends Service
 	{
 		return (MobileObjectDatabase)Registry.getActiveInstance().lookup(MobileObjectDatabase.class);
 	}
-	//---------------------------------------------------------------------------------------------------------------------------------------------	
-	public MobileObject read(String storageId, String recordId)
-	{
-		try
-		{
-			MobileObject mobileObject = null;
-						
-			List<MobileObject> all = this.readAll(storageId);
-			if(all != null)
-			{
-				for(MobileObject curr: all)
-				{	
-					if(curr.getRecordId().equals(recordId))
-					{
-						return curr;
-					}
-				}
-			}
-		
-			return mobileObject;
-		}
-		catch(Exception e)
-		{
-			throw new SystemException(this.getClass().getName(), "read", new Object[]{
-				storageId, recordId,
-				"Exception="+e.toString(),
-				"Error="+e.getMessage()
-			});
-		}
-	}
-	
-	public List<MobileObject> readAll(String storageId)
+	//---------------------------------------------------------------------------------------------------------------------------------------------
+	public List<MobileObject> readAll(String channel)
 	{	
 		try
 		{
-			Context context = Registry.getActiveInstance().getContext();
 			List<MobileObject> objects = new ArrayList<MobileObject>();
-						
-			this.checkStorage(storageId);
-			Set<Record> all = Database.getInstance(context).selectAll(storageId);
-			if(all != null)
-			{
-				for(Record record: all)
-				{
-					objects.add(new MobileObject(record));
-				}
-			}
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+channel);
+			Context context = Registry.getActiveInstance().getContext();
+			
+			ContentResolver resolver = context.getContentResolver();
+			Cursor cursor = resolver.query(uri, 
+			null, 
+			null, 
+			null, 
+			null);
+			
+			objects = this.parse(cursor);
 			
 			return objects;
 		}
@@ -113,14 +84,55 @@ public final class MobileObjectDatabase extends Service
 		}
 	}
 	
+	public MobileObject read(String channel, String recordId)
+	{
+		try
+		{			
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
+			channel);
+			Context context = Registry.getActiveInstance().getContext();
+			
+			ContentResolver resolver = context.getContentResolver();
+			Cursor cursor = resolver.query(uri, 
+			null, 
+			recordId, 
+			null, 
+			null);
+						
+			List<MobileObject> all = this.parse(cursor);
+			if(all != null)
+			{
+				for(MobileObject curr: all)
+				{	
+					if(curr.getRecordId().equals(recordId))
+					{
+						return curr;
+					}
+				}
+			}
+		
+			return null;
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "read", new Object[]{
+				storageId, recordId,
+				"Exception="+e.toString(),
+				"Error="+e.getMessage()
+			});
+		}
+	}
+	
 	public String create(MobileObject mobileObject)
 	{
 		try
 		{
 			String newId = null;
 			
+			//Not needed right now
 			//Map the objectId locally to the device
-			Invocation invocation = new Invocation(mobileObject.getStorageId());
+			/*Invocation invocation = new Invocation(mobileObject.getStorageId());
 			invocation.setValue("storageId", mobileObject.getStorageId());
 			invocation.setValue("recordId", mobileObject.getRecordId());
 			InvocationResponse response = Bus.getInstance().invokeService(invocation);			
@@ -131,11 +143,20 @@ public final class MobileObjectDatabase extends Service
 				{
 					mobileObject.setRecordId(mappedRecordId);
 				}
-			}					
+			}*/					
 			
-			Context context = Registry.getActiveInstance().getContext();
-			this.checkStorage(mobileObject.getStorageId());
-			newId = Database.getInstance(context).insert(mobileObject.getStorageId(), mobileObject.getRecord());									
+			String channel = mobileObject.getStorageId();
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
+			channel);
+			Context context = Registry.getActiveInstance().getContext();				
+			ContentResolver resolver = context.getContentResolver();
+			
+			ContentValues values = new ContentValues();
+			this.prepareForStorage(values, mobileObject.getRecord());
+			
+			Uri insertUri = resolver.insert(uri, values);
+			newId = insertUri.getQueryParameter("id");
 			
 			return newId;
 		}
@@ -155,21 +176,22 @@ public final class MobileObjectDatabase extends Service
 	{
 		try
 		{
-			Context context = Registry.getActiveInstance().getContext();
+			String channel = mobileObject.getStorageId();
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
+			channel);
+			Context context = Registry.getActiveInstance().getContext();				
+			ContentResolver resolver = context.getContentResolver();
 			
-			this.checkStorage(mobileObject.getStorageId());
+			ContentValues values = new ContentValues();
+			this.prepareForStorage(values, mobileObject.getRecord());
 			
-			Record recordToBeUpdated = mobileObject.getRecord();
+			int resultCode = resolver.update(uri, values, null, null);
 			
-			String dirtyStatus = recordToBeUpdated.getDirtyStatus();
-			if(dirtyStatus == null || dirtyStatus.trim().length() == 0)
+			if(resultCode == -1)
 			{
-				Record currentRecord = Database.getInstance(context).select(mobileObject.getStorageId(), 
-				mobileObject.getRecordId());
-				recordToBeUpdated.setDirtyStatus(currentRecord.getDirtyStatus());
+				throw new RuntimeException("Locking Error!!");
 			}
-			
-			Database.getInstance(context).update(mobileObject.getStorageId(), recordToBeUpdated);
 		}
 		catch(Exception e)
 		{
@@ -187,13 +209,20 @@ public final class MobileObjectDatabase extends Service
 	{	
 		try
 		{
-			this.checkStorage(mobileObject.getStorageId());
+			String channel = mobileObject.getStorageId();
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
+			channel);
+			Context context = Registry.getActiveInstance().getContext();				
+			ContentResolver resolver = context.getContentResolver();
 			
-			MobileObject objectToBeDeleted = this.read(mobileObject.getStorageId(), mobileObject.getRecordId());
-			Record recordToBeDeleted = objectToBeDeleted.getRecord();
+			int resultCode = resolver.delete(uri, mobileObject.getRecordId(), 
+			null);
 			
-			Context context = Registry.getActiveInstance().getContext();
-			Database.getInstance(context).delete(mobileObject.getStorageId(), recordToBeDeleted);
+			if(resultCode == -1)
+			{
+				throw new RuntimeException("Locking Error!!");
+			}
 		}
 		catch(Exception e)
 		{
@@ -211,9 +240,13 @@ public final class MobileObjectDatabase extends Service
 	{
 		try
 		{
-			this.checkStorage(storageId);
-			Context context = Registry.getActiveInstance().getContext();
-			Database.getInstance(context).deleteAll(storageId);
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
+			storageId);
+			Context context = Registry.getActiveInstance().getContext();				
+			ContentResolver resolver = context.getContentResolver();
+			
+			resolver.delete(uri, null, null);
 		}
 		catch(Exception e)
 		{
@@ -226,9 +259,9 @@ public final class MobileObjectDatabase extends Service
 		}		
 	}
 	//---Query Integration------------------------------------------------------------------------------------------------------------------------------------------
-	public List<MobileObject> query(String storageId, GenericAttributeManager queryAttributes)
+	public List<MobileObject> query(String channel, GenericAttributeManager queryAttributes)
 	{
-		List<MobileObject> result = this.readAll(storageId);
+		List<MobileObject> result = this.readAll(channel);
 		
 		int logicLink = LogicChain.AND; //assumed by default
 		if(queryAttributes.getAttribute("logicLink")!=null)
@@ -236,7 +269,8 @@ public final class MobileObjectDatabase extends Service
 			logicLink = ((Integer)queryAttributes.getAttribute("logicLink")).intValue();
 		}
 		
-		List<LogicExpression> expressions = (List<LogicExpression>)queryAttributes.getAttribute("expressions");
+		List<LogicExpression> expressions = (List<LogicExpression>)queryAttributes.
+		getAttribute("expressions");
 		if(expressions != null && !expressions.isEmpty())
 		{
 			LogicChain chain = null;
@@ -271,15 +305,59 @@ public final class MobileObjectDatabase extends Service
 	{
 		
 	}	
-	//----------------------------------------------------------------------------------------------------------------------------------------------
-	private void checkStorage(String storageId) throws DBException
+	//-------------------------------------------------------------------------------------------
+	private List<MobileObject> parse(Cursor cursor)
 	{
-		Context context = Registry.getActiveInstance().getContext();
-		if(!Database.getInstance(context).doesTableExist(storageId))
-		{
-			Database.getInstance(context).createTable(storageId);
+		List<MobileObject> mobileObjects = new ArrayList<MobileObject>();
+		
+		if(cursor != null && cursor.getCount()>0)
+		{			
+			int idIndex = cursor.getColumnIndex("recordId");
+			int nameIndex = cursor.getColumnIndex("name");
+			int valueIndex = cursor.getColumnIndex("value");
+			Map<String,Record> records = new HashMap<String,Record>();
+			
+			cursor.moveToFirst();
+			do
+			{
+				String recordId = cursor.getString(idIndex);
+				String name = cursor.getString(nameIndex);
+				String value = cursor.getString(valueIndex);
+				
+				if(name.equals("recordId"))
+				{
+					Record record = new Record();
+					record.setRecordId(recordId);
+					records.put(recordId, record);
+				}
+				else
+				{
+					records.get(recordId).setValue(name, value);
+				}
+				
+				cursor.moveToNext();
+			}while(!cursor.isAfterLast());		
+			
+			Set<String> recordIds = records.keySet();
+			for(String recordId:recordIds)
+			{
+				mobileObjects.add(
+				new MobileObject(records.get(recordId)));
+			}
 		}
+		
+		return mobileObjects;
 	}
-	//-----------------------------------------------------------------------------------------------------------------------------------
 	
+	private void prepareForStorage(ContentValues values, Record record)
+	{
+		Set<String> names = record.getNames();
+		if(names != null)
+		{
+			for(String name: names)
+			{
+				values.put(name, record.getValue(name));
+			}
+		}		
+	}
 }

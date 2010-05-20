@@ -11,10 +11,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
+import org.openmobster.core.mobileCloud.moblet.Moblet;
+
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
@@ -40,9 +40,8 @@ public class App extends Activity
 			//Load SPI Services
 			SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
 			
-			//Initialize the kernel
-			DeviceContainer.getInstance(this).propagateNewContext(this);
-        	DeviceContainer.getInstance(this).startup();        	        	
+			//Bootstrap the container
+			this.bootstrapContainer();      	        	
 		} 
 		catch (Exception e)
 		{
@@ -59,10 +58,7 @@ public class App extends Activity
 	protected void onDestroy()
 	{								
     	try
-    	{    		    		    		    		
-    		//TODO: Destroy other singleton state
-    		Configuration.stopSingleton();
-    		
+    	{    		    		    		    		    		    		
     		super.onDestroy();
     	}
     	catch(Exception e)
@@ -71,7 +67,6 @@ public class App extends Activity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
-    		e.printStackTrace(System.out);
     	}
 	}
 	
@@ -95,7 +90,6 @@ public class App extends Activity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
-			e.printStackTrace(System.out);
 		}
 	}
 
@@ -112,5 +106,17 @@ public class App extends Activity
 	    NavigationContext.getInstance().refresh();
 	    
 	    return true;
+	}
+	
+	protected void bootstrapContainer() throws Exception
+	{
+		//Initialize the kernel
+		Moblet.getInstance(this).propagateNewContext(this);
+    	Moblet.getInstance(this).startup(); 
+	}
+	
+	protected void showError()
+	{
+		ShowError.showBootstrapError(this);
 	}
 }

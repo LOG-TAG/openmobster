@@ -21,6 +21,7 @@ public final class SyncInvocation extends Invocation
 	public static final int stream = 5;
 	public static final int updateChangeLog = 6;
 	public static final int bootSync = 7;
+	public static final int proxySync = 8;
 	
 	public static String OPERATION_ADD = "Add";
 	public static String OPERATION_UPDATE = "Replace";
@@ -37,7 +38,7 @@ public final class SyncInvocation extends Invocation
 		this(target);
 		
 		if(type != slow && type != twoWay && type != oneWayDeviceOnly && type != oneWayServerOnly && type != stream &&
-		   type != updateChangeLog && type != bootSync
+		   type != updateChangeLog && type != bootSync && type != proxySync
 		)
 		{
 			throw new IllegalArgumentException("Unsupported Sync Type specified!!");
