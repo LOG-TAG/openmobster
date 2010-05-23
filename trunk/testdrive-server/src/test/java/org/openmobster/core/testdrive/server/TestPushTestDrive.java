@@ -64,7 +64,7 @@ public class TestPushTestDrive extends TestCase
 					response = IOUtilities.readServerResponse(is);
 					
 					log.info(response);
-				}while(!response.contains("close"));			
+				}while(!response.contains("@"));			
 			}
 			else
 			{

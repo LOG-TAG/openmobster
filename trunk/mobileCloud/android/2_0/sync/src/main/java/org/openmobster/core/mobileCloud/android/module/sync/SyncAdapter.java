@@ -349,10 +349,12 @@ public class SyncAdapter
 		
 		//Try and send the invocation informing that certain objects on the device were changed
 		//Send a push notification broadcast
+		System.out.println("Starting Push broadcast----------------------------------------");
 		MobilePushInvocation invocation = session.getPushInvocation();
 		if(session.isBackgroundSync() && invocation != null &&  
 		!invocation.getMobilePushMetaData().isEmpty())
 		{
+			System.out.println("Push broadcast sent----------------------------------------");
 			try
 			{
 				//Go ahead and send the respective broadcast
@@ -364,6 +366,11 @@ public class SyncAdapter
 				ErrorHandler.getInstance().handle(bse);				
 			}
 		}
+		else
+		{
+			System.out.println("Push broadcast not required----------------------------------------");
+		}
+		System.out.println("----------------------------------------");
 		
 		List<Status> statuses = currentMessage.getStatus();
 		for(Status status:statuses)

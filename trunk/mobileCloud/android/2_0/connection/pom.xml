@@ -19,5 +19,10 @@
         	<artifactId>common</artifactId>
         	<version>${project.version}</version>
     	</dependency>
+    	<dependency>
+    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+        	<artifactId>bus</artifactId>
+        	<version>${project.version}</version>
+    	</dependency>
     </dependencies>
 </project>

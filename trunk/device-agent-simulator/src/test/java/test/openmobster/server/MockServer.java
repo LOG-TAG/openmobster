@@ -35,6 +35,8 @@ import test.openmobster.device.agent.sync.server.SyncServerAdapterWithMapErrorSi
 import test.openmobster.device.agent.sync.server.ServerRecord;
 import test.openmobster.device.agent.sync.server.ServerRecordController;
 
+import test.openmobster.device.agent.api.TicketConnector;
+
 import org.openmobster.core.common.transaction.TransactionHelper;
 
 
@@ -565,6 +567,12 @@ public class MockServer implements Processor
 		else
 		{
 			EmailConnector.initialize(this.deviceId);
+		}
+		
+		if(info.contains("org.openmobster.core.mobileCloud.api.TestMobilePushNotification"))
+		{
+			System.out.println("Resetting TicketConnector Push Status......");
+			TicketConnector.resetPush();			
 		}
 	}
 	private void setUpAPITestSuite()

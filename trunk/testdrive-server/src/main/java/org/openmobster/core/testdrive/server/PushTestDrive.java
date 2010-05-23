@@ -66,7 +66,7 @@ public class PushTestDrive implements Processor
 				//Start the heart beat daemon
 				Timer heartbeatTimer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
 				TimerTask heartbeatTask = new HeartBeat(session);
-				heartbeatTimer.schedule(heartbeatTask, startDelay, 50000);
+				heartbeatTimer.schedule(heartbeatTask, startDelay, 55000);
 				
 				//Start the push data daemon
 				Timer pushTimer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
@@ -81,7 +81,7 @@ public class PushTestDrive implements Processor
 				}
 			}
 			
-			return "close";
+			return "@";
 		}
 		catch(Exception e)
 		{
