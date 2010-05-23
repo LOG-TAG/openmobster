@@ -26,7 +26,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
  */
 public final class ActivationUtil
 {
-	public static String cloudServerIp = "192.168.1.107"; //Modify Allowed: This should be the IP address of your server used for running the testsuite
+	public static String cloudServerIp = "192.168.1.102"; //Modify Allowed: This should be the IP address of your server used for running the testsuite
 	
 	
 	public static String deviceIdentifier = "IMEI:8675309"; //Do Not Modify
@@ -50,7 +50,7 @@ public final class ActivationUtil
 			//Success Scenario
 			processProvisioningSuccess(email, response);
 						
-			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.invocation.StartCometDaemon");
+			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.StartCometDaemon");
 			Bus.getInstance().invokeService(invocation);
 		}
 		else
@@ -125,7 +125,7 @@ public final class ActivationUtil
 		
 		conf.setMaxPacketSize(Integer.parseInt(maxPacketSize));
 		conf.setHttpPort(httpPort);
-				
+								
 		conf.save(context);
 	}
 }

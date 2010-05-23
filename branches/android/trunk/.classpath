@@ -65,6 +65,7 @@
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/main/resources"/>
 	<classpathentry kind="src" path="server-testsuite/src/test/java"/>
 	<classpathentry excluding="**" kind="src" path="server-testsuite/src/test/resources"/>
+	<classpathentry kind="src" path="testdrive-server/src/main/java"/>
 	
 	<!--   
 	<classpathentry kind="src" path="mobileCloud/rimos/cloudManager/src/main/java"/>

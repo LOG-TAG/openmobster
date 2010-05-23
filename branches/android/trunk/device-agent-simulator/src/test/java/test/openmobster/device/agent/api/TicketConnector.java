@@ -34,9 +34,9 @@ public class TicketConnector implements Channel
 	private List<Ticket> newTickets;
 	private TicketDS ticketds;
 	
-	private boolean newScanned = false;
-	private boolean updateScanned = false;
-	private boolean deleteScanned = false;
+	private static boolean newScanned = false;
+	private static boolean updateScanned = false;
+	private static boolean deleteScanned = false;
 	
 	public TicketConnector()
 	{		
@@ -70,6 +70,13 @@ public class TicketConnector implements Channel
 	public void setNewTickets(List<Ticket> newTickets) 
 	{
 		this.newTickets = newTickets;
+	}
+	
+	public static void resetPush()
+	{
+		newScanned = false;
+		updateScanned = false;
+		deleteScanned = false;
 	}
 	//-------Channel operations---------------------------------------------------------------------------------------------------------------
 	public String create(MobileBean mobileBean) 

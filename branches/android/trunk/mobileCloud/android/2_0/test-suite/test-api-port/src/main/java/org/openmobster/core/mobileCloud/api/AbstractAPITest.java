@@ -35,14 +35,8 @@ public abstract class AbstractAPITest extends Test
 	protected final String service = "testServerBean";
 	
 	public void setUp() 
-	{		
-		Context context = Registry.getActiveInstance().getContext(); 
-		MobileObjectDatabase.getInstance().deleteAll(service);
-		
-		Configuration conf = Configuration.getInstance(context);
-		conf.addMyChannel(service);
-		conf.save(context);
-		
+	{		 
+		MobileObjectDatabase.getInstance().deleteAll(service);						
 		this.resetServerAdapter("setUp="+this.getClass().getName()+"/SetUpAPITestSuite\n");
 	}
 	
@@ -57,6 +51,14 @@ public abstract class AbstractAPITest extends Test
 		SyncInvocation syncInvocation = new SyncInvocation(
 		"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 		SyncInvocation.bootSync, this.service);		
+		Bus.getInstance().invokeService(syncInvocation);		
+	}
+	
+	protected void startBootSyncForPush() throws Exception
+	{		
+		SyncInvocation syncInvocation = new SyncInvocation(
+		"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+		SyncInvocation.bootSync, "twitterChannel");		
 		Bus.getInstance().invokeService(syncInvocation);		
 	}
 		

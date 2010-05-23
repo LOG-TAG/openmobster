@@ -27,11 +27,12 @@ import org.openmobster.core.common.Utilities;
 )
 public class TwitterChannel implements Channel
 {
-	private int newCount = 2;
+	private int newCount = 1;
 	
 	//---Channel implementation-----------------------------------------------------------------------------------
 	public List<? extends MobileBean> bootup() 
 	{
+		this.newCount = 1;
 		return null;
 	}
 

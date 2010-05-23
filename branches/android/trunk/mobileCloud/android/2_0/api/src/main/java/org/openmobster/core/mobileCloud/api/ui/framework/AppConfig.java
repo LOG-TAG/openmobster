@@ -138,10 +138,10 @@ public final class AppConfig
 				
 				//Validate the configuration
 				//Must have a startup command
-				if(!registeredCommands.containsKey("startup"))
+				/*if(!registeredCommands.containsKey("startup"))
 				{
 					throw new IllegalStateException("Startup Command is missing!!");
-				}
+				}*/
 				
 				//Must have a home command
 				if(!screenConfig.containsKey("home"))

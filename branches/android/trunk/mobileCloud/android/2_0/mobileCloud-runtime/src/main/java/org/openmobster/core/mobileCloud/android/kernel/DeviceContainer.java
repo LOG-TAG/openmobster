@@ -17,29 +17,31 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Database;
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
-import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
-
-import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncObjectGenerator;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.Daemon;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
 import org.openmobster.core.mobileCloud.android.module.sync.engine.SyncDataSource;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
+import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
+import org.openmobster.core.mobileCloud.android.module.connection.NotificationListener;
+import org.openmobster.core.mobileCloud.android.module.connection.CommandProcessor;
+import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
+
 import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
 import org.openmobster.core.mobileCloud.android.module.bus.MockBroadcastInvocationHandler;
 import org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler;
+import org.openmobster.core.mobileCloud.android.invocation.StartCometDaemon;
+import org.openmobster.core.mobileCloud.android.invocation.CometRecycleHandler;
+import org.openmobster.core.mobileCloud.android.invocation.ChannelBootupHandler;
+import org.openmobster.core.mobileCloud.android.invocation.CometStatusHandler;
+import org.openmobster.core.mobileCloud.android.invocation.CometConfigHandler;
+import org.openmobster.core.mobileCloud.android.invocation.SwitchSecurityMode;
+import org.openmobster.core.mobileCloud.android.invocation.StopCometDaemon;
 
-//TODO: finish porting
-/*import org.openmobster.core.mobileCloud.invocation.SwitchSecurityMode;
-import org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler;
-import org.openmobster.core.mobileCloud.invocation.CometConfigHandler;
-import org.openmobster.core.mobileCloud.invocation.CometRecycleHandler;
-import org.openmobster.core.mobileCloud.invocation.StartCometDaemon;
-import org.openmobster.core.mobileCloud.invocation.ChannelBootupHandler;
-*/
 
 /**
  * Device Container. There should be only a single container instance running on the entire device and is included with the Device Agent installed
@@ -147,10 +149,7 @@ public final class DeviceContainer
 			
 			//MobileObject Database services			
 			services.add(new MobileObjectDatabase());
-			
-			//FIXME: add this for handling Push notifications
-			//services.add(new AppNotificationInvocationHandler());
-			
+				
 			//Moblet App State management service			
 			services.add(new AppStateManager());
 			
@@ -158,8 +157,20 @@ public final class DeviceContainer
 			services.add(new MockInvocationHandler());
 			services.add(new MockBroadcastInvocationHandler());
 			services.add(new SyncInvocationHandler());
+			//FIXME: add this for handling Push notifications
+			//services.add(new AppNotificationInvocationHandler());
+			services.add(new CometConfigHandler());
+			services.add(new StartCometDaemon());
+			services.add(new SwitchSecurityMode());
+			services.add(new CometRecycleHandler());
+			services.add(new CometStatusHandler());
+			services.add(new ChannelBootupHandler());
+			services.add(new StopCometDaemon());
 									
 			Registry.getActiveInstance().start(services);
+			
+			//Start Push Service
+			this.notifyDeviceActivated();
 			
 			//Schedules a background task that silently loads proxies from the server
 			LoadProxyDaemon.getInstance().scheduleProxyTask();
@@ -207,22 +218,21 @@ public final class DeviceContainer
 	/**
 	 * Used to send notification to the container that the device has been successfully activated on the server
 	 */
-	/*public synchronized void notifyDeviceActivated()
+	public synchronized void notifyDeviceActivated()
 	{				
-		if(this.isContainerActive() && Configuration.getInstance().isActive())
+		if(this.isContainerActive() && Configuration.getInstance(this.context).isActive())
 		{			
 			if(NotificationListener.getInstance() == null)
 			{
-				Registry.getInstance().register(new NotificationListener());
+				Registry.getActiveInstance().register(new NotificationListener());
 			}
-			
-			
+						
 			if(CommandProcessor.getInstance() == null)
 			{
-				Registry.getInstance().register(new CommandProcessor());
+				Registry.getActiveInstance().register(new CommandProcessor());
 			}
 		}		
-	}*/
+	}
 	
 	/**
 	 * Checks if the Container is currently running on the device
