@@ -34,9 +34,9 @@ public class TicketConnector implements Channel
 	private List<Ticket> newTickets;
 	private TicketDS ticketds;
 	
-	private boolean newScanned = false;
-	private boolean updateScanned = false;
-	private boolean deleteScanned = false;
+	private static boolean newScanned = false;
+	private static boolean updateScanned = false;
+	private static boolean deleteScanned = false;
 	
 	public TicketConnector()
 	{		
@@ -70,6 +70,13 @@ public class TicketConnector implements Channel
 	public void setNewTickets(List<Ticket> newTickets) 
 	{
 		this.newTickets = newTickets;
+	}
+	
+	public static void resetPush()
+	{
+		newScanned = false;
+		updateScanned = false;
+		deleteScanned = false;
 	}
 	//-------Channel operations---------------------------------------------------------------------------------------------------------------
 	public String create(MobileBean mobileBean) 
@@ -170,9 +177,9 @@ public class TicketConnector implements Channel
 
 	public String[] scanForNew(Device device, Date lastScanTimestamp) 
 	{		
-		if(!this.newScanned)
+		if(!newScanned)
 		{
-			this.newScanned = true;						
+			newScanned = true;						
 			return new String[]{"new://1","new://2","new://3"};
 		}
 		else
@@ -183,9 +190,9 @@ public class TicketConnector implements Channel
 
 	public String[] scanForUpdates(Device device, Date lastScanTimestamp) 
 	{		
-		if(!this.updateScanned)
+		if(!updateScanned)
 		{			
-			this.updateScanned = true;						
+			updateScanned = true;						
 			return new String[]{"update://1","update://2","update://3"};
 		}
 		else
@@ -196,9 +203,9 @@ public class TicketConnector implements Channel
 	
 	public String[] scanForDeletions(Device device, Date lastScanTimestamp) 
 	{		
-		if(!this.deleteScanned)
+		if(!deleteScanned)
 		{			
-			this.deleteScanned = true;			
+			deleteScanned = true;			
 			return new String[]{"delete://1","delete://2","delete://3"};
 		}
 		else

@@ -1,0 +1,7 @@
+<moblet-app>	    			
+	<screens>
+		<screen id="home">
+			org.openmobster.core.mobileCloud.manager.gui.screens.HomeScreen
+		</screen>
+	</screens>
+</moblet-app>

@@ -59,11 +59,12 @@ public class TestPushTestDrive extends TestCase
 				IOUtilities.writePayLoad(stream, os);
 				
 				String response = null;
-				for(int i=0; i<5; i++)
+				do
 				{
-					response = IOUtilities.readServerResponse(is);					
+					response = IOUtilities.readServerResponse(is);
+					
 					log.info(response);
-				}			
+				}while(!response.contains("@"));			
 			}
 			else
 			{
