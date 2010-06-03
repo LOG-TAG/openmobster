@@ -203,7 +203,8 @@ public final class NotificationListener extends Service
 				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
 				"&command=notify"+
 				"&channel="+channel+
-				"&platform=android";
+				"&platform=android"+
+				"&device=android";
 			    //String command = "processorid=/testdrive/push";
 				
 				//Used for debugging the daemon messages
@@ -240,12 +241,7 @@ public final class NotificationListener extends Service
 															
 					//Process incoming data packets
 					if(data.trim().length() != 0)
-					{
-						//Used for debugging the daemon messages
-						//System.out.println("PushDaemon---------------------------------------------");
-						//System.out.println(data);
-						//System.out.println("-------------------------------------------------------");
-						
+					{												
 						String incomingNotification = data.trim();
 						
 						//send the packet for application processing							
@@ -295,7 +291,8 @@ public final class NotificationListener extends Service
 				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
 				"&command=notify"+
 				"&channel="+channel+
-				"&platform=android";
+				"&platform=android"+
+				"&device=android";
 				
 				//Used for debugging the daemon messages
 				//System.out.println("Starting a Poll Session---------------------------------------------");

@@ -3,5 +3,17 @@
 		<screen id="home">
 			org.openmobster.core.mobileCloud.manager.gui.screens.HomeScreen
 		</screen>
+		<screen id="cometConfig">
+			org.openmobster.core.mobileCloud.manager.gui.screens.CometConfigScreen
+		</screen>
+		<screen id="security">
+			org.openmobster.core.mobileCloud.manager.gui.screens.SecurityScreen
+		</screen>
 	</screens>
+	<commands>
+		<command id="cometStatus">org.openmobster.core.mobileCloud.manager.gui.command.CometStatus</command>
+	</commands>
+	<commands>
+		<command id="activate">org.openmobster.core.mobileCloud.manager.gui.command.ActivationCommand</command>
+	</commands>
 </moblet-app>

@@ -66,6 +66,7 @@ public final class StartCometDaemon extends Service implements InvocationHandler
 		}
 		catch(Exception e)
 		{
+			//e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(
 					this.getClass().getName(), "handleInvocation", new Object[]{																		
 						"Exception="+e.toString(),

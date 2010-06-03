@@ -18,6 +18,7 @@ import org.openmobster.core.mobileCloud.api.ui.framework.state.ScreenContext;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+import org.openmobster.core.mobileCloud.spi.ui.framework.EventBusSPI;
 
 /**
  * @author openmobster@gmail.com
@@ -158,6 +159,14 @@ public final class NavigationContext
 		screen.postRender();
 		SPIServices.getInstance().getNavigationContextSPI().refresh();
 	}
+	
+	public Screen getCurrentScreen()
+	{
+		String currentId = (String)this.contextManager.getAttribute("current");
+		ScreenManager screenManager = ScreenManager.getInstance();
+		Screen screen = screenManager.find(currentId);
+		return screen;
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 	public void setHome(String homeId)
 	{
@@ -199,5 +208,22 @@ public final class NavigationContext
 		getInstance().getContext(screen);
 		
 		screenContext.removeAttribute(name);
+	}
+	//------Screen level event handling------------------------------------------------------------------------
+	public void addClickListener(Object clickListener)
+	{
+		EventBusSPI eventBus = SPIServices.getInstance().getEventBusSPI();
+		
+		String currentId = (String)this.contextManager.getAttribute("current");
+		Screen screen = ScreenManager.getInstance().find(currentId);
+		
+		eventBus.addEventListener(screen,clickListener);
+	}
+	
+	public void sendEvent(Object event)
+	{
+		EventBusSPI eventBus = SPIServices.getInstance().getEventBusSPI();
+		
+		eventBus.sendEvent(event);
 	}
 }

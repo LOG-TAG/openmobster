@@ -125,9 +125,8 @@ public final class NetSession
 		}
 		catch(Exception e)
 		{
-			/*System.out.println("-------------------------------------------------------------");
-			System.out.println("Exception: "+e.getMessage());
-			System.out.println("-------------------------------------------------------------");*/
+			//e.printStackTrace(System.out);
+			
 			throw new NetworkException(this.getClass().getName(), "waitForNotification", new Object[]{
 				"Message="+e.getMessage()
 			});
@@ -161,9 +160,7 @@ public final class NetSession
 		}
 		catch(Exception e)
 		{
-			//System.out.println("-------------------------------------------------------------");
-			//System.out.println("Exception: "+e.getMessage());
-			//System.out.println("-------------------------------------------------------------");
+			//e.printStackTrace(System.out);
 			throw new NetworkException(this.getClass().getName(), "waitForPoll", new Object[]{
 				"Message="+e.getMessage()
 			});

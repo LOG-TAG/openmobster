@@ -56,16 +56,26 @@ public final class CometRecycleHandler extends Service implements InvocationHand
 		try
 		{			
 			//Restart the NotificationListener
-			NotificationListener notify = NotificationListener.getInstance();
+			final NotificationListener notify = NotificationListener.getInstance();
 			if(notify != null)
 			{
-				notify.restart();
+				Thread t = new Thread(
+						new Runnable()
+						{
+							public void run()
+							{
+								notify.restart();
+							}
+						}
+				);
+				t.start();
 			}
 			
 			return null;
 		}
 		catch(Exception e)
 		{
+			//e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(
 					this.getClass().getName(), "handleInvocation", new Object[]{
 						"Comet Mode to Switch To="+invocation.getValue("mode"),												
