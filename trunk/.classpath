@@ -70,6 +70,7 @@
 	<classpathentry kind="src" path="testdrive-server/src/test/java"/>
 	<classpathentry excluding="**" kind="src" path="testdrive-server/src/test/resources"/>
 	
+	<!--  
 	<classpathentry kind="src" path="mobileCloud/rimos/cloudManager/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/api/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/native-framework/src/main/java"/>
@@ -89,6 +90,27 @@
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/cloudtests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main/java"/>	
 	<classpathentry kind="src" path="mobileCloud/rimos/ide_hack"/>
+	-->
+	
+	<classpathentry kind="src" path="mobileCloud/android/2_0/api/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/native-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/cloudManager/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/common/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/mobileObject/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/bus/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/connection/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/sync/src/main/java"/>	
+	<classpathentry kind="src" path="mobileCloud/android/2_0/mobileCloud-runtime/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/moblet-runtime/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-api-port/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-common-port/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-mobileObject-port/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-bus-port/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-sync-port/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-connection-port/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-native-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/ide_hack"/>
 	
 	
 	<classpathentry kind="src" path="dev-tools/rimos-devcloud/src/main/java"/>
@@ -166,4 +188,7 @@
     
     <!--  RIMOS related dependencies -->
     <classpathentry kind="var" path="RIM_JDE_HOME/lib/net_rim_api.jar"/>
+    
+    <!-- Android Dependencies -->
+    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-2.0/android.jar"/>
 </classpath>

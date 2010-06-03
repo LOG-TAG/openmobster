@@ -17,6 +17,7 @@ public final class SPIServices
 	private static SPIServices singleton;
 	
 	private NavigationContextSPI navigationContextSPI;
+	private EventBusSPI eventBusSPI;
 	
 	private SPIServices()
 	{
@@ -52,4 +53,14 @@ public final class SPIServices
 	{
 		this.navigationContextSPI = navigationContextSPI;
 	}	
+	
+	public EventBusSPI getEventBusSPI()
+	{
+		return this.eventBusSPI;
+	}
+	
+	public void setEventBusSPI(EventBusSPI eventBusSPI)
+	{
+		this.eventBusSPI = eventBusSPI;
+	}
 }

@@ -13,9 +13,11 @@ import java.util.Timer;
 import java.util.Vector;
 import java.util.TimerTask;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ListView;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -32,13 +34,14 @@ import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
+import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 
 /**
  * @author openmobster@gmail.com
  * 
  */
-public class App extends Activity
+public class ListApp extends ListActivity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -217,5 +220,13 @@ public class App extends Activity
 			
 			return channelsToSync;
 		}
+	}
+	//--------------------------------------------------------------------------
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id)
+	{
+		ListItemClickEvent clickEvent = new ListItemClickEvent(
+		l,v,position,id);
+		NavigationContext.getInstance().sendEvent(clickEvent);
 	}
 }

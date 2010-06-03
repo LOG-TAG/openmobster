@@ -51,10 +51,12 @@ final class NativeNavigationContextSPI implements NavigationContextSPI
 	{
 		Integer screenId = (Integer)screen.getContentPane();
 		
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
-		
-		currentActivity.setContentView(screenId);
+		if(screenId != null)
+		{
+			final Activity currentActivity = (Activity)Registry.getActiveInstance().
+			getContext();			
+			currentActivity.setContentView(screenId);						
+		}
 		screen.postRender();
 	}
 }

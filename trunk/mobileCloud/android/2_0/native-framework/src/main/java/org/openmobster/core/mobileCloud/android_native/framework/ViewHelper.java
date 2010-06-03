@@ -36,6 +36,39 @@ public class ViewHelper
 		}
 	}
 	
+	public static int findViewId(Activity activity, String variable)
+	{
+		try
+		{
+			String idClass = activity.getPackageName()+".R$id";
+			Class clazz = Class.forName(idClass);
+			Field field = clazz.getField(variable);
+			
+			return field.getInt(clazz);
+		}
+		catch(Exception e)
+		{
+			return -1;
+		}
+	}
+	
+	public static int findLayoutId(Activity activity, String variable)
+	{
+		try
+		{
+			String idClass = activity.getPackageName()+".R$layout";
+			Class clazz = Class.forName(idClass);
+			Field field = clazz.getField(variable);
+			
+			return field.getInt(clazz);
+		}
+		catch(Exception e)
+		{
+			return -1;
+		}
+	}
+	
+	
 	public static AlertDialog getOkModal(Activity currentActivity, String title,
 	String message)
 	{

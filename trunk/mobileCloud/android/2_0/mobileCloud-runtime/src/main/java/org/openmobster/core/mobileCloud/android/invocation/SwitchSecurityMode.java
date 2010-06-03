@@ -72,10 +72,19 @@ public final class SwitchSecurityMode extends Service implements InvocationHandl
 			configuration.save(context);
 			
 			//Restart the NotificationListener
-			NotificationListener notify = NotificationListener.getInstance();
+			final NotificationListener notify = NotificationListener.getInstance();
 			if(notify != null)
 			{
-				notify.restart();
+				Thread t = new Thread(
+						new Runnable()
+						{
+							public void run()
+							{
+								notify.restart();
+							}
+						}
+				);
+				t.start();
 			}
 			
 			return null;

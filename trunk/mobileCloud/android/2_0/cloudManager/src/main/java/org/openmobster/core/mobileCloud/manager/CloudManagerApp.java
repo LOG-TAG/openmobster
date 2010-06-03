@@ -13,13 +13,13 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 
-import org.openmobster.core.mobileCloud.android_native.framework.App;
+import org.openmobster.core.mobileCloud.android_native.framework.ListApp;
 
 /**
  * @author openmobster@gmail.com
  *
  */
-public class CloudManagerApp extends App
+public class CloudManagerApp extends ListApp
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
