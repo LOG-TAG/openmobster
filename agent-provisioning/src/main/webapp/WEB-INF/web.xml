@@ -4,9 +4,17 @@
     	<servlet-name>openmobster_agent_installer</servlet-name>
     	<servlet-class>org.openmobster.core.agent.provisioning.AgentInstaller</servlet-class>
   	</servlet>  
+  	<servlet>
+    	<servlet-name>openmobster_agent_installer</servlet-name>
+    	<servlet-class>org.openmobster.core.agent.provisioning.AndroidAgentInstaller</servlet-class>
+  	</servlet> 
   	<servlet-mapping>
     	<servlet-name>openmobster_agent_installer</servlet-name>
     	<url-pattern>/apps/*</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>openmobster_agent_installer</servlet-name>
+    	<url-pattern>/android/*</url-pattern>
   	</servlet-mapping>
   	
   	<mime-mapping>
@@ -20,5 +28,9 @@
 	<mime-mapping>
 		<extension>cod</extension>
 		<mime-type>application/vnd.rim.cod</mime-type>
-	</mime-mapping>  	
+	</mime-mapping>  
+	<mime-mapping>
+		<extension>apk</extension>
+		<mime-type>application/vnd.android.package-archive</mime-type>
+	</mime-mapping> 	
 </web-app>

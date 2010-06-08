@@ -22,7 +22,9 @@ import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
+import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 import org.openmobster.core.mobileCloud.manager.gui.CommandKeys;
+import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -31,6 +33,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.EditText;
@@ -45,7 +48,7 @@ public class HomeScreen extends Screen
 	private Integer screenId;
 	
 	private static String[] functions = new String[]
-	{"Activate","Corporate App Store","Push Settings", "Manual Sync","Security", "Battery Status"};
+	{"Activate","Corporate App Store","Push Settings", "Manual Sync","Security", "Cloud Status"};
 	
 	public HomeScreen()
 	{										
@@ -114,14 +117,27 @@ public class HomeScreen extends Screen
 					
 					case 1:
 						//Enterprise App Store
+						HomeScreen.this.startAppStoreConf();
 					break;
 					
 					case 2:
+						//Push Configuration
 						HomeScreen.this.startPushConfiguration();
 					break;
 					
+					case 3:
+						//ManualSync screen
+						HomeScreen.this.startManualSyncConf();
+					break;
+					
 					case 4:
+						//Security Configuration
 						HomeScreen.this.startSecurityConf();
+					break;
+					
+					case 5:
+						//Check Cloud Status
+						HomeScreen.this.checkCloudStatus();
 					break;
 				}
 			}
@@ -131,22 +147,14 @@ public class HomeScreen extends Screen
 	
 	private void setupMenu()
 	{
+		final ListActivity listApp = (ListActivity)Registry.getActiveInstance().
+		getContext();
 		Menu menu = (Menu)NavigationContext.getInstance().
 		getAttribute("options-menu");
 		
 		if(menu != null)
 		{			
-			MenuItem item0 = menu.add(Menu.NONE, Menu.NONE, 0, "Battery-Level");
-			item0.setOnMenuItemClickListener(new OnMenuItemClickListener()
-			{
-				public boolean onMenuItemClick(MenuItem clickedItem)
-				{
-					//FIXME: implement this
-					return true;
-				}
-			});
-			
-			MenuItem item1 = menu.add(Menu.NONE, Menu.NONE, 1, "View Error Log");
+			MenuItem item1 = menu.add(Menu.NONE, Menu.NONE, 0, "View Error Log");
 			item1.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
@@ -156,7 +164,7 @@ public class HomeScreen extends Screen
 				}
 			});
 			
-			MenuItem item2 = menu.add(Menu.NONE, Menu.NONE, 2, "Upload Error Log");
+			MenuItem item2 = menu.add(Menu.NONE, Menu.NONE, 1, "Upload Error Log");
 			item2.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
@@ -166,12 +174,22 @@ public class HomeScreen extends Screen
 				}
 			});
 			
-			MenuItem item3 = menu.add(Menu.NONE, Menu.NONE, 3, "Clear Error Log");
+			MenuItem item3 = menu.add(Menu.NONE, Menu.NONE, 2, "Clear Error Log");
 			item3.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
 					//FIXME: implement this
+					return true;
+				}
+			});
+			
+			MenuItem item4 = menu.add(Menu.NONE, Menu.NONE, 3, "Exit");
+			item4.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					listApp.finish();
 					return true;
 				}
 			});
@@ -246,14 +264,91 @@ public class HomeScreen extends Screen
 			
 	private void startPushConfiguration()
 	{
-		CommandContext commandContext = new CommandContext();
-		commandContext.setTarget("cometStatus");
-		Services.getInstance().getCommandService().execute(commandContext);
+		AppResources resources = Services.getInstance().getResources();
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		if(conf.isActive())
+		{
+			CommandContext commandContext = new CommandContext();
+			commandContext.setTarget("cometStatus");
+			Services.getInstance().getCommandService().execute(commandContext);
+		}
+		else
+		{
+			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	private void startSecurityConf()
 	{
-		Services.getInstance().getNavigationContext().navigate("security");
+		AppResources resources = Services.getInstance().getResources();
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		
+		if(conf.isActive())
+		{
+			Services.getInstance().getNavigationContext().navigate("security");
+		}
+		else
+		{
+			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private void startManualSyncConf()
+	{
+		AppResources resources = Services.getInstance().getResources();
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		
+		if(conf.isActive())
+		{
+			Services.getInstance().getNavigationContext().navigate("manualSync");
+		}
+		else
+		{
+			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private void startAppStoreConf()
+	{
+		AppResources resources = Services.getInstance().getResources();
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		
+		if(conf.isActive())
+		{
+			CommandContext commandContext = new CommandContext();
+			commandContext.setTarget("loadAppStore");
+			Services.getInstance().getCommandService().execute(commandContext);
+		}
+		else
+		{
+			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private void checkCloudStatus()
+	{
+		AppResources resources = Services.getInstance().getResources();
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		if(conf.isActive())
+		{
+			CommandContext commandContext = new CommandContext();
+			commandContext.setTarget("checkCloudStatus");
+			Services.getInstance().getCommandService().execute(commandContext);
+		}
+		else
+		{
+			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.LENGTH_SHORT).show();
+		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	private class ActivationWizard implements DialogInterface.OnClickListener

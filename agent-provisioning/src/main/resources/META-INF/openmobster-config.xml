@@ -10,5 +10,5 @@
    		<property name="identityController"><inject bean="security://IdentityController"/></property>   		
    </bean> 
    <bean name="/status/mobilebeanservice" class="org.openmobster.core.agent.provisioning.status.StatusMobileBeanService"/>     
-   <bean name="/status/syncstatuschannel" class="org.openmobster.core.agent.provisioning.status.SyncStatusChannel"/>             
+   <bean name="syncstatuschannel" class="org.openmobster.core.agent.provisioning.status.SyncStatusChannel"/>             
 </deployment>

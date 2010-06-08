@@ -22,6 +22,11 @@ import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.moblet.MobletApp;
 import org.openmobster.core.moblet.registry.Registry;
 
+/**
+ * TODO: make this entire MobletManagement stack more elegant for easily integrating new mobile platforms...the if/else based crap is brittle to maintain...
+ * This is my pet peave with the elegance of the code. It does not impact the performance or functionality in anyway
+ */
+
 
 /**
  * @author openmobster@gmail.com
@@ -101,29 +106,45 @@ public class MobletDeployer
 		}
 		app.setBinaryLocation(binaryLocation);
 		
-		Element configLocation = (Element)mobletAppElem.getElementsByTagName("config-loc").item(0);
-		String confLocation = configLocation.getFirstChild().getTextContent();
-		if(!confLocation.startsWith("/"))
+		NodeList configNodes = mobletAppElem.getElementsByTagName("config-loc");
+		if(configNodes != null && configNodes.getLength()>0)
 		{
-			confLocation = "/"+confLocation;
+			Element configLocation = (Element)configNodes.item(0);
+			String confLocation = configLocation.getFirstChild().getTextContent();
+			if(!confLocation.startsWith("/"))
+			{
+				confLocation = "/"+confLocation;
+			}
+			app.setConfigLocation(confLocation);
 		}
-		app.setConfigLocation(confLocation);
+		else
+		{
+			app.setConfigLocation(binaryLocation);
+		}
 		
 		//Get the unique uri of the moblet-app in the system
+		//TODO: this is hackish....this will change when cross platform moblet management is more elegant in a future release
 		String uri = app.getBinaryLocation();
-		int startIndex = uri.lastIndexOf('/');
-		if(startIndex != -1)
+		if(!uri.endsWith(".apk"))
 		{
-			uri = uri.substring(startIndex+1);
+			int startIndex = uri.lastIndexOf('/');
+			if(startIndex != -1)
+			{
+				uri = uri.substring(startIndex+1);
+			}
+			
+			int endIndex = -1;
+			if((endIndex=uri.indexOf('.')) != -1)
+			{
+				uri = uri.substring(0, endIndex);
+			}
+			
+			app.setUri(uri);
 		}
-		
-		int endIndex = -1;
-		if((endIndex=uri.indexOf('.')) != -1)
+		else
 		{
-			uri = uri.substring(0, endIndex);
+			app.setUri(binaryLocation);
 		}
-		
-		app.setUri(uri);
 						
 		return app;
 	}

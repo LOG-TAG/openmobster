@@ -33,9 +33,9 @@ public class CometStatus implements RemoteCommand
 	
 	public void doAction(CommandContext commandContext)
 	{	
-		/*try
+		try
 		{
-			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.invocation.CometStatusHandler");
+			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.CometStatusHandler");
 			InvocationResponse response = Bus.getInstance().invokeService(invocation);
 			
 			String status = response.getValue("status");
@@ -48,7 +48,7 @@ public class CometStatus implements RemoteCommand
 				"Target Command:"+commandContext.getTarget()				
 			}));
 			throw new RuntimeException(e.toString());
-		}*/
+		}
 	}
 
 	public void doViewAfter(CommandContext commandContext)

@@ -167,6 +167,19 @@ public final class NavigationContext
 		Screen screen = screenManager.find(currentId);
 		return screen;
 	}
+	
+	public boolean isHome()
+	{
+		String currentId = (String)this.contextManager.getAttribute("current");
+		String homeId = (String)this.contextManager.getAttribute("home");
+		
+		if(currentId.equals(homeId))
+		{
+			return true;
+		}
+		
+		return false;
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 	public void setHome(String homeId)
 	{

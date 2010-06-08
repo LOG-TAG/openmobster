@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
@@ -120,7 +121,7 @@ public class ListApp extends ListActivity
 		
 	    NavigationContext.getInstance().setAttribute("options-menu", menu);
 	    
-	    //FIXME: This should be a refresh so that current screen is refreshed
+	    //This should be a refresh so that current screen is refreshed
 	    NavigationContext.getInstance().refresh();
 	    
 	    return true;
@@ -221,12 +222,24 @@ public class ListApp extends ListActivity
 			return channelsToSync;
 		}
 	}
-	//--------------------------------------------------------------------------
+	//-------------Global Event Handling-----------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id)
 	{
 		ListItemClickEvent clickEvent = new ListItemClickEvent(
 		l,v,position,id);
 		NavigationContext.getInstance().sendEvent(clickEvent);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		NavigationContext navigationContext = NavigationContext.getInstance();
+		if(keyCode == KeyEvent.KEYCODE_BACK && !navigationContext.isHome())
+		{
+			navigationContext.back();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }

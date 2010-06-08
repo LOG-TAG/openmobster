@@ -83,7 +83,7 @@ public final class Moblet
 			services.add(new Bus());
 			services.add(new IBinderManager());
 												
-			//FIXME: add this for handling Push notifications
+			//add this for handling Push notifications
 			services.add(new AppNotificationInvocationHandler());
 			
 			services.add(new NetworkConnector());
