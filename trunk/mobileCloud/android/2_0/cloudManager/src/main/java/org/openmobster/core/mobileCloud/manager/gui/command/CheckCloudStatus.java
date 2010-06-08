@@ -8,15 +8,19 @@
 
 package org.openmobster.core.mobileCloud.manager.gui.command;
 
-import net.rim.device.api.ui.component.Dialog;
-import net.rim.device.api.i18n.MessageFormat;
+import java.text.MessageFormat;
+
+import android.app.Activity;
+import android.content.Context;
 
 import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
-import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
-import org.openmobster.core.mobileCloud.rimos.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.rimos.errors.SystemException;
-import org.openmobster.core.mobileCloud.rimos.module.bus.Bus;
-import org.openmobster.core.mobileCloud.rimos.module.bus.SyncInvocation;
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
+import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
+import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.module.bus.Bus;
+import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
@@ -82,7 +86,7 @@ public class CheckCloudStatus implements RemoteCommand
 		//Test Mobile Sync Service Status
 		try
 		{
-			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler", 
+			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 			SyncInvocation.bootSync, "syncstatuschannel");
 			syncInvocation.deactivateBackgroundSync();
 			Bus.getInstance().invokeService(syncInvocation);
@@ -95,11 +99,14 @@ public class CheckCloudStatus implements RemoteCommand
 			}
 			for(int i=0; i<beans.length;i++)
 			{
-				if(!beans[i].getId().equals(""+i))
+				int beanId = Integer.parseInt(beans[i].getId());
+				String beanValue = beans[i].getValue("value");
+				
+				if(beanId >= 5)
 				{
 					throw new RuntimeException("Sync Service Failure!!");
 				}
-				if(!beans[i].getValue("value").equals("/status/"+i))
+				if(!beanValue.startsWith("/status/"))
 				{
 					throw new RuntimeException("Sync Service Failure!!");
 				}
@@ -136,7 +143,8 @@ public class CheckCloudStatus implements RemoteCommand
 	
 	public void doViewAfter(CommandContext commandContext) 
 	{	
-		Configuration configuration = Configuration.getInstance();
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration configuration = Configuration.getInstance(context);
 		AppResources resources = Services.getInstance().getResources();
 		String statusOk = resources.localize(LocaleKeys.statusOk, LocaleKeys.statusOk);
 		statusOk = MessageFormat.format(statusOk, new Object[]{
@@ -144,7 +152,11 @@ public class CheckCloudStatus implements RemoteCommand
 				configuration.getEmail(),
 				configuration.isSSLActivated()?configuration.getSecureServerPort():configuration.getPlainServerPort()
 		});
-		Dialog.alert(statusOk);
+		
+		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		ViewHelper.getOkModal(currentActivity, "", 
+		statusOk).
+		show();
 	}
 
 	public void doViewError(CommandContext commandContext) 
@@ -164,6 +176,9 @@ public class CheckCloudStatus implements RemoteCommand
 		}
 		
 		
-		Dialog.alert(message);
+		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		ViewHelper.getOkModal(currentActivity, "", 
+		message).
+		show();
 	}					
 }

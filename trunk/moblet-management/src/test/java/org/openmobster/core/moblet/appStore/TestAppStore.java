@@ -65,32 +65,44 @@ public class TestAppStore extends TestCase
 		for(String name: names)
 		{
 			log.info("App Name="+name);
-			assertTrue("Name Value must match", name.equals("TestApp") || name.equals("TestApp2"));
+			assertTrue("Name Value must match", name.equals("TestApp") || 
+			name.equals("TestApp2") || name.equals("TestApp3"));
 		}
 		
 		for(String desc: descs)
 		{
 			log.info("App Description="+desc);
 			assertTrue("Description Value must match", desc.equals("TestApp used for testing Moblet Provisioning") || 
-			desc.equals("TestApp2 used for testing Moblet Provisioning"));
+			desc.equals("TestApp2 used for testing Moblet Provisioning") ||
+			desc.equals("TestApp3 used for testing Moblet Provisioning")
+			);
 		}
 		
 		for(String downloadUrl: downloadUrls)
 		{
 			log.info("App Download Url="+downloadUrl);
 			assertTrue("DowloadUrl Value must match", downloadUrl.equals("/testapp/rimos-4.3.0/testapp.jad") || 
-			downloadUrl.equals("/testapp2/rimos-4.3.0/testapp2.jad"));
+			downloadUrl.equals("/testapp2/rimos-4.3.0/testapp2.jad") ||
+			downloadUrl.equals("/android-2.0/test.apk")
+			);
 			this.assertDownloadArtifacts(downloadUrl);
 		}
 		log.info("-------------------------------------------");
 	}	
 	//-------------------------------------------------------------------------------------------------
 	private void assertDownloadArtifacts(String downloadUrl) throws Exception
-	{								
-		Tool.assertBinary(this, this.appStore.getAppBinary(downloadUrl));
-		
-		byte[] configuration = this.appStore.getAppConfig(downloadUrl);
-		log.info(new String(configuration));
-		assertNotNull("Jad file must exist", configuration);
+	{	
+		if(!downloadUrl.endsWith("apk"))
+		{
+			Tool.assertBinary(this, this.appStore.getAppBinary(downloadUrl));
+			
+			byte[] configuration = this.appStore.getAppConfig(downloadUrl);
+			log.info(new String(configuration));
+			assertNotNull("Jad file must exist", configuration);
+		}
+		else
+		{
+			this.assertNotNull("Should not be null",this.appStore.getAppBinary(downloadUrl));
+		}
 	}		
 }

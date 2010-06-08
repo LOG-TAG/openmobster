@@ -20,7 +20,7 @@ import org.openmobster.server.api.model.ChannelInfo;
 /**
  * @author openmobster@gmail.com
  */
-@ChannelInfo(uri="/status/syncstatuschannel", 
+@ChannelInfo(uri="syncstatuschannel", 
 		   mobileBeanClass="org.openmobster.core.agent.provisioning.status.SyncStatusBean")
 public class SyncStatusChannel implements Channel
 {

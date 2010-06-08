@@ -44,11 +44,19 @@ public class TestMobletAppDeployment extends TestCase
 	{
 		this.readBinary("testapp");
 		this.readBinary("testapp2");
+		
+		this.readApkBinary("/android-2.0/test.apk");
 	}
 	//-------------------------------------------------------------------------------------------------
 	private void readBinary(String binaryLocation) throws Exception
 	{
-		InputStream is = registry.getAppBinary(binaryLocation);;
+		InputStream is = registry.getAppBinary(binaryLocation);
 		Tool.assertBinary(this, is);
+	}
+	
+	private void readApkBinary(String binaryLocation) throws Exception
+	{
+		InputStream is = registry.getAppBinary(binaryLocation);
+		this.assertNotNull(is);
 	}
 }

@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -117,7 +118,7 @@ public class App extends Activity
 		
 	    NavigationContext.getInstance().setAttribute("options-menu", menu);
 	    
-	    //FIXME: This should be a refresh so that current screen is refreshed
+	    //This should be a refresh so that current screen is refreshed
 	    NavigationContext.getInstance().refresh();
 	    
 	    return true;
@@ -218,4 +219,17 @@ public class App extends Activity
 			return channelsToSync;
 		}
 	}
+	//-----Global Event Handling------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		NavigationContext navigationContext = NavigationContext.getInstance();
+		if(keyCode == KeyEvent.KEYCODE_BACK && !navigationContext.isHome())
+		{
+			navigationContext.back();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+	
 }

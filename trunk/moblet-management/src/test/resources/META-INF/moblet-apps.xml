@@ -13,4 +13,9 @@
 		<bin-loc>/rimos-4.3.0/testapp2.cod</bin-loc>
 		<config-loc>/rimos-4.3.0/testapp2.jad</config-loc>		
 	</moblet-app>
+	<moblet-app>	    
+	    <name>TestApp3</name>
+	    <description>TestApp3 used for testing Moblet Provisioning</description>
+		<bin-loc>/android-2.0/test.apk</bin-loc>		
+	</moblet-app>
 </moblet-apps>

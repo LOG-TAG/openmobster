@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.manager.gui.screens;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -21,6 +22,8 @@ import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
+import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
+import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
 
 import android.app.Activity;
 import android.app.ListActivity;
@@ -33,11 +36,11 @@ import android.widget.ArrayAdapter;
 /**
  * @author openmobster@gmail.com
  */
-public class SecurityScreen extends Screen
+public class ManualSyncScreen extends Screen
 {	
 	private Integer screenId;
 			
-	public SecurityScreen()
+	public ManualSyncScreen()
 	{										
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -75,43 +78,49 @@ public class SecurityScreen extends Screen
 		//render the list		
 		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
 		getContext();
-		Configuration conf = Configuration.getInstance(listApp);
+		final Configuration conf = Configuration.getInstance(listApp);
+		AppResources appResources = Services.getInstance().getResources();	
 		
-		boolean isSSLActive = conf.isSSLActivated();
+		listApp.setTitle(appResources.localize(LocaleKeys.manual_sync, LocaleKeys.manual_sync));
 		
-		if(isSSLActive)
+		String[] adapterArray = null;
+		List<String> myChannels = conf.getMyChannels();
+		final boolean channelsFound;
+		if(myChannels != null && !myChannels.isEmpty())
 		{
-			listApp.setTitle("Current Mode: SSL");
-			
+			channelsFound = true;
+			adapterArray = myChannels.toArray(new String[0]);
 			listApp.setListAdapter(new ArrayAdapter(listApp, 
-				    android.R.layout.simple_list_item_1, 
-				    new String[]{"Switch to non-SSL mode"}));
+					android.R.layout.simple_list_item_1, 
+					adapterArray));
 		}
 		else
 		{
-			listApp.setTitle("Current Mode: non-SSL");
-			
+			channelsFound = false;
+			adapterArray = new String[]{appResources.localize(LocaleKeys.channels_not_found, LocaleKeys.channels_not_found)};
 			listApp.setListAdapter(new ArrayAdapter(listApp, 
-				    android.R.layout.simple_list_item_1, 
-				    new String[]{"Switch to SSL mode"}));
+					android.R.layout.simple_list_item_1, 
+					adapterArray));
 		}
 		
-		
+		//Setup Menu
+		this.setupMenu();
 		
 		//Add a List click listener
 		ListItemClickListener clickListener = new ListItemClickListener()
 		{
 			public void onClick(ListItemClickEvent clickEvent)
 			{
-				CommandContext commandContext = new CommandContext();
-				commandContext.setTarget("switchSSLMode");		
-				Services.getInstance().getCommandService().execute(commandContext);
+				if(!channelsFound)
+				{
+					Services.getInstance().getNavigationContext().back();
+					return;
+				}
+				
+				//FIXME: Perform channel-oriented functions
 			}
 		};
 		NavigationContext.getInstance().addClickListener(clickListener);
-		
-		//Setup Menu
-		this.setupMenu();
 	}
 	
 	private void setupMenu()

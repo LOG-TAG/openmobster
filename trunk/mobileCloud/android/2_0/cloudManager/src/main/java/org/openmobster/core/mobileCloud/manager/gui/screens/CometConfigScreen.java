@@ -8,15 +8,20 @@
 
 package org.openmobster.core.mobileCloud.manager.gui.screens;
 
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
 import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
+import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,23 +58,52 @@ public class CometConfigScreen extends Screen
 	}
 
 	public void postRender()
-	{
+	{						
 		// render the list
 		ListActivity listApp = (ListActivity) Registry.getActiveInstance()
 				.getContext();
+		
+		NavigationContext navigationContext = NavigationContext.getInstance();
+		AppResources appResources = Services.getInstance().getResources();
+		Configuration conf = Configuration.getInstance(listApp);
+		String status = (String)navigationContext.getAttribute(this.getId(), "status");
 
 		listApp.setTitle("Push Settings");
 
-		listApp.setListAdapter(new EfficientAdapter(listApp));
+		if(conf.isInPushMode())
+		{
+			listApp.setListAdapter(new EfficientAdapter(listApp,functions[0],status));
+		}
+		else
+		{
+			listApp.setListAdapter(new EfficientAdapter(listApp,functions[1],status));
+		}
 
+				
+		this.setupMenu();
+		
 		// Add a List click listener
 		ListItemClickListener clickListener = new ListItemClickListener() {
 			public void onClick(ListItemClickEvent clickEvent)
 			{
+				int functionId = clickEvent.getPosition();
+				switch(functionId)
+				{					
+					case 0:	
+						CometConfigScreen.this.startPushConfig();
+					break;
+					
+					case 1:
+						CometConfigScreen.this.startPollConfig();
+					break;
+				}
 			}
 		};
 		NavigationContext.getInstance().addClickListener(clickListener);
-		
+	}
+
+	private void setupMenu()
+	{
 		//setup menu for this screen
 		Menu menu = (Menu)NavigationContext.getInstance().
 		getAttribute("options-menu");
@@ -87,7 +121,113 @@ public class CometConfigScreen extends Screen
 			});
 		}
 	}
-
+	//---------------user interactions----------------------------------------------------------------------------------------------------------------------
+	private void startPushConfig()
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		
+		PushConfigListener listener = new PushConfigListener();
+		
+		AlertDialog pushDialog = new AlertDialog.Builder(context).
+		setItems(new String[]{"Start","Stop","Cancel"}, listener).
+    	setCancelable(false).
+    	create();
+		
+		pushDialog.setTitle("Push");
+						
+		pushDialog.show();
+	}
+	
+	private void startPollConfig()
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		
+		PollConfigListener listener = new PollConfigListener();
+		
+		AlertDialog pollDialog = new AlertDialog.Builder(context).
+		setItems(new String[]{"Start","Stop","Cancel"}, listener).
+    	setCancelable(false).
+    	create();
+		
+		pollDialog.setTitle("Poll");
+								
+		pollDialog.show();
+	}
+	
+	private static class PushConfigListener implements DialogInterface.OnClickListener
+	{
+		public void onClick(DialogInterface dialog, int status)
+		{
+			CommandContext commandContext = new CommandContext();	
+			dialog.cancel();			
+			switch(status)
+			{
+				case 0:
+					//Start					
+					commandContext.setTarget("cometConfig");
+					commandContext.setAttribute("mode", "push");				
+					Services.getInstance().getCommandService().execute(commandContext);
+				break;
+				
+				case 1:
+					//Stop					
+					commandContext.setTarget("cometStop");
+					commandContext.setAttribute("mode", "push");				
+					Services.getInstance().getCommandService().execute(commandContext);
+				break;								
+			}
+		}		
+	}
+	
+	private static class PollConfigListener implements DialogInterface.OnClickListener
+	{
+		public void onClick(DialogInterface dialog, int status)
+		{
+			Context context = Registry.getActiveInstance().getContext();			
+			dialog.cancel();			
+			switch(status)
+			{
+				case 0:
+					//Start
+					final String[] choices = new String[]{"5","10","15","20","25","30", "Cancel"};
+					AlertDialog intervalDialog = new AlertDialog.Builder(context).
+			    	setCancelable(false).
+			    	setItems(choices,
+			    			new DialogInterface.OnClickListener() 
+			    			{								
+								public void onClick(DialogInterface dialog, int status)
+								{
+									String selection = choices[status];
+									if(status < choices.length-1)
+									{
+										int pollMinutes = Integer.parseInt(selection);
+										long pollInterval = pollMinutes * 60 * 1000; //minutes converted to milliseconds
+										
+										//Handle setting poll mode
+										CommandContext commandContext = new CommandContext();
+										commandContext.setTarget("cometConfig");
+										commandContext.setAttribute("mode", "poll");
+										commandContext.setAttribute("poll_interval", ""+pollInterval);
+										Services.getInstance().getCommandService().execute(commandContext);
+									}
+								}
+							}).
+			    	create();
+					
+					intervalDialog.setTitle("Select Poll Interval: ");	
+														
+					intervalDialog.show();
+				break;
+				
+				case 1:
+					//Stop
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("cometStop");							
+					Services.getInstance().getCommandService().execute(commandContext);
+				break;
+			}
+		}		
+	}
 	// ------------------------------------------------------------------------------------------------------------------------------------
 	private static class EfficientAdapter extends BaseAdapter
 	{
@@ -95,8 +235,10 @@ public class CometConfigScreen extends Screen
 		private Bitmap active;
 		private Bitmap inactive;
 		private Activity activity;
+		private String mode;
+		private String status;
 
-		public EfficientAdapter(Activity activity)
+		public EfficientAdapter(Activity activity, String mode, String status)
 		{
 			this.activity = activity;
 			
@@ -108,6 +250,9 @@ public class CometConfigScreen extends Screen
 			// Icons bound to the rows.
 			active = (Bitmap)appRes.getImage("/moblet-app/icon/green.png");
 			inactive = (Bitmap)appRes.getImage("/moblet-app/icon/red.png");
+			
+			this.mode = mode;
+			this.status = status;
 		}
 
 		/**
@@ -184,7 +329,15 @@ public class CometConfigScreen extends Screen
 
 			// Bind the data efficiently with the holder.
 			holder.text.setText(CometConfigScreen.functions[position]);
-			holder.icon.setImageBitmap(position == 0 ? active : inactive);
+			
+			if(functions[position].equals(this.mode) && status.equals(""+Boolean.TRUE))
+			{
+				holder.icon.setImageBitmap(active);
+			}
+			else
+			{
+				holder.icon.setImageBitmap(inactive);
+			}
 
 			return convertView;
 		}

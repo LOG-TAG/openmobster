@@ -21,7 +21,6 @@ import org.openmobster.server.api.service.ServiceInfo;
 import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.core.common.errors.SystemException;
 import org.openmobster.core.common.IOUtilities;
-import org.openmobster.core.common.Utilities;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.moblet.MobletApp;
 import org.openmobster.core.moblet.registry.Registry;
@@ -63,7 +62,7 @@ public class AppStore implements MobileServiceBean
 												
 			if(action.equalsIgnoreCase("getRegisteredApps"))
 			{
-				List<MobletApp> allApps = this.getRegisteredApps();
+				List<MobletApp> allApps = this.getRegisteredApps(request);
 				
 				//Prepare success response
 				if(allApps != null && !allApps.isEmpty())
@@ -80,8 +79,15 @@ public class AppStore implements MobileServiceBean
 						names.add(app.getName());
 						descs.add(app.getDescription());
 						
-						String downloadUrl = "/"+app.getUri()+app.getConfigLocation();
-						downloadUrls.add(downloadUrl);
+						if(!app.getBinaryLocation().endsWith(".apk"))
+						{
+							String downloadUrl = "/"+app.getUri()+app.getConfigLocation();
+							downloadUrls.add(downloadUrl);
+						}
+						else
+						{
+							downloadUrls.add(app.getBinaryLocation());
+						}
 					}
 					
 					response.setListAttribute("uris", uris);
@@ -102,13 +108,43 @@ public class AppStore implements MobileServiceBean
 		}
 	}
 	//---------------------------------------------------------------------------------------------------------		
-	public List<MobletApp> getRegisteredApps() throws Exception
+	public List<MobletApp> getRegisteredApps(Request request) throws Exception
 	{
-		return this.registry.getAllApps();		
+		List<MobletApp> apps = new ArrayList<MobletApp>();
+		List<MobletApp> allApps = this.registry.getAllApps();
+		String platform = request.getAttribute("platform");
+		if(platform == null)
+		{
+			//BlackBerry
+			for(MobletApp app:allApps)
+			{
+				if(app.getBinaryLocation().endsWith(".cod"))
+				{
+					apps.add(app);
+				}
+			}
+		}
+		else if(platform.equals("android"))
+		{
+			//Android
+			for(MobletApp app:allApps)
+			{
+				if(app.getBinaryLocation().endsWith(".apk"))
+				{
+					apps.add(app);
+				}
+			}
+		}
+		return apps;
 	}
 	
 	public byte[] getAppConfig(String downloadUrl) throws Exception
 	{
+		if(downloadUrl.endsWith(".apk"))
+		{
+			//NA
+			return null;
+		}
 		StringTokenizer st = new StringTokenizer(downloadUrl, "/");
 		String appUri = st.nextToken();
 		InputStream is = this.registry.getAppConfig(appUri);
@@ -117,15 +153,29 @@ public class AppStore implements MobileServiceBean
 	
 	public InputStream getAppBinary(String downloadUrl) throws Exception
 	{
-		StringTokenizer st = new StringTokenizer(downloadUrl, "/");
-		String appUri = st.nextToken();
-		return this.registry.getAppBinary(appUri);
+		if(!downloadUrl.endsWith(".apk"))
+		{
+			StringTokenizer st = new StringTokenizer(downloadUrl, "/");
+			String appUri = st.nextToken();
+			return this.registry.getAppBinary(appUri);
+		}
+		else
+		{
+			return this.registry.getAppBinary(downloadUrl);
+		}
 	}
 	
 	public MobletApp findByDownloadUrl(String downloadUrl) throws Exception
 	{
-		StringTokenizer st = new StringTokenizer(downloadUrl, "/");
-		String appUri = st.nextToken();
-		return this.registry.getApp(appUri);
+		if(!downloadUrl.endsWith(".apk"))
+		{
+			StringTokenizer st = new StringTokenizer(downloadUrl, "/");
+			String appUri = st.nextToken();
+			return this.registry.getApp(appUri);
+		}
+		else
+		{
+			return this.registry.getApp(downloadUrl);
+		}
 	}
 }
