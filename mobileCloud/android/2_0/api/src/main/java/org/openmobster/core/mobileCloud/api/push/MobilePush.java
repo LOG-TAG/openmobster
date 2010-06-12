@@ -8,6 +8,7 @@
 
 package org.openmobster.core.mobileCloud.api.push;
 
+import java.io.Serializable;
 import org.openmobster.core.mobileCloud.api.model.MobileBeanMetaData;
 
 /**
@@ -18,7 +19,7 @@ import org.openmobster.core.mobileCloud.api.model.MobileBeanMetaData;
  * @author openmobster@gmail.com
  *
  */
-public final class MobilePush 
+public final class MobilePush implements Serializable
 {
 	private static PushListener singleton;
 	

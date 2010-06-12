@@ -84,9 +84,25 @@ public class CometDaemon
 				
 				String authHash = configuration.getAuthenticationHash();
 				String deviceId = configuration.getDeviceId();
-				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
-				"&command=notify"+
-				"&channel=twitterChannel";
+				String command = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>command</name>"+
+						"<value>notify</value>"+
+					"</header>"+
+					"<header>" +
+						"<name>channel</name>"+
+						"<value>twitterChannel</value>"+
+					"</header>"+
+				"</request>";
 												
 				IOUtilities.writePayLoad(command,session.os);																
 				do

@@ -25,9 +25,9 @@ public class CloudManagerApp extends ListApp
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		try
-		{
-			super.onCreate(savedInstanceState);									
-			this.bootstrapContainer();        	        	
+		{									
+			this.bootstrapContainer();      
+			super.onCreate(savedInstanceState);
 		} 
 		catch (Exception e)
 		{

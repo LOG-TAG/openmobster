@@ -14,6 +14,7 @@ import org.openmobster.core.mobileCloud.api.service.Response;
 import org.openmobster.core.mobileCloud.api.service.MobileService;
 import org.openmobster.core.mobileCloud.api.service.Request;
 import org.openmobster.core.mobileCloud.api.service.ServiceInvocationException;
+import org.openmobster.core.mobileCloud.api.system.CometUtil;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
@@ -26,7 +27,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
  */
 public final class ActivationUtil
 {
-	public static String cloudServerIp = "192.168.1.105"; //Modify Allowed: This should be the IP address of your server used for running the testsuite
+	public static String cloudServerIp = "192.168.1.106"; //Modify Allowed: This should be the IP address of your server used for running the testsuite
 	
 	
 	public static String deviceIdentifier = "IMEI:8675309"; //Do Not Modify
@@ -49,9 +50,7 @@ public final class ActivationUtil
 		{
 			//Success Scenario
 			processProvisioningSuccess(email, response);
-						
-			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.StartCometDaemon");
-			Bus.getInstance().invokeService(invocation);
+			ActivationUtil.handlePostActivation();
 		}
 		else
 		{
@@ -127,5 +126,14 @@ public final class ActivationUtil
 		conf.setHttpPort(httpPort);
 								
 		conf.save(context);
+	}
+	
+	private static void handlePostActivation() throws Exception
+	{
+		Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.StartCometDaemon");
+			Bus.getInstance().invokeService(invocation);
+			
+		//bootup channels for this app
+    	boolean isChannelBootActive = CometUtil.subscribeChannels();
 	}
 }

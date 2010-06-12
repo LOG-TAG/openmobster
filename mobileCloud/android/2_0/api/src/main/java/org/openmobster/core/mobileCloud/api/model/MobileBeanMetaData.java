@@ -8,13 +8,15 @@
 
 package org.openmobster.core.mobileCloud.api.model;
 
+import java.io.Serializable;
+
 /**
  * MobileBeanMetaData contains meta information related to a particular MobileBean
  * 
  * @author openmobster@gmail.com
  *
  */
-public final class MobileBeanMetaData 
+public final class MobileBeanMetaData implements Serializable
 {	
 	private String service;
 		

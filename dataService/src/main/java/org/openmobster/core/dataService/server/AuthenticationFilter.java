@@ -76,7 +76,8 @@ public class AuthenticationFilter extends IoFilterAdapter
 		log.debug("Authorization--------------------------------------------------------------------------");
 		
 		String payload = (String)session.getAttribute(Constants.payload);
-		AuthCredential authCredential = this.parseAuthCredential(payload);
+		ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
+		AuthCredential authCredential = this.parseAuthCredential(request);
 		if(authCredential == null)
 		{
 			log.debug("AUTHCredential missing: Access Denied");
@@ -95,12 +96,13 @@ public class AuthenticationFilter extends IoFilterAdapter
 		
 		
 		String nonce = authCredential.getNonce();
+		log.debug("Incoming Nonce: "+nonce);
+		
 		Device device = deviceController.read(deviceId);
 		if(device != null && device.getIdentity().isActive())
 		{
 			String storedNonce = device.readAttribute("nonce").getValue();	
 			
-			log.debug("Incoming Nonce: "+nonce);
 			log.debug("Stored Nonce: "+storedNonce);
 			
 			if(nonce != null && MessageDigest.isEqual(nonce.getBytes(), storedNonce.getBytes()))
@@ -123,6 +125,10 @@ public class AuthenticationFilter extends IoFilterAdapter
 				return true;
 			}
 		}
+		else
+		{
+			log.debug("Device: "+device+" is not registered or inactive");
+		}
 		
 		log.debug("Access Denied!!");
 		
@@ -131,47 +137,43 @@ public class AuthenticationFilter extends IoFilterAdapter
 		return false;
 	}
 	
-	private AuthCredential parseAuthCredential(String payload) throws Exception
+	private AuthCredential parseAuthCredential(ConnectionRequest request) throws Exception
 	{
-		int startOfTokenIndex = payload.indexOf("<auth>");
-		int endOfTokenIndex = payload.indexOf("</auth>", startOfTokenIndex);
-		
-		if(startOfTokenIndex != -1 && endOfTokenIndex > startOfTokenIndex)
-		{			
-			String authdata = payload.substring(startOfTokenIndex+"<auth>".length(), endOfTokenIndex);			
-			if(authdata != null)
-			{
-				authdata = authdata.trim();
-				int separatorIndex = authdata.indexOf('|');
-				if(separatorIndex != -1)
-				{
-					String deviceId = authdata.substring(0, separatorIndex).trim();
-					String nonce = authdata.substring(separatorIndex+1);
-					AuthCredential authCredential = new AuthCredential();
-					authCredential.setDeviceId(deviceId);
-					authCredential.setNonce(nonce);
-					return authCredential;
-				}
-			}
-		}
-		
-		return null;
+		AuthCredential authCredential = new AuthCredential();
+		authCredential.setDeviceId(request.getDeviceId());
+		authCredential.setNonce(request.getNonce());
+		return authCredential;
 	}
 	
 	private boolean skipAuthentication(IoSession session)
 	{		
 		String payload = (String)session.getAttribute(Constants.payload);
+		ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
 		
-		if(payload.startsWith("<auth>"))
+		if(request == null)
+		{
+			//looks like authenticated session is already established...no need for this
+			return true;
+		}
+		
+		String deviceId = null;
+		String processor = null;
+		if(request != null)
+		{
+			deviceId = request.getDeviceId();
+			processor = request.getProcessor();
+		}
+		
+		if(deviceId !=null)
 		{
 			return false;
 		}
 		
 		//If just a processor is being picked for execution, go ahead
-		if(payload.contains(Constants.processorId))
+		if(processor != null)
 		{
 			//Allows testsuite requests
-			if(payload.contains("=testsuite") || payload.contains("=/testdrive/"))
+			if(processor.equals("testsuite") || processor.equals("/testdrive/"))
 			{
 				session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
 			}

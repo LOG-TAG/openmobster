@@ -19,6 +19,7 @@ import org.openmobster.core.mobileCloud.android_native.framework.events.ListItem
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
+import org.openmobster.core.mobileCloud.api.ui.framework.SystemLocaleKeys;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
@@ -26,7 +27,10 @@ import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -83,7 +87,7 @@ public class ManualSyncScreen extends Screen
 		
 		listApp.setTitle(appResources.localize(LocaleKeys.manual_sync, LocaleKeys.manual_sync));
 		
-		String[] adapterArray = null;
+		final String[] adapterArray;
 		List<String> myChannels = conf.getMyChannels();
 		final boolean channelsFound;
 		if(myChannels != null && !myChannels.isEmpty())
@@ -117,7 +121,8 @@ public class ManualSyncScreen extends Screen
 					return;
 				}
 				
-				//FIXME: Perform channel-oriented functions
+				//Perform channel-oriented functions
+				ManualSyncScreen.this.startChannelSelect(adapterArray[clickEvent.getPosition()]);
 			}
 		};
 		NavigationContext.getInstance().addClickListener(clickListener);
@@ -140,6 +145,47 @@ public class ManualSyncScreen extends Screen
 					return true;
 				}
 			});
+		}
+	}
+	
+	private void startChannelSelect(String channel)
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		AppResources resources = Services.getInstance().getResources();
+		
+		ChannelSyncListener listener = new ChannelSyncListener(channel);
+		
+		AlertDialog dialog = new AlertDialog.Builder(context).
+		setItems(new String[]{resources.localize(LocaleKeys.reset_channel, LocaleKeys.reset_channel),
+		resources.localize(LocaleKeys.sync_channel, LocaleKeys.sync_channel),
+		resources.localize(SystemLocaleKeys.cancel, SystemLocaleKeys.cancel)}, listener).
+    	setCancelable(false).
+    	create();
+		
+		dialog.setTitle(channel);
+		
+		dialog.show();
+	}
+	
+	private static class ChannelSyncListener implements DialogInterface.OnClickListener
+	{
+		private String selectedChannel;
+		
+		private ChannelSyncListener(String selectedChannel)
+		{
+			this.selectedChannel = selectedChannel;
+		}
+		
+		public void onClick(DialogInterface dialog, int status)
+		{
+			if(status != 2)
+			{
+				CommandContext commandContext = new CommandContext();
+				commandContext.setTarget("manualSync");
+				commandContext.setAttribute("syncOption", ""+status);
+				commandContext.setAttribute("channel", selectedChannel);
+				Services.getInstance().getCommandService().execute(commandContext);
+			}
 		}
 	}
 }

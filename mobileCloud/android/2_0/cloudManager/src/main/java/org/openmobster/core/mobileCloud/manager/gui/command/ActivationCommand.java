@@ -10,7 +10,6 @@ package org.openmobster.core.mobileCloud.manager.gui.command;
 
 import android.content.Context;
 import android.app.Activity;
-import android.provider.Settings.Secure;
 import android.widget.Toast;
 
 import org.openmobster.core.mobileCloud.manager.gui.CommandKeys;
@@ -24,6 +23,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.moblet.BootupConfiguration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 import org.openmobster.core.mobileCloud.api.service.Request;
 import org.openmobster.core.mobileCloud.api.service.Response;
@@ -51,7 +51,7 @@ public class ActivationCommand implements RemoteCommand
 		boolean isReactivation = false;
 		try
 		{
-			deviceIdentifier = "IMEI:"+Secure.ANDROID_ID;					
+			deviceIdentifier = GeneralTools.getDeviceIdentifier();			
 			server = (String)commandContext.getAttribute(CommandKeys.server);
 			email = (String)commandContext.getAttribute(CommandKeys.email);
 			String password = (String)commandContext.getAttribute(CommandKeys.password);

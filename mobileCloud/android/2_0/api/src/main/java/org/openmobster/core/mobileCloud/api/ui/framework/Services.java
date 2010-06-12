@@ -25,8 +25,6 @@ public final class Services
 	private AppResources resources;	
 	private NavigationContext navigationContext;
 	private CommandService commandService;
-	
-	//port push support
 	private PushListener pushListener;
 	
 	private Services()

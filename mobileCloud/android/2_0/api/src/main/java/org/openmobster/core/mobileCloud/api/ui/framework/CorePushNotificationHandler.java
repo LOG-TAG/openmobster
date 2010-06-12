@@ -8,20 +8,20 @@
 
 package org.openmobster.core.mobileCloud.api.ui.framework;
 
-//FIXME: show a generic system notification
-/*import net.rim.blackberry.api.homescreen.HomeScreen;
-import net.rim.device.api.notification.NotificationsConstants;
-import net.rim.device.api.notification.NotificationsManager;
-import net.rim.device.api.system.Application;
-import net.rim.device.api.system.ApplicationDescriptor;
-import net.rim.device.api.system.EncodedImage;
-import net.rim.device.api.ui.UiApplication;*/
+import java.lang.reflect.Field;
 
 import org.openmobster.core.mobileCloud.api.push.MobilePush;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.util.GeneralTools;
+import org.openmobster.core.mobileCloud.android.service.Registry;
+
+import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 
 /**
  * @author openmobster@gmail
@@ -39,40 +39,92 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 	
 	public void receiveNotification(final MobilePush newPushInstance)
 	{					
-		//Send a notification at the App-Level via a PushCommand invocation
-		/*if(Application.getApplication().isForeground())
+		try
 		{
-			CommandContext commandContext = new CommandContext();
-			commandContext.setTarget("push");
-			commandContext.setPush(newPushInstance);
+			//System.out.println("App Level Push--------------------------------------");
+			//System.out.println("Push received.........................");
+			//System.out.println("----------------------------------------------------");
 			
-			int retry = 5;
-			for(int i=0; i<retry; i++)
-			{				
-				Services.getInstance().getCommandService().execute(commandContext);
-				
-				if(commandContext.getAttribute("validation-error") == null)
-				{
-					//everything went ok.
-					break;
-				}
-				
-				//retry in 30 seconds
-				try{Thread.currentThread().sleep(30000);}catch(Exception e){}
-				
-				if(!Application.getApplication().isForeground())
-				{
-					break;
-				}
-			}
-		}*/
-		
-		System.out.println("App Level Push--------------------------------------");
-		System.out.println("Push received.........................");
-		System.out.println("----------------------------------------------------");
+			this.handleSystemNotification(newPushInstance);
+		}
+		catch(Exception e)
+		{
+			//e.printStackTrace(System.out);
+			
+			//if this fails...app should not fail...Life still goes on
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "receiveNotification", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			}));
+		}
 	}
 	
 	public void clearNotification()
-	{	
+	{
+		//Not needed in Android...one of several awesomeness of Android over BlackBerry platform!!!
+	}
+	
+	private void handleSystemNotification(final MobilePush newPushInstance) throws Exception
+	{
+		Activity activity = (Activity)Registry.getActiveInstance().getContext();
+		String appPackage = activity.getPackageName();
+		PackageManager pm = activity.getPackageManager();
+		CharSequence appName = pm.getApplicationLabel(activity.getApplicationInfo());
+		
+		//Get the NotificationManager service
+		String ns = Context.NOTIFICATION_SERVICE;
+		NotificationManager notificationManager = (NotificationManager)activity.getSystemService(ns);
+		
+		//Setup the Notification instance
+		int icon = this.findDrawableId((Activity)activity, "push");
+		long when = System.currentTimeMillis();
+		Notification notification = new Notification(icon, appName, when);
+		
+		//Setup the intent for this notification
+		CharSequence contentText = ""+ newPushInstance.getNumberOfUpdates()+" Updates";
+		
+		Intent notificationIntent = new Intent(activity, activity.getClass());
+		notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		notificationIntent.setAction(Intent.ACTION_VIEW);
+		notificationIntent.putExtra("push", Boolean.TRUE);
+		
+		PendingIntent contentIntent = PendingIntent.getActivity(activity, 0, notificationIntent, 0);
+		notification.setLatestEventInfo(activity, appName, contentText, contentIntent);
+		
+		//Notification Flags
+		notification.flags = Notification.FLAG_AUTO_CANCEL;
+		notification.defaults |= Notification.DEFAULT_LIGHTS;
+		notification.defaults |= Notification.DEFAULT_SOUND;
+		
+		notificationManager.notify(appPackage.hashCode(), 
+		notification);
+		
+		//System.out.println("Starting Notification----------------------------------------");
+		//System.out.println("Push Updates: "+newPushInstance.getNumberOfUpdates());
+		//MobileBeanMetaData[] updates = newPushInstance.getPushData();
+		//if(updates != null)
+		//{
+		//	for(MobileBeanMetaData update:updates)
+		//	{
+		//		System.out.println("Bean: "+update.getId());
+		//	}
+		//}
+		//System.out.println("--------------------------------------------------------------");
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------
+	private int findDrawableId(Activity activity, String variable)
+	{
+		try
+		{
+			String idClass = activity.getPackageName()+".R$drawable";
+			Class clazz = Class.forName(idClass);
+			Field field = clazz.getField(variable);
+			
+			return field.getInt(clazz);
+		}
+		catch(Exception e)
+		{
+			return -1;
+		}
 	}
 }

@@ -66,8 +66,22 @@ public class TestServiceInvocationProcessor extends TestCase
 			os = socket.getOutputStream();	
 			
 			Device device = DeviceController.getInstance().read("IMEI:4930051");
-			String sessionInitPayload = "<auth>IMEI:4930051"+"|"+device.readAttribute("nonce").getValue()
-			+"</auth>&processorid=mobileservice";
+			
+			String sessionInitPayload = 
+			"<request>" +
+				"<header>" +
+					"<name>device-id</name>"+
+					"<value><![CDATA[IMEI:4930051]]></value>"+
+				"</header>"+
+				"<header>" +
+					"<name>nonce</name>"+
+					"<value><![CDATA["+device.readAttribute("nonce").getValue()+"]]></value>"+
+				"</header>"+
+				"<header>" +
+					"<name>processor</name>"+
+					"<value>mobileservice</value>"+
+				"</header>"+
+			"</request>";
 			
 			IOUtilities.writePayLoad(sessionInitPayload, os);			
 			

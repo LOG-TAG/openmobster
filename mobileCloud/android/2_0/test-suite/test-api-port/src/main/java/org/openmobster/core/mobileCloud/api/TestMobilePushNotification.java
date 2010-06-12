@@ -8,8 +8,6 @@
 
 package org.openmobster.core.mobileCloud.api;
 
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 
 /**
  * @author openmobster@gmail.com
@@ -19,17 +17,13 @@ public final class TestMobilePushNotification extends AbstractAPITest
 {
 	public void runTest()
 	{
-		/*try
+		try
 		{
-			//this.startBootSyncForPush();
-			
-			Invocation invocation = new Invocation(
-			"org.openmobster.core.mobileCloud.android.invocation.CometRecycleHandler");
-			Bus.getInstance().invokeService(invocation);
+			//FIXME: wait for some state change based on Push notification
 		}
 		catch(Exception e)
 		{
 			throw new RuntimeException(e.toString());
-		}*/
+		}
 	}
 }

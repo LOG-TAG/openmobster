@@ -35,7 +35,7 @@ public final class DemoDetails implements LocalCommand
 	{
 		try
 		{
-			String channel = "/offlineapp/demochannel";
+			String channel = "offlineapp_demochannel";
 			String selectedBean = (String)commandContext.getAttribute("selectedBean");
 			
 			String details = null;

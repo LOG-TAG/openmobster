@@ -35,13 +35,12 @@ public class ProcessorController
 		
 	}				
 	//---------------------------------------------------------------------------------------------------------------------
-	public void execute(IoSession session, String payload) throws Exception
+	public void execute(IoSession session, String payload, ConnectionRequest request) throws Exception
 	{
-		if(payload.contains(Constants.processorId))
+		if(request != null )
 		{
-			int startIndex = payload.indexOf(Constants.processorId);
-			payload = payload.substring(startIndex);
-			this.instantiateProcessor(session, payload);
+			String processor = request.getProcessor();
+			this.instantiateProcessor(session, processor);
 		}
 		else
 		{
@@ -49,10 +48,9 @@ public class ProcessorController
 		}
 	}	
 	
-	private void instantiateProcessor(IoSession session, String payload) 
+	private void instantiateProcessor(IoSession session, String processorId) 
 	{
 		//Find/Instantiate the Processor for this data exchange
-		String processorId = payload.substring(payload.indexOf("=")+1).trim();
 		Processor processor = (Processor)session.getAttribute(Constants.processor);
 		if(processor == null)
 		{

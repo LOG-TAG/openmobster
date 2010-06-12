@@ -115,6 +115,14 @@ public final class Registry
 		this.context = context;
 	}
 	
+	public synchronized void validateCloud()
+	{
+		if(!isContainer)
+		{
+			this.waitForContainer();
+		}
+	}
+	
 	/**
 	 * Starts the Service Registry. 
 	 * 

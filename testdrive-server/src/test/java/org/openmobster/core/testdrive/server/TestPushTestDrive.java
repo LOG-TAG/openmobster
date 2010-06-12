@@ -48,7 +48,13 @@ public class TestPushTestDrive extends TestCase
 			is = socket.getInputStream();
 			os = socket.getOutputStream();	
 			
-			String sessionInitPayload = "processorid=/testdrive/push";
+			String sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>/testdrive/push</value>"+
+					"</header>"+
+				"</request>";
 			
 			IOUtilities.writePayLoad(sessionInitPayload, os);			
 			

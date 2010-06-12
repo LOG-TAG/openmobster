@@ -75,6 +75,12 @@ public final class AppConfig
 				DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 				Document root = builder.parse(new ByteArrayInputStream(xml.getBytes()));
 				
+				if(xml.indexOf("<bootstrap>") != -1)
+				{
+					this.parseNew(root);
+					return;
+				}
+				
 				//parse app commands
 				NodeList commands = root.getElementsByTagName("command");
 				Hashtable registeredCommands = new Hashtable();
@@ -177,6 +183,122 @@ public final class AppConfig
 			ErrorHandler.getInstance().handle(syse);
 			
 			this.attrMgr.setAttribute("frameworkBootstrapFailure", syse);
+		}
+	}
+	
+	private void parseNew(Document root) throws Exception
+	{
+		//parse app commands
+		NodeList commands = root.getElementsByTagName("command");
+		Hashtable registeredCommands = new Hashtable();
+		if(commands != null)
+		{					
+			this.attrMgr.setAttribute("commands", registeredCommands);
+			int size = commands.getLength();
+			for(int i=0; i<size; i++)
+			{
+				Element command = (Element)commands.item(i);
+				String commandId = command.getAttribute("id");
+				String commandClassName = command.getFirstChild().getNodeValue().trim();
+				registeredCommands.put(commandId, Class.forName(commandClassName).newInstance());						
+			}					
+		}
+										
+		//parse app locale, optional
+		NodeList localeNode = root.getElementsByTagName("locale");
+		if(localeNode != null && localeNode.getLength()>0)
+		{					
+			Element localeElem = (Element)localeNode.item(0);					
+			
+			Element languageElem = (Element)localeElem.getElementsByTagName("language-code").item(0);					
+			String language = languageElem.getFirstChild().getNodeValue().trim();
+			
+			String country = null;
+			NodeList countryNode = localeElem.getElementsByTagName("country-code");
+			if(countryNode!=null && countryNode.getLength()>0)
+			{
+				Element countryElem = (Element)countryNode.item(0);
+				country = countryElem.getFirstChild().getNodeValue().trim();
+			}
+			
+			Locale locale = null;
+			if(country != null)
+			{
+				locale = new Locale(language, country);
+			}
+			else
+			{
+				locale = new Locale(language); 
+			}
+			this.attrMgr.setAttribute("locale", locale);
+		}
+		
+		//parse screens
+		NodeList screens = root.getElementsByTagName("screen");
+		Hashtable screenConfig = new Hashtable();
+		if(screens !=null && screens.getLength()>0)
+		{										
+			this.attrMgr.setAttribute("screenConfig", screenConfig);
+			int size = screens.getLength();
+			for(int i=0; i<size; i++)
+			{
+				Element screen = (Element)screens.item(i);
+				String screenClass = screen.getFirstChild().getNodeValue().trim();
+				String screenId = screen.getAttribute("id");
+				screenConfig.put(screenId, screenClass);
+			}					
+		}	
+		
+		//Process bootstrap element
+		Element bootstrap = (Element)root.getElementsByTagName("bootstrap").item(0);
+		NodeList commandNodes = bootstrap.getElementsByTagName("command");
+		if(commandNodes != null && commandNodes.getLength()>0)
+		{
+			Element startupCommand = (Element)commandNodes.item(0);
+			registeredCommands.put("startup", Class.forName(startupCommand.getFirstChild().
+			getNodeValue().trim()).newInstance());
+		}
+		NodeList screenNodes = bootstrap.getElementsByTagName("screen");
+		if(screenNodes != null && screenNodes.getLength()>0)
+		{
+			Element homeScreen = (Element)screenNodes.item(0);
+			screenConfig.put("home", homeScreen.getFirstChild().getNodeValue().trim());
+		}
+		
+		//Process push element
+		NodeList pushNodes = root.getElementsByTagName("push");
+		if(pushNodes != null && pushNodes.getLength()>0)
+		{
+			Element pushNode = (Element)pushNodes.item(0);
+			Element commandNode = (Element)pushNode.getElementsByTagName("command").item(0);
+			String pushCommand = commandNode.getFirstChild().getNodeValue().trim();
+			registeredCommands.put("push", Class.forName(pushCommand).newInstance());
+		}
+		
+		//Validate the configuration
+		
+		//Must have a home command
+		if(!screenConfig.containsKey("home"))
+		{
+			throw new IllegalStateException("Home screen is missing!!");
+		}
+		
+		//Parse the channels that this moblet-app is interested in				
+		NodeList channels = root.getElementsByTagName("channel");
+		Vector registeredChannels = new Vector();				
+		if(channels!=null && channels.getLength()>0)
+		{
+			int size = channels.getLength();
+			for(int i=0; i<size; i++)
+			{
+				Element channelElem = (Element)channels.item(i);
+				String channel = channelElem.getFirstChild().getNodeValue().trim();
+				if(!registeredChannels.contains(channel))
+				{
+					registeredChannels.addElement(channel);							
+				}
+			}
+			this.attrMgr.setAttribute("channels", registeredChannels);
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------						

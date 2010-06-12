@@ -55,7 +55,13 @@ public class IntegTestDeviceActivation extends TestCase
 			is = socket.getInputStream();
 			os = socket.getOutputStream();	
 			
-			String payload = "processorid=testsuite";
+			String payload = 
+			"<request>" +
+				"<header>" +
+					"<name>processor</name>"+
+					"<value>testsuite</value>"+
+				"</header>"+
+			"</request>";
 			IOUtilities.writePayLoad(payload, os);	
 			
 			String data = IOUtilities.readServerResponse(is);

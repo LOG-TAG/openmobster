@@ -81,7 +81,7 @@ public class CometConfig implements RemoteCommand
 		NavigationContext navigationContext = NavigationContext.getInstance();
 		
 		navigationContext.setAttribute("cometConfig", "status", status);		
-		navigationContext.navigate("cometConfig");
+		navigationContext.refresh();
 	}
 
 	public void doViewError(CommandContext commandContext) 

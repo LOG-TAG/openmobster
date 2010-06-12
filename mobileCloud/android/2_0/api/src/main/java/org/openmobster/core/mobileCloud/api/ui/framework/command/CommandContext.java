@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.api.ui.framework.command;
 
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+import org.openmobster.core.mobileCloud.api.push.MobilePush;
 
 /**
  * @author openmobster@gmail.com
@@ -80,5 +81,15 @@ public final class CommandContext
 	public void setAppContext(Object appContext)
 	{
 		this.attrMgr.setAttribute("app-context", appContext);
+	}
+	//---------------------------------------------------------------------------
+	public MobilePush getPush()
+	{
+		return (MobilePush)this.attrMgr.getAttribute("push");
+	}
+	
+	public void setPush(MobilePush push)
+	{
+		this.attrMgr.setAttribute("push", push);
 	}
 }

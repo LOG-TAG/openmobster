@@ -30,13 +30,13 @@ public class ResetChannel implements RemoteCommand
 		try
 		{			
 			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler", 
-			SyncInvocation.bootSync, "/offlineapp/demochannel");		
+			SyncInvocation.bootSync, "offlineapp_demochannel");		
 			Bus.getInstance().invokeService(syncInvocation);
 		}		
 		catch(Exception be)
 		{
 			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "doAction", new Object[]{
-				"Manually Synchronizing (/offlineapp/demochannel)",
+				"Manually Synchronizing (offlineapp_demochannel)",
 				"Target Command:"+commandContext.getTarget()				
 			}));
 			throw new RuntimeException(be.toString());

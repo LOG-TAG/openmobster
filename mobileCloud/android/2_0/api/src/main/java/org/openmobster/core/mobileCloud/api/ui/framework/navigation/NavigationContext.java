@@ -153,11 +153,18 @@ public final class NavigationContext
 	{
 		String currentId = (String)this.contextManager.getAttribute("current");
 		
-		ScreenManager screenManager = ScreenManager.getInstance();
-		screenManager.forceRender(currentId);
-		Screen screen = screenManager.find(currentId);
-		screen.postRender();
-		SPIServices.getInstance().getNavigationContextSPI().refresh();
+		if(currentId != null)
+		{
+			ScreenManager screenManager = ScreenManager.getInstance();
+			screenManager.forceRender(currentId);
+			Screen screen = screenManager.find(currentId);
+			screen.postRender();
+			SPIServices.getInstance().getNavigationContextSPI().refresh();
+		}
+		else
+		{
+			this.home();
+		}
 	}
 	
 	public Screen getCurrentScreen()

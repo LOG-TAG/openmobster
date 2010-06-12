@@ -14,6 +14,6 @@
 	</commands>
 			
 	<channels>
-		<channel>/offlineapp/demochannel</channel>
+		<channel>offlineapp_demochannel</channel>
 	</channels>						
 </moblet-app>

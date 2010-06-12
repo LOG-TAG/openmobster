@@ -62,6 +62,7 @@ public class Server
 	private TransactionFilter transactionFilter;
 	private AuthenticationFilter authenticationFilter;
 	private PayloadFilter payloadFilter;
+	private RequestConstructionFilter requestFilter;
 		
 	public Server()
 	{
@@ -156,6 +157,16 @@ public class Server
 	{
 		this.payloadFilter = payloadFilter;
 	}
+	
+	public RequestConstructionFilter getRequestFilter()
+	{
+		return requestFilter;
+	}
+
+	public void setRequestFilter(RequestConstructionFilter requestFilter)
+	{
+		this.requestFilter = requestFilter;
+	}
 	//---------------------------------------------------------------------------------------------------
 	public boolean isSecure()
 	{
@@ -195,6 +206,11 @@ public class Server
 	        if(this.payloadFilter != null)
 	        {
 	        	cfg.getFilterChain().addLast("payloadFilter", this.payloadFilter);
+	        }
+	        
+	        if(this.requestFilter != null)
+	        {
+	        	cfg.getFilterChain().addLast("requestFilter", this.requestFilter);
 	        }
 	        
 	        if(this.transactionFilter != null)
