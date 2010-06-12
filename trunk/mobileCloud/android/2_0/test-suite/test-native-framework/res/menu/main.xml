@@ -17,4 +17,6 @@
       android:title="Remote Timeout" />
     <item android:id="@+id/item9"
       android:title="Async Command" />
+    <item android:id="@+id/item10"
+      android:title="Trigger Push" />
 </menu>             

@@ -31,7 +31,13 @@ public class TestSimplePull extends Test
 		{
 			session = NetworkConnector.getInstance().openSession(false);	
 			
-			String sessionInitPayload = "processorid=/testdrive/pull";
+			String sessionInitPayload =
+				"<request>" +
+						"<header>" +
+						"<name>processor</name>"+
+						"<value>/testdrive/pull</value>"+
+					"</header>"+
+				"</request>";
 			
 			String data = session.sendTwoWay(sessionInitPayload);
 			if(data.indexOf("status=200")!=-1)

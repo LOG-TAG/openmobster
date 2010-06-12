@@ -8,6 +8,8 @@
 
 package org.openmobster.core.mobileCloud.api.ui.framework;
 
+import java.util.List;
+import java.util.ArrayList;
 import org.openmobster.core.mobileCloud.api.push.MobilePush;
 import org.openmobster.core.mobileCloud.api.push.PushListener;
 import org.openmobster.core.mobileCloud.api.model.MobileBeanMetaData;
@@ -21,11 +23,13 @@ public final class AppPushListener implements PushListener
 	private static AppPushListener singleton;
 	
 	private long updateCounter;
+	private List<MobilePush> pushQueue;
+	
 	private PushNotificationHandler handler;
 	
 	private AppPushListener()
 	{
-		
+		this.pushQueue = new ArrayList<MobilePush>();
 	}
 	
 	public static AppPushListener getInstance()
@@ -70,6 +74,7 @@ public final class AppPushListener implements PushListener
 			this.updateCounter += pushData.length;
 			push.setNumberOfUpdates(this.updateCounter);
 			this.handler.receiveNotification(push);
+			this.pushQueue.add(push);
 		}
 	}
 	
@@ -77,5 +82,35 @@ public final class AppPushListener implements PushListener
 	{
 		this.updateCounter = 0;
 		this.handler.clearNotification();
+		this.pushQueue.clear();
+	}
+	
+	public MobilePush getPush()
+	{
+		MobilePush push = null;
+		
+		if(this.pushQueue != null && !this.pushQueue.isEmpty())
+		{
+			List<MobileBeanMetaData> pushMetaData = new ArrayList<MobileBeanMetaData>();
+			for(MobilePush local:this.pushQueue)
+			{
+				MobileBeanMetaData[] localMeta = local.getPushData();
+				if(localMeta != null)
+				{
+					for(MobileBeanMetaData cour: localMeta)
+					{
+						pushMetaData.add(cour);
+					}
+				}
+			}
+			
+			if(!pushMetaData.isEmpty())
+			{
+				push = new MobilePush(pushMetaData.toArray(new MobileBeanMetaData[0]));
+				push.setNumberOfUpdates(pushMetaData.size());
+			}
+		}
+		
+		return push;
 	}
 }

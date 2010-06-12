@@ -68,8 +68,21 @@ public class SyncService
 				os = socket.getOutputStream();	
 								
 				String authHash = Configuration.getInstance().getAuthenticationHash();				
-				String sessionInitPayload = "<auth>"+deviceId+"|"+authHash
-				+"</auth>&processorid=sync";
+				String sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>sync</value>"+
+					"</header>"+
+				"</request>";
 				
 				IOUtilities.writePayLoad(sessionInitPayload, os);
 				

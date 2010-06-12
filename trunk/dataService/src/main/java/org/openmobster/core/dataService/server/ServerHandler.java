@@ -109,14 +109,16 @@ public class ServerHandler extends IoHandlerAdapter
 			{				
 				return;
 			}
-										
-			if(payload.contains(Constants.command))
+			
+			ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
+			
+			if(request != null && request.getCommand() != null)
 			{
-				this.commandController.execute(session, payload);								
+				this.commandController.execute(session, payload, request);								
 			}			
 			else
 			{
-				this.processorController.execute(session,payload);								
+				this.processorController.execute(session,payload, request);								
 			}															
 		}
 		catch(ProcessorException pe)

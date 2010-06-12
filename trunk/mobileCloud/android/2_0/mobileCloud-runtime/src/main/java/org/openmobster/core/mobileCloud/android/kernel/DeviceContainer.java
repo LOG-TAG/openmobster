@@ -31,6 +31,7 @@ import org.openmobster.core.mobileCloud.android.module.connection.NotificationLi
 import org.openmobster.core.mobileCloud.android.module.connection.CommandProcessor;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 
+import org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder;
 import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
 import org.openmobster.core.mobileCloud.android.module.bus.MockBroadcastInvocationHandler;
 import org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler;
@@ -154,6 +155,7 @@ public final class DeviceContainer
 			services.add(new AppStateManager());
 			
 			//Invocation Handlers
+			services.add(new RegisterIBinder());
 			services.add(new MockInvocationHandler());
 			services.add(new MockBroadcastInvocationHandler());
 			services.add(new SyncInvocationHandler());									

@@ -20,6 +20,9 @@
    	  <property name="payloadFilter">
    			<inject bean="dataService://PayloadFilter"/>
    	  </property>
+   	  <property name="requestFilter">
+   			<inject bean="dataService://RequestConstructionFilter"/>
+   	  </property>
    	  <property name="transactionFilter">
    			<inject bean="dataService://TransactionFilter"/>
    	  </property>   	  
@@ -37,7 +40,10 @@
    	  
    	  <property name="payloadFilter">
    			<inject bean="dataService://PayloadFilter"/>
-   	  </property>   	     	  
+   	  </property>  
+   	  <property name="requestFilter">
+   			<inject bean="dataService://RequestConstructionFilter"/>
+   	  </property> 	     	  
    	  <property name="transactionFilter">
    			<inject bean="dataService://TransactionFilter"/>
    	  </property>   	  
@@ -48,6 +54,8 @@
    
    <!-- Cross Cutting services -->
    <bean name="dataService://PayloadFilter" class="org.openmobster.core.dataService.server.PayloadFilter">    		  		
+   </bean>
+   <bean name="dataService://RequestConstructionFilter" class="org.openmobster.core.dataService.server.RequestConstructionFilter">    		  		
    </bean>
    <bean name="dataService://TransactionFilter" class="org.openmobster.core.dataService.server.TransactionFilter">    		  		
    </bean>

@@ -27,4 +27,6 @@ public interface PushListener
 	public void receivePush(MobilePush push);
 	
 	public void clearNotification();
+	
+	public MobilePush getPush();
 }

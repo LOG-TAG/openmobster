@@ -57,6 +57,12 @@ final class BusyAsyncTask extends AsyncTask<CommandContext,Integer,CommandContex
 				timer.schedule(new RemoteCommandExpiry(commandContext), 
 				15000);
 			}
+			else
+			{
+				Timer timer = new Timer();
+				timer.schedule(new RemoteCommandExpiry(commandContext), 
+				45000); //should never take longer this...this is a forced abort
+			}
 			
 			this.publishProgress(0);
 			

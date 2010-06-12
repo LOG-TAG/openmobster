@@ -200,11 +200,33 @@ public final class NotificationListener extends Service
 				String authHash = conf.getAuthenticationHash();
 			    String channel = this.getActiveChannels();				
 				
-				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
-				"&command=notify"+
-				"&channel="+channel+
-				"&platform=android"+
-				"&device=android";
+				String command = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>command</name>"+
+						"<value>notify</value>"+
+					"</header>"+
+					"<header>" +
+						"<name>channel</name>"+
+						"<value>"+channel+"</value>"+
+					"</header>"+
+					"<header>" +
+						"<name>platform</name>"+
+						"<value>android</value>"+
+					"</header>"+
+						"<header>" +
+						"<name>device</name>"+
+						"<value>android</value>"+
+					"</header>"+
+				"</request>";
 			    //String command = "processorid=/testdrive/push";
 				
 				//Used for debugging the daemon messages
@@ -288,11 +310,33 @@ public final class NotificationListener extends Service
 				String authHash = Configuration.getInstance(context).getAuthenticationHash();
 			    String channel = this.getActiveChannels();				
 				
-				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
-				"&command=notify"+
-				"&channel="+channel+
-				"&platform=android"+
-				"&device=android";
+				String command = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>command</name>"+
+						"<value>notify</value>"+
+					"</header>"+
+					"<header>" +
+						"<name>channel</name>"+
+						"<value>"+channel+"</value>"+
+					"</header>"+
+					"<header>" +
+						"<name>platform</name>"+
+						"<value>android</value>"+
+					"</header>"+
+						"<header>" +
+						"<name>device</name>"+
+						"<value>android</value>"+
+					"</header>"+
+				"</request>";
 				
 				//Used for debugging the daemon messages
 				//System.out.println("Starting a Poll Session---------------------------------------------");

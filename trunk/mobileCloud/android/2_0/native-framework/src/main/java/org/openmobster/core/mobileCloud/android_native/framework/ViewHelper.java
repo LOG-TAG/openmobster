@@ -68,6 +68,22 @@ public class ViewHelper
 		}
 	}
 	
+	public static int findDrawableId(Activity activity, String variable)
+	{
+		try
+		{
+			String idClass = activity.getPackageName()+".R$drawable";
+			Class clazz = Class.forName(idClass);
+			Field field = clazz.getField(variable);
+			
+			return field.getInt(clazz);
+		}
+		catch(Exception e)
+		{
+			return -1;
+		}
+	}
+	
 	
 	public static AlertDialog getOkModal(Activity currentActivity, String title,
 	String message)

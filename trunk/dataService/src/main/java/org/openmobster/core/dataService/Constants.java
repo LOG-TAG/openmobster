@@ -14,6 +14,7 @@ package org.openmobster.core.dataService;
  */
 public interface Constants 
 {
+	public final String request = "request";
 	public final String device = "device";
 	public final String separator = "&";
 	public final String command = "command";

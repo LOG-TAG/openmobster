@@ -64,12 +64,31 @@ public final class MobileService
 			String sessionInitPayload = null;
 			if(deviceId != null && authHash != null)
 			{
-				sessionInitPayload = "<auth>"+deviceId+"|"+authHash
-				+"</auth>&processorid=mobileservice";
+				sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>mobileservice</value>"+
+					"</header>"+
+				"</request>";
 			}
 			else
 			{
-				sessionInitPayload = "processorid=mobileservice";
+				sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>mobileservice</value>"+
+					"</header>"+
+				"</request>";
 			}
 			
 			log.info("--------------------------------------------------");

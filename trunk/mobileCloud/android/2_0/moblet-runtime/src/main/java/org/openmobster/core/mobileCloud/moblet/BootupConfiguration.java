@@ -9,7 +9,6 @@
 package org.openmobster.core.mobileCloud.moblet;
 
 import android.content.Context;
-import android.provider.Settings.Secure;
 
 import org.openmobster.core.mobileCloud.api.service.MobileService;
 import org.openmobster.core.mobileCloud.api.service.Request;
@@ -18,6 +17,7 @@ import org.openmobster.core.mobileCloud.api.service.ServiceInvocationException;
 
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 /**
  * @author openmobster@gmail
@@ -33,7 +33,7 @@ public final class BootupConfiguration
 		
 		conf.deActivateSSL();
 		
-		String deviceIdentifier = "IMEI:"+Secure.ANDROID_ID;
+		String deviceIdentifier = GeneralTools.getDeviceIdentifier();
 		conf.setDeviceId(deviceIdentifier);
 		conf.setServerIp(serverIp);
 		if(port != null && port.trim().length()>0)

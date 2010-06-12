@@ -1,9 +1,9 @@
-<moblet-app>	    	
+<moblet-app>
+    <bootstrap>
+		<screen>org.openmobster.core.mobileCloud.android.testsuite.HomeScreen</screen>
+	</bootstrap>
+		    	
 	<commands>
 		<command id="runtestsuite">org.openmobster.core.mobileCloud.android.module.connection.ConnectionTestSuiteCommand</command>
 	</commands>
-	
-	<screens>
-		<screen id="home">org.openmobster.core.mobileCloud.android.testsuite.HomeScreen</screen>
-	</screens>
 </moblet-app>

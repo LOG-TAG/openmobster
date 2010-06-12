@@ -102,8 +102,22 @@ public final class SyncService extends Service
 						
 			String deviceId = configuration.getDeviceId();
 			String authHash = configuration.getAuthenticationHash();
-			String sessionInitPayload = "<auth>"+deviceId+"|"+authHash
-			+"</auth>&processorid=sync";
+			
+			String sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>sync</value>"+
+					"</header>"+
+				"</request>";
 			
 			String response = session.sendTwoWay(sessionInitPayload);
 			
@@ -357,8 +371,21 @@ public final class SyncService extends Service
 			
 			String deviceId = configuration.getDeviceId();
 			String authHash = configuration.getAuthenticationHash();
-			String sessionInitPayload = "<auth>"+deviceId+"|"+authHash
-			+"</auth>&processorid=sync";
+			String sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>sync</value>"+
+					"</header>"+
+				"</request>";
 			
 			String response = session.sendTwoWay(sessionInitPayload);
 			

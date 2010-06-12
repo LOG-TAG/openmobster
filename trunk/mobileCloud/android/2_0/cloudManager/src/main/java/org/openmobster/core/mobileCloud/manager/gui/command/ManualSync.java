@@ -43,13 +43,13 @@ public class ManualSync implements RemoteCommand
 			
 			if(syncOption.equals("1") && ChannelUtil.isChannelActive(channel))
 			{
-				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler", 
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 				SyncInvocation.twoWay, channel);		
 				Bus.getInstance().invokeService(syncInvocation);
 			}
 			else
 			{
-				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler", 
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 				SyncInvocation.bootSync, channel);		
 				Bus.getInstance().invokeService(syncInvocation);
 			}

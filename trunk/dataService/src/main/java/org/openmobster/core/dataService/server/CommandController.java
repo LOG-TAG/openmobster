@@ -50,60 +50,45 @@ public class CommandController
 		this.cometSessionManager = cometSessionManager;
 	}	
 	//---------------------------------------------------------------------------------------------------------------------
-	public void execute(IoSession session, String payload) throws Exception
+	public void execute(IoSession session, String payload, ConnectionRequest request) throws Exception
 	{						
-		StringTokenizer st = new StringTokenizer(payload, Constants.separator);
-		
-		while(st.hasMoreTokens())
+		String command = request.getCommand();
+		if(command.equals(Constants.notify))
 		{
-			String token = st.nextToken();
+			String channel = request.getHeader("channel");
+			String platform = request.getHeader("platform");
+			String device = request.getHeader("device");
 			
-			int index = token.indexOf('=');
-			String name = token.substring(0, index).trim();
-			String value = token.substring(index+1).trim();
+			//Start Notification Session
+			session.setAttribute(Constants.notify, Boolean.TRUE);				
 			
-			session.setAttribute(name, value);
+			//Activate a Comet Session associated with this device
+			SubscriptionManager subscriptionMgr = (SubscriptionManager)session.getAttribute(Constants.subscription);
+			cometSessionManager.activate(subscriptionMgr.getSubscription().getClientId(), 
+			session);
 			
-			if(name.equals(Constants.command) && value.equals(Constants.notify))
+			//Channel Processing
+			StringTokenizer channels = new StringTokenizer(channel, "|");
+			while(channels.hasMoreTokens())
 			{
-				session.setAttribute(Constants.notify, Boolean.TRUE);				
-				
-				//Activate a Comet Session associated with this device
-				SubscriptionManager subscriptionMgr = (SubscriptionManager)session.getAttribute(Constants.subscription);
-				cometSessionManager.activate(subscriptionMgr.getSubscription().getClientId(), 
-				session);
-			}			
-			else if(name.equals("channel"))
-			{
-				StringTokenizer channels = new StringTokenizer(value, "|");
-				SubscriptionManager manager = (SubscriptionManager)session.getAttribute(Constants.subscription);
-				while(channels.hasMoreTokens())
-				{
-					String channel = channels.nextToken().trim();
-					manager.addMyChannel(channel);
-				}
+				String cour = channels.nextToken().trim();
+				subscriptionMgr.addMyChannel(cour);
 			}
-			else if(name.equals("platform"))
+			
+			//Platform Processing
+			session.setAttribute("platform",platform);
+			
+			//Device Processing
+			session.setAttribute("device", device);
+			
+			long keepAliveInterval = this.computeKeepAliveInterval(platform, device);
+			
+			//Start the KeepAliveDaemon for the active push session
+			String deviceId = subscriptionMgr.getSubscription().getClientId();
+			CometSession cometSession = cometSessionManager.findCometSession(deviceId);
+			if(cometSession != null)
 			{
-				session.setAttribute("platform", value);
-				
-			}
-			else if(name.equals("device"))
-			{
-				session.setAttribute("device", value);
-				
-				String platform = (String)session.getAttribute("platform");
-				long keepAliveInterval = this.computeKeepAliveInterval(platform, value);
-				
-				//Start the KeepAliveDaemon for the active push session
-				SubscriptionManager subscriptionMgr = (SubscriptionManager)session.getAttribute(Constants.subscription);
-				String deviceId = subscriptionMgr.getSubscription().getClientId();
-				CometSession cometSession = cometSessionManager.findCometSession(deviceId);
-				
-				if(cometSession != null)
-				{
-					cometSession.startKeepAliveDaemon(keepAliveInterval);
-				}
+				cometSession.startKeepAliveDaemon(keepAliveInterval);
 			}
 		}
 	}

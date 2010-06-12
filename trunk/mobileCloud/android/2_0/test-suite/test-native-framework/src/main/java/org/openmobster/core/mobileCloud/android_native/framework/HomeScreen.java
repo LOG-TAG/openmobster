@@ -239,6 +239,20 @@ public class HomeScreen extends Screen
 			    				}
 			    			});
 			    	    break;
+			    	    
+			    		case 9:
+			    			cour.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			    			{
+			    				public boolean onMenuItemClick(MenuItem clickedItem)
+			    				{
+			    					CommandService service = Services.getInstance().getCommandService();
+			    					CommandContext commandContext = new CommandContext();
+			    					commandContext.setTarget("pushTrigger");
+			    					service.execute(commandContext);
+			    					return true;
+			    				}
+			    			});
+			    	    break;
 			    	}
 			    }
 			}

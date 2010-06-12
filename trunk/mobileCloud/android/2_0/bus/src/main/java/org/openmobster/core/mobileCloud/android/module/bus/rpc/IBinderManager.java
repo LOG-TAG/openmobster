@@ -81,21 +81,31 @@ public final class IBinderManager extends Service
 			boolean success = context.getApplicationContext().
 			bindService(busIntent, conn, 
 			Context.BIND_AUTO_CREATE);
-			
-			/*if(success)
-			{
-				this.liveConnections.add(conn);
-			}
-			else
-			{
-				System.out.println("Bind Failed with: "+appPackageName);
-			}*/
 		}
+	}
+	
+	public void rebind(String appPackageName)
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		Intent busIntent = new Intent();
+		busIntent.setClassName(
+		appPackageName, 
+		"org.openmobster.core.mobileCloud.android.module.bus.rpc.BusService");
+		
+		ServiceConnection conn = new IBinderConnection();
+		boolean success = context.getApplicationContext().
+		bindService(busIntent, conn, 
+		Context.BIND_AUTO_CREATE);
 	}
 	
 	public IBinder getBinder(String appPackageName)
 	{
 		return this.liveBinders.get(appPackageName);
+	}
+	
+	public boolean isConnectedToCloud()
+	{
+		return this.liveBinders.containsKey("org.openmobster.core.mobileCloud");
 	}
 	//----------------------------------------------------------------------------------
 	private static class IBinderConnection implements ServiceConnection

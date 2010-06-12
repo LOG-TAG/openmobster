@@ -55,14 +55,14 @@ public class HomeScreen extends Screen
 			return;
 		}
 		
-		if(!MobileBean.isBooted("/offlineapp/demochannel"))
+		if(!MobileBean.isBooted("offlineapp_demochannel"))
 		{
 			Dialog.alert(res.localize("channel_not_ready", "channel_not_ready"));
 			return;
 		}
 		
 		//Read the demo beans stored on the device
-		MobileBean[] demoBeans = MobileBean.readAll("/offlineapp/demochannel");
+		MobileBean[] demoBeans = MobileBean.readAll("offlineapp_demochannel");
 		
 		actions = new Vector();
 		int size = demoBeans.length;

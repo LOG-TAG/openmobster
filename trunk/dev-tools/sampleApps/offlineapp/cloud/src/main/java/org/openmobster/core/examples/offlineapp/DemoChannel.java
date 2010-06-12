@@ -20,7 +20,7 @@ import org.openmobster.server.api.model.ChannelInfo;
 /**
  * @author openmobster@gmail.com
  */
-@ChannelInfo(uri="/offlineapp/demochannel", 
+@ChannelInfo(uri="offlineapp_demochannel", 
 		   mobileBeanClass="org.openmobster.core.examples.offlineapp.DemoBean")
 public class DemoChannel implements Channel
 {
@@ -134,7 +134,7 @@ public class DemoChannel implements Channel
 			
 			//Just wait a little to make sure the device is probably in standby after triggering the push
 			//This is used to demonstrate that 'Realtime Push' is delivered even when the device is in standby mode
-			try{Thread.currentThread().sleep(60000);}catch(Exception e){}
+			//try{Thread.currentThread().sleep(60000);}catch(Exception e){}
 			
 			List<String> newIds = new ArrayList<String>();
 			for(DemoBean newBean:newBeans)

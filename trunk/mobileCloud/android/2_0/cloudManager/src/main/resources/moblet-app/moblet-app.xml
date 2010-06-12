@@ -1,8 +1,9 @@
-<moblet-app>	    			
+<moblet-app>
+	<bootstrap>
+    	<screen>org.openmobster.core.mobileCloud.manager.gui.screens.HomeScreen</screen>
+    </bootstrap>
+       			
 	<screens>
-		<screen id="home">
-			org.openmobster.core.mobileCloud.manager.gui.screens.HomeScreen
-		</screen>
 		<screen id="cometConfig">
 			org.openmobster.core.mobileCloud.manager.gui.screens.CometConfigScreen
 		</screen>
