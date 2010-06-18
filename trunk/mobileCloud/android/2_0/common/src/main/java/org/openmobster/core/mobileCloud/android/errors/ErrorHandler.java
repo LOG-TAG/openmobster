@@ -9,43 +9,36 @@
 package org.openmobster.core.mobileCloud.android.errors;
 
 import java.util.Date;
-import java.util.Set;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android.storage.Database;
-import org.openmobster.core.mobileCloud.android.storage.Record;
 
 /**
  * @author openmobster@gmail.com
  *
  */
 public final class ErrorHandler
-{	
+{
+	private static final Uri uri;
+	
+	static
+	{
+		uri = Uri.
+		parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.system.errors");
+	}
+	
 	private static ErrorHandler singleton;
 	
 	private ErrorHandler()
 	{		
 	}
-		
-	private void init() 
-	{
-		try
-		{
-			//Initialize the provisioning table
-			Database database = Database.getInstance(Registry.getActiveInstance().getContext());
-			if(!database.doesTableExist(Database.system_errors))
-			{
-				database.createTable(Database.system_errors);								
-			}
-		}
-		catch(Exception e)
-		{
 			
-		}
-	}		
-		
 	public static ErrorHandler getInstance()
 	{
 		if(ErrorHandler.singleton == null)
@@ -55,7 +48,6 @@ public final class ErrorHandler
 				if(ErrorHandler.singleton == null)
 				{
 					ErrorHandler.singleton = new ErrorHandler();
-					ErrorHandler.singleton.init();
 				}
 			}
 		}
@@ -71,8 +63,9 @@ public final class ErrorHandler
 			boolean isCloud = Registry.getInstance(context).isContainer();
 			Date date = new Date();
 			
-			//FIXME: Collect some device related information
-			String applicationName = context.getApplicationInfo().toString();
+			//TODO: Collect some device related information
+			PackageManager pm = context.getPackageManager();
+			CharSequence applicationName = pm.getApplicationLabel(context.getApplicationInfo());
 			
 			StringBuffer buffer = new StringBuffer();
 			buffer.append(applicationName+" ");
@@ -89,7 +82,7 @@ public final class ErrorHandler
 			buffer.append(e.toString()+"\n");
 			buffer.append(e.getMessage());
 
-			this.save(buffer.toString());
+			this.save(context,buffer.toString());
 		}
 		catch(Exception ex)
 		{
@@ -105,14 +98,24 @@ public final class ErrorHandler
 			StringBuffer buffer = new StringBuffer();
 			
 			Context context = Registry.getActiveInstance().getContext();
-			Set<Record> errors = Database.getInstance(context).selectAll(Database.system_errors);
-			if(errors != null)
+			ContentResolver resolver = context.getContentResolver();
+			
+			Cursor cursor = resolver.query(uri, 
+			null, 
+			null, 
+			null, 
+			null);
+			
+			if(cursor != null && cursor.getCount()>0)
 			{
-				for(Record record: errors)
+				int valueIndex = cursor.getColumnIndex("value");
+				cursor.moveToFirst();
+				do
 				{
-					buffer.append(record.getValue("message"));
+					buffer.append(cursor.getString(valueIndex));
 					buffer.append("\n----------------------------------------------\n");
-				}
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
 			}
 			
 			return buffer.toString();
@@ -131,7 +134,8 @@ public final class ErrorHandler
 		try
 		{
 			Context context = Registry.getActiveInstance().getContext();
-			Database.getInstance(context).deleteAll(Database.system_errors);
+			ContentResolver resolver = context.getContentResolver();
+			resolver.delete(uri, null, null);
 		}
 		catch(Exception ex)
 		{
@@ -142,11 +146,12 @@ public final class ErrorHandler
 		}
 	}
 	//-----------------------------------------------------------------------------------------------------------------------------------------
-	private void save(String message) throws Exception
+	private void save(Context context,String message) throws Exception
 	{
-		Record record = new Record();		
-		record.setValue("message", message);
-		Context context = Registry.getActiveInstance().getContext();
-		Database.getInstance(context).insert(Database.system_errors, record);
+		ContentResolver resolver = context.getContentResolver();
+		ContentValues errorRecord = new ContentValues();
+		errorRecord.put("message", message);
+		
+		resolver.insert(uri, errorRecord);
 	}		
 }

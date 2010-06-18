@@ -99,10 +99,27 @@ final class Subscription
 	{
 		if(currentScreen.getId().equals(this.screen.getId())
 				&&
-		   eventId.equals(eventListenerId)
+		   eventId.equals(this.eventListenerId)
 		)
 		{
 			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(obj instanceof Subscription)
+		{
+			Subscription newObj = (Subscription)obj;
+			if(this.screen.getId().equals(newObj.screen.getId())
+					&&
+			   this.eventListenerId.equals(newObj.eventListenerId)
+			)
+			{
+				return true;
+			}
 		}
 		return false;
 	}

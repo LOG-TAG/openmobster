@@ -27,8 +27,8 @@ public class DeviceContainerApp extends App
 	{
 		try
 		{
+			this.bootstrapContainer();
 			super.onCreate(savedInstanceState);									
-			this.bootstrapContainer();        	        	
 		} 
 		catch (Exception e)
 		{

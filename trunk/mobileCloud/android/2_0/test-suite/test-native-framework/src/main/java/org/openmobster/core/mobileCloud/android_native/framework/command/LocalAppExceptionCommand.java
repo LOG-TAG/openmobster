@@ -8,6 +8,7 @@
 
 package org.openmobster.core.mobileCloud.android_native.framework.command;
 
+import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
@@ -34,7 +35,9 @@ public final class LocalAppExceptionCommand implements LocalCommand
 		System.out.println("-------------------------------------------------------");
 		System.out.println("LocalAppExceptionCommand successfully executed...............");
 		System.out.println("-------------------------------------------------------");
-		throw new AppException();
+		AppException appe = new AppException();
+		ErrorHandler.getInstance().handle(appe);
+		throw appe;
 	}	
 	
 	public void doViewAfter(CommandContext commandContext)

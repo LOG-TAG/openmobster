@@ -15,7 +15,11 @@
 
 	<modules>
 		<module>cloud</module>
+		<!--
+		FIXME: turn me back on before the release  
 		<module>app-rimos</module>
+		-->
+		<module>app-android</module>
 		<module>moblet</module>
 	</modules>
 
@@ -72,35 +76,28 @@
 				<version>${openmobster.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<!--  Android Dependencies -->
+			<dependency>
+				<groupId>android</groupId>
+				<artifactId>android</artifactId>
+				<version>2.0</version>
+				<scope>system</scope>
+				<systemPath>${env.ANDROID_HOME}/platforms/android-2.0/android.jar
+				</systemPath>
+			</dependency>
+			<dependency>
+				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+				<artifactId>device-sdk</artifactId>
+				<version>2.0-snapshot</version>
+				<classifier>full</classifier>
+			</dependency>
 
 			<!--
 					More Dependencies can be added here  
 			 -->
 		</dependencies>
 	</dependencyManagement>
-
-	<dependencies>
-		<!--
-			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
-		-->
-		<dependency>
-			<groupId>org.openmobster.core.dev.tools
-			</groupId>
-			<artifactId>dev-cloudServer
-				</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.openmobster.core</groupId>
-			<artifactId>device-agent-simulator
-				</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!--  
-			More Dependencies can be added here 
-		-->
-	</dependencies>
 
 	<repositories>
 		<!--

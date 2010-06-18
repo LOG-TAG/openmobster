@@ -19,7 +19,7 @@ public final class TestMobilePushNotification extends AbstractAPITest
 	{
 		try
 		{
-			//FIXME: wait for some state change based on Push notification
+			//TODO: wait for some state change based on Push notification
 		}
 		catch(Exception e)
 		{

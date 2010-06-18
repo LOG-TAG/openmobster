@@ -9,7 +9,6 @@
 package org.openmobster.core.mobileCloud.api;
 
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
-import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
 /**
@@ -24,7 +23,6 @@ public final class TestQuery extends AbstractAPITest
 		{
 			this.startBootSync();
 			this.waitForBeans();
-			this.startLoadProxyDaemon();
 									
 			MobileBean[] beans = MobileBean.readAll(this.service);
 			this.assertNotNull(beans, this.getInfo()+"/MustNotBeNull");

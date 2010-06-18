@@ -39,6 +39,11 @@
         <provider android:name="org.openmobster.core.mobileCloud.android.provider.MobileChannelProvider"
           android:authorities="org.openmobster.core.mobileCloud.android.provider.mobile.channels" 
         />
+        
+        <!-- central provider for System Errors -->
+        <provider android:name="org.openmobster.core.mobileCloud.android.provider.SystemErrorsProvider"
+          android:authorities="org.openmobster.core.mobileCloud.android.provider.mobile.system.errors" 
+        />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

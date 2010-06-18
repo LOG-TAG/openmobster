@@ -6,9 +6,11 @@
 Project Layout:    *
 ********************									
 
-Each generated project has the following three maven modules:
+Each generated project has the following 4 maven modules:
 
-* app-rimos - Contains the device side application code for the Blackberry OS - version 4.3.0 and higher
+* app-android - Contains the App for the Android OS - version 2.0 and higher
+
+* app-rimos - Contains the App for the Blackberry OS - version 4.3.0 and higher
 
 * cloud - Contains the "OpenMobster Cloud Server" based artifacts which will be deployed on the server side
 
@@ -26,21 +28,31 @@ Build All the artifacts:
 ------------------------------
 mvn install
 
-This command builds all the 3 artifacts. 
+This command builds all the artifacts. 
 
 
 **********************************************									
 Developer Productivity Improvement:          *
 **********************************************
-To improve development productivity "mvn package or mvn install" command installs the required "OpenMobster MobileCloud" 
-into the specified Blackeberry Simulator. This binary improves developer productivity by automating the manual provisioning 
-processes by provisioning a Cloud account under the name: "blah2@gmail.com".
+BlackBerry Development:
 
-Note: This is a strict development stage only optimization and should not be used in a real world setting.
+To improve development productivity "mvn package or mvn install" command installs the required "OpenMobster MobileCloud" 
+into the specified Blackeberry Simulator. 
 
 The location of the simulator is specified in the "RIM_JDE_HOME" environment variable.
 
 
+Android Development:
+
+For Android, the development mode Mobile Cloud is installed using the android-devcloud module using the following maven command:
+
+cd dev-tools/android-devcloud: mvn package com.jayway.maven.plugins.android.generation2:maven-android-plugin:deploy
+
+
+This Development Mode Mobile Cloud binary improves developer productivity by automating the manual provisioning 
+processes by automatically provisioning a Cloud account under the name: "blah2@gmail.com".
+
+Note: This is a strict development stage only optimization and should not be used in a real world setting.
 
 **********************************************									
 Standalone "Development Mode" Cloud Server:  *

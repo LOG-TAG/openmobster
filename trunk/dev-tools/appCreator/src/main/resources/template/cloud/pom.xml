@@ -23,6 +23,20 @@
 			<artifactId>cloud-sdk</artifactId>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.openmobster.core.dev.tools
+			</groupId>
+			<artifactId>dev-cloudServer
+				</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>device-agent-simulator
+				</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
 		<!--
 			More dependencies can be added here 
 		 -->

@@ -26,6 +26,22 @@ public final class TestProxyLoading extends AbstractAPITest
 			MobileBean[] beans = MobileBean.readAll(this.service);
 			this.assertNotNull(beans, this.getInfo()+"/MustNotBeNull");
 			
+			//Download all data associated with the beans (takes care of proxy-lazy loaded beans)						
+			//Wait for proxy loading to load the rest
+			int attempts = 5;
+			while(beans.length < 2 && attempts > 0)
+			{
+				System.out.println("Waiting on background proxy loading.........");
+				Thread.currentThread().sleep(20000);
+				beans = MobileBean.readAll(this.service);
+				attempts--;
+			}
+			
+			if(beans.length < 2)
+			{
+				throw new IllegalStateException("Background State Management was not able to get the State ready in time...Try again");
+			}
+			
 			//Test Proxy based Loading
 			for(int i=0; i<beans.length; i++)
 			{

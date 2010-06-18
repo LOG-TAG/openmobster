@@ -14,6 +14,7 @@ import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
 import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
@@ -159,7 +160,19 @@ public class HomeScreen extends Screen
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
-					//FIXME: implement this
+					String errorLog = ErrorHandler.getInstance().generateReport();
+					
+					if(errorLog != null && errorLog.trim().length()>0)
+					{
+						ViewHelper.getOkModal(listApp, "Error Log", errorLog).
+						show();
+					}
+					else
+					{
+						ViewHelper.getOkModal(listApp, "Error Log", "Error Log is Empty").
+						show();
+					}
+					
 					return true;
 				}
 			});
@@ -169,7 +182,9 @@ public class HomeScreen extends Screen
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
-					//FIXME: implement this
+					//TODO: Add ability to upload the error log to the CloudServer
+					//It can be used to diagonose/debug issues on the on-device moblet apps
+					//ErrorHandler.getInstance().handle(new RuntimeException("Testing ErrorLog Clearing!!!"));
 					return true;
 				}
 			});
@@ -179,7 +194,10 @@ public class HomeScreen extends Screen
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
-					//FIXME: implement this
+					ErrorHandler.getInstance().clearAll();
+					Toast.makeText(listApp, "Error Log is cleared...", 
+					Toast.LENGTH_SHORT).show();
+					
 					return true;
 				}
 			});

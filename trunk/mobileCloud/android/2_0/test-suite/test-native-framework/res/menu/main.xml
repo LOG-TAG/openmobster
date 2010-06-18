@@ -19,4 +19,8 @@
       android:title="Async Command" />
     <item android:id="@+id/item10"
       android:title="Trigger Push" />
+    <item android:id="@+id/item11"
+      android:title="View Error Log" />
+    <item android:id="@+id/item11"
+      android:title="Clear Error Log" />  
 </menu>             

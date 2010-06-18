@@ -74,6 +74,17 @@ public class AppCreator
 		String mobletGroupId = groupId + ".moblet";
 		String mobletName = projectName;
 		String mobletArtifactId = mobletName.toLowerCase();
+		String androidAppGroupId = groupId+".android.app"; //derived
+		String androidAppName = projectName; //derived
+		int androidAppVersionCode = 1; //derived
+		try
+		{
+			androidAppVersionCode = Integer.parseInt(projectVersion.substring(0, 1)); //derived
+		}
+		catch(Exception e)
+		{
+			androidAppVersionCode = 1;
+		}
 		
 		Map<String, String> userValues = new HashMap<String, String>();
 		userValues.put("project.name", projectName);
@@ -95,6 +106,11 @@ public class AppCreator
 		userValues.put("appCreator.moblet.groupId", mobletGroupId);
 		userValues.put("appCreator.moblet.name", mobletName);
 		userValues.put("appCreator.moblet.artifactId", mobletArtifactId);
+		
+		userValues.put("appCreator.android.app.groupId", androidAppGroupId);
+		userValues.put("appCreator.android.app.name", androidAppName);
+		userValues.put("appCreator.android.app.artifactId", androidAppName.toLowerCase());
+		userValues.put("appCreator.android.app.versionCode", ""+androidAppVersionCode);
 		
 		File projectDir = this.generateWorkspace(userValues);
 		
@@ -153,24 +169,49 @@ public class AppCreator
 		assemble.mkdirs();
 		
 		//Create the cloud tree
-		File src = new File(projectDir, "cloud/src/main/java/org/openmobster/core/examples/rpc");
+		File src = new File(projectDir, "cloud/src/main/java/com/offlineApp/cloud/rpc");
+		File sync_src = new File(projectDir, "cloud/src/main/java/com/offlineApp/cloud/sync");
 		File srcRes = new File(projectDir, "cloud/src/main/resources/META-INF");
-		File test = new File(projectDir, "cloud/src/test/java/org/openmobster/core/examples/rpc");
+		File test = new File(projectDir, "cloud/src/test/java/com/offlineApp/cloud/rpc");
+		File sync_test = new File(projectDir, "cloud/src/test/java/com/offlineApp/cloud/sync");
 		File testRes = new File(projectDir, "cloud/src/test/resources/META-INF");
 		src.mkdirs();
 		srcRes.mkdirs();
 		test.mkdirs();
 		testRes.mkdirs();
+		sync_src.mkdirs();
+		sync_test.mkdirs();
 		
 		//Create the moblet tree
 		File moblet = new File(projectDir, "moblet/src/assemble");
+		File moblet_res = new File(projectDir, "moblet/src/main/resources/META-INF");
 		moblet.mkdirs();
+		moblet_res.mkdirs();
+		
+		//Create the app-android tree
+		File android_command = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/command"); 
+		File android_screen = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/screen");
+		File drawable_hdpi = new File(projectDir, "app-android/res/drawable-hdpi");
+		File drawable_ldpi = new File(projectDir, "app-android/res/drawable-ldpi");
+		File drawable_mdpi = new File(projectDir, "app-android/res/drawable-mdpi");
+		File layout = new File(projectDir, "app-android/res/layout");
+		File values = new File(projectDir, "app-android/res/values");
+		File android_appicon = new File(projectDir, "app-android/src/main/resources/moblet-app/icon");
+		android_command.mkdirs();
+		android_screen.mkdirs();
+		android_appicon.mkdirs();
+		drawable_hdpi.mkdirs();
+		drawable_ldpi.mkdirs();
+		drawable_mdpi.mkdirs();
+		layout.mkdirs();
+		values.mkdirs();
 		
 		//Copy project-level files
 		this.generateProject(projectDir, userValues);
 		this.generateRimOsApp(new File(projectDir, "app-rimos"), userValues);
 		this.generateCloudApp(new File(projectDir, "cloud"), userValues);
 		this.generateMoblet(new File(projectDir, "moblet"), userValues);
+		this.generateAndroidOsApp(new File(projectDir,"app-android"), userValues);
 		
 		return projectDir;
 	}
@@ -243,8 +284,32 @@ public class AppCreator
 		pom = pom.replaceAll("<appCreator.rimos.app.artifactId>", 
 				userValues.get("appCreator.rimos.app.artifactId"));
 		
+		pom = pom.replaceAll("<appCreator.android.app.groupId>", 
+				userValues.get("appCreator.android.app.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.android.app.artifactId>", 
+				userValues.get("appCreator.android.app.artifactId"));
+		
 		File pomFile = new File(directory, "pom.xml");
 		this.generateFile(pomFile, pom);
+		
+		//src/resources/META-INF/moblet-apps.xml
+		String mobletApps = this.readTemplateResource("/template/moblet/src/main/resources/META-INF/moblet-apps.xml");
+		mobletApps = mobletApps.replaceAll("<appCreator.rimos.app.name>", 
+				userValues.get("appCreator.rimos.app.name"));
+		
+		mobletApps = mobletApps.replaceAll("<appCreator.android.app.name>", 
+				userValues.get("appCreator.android.app.name"));
+		
+		mobletApps = mobletApps.replaceAll("<appCreator.android.app.artifactId>", 
+				userValues.get("appCreator.android.app.artifactId"));
+		
+		mobletApps = mobletApps.replaceAll("<appCreator.project.version>", 
+				userValues.get("appCreator.project.version"));
+		
+		File mobletAppsFile = new File(directory, "src/main/resources/META-INF/moblet-apps.xml");
+		this.generateFile(mobletAppsFile, mobletApps);
+		
 		
 		//src/assemble/moblet.xml
 		this.generateFile(new File(directory, "src/assemble/moblet.xml"), 
@@ -345,6 +410,110 @@ public class AppCreator
 		this.generateFile(binXmlFile, bin_xml);
 	}
 	
+	private void generateAndroidOsApp(File directory, Map<String, String> userValues) throws Exception
+	{
+		//app pom
+		String pom = this.readTemplateResource("/template/app-android/pom.xml");
+		
+		pom = pom.replaceAll("<appCreator.project.version>", 
+				userValues.get("appCreator.project.version"));
+		
+		pom = pom.replaceAll("<appCreator.project.groupId>", 
+				userValues.get("appCreator.project.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.project.artifactId>", 
+				userValues.get("appCreator.project.artifactId"));
+		
+		pom = pom.replaceAll("<appCreator.android.app.groupId>", 
+				userValues.get("appCreator.android.app.groupId"));
+		
+		pom = pom.replaceAll("<appCreator.android.app.name>", 
+				userValues.get("appCreator.android.app.name"));
+		
+		pom = pom.replaceAll("<appCreator.android.app.artifactId>", 
+				userValues.get("appCreator.android.app.artifactId"));
+		
+		String appGroupPath = userValues.get("appCreator.android.app.groupId").replace('.', '/');
+		pom = pom.replaceAll("<appCreator.android.app.groupId.path>", appGroupPath);
+		
+		File pomFile = new File(directory, "pom.xml");
+		this.generateFile(pomFile, pom);
+		
+		//Android Manifest
+		String androidManifest = this.readTemplateResource("/template/app-android/AndroidManifest.xml");
+		
+		androidManifest = androidManifest.replaceAll("<appCreator.android.app.groupId>", 
+				userValues.get("appCreator.android.app.groupId"));
+		androidManifest = androidManifest.replaceAll("<appCreator.project.version>", 
+				userValues.get("appCreator.project.version"));
+		androidManifest = androidManifest.replaceAll("<appCreator.android.app.versionCode>", 
+				userValues.get("appCreator.android.app.versionCode"));
+		
+		File androidManifestFile = new File(directory, "AndroidManifest.xml");
+		this.generateFile(androidManifestFile, androidManifest);
+		
+		//Adding files verbatim
+		this.generateFile(new File(directory, "local.properties"),
+		this.readTemplateBinaryResource("/template/app-android/local.properties"));
+		
+		this.generateFile(new File(directory, "default.properties"),
+		this.readTemplateBinaryResource("/template/app-android/default.properties"));
+		
+		//res folder
+		this.generateFile(new File(directory, "res/drawable-hdpi/icon.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-hdpi/icon.png"));
+		
+		this.generateFile(new File(directory, "res/drawable-hdpi/push.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-hdpi/push.png"));
+		
+		this.generateFile(new File(directory, "res/drawable-ldpi/icon.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-ldpi/icon.png"));
+		
+		this.generateFile(new File(directory, "res/drawable-ldpi/icon.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-mdpi/push.png"));
+		
+		this.generateFile(new File(directory, "res/drawable-mdpi/icon.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-mdpi/icon.png"));
+		
+		this.generateFile(new File(directory, "res/drawable-mdpi/push.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-mdpi/push.png"));
+		
+		this.generateFile(new File(directory, "res/layout/home.xml"),
+		this.readTemplateBinaryResource("/template/app-android/res/layout/home.xml"));
+		
+		this.generateFile(new File(directory, "res/values/strings.xml"),
+		this.readTemplateBinaryResource("/template/app-android/res/values/strings.xml"));
+		
+		//src/main/resources
+		this.generateFile(new File(directory, "src/main/resources/moblet-app/icon/icon.png"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/icon/icon.png"));
+		
+		this.generateFile(new File(directory, "src/main/resources/moblet-app/localize_en_GB.properties"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/localize_en_GB.properties"));
+		
+		this.generateFile(new File(directory, "src/main/resources/moblet-app/localize.properties"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/localize.properties"));
+		
+		this.generateFile(new File(directory, "src/main/resources/moblet-app/moblet-app.xml"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/moblet-app.xml"));
+		
+		//src/main/java
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/DemoDetails.java"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/DemoDetails.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/DemoMobileRPC.java"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/DemoMobileRPC.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/PushTrigger.java"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/PushTrigger.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/ResetChannel.java"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/ResetChannel.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/screen/HomeScreen.java"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/screen/HomeScreen.java"));
+	}
+	
 	private void generateCloudApp(File directory, Map<String, String> userValues) throws Exception
 	{
 		String pom = this.readTemplateResource("/template/cloud/pom.xml");
@@ -371,16 +540,31 @@ public class AppCreator
 		this.generateFile(pomFile, pom);
 		
 		//DemoMobileBeanService
-		this.generateFile(new File(directory, "src/main/java/org/openmobster/core/examples/rpc/DemoMobileBeanService.java"), 
-		this.readTemplateResource("/template/cloud/src/main/java/org/openmobster/core/examples/rpc/DemoMobileBeanService.java"));
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/rpc/DemoMobileBeanService.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/rpc/DemoMobileBeanService.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/DemoBean.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/DemoBean.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/DemoChannel.java"), 
+				this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/DemoChannel.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/DemoDataRepository.java"), 
+				this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/DemoDataRepository.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/PushTriggerService.java"), 
+				this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/PushTriggerService.java"));
 		
 		//openmobster-config.xml
 		this.generateFile(new File(directory, "src/main/resources/META-INF/openmobster-config.xml"), 
 		this.readTemplateResource("/template/cloud/src/main/resources/META-INF/openmobster-config.xml"));
 		
 		//TestDemoRPC
-		this.generateFile(new File(directory, "src/test/java/org/openmobster/core/examples/rpc/TestDemoRPC.java"), 
-		this.readTemplateResource("/template/cloud/src/test/java/org/openmobster/core/examples/rpc/TestDemoRPC.java"));
+		this.generateFile(new File(directory, "src/test/java/com/offlineApp/cloud/rpc/TestDemoRPC.java"), 
+		this.readTemplateResource("/template/cloud/src/test/java/com/offlineApp/cloud/rpc/TestDemoRPC.java"));
+		
+		this.generateFile(new File(directory, "src/test/java/com/offlineApp/cloud/sync/TestDemoChannel.java"), 
+				this.readTemplateResource("/template/cloud/src/test/java/com/offlineApp/cloud/sync/TestDemoChannel.java"));
 		
 		//openmobster-config.xml
 		this.generateFile(new File(directory, "src/test/resources/META-INF/openmobster-config.xml"), 
@@ -390,7 +574,7 @@ public class AppCreator
 		this.generateFile(new File(directory, "src/test/resources/log4j.properties"), 
 		this.readTemplateResource("/template/cloud/src/test/resources/log4j.properties"));
 	}
-	
+	//-----------------------------------------------------------------------------------------------------------------------
 	private void generateFile(File file, String content) throws Exception
 	{
 		FileOutputStream fos = new FileOutputStream(file);

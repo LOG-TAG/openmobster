@@ -17,12 +17,23 @@
 
 	<dependencies>
 		<dependency>
-	      <groupId>com.offlineApp.cloud.app</groupId>
-	      <artifactId>offlineapp-cloud</artifactId>
+	      <groupId>com.offlineApp.cloud</groupId>
+	      <artifactId>offlineapp.cloud</artifactId>
 	      <version>${project.version}</version>
 	    </dependency>
+	    
+	    <!-- FIXME: turn me back on before the release   -->
+	    <!--  
 		<dependency>
 	      <groupId>com.offlineApp.rimos.app</groupId>
+	      <artifactId>offlineapp</artifactId>
+	      <version>${project.version}</version>
+	      <classifier>bin</classifier>
+	    </dependency>
+	    -->
+	    
+	    <dependency>
+	      <groupId>com.offlineApp.android.app</groupId>
 	      <artifactId>offlineapp</artifactId>
 	      <version>${project.version}</version>
 	      <classifier>bin</classifier>
