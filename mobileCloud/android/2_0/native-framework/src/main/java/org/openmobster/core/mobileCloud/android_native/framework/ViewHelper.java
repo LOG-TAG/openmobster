@@ -16,7 +16,7 @@ import android.content.DialogInterface;
 
 /**
  * @author openmobster@gmail.com
- *
+ * 
  */
 public class ViewHelper
 {
@@ -24,88 +24,118 @@ public class ViewHelper
 	{
 		try
 		{
-			String idClass = activity.getPackageName()+".R$id";
+			String idClass = activity.getPackageName() + ".R$id";
 			Class clazz = Class.forName(idClass);
 			Field field = clazz.getField(viewId);
-			
+
 			return activity.findViewById(field.getInt(clazz));
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			return null;
 		}
 	}
-	
+
 	public static int findViewId(Activity activity, String variable)
 	{
 		try
 		{
-			String idClass = activity.getPackageName()+".R$id";
+			String idClass = activity.getPackageName() + ".R$id";
 			Class clazz = Class.forName(idClass);
 			Field field = clazz.getField(variable);
-			
+
 			return field.getInt(clazz);
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			return -1;
 		}
 	}
-	
+
 	public static int findLayoutId(Activity activity, String variable)
 	{
 		try
 		{
-			String idClass = activity.getPackageName()+".R$layout";
+			String idClass = activity.getPackageName() + ".R$layout";
 			Class clazz = Class.forName(idClass);
 			Field field = clazz.getField(variable);
-			
+
 			return field.getInt(clazz);
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			return -1;
 		}
 	}
-	
+
 	public static int findDrawableId(Activity activity, String variable)
 	{
 		try
 		{
-			String idClass = activity.getPackageName()+".R$drawable";
+			String idClass = activity.getPackageName() + ".R$drawable";
 			Class clazz = Class.forName(idClass);
 			Field field = clazz.getField(variable);
-			
+
 			return field.getInt(clazz);
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			return -1;
 		}
 	}
-	
-	
-	public static AlertDialog getOkModal(Activity currentActivity, String title,
-	String message)
+
+	public static AlertDialog getOkModal(Activity currentActivity,
+			String title, String message)
 	{
 		AlertDialog okModal = null;
-		
-		okModal = new AlertDialog.Builder(currentActivity).
-    	setTitle(title).
-    	setMessage(message).
-    	setCancelable(false).
-    	create();    	
-    	okModal.setButton(DialogInterface.BUTTON_POSITIVE, "OK", 
-			new DialogInterface.OnClickListener() 
-			{
-				
-				public void onClick(DialogInterface dialog, int status)
-				{
-					dialog.dismiss();
-				}
-			}
-    	);
-		
+
+		okModal = new AlertDialog.Builder(currentActivity).setTitle(title)
+				.setMessage(message).setCancelable(false).create();
+		okModal.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+				new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog, int status)
+					{
+						dialog.dismiss();
+					}
+				});
+
+		return okModal;
+	}
+
+	public static AlertDialog getOkModalWithCloseApp(
+			final Activity currentActivity, String title, String message)
+	{
+		AlertDialog okModal = null;
+
+		okModal = new AlertDialog.Builder(currentActivity).setTitle(title)
+				.setMessage(message).setCancelable(false).create();
+		okModal.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+				new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog, int status)
+					{
+						dialog.dismiss();
+						currentActivity.finish();
+					}
+				});
+
+		return okModal;
+	}
+
+	public static AlertDialog getOkAttachedModalWithCloseApp(
+			final Activity currentActivity, String title, String message)
+	{
+		AlertDialog okModal = null;
+
+		okModal = new AlertDialog.Builder(currentActivity).setTitle(title)
+				.setMessage(message).setCancelable(false).create();
+		okModal.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int status)
+					{
+						currentActivity.dismissDialog(0);
+						currentActivity.removeDialog(0);
+						currentActivity.finish();
+					}
+				});
+
 		return okModal;
 	}
 }

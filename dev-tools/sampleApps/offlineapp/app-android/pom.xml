@@ -1,0 +1,107 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- User Provided -->
+	<parent>
+		<groupId>com.offlineApp</groupId>
+		<artifactId>offlineapp</artifactId>
+		<version>2.0-snapshot</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<groupId>com.offlineApp.android.app</groupId>
+	<name>offlineApp</name>
+	<artifactId>offlineapp</artifactId>
+	<version>2.0-snapshot</version>
+	<packaging>apk</packaging>
+
+	<dependencies>
+		<!--
+			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
+		-->
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>android</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+			<artifactId>device-sdk</artifactId>
+			<classifier>full</classifier>
+		</dependency>
+		
+		<!-- 
+			More Dependencies can be added here 
+		-->
+	</dependencies>
+
+	<build>
+		<!--
+			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
+		-->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>maven-android-plugin</artifactId>
+				<configuration>
+					<sdk>
+						<path>${env.ANDROID_HOME}</path>
+						<platform>2.0</platform>
+					</sdk>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins
+				</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>Assembling Android App
+								</echo>
+								<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+									<fileset dir="${basedir}/target">
+										<include name="**/*.apk"/>
+									</fileset>
+								</jar>
+							</tasks>
+						</configuration>
+					</execution> 
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>Installing Android App
+								</echo>
+								<copy todir="${settings.localRepository}/com/offlineApp/android/app/${project.artifactId}/${project.version}" overwrite="true"
+								file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

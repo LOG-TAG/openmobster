@@ -28,8 +28,10 @@ public final class NativeEventBusSPI implements EventBusSPI
 	}
 	
 	public void addEventListener(Screen screen, Object eventListener)
-	{				
-		this.subscriptions.add(new Subscription(screen,eventListener));
+	{
+		Subscription newSubscription = new Subscription(screen,eventListener);
+		this.subscriptions.remove(newSubscription);
+		this.subscriptions.add(newSubscription);
 	}
 
 	public void sendEvent(Object event)

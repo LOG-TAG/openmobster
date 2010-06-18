@@ -8,8 +8,6 @@
 package org.openmobster.core.mobileCloud.android_native.framework;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
@@ -40,53 +38,6 @@ final class ShowError
 		"unknown_system_error");
 		
 		//Show the dialog
-		AlertDialog alert = new AlertDialog.Builder(currentActivity).
-    	setTitle(errorTitle).
-    	setMessage(errorMsg).
-    	setCancelable(false).
-    	create();
-    	
-    	alert.setButton(DialogInterface.BUTTON_POSITIVE, "OK", 
-			new DialogInterface.OnClickListener() 
-			{
-				
-				public void onClick(DialogInterface dialog, int status)
-				{
-					if(commandContext.getTarget().indexOf("startup")!=-1)
-					{
-						currentActivity.finish();
-					}
-					else
-					{
-						dialog.cancel();
-					}
-				}
-			}
-    	);
-    	
-    	alert.show();
-	}
-	
-	public static void showBootstrapError(final Activity currentActivity)
-	{				
-		//Show the dialog
-		AlertDialog alert = new AlertDialog.Builder(currentActivity).
-    	setTitle("System Error").
-    	setMessage("Moblet Bootstrap Failed").
-    	setCancelable(false).
-    	create();
-    	
-    	alert.setButton(DialogInterface.BUTTON_POSITIVE, "OK", 
-			new DialogInterface.OnClickListener() 
-			{
-				
-				public void onClick(DialogInterface dialog, int status)
-				{
-					currentActivity.finish();
-				}
-			}
-    	);
-    	
-    	alert.show();
+    	ViewHelper.getOkModal(currentActivity, errorTitle, errorMsg).show();
 	}
 }

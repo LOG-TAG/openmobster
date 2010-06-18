@@ -90,7 +90,7 @@ public final class CommonApp
 							"Message:"+e.getMessage(),
 							"Exception:"+e.toString()
 						}));
-						ShowError.showBootstrapError(activity);
+						activity.showDialog(0);
 					}
 				}
 			}
@@ -208,7 +208,7 @@ public final class CommonApp
 	
 	static void showError(final Activity activity)
 	{
-		ShowError.showBootstrapError(activity);
+		activity.showDialog(0);
 	}
 	
 	private static class BackgroundSync extends TimerTask

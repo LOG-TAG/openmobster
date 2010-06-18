@@ -21,6 +21,7 @@ import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 
 import android.app.Activity;
 import android.widget.Button;
+import android.widget.Toast;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Menu;
@@ -249,6 +250,41 @@ public class HomeScreen extends Screen
 			    					CommandContext commandContext = new CommandContext();
 			    					commandContext.setTarget("pushTrigger");
 			    					service.execute(commandContext);
+			    					return true;
+			    				}
+			    			});
+			    	    break;
+			    	    
+			    		case 10:
+			    			cour.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			    			{
+			    				public boolean onMenuItemClick(MenuItem clickedItem)
+			    				{
+			    					String errorLog = ErrorHandler.getInstance().generateReport();
+			    					
+			    					if(errorLog != null && errorLog.trim().length()>0)
+			    					{
+			    						ViewHelper.getOkModal(currentActivity, "Error Log", errorLog).
+			    						show();
+			    					}
+			    					else
+			    					{
+			    						ViewHelper.getOkModal(currentActivity, "Error Log", "Error Log is Empty").
+			    						show();
+			    					}
+			    					return true;
+			    				}
+			    			});
+			    	    break;
+			    	    
+			    		case 11:
+			    			cour.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			    			{
+			    				public boolean onMenuItemClick(MenuItem clickedItem)
+			    				{
+			    					ErrorHandler.getInstance().clearAll();
+			    					Toast.makeText(currentActivity, "Error Log is cleared...", 
+			    					Toast.LENGTH_SHORT).show();
 			    					return true;
 			    				}
 			    			});

@@ -20,22 +20,23 @@ import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 
+import org.openmobster.core.mobileCloud.android.testsuite.TestSuite;
+
 
 /**
  * @author openmobster@gmail
  *
  */
 public final class ActivationUtil
-{
-	public static String cloudServerIp = "192.168.1.106"; //Modify Allowed: This should be the IP address of your server used for running the testsuite
-	
-	
+{	
 	public static String deviceIdentifier = "IMEI:8675309"; //Do Not Modify
-	public static String email = "blah2@gmail.com"; //Do Not Modify
-	public static String password = "blahblah2"; //Do Not Modify
 	
-	public static void activateDevice() throws Exception
+	public static void activateDevice(TestSuite testSuite) throws Exception
 	{
+		String cloudServerIp = testSuite.getCloudServer();
+		String email = testSuite.getEmail();
+		String password = testSuite.getPassword();
+		
 		bootup(deviceIdentifier, cloudServerIp, null);
 		
 		

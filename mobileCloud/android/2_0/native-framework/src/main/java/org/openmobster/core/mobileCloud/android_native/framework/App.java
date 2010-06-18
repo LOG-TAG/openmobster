@@ -8,6 +8,8 @@
 package org.openmobster.core.mobileCloud.android_native.framework;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -37,7 +39,7 @@ public class App extends Activity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
-			ShowError.showBootstrapError(this);
+			this.showDialog(0);
 		}
 	}
 	
@@ -74,7 +76,7 @@ public class App extends Activity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
-			ShowError.showBootstrapError(this);
+			this.showDialog(0);
 		}
 	}
 
@@ -127,5 +129,11 @@ public class App extends Activity
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	@Override
+	protected Dialog onCreateDialog(int id)
+	{
+		AlertDialog dialog = ViewHelper.getOkAttachedModalWithCloseApp(this, "System Error", "CloudManager App is not found or activated");
+		return dialog;
+	}
 }

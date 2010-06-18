@@ -9,5 +9,6 @@
 	
 	<channels>
 		<channel>mockMobileTicket</channel>
+		<channel>testServerBean</channel>
 	</channels>
 </moblet-app>

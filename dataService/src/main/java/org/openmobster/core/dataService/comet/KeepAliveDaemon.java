@@ -43,6 +43,7 @@ class KeepAliveDaemon extends TimerTask
 		{
 			log.debug("---------------------------------------------------------------");
 			log.debug("Sender: "+this.hashCode());
+			log.debug("Target Device: "+session.getUri());
 			log.debug("Sending a KeepAlive HeartBeat Every: ("+this.pulseInterval+" ms)");
 			log.debug("---------------------------------------------------------------");
 			this.session.sendHeartBeat();

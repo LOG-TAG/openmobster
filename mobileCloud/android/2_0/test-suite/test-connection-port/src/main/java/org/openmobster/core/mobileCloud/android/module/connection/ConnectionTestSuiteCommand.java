@@ -7,10 +7,13 @@
  */
 package org.openmobster.core.mobileCloud.android.module.connection;
 
+import java.util.Properties;
+
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.android.testsuite.RunTestSuiteCommand;
+import org.openmobster.core.mobileCloud.android.testsuite.TestSuite;
 
 import android.content.Context;
 
@@ -24,10 +27,14 @@ public class ConnectionTestSuiteCommand extends RunTestSuiteCommand
 	{
 		try
 		{
+			Properties properties = new Properties();
+			properties.load(TestSuite.class.getResourceAsStream("/moblet-app/activation.properties"));
+			String cloudServer = properties.getProperty("cloud_server_ip");
+			
 			//Load some info into the configuration
         	Context context = Registry.getActiveInstance().getContext();
         	Configuration conf = Configuration.getInstance(context);
-        	conf.setServerIp("192.168.1.107");
+        	conf.setServerIp(cloudServer);
         	conf.setPlainServerPort("1502");
         	conf.setSecureServerPort("1500");
         	conf.deActivateSSL();

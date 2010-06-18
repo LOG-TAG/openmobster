@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.android.testsuite;
 
 import java.io.InputStream;
+import java.util.Properties;
 import java.util.Vector;
 
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
@@ -29,6 +30,10 @@ public final class TestSuite
 	private TestContext context;
 	private String status;
 	
+	private String cloudServer;
+	private String email;
+	private String password;
+	
 	/**
 	 * 
 	 *
@@ -37,6 +42,20 @@ public final class TestSuite
 	{
 		this.tests = new Vector();
 		this.errors = new Vector();
+		
+		try
+		{
+			//Load up cloud activation related configuration
+			Properties properties = new Properties();
+			properties.load(TestSuite.class.getResourceAsStream("/moblet-app/activation.properties"));
+			this.cloudServer = properties.getProperty("cloud_server_ip");
+			this.email = properties.getProperty("email");
+			this.password = properties.getProperty("password");
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 	
 	/**
@@ -79,6 +98,38 @@ public final class TestSuite
 		this.context = context;
 	}
 	
+	
+	
+	public String getCloudServer()
+	{
+		return cloudServer;
+	}
+
+	public void setCloudServer(String cloudServer)
+	{
+		this.cloudServer = cloudServer;
+	}
+
+	public String getEmail()
+	{
+		return email;
+	}
+
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+
 	/**
 	 * 
 	 *

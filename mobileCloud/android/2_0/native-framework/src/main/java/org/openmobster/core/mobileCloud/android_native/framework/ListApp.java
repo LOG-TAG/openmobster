@@ -7,6 +7,8 @@
  */
 package org.openmobster.core.mobileCloud.android_native.framework;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -42,7 +44,7 @@ public class ListApp extends ListActivity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
-			ShowError.showBootstrapError(this);
+			this.showDialog(0);
 		}
 	}
 	
@@ -79,7 +81,7 @@ public class ListApp extends ListActivity
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
-			ShowError.showBootstrapError(this);
+			this.showDialog(0);
 		}
 	}
 
@@ -139,5 +141,12 @@ public class ListApp extends ListActivity
 		ListItemClickEvent clickEvent = new ListItemClickEvent(
 		l,v,position,id);
 		NavigationContext.getInstance().sendEvent(clickEvent);
+	}
+	
+	@Override
+	protected Dialog onCreateDialog(int id)
+	{
+		AlertDialog dialog = ViewHelper.getOkAttachedModalWithCloseApp(this, "System Error", "CloudManager App is not found or activated");
+		return dialog;
 	}
 }

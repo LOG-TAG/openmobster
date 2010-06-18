@@ -21,9 +21,20 @@
 	      <artifactId><appCreator.cloud.app.artifactId></artifactId>
 	      <version>${project.version}</version>
 	    </dependency>
+	    
+	    <!-- FIXME: turn me back on before the release   -->
+	    <!--  
 		<dependency>
 	      <groupId><appCreator.rimos.app.groupId></groupId>
 	      <artifactId><appCreator.rimos.app.artifactId></artifactId>
+	      <version>${project.version}</version>
+	      <classifier>bin</classifier>
+	    </dependency>
+	    -->
+	    
+	    <dependency>
+	      <groupId><appCreator.android.app.groupId></groupId>
+	      <artifactId><appCreator.android.app.artifactId></artifactId>
 	      <version>${project.version}</version>
 	      <classifier>bin</classifier>
 	    </dependency>

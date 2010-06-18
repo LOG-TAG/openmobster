@@ -44,9 +44,9 @@ public class IntegrationTestSuiteCommand extends RunTestSuiteCommand
 			Database db = Database.getInstance(context);
 			db.dropTable(Database.provisioning_table);
 			db.createTable(Database.provisioning_table);
-        	
-        	//Activate the device
-    		ActivationUtil.activateDevice();
+			
+			//Activate the device
+    		ActivationUtil.activateDevice(suite);
         		        		        	
         	//Load the tests
         	suite.load();

@@ -9,9 +9,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.offlineApp.cloud.app</groupId>
-	<name>offlineApp-cloud</name>
-	<artifactId>offlineapp-cloud</artifactId>
+	<groupId>com.offlineApp.cloud</groupId>
+	<name>offlineapp.cloud</name>
+	<artifactId>offlineapp.cloud</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -21,6 +21,20 @@
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>cloud-sdk</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openmobster.core.dev.tools
+			</groupId>
+			<artifactId>dev-cloudServer
+				</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>device-agent-simulator
+				</artifactId>
+			<scope>test</scope>
 		</dependency>
 		
 		<!--

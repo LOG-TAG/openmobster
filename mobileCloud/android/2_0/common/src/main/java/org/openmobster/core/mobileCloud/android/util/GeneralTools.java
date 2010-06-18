@@ -42,7 +42,8 @@ public class GeneralTools
 		
 		String knownInput = inputBuffer.toString();
 		
-		deviceIdentifier += Base64.encodeBytes(knownInput.getBytes());
+		//deviceIdentifier += Base64.encodeBytes(knownInput.getBytes());
+		deviceIdentifier += knownInput;
 		
 		return deviceIdentifier;
 	}
