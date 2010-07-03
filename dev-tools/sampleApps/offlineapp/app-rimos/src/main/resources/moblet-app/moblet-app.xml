@@ -1,16 +1,17 @@
 <moblet-app>
     <bootstrap>
-    	<screen>org.openmobster.core.examples.offline.screen.HomeScreen</screen>
+    	<screen>com.offlineApp.rimos.app.screen.HomeScreen</screen>
     </bootstrap>
     
     <push>
-    	<command>org.openmobster.core.examples.offline.command.PushHandler</command>
+    	<command>com.offlineApp.rimos.app.command.PushHandler</command>
     </push>
     
 	<commands>				
-		<command id="/demo/details">org.openmobster.core.examples.offline.command.DemoDetails</command>
-		<command id="/offlineapp/pushtrigger">org.openmobster.core.examples.offline.command.PushTrigger</command>
-		<command id="/offlineapp/reset">org.openmobster.core.examples.offline.command.ResetChannel</command>
+		<command id="/demo/details">com.offlineApp.rimos.app.command.DemoDetails</command>
+		<command id="/offlineapp/pushtrigger">com.offlineApp.rimos.app.command.PushTrigger</command>
+		<command id="/offlineapp/reset">com.offlineApp.rimos.app.command.ResetChannel</command>
+		<command id="/demo/rpc">com.offlineApp.rimos.app.command.DemoMobileRPC</command>
 	</commands>
 			
 	<channels>

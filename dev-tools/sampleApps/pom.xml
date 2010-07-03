@@ -13,6 +13,5 @@
 	
 	<modules>
 		<module>offlineapp</module>
-		<module>rpcdemo</module>
 	</modules>
 </project>

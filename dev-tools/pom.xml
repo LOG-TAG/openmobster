@@ -11,7 +11,8 @@
 	    <module>appCreator</module>
 		<module>rimos-devcloud</module>		
 		<module>dev-cloudServer</module>	
-		<module>sampleApps</module>							
+		<module>android-devcloud</module>
+		<module>sampleApps</module>					
 	</modules>
 	
 	<profiles>
@@ -21,6 +22,7 @@
 				<module>appCreator</module>
 				<module>rimos-devcloud</module>		
 				<module>dev-cloudServer</module>
+				<module>android-devcloud</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -31,7 +33,8 @@
 		</bb.jde.home>
 		<bb.simulator.home>
 			${env.RIM_JDE_HOME}\simulator
-		</bb.simulator.home>    
+		</bb.simulator.home> 
+		<version.android.api>5</version.android.api>   
 	</properties>
 	
 	<build>

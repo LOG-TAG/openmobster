@@ -50,18 +50,21 @@ public final class MobileCloud extends Application
     	{
     		ActivationUtil.activateDevice();
     		
-    		//System.out.println("-------------------------------------------------------");
-    		//System.out.println("Dev Cloud Successfully Activated");
-    		//System.out.println("Device Id: "+Configuration.getInstance().getDeviceId());
-    		//System.out.println("Account: "+Configuration.getInstance().getEmail());
-    		//System.out.println("-------------------------------------------------------");
+    		Configuration conf = Configuration.getInstance();
+    		
+    		System.out.println("-------------------------------------------------------");
+    		System.out.println("Dev Cloud Successfully Activated");
+    		System.out.println("Device Id: "+conf.getDeviceId());
+    		System.out.println("Account: "+conf.getEmail());
+    		System.out.println("IsActive: "+conf.isActive());
+    		System.out.println("-------------------------------------------------------");
     	}
     	catch(Exception e)
     	{
-    		//System.out.println("Exception---------------------------------------------- ");
-    		//System.out.println("Exception: "+e.toString());
-    		//System.out.println("Message: "+e.getMessage());
-    		//System.out.println("-------------------------------------------------------");
+    		System.out.println("Exception---------------------------------------------- ");
+    		System.out.println("Exception: "+e.toString());
+    		System.out.println("Message: "+e.getMessage());
+    		System.out.println("-------------------------------------------------------");
     	}
     }
     

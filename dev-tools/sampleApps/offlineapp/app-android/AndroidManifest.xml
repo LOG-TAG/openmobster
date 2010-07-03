@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- template: ${project.groupId} -->
-<!-- template: ${project.version} -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.offlineApp.android.app"
       android:versionCode="1"

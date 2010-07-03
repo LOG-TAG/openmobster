@@ -70,9 +70,6 @@
 	<classpathentry kind="src" path="testdrive-server/src/test/java"/>
 	<classpathentry excluding="**" kind="src" path="testdrive-server/src/test/resources"/>
 	
-	<classpathentry kind="src" path="mobileCloud/rimos/ide_hack"/>
-	
-	<!--  
 	<classpathentry kind="src" path="mobileCloud/rimos/cloudManager/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/api/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/native-framework/src/main/java"/>
@@ -92,8 +89,8 @@
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/cloudtests/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main/java"/>	
 	<classpathentry kind="src" path="mobileCloud/rimos/ide_hack"/>
-	-->
 	
+	<!--  
 	<classpathentry kind="src" path="mobileCloud/android/2_0/api/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/native-framework/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/cloudManager/src/main/java"/>
@@ -113,6 +110,7 @@
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-connection-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-native-framework/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/ide_hack"/>
+	-->
 	
 	
 	<classpathentry kind="src" path="dev-tools/rimos-devcloud/src/main/java"/>
@@ -123,9 +121,6 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-rimos/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-android/src/main/java" />
-	<classpathentry kind="src" path="dev-tools/sampleApps/rpcdemo/cloud/src/main/java" />
-	<classpathentry kind="src" path="dev-tools/sampleApps/rpcdemo/cloud/src/test/java" />
-	<classpathentry kind="src" path="dev-tools/sampleApps/rpcdemo/app-rimos/src/main/java" />
 	
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworld/app-rimos/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworldsensitive/app-rimos/src/main/java"/>
@@ -194,5 +189,5 @@
     <classpathentry kind="var" path="RIM_JDE_HOME/lib/net_rim_api.jar"/>
     
     <!-- Android Dependencies -->
-    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-2.0/android.jar"/>
+    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-5/android.jar"/>
 </classpath>

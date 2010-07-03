@@ -191,10 +191,33 @@ public final class NotificationListener extends Service
 				String authHash = Configuration.getInstance().getAuthenticationHash();
 			    String channel = this.getActiveChannels();				
 				
-				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
-				"&command=notify"+
-				"&channel="+channel+
-				"&platform=blackberry&device="+DeviceInfo.getDeviceName(); 
+				String command = 
+					"<request>" +
+						"<header>" +
+							"<name>device-id</name>"+
+							"<value><![CDATA["+deviceId+"]]></value>"+
+						"</header>"+
+						"<header>" +
+							"<name>nonce</name>"+
+							"<value><![CDATA["+authHash+"]]></value>"+
+						"</header>"+
+						"<header>" +
+							"<name>command</name>"+
+							"<value>notify</value>"+
+						"</header>"+
+						"<header>" +
+							"<name>channel</name>"+
+							"<value>"+channel+"</value>"+
+						"</header>"+
+						"<header>" +
+							"<name>platform</name>"+
+							"<value>blackberry</value>"+
+						"</header>"+
+							"<header>" +
+							"<name>device</name>"+
+							"<value>"+DeviceInfo.getDeviceName()+"</value>"+
+						"</header>"+
+					"</request>";
 				
 				//Used for debugging the daemon messages
 				//System.out.println("Starting a Push Session---------------------------------------------");
@@ -272,10 +295,33 @@ public final class NotificationListener extends Service
 				String authHash = Configuration.getInstance().getAuthenticationHash();
 			    String channel = this.getActiveChannels();				
 				
-				String command = "<auth>"+deviceId+"|"+authHash+ "</auth>" +
-				"&command=notify"+
-				"&channel="+channel+
-				"&platform=blackberry&device="+DeviceInfo.getDeviceName(); 
+			    String command = 
+					"<request>" +
+						"<header>" +
+							"<name>device-id</name>"+
+							"<value><![CDATA["+deviceId+"]]></value>"+
+						"</header>"+
+						"<header>" +
+							"<name>nonce</name>"+
+							"<value><![CDATA["+authHash+"]]></value>"+
+						"</header>"+
+						"<header>" +
+							"<name>command</name>"+
+							"<value>notify</value>"+
+						"</header>"+
+						"<header>" +
+							"<name>channel</name>"+
+							"<value>"+channel+"</value>"+
+						"</header>"+
+						"<header>" +
+							"<name>platform</name>"+
+							"<value>blackberry</value>"+
+						"</header>"+
+							"<header>" +
+							"<name>device</name>"+
+							"<value>"+DeviceInfo.getDeviceName()+"</value>"+
+						"</header>"+
+					"</request>";
 				
 				//Used for debugging the daemon messages
 				//System.out.println("Starting a Poll Session---------------------------------------------");

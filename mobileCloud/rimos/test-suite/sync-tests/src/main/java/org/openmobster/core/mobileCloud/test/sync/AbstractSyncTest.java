@@ -186,7 +186,15 @@ public abstract class AbstractSyncTest extends Test
 			boolean secure = Configuration.getInstance().isSSLActivated();
 			netSession = NetworkConnector.getInstance().openSession(secure);
 			
-			String response = netSession.sendTwoWay("processorid=testsuite");
+			String request =
+				"<request>" +
+						"<header>" +
+						"<name>processor</name>"+
+						"<value>testsuite</value>"+
+					"</header>"+
+				"</request>";
+			
+			String response = netSession.sendTwoWay(request);
 			
 			if(response.indexOf("status=200")!=-1)
 			{
