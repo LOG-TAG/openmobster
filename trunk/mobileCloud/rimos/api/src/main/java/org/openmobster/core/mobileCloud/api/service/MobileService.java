@@ -93,12 +93,31 @@ public final class MobileService
 			{
 				String deviceId = configuration.getDeviceId();
 				String authHash = configuration.getAuthenticationHash();
-				sessionInitPayload = "<auth>"+deviceId+"|"+authHash
-				+"</auth>&processorid=mobileservice";
+				sessionInitPayload = 
+					"<request>" +
+						"<header>" +
+							"<name>device-id</name>"+
+							"<value><![CDATA["+deviceId+"]]></value>"+
+						"</header>"+
+						"<header>" +
+							"<name>nonce</name>"+
+							"<value><![CDATA["+authHash+"]]></value>"+
+						"</header>"+
+						"<header>" +
+							"<name>processor</name>"+
+							"<value>mobileservice</value>"+
+						"</header>"+
+					"</request>";
 			}
 			else
 			{
-				sessionInitPayload = "processorid=mobileservice";
+				sessionInitPayload = 
+					"<request>" +
+						"<header>" +
+							"<name>processor</name>"+
+							"<value>mobileservice</value>"+
+						"</header>"+
+					"</request>";
 			}
 			
 			//System.out.println("--------------------------------------------------");

@@ -41,7 +41,8 @@ public final class SyncTestSuiteBootstrapCommand implements LocalCommand
 			DeviceContainer.getInstance().startup();
 			Moblet.getInstance().startup();
 									
-			CometUtil.subscribeChannels();
+			boolean wasChannelBootupStarted = CometUtil.subscribeChannels();			
+			commandContext.setAttribute("isChannelBootActive", new Boolean(wasChannelBootupStarted));
 			
 			Bus bus = Bus.getInstance();
 			

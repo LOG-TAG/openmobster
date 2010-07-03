@@ -157,14 +157,12 @@ public class AppCreator
 		}
 		
 		//Create the app-rimos tree
-		File command = new File(projectDir, "app-rimos/src/main/java/org/openmobster/core/examples/rpc/command"); 
-		File screen = new File(projectDir, "app-rimos/src/main/java/org/openmobster/core/examples/rpc/screen");
-		File resMetaInf = new File(projectDir, "app-rimos/src/main/resources/META-INF");
+		File command = new File(projectDir, "app-rimos/src/main/java/com/offlineApp/rimos/app/command"); 
+		File screen = new File(projectDir, "app-rimos/src/main/java/com/offlineApp/rimos/app/screen");
 		File appIcon = new File(projectDir, "app-rimos/src/main/resources/moblet-app/icon");
 		File assemble = new File(projectDir, "app-rimos/src/assemble");
 		command.mkdirs();
 		screen.mkdirs();
-		resMetaInf.mkdirs();
 		appIcon.mkdirs();
 		assemble.mkdirs();
 		
@@ -372,13 +370,6 @@ public class AppCreator
 		this.generateFile(new File(directory, "activation.properties"), 
 		this.readTemplateResource("/template/app-rimos/activation.properties"));
 		
-		//moblet-apps
-		String mobletApps = this.readTemplateResource("/template/app-rimos/src/main/resources/META-INF/moblet-apps.xml");
-		mobletApps = mobletApps.replaceAll("<appCreator.rimos.app.name>", 
-				userValues.get("appCreator.rimos.app.name"));
-		
-		File mobletAppsFile = new File(directory, "src/main/resources/META-INF/moblet-apps.xml");
-		this.generateFile(mobletAppsFile, mobletApps);
 		
 		//moblet-app
 		this.generateFile(new File(directory, "src/main/resources/moblet-app/icon/icon.png"), 
@@ -391,11 +382,24 @@ public class AppCreator
 		this.generateFile(new File(directory, "src/main/resources/moblet-app/moblet-app.xml"), 
 		this.readTemplateResource("/template/app-rimos/src/main/resources/moblet-app/moblet-app.xml"));
 		
-		this.generateFile(new File(directory, "src/main/java/org/openmobster/core/examples/rpc/command/DemoMobileRPC.java"), 
-		this.readTemplateResource("/template/app-rimos/src/main/java/org/openmobster/core/examples/rpc/command/DemoMobileRPC.java"));
+		//src/main/java
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/rimos/app/command/DemoDetails.java"),
+		this.readTemplateBinaryResource("/template/app-rimos/src/main/java/com/offlineApp/rimos/app/command/DemoDetails.java"));
 		
-		this.generateFile(new File(directory, "src/main/java/org/openmobster/core/examples/rpc/screen/HomeScreen.java"), 
-		this.readTemplateResource("/template/app-rimos/src/main/java/org/openmobster/core/examples/rpc/screen/HomeScreen.java"));
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/rimos/app/command/DemoMobileRPC.java"),
+		this.readTemplateBinaryResource("/template/app-rimos/src/main/java/com/offlineApp/rimos/app/command/DemoMobileRPC.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/rimos/app/command/PushTrigger.java"),
+		this.readTemplateBinaryResource("/template/app-rimos/src/main/java/com/offlineApp/rimos/app/command/PushTrigger.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/rimos/app/command/ResetChannel.java"),
+		this.readTemplateBinaryResource("/template/app-rimos/src/main/java/com/offlineApp/rimos/app/command/ResetChannel.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/rimos/app/command/PushHandler.java"),
+				this.readTemplateBinaryResource("/template/app-rimos/src/main/java/com/offlineApp/rimos/app/command/PushHandler.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/rimos/app/screen/HomeScreen.java"),
+		this.readTemplateBinaryResource("/template/app-rimos/src/main/java/com/offlineApp/rimos/app/screen/HomeScreen.java"));
 		
 		//Add assembly
 		String bin_xml = this.readTemplateResource("/template/app-rimos/src/assemble/bin.xml");

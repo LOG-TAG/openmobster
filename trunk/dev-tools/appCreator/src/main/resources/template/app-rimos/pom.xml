@@ -28,6 +28,10 @@
 			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  
 		-->
 		<dependency>
+		      <groupId>net.rim</groupId>
+		      <artifactId>net_rim_api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.openmobster.core.mobileCloud.rimos
 			</groupId>
 			<artifactId>device-sdk</artifactId>

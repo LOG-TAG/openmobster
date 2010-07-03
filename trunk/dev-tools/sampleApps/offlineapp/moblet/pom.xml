@@ -22,15 +22,12 @@
 	      <version>${project.version}</version>
 	    </dependency>
 	    
-	    <!-- FIXME: turn me back on before the release   -->
-	    <!--  
 		<dependency>
 	      <groupId>com.offlineApp.rimos.app</groupId>
 	      <artifactId>offlineapp</artifactId>
 	      <version>${project.version}</version>
 	      <classifier>bin</classifier>
 	    </dependency>
-	    -->
 	    
 	    <dependency>
 	      <groupId>com.offlineApp.android.app</groupId>
