@@ -50,12 +50,12 @@ public class Registry
 				//are actually available
 				if(!this.doesResourceExist(app.getBinaryLocation()))
 				{
-					return;
+					continue;
 				}
 				
 				if(!this.doesResourceExist(app.getConfigLocation()))
 				{
-					return;
+					continue;
 				}
 				
 				MobletApp.create(app);

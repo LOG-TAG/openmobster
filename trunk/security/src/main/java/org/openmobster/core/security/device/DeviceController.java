@@ -256,6 +256,7 @@ public class DeviceController
 			tx = session.beginTransaction();
 			
 			session.delete(device);
+			session.flush();
 						
 			tx.commit();
 		}

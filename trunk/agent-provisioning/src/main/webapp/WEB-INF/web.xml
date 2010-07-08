@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 	<servlet>
-    	<servlet-name>openmobster_agent_installer</servlet-name>
+    	<servlet-name>openmobster_agent_installer_rimos</servlet-name>
     	<servlet-class>org.openmobster.core.agent.provisioning.AgentInstaller</servlet-class>
   	</servlet>  
   	<servlet>
-    	<servlet-name>openmobster_agent_installer</servlet-name>
+    	<servlet-name>openmobster_agent_installer_android</servlet-name>
     	<servlet-class>org.openmobster.core.agent.provisioning.AndroidAgentInstaller</servlet-class>
   	</servlet> 
+  	
   	<servlet-mapping>
-    	<servlet-name>openmobster_agent_installer</servlet-name>
+    	<servlet-name>openmobster_agent_installer_rimos</servlet-name>
     	<url-pattern>/apps/*</url-pattern>
   	</servlet-mapping>
   	<servlet-mapping>
-    	<servlet-name>openmobster_agent_installer</servlet-name>
+    	<servlet-name>openmobster_agent_installer_android</servlet-name>
     	<url-pattern>/android/*</url-pattern>
   	</servlet-mapping>
   	
