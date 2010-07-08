@@ -1,7 +1,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- User Provided -->	
+	<!-- User Provided -->
 	<parent>
 		<groupId>com.offlineApp</groupId>
 		<artifactId>offlineapp</artifactId>
@@ -14,30 +14,81 @@
 	<artifactId>offlineapp</artifactId>
 	<packaging>jar</packaging>
 
+	<profiles>
+		<profile>
+			<id>android</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.offlineApp.cloud</groupId>
+					<artifactId>offlineapp.cloud</artifactId>
+					<version>${project.version}</version>
+				</dependency>
 
-	<dependencies>
-		<dependency>
-	      <groupId>com.offlineApp.cloud</groupId>
-	      <artifactId>offlineapp.cloud</artifactId>
-	      <version>${project.version}</version>
-	    </dependency>
-	    
-		<dependency>
-	      <groupId>com.offlineApp.rimos.app</groupId>
-	      <artifactId>offlineapp</artifactId>
-	      <version>${project.version}</version>
-	      <classifier>bin</classifier>
-	    </dependency>
-	    
-	    <dependency>
-	      <groupId>com.offlineApp.android.app</groupId>
-	      <artifactId>offlineapp</artifactId>
-	      <version>${project.version}</version>
-	      <classifier>bin</classifier>
-	    </dependency>
-    </dependencies>
-    
-    <build>
+				<dependency>
+					<groupId>com.offlineApp.android.app</groupId>
+					<artifactId>offlineapp</artifactId>
+					<version>${project.version}</version>
+					<classifier>bin</classifier>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>rimos</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.offlineApp.cloud</groupId>
+					<artifactId>offlineapp.cloud</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+
+				<dependency>
+					<groupId>com.offlineApp.rimos.app</groupId>
+					<artifactId>offlineapp</artifactId>
+					<version>${project.version}</version>
+					<classifier>bin</classifier>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<!-- profiles used only during the release process..Not needed for core AppCreator module -->
+		<profile>
+			<id>android-release</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.offlineApp.cloud</groupId>
+					<artifactId>offlineapp.cloud</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+
+				<dependency>
+					<groupId>com.offlineApp.android.app</groupId>
+					<artifactId>offlineapp</artifactId>
+					<version>${project.version}</version>
+					<classifier>bin</classifier>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
+			<id>start-bb-release</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.offlineApp.cloud</groupId>
+					<artifactId>offlineapp.cloud</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+
+				<dependency>
+					<groupId>com.offlineApp.rimos.app</groupId>
+					<artifactId>offlineapp</artifactId>
+					<version>${project.version}</version>
+					<classifier>bin</classifier>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>

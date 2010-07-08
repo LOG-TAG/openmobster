@@ -20,6 +20,45 @@
 		<module>app-android</module>
 		<module>moblet</module>
 	</modules>
+	
+	<profiles>
+		<profile>
+			<id>android</id>
+			<modules>
+				<module>cloud</module>
+				<module>app-android</module>
+				<module>moblet</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>rimos</id>
+			<modules>
+				<module>cloud</module>
+				<module>app-rimos</module>
+				<module>moblet</module>
+			</modules>
+		</profile>
+		
+		<!-- profiles used only during the release process..Not needed for core AppCreator module -->
+		<profile>
+			<id>android-release</id>
+			<modules>
+				<module>cloud</module>
+				<module>app-android</module>
+				<module>moblet</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>start-bb-release</id>
+			<modules>
+				<module>cloud</module>
+				<module>app-rimos</module>
+				<module>moblet</module>
+			</modules>
+		</profile>
+	</profiles>
 
 
 	<dependencyManagement>

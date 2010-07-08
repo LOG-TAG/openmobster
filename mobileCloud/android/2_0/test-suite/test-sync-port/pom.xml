@@ -87,9 +87,35 @@
 
 	<profiles>
 		<profile>
-			<id>start-release</id>
+			<id>android-release</id>
 			<build>
 				<plugins>
+				    <plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<version>1.2</version>
+						<executions>
+							<execution>
+								<id>signing</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<phase>package</phase>
+								<inherited>false</inherited>
+								<configuration>
+									<archiveDirectory></archiveDirectory>
+									<includes>
+										<include>target/*.apk</include>
+									</includes>
+									<keystore>${android.keystore.location}</keystore>
+									<storepass>password</storepass>
+									<keypass>password</keypass>
+									<alias>openmobster</alias>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					
 					<plugin>
 						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 						<artifactId>maven-android-plugin</artifactId>

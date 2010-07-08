@@ -13,29 +13,62 @@
 	<name><appCreator.moblet.name></name>
 	<artifactId><appCreator.moblet.artifactId></artifactId>
 	<packaging>jar</packaging>
+	
+	
+	<profiles>
+		<profile>
+			<id>android</id>
+			<dependencies>
+				<dependency>
+	      			<groupId><appCreator.cloud.app.groupId></groupId>
+	      			<artifactId><appCreator.cloud.app.artifactId></artifactId>
+	      			<version>${project.version}</version>
+	    		</dependency>
 
+				<dependency>
+			      <groupId><appCreator.android.app.groupId></groupId>
+			      <artifactId><appCreator.android.app.artifactId></artifactId>
+			      <version>${project.version}</version>
+			      <classifier>bin</classifier>
+			    </dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>rimos</id>
+			<dependencies>
+				<dependency>
+	      			<groupId><appCreator.cloud.app.groupId></groupId>
+	      			<artifactId><appCreator.cloud.app.artifactId></artifactId>
+	      			<version>${project.version}</version>
+	    		</dependency>
 
-	<dependencies>
-		<dependency>
-	      <groupId><appCreator.cloud.app.groupId></groupId>
-	      <artifactId><appCreator.cloud.app.artifactId></artifactId>
-	      <version>${project.version}</version>
-	    </dependency>
-	    
-		<dependency>
-	      <groupId><appCreator.rimos.app.groupId></groupId>
-	      <artifactId><appCreator.rimos.app.artifactId></artifactId>
-	      <version>${project.version}</version>
-	      <classifier>bin</classifier>
-	    </dependency>
-	    
-	    <dependency>
-	      <groupId><appCreator.android.app.groupId></groupId>
-	      <artifactId><appCreator.android.app.artifactId></artifactId>
-	      <version>${project.version}</version>
-	      <classifier>bin</classifier>
-	    </dependency>
-    </dependencies>
+				<dependency>
+			      <groupId><appCreator.rimos.app.groupId></groupId>
+			      <artifactId><appCreator.rimos.app.artifactId></artifactId>
+			      <version>${project.version}</version>
+			      <classifier>bin</classifier>
+			    </dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
+			<id>android-release</id>
+			<dependencies>
+				<dependency>
+	      			<groupId><appCreator.cloud.app.groupId></groupId>
+	      			<artifactId><appCreator.cloud.app.artifactId></artifactId>
+	      			<version>${project.version}</version>
+	    		</dependency>
+
+				<dependency>
+			      <groupId><appCreator.android.app.groupId></groupId>
+			      <artifactId><appCreator.android.app.artifactId></artifactId>
+			      <version>${project.version}</version>
+			      <classifier>bin</classifier>
+			    </dependency>
+			</dependencies>
+		</profile>
+	</profiles>
     
     <!--
 			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  

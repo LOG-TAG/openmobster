@@ -80,15 +80,18 @@ public class TestProvisioner extends TestCase
 	{
 		this.testDeviceActivation();
 		
+		Device activeDevice = this.deviceController.read("IMEI:567890");
+		assertNotNull("Device Must be registered and active",activeDevice);
+		
 		//Reactivate with same username and credential but a different device id
-		try
-		{
-			this.provisioner.registerDevice("blah@gmail.com", "blahblah", "IMEI:4930051");
-		}
-		catch(IDMException idme)
-		{
-			assertEquals(idme.getMessage(), "identity_already_has_a_different_device");
-		}
+		this.provisioner.registerDevice("blah@gmail.com", "blahblah", "IMEI:4930051");
+		
+		Device oldDevice = this.deviceController.read("IMEI:567890");
+		assertNull("For security purpose, old device should not exist in the system", oldDevice);
+		
+		activeDevice = this.deviceController.readByIdentity("blah@gmail.com");
+		assertNotNull("New Device must be active and registered", activeDevice);
+		assertEquals("IMEI:4930051",activeDevice.getIdentifier());
 	}
 	//------------------------------------------------------------------------------------------------------------------------------
 	private void activateDevice(String email, String credential, String deviceId)

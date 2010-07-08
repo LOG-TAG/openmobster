@@ -202,11 +202,19 @@ public class Provisioner
 					throw new IDMException(IDMException.ACTIVATION_CREDENTIAL_MISMATCH);
 				}
 				
-				if(this.deviceController.readByIdentity(registeredIdentity.getPrincipal()) != null)
+				Device activeDevice = this.deviceController.readByIdentity(registeredIdentity.getPrincipal());
+				if(activeDevice != null)
 				{
 					//Current user already has a device registered. An override is manually required
 					//to switch the device. This is a security issue
-					throw new IDMException(IDMException.IDENTITY_ALREADY_HAS_A_DIFFERENT_DEVICE);
+					//throw new IDMException(IDMException.IDENTITY_ALREADY_HAS_A_DIFFERENT_DEVICE);
+					
+					//Delete this device...since a new device is being activated...a user can only have one active device
+					//at a time...otherwise there can be security issues...This is a better way to handle than an exception
+					//previos one requires an admin to go in a swap device registration...which can become a nightmare
+					//considering how often users switch devices...especially in a B2C/non-corporate setup
+					//maybe this behavior can be customized in a later release
+					this.deviceController.delete(activeDevice);
 				}
 				
 				//Prepare the Device to be registered
