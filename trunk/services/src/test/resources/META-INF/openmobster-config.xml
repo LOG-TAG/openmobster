@@ -22,4 +22,9 @@
    <bean name="test://services/mockNetworkEventListener" 
    class="org.openmobster.core.services.event.MockNetworkEventListener">       
    </bean>
+   
+   <bean name="test://services/validationChannel" class="org.openmobster.core.services.ValidationChannel">   	 
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
 </deployment>

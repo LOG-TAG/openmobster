@@ -41,7 +41,8 @@ public class TestChannelManager extends TestCase
 	
 	public void testChannelEventPropagation() throws Exception
 	{	
-		Thread.currentThread().sleep(10000);
+		//Deprecated
+		/*Thread.currentThread().sleep(10000);
 		
 		//restart the BusReader thread
 		Bus.restartBus("twitterChannel");
@@ -49,6 +50,6 @@ public class TestChannelManager extends TestCase
 		log.info("Channel Bus Restarted......................");
 		log.info("------------------------------------------------");
 		
-		Thread.currentThread().sleep(10000);
+		Thread.currentThread().sleep(10000);*/
 	}
 }

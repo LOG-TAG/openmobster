@@ -54,7 +54,7 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>start-release</id>
+			<id>start-bb-release</id>
 			<modules>
 				<module>mobileCloud</module>
 				<module>dev-tools</module>
@@ -63,8 +63,17 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>finish-release</id>
+			<id>finish-bb-release</id>
 			<modules>
+				<module>binary-release</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>android-release</id>
+			<modules>
+				<module>mobileCloud</module>
+				<module>dev-tools</module>
+				<module>documentation</module>
 				<module>binary-release</module>
 			</modules>
 		</profile>

@@ -112,6 +112,16 @@ public class MobileObjectMonitor implements BusListener
 			getAnnotation(ChannelInfo.class);
 			String channelId = connectorInfo.uri();
 			
+			//Validate channelId to make sure it does not have '/'...This causes issues
+			//with table names on the device side with sqlite database (Android and iPhone)
+			if(channelId.indexOf('/') != -1)
+			{
+				log.error("-----------------------------------------------------");
+				log.error("ChannelUri: "+channelId+" is invalid!!");
+				log.error("-----------------------------------------------------");
+				throw new IllegalStateException("A ChannelUri should not contain the '/' character!!");
+			}
+			
 			//Inspect the Id field of its Record Object and make sure its an instance of String
 			String dataObjectStr = connectorInfo.mobileBeanClass();
 			Class dataObjectClazz = Thread.currentThread().getContextClassLoader().

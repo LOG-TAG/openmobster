@@ -40,7 +40,7 @@ public class AndroidAgentInstaller extends HttpServlet
 		try
 		{						
 			InputStream is = Thread.currentThread().getContextClassLoader().
-			getResourceAsStream("android/20/MobileCloud.apk");
+			getResourceAsStream("android/20/CloudManager.apk");
 			
 			this.cloudModule = IOUtilities.readBytes(is);
 			
@@ -79,7 +79,7 @@ public class AndroidAgentInstaller extends HttpServlet
 			log.debug("Getting......."+moduleName);
 			
 			byte[] module = null;
-			if(!moduleName.equalsIgnoreCase("mobilecloud"))
+			if(!moduleName.equalsIgnoreCase("cloudmanager"))
 			{
 				module = this.findMobletModule(httpRequest, moduleName);
 			}
