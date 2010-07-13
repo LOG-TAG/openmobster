@@ -113,8 +113,74 @@
        </para>
 		<para>
 			The current version consists of
+			<emphasis role='bold'>Google Android 2.0+ support</emphasis>, and
 			<emphasis role="bold">Blackberry RIM OS 4.3.0+ support</emphasis>
 		</para>
+		<sect2>
+			<title>Android Installation</title>
+			<para>
+					If you have a
+					<emphasis>Cloud Server</emphasis>
+					running and accessible from the Internet, you can simply download
+					these binaries from the built-in browser
+					of the device.
+			</para>
+			<para>
+					Download the following and follow the instructions provided by the
+					device:
+					<itemizedlist>
+						<listitem>
+							http://{cloudServer IP}:{cloudServer
+							port}/o/android/cloudmanager
+						</listitem>
+					</itemizedlist>
+			</para>
+			<sect3>
+				<title>Device Activation</title>
+				<para>
+					<itemizedlist>
+						<listitem>
+							<emphasis role="bold">Step 1:</emphasis>
+							Launch the 'CloudManager' app.
+						</listitem>
+						<listitem>
+							<emphasis role="bold">Step 2:</emphasis>
+							Select the 'Activate' function.
+						</listitem>
+						<listitem>
+							<emphasis role="bold">Step 3:</emphasis>
+							Follow the wizard and provide the appropriate values
+							<itemizedlist>
+								<listitem>
+									<emphasis>Server :</emphasis>
+									IP Address of the Cloud Server
+								</listitem>
+								<listitem>
+									<emphasis>Email :</emphasis>
+									The user id that was used to register the user via the
+									Management Console
+								</listitem>
+								<listitem>
+									<emphasis>Password:</emphasis>
+									The password that was used to register the user via the
+									Management Console
+								</listitem>
+							</itemizedlist>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</sect3>
+			<sect3>
+				<title>Installing the Sample Offline App</title>
+				<para>
+					Using your
+					<emphasis>CloudManager App</emphasis>
+					, install the deployed Apps using the
+					<emphasis>Corporate App Store</emphasis>
+					option
+				</para>
+			</sect3>
+		</sect2>
 		<sect2>
 			<title>Blackberry Installation</title>
 			<para>
@@ -205,9 +271,6 @@
 					, install the deployed Apps/Moblets using the
 					<emphasis>App Store</emphasis>
 					function.
-					The platform comes bundled with a couple of sample apps that
-					demonstrate
-					the Offline and RPC functions.
 				</para>
 				<para>
 					<emphasis role='bold'>Note:</emphasis>

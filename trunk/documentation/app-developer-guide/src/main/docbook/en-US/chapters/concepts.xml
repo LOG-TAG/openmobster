@@ -12,7 +12,7 @@
    		<title>Cloud Server</title>
    		<para>
    		 A <emphasis>Cloud Server</emphasis> is the server-side component of the infrastructure that is located in the 'Cloud'. The system provides mobile-oriented
-	features like offline synchronization, comet-style push, and mobile rpc. From an architecture standpoint it sits between the 
+	features like data synchronization, real-time push, and mobile rpc. From an architecture standpoint it sits between the 
 	mobile device and the actual cloud data services being mobilized. The Cloud Server provides a Java based Developer API to expose your
 	data services. Here are its programming concepts:
    		</para>
@@ -41,30 +41,28 @@
    		</sect2>
    </sect1>
    <sect1>
-   		<title>Moblet and App Frameworks</title>
-   		<para>
-   		A <emphasis>Moblet</emphasis> is a <emphasis role="bold">managed App</emphasis> that executes along-side the on-device <emphasis>OpenMobster Runtime</emphasis> called the, <emphasis role='bold'><link linkend="/concepts/mobileCloud">Mobile Cloud</link></emphasis>. A moblet developer has the following on-device frameworks
-   		available to integrate with the Cloud.
-   		</para>
+   		<title>Mobile App Frameworks</title>
    		<sect2>
    			<title>Mobile Data Framework</title>
    			<para>
-   			The <emphasis>Mobile Data Framework</emphasis> provides <emphasis>Cloud</emphasis> data-oriented services like seamless offline data synchronization, comet-style push
+   			The <emphasis>Mobile Data Framework</emphasis> provides <emphasis>Cloud</emphasis> data-oriented services like data synchronization, real-time push
    			notifications, and simple RPC (Remote Procedure Call) mechanism.
    			</para>
    			<sect3>
    				<title>MobileBean</title>
    				<para>
-   				MobileBean is a managed Mobile Component which carries the state of the domain object that it represents on the server. It is
+   				MobileBean is a managed Mobile Component which carries the state of the domain object that it represents on the Cloud. It is
   		    	propagated from the Cloud Server to the mobile device via its corresponding "Channel" on the server. The Mobile Data Framework shields
   		    	the App developer from state management issues like, offline access, receiving push notifications related to state changes on the server,
-            	synchronizing locally modified beans back with the server, etc.
+            	synchronizing locally modified beans back with the server, sync concepts like two-way sync, one-way sync etc. The native runtime smartly
+            	tracks the changes to the local state of the MobileBean and decides which type of sync is needed.
    				</para>
    			</sect3>
    			<sect3>
    				<title>MobileService</title>
    				<para>
-   				MobileService facilitates making synchronous RPC (Remote Procedure Call) invocations from the device to the server side 'MobileServiceBean' components.
+   				MobileService facilitates making RPC (Remote Procedure Call) invocations from the device to the server side 'MobileServiceBean' components.
+   				It presents a simple API to the developer and shields them from low-level networking details, http libraries, REST invocations etc.
    				</para>
    			</sect3>
    		</sect2>
@@ -105,11 +103,12 @@
    		<sect2 id="/concepts/mobileCloud">
    			<title>Mobile Cloud</title>
    			<para>
-   			Mobile Cloud is an on-device <emphasis>native system service</emphasis>. It hosts the runtime that is used by the <emphasis role="bold">Mobile Data Framework</emphasis> and the <emphasis role="bold">Mobile MVC Framework</emphasis>.
-  	On platforms that support inter-application communication such as <emphasis>Android</emphasis> and <emphasis>Blackberry</emphasis>, there is a single instance of a Mobile Cloud which is shared by all the Apps/Moblets
+   			Mobile Cloud is an on-device <emphasis>native system service</emphasis>. It hosts the runtime that is used by the above mentioned App Frameworks.
+  	On platforms that support inter-application communication such as <emphasis>Android</emphasis> and <emphasis>Blackberry</emphasis>, there is a single instance of a Mobile Cloud which is shared by all the Apps
   	installed on the device. This helps make better use of device resources like storage, network management, push sockets, background services, etc. On platforms
   	that do not support inter-application communication, an instance of the Mobile Cloud runtime must be installed by bundling it with each 
-  	App/Moblet.
+  	App. The Mobile Cloud also comes with a Cloud Manager App. The Cloud Manager App provides configuration functions such as secure Device Activation, 
+  	Push Management, Channel Management, Discovering/Installing new Apps, etc.
    			</para>
    		</sect2>
    </sect1>
