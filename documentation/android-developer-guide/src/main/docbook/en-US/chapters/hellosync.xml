@@ -1,51 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter id="hellomobster">
-	<chapterinfo>
-		<author>
-			<firstname>openmobster</firstname>
-			<surname>at gmail.com</surname>
-			<email>openmobster@gmail.com</email>
-		</author>
-	</chapterinfo>
-	<title>Get Started: Hello Mobster</title>
-	<sect1>
-		<para>
-			In the spirit of confidence building when using a new technology,
-			lets start with a simple app. We will
-			call it the
-			<emphasis role='bold'>HelloSync</emphasis> app.
-		</para>
-		<sect2>
-			<title>System Requirements</title>
-			<sect3>
-				<title>Cloud Server</title>
-				<para>
-					<itemizedlist>
-						<listitem>Java SE JDK v6.0</listitem>
-					</itemizedlist>
-				</para>
-			</sect3>
-		</sect2>
-	</sect1>
-	<sect1>
-		<title>Create your first Mobile Cloud App</title>
-		<para>
-			Download an OpenMobster distribution from here:
-			<ulink url='http://code.google.com/p/openmobster/downloads/list'>Downloads</ulink>
-			.
-		</para>
-		<para>
-			In your distribution, go to the directory AppCreator. Inside the
-			directory, use a tool called the
-			'appcreator.bat' (Windows), 'appcreator.sh' (Linux and Mac) to generate a skeleton
-			project
-			<programlisting><![CDATA[
-				
-		appcreator.bat		
-		]]></programlisting>
-			This will generate a Maven-based skeleton for the Mobile App. Each
-			generated project has the following maven modules:
-			<itemizedlist>
+<chapter id="hellosync">
+   <chapterinfo>
+      <author>
+         <firstname>openmobster</firstname>
+         <surname>at gmail.com</surname>
+         <email>openmobster@gmail.com</email>
+      </author>
+   </chapterinfo>
+   <title>HelloSync - Simple Sync App Tutorial</title>
+   <sect1>
+   		<title>AppCreator Project</title>
+   		<para>
+   			The HelloSync App is created using the <link linkend='appcreator'>AppCreator</link>. Here is brief explanation of the project structure
+   			<itemizedlist>
    				<listitem>
    					<emphasis role='bold'>cloud:</emphasis> Contains the src for the Cloud-side Channel component. Java code is located under <emphasis>src/main/java</emphasis>, 
    					and configuration is located under <emphasis>src/main/resources</emphasis>.
@@ -59,10 +26,9 @@
    					<emphasis role='bold'>moblet:</emphasis> This is an assembly component that packages this App into a jar file ready for deployment in a JBoss AS based OpenMobster instance.
    				</listitem>
    			</itemizedlist>
-		</para>
-	</sect1>
-	
-	<sect1>
+   		</para>
+   </sect1>
+   <sect1>
    		<title>Developing the <emphasis role='bold'>Channel</emphasis></title>
    		
    		<sect2>
@@ -129,7 +95,8 @@ public class HelloSyncBean implements MobileBean
     		not have to worry about any low-level state management, and synchronization issues.
    			</para>
    			<para>
-   			For sake of simplicity, we will only implement a small portion of the <emphasis>org.openmobster.server.api.model.Channel</emphasis> interface. 
+   			For sake of simplicity, we will only implement a small portion of the <emphasis>org.openmobster.server.api.model.Channel</emphasis> interface.
+   			A detailed explanation about the semantics of the Channel interface can be found <ulink url='http://openmobster.googlecode.com/svn/wiki/content/app-developer-guide/html/offlineapp.html'>here</ulink>
    			</para>
    			<sect3>
    				<title>Implement the <emphasis>org.openmobster.server.api.model.Channel</emphasis> interface</title>

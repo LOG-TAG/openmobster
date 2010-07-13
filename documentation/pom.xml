@@ -18,7 +18,7 @@
    
    <modules> 
       <module>app-developer-guide</module>
-      <module>quick-start-guide</module>          
+      <module>android-developer-guide</module>          
    </modules> 
    
    <build>

@@ -53,7 +53,8 @@ public abstract class Screen
 	}
 	
 	public abstract void render();	
-	public abstract Object getContentPane();			
+	public abstract Object getContentPane();
+	public abstract void postRender();
 }
            	  	]]></programlisting>
    				</para>
@@ -93,20 +94,17 @@ public abstract class Screen
    					</para>
    					<para>
    					<programlisting><![CDATA[
-import net.rim.device.api.ui.component.Status;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
-
-public final class DemoLocalCommand implements LocalCommand
+public class DemoLocalCommand implements LocalCommand
 {
+
 	public void doViewBefore(CommandContext commandContext)
 	{
-		Status.show("LocalCommand about to execute........");		
+		Toast.makeText((Activity)commandContext.getAppContext(), 
+		"LocalCommand about to execute........", 
+		Toast.LENGTH_SHORT).show();
 	}
 
-	public void doAction(CommandContext commandContext) 
+	public void doAction(CommandContext commandContext)
 	{
 		try
 		{
@@ -118,16 +116,17 @@ public final class DemoLocalCommand implements LocalCommand
 		{
 			throw new RuntimeException(e.toString());
 		}
-	}	
-	
+	}
+
 	public void doViewAfter(CommandContext commandContext)
-	{
+	{	
 		Services.getInstance().getNavigationContext().navigate("local");
 	}
-	
+
 	public void doViewError(CommandContext commandContext)
 	{
-		Status.show("DemoLocalCommand had an error!!");
+		ViewHelper.getOkModal((Activity)commandContext.getAppContext(), 
+				"Error", "DemoLocalCommand had an error!!").show();
 	}
 }
    					]]></programlisting>
@@ -152,34 +151,24 @@ public final class DemoLocalCommand implements LocalCommand
    					</para>
    					<para>
    					<programlisting><![CDATA[
-import net.rim.device.api.ui.component.Status;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.Response;
-import org.openmobster.core.mobileCloud.api.service.MobileService;
-
-public final class DemoMobileRPC implements AsyncCommand
+public final class DemoAsyncCommand implements AsyncCommand
 {
 	public void doViewBefore(CommandContext commandContext)
-	{	
-		//Nothing visual to do before action execution	
+	{
+		Toast.makeText((Activity)commandContext.getAppContext(), 
+				"AsyncCommand about to execute........", 
+				Toast.LENGTH_SHORT).show();		
 	}
 
 	public void doAction(CommandContext commandContext) 
 	{
 		try
 		{
-			Request request = new Request("/demo/mobile-rpc");	
-			request.setAttribute("param1", "paramValue1");
-			request.setAttribute("param2", "paramValue2");
-			Response response = new MobileService().invoke(request);
-			
-			NavigationContext navigation = Services.getInstance().getNavigationContext();
-			navigation.setAttribute("home", "param1", response.getAttribute("param1"));
-			navigation.setAttribute("home", "param2", response.getAttribute("param2"));
+			//Simulate network latency
+			Thread.currentThread().sleep(10000);
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Demo Async Command successfully executed...............");
+			System.out.println("-------------------------------------------------------");						
 		}
 		catch(Exception e)
 		{
@@ -189,15 +178,17 @@ public final class DemoMobileRPC implements AsyncCommand
 	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		//Navigate back to home
-		NavigationContext navigation = Services.getInstance().getNavigationContext();
-		navigation.home();
+		ViewHelper.getOkModal((Activity)commandContext.getAppContext(), 
+		"Success", "Async Command success...").show();
+		
+		//An Async Command should not navigate away from the screen that launch it...it can result in yucky UI errors
+		//Services.getInstance().getNavigationContext().navigate("async");
 	}
 	
 	public void doViewError(CommandContext commandContext)
 	{
-		//Show an Error status to the user
-		Status.show(this.getClass().getName()+" had an error!!");
+		ViewHelper.getOkModal((Activity)commandContext.getAppContext(), 
+				"Error", "DemoAsyncCommand had an error!!").show();
 	}
 }
    					]]></programlisting>
@@ -213,34 +204,25 @@ public final class DemoMobileRPC implements AsyncCommand
    					UI fluid. In the next iteration of the system, this component will probably be renamed to: BusyCommand
    					</para>
    					<programlisting><![CDATA[
-import net.rim.device.api.ui.component.Status;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.Response;
-import org.openmobster.core.mobileCloud.api.service.MobileService;
-
-public final class DemoMobileRPC implements RemoteCommand
+public final class DemoRemoteCommand implements RemoteCommand
 {
 	public void doViewBefore(CommandContext commandContext)
-	{	
-		//Nothing visual to do before action execution	
+	{
+		Toast.makeText((Activity)commandContext.getAppContext(), 
+				"RemoteCommand about to execute........", 
+				Toast.LENGTH_SHORT).show();			
 	}
 
 	public void doAction(CommandContext commandContext) 
 	{
 		try
 		{
-			Request request = new Request("/demo/mobile-rpc");	
-			request.setAttribute("param1", "paramValue1");
-			request.setAttribute("param2", "paramValue2");
-			Response response = new MobileService().invoke(request);
+			//Simulate network latency
+			Thread.currentThread().sleep(10000);			
 			
-			NavigationContext navigation = Services.getInstance().getNavigationContext();
-			navigation.setAttribute("home", "param1", response.getAttribute("param1"));
-			navigation.setAttribute("home", "param2", response.getAttribute("param2"));
+			System.out.println("-------------------------------------------------------");
+			System.out.println("Demo Remote Command successfully executed...............");
+			System.out.println("-------------------------------------------------------");						
 		}
 		catch(Exception e)
 		{
@@ -250,15 +232,13 @@ public final class DemoMobileRPC implements RemoteCommand
 	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		//Navigate back to home
-		NavigationContext navigation = Services.getInstance().getNavigationContext();
-		navigation.home();
+		Services.getInstance().getNavigationContext().navigate("remote");
 	}
 	
 	public void doViewError(CommandContext commandContext)
 	{
-		//Show an Error status to the user
-		Status.show(this.getClass().getName()+" had an error!!");
+		ViewHelper.getOkModal((Activity)commandContext.getAppContext(), 
+				"Error", "DemoRemoteCommand had an error!!").show();
 	}
 }
    					]]></programlisting>
@@ -276,24 +256,49 @@ public final class DemoMobileRPC implements RemoteCommand
    					</para>
    					<para>
    					<programlisting><![CDATA[
-import net.rim.device.api.ui.component.Dialog;
-
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.PushCommand;
-
-public final class AppPushCommand implements PushCommand
+public final class PushHandler implements PushCommand
 {
-	public void doAction(CommandContext commandContext)
+	public void doViewBefore(CommandContext commandContext)
 	{		
 	}
 
+	public void doAction(CommandContext commandContext) 
+	{
+		try
+		{
+			MobilePush push = commandContext.getPush();
+			System.out.println("Handling Push----------------------------------------");
+			System.out.println("Push Updates: "+push.getNumberOfUpdates());
+			MobileBeanMetaData[] updates = push.getPushData();
+			if(updates != null)
+			{
+				for(MobileBeanMetaData update:updates)
+				{
+					System.out.println("Bean: "+update.getId());
+				}
+			}
+			System.out.println("----------------------------------------");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			throw new RuntimeException(e.toString());
+		}
+	}	
+	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		Dialog.alert("App Push received!!!");		
+		MobilePush push = commandContext.getPush();
+		Context context = Registry.getActiveInstance().getContext();
+		Toast.makeText(context, push.getNumberOfUpdates()+" Updates successfully received!!", 
+		Toast.LENGTH_SHORT).show();
 	}
 	
 	public void doViewError(CommandContext commandContext)
 	{
+		Context context = Registry.getActiveInstance().getContext();
+		Toast.makeText(context, this.getClass().getName()+" had an error!!", 
+		Toast.LENGTH_SHORT).show();
 	}
 }
    					]]></programlisting>
@@ -337,229 +342,181 @@ public final class AppPushCommand implements PushCommand
    				Create a simple Home Screen component. This will be the first screen that will be displayed upon launching an App.
    				</para>
    				<programlisting><![CDATA[
-import java.util.Vector;
+import java.lang.reflect.Field;
 
-import net.rim.device.api.system.Display;
-import net.rim.device.api.ui.Graphics;
-import net.rim.device.api.ui.MenuItem;
-import net.rim.device.api.ui.container.MainScreen;
-import net.rim.device.api.ui.component.Dialog;
-import net.rim.device.api.ui.component.ListField;
-import net.rim.device.api.ui.component.ListFieldCallback;
-
-import org.openmobster.core.mobileCloud.rimos.configuration.Configuration;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
+import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
+import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
+import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-
-public class HomeScreen extends Screen
-{		
-	private MainScreen screen;
-	private ListField listField;
-	private Vector actions;
-	private boolean beansDisplayed = false;
-	
-	public HomeScreen()
-	{
-		this.screen = new MainScreen();										
-	}
-	
-	public void render()
-	{	
-		AppResources res = Services.getInstance().getResources();
-		Configuration configuration = Configuration.getInstance();
-		
-		this.screen.setTitle(res.localize("title", "title"));
-		
-		if(!configuration.isActive())
-		{
-			Dialog.alert(res.localize("inactive_message","inactive_message"));
-			return;
-		}
-		
-		if(!MobileBean.isBooted("/offlineapp/demochannel"))
-		{
-			Dialog.alert(res.localize("channel_not_ready", "channel_not_ready"));
-			return;
-		}
-		
-		if(!this.beansDisplayed)
-		{
-			MobileBean[] demoBeans = MobileBean.readAll("/offlineapp/demochannel");	
-			actions = new Vector();
-			int size = demoBeans.length;
-			for(int i=0; i<size; i++)
-			{
-				if(!demoBeans[i].isProxy())
-				{
-					actions.addElement(demoBeans[i].getValue("demoString"));
-				}
-				else
-				{
-					actions.addElement(demoBeans[i].getId()+": proxyState");
-				}
-			}
-			
-			this.listField = new ListField(actions.size());
-			this.listField.setCallback(new ListFieldCallbackImpl(actions));
-			this.screen.add(this.listField);
-			this.setMenuItems();
-			this.beansDisplayed = true;
-		}
-	}
-	
-	public Object getContentPane() 
-	{		
-		return this.screen;
-	}	
-	
-	private void setMenuItems()
-	{
-		MenuItem detailItem = new MenuItem("Details", 1, 1){
-			public void run()
-			{
-				//UserInteraction/Event Processing...this is where the Commands can be executed
-				HomeScreen.this.handleDetails();
-			}
-		}; 
-										
-		this.screen.addMenuItem(detailItem);	
-	}
-	
-	private void handleDetails()
-	{
-		int selectedIndex = this.listField.getSelectedIndex();
-		String selectedBean = (String)this.actions.elementAt(selectedIndex);
-		
-		//Starting a Command Execution
-		CommandContext commandContext = new CommandContext();
-		commandContext.setTarget("/demo/details");
-		commandContext.setAttribute("selectedBean", selectedBean);
-		Services.getInstance().getCommandService().execute(commandContext);
-	}
-	
-	private static class ListFieldCallbackImpl implements ListFieldCallback
-	{
-		private Vector actions = new Vector();
-		
-		private ListFieldCallbackImpl(Vector actions)
-		{
-			this.actions = actions;
-		}
-
-		public void drawListRow(ListField listField, Graphics graphics, int index,
-		int y, int width) 
-		{
-			String action = (String)this.actions.elementAt(index);									
-			graphics.drawText(action, 0, y);
-		}
-		
-		public Object get(ListField listField, int index) 
-		{			
-			return this.actions.elementAt(index);
-		}
-
-		public int getPreferredWidth(ListField listField) 
-		{			
-			return Display.getWidth();
-		}
-
-		public int indexOfList(ListField listField, String prefix, int start) 
-		{			
-			return this.actions.indexOf(prefix, start);
-		}		
-	}		
-}
-   					]]></programlisting>
-   				<para>
-   				</para>
-   			</sect3>
-   			<sect3>
-   				<title>Simple Remote Command</title>
-   				<para>
-   				Create a Simple Remote Command to integrate with information located in the Cloud.
-   				</para>
-   				<para>
-   				<programlisting><![CDATA[
-import java.lang.StringBuffer;
-
-import net.rim.device.api.ui.component.Status;
-import net.rim.device.api.ui.component.Dialog;
-
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
-import org.openmobster.core.mobileCloud.rimos.util.GenericAttributeManager;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
+import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
-public final class DemoDetails implements RemoteCommand
+import android.app.Activity;
+import android.app.ListActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.widget.ArrayAdapter;
+
+/**
+ * @author openmobster@gmail.com
+ */
+public class HomeScreen extends Screen
 {
-	public void doViewBefore(CommandContext commandContext)
-	{		
-	}
-
-	public void doAction(CommandContext commandContext) 
+	private Integer screenId;
+	
+	@Override
+	public void render()
 	{
 		try
 		{
-			String channel = "/offlineapp/demochannel";
-			String selectedBean = (String)commandContext.getAttribute("selectedBean");
+			final Activity currentActivity = (Activity)Registry.getActiveInstance().
+			getContext();
 			
-			String details = null;
-			if(selectedBean.endsWith("proxyState"))
-			{
-				//Lookup by beanId
-				String beanId = selectedBean.substring(0,selectedBean.indexOf(':'));
-				MobileBean bean = MobileBean.readById(channel, beanId);
-				
-				StringBuffer buffer = new StringBuffer();
-				
-				//Reading a simple property
-				buffer.append("DemoString: "+bean.getValue("demoString"));
-				
-				
-				details = buffer.toString();
-			}
-			else
-			{
-				//Lookup by state..in this case, that of demoString
-				GenericAttributeManager criteria = new GenericAttributeManager();
-				criteria.setAttribute("demoString", selectedBean);
-				
-				MobileBean[] beans = MobileBean.queryByEqualsAll(channel, criteria);
-				MobileBean unique = beans[0];
-				
-				StringBuffer buffer = new StringBuffer();
-				buffer.append("DemoString: "+unique.getValue("demoString"));
-				details = buffer.toString();
-			}
+			String layoutClass = currentActivity.getPackageName()+".R$layout";
+			String home = "home";
+			Class clazz = Class.forName(layoutClass);
+			Field field = clazz.getField(home);
 			
-			commandContext.setAttribute("details", details);
+			this.screenId = field.getInt(clazz);						
 		}
 		catch(Exception e)
 		{
-			throw new RuntimeException(e.toString());
+			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			});
+			ErrorHandler.getInstance().handle(se);
+			throw se;
 		}
-	}	
-	
-	public void doViewAfter(CommandContext commandContext)
-	{
-		Dialog.alert((String)commandContext.getAttribute("details"));
-		NavigationContext navigation = Services.getInstance().getNavigationContext();
-		navigation.home();
 	}
 	
-	public void doViewError(CommandContext commandContext)
+	@Override
+	public Object getContentPane()
 	{
-		Status.show(this.getClass().getName()+" had an error!!");
+		return this.screenId;
+	}
+	
+	@Override
+	public void postRender()
+	{
+		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
+		getContext();
+		
+		AppResources res = Services.getInstance().getResources();
+		Configuration configuration = Configuration.getInstance(listApp);
+		
+		if(!configuration.isActive())
+		{
+			ViewHelper.getOkModalWithCloseApp(listApp, "App Error", res.localize("inactive_message","inactive_message")).
+			show();
+			
+			return;
+		}
+		
+		//Show the List of the "Demo Beans" stored on the device
+		if(MobileBean.isBooted("offlineapp_demochannel"))
+		{
+			MobileBean[] demoBeans = MobileBean.readAll("offlineapp_demochannel");
+			String[] ui = new String[demoBeans.length];
+			for(int i=0,size=ui.length;i<size;i++)
+			{
+				ui[i] = demoBeans[i].getValue("demoString");
+			}
+			listApp.setListAdapter(new ArrayAdapter(listApp, 
+		    android.R.layout.simple_list_item_1, 
+		    ui));
+			
+			//List Listener
+			ListItemClickListener clickListener = new ClickListener(demoBeans);
+			NavigationContext.getInstance().addClickListener(clickListener);
+		}
+		
+		//Setup the App Menu
+		this.setMenuItems();
+	}
+	
+	private void setMenuItems()
+	{
+		Menu menu = (Menu)NavigationContext.getInstance().
+		getAttribute("options-menu");
+		
+		if(menu != null)
+		{
+			MenuItem resetChannel = menu.add(Menu.NONE, Menu.NONE, 0, "Reset Channel");
+			resetChannel.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					//UserInteraction/Event Processing...this is where the Commands can be executed
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/offlineapp/reset");
+					Services.getInstance().getCommandService().execute(commandContext);
+					return true;
+				}
+			});
+			
+			MenuItem pushTrigger = menu.add(Menu.NONE, Menu.NONE, 1, "Push Trigger");
+			pushTrigger.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					//UserInteraction/Event Processing...this is where the Commands can be executed
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/offlineapp/pushtrigger");
+					Services.getInstance().getCommandService().execute(commandContext);
+					return true;
+				}
+			});
+			
+			MenuItem rpc = menu.add(Menu.NONE, Menu.NONE, 0, "Make RPC Invocation");
+			rpc.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					//UserInteraction/Event Processing...this is where the Commands can be executed
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/offlineapp/rpc");
+					Services.getInstance().getCommandService().execute(commandContext);
+					return true;
+				}
+			});
+		}
+	}
+	
+	private static class ClickListener implements ListItemClickListener
+	{
+		private MobileBean[] activeBeans;
+		
+		private ClickListener(MobileBean[] activeBeans)
+		{
+			this.activeBeans = activeBeans;
+		}
+		
+		public void onClick(ListItemClickEvent clickEvent)
+		{
+			int selectedIndex = clickEvent.getPosition();
+			MobileBean selectedBean = activeBeans[selectedIndex];
+			
+			CommandContext commandContext = new CommandContext();
+			commandContext.setTarget("/demo/details");
+			commandContext.setAttribute("selectedBean", selectedBean.getValue("demoString"));
+			Services.getInstance().getCommandService().execute(commandContext);
+		}
 	}
 }
    					]]></programlisting>
+   				<para>
    				</para>
    			</sect3>
+   			
    			<sect3>
    				<title>Configuration</title>
    				<para>
@@ -569,23 +526,29 @@ public final class DemoDetails implements RemoteCommand
    				<para>
    				<programlisting><![CDATA[
 <moblet-app>
-	<bootstrap>
-		<screen>org.openmobster.core.examples.offline.screen.HomeScreen</screen>
-	</bootstrap>
-   
-	<push>
-		<command>org.openmobster.core.examples.offline.command.PushHandler</command>
-	</push>
-   
+    <bootstrap>
+    	<screen>com.offlineApp.android.app.screen.HomeScreen</screen>
+    </bootstrap>
+    
+    <!--  
+       In Android's case this is not needed for this App...The Android core + OpenMobster core framework gives everything you need for the usecase on this App..
+       I stand corrected...Android is actually superior to BlackBerry Platform (atleast upto 4.0.x...have not used 5.0.x yet to have an opinion)
+    <push>
+    	<command>org.openmobster.core.examples.offline.command.PushHandler</command>
+    </push>
+	-->
+	
 	<commands>				
-		<command id="/demo/details">org.openmobster.core.examples.offline.command.DemoDetails</command>
-		<command id="/offlineapp/pushtrigger">org.openmobster.core.examples.offline.command.PushTrigger</command>
-		<command id="/offlineapp/reset">org.openmobster.core.examples.offline.command.ResetChannel</command>
-	</commands>
+		<command id="/demo/details">com.offlineApp.android.app.command.DemoDetails</command>
+		<command id="/offlineapp/pushtrigger">com.offlineApp.android.app.command.PushTrigger</command> 
+		<command id="/offlineapp/reset">com.offlineApp.android.app.command.ResetChannel</command>
 		
+		<command id="/offlineapp/rpc">com.offlineApp.android.app.command.DemoMobileRPC</command>
+	</commands>	
+	
 	<channels>
-		<channel>/offlineapp/demochannel</channel>
-	</channels>						
+		<channel>offlineapp_demochannel</channel>
+	</channels>					
 </moblet-app>
    					]]></programlisting>
    				</para>
@@ -593,9 +556,9 @@ public final class DemoDetails implements RemoteCommand
    			<sect3>
    				<title>Putting it all together</title>
    				<para>Detailed Examples located at: 
-   				<emphasis>src/dev-tools/sampleApps/offlineapp/app-rimos</emphasis>, 
-   				<emphasis>src/dev-tools/sampleApps/rpcdemo/app-rimos</emphasis>, and
-   				<emphasis>src/mobileCloud/rimos/test-suite/nativeframework-testdrive/src/main</emphasis>  
+   				<emphasis>src/dev-tools/sampleApps/offlineapp/app-android</emphasis>, 
+   				<emphasis>src/dev-tools/sampleApps/rpcdemo/app-android</emphasis>, and
+   				<emphasis>src/mobileCloud/android/2_0/test-suite/nativeframework-testdrive/src/main</emphasis>  
    				</para>
    			</sect3>
    		</sect2>

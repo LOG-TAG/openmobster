@@ -8,26 +8,26 @@
       </author>
    </chapterinfo>
    <title>Introduction to OpenMobster - Mobile Cloud Platform</title>
-   <para><emphasis role="bold">OpenMobster</emphasis> is an <emphasis>open source</emphasis> platform for integrating Mobile Apps (on-device apps) with <emphasis>"Cloud"</emphasis> services</para> 
+   <para><emphasis role="bold">OpenMobster</emphasis> is an <emphasis>open source</emphasis> platform for integrating native Mobile Apps with <emphasis>"Cloud"</emphasis> services</para> 
    <para>It provides the following features:</para>
    <sect1>
-   		<title>Seamless App State/Data Synchronization</title>
+   		<title>Data Synchronization</title>
    		<para>
-   		 Cloud data is made available inside an App's <emphasis>local storage</emphasis>. This allows the App
+   		 Cloud data is made available to an App's <emphasis>local storage</emphasis>. It is available via a simple API. This allows the App
    		 to function seamlessly in both <emphasis>online</emphasis> as well as <emphasis>offline</emphasis> modes.    		  
    		 The data is automatically synchronized with the Cloud service based on local state changes. These state changes
-         are auto detected and does not require any device-side sync-related programming on the part of the developer.
+         are auto detected and synchronized with the Cloud. It does not require any special device-side sync-related programming on the part of the developer.
    		</para>
    </sect1>
    <sect1>
-   		<title>Comet-style Push Notifications</title>
+   		<title>Real-Time Push Notifications</title>
    		<para>
-   		 <ulink url="http://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</ulink> is an umbrella term for pushing state changes to an App from the server,
-  instead of an App proactively requesting it. The <emphasis>Push</emphasis> mechanism uses pure network/socket based approach instead of clunky methodologies
-  like sending sms alerts or email alerts. The Push notifications happen inside the App's execution environment.</para> 
+   		 Changes on the Cloud are automatically pushed to the Apps in real time. The <emphasis>Push</emphasis> mechanism uses pure network/socket based approach instead of clunky methodologies
+  like sending sms alerts or email alerts. The Push notifications happen inside the App's execution environment. Push notifications are sent via a simple API. It does not require the developer to learn 
+  any low-level platform specific services.</para> 
    </sect1>
    <sect1>
-   		<title>Simple Mobile RPC (Remote Procedure Call)</title>
+   		<title>Mobile RPC (Remote Procedure Call)</title>
    		<para>
    			Provides a simple way of exposing your server-side coarse grained business services. These services are invoked via a simple RPC mechanism without
   any low-level programming like http-client code, client side REST library, etc on the part of the App developer. There is a simple

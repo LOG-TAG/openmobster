@@ -14,7 +14,9 @@ On Linux and Mac:
 -----------------------
 appcreator.sh
 
-This will generate a Maven-based skeleton for the Mobile App. Each generated project has the following three maven modules:
+This will generate a Maven-based skeleton for the Mobile App. Each generated project has the following maven modules:
+
+* app-android - Contains the device side application code for the Android OS - version 2.0 and higher
 
 * app-rimos - Contains the device side application code for the Blackberry OS - version 4.3.0 and higher
 
