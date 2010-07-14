@@ -29,6 +29,7 @@
 			</activation>
 			<build>
 				<plugins>
+				    <!--  Deprecated tests...Not needed anymore as testsuite is more robust now
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
@@ -153,6 +154,7 @@
 							</execution>
 						</executions>
 					</plugin>
+					-->
 				</plugins>
 			</build>
 		</profile>
