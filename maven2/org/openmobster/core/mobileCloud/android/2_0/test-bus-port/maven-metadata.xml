@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+  <artifactId>test-bus-port</artifactId>
+  <version>2.0-snapshot</version>
+  <versioning>
+    <versions>
+      <version>2.0-snapshot</version>
+    </versions>
+    <lastUpdated>20100714034109</lastUpdated>
+  </versioning>
+</metadata>
