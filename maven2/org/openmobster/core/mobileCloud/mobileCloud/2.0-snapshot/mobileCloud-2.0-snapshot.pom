@@ -8,8 +8,24 @@
 	<url>http://www.openmobster.org</url>
 	
 	<modules>
-		<module>rimos</module>										
+		<module>rimos</module>	
+		<module>android</module>
 	</modules>
+	
+	<profiles>
+		<profile>
+			<id>android-release</id>
+			<modules>
+				<module>android</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>start-bb-release</id>
+			<modules>
+				<module>rimos</module>
+			</modules>
+		</profile>
+	</profiles>
 	
 	<properties>
 		<version.net.rim.api>4.3.0</version.net.rim.api>	    
