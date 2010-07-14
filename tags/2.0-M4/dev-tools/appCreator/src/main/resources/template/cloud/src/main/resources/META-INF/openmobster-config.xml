@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+   <bean name="/offlineapp/demorepo" class="com.offlineApp.cloud.sync.DemoDataRepository"/>
+    
+   <bean name="offlineapp_demochannel" class="com.offlineApp.cloud.sync.DemoChannel">
+   		<property name="demoRepository"><inject bean="/offlineapp/demorepo"/></property>
+   </bean>  
+   
+   <bean name="/offlineapp/pushtrigger" class="com.offlineApp.cloud.sync.PushTriggerService">
+   		<property name="demoRepository"><inject bean="/offlineapp/demorepo"/></property>
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+   
+   <bean name="/demo/mobile-rpc" class="com.offlineApp.cloud.rpc.DemoMobileBeanService">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+</deployment>
