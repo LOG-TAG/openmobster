@@ -5,7 +5,7 @@
 	<moblet-app>	    
 	    <name>offlineApp</name>
 	    <description>offlineApp</description>
-		<bin-loc>/offlineapp-2.0-snapshot-zipped.apk</bin-loc>	
+		<bin-loc>/offlineapp-2.0-M4-zipped.apk</bin-loc>	
 	</moblet-app>	
 	
 	<!-- BlackBerry version -->

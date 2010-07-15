@@ -166,7 +166,7 @@ public abstract class AbstractSync extends TestCase
           log.info(url);
           if(url.toString().contains("device-agent-simulator/target/classes/META-INF/openmobster-config.xml") ||
         	 url.toString().contains("device-agent-frameworks/target/classes/META-INF/openmobster-config.xml") ||
-        	 url.toString().contains("device-agent-frameworks-2.0-snapshot.jar!/META-INF/openmobster-config.xml"))
+        	 url.toString().contains("device-agent-frameworks-2.0-M4.jar!/META-INF/openmobster-config.xml"))
           {
         	  log.info("Deployed Artifact URL="+url);
         	  ServiceManager.redeploy(url);

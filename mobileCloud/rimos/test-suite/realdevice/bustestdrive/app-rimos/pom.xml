@@ -1,11 +1,11 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- User Provided -->	
 	<parent>
 		<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
 		<artifactId>bustestdrive-parent</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-M4</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -106,10 +106,8 @@
 									<tasks>
 										<property name="preverify_target" value="${basedir}/target/app-binary" />
 										<property name="preverify_src" value="${basedir}/target/${project.artifactId}.jar" />
-										<property name="rapc_src"
-											value="${preverify_target}/${project.artifactId}.jar" />
-										<property name="rapc_config"
-											value="${basedir}/app.rapc" />
+										<property name="rapc_src" value="${preverify_target}/${project.artifactId}.jar" />
+										<property name="rapc_config" value="${basedir}/app.rapc" />
 
 										<delete dir="${preverify_target}" />
 										<delete file="${preverify_src}" />
@@ -117,8 +115,8 @@
 
 										<jar file="${preverify_src}">
 											<fileset dir="${basedir}/target/classes">
-												<exclude name="**/RemoteBus**.class"/>
-												<exclude name="**/RemoteInvocationHandler.class"/>
+												<exclude name="**/RemoteBus**.class" />
+												<exclude name="**/RemoteInvocationHandler.class" />
 											</fileset>
 										</jar>
 
@@ -127,15 +125,13 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target}" executable="preverify">
-											<arg
-												line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+											<arg line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target}" executable="rapc">
-											<arg
-												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
+											<arg line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
 										</exec>
 
 										<echo>Deploying into the Simulator....</echo>
@@ -147,17 +143,13 @@
 										</copy>
 										
 										<echo>Generating the Desktop Application Loader......</echo>
-										<copy todir="${basedir}/target/app-binary" overwrite="true"
-										file="${basedir}/app.alx"
-										/>		
+										<copy todir="${basedir}/target/app-binary" overwrite="true" file="${basedir}/app.alx" />		
 										
 										<!--  Install the RemoteBus App -->
 										<property name="remote_preverify_target" value="${basedir}/target/remote-app-binary" />
 										<property name="remote_preverify_src" value="${basedir}/target/remotebus.jar" />
-										<property name="remote_rapc_src"
-											value="${remote_preverify_target}/remotebus.jar" />
-										<property name="remote_rapc_config"
-											value="${basedir}/remotebus.rapc" />
+										<property name="remote_rapc_src" value="${remote_preverify_target}/remotebus.jar" />
+										<property name="remote_rapc_config" value="${basedir}/remotebus.rapc" />
 
 										<delete dir="${remote_preverify_target}" />
 										<delete file="${remote_preverify_src}" />
@@ -165,8 +157,8 @@
 
 										<jar file="${remote_preverify_src}">
 											<fileset dir="${basedir}/target/classes">
-												<exclude name="**/TestDrive**.class"/>
-												<exclude name="**/MockInvocationHandler.class"/>
+												<exclude name="**/TestDrive**.class" />
+												<exclude name="**/MockInvocationHandler.class" />
 											</fileset>
 										</jar>
 
@@ -175,15 +167,13 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${remote_preverify_target}" executable="preverify">
-											<arg
-												line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${remote_preverify_target} ${remote_preverify_src}" />
+											<arg line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${remote_preverify_target} ${remote_preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${remote_preverify_target}" executable="rapc">
-											<arg
-												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=RemoteBus ${remote_rapc_config} ${remote_rapc_src}" />
+											<arg line="import=${bb.jde.home}/lib/net_rim_api.jar codename=RemoteBus ${remote_rapc_config} ${remote_rapc_src}" />
 										</exec>
 
 										<echo>Deploying into the Simulator....</echo>
@@ -195,9 +185,7 @@
 										</copy>
 										
 										<echo>Generating the Desktop Application Loader......</echo>
-										<copy todir="${basedir}/target/remote-app-binary" overwrite="true"
-										file="${basedir}/remotebus.alx"
-										/>										
+										<copy todir="${basedir}/target/remote-app-binary" overwrite="true" file="${basedir}/remotebus.alx" />										
 									</tasks>
 								</configuration>
 								<goals>

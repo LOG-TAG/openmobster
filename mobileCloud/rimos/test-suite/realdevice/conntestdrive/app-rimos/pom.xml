@@ -1,11 +1,11 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- User Provided -->	
 	<parent>
 		<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
 		<artifactId>conntestdrive-parent</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-M4</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -106,10 +106,8 @@
 									<tasks>
 										<property name="preverify_target" value="${basedir}/target/app-binary" />
 										<property name="preverify_src" value="${basedir}/target/${project.artifactId}.jar" />
-										<property name="rapc_src"
-											value="${preverify_target}/${project.artifactId}.jar" />
-										<property name="rapc_config"
-											value="${basedir}/app.rapc" />
+										<property name="rapc_src" value="${preverify_target}/${project.artifactId}.jar" />
+										<property name="rapc_config" value="${basedir}/app.rapc" />
 
 										<delete dir="${preverify_target}" />
 										<delete file="${preverify_src}" />
@@ -124,22 +122,18 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target}" executable="preverify">
-											<arg
-												line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+											<arg line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target}" executable="rapc">
-											<arg
-												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
+											<arg line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
 										</exec>
 
 																														
 										<echo>Generating the Desktop Application Loader......</echo>
-										<copy todir="${basedir}/target/app-binary" overwrite="true"
-										file="${basedir}/app.alx"
-										/>	
+										<copy todir="${basedir}/target/app-binary" overwrite="true" file="${basedir}/app.alx" />	
 										
 										<echo>Deploying into the Simulator....</echo>
 										<copy todir="${bb.simulator.home}" overwrite="true">
