@@ -1,8 +1,8 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>org.openmobster.core.mobileCloud.rimos</groupId>
 		<artifactId>testsuite-pom</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-M4</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -39,21 +39,15 @@
 								<configuration>
 									<tasks>
 										<property name="preverify_target_app1" value="${basedir}/target/rapc_app1" />
-										<property name="preverify_src_app1"
-											value="${basedir}/target/database-testsuite-app1.jar" />
-										<property name="rapc_src_app1"
-											value="${preverify_target_app1}/database-testsuite-app1.jar" />
-										<property name="rapc_config_app1"
-											value="${basedir}/src/main/config/rapc/database-testsuite-app1.rapc" />
+										<property name="preverify_src_app1" value="${basedir}/target/database-testsuite-app1.jar" />
+										<property name="rapc_src_app1" value="${preverify_target_app1}/database-testsuite-app1.jar" />
+										<property name="rapc_config_app1" value="${basedir}/src/main/config/rapc/database-testsuite-app1.rapc" />
 										<property name="artifact_app1" value="database-testsuite-app1" />
 
 										<property name="preverify_target_app2" value="${basedir}/target/rapc_app2" />
-										<property name="preverify_src_app2"
-											value="${basedir}/target/database-testsuite-app2.jar" />
-										<property name="rapc_src_app2"
-											value="${preverify_target_app2}/database-testsuite-app2.jar" />
-										<property name="rapc_config_app2"
-											value="${basedir}/src/main/config/rapc/database-testsuite-app2.rapc" />
+										<property name="preverify_src_app2" value="${basedir}/target/database-testsuite-app2.jar" />
+										<property name="rapc_src_app2" value="${preverify_target_app2}/database-testsuite-app2.jar" />
+										<property name="rapc_config_app2" value="${basedir}/src/main/config/rapc/database-testsuite-app2.rapc" />
 										<property name="artifact_app2" value="database-testsuite-app2" />
 
 										<delete dir="${preverify_target_app1}" />
@@ -64,11 +58,9 @@
 										<mkdir dir="${preverify_target_app2}" />
 										<delete dir="${basedir}/target/thirdparty" />
 
-										<unzip
-											src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/device-sdk/${project.version}/device-sdk-${project.version}-full.jar"
+										<unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/device-sdk/${project.version}/device-sdk-${project.version}-full.jar"
 											dest="${basedir}/target/thirdparty" overwrite="true" />
-										<unzip
-											src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/test-framework/${project.version}/test-framework-${project.version}.jar"
+										<unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/test-framework/${project.version}/test-framework-${project.version}.jar"
 											dest="${basedir}/target/thirdparty" overwrite="true" />
 
 										<jar file="${preverify_src_app1}">
@@ -86,19 +78,16 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target_app1}" executable="preverify">
-											<arg
-												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target_app1} ${preverify_src_app1}" />
+											<arg line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target_app1} ${preverify_src_app1}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target_app1}" executable="rapc">
-											<arg
-												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${artifact_app1} ${rapc_config_app1} 
+											<arg line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${artifact_app1} ${rapc_config_app1} 
 					  				${rapc_src_app1}" />
 										</exec>
-										<copy
-											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
+										<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											file="${preverify_target_app1}/${artifact_app1}.cod"
 											overwrite="true" />
 
@@ -116,31 +105,26 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target_app2}" executable="preverify">
-											<arg
-												line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target_app2} ${preverify_src_app2}" />
+											<arg line="-classpath ${env.RIM_JDE_HOME}/lib/net_rim_api.jar -d ${preverify_target_app2} ${preverify_src_app2}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target_app2}" executable="rapc">
-											<arg
-												line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${artifact_app2} ${rapc_config_app2} 
+											<arg line="import=${env.RIM_JDE_HOME}/lib/net_rim_api.jar codename=${artifact_app2} ${rapc_config_app2} 
 					  				${rapc_src_app2}" />
 										</exec>
-										<copy
-											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
+										<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											file="${preverify_target_app2}/${artifact_app2}.cod"
 											overwrite="true" />
 
-										<copy
-											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
+										<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											overwrite="true">
 											<fileset dir="${preverify_target_app1}">
 												<include name="**/*.debug" />
 											</fileset>
 										</copy>
-										<copy
-											todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
+										<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/apps"
 											overwrite="true">
 											<fileset dir="${preverify_target_app2}">
 												<include name="**/*.debug" />
