@@ -244,8 +244,12 @@ public class SyncAdapter
 		syncMessage.addAlert(alert);
 		
 		//Strictly simulation related code for security integration with the synchronization process
-		Credential credential = new Credential(SyncXMLTags.sycml_auth_sha, 
-		Configuration.getInstance().getAuthenticationHash());
+		String authHash = (String)request.getAttribute("authHash");
+		if(authHash == null)
+		{
+			authHash = Configuration.getInstance().getAuthenticationHash();
+		}
+		Credential credential = new Credential(SyncXMLTags.sycml_auth_sha, authHash);
 		syncMessage.setCredential(credential);
 
 		// This is always going to be final.....this should be a very
