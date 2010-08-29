@@ -505,6 +505,7 @@ public final class MobileObject
 					
 					this.fields.add(field);
 					
+					//FIXME: bug..with multiple properties, multiple array meta datas are created
 					ArrayMetaData metaData = new ArrayMetaData();
 					metaData.setArrayUri(indexedPropertyName);
 					metaData.setArrayLength(String.valueOf(0));
@@ -574,6 +575,8 @@ public final class MobileObject
 		
 		if(fieldsToDelete != null)
 		{
+			//FIXME:bug. field equals ends up matching up to the 
+			//newly adjusted array element and deletes that instead
 			for(Field fieldToDelete: fieldsToDelete)
 			{
 				this.fields.remove(fieldToDelete);								

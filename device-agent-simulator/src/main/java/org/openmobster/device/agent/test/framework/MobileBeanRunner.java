@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
 
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.security.Provisioner;
-import org.openmobster.core.synchronizer.server.SyncServer;
 import org.openmobster.device.api.service.Request;
 import org.openmobster.device.api.service.Response;
 import org.openmobster.device.api.service.MobileService;
@@ -40,6 +39,7 @@ public class MobileBeanRunner
 	private String service;
 	private String user;
 	private String credential;
+	private String serverIp;
 	
 	private SyncEngine  deviceSyncEngine;
 	private SyncService syncService;
@@ -165,6 +165,16 @@ public class MobileBeanRunner
 	{
 		this.configuration = configuration;
 	}
+	
+	public String getServerIp()
+	{
+		return serverIp;
+	}
+
+	public void setServerIp(String serverIp)
+	{
+		this.serverIp = serverIp;
+	}
 
 	public void start()
 	{
@@ -189,6 +199,11 @@ public class MobileBeanRunner
 		{						
 			deviceIdentifier = this.deviceId;						
 			server = "127.0.0.1";
+			if(this.serverIp != null && this.serverIp.trim().length()>0)
+			{
+				server = this.serverIp;
+			}
+			
 			email = this.user;
 			String password = this.credential;
 												
@@ -210,9 +225,9 @@ public class MobileBeanRunner
 			request.setAttribute("password", password);			
 			request.setAttribute("identifier", deviceIdentifier);
 			
-			Response response = MobileService.invoke(request);
+			Response response = MobileService.invoke(this,request);
 						
-			if(response.getAttribute("error") == null)
+			if(response.getAttribute("error") == null && response.getAttribute("idm-error") == null)
 			{
 				//Success Scenario
 				processProvisioningSuccess(response);
@@ -221,12 +236,19 @@ public class MobileBeanRunner
 			{
 				//Error Scenario
 				String errorKey = response.getAttribute("error");
+				if(errorKey == null)
+				{
+					errorKey = response.getAttribute("idm-error");
+				}
 								
 				throw new RuntimeException(errorKey);
 			}						
 		}
 		catch(Exception e)
 		{
+			log.error("-------------------------------");
+			log.error("Activation Failed with: "+server);
+			log.error("-------------------------------");
 			throw new RuntimeException(e.toString());
 		}
 	}
@@ -461,13 +483,13 @@ public class MobileBeanRunner
 	{
 		// Get the initialization payload
 		SyncAdapterRequest initRequest = new SyncAdapterRequest();
-		initRequest.setAttribute(SyncServer.SOURCE, this.deviceId);
-		initRequest.setAttribute(SyncServer.TARGET, this.serverId);
-		initRequest.setAttribute(SyncServer.MAX_CLIENT_SIZE, String.valueOf(maxClientSize));
-		initRequest.setAttribute(SyncServer.CLIENT_INITIATED, "true");
-		initRequest.setAttribute(SyncServer.DATA_SOURCE, service);
-		initRequest.setAttribute(SyncServer.DATA_TARGET, service);
-		initRequest.setAttribute(SyncServer.SYNC_TYPE, syncType);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.SOURCE, this.deviceId);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.TARGET, this.serverId);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.MAX_CLIENT_SIZE, String.valueOf(maxClientSize));
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.CLIENT_INITIATED, "true");
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_SOURCE, service);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_TARGET, service);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.SYNC_TYPE, syncType);
 		this.executeSyncProtocol(initRequest);		
 	}
 	
@@ -475,21 +497,21 @@ public class MobileBeanRunner
 	{
 		// Get the initialization payload
 		SyncAdapterRequest initRequest = new SyncAdapterRequest();
-		initRequest.setAttribute(SyncServer.SOURCE, this.deviceId);
-		initRequest.setAttribute(SyncServer.TARGET, this.serverId);
-		initRequest.setAttribute(SyncServer.MAX_CLIENT_SIZE, String.valueOf(maxClientSize));
-		initRequest.setAttribute(SyncServer.CLIENT_INITIATED, "true");
-		initRequest.setAttribute(SyncServer.DATA_SOURCE, service);
-		initRequest.setAttribute(SyncServer.DATA_TARGET, service);
-		initRequest.setAttribute(SyncServer.SYNC_TYPE, syncType);
-		initRequest.setAttribute(SyncServer.STREAM_RECORD_ID, oid);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.SOURCE, this.deviceId);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.TARGET, this.serverId);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.MAX_CLIENT_SIZE, String.valueOf(maxClientSize));
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.CLIENT_INITIATED, "true");
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_SOURCE, service);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_TARGET, service);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.SYNC_TYPE, syncType);
+		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.STREAM_RECORD_ID, oid);
 		this.executeSyncProtocol(initRequest);		
 	}
 	
-	private void executeSyncProtocol(SyncAdapterRequest initRequest) throws Exception
+	protected void executeSyncProtocol(SyncAdapterRequest initRequest) throws Exception
 	{
 		//Get the Server Sync Adapter
-		SyncServer serverSyncAdapter = (SyncServer)ServiceManager.locate("synchronizer://SyncServerAdapter");		
+		org.openmobster.core.synchronizer.server.SyncServer serverSyncAdapter = (org.openmobster.core.synchronizer.server.SyncServer)ServiceManager.locate("synchronizer://SyncServerAdapter");		
 
 		// Get the Device Sync Adapter
 		SyncAdapter deviceSyncAdapter = new SyncAdapter();
@@ -499,15 +521,15 @@ public class MobileBeanRunner
 
 		log.info("-----------------------------");
 		log.info("Client ="
-				+ ((String)initResponse.getAttribute(SyncServer.PAYLOAD)).replaceAll("\n", ""));
+				+ ((String)initResponse.getAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD)).replaceAll("\n", ""));
 		log.info("-----------------------------");
 
 		boolean close = false;
 		SyncAdapterRequest clientRequest = new SyncAdapterRequest();
 		org.openmobster.core.synchronizer.model.SyncAdapterRequest serverRequest = 
 		new org.openmobster.core.synchronizer.model.SyncAdapterRequest();
-		serverRequest.setAttribute(SyncServer.PAYLOAD, initResponse
-				.getAttribute(SyncServer.PAYLOAD));
+		serverRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD, initResponse
+				.getAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD));
 		do
 		{
 			org.openmobster.core.synchronizer.model.SyncAdapterResponse serverResponse = serverSyncAdapter
@@ -516,25 +538,25 @@ public class MobileBeanRunner
 			// Setup request to be sent to the Client Syncher
 			// based on payload received from the server
 			String payload = (String) serverResponse
-					.getAttribute(SyncServer.PAYLOAD);
+					.getAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD);
 			log.info("-----------------------------");
 			log.info("Server =" + payload.replaceAll("\n", ""));
 			log.info("-----------------------------");
 
 			clientRequest = new SyncAdapterRequest();
-			clientRequest.setAttribute(SyncServer.PAYLOAD, payload);
+			clientRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD, payload);
 			SyncAdapterResponse clientResponse = deviceSyncAdapter
 					.service(clientRequest);
 
-			if (clientResponse.getStatus() == SyncServer.RESPONSE_CLOSE)
+			if (clientResponse.getStatus() == org.openmobster.core.synchronizer.server.SyncServer.RESPONSE_CLOSE)
 			{
 				close = true;
 			}
 			else
 			{
 				payload = (String) clientResponse
-						.getAttribute(SyncServer.PAYLOAD);
-				serverRequest.setAttribute(SyncServer.PAYLOAD, payload);
+						.getAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD);
+				serverRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.PAYLOAD, payload);
 				log.info("-----------------------------");
 				log.info("Client =" + payload.replaceAll("\n", ""));
 				log.info("-----------------------------");

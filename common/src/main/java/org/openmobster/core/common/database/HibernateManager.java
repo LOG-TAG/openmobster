@@ -8,6 +8,8 @@
 
 package org.openmobster.core.common.database;
 
+import org.w3c.dom.Document;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -115,6 +117,14 @@ public class HibernateManager
 		{
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public void startSessionFactory(Document doc)
+	{
+		//Load using the specified configuration location
+		Configuration configuration = new Configuration();
+		configuration.configure(doc);
+		this.sessionFactory = configuration.buildSessionFactory();
 	}
 	//-------------------------------------------------------------------------------------------------------------
 	private static class EntityCleaner

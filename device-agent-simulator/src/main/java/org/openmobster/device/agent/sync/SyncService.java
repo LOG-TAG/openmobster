@@ -20,6 +20,8 @@ import org.openmobster.device.agent.sync.engine.SyncEngine;
 import org.openmobster.device.agent.sync.engine.ChangeLogEntry;
 import org.openmobster.device.agent.configuration.Configuration;
 
+import org.openmobster.device.agent.test.framework.MobileBeanRunner;
+
 /**
  * @author openmobster@gmail.com
  */
@@ -90,7 +92,61 @@ public class SyncService
 				if(data.indexOf("status=200")!=-1)
 				{
 					this.performSync(syncType, is, os, data, 5000,
-				    deviceId, serverId, deviceService, serverService);
+				    deviceId, serverId, deviceService, serverService,authHash);
+				}
+			}
+			finally
+			{					
+				if(socket != null)
+				{
+					socket.close();
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void startSync(MobileBeanRunner runner,String syncType, String deviceId, String serverId,String channel)
+	{
+		try
+		{
+			Socket socket = null;
+			OutputStream os = null;
+			InputStream is = null;
+			try
+			{					
+				socket = Tools.getPlainSocket();
+				
+				is = socket.getInputStream();
+				os = socket.getOutputStream();	
+								
+				String authHash = runner.getConfiguration().getAuthenticationHash();				
+				String sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>sync</value>"+
+					"</header>"+
+				"</request>";
+				
+				IOUtilities.writePayLoad(sessionInitPayload, os);
+				
+				String data = IOUtilities.readServerResponse(is);
+				if(data.indexOf("status=200")!=-1)
+				{
+					this.performSync(syncType, is, os, data, 5000,
+				    deviceId, serverId, channel, channel,authHash);
 				}
 			}
 			finally
@@ -122,7 +178,7 @@ public class SyncService
 	//------------------------------------------------------------------------------------------------------------
 	private void performSync(String syncType, InputStream is, OutputStream os, String data,
 	int maxClientSize,String deviceId, String serverId, String deviceService, 
-	String serverService)
+	String serverService,String authenticationHash)
 	throws SyncException, IOException
 	{	
 		//Get the Client Simulator
@@ -138,6 +194,7 @@ public class SyncService
 		request.setAttribute(SyncAdapter.MAX_CLIENT_SIZE, String.valueOf(maxClientSize));
 		request.setAttribute(SyncAdapter.CLIENT_INITIATED, "true");		
 		request.setAttribute(SyncAdapter.SYNC_TYPE, syncType);
+		request.setAttribute("authHash", authenticationHash);
 		
 		//Start the synchronization session
 		SyncAdapterResponse response = clientSyncAdapter.start(request);

@@ -21,7 +21,8 @@ public class Tools
 		Socket socket = null;
 		
 		//Create a socket
-		InetAddress localhost = InetAddress.getLocalHost();
+		String serverIp = org.openmobster.device.agent.configuration.Configuration.getInstance().getServerIp();
+		InetAddress localhost = InetAddress.getByName(serverIp);
 		String ip = localhost.getHostAddress();
 		socket = new Socket(ip, 1502);
 		

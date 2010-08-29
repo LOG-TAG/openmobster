@@ -27,6 +27,8 @@ import org.openmobster.core.common.IOUtilities;
 import org.openmobster.device.agent.Tools;
 import org.openmobster.device.agent.configuration.Configuration;
 
+import org.openmobster.device.agent.test.framework.MobileBeanRunner;
+
 
 /**
  * Mobile Service facilitates making invocations from the device to the server side Mobile Service Bean components
@@ -60,6 +62,88 @@ public final class MobileService
 			
 			String deviceId = Configuration.getInstance().getDeviceId();
 			String authHash = Configuration.getInstance().getAuthenticationHash();	
+			
+			String sessionInitPayload = null;
+			if(deviceId != null && authHash != null)
+			{
+				sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>device-id</name>"+
+						"<value><![CDATA["+deviceId+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>nonce</name>"+
+						"<value><![CDATA["+authHash+"]]></value>"+
+					"</header>"+
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>mobileservice</value>"+
+					"</header>"+
+				"</request>";
+			}
+			else
+			{
+				sessionInitPayload = 
+				"<request>" +
+					"<header>" +
+						"<name>processor</name>"+
+						"<value>mobileservice</value>"+
+					"</header>"+
+				"</request>";
+			}
+			
+			log.info("--------------------------------------------------");
+			log.info("SessionPayload="+sessionInitPayload);
+			log.info("--------------------------------------------------");
+			
+			IOUtilities.writePayLoad(sessionInitPayload, os);
+			
+			
+			String response = IOUtilities.readServerResponse(is);
+			IOUtilities.writePayLoad(serializedRequest, os);
+			response = IOUtilities.readServerResponse(is);
+			
+			log.info("MobileService Response-------------------------------------------------------");
+			log.info(response);
+			log.info("-----------------------------------------------------------------------------");
+			
+			beanResponse = parse(response);
+			
+			return beanResponse;
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException(e);
+		}		
+		finally
+		{
+			if(socket != null)
+			{
+				try
+				{
+					socket.close();
+				}
+				catch(IOException ioe){}
+			}
+		}
+	}
+	
+	public static Response invoke(MobileBeanRunner runner,Request request)
+	{
+		Socket socket = null;
+		try
+		{
+			Response beanResponse = null;
+			
+			socket = Tools.getPlainSocket();
+			OutputStream os = socket.getOutputStream();
+			InputStream is = socket.getInputStream();
+			
+			String serializedRequest = serialize(request);
+			
+			String deviceId = runner.getConfiguration().getDeviceId();
+			String authHash = runner.getConfiguration().getAuthenticationHash();	
 			
 			String sessionInitPayload = null;
 			if(deviceId != null && authHash != null)
