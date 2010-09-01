@@ -9,5 +9,27 @@ Goal of this tutorial is to understand the inner workings of architecting an And
 
 The tutorial will focus on the following features:
   * *Synchronization* of App-side CRUD operations with a Hibernate backend in the Cloud
+
   * Real time *Push* updates from the Cloud to the App
+
   * An Android CRUD Workflow App based on the OpenMobster [http://openmobster.googlecode.com/svn/wiki/content/app-developer-guide/html/mobletmvc.html Mobile MVC Framework]
+
+= Development Environment Setup =
+
+  * Java SE, JDK 6
+
+  * Apache Maven 2.2.1
+
+  * Android SDK
+
+  * SVN client to checkout the source code
+
+  * Any IDE for a little help. Not required. I use Eclipse
+
+== Getting the source code ==
+
+  * Step 1: Check out the openmobster trunk code, *svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only*
+
+  * Step 2: Compile and Deploy the core OpenMobster artifacts in your local maven repository, *mvn -DskipTests -Pdeploy-core install*
+
+  * Step 3: You are set. The CRUD App is located under *trunk/dev-tools/sampleApps/crud*. It has 3 modules. cloud - for the Cloud Side components, app-android - for the Android App, and moblet - For aggregating all the components and generating a single deployable artifact. For sake of simplicity, we won't worry about the moblet module for now.
