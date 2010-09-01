@@ -51,7 +51,7 @@ The tutorial will focus on the following features:
 
 Some Cloud Components of interest before going deeper
 
-  * _org.crud.cloud.crm.TicketChannel_: Component that integrates with the *Sync* + *Push* engines. [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/cloud/src/main/java/org/crud/cloud/crm/TicketChannel.java src]
+  * [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/cloud/src/main/java/org/crud/cloud/crm/TicketChannel.java org.crud.cloud.crm.TicketChannel]: Component that integrates with the *Sync* + *Push* engines.
 
 == Android App Components ==
 
