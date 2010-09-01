@@ -33,3 +33,50 @@ The tutorial will focus on the following features:
   * Step 2: Compile and Deploy the core OpenMobster artifacts in your local maven repository, *mvn -DskipTests -Pdeploy-core install*
 
   * Step 3: You are set. The CRUD App is located under *trunk/dev-tools/sampleApps/crud*. It has 3 modules. cloud - for the Cloud Side components, app-android - for the Android App, and moblet - For aggregating all the components and generating a single deployable artifact. For sake of simplicity, we won't worry about the moblet module for now.
+
+== Running the App - for the impatient ;) ==
+
+  * Step 1: Run the *Cloud* instance. Go to the *cloud module* and type in: *mvn -PrunCloud integration-test*. This loads a fully functional instance along with the Cloud components for this App.
+
+  * Step 2: Make sure the Android emulator and ddms are running. 
+
+  * Step 3: Deploy the App by going to the *app-android module* and typing in: *mvn -Phot-deploy install*. This deploys a dev mode CloudManager App (required), and the CRUD App.
+
+  * Step 4: Before the CRUD App can run, the device must be securely activated with the Cloud instance. To do this, launch the dev mode CloudManager App and click the 'Activate' option. To speed up development, this provisioning workflow is kept to a minimum. Once the device is activated, you can now launch the CRUD App.
+
+  * Step 5: It will do an initial boot sync, and it should be fairly self explanatory from there
+
+
+== Cloud Components ==
+
+== Android App Components ==
+
+== Dissecting the *C*reate usecase ==
+
+=== Cloud ===
+
+=== App ===
+
+== Dissecting the *R*ead usecase ==
+
+=== Cloud ===
+
+=== App ===
+
+== Dissecting the *U*pdate usecase ==
+
+=== Cloud ===
+
+=== App ===
+
+== Dissecting the *D*elete usecase ==
+
+=== Cloud ===
+
+=== App ===
+
+== Dissecting the *Push* usecase ==
+
+=== Cloud ===
+
+=== App ===
