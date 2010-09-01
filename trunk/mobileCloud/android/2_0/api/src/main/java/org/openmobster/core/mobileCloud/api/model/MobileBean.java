@@ -387,7 +387,7 @@ public final class MobileBean
 		//Integration with the SyncService
 		try
 		{
-			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.invocation.SyncInvocationHandler", 
+			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 			SyncInvocation.updateChangeLog, service, id, SyncInvocation.OPERATION_DELETE);		
 			Bus.getInstance().invokeService(syncInvocation);
 		}
