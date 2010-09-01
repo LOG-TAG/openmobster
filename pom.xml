@@ -99,6 +99,7 @@
 		</version.jboss.common.core>
 		<version.jboss.appserver>5.1.0.GA</version.jboss.appserver>
 		<version.jbpm.jpdl>3.3.1.GA</version.jbpm.jpdl>
+		<!-- FIXME: need to upgrade to 2.0.0.GA, but the client API has changed -->
 		<version.org.hornetq>2.0.0.BETA5</version.org.hornetq>
 
 		<!-- Database dependencies -->
