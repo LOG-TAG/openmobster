@@ -76,15 +76,13 @@ Overview of some *App* components of interest before going deeper
 
 == Dissecting the (C)reate usecase ==
 
-The create usecase consists of presenting the user with a simple form for inputting the ticket details. The form consists of two _EditTexts_ and two _Spinners_. The options for the spinners are loaded asynchronously from the Cloud.
-When the user is finished, they can _Save_ to create a new ticket instance locally or _Cancel_ the process, in which case nothing changes in the system. Once the ticket instance is modified locally the on device OpenMobster Cloud system auto detects the change and schedules and appropriate sync to reflect this change back to the Cloud.
+The create usecase consists of presenting the user with a simple form for inputting the ticket details. The form consists of two *EditTexts* and two *Spinners*. The options for the spinners are loaded asynchronously from the Cloud. When the user is finished, they can *Save* to create a new ticket instance locally or *Cancel* the process, in which case nothing changes in the system. Once the ticket instance is modified locally the on-device Cloud system auto detects the change and schedules an appropriate sync to reflect this change back to the Cloud.
 
 === App ===
 
 ==== [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/app-android/src/main/java/org/crud/android/screen/NewTicketScreen.java org.crud.android.screen.NewTicketScreen] ====
 
-  * *Save: * The save method on this ViewController populates the newly created MobileBean instance of the channel. It reads the data from the input controls. Once the instance is populated, it is sent over to the
-    [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/app-android/src/main/java/org/crud/android/command/NewTicket.java org.crud.android.command.NewTicket] business controller for processing.
+  * *Save: * The save method on this ViewController populates the newly created MobileBean instance of the channel. It reads the data from the input controls. Once the instance is populated, it is sent over to the [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/app-android/src/main/java/org/crud/android/command/NewTicket.java org.crud.android.command.NewTicket] business controller for processing.
     As you can see from the code, this business controller is a Command object registered under the '/create/ticket' unique URI.
     {{{
   	private void save()
@@ -166,7 +164,7 @@ with the Cloud.
       }
     }}}
 
-== Dissecting the *R*ead usecase ==
+== Dissecting the (R)ead usecase ==
 
 The read usecase consists of presenting the user with a ListView of locally synchronized ticket beans. When the user selects one, it shows more details about the ticket in an AlertDialog. From a Cloud standpoint, this is a very
 simple usecase. When the CRUD app is started, an initial boot sync is performed with the Cloud. As the user uses the App, the on device Cloud system continues to synchronize the other ticket beans in the background. There is no
