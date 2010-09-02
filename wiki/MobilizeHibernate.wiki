@@ -54,7 +54,7 @@ Overview of some *Cloud* components of interest before going deeper
 
   * [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/cloud/src/main/java/org/crud/cloud/crm/TicketChannel.java org.crud.cloud.crm.TicketChannel]: Component that integrates with the *Sync* + *Push* engines.
 
-  * [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/cloud/src/main/java/org/crud/cloud/crm/TicketChannel.java org.crud.cloud.crm.Ticket] : _MobileBean_ that travels bi-directionally between the *Cloud* and the *App*. Literally the life blood of the system.
+  * [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/cloud/src/main/java/org/crud/cloud/crm/Ticket.java org.crud.cloud.crm.Ticket] : _MobileBean_ that travels bi-directionally between the *Cloud* and the *App*. Literally the life blood of the system.
 
   * [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/cloud/src/main/java/org/crud/cloud/crm/hibernate/TicketDS.java org.crud.cloud.crm.hibernate.TicketDS] : _DataSource_ component based on the Hibernate framework. It provides storage services for persisting _Ticket_ instances into a relational database.
 
