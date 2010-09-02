@@ -76,8 +76,8 @@ Overview of some *App* components of interest before going deeper
 
 == Dissecting the *C*reate usecase ==
 
-The create usecase consists of presenting the user with a simple form for inputting the ticket details. The form consists of two *EditTexts* and two *Spinners*. The options for the spinners are loaded asynchronously from the Cloud.
-When the user is finished, they can *Save* to create a new ticket instance locally or *Cancel* the process, in which case nothing changes in the system. Once the ticket instance is modified locally the on device OpenMobster Cloud system auto detects the change and schedules and appropriate sync to reflect this change back to the Cloud.
+The create usecase consists of presenting the user with a simple form for inputting the ticket details. The form consists of two _EditTexts_ and two _Spinners_. The options for the spinners are loaded asynchronously from the Cloud.
+When the user is finished, they can _Save_ to create a new ticket instance locally or _Cancel_ the process, in which case nothing changes in the system. Once the ticket instance is modified locally the on device OpenMobster Cloud system auto detects the change and schedules and appropriate sync to reflect this change back to the Cloud.
 
 === App ===
 
@@ -122,12 +122,12 @@ When the user is finished, they can *Save* to create a new ticket instance local
 freezing up the UI. This controller performs all its function by only accessing local resources. The ticket instance is created locally on the device. The on device OpenMobster Cloud system will take care of synchronizing this
 with the Cloud.
 
-  * {{{
+  {{{
 	public void doAction(CommandContext commandContext) 
 	{
 		try
 		{
-			//Saves the MobileBean instance locallyÉThis is it for the developer. Nothing more to do
+			//Saves the MobileBean instance locallyï¿½This is it for the developer. Nothing more to do
 			MobileBean ticketToAdd = (MobileBean)commandContext.getAttribute("ticket");
 			ticketToAdd.save();
 		}
