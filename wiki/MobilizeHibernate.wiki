@@ -1,3 +1,4 @@
+#labels Featured,Hibernate,Sync,Push
 Android CRUD (Create,Read,Update,Delete) App with Hibernate - (Under Construction)
 
 = Introduction =
