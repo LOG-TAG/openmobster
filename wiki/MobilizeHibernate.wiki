@@ -74,7 +74,7 @@ Overview of some *App* components of interest before going deeper
   * [http://openmobster.googlecode.com/svn/trunk/dev-tools/sampleApps/crud/app-android/src/main/java/org/crud/android/command/DeleteTicket.java org.crud.android.command.DeleteTicket]: BusinessController in charge of deleting a ticket instance locally. This change is then synchronized with the Cloud.
  
 
-== Dissecting the [C]reate usecase ==
+== Dissecting the (C)reate usecase ==
 
 The create usecase consists of presenting the user with a simple form for inputting the ticket details. The form consists of two _EditTexts_ and two _Spinners_. The options for the spinners are loaded asynchronously from the Cloud.
 When the user is finished, they can _Save_ to create a new ticket instance locally or _Cancel_ the process, in which case nothing changes in the system. Once the ticket instance is modified locally the on device OpenMobster Cloud system auto detects the change and schedules and appropriate sync to reflect this change back to the Cloud.
