@@ -1,0 +1,34 @@
+<moblet-app>
+    <bootstrap>
+    	<screen class='org.openmobster.widgets.framework.FormScreen'>
+    		<configuration>
+    			<option name='form' value='home'/>
+    		</configuration>
+    	</screen>
+    </bootstrap>
+    
+	<widgets>
+		<form layout='home' channel='offlineapp_demochannel'>
+			<spinner id='spinner' property='spinnerValue'>
+				<option>option1</option>
+				<option>option2</option>
+			</spinner>
+			
+			<text id='edittext' property='textValue'/> 
+			
+			<checkbox id='checkbox' property='checkBoxValue'/>
+			
+			<radio-group property='radioValue'>
+				<radio id='radio_red'/>
+				<radio id='radio_blue'/>
+			</radio-group>
+			
+			<button id='ok' type='submit' action='' transition=''/>
+			<button id='cancel' type='cancel' action='' transition=''/>
+		 </form>	
+	</widgets>
+	
+	<channels>
+		<channel>offlineapp_demochannel</channel>
+	</channels>				
+</moblet-app>
