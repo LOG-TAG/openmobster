@@ -49,10 +49,17 @@ public final class CommonApp
 {
 	static void onCreate(final Activity activity, final Bundle savedInstanceState)
 	{
+		Services services = Services.getInstance();
+		
 		//Initialize the UI Framework
+		if(AppConfig.getInstance() == null || !AppConfig.getInstance().isFrameworkActive())
+		{
+			activity.showDialog(1);
+		}
+		
     	//Load API Services
-		Services.getInstance().setResources(new NativeAppResources());
-		Services.getInstance().setCommandService(new NativeCommandService());
+		services.setResources(new NativeAppResources());
+		services.setCommandService(new NativeCommandService());
 		
 		//Load SPI Services
 		SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
@@ -70,6 +77,14 @@ public final class CommonApp
 	
 	static void onStart(final Activity activity)
 	{
+		Services services = Services.getInstance();
+		
+		//Initialize the UI Framework
+		if(AppConfig.getInstance() == null || !AppConfig.getInstance().isFrameworkActive())
+		{
+			activity.showDialog(1);
+		}
+		
 		Registry registry = Registry.getActiveInstance();
 		if(!registry.isContainer())
 		{

@@ -7,48 +7,12 @@
 	<artifactId><appCreator.project.artifactId></artifactId>
 	<version><appCreator.project.version></version>
 	<url><appCreator.project.url></url>	
-	<properties>
-		<openmobster.version>2.0-snapshot</openmobster.version>
-		<version.android.api>5</version.android.api>
-	</properties>
+	
+	<appCreator.properties>
 
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>cloud</module>
-		<module>app-rimos</module>
-		<module>app-android</module>
-		<module>moblet</module>
-	</modules>
-	
-	<profiles>
-		<profile>
-			<id>android</id>
-			<modules>
-				<module>cloud</module>
-				<module>app-android</module>
-				<module>moblet</module>
-			</modules>
-		</profile>
-		
-		<profile>
-			<id>rimos</id>
-			<modules>
-				<module>cloud</module>
-				<module>app-rimos</module>
-				<module>moblet</module>
-			</modules>
-		</profile>
-		
-		<profile>
-			<id>android-release</id>
-			<modules>
-				<module>cloud</module>
-				<module>app-android</module>
-				<module>moblet</module>
-			</modules>
-		</profile>
-	</profiles>
+	<appCreator.modules>	
 
 
 	<dependencyManagement>
@@ -104,15 +68,6 @@
 				<scope>test</scope>
 			</dependency>
 			
-			<!--  Android Dependencies -->
-			<dependency>
-				<groupId>android</groupId>
-				<artifactId>android</artifactId>
-				<version>2.0</version>
-				<scope>system</scope>
-				<systemPath>${env.ANDROID_HOME}/platforms/android-${version.android.api}/android.jar
-				</systemPath>
-			</dependency>
 			<dependency>
 				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
 				<artifactId>device-sdk</artifactId>
@@ -120,14 +75,7 @@
 				<classifier>full</classifier>
 			</dependency>
 			
-			<!-- RIMOS Dependencies -->
-			<dependency>
-		      <groupId>net.rim</groupId>
-		      <artifactId>net_rim_api</artifactId>
-		      <version>4.3.0</version>
-		      <scope>system</scope>
-		      <systemPath>${env.RIM_JDE_HOME}/lib/net_rim_api.jar</systemPath>
-		    </dependency>
+			<appCreator.platform.dependencies>
 
 			<!--
 					More Dependencies can be added here  

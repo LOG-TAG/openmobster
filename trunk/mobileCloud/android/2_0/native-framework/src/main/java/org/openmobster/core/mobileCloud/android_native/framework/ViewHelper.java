@@ -119,7 +119,7 @@ public class ViewHelper
 		return okModal;
 	}
 
-	public static AlertDialog getOkAttachedModalWithCloseApp(
+	public static AlertDialog getOkAttachedModalWithCloseApp(final int dialogId,
 			final Activity currentActivity, String title, String message)
 	{
 		AlertDialog okModal = null;
@@ -130,8 +130,8 @@ public class ViewHelper
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int status)
 					{
-						currentActivity.dismissDialog(0);
-						currentActivity.removeDialog(0);
+						currentActivity.dismissDialog(dialogId);
+						currentActivity.removeDialog(dialogId);
 						currentActivity.finish();
 					}
 				});

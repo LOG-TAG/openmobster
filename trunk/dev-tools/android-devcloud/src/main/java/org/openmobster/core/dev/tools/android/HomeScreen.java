@@ -24,12 +24,16 @@ import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationCo
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+import android.widget.EditText;
+import android.content.DialogInterface;
 
 /**
  * @author openmobster@gmail.com
@@ -94,7 +98,16 @@ public class HomeScreen extends Screen
 		
 		listApp.setListAdapter(new ArrayAdapter(listApp, 
 			    android.R.layout.simple_list_item_1, 
-			    new String[]{"Activate"}));
+			    new String[]{"Activate", "Manual Sync"}));
+		
+		//ovveride the serverIp if one is already stored
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		String storedCloudIp = conf.getServerIp();
+		if(storedCloudIp != null && storedCloudIp.trim().length()>0)
+		{
+			this.server = storedCloudIp;
+		}
 		
 		ListItemClickListener clickListener = new ListItemClickListener()
 		{
@@ -107,6 +120,18 @@ public class HomeScreen extends Screen
 						try
 						{
 							HomeScreen.this.mockActivate();
+						}
+						catch(Exception e)
+						{
+							e.printStackTrace(System.out);
+							throw new RuntimeException(e);
+						}
+					break;
+					
+					case 1:
+						try
+						{
+							HomeScreen.this.resetChannels();
 						}
 						catch(Exception e)
 						{
@@ -149,8 +174,44 @@ public class HomeScreen extends Screen
 				}
 			});
 			
-			MenuItem item2 = menu.add(Menu.NONE, Menu.NONE, 1, "Exit");
+			MenuItem item2 = menu.add(Menu.NONE, Menu.NONE, 1, "ManualSync");
 			item2.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					try
+					{
+						HomeScreen.this.resetChannels();
+						return true;
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace(System.out);
+						throw new RuntimeException(e);
+					}
+				}
+			});
+			
+			MenuItem serverItem = menu.add(Menu.NONE, Menu.NONE, 2, "Change Cloud IP Address");
+			serverItem.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					try
+					{
+						HomeScreen.this.changeCloudServer();
+						return true;
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace(System.out);
+						throw new RuntimeException(e);
+					}
+				}
+			});
+			
+			MenuItem item3 = menu.add(Menu.NONE, Menu.NONE, 3, "Exit");
+			item3.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
@@ -170,6 +231,64 @@ public class HomeScreen extends Screen
 		
 		//make this externally configurable 
 		this.activateDevice(this.server, "1502", this.email, this.password);
+	}
+	
+	private void resetChannels() throws Exception
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
+		
+		if(conf.isActive())
+		{
+			Services.getInstance().getNavigationContext().navigate("manualSync");
+		}
+		else
+		{
+			Toast.makeText(context, "Device needs to be activated with the Cloud!!", 
+			Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private void changeCloudServer() throws Exception
+	{
+		final Activity currentActivity = (Activity)Registry.getActiveInstance().
+		getContext();
+		Context context = Registry.getActiveInstance().getContext();
+		final Configuration conf = Configuration.getInstance(context);
+		
+		String currentIp = conf.getServerIp();
+		AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
+		builder.setCancelable(false);
+		
+		builder.setTitle("Cloud IP Address");
+		
+		final EditText serverField = new EditText(currentActivity);
+		serverField.setText(conf.getServerIp());
+		builder.setView(serverField);
+		
+		//Add the buttons
+		builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id)
+			{
+				conf.setServerIp(serverField.getText().toString());
+				HomeScreen.this.server = conf.getServerIp();
+				dialog.dismiss();
+				Toast.makeText(currentActivity, "Cloud Server IP Address now set to: "+conf.getServerIp(), 
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id)
+			{
+				dialog.dismiss();
+				Toast.makeText(currentActivity, "Cloud Server Ip is set to: "+conf.getServerIp(), 
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		//show the dialog
+		builder.create().show();
 	}
 	
 	private void startup(final Activity activity) throws Exception
