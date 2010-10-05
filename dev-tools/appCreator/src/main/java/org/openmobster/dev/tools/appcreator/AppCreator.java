@@ -15,6 +15,9 @@ import java.io.FileOutputStream;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Properties;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author openmobster@gmail.com
@@ -35,24 +38,42 @@ public class AppCreator
 	}
 	
 	public static void main(String[] args) throws Exception
-	{
-		if(System.getenv("RIM_JDE_HOME") == null)
-		{
-			System.out.println("RIM_JDE_HOME environment variable must be set");
-			System.exit(0);
-		}
-			
+	{	
 		AppCreator appCreator = new AppCreator();
 		appCreator.start();
 	}
 	
+	private Properties loadConfiguration() throws Exception
+	{
+		Properties config = new Properties();
+		InputStream is = null;
+		try
+		{
+			is = Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.properties");
+			config.load(is);
+			return config;
+		}
+		finally
+		{
+			if(is != null)
+			{
+				is.close();
+			}
+		}
+	}
+	
 	private void collectDeveloperInfo() throws Exception
 	{
+		//Read in the configuration
+		Properties config = this.loadConfiguration();
+		Map<String, String> userValues = new HashMap<String, String>();
+		userValues.put("version.android.api.value", config.getProperty("version.android.api"));
+		
 		String projectName = "MyApp"; //user with default
 		String groupId = "com.myapp"; //user with default
 		String projectUrl = "http://www.myapp.com"; //user with default
-		String openMobsterVersion = "2.0-snapshot"; //user with default
-		String projectVersion = "1.0-snapshot"; //user with default
+		String openMobsterVersion = config.getProperty("openmobster.version"); //user with default
+		String projectVersion = "1.0"; //user with default
 		
 		
 		projectName = this.askUser("Project Name", projectName);
@@ -67,6 +88,25 @@ public class AppCreator
 		projectVersion = this.askUser("Project Version", projectVersion);
 		projectUrl = this.askUser("Project Url", projectUrl);
 		openMobsterVersion = this.askUser("Version of the OpenMobster Platform", openMobsterVersion);
+		
+		//Ask user to select the mobile platforms of interest
+		List<String> supportedPlatforms = new ArrayList<String>();
+		String platforms = config.getProperty("platforms");
+		String[] platformTokens = platforms.split(",");
+		for(String token:platformTokens)
+		{
+			String selection = this.askUser("Support Mobile Platform: "+token, "yes");
+			if(selection != null && selection.trim().equalsIgnoreCase("yes"))
+			{
+				supportedPlatforms.add(token.toLowerCase());
+				
+				if(token.equalsIgnoreCase("android"))
+				{
+					String androidApi = this.askUser("Android API Version", config.getProperty("version.android.api"));
+					userValues.put("version.android.api.value", androidApi);
+				}
+			}
+		}
 		
 		String rimosAppGroupId = groupId+".rimos.app"; //derived 
 		String rimosAppName = projectName; //derived
@@ -86,7 +126,7 @@ public class AppCreator
 			androidAppVersionCode = 1;
 		}
 		
-		Map<String, String> userValues = new HashMap<String, String>();
+		
 		userValues.put("project.name", projectName);
 		userValues.put("appCreator.project.name", projectName+"-parent");
 		userValues.put("appCreator.project.groupId", groupId);
@@ -112,7 +152,9 @@ public class AppCreator
 		userValues.put("appCreator.android.app.artifactId", androidAppName.toLowerCase());
 		userValues.put("appCreator.android.app.versionCode", ""+androidAppVersionCode);
 		
-		File projectDir = this.generateWorkspace(userValues);
+		userValues.put("openmobster.version.value", openMobsterVersion);
+		
+		File projectDir = this.generateWorkspace(supportedPlatforms,userValues);
 		
 		//Show output
 		System.out.println("----------------------------------------------------");
@@ -136,7 +178,7 @@ public class AppCreator
 		return defaultValue;		
 	}
 	
-	private File generateWorkspace(Map<String, String> userValues) throws Exception
+	private File generateWorkspace(List<String> supportedPlatforms,Map<String, String> userValues) throws Exception
 	{
 		String projectName = userValues.get("project.name");
 		
@@ -157,14 +199,17 @@ public class AppCreator
 		}
 		
 		//Create the app-rimos tree
-		File command = new File(projectDir, "app-rimos/src/main/java/com/offlineApp/rimos/app/command"); 
-		File screen = new File(projectDir, "app-rimos/src/main/java/com/offlineApp/rimos/app/screen");
-		File appIcon = new File(projectDir, "app-rimos/src/main/resources/moblet-app/icon");
-		File assemble = new File(projectDir, "app-rimos/src/assemble");
-		command.mkdirs();
-		screen.mkdirs();
-		appIcon.mkdirs();
-		assemble.mkdirs();
+		if(supportedPlatforms.contains("blackberry"))
+		{
+			File command = new File(projectDir, "app-rimos/src/main/java/com/offlineApp/rimos/app/command"); 
+			File screen = new File(projectDir, "app-rimos/src/main/java/com/offlineApp/rimos/app/screen");
+			File appIcon = new File(projectDir, "app-rimos/src/main/resources/moblet-app/icon");
+			File assemble = new File(projectDir, "app-rimos/src/assemble");
+			command.mkdirs();
+			screen.mkdirs();
+			appIcon.mkdirs();
+			assemble.mkdirs();
+		}
 		
 		//Create the cloud tree
 		File src = new File(projectDir, "cloud/src/main/java/com/offlineApp/cloud/rpc");
@@ -187,34 +232,92 @@ public class AppCreator
 		moblet_res.mkdirs();
 		
 		//Create the app-android tree
-		File android_command = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/command"); 
-		File android_screen = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/screen");
-		File drawable_hdpi = new File(projectDir, "app-android/res/drawable-hdpi");
-		File drawable_ldpi = new File(projectDir, "app-android/res/drawable-ldpi");
-		File drawable_mdpi = new File(projectDir, "app-android/res/drawable-mdpi");
-		File layout = new File(projectDir, "app-android/res/layout");
-		File values = new File(projectDir, "app-android/res/values");
-		File android_appicon = new File(projectDir, "app-android/src/main/resources/moblet-app/icon");
-		android_command.mkdirs();
-		android_screen.mkdirs();
-		android_appicon.mkdirs();
-		drawable_hdpi.mkdirs();
-		drawable_ldpi.mkdirs();
-		drawable_mdpi.mkdirs();
-		layout.mkdirs();
-		values.mkdirs();
+		if(supportedPlatforms.contains("android"))
+		{
+			File android_command = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/command"); 
+			File android_screen = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/screen");
+			File drawable_hdpi = new File(projectDir, "app-android/res/drawable-hdpi");
+			File drawable_ldpi = new File(projectDir, "app-android/res/drawable-ldpi");
+			File drawable_mdpi = new File(projectDir, "app-android/res/drawable-mdpi");
+			File layout = new File(projectDir, "app-android/res/layout");
+			File values = new File(projectDir, "app-android/res/values");
+			File android_appicon = new File(projectDir, "app-android/src/main/resources/moblet-app/icon");
+			android_command.mkdirs();
+			android_screen.mkdirs();
+			android_appicon.mkdirs();
+			drawable_hdpi.mkdirs();
+			drawable_ldpi.mkdirs();
+			drawable_mdpi.mkdirs();
+			layout.mkdirs();
+			values.mkdirs();
+		}
 		
 		//Copy project-level files
-		this.generateProject(projectDir, userValues);
-		this.generateRimOsApp(new File(projectDir, "app-rimos"), userValues);
+		this.generateProject(supportedPlatforms,projectDir, userValues);
+		
+		if(supportedPlatforms.contains("blackberry"))
+		{
+			this.generateRimOsApp(new File(projectDir, "app-rimos"), userValues);
+		}
+		
 		this.generateCloudApp(new File(projectDir, "cloud"), userValues);
-		this.generateMoblet(new File(projectDir, "moblet"), userValues);
-		this.generateAndroidOsApp(new File(projectDir,"app-android"), userValues);
+		this.generateMoblet(supportedPlatforms,new File(projectDir, "moblet"), userValues);
+		
+		if(supportedPlatforms.contains("android"))
+		{
+			this.generateAndroidOsApp(new File(projectDir,"app-android"), userValues);
+		}
 		
 		return projectDir;
 	}
 	
-	private void generateProject(File directory,Map<String, String> userValues) throws Exception
+	private String generateProjectProperties(Map<String,String> userValues) throws Exception
+	{
+		String propertyXml = this.readTemplateResource("/template/properties.xml");
+		
+		propertyXml = propertyXml.replaceAll("<openmobster.version.value>", userValues.get("openmobster.version.value"));
+		propertyXml = propertyXml.replaceAll("<version.android.api.value>", userValues.get("version.android.api.value"));
+		
+		return propertyXml;
+	}
+	
+	private String generateProjectModules(List<String> supportedPlatforms) throws Exception
+	{
+		if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/modules.all.xml");
+		}
+		else if(supportedPlatforms.contains("android") && !supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/modules.android.xml");
+		}
+		else if(!supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/modules.blackberry.xml");
+		}
+		
+		return null;
+	}
+	
+	private String generateSystemDependencies(List<String> supportedPlatforms) throws Exception
+	{
+		if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/dependencies.all.xml");
+		}
+		else if(supportedPlatforms.contains("android") && !supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/dependencies.android.xml");
+		}
+		else if(!supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/dependencies.blackberry.xml");
+		}
+		
+		return null;
+	}
+	
+	private void generateProject(List<String> supportedPlatforms,File directory,Map<String, String> userValues) throws Exception
 	{
 		String parentPom = this.readTemplateResource("/template/pom.xml");
 		
@@ -236,6 +339,21 @@ public class AppCreator
 		parentPom = parentPom.replaceAll("<appCreator.project.version>", 
 				userValues.get("appCreator.project.version"));
 		
+		String propertyXml = this.generateProjectProperties(userValues);
+		parentPom = parentPom.replaceAll("<appCreator.properties>", propertyXml);
+		
+		String moduleFragment = this.generateProjectModules(supportedPlatforms);
+		if(moduleFragment != null)
+		{
+			parentPom = parentPom.replaceAll("<appCreator.modules>", moduleFragment);
+		}
+		
+		String dependencyFragment = this.generateSystemDependencies(supportedPlatforms);
+		if(dependencyFragment != null)
+		{
+			parentPom = parentPom.replaceAll("<appCreator.platform.dependencies>", dependencyFragment);
+		}
+		
 		File parentPomFile = new File(directory, "pom.xml");
 		this.generateFile(parentPomFile, parentPom);
 		
@@ -248,9 +366,45 @@ public class AppCreator
 		this.readTemplateResource("/template/README.txt"));
 	}
 	
-	private void generateMoblet(File directory,Map<String, String> userValues) throws Exception
+	private String generateMobletPom(List<String> supportedPlatforms) throws Exception
 	{
-		String pom = this.readTemplateResource("/template/moblet/pom.xml");
+		if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/moblet/pom.all.xml");
+		}
+		else if(supportedPlatforms.contains("android") && !supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/moblet/pom.android.xml");
+		}
+		else if(!supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/moblet/pom.blackberry.xml");
+		}
+		
+		return null;
+	}
+	
+	private String generateMobletApps(List<String> supportedPlatforms) throws Exception
+	{
+		if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/moblet/src/main/resources/META-INF/moblet-apps.all.xml");
+		}
+		else if(supportedPlatforms.contains("android") && !supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/moblet/src/main/resources/META-INF/moblet-apps.android.xml");
+		}
+		else if(!supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		{
+			return this.readTemplateResource("/template/moblet/src/main/resources/META-INF/moblet-apps.blackberry.xml");
+		}
+		
+		return null;
+	}
+	
+	private void generateMoblet(List<String> supportedPlatforms,File directory,Map<String, String> userValues) throws Exception
+	{
+		String pom = this.generateMobletPom(supportedPlatforms);
 		
 		pom = pom.replaceAll("<appCreator.project.version>", 
 				userValues.get("appCreator.project.version"));
@@ -292,7 +446,7 @@ public class AppCreator
 		this.generateFile(pomFile, pom);
 		
 		//src/resources/META-INF/moblet-apps.xml
-		String mobletApps = this.readTemplateResource("/template/moblet/src/main/resources/META-INF/moblet-apps.xml");
+		String mobletApps = this.generateMobletApps(supportedPlatforms);
 		mobletApps = mobletApps.replaceAll("<appCreator.rimos.app.name>", 
 				userValues.get("appCreator.rimos.app.name"));
 		

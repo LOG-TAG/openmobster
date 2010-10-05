@@ -7,6 +7,9 @@
  */
 package org.openmobster.core.mobileCloud.android_native.framework;
 
+import java.io.InputStream;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,6 +19,8 @@ import android.view.Menu;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.util.IOUtil;
+import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 
 /**
  * @author openmobster@gmail.com
@@ -133,7 +138,39 @@ public class App extends Activity
 	@Override
 	protected Dialog onCreateDialog(int id)
 	{
-		AlertDialog dialog = ViewHelper.getOkAttachedModalWithCloseApp(this, "System Error", "CloudManager App is not found or activated");
+		AlertDialog dialog = null; 
+		
+		switch(id)
+		{
+			case 0:
+			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id,this, 
+			"System Error", 
+			"CloudManager App is not found or activated");
+			break;
+			
+			case 1:
+			String message = "Mobile MVC Framework failed to initialize. Please check your moblet-app/moblet-app.xml";
+			try
+			{
+				InputStream is = AppConfig.class.getResourceAsStream("/moblet-app/moblet-app.xml");
+				String xml = new String(IOUtil.read(is));
+				message += "\n\n"+xml;
+			}
+			catch(IOException ioe)
+			{
+				message = "Mobile MVC Framework failed to initialize. Please check your moblet-app/moblet-app.xml";
+			}
+			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id, this, 
+					"System Error", message);
+			break;
+			
+			default:
+			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id, this, 
+			"System Error", 
+			"CloudManager App is not found or activated");
+			break;
+		}
+		
 		return dialog;
 	}
 }
