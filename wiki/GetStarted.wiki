@@ -85,5 +85,7 @@ This installs the Sync App and the _Development Mode_ Cloud Manager App on the e
 ----
 ==Some Tips==
 
+  * When launching the sample offline sync app, if you get a message saying, "Cloud Manager App is not installed or active", simply launch the "DevCloud" app that is installed along with your App. "DevCloud" houses the runtime for the Cloud system services. Without these services, the sync app cannot function. More details are available in the README.txt file generated with the project
+
 
 *Related Links:* [installation Production Mode Installation], [Concepts Programming Concepts], [Architecture Architecture], [roadmap Project Roadmap]
