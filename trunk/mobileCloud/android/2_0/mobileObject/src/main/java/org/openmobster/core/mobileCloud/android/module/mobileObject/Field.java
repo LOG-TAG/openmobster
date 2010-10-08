@@ -70,17 +70,25 @@ final class Field
 	
 	public boolean equals(Object obj) 
 	{
-		boolean equals = false;
-		
 		if(obj instanceof Field)
 		{
-			String uri = ((Field)obj).getUri();
-			if(uri.equals(this.uri))
+			Field local = (Field)obj;
+			String uri = local.getUri();
+			String name = local.getName();
+			String value = local.getValue();
+			if(uri.equals(this.uri) &&
+			   name.equals(this.name) &&
+			   value.equals(this.value)
+			)
 			{
-				equals = true;
+				System.out.println("Matched(Uri): "+this.uri);
+				System.out.println("Matched(Name): "+this.name);
+				System.out.println("Matched(Value): "+this.value);
+				System.out.println("----------------------------------");
+				return true;
 			}
 		}
 		
-		return equals;
+		return false;
 	}		
 }

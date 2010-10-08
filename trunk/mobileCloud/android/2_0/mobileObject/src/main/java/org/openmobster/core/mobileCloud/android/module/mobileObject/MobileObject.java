@@ -436,6 +436,7 @@ public final class MobileObject
 			
 			//Insert this field at the bottom of the existing array
 			Set<String> names = properties.keySet();
+			boolean arrayCreated = false;
 			for(String property: names)
 			{
 				String value = (String)properties.get(property);
@@ -505,11 +506,14 @@ public final class MobileObject
 					
 					this.fields.add(field);
 					
-					//FIXME: bug..with multiple properties, multiple array meta datas are created
-					ArrayMetaData metaData = new ArrayMetaData();
-					metaData.setArrayUri(indexedPropertyName);
-					metaData.setArrayLength(String.valueOf(0));
-					this.arrayMetaData.add(metaData);
+					if(!arrayCreated)
+					{
+						ArrayMetaData metaData = new ArrayMetaData();
+						metaData.setArrayUri(indexedPropertyName);
+						metaData.setArrayLength(String.valueOf(0));
+						this.arrayMetaData.add(metaData);
+						arrayCreated = true;
+					}
 				}
 			}
 			
@@ -557,7 +561,7 @@ public final class MobileObject
 					String uri = null;
 					if(diff != null && diff.trim().length()>0)
 					{
-						uri = localIndexedPropertyName+"["+(elementIndex-1)+"]/"+diff;
+						uri = localIndexedPropertyName+"["+(elementIndex-1)+"]"+diff;
 					}
 					else
 					{
@@ -575,8 +579,6 @@ public final class MobileObject
 		
 		if(fieldsToDelete != null)
 		{
-			//FIXME:bug. field equals ends up matching up to the 
-			//newly adjusted array element and deletes that instead
 			for(Field fieldToDelete: fieldsToDelete)
 			{
 				this.fields.remove(fieldToDelete);								
