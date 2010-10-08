@@ -1,70 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-		<artifactId>test-suite</artifactId>
-		<version>2.0-snapshot</version>
-		<relativePath>../pom.xml</relativePath>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+	   <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+	   <artifactId>test-suite</artifactId>
+	   <version>2.0-snapshot</version>
+	   <relativePath>../pom.xml</relativePath>
 	</parent>
+	
+	<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>	
+    <artifactId>test-cloud-as-service</artifactId>
+    <name>test-cloud-as-service</name>
+    <packaging>apk</packaging>
+    
+    <dependencies>
+    	<dependency>
+	      <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+	      <artifactId>api</artifactId>
+	      <version>${project.version}</version>
+	    </dependency>	    
+		<dependency>
+	      <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+	      <artifactId>common</artifactId>
+	      <version>${project.version}</version>
+	    </dependency>	    		
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+				<artifactId>mobileObject</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+				<artifactId>bus</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+				<artifactId>connection</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+				<artifactId>moblet-runtime</artifactId>
+				<version>${project.version}</version>
+		</dependency>
+		<dependency>
+	      <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+	      <artifactId>native-framework</artifactId>
+	      <version>${project.version}</version>
+	    </dependency>
+    </dependencies>
 
-	<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-	<artifactId>test-mobileObject-port</artifactId>
-	<name>test-mobileObject-port</name>
-	<packaging>apk</packaging>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>test-framework</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<!-- this should be aggregated into device-sdk -->
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>common</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>bus</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>mobileObject</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>connection</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>sync</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>mobileCloud-runtime</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-			<artifactId>native-framework</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
-
-	<build>
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
@@ -86,7 +74,7 @@
 			<id>android-release</id>
 			<build>
 				<plugins>
-					<plugin>
+				    <plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-jarsigner-plugin</artifactId>
 						<version>1.2</version>
@@ -111,7 +99,7 @@
 							</execution>
 						</executions>
 					</plugin>
-
+					
 					<plugin>
 						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 						<artifactId>maven-android-plugin</artifactId>

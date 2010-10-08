@@ -150,7 +150,7 @@ public final class AppConfig
 				}*/
 				
 				//Must have a home command
-				if(!screenConfig.containsKey("home"))
+				if(this.isMVCBeingUsed() && !screenConfig.containsKey("home"))
 				{
 					throw new IllegalStateException("Home screen is missing!!");
 				}
@@ -278,7 +278,7 @@ public final class AppConfig
 		//Validate the configuration
 		
 		//Must have a home command
-		if(!screenConfig.containsKey("home"))
+		if(this.isMVCBeingUsed() && !screenConfig.containsKey("home"))
 		{
 			throw new IllegalStateException("Home screen is missing!!");
 		}
@@ -326,5 +326,14 @@ public final class AppConfig
 	{
 		Vector registeredChannels = (Vector)this.attrMgr.getAttribute("channels");
 		return registeredChannels;
+	}
+	
+	private boolean isMVCBeingUsed()
+	{
+		if(this.attrMgr.getAttribute("screenConfig") != null)
+		{
+			return true;
+		}
+		return false;
 	}
 }

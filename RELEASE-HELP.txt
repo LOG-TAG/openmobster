@@ -47,13 +47,7 @@ Updating the Source/License Header:
  --------------------------------------------------------------------------------------------------------------
  mvn -Pdeploy-core deploy
  
- cd dev-tools/appCreator
- mvn deploy
- 
- cd dev-tools/dev-cloudServer
- mvn deploy
- 
- cd dev-tools/rimos-devcloud
- mvn deploy
+ cd dev-tools
+ mvn -Pdeploy-tools deploy
 
 

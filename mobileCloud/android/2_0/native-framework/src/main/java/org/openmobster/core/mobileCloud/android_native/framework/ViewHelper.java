@@ -10,6 +10,7 @@ package org.openmobster.core.mobileCloud.android_native.framework;
 import java.lang.reflect.Field;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -80,7 +81,7 @@ public class ViewHelper
 		}
 	}
 
-	public static AlertDialog getOkModal(Activity currentActivity,
+	public static AlertDialog getOkModal(final Context currentActivity,
 			String title, String message)
 	{
 		AlertDialog okModal = null;

@@ -113,6 +113,7 @@
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-sync-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-connection-port/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-native-framework/src/main/java"/>
+	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-cloud-as-service/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/android/2_0/ide_hack"/>
 	
 	
