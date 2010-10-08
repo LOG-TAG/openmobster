@@ -80,7 +80,7 @@ Once the emulator and the debug monitor are ready, its time to build and install
 
   * Hot deploy the App artifacts: *mvn -Phot-deploy install*
 
-This installs the Sync App and the _Development Mode_ Cloud Manager App on the emulator. The Cloud Manager App is essential as it provides the device side runtime for the Cloud Services that will be used by the Apps.
+This installs the Sync App and the _Development Mode_ Cloud Manager App on the emulator. The Cloud Manager App is essential as it provides the device side runtime for the cloud system services that will be used by the Apps.
 
 ----
 ==Some Tips==
