@@ -1,4 +1,5 @@
 #summary Get Started
+#labels Featured
 
 *Related Links:* [installation Production Mode Installation], [Concepts Programming Concepts], [Architecture Architecture], [roadmap Project Roadmap]
 
