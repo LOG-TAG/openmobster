@@ -1,7 +1,34 @@
-#summary Get Started - Hello Mobster Tutorial
+#summary Get Started
 
 *Related Links:* [installation Production Mode Installation], [Concepts Programming Concepts], [Architecture Architecture], [roadmap Project Roadmap]
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/getstarted-gadget.xml" width="1640" height="5900"/>
+==System Requirements==
+
+  * Java SE JDK v6.0
+  * Apache Maven 2.2.1
+  * Android SDK
+  * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
+
+----
+
+==Download==
+
+Latest [http://code.google.com/p/openmobster/downloads/list Download]
+
+----
+
+==AppCreator==
+
+===Build the Offline App===
+
+===Run the Cloud Server===
+
+===Run the Android Emulator===
+
+===Install the Android App===
+
+----
+==Some Tips==
+
 
 *Related Links:* [installation Production Mode Installation], [Concepts Programming Concepts], [Architecture Architecture], [roadmap Project Roadmap]
