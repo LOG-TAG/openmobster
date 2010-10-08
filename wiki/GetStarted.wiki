@@ -5,8 +5,11 @@
 ==System Requirements==
 
   * Java SE JDK v6.0
+
   * Apache Maven 2.2.1
+
   * Android SDK
+
   * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
 
 ----
@@ -22,10 +25,30 @@ Latest [http://code.google.com/p/openmobster/downloads/list Download]
 *AppCreator* is a Maven-based App development tool. It generates a multi-module App project. Along with project/sample code generation it generates the relevant maven poms for each module. This makes sure that all the dependencies are properly satisfied and downloaded from the internet. It produces the following modules:
 
   * app-android - Contains device side application code based on the Android OS.
+
   * cloud - Contains the cloud artifacts which will be deployed on the server side.
+
   * moblet - This aggregates all the artifacts into a single jar file ready for deployment into the _OpenMobster Cloud Server_. Upon deployment, the device side artifacts are registered with the built-in App Store component for OTA deployment on the device 
 
+===Generate an Android Sync App===
+
+  * cd AppCreator
+
+  * java -jar appCreator.jar
+
+  * It will start a self-explanatory command line wizard
+
+  * It will ask for the platforms supported by the App. To skip a platform, simply type 'no'. 
+
 ===Build the Offline App===
+
+The AppCreator generates your app inside a _workspace_ directory. To access and successfully build the project:
+
+  * cd workspace/myapp
+
+  * mvn install or mvn package
+
+Each project has a README.txt file with more details about the project
 
 ===Run the Cloud Server===
 
