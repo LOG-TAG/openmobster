@@ -19,6 +19,12 @@ Latest [http://code.google.com/p/openmobster/downloads/list Download]
 
 ==AppCreator==
 
+*AppCreator* is a Maven-based App development tool. It generates a multi-module App project. Along with project/sample code generation it generates the relevant maven poms for each module. This makes sure that all the dependencies are properly satisfied and downloaded from the internet. It produces the following modules:
+
+  * app-android - Contains device side application code based on the Android OS.
+  * cloud - Contains the cloud artifacts which will be deployed on the server side.
+  * moblet - This aggregates all the artifacts into a single jar file ready for deployment into the _OpenMobster Cloud Server_. Upon deployment, the device side artifacts are registered with the built-in App Store component for OTA deployment on the device 
+
 ===Build the Offline App===
 
 ===Run the Cloud Server===
