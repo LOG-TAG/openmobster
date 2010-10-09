@@ -60,4 +60,16 @@ The Android System Modules are located under *mobileCloud/android/2_0*.
 
   * *cloudManager*: The Cloud Manager App. This App is required to be installed on the device before and Cloud App can run. The provides management features and bundles the mobileCloud-runtime.
 
-  * *native-framework*: Provides integration of the high level MVC framework with the low-level native services. Think of this as an SPI implementation for the MVC framework. 
+  * *native-framework*: Provides integration of the high level MVC framework with the low-level native services. Think of this as an SPI implementation for the MVC framework.
+
+=== Development Tools Modules Reference ===
+
+Development Tools help App Developers develop OpenMobster based Cloud Apps. The goal is to improve developer productivity by providing easy dependency management, efficient unit/integration testing environment, etc.
+
+  * *appCreator*: AppCreator is a Apache Maven based development tool.
+
+  * *dev-cloudserver*: A fully functional Cloud Server that for efficient unit as well as integration testing.
+
+  * *android-devcloud*: A Development Phase Cloud Manager App. The goal is to provide an efficient mobileCloud-runtime during development. It automates all the manual security/provisioning workflows needed in a real setup.
+
+  * *rimos-devcloud*: The Development Phase Cloud Manager App for the BlackBerry OS (version 4.3+)
