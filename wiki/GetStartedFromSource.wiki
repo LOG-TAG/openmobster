@@ -1,6 +1,6 @@
 #summary Get Started From Source Code
 
-=== CheckOut Source Code ===
+=== Checkout Source Code ===
 
   * svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
 
@@ -12,8 +12,18 @@
 This will build the entire project which includes the _Cloud Server Modules_, _Android System Modules_, _BlackBerry System Modules_, and _Development Tools_ like the *AppCreator*.
 
 
+=== Cloud Server Modules ===
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * agent-provisioning: Components for OTA provisioning of the Cloud Manager App. Cloud Manager App provides the shared runtime for Cloud system services on the device.
+
+  * api: Provides the App Developer API for the server side Cloud components like Sync Channels, and Service Beans
+
+  * api-CloudConnector: Internal API used by the command line Cloud Console to communicate with the Cloud Server
+
+  * common: Contains some useful internal utility components
+
+  * console: Command Line Cloud Console. This will be replaced with a richer GWT/SmartGWT based Management Console in 2.2
+
+  * console-server: Server Side components of the Cloud Console.
+
+  * 
