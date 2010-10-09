@@ -12,6 +12,20 @@
 This will build the entire project which includes the _Cloud Server Modules_, _Android System Modules_, _BlackBerry System Modules_, and _Development Tools_ like the *AppCreator*.
 
 
+=== Running AppCreator ===
+
+AppCreator tool is located under dev-tools/appCreator. To use from source:
+
+  * Go to the _appCreator_ module: *cd dev-tools/appCreator*
+
+  * Build the module: *mvn package*
+
+  * The jar file will be in the target directory
+
+  * java -jar appCreator.jar
+
+More details are available [http://code.google.com/p/openmobster/wiki/GetStarted here]
+
 === Cloud Server Modules Reference ===
 
   * *synchronizer*: The Synchronization Engine
