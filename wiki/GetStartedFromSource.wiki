@@ -12,18 +12,30 @@
 This will build the entire project which includes the _Cloud Server Modules_, _Android System Modules_, _BlackBerry System Modules_, and _Development Tools_ like the *AppCreator*.
 
 
-=== Cloud Server Modules ===
+=== Cloud Server Modules Reference ===
 
-  * agent-provisioning: Components for OTA provisioning of the Cloud Manager App. Cloud Manager App provides the shared runtime for Cloud system services on the device.
+  * *agent-provisioning*: Components for OTA provisioning of the Cloud Manager App. Cloud Manager App provides the shared runtime for Cloud system services on the device.
 
-  * api: Provides the App Developer API for the server side Cloud components like Sync Channels, and Service Beans
+  * *api*: Provides the App Developer API for the server side Cloud components like Sync Channels, and Service Beans
 
-  * api-CloudConnector: Internal API used by the command line Cloud Console to communicate with the Cloud Server
+  * *api-CloudConnector*: Internal API used by the command line Cloud Console to communicate with the Cloud Server
 
-  * common: Contains some useful internal utility components
+  * *common*: Contains some useful internal utility components
 
-  * console: Command Line Cloud Console. This will be replaced with a richer GWT/SmartGWT based Management Console in 2.2
+  * *console*: Command Line Cloud Console. This will be replaced with a richer GWT/SmartGWT based Management Console in 2.2
 
-  * console-server: Server Side components of the Cloud Console.
+  * *console-server*: Server Side components of the Cloud Console.
 
-  * 
+  * *dataService*: Apache MINA based Socket Server. All communication between the devices and the Cloud enter via this service.
+
+  * *mobileContainer*: The core service container. It runs on a JBoss Microcontainer based kernel
+
+  * *services*: The core services registered with the Mobile Container.
+
+  * *mobileObject*: System service used for mobilization of objects between the Cloud and the devices
+
+  * *synchronizer*: The Synchronization Engine
+
+  * *security*: Components for Authorization, Account Provisioning, and Device Provisioning
+
+  * *moblet-management*: Components for an internal App Store. All Apps when deployed in the Cloud are registered with this service. This allows easy provisioning of these Apps on the devices via the Cloud Manager App.
