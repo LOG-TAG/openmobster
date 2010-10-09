@@ -39,3 +39,25 @@ This will build the entire project which includes the _Cloud Server Modules_, _A
   * *api-CloudConnector*: Internal API used by the command line Cloud Console to communicate with the Cloud Server
 
   * *common*: Contains some useful internal utility components
+
+=== Android System Modules Reference ===
+
+The Android System Modules are located under *mobileCloud/android/2_0*.
+
+  * *sync*: The device side Synchronization Engine.
+
+  * *mobileObject*: The device side mobileObject service for mobilizing objects between the device and the Cloud
+
+  * *connection*: Service that handles all the low-level networking functions like making secure connections with the Cloud, efficiently managing active/incoming push connections from the Cloud
+
+  * *bus*: Internal low-level service for Inter-App communication between the OpenMobster based Cloud Apps
+
+  * *api*: App Developer API. Provides components like MobileBeans (auto-synchronized channel objects), MVC Framework, RPC service, etc
+
+  * *mobileCloud-runtime*: The Device-level shared runtime for the system-level Cloud services. This runtime is accessed by all the OpenMobster based Cloud Apps installed on the device. The system services it provides are synchronization, networking, push notifications, etc.
+
+  * *moblet-runtime*: The App-level isolated runtime for Cloud Services bundled with each OpenMobster based Cloud App. 
+
+  * *cloudManager*: The Cloud Manager App. This App is required to be installed on the device before and Cloud App can run. The provides management features and bundles the mobileCloud-runtime.
+
+  * *native-framework*: Provides integration of the high level MVC framework with the low-level native services. Think of this as an SPI implementation for the MVC framework. 
