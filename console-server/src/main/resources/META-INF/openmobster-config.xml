@@ -28,5 +28,10 @@
    
     <bean name="/console/resetPasswdCommand" class="org.openmobster.core.console.server.ResetPasswordCommand">
        <property name="provisioner"><inject bean="security://Provisioner"/></property>
-   </bean>      
+   </bean>
+   
+   <!-- Commands for processing ErrorLogs from the devices -->      
+   <bean name="/console/errorlog" class="org.openmobster.core.console.server.ErrorLogCommand">
+   		 <property name="provisioner"><inject bean="security://Provisioner"/></property>
+   </bean>
 </deployment>

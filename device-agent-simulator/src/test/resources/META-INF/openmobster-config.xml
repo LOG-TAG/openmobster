@@ -1,81 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <deployment xmlns="urn:jboss:bean-deployer:2.0">
-   <bean name="test://HibernateManager" class="org.openmobster.core.common.database.HibernateManager">
-   	  <property name="config">hibernate.test.cfg.xml</property>
-   </bean> 
-      
-   <!--
-   				Server Side Connector stack for testing generic test suite 
-   -->
-   <bean name="test://ServerConnector" class="test.openmobster.device.agent.sync.server.ServerConnector">
-   		<depends>services://MobileObjectMonitor</depends>
-   		<depends>services://MobileServiceMonitor</depends>
-   </bean>
-   <bean name="test://ServerConnectorDeviceMapping" class="test.openmobster.device.agent.sync.server.ServerConnectorMapping"/>
-   <bean name="test://notification/EmailConnector" class="test.openmobster.device.agent.sync.server.EmailConnector">
-   		<depends>services://MobileObjectMonitor</depends>
-   		<depends>services://MobileServiceMonitor</depends>
-   </bean>
-      
-               
-   <!--
-   				Components for testing Error states in the sync engine 
-   -->         
-   <bean name="test://errors/ServerSyncEngine" class="test.openmobster.device.agent.sync.server.ServerSyncEngineWithErrorSimulation">   		  		  
-   		<property name="gateway">
-   			<inject bean="synchronizer://MobileObjectGateway"/>
-   		</property> 		
-   		<property name="hibernateManager">
-   			<inject bean="synchronizer://HibernateManager"/>
-   		</property>
-   		<property name="mapEngine">
-   			<inject bean="synchronizer://MapEngine"/>
-   		</property>   		
-   </bean>   
-   <bean name="test://errors/SyncServerAdapter" class="org.openmobster.core.synchronizer.server.SyncJBPMServerAdapter">   		
-   		<property name="serverSyncEngine">
-   			<inject bean="test://errors/ServerSyncEngine"/>
-   		</property>
-   		<property name="sessionManager">
-   			<inject bean="synchronizer://SessionManager"/>
-   		</property>
-   </bean>
-   
-   <!--
-   				Components for the Server used during actual device side testsuite
-   -->    
-   <bean name="testsuite" class="test.openmobster.server.MockServer"> 
-        <property name="id">testsuite</property>
-   		<property name="serverSyncEngine">
-   			<inject bean="synchronizer://ServerSyncEngine"/>
-   		</property>
-   		<property name="originalAdapter">
-   			<inject bean="synchronizer://SyncServerAdapter"/>
-   		</property>
-   		<property name="deviceController">
-   			<inject bean="security://DeviceController"/>
-   		</property>
-   		<property name="identityController">
-   			<inject bean="security://IdentityController"/>
-   		</property> 
-   		<property name="adapterWithErrors">
-   			<inject bean="test://errors/SyncServerAdapter"/>
-   		</property>
-   		<property name="provisioner">
-   			<inject bean="security://Provisioner"/>
-   		</property>
-   		<depends>services://MobileObjectMonitor</depends>
-   		<depends>services://MobileServiceMonitor</depends>
-   </bean>
-   
-   <!-- Deploy the MockMobileService -->
-   <bean name="test://api/MockMobileService" 
-   class="test.openmobster.device.agent.api.MockMobileBeanService">
-   		<depends>services://MobileObjectMonitor</depends>
-   		<depends>services://MobileServiceMonitor</depends>
-   </bean>
-   
    <!-- Device side components -->
    <!--
    				Device Side Component stack for the testsuite
@@ -89,25 +14,6 @@
    	  <property name="mobileObjectDatabase">
    	  	<inject bean="mobileObject://MobileObjectDatabase"/>
    	  </property>   		
-   </bean>
-   
-   <!-- Server Side components for the API Tests -->
-   <bean name="testMobileBeanSpec://TicketConnector" class="test.openmobster.device.agent.api.TicketConnector">
-        <property name="ticketds">
-   			<inject bean="testMobileBeanSpec://TicketDS"/>
-   		</property>
-   		<depends>services://MobileObjectMonitor</depends>
-   		<depends>services://MobileServiceMonitor</depends>
-   </bean>
-   <bean name="testMobileBeanSpec://TicketDS" class="test.openmobster.device.agent.api.TicketDS">
-   	  <property name="hibernateManager">
-   	  	<inject bean="test://HibernateManager"/>
-   	  </property>
-   </bean>
-   <bean name="testMobileBeanSpec://MockDataGenerator" class="test.openmobster.device.agent.api.MockDataGenerator">
-   	<property name="ticketds">
-   			<inject bean="testMobileBeanSpec://TicketDS"/>
-   	</property>
    </bean>
    
    <!-- Device Side components for the API Tests -->
@@ -197,11 +103,5 @@
    </bean>
    <bean name="/IMEI:67890/configuration" 
    class="org.openmobster.device.agent.test.framework.Configuration">
-   </bean>
-   
-   <!-- Server Side components for the comet tests -->
-   <bean name="testComet://TwitterChannel" class="test.openmobster.device.comet.TwitterChannel">        
-   		<depends>services://MobileObjectMonitor</depends>
-   		<depends>services://MobileServiceMonitor</depends>
    </bean>
 </deployment>

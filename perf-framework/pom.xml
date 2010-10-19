@@ -89,7 +89,7 @@
 							</mainClass>
 							<arguments>
 							    <argument>-XconcurrentUsers</argument>
-								<argument>1000</argument>
+								<argument>5</argument>
 							</arguments>
 						</configuration>
 					</plugin>
@@ -172,7 +172,7 @@
 										<property name="classpath" refid="maven.test.classpath" />
 										<exec dir="${basedir}/target" executable="java">
 											<arg
-												line="-cp ${classpath} -Xms512M -Xmx1024M org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 1000 -Xserver 192.168.1.103" />
+												line="-cp ${classpath} -Xms512M -Xmx1024M org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 5 -Xserver 192.168.1.102" />
 										</exec>
 									</tasks>
 								</configuration>

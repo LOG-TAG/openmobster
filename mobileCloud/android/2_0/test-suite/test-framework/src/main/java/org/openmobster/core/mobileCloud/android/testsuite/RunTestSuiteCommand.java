@@ -12,9 +12,8 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.android.testsuite.TestContext;
 import org.openmobster.core.mobileCloud.android.testsuite.TestSuite;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.app.Activity;
 
 /**
@@ -42,7 +41,7 @@ public class RunTestSuiteCommand implements RemoteCommand
         	//Load the tests
         	suite.load();
         	
-        	suite.execute();
+        	suite.execute(commandContext);
 		}
 		catch(Exception e)
     	{
@@ -53,30 +52,17 @@ public class RunTestSuiteCommand implements RemoteCommand
 
 	public void doViewAfter(CommandContext commandContext)
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
-		TestSuite testsuite = (TestSuite)commandContext.getAttribute("testsuite");
-		
-		AlertDialog alert = new AlertDialog.Builder(currentActivity).
-    	setTitle("TestSuite").
-    	setMessage(testsuite.getStatus()).
-    	setCancelable(false).
-    	create();
-    	
-    	alert.setButton(DialogInterface.BUTTON_POSITIVE, "OK", 
-			new DialogInterface.OnClickListener() 
-			{
-				
-				public void onClick(DialogInterface dialog, int status)
-				{
-				}
-			}
-    	);
-    	
-    	alert.show();
+		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		ViewHelper.getOkModal(currentActivity, "Test Suite", (String)commandContext.getAttribute("status")).
+		show();
 	}
 
 	public void doViewError(CommandContext commandContext)
-	{	
+	{
+		//Shows an Error Dialog
+		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		ViewHelper.getOkModal(currentActivity, "App Error", 
+		commandContext.getAppException().getMessage()).
+		show();
 	}
 }

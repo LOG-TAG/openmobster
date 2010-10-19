@@ -51,7 +51,7 @@ public class IntegrationTestSuiteCommand extends RunTestSuiteCommand
         	//Load the tests
         	suite.load();
         	
-        	suite.execute();
+        	suite.execute(commandContext);
 		}
 		catch(Exception e)
     	{

@@ -1,21 +1,12 @@
 This document covers the various test suites that must pass at 100% before a release
 
 
-
 Full TestSuite (Server Only)
 ----------------------------
 mvn test
 
 
 
-Integration Tests (Server Only)
--------------------------------
-Installing the sar file: sar: mvn -Plocal-deploy-hsqldb install
-
-server-testsuite: mvn -Djava.io.tmpdir=target -Pserver-testsuite integration-test (-D option needed for issues with cargo plugin and OSX tmp directory)
-
-
-
 End-to-End Device Integration Tests (Client side must be executed by the Device)
 --------------------------------------------------------------------------------
-device-agent-simulator: mvn -Pdevice-testsuite test
+device-agent-simulator: mvn -PrunTestCloud test

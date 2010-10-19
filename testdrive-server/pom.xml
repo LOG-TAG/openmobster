@@ -34,7 +34,7 @@
 
 	<profiles>
 		<profile>
-			<id>run</id>
+			<id>runTestCloud</id>
 			<build>
 				<plugins>
 					<plugin>

@@ -182,9 +182,10 @@ public class HomeScreen extends Screen
 			{
 				public boolean onMenuItemClick(MenuItem clickedItem)
 				{
-					//TODO: Add ability to upload the error log to the CloudServer
-					//It can be used to diagonose/debug issues on the on-device moblet apps
-					//ErrorHandler.getInstance().handle(new RuntimeException("Testing ErrorLog Clearing!!!"));
+					//Upload this device's ErrorLog to the Cloud for investigation
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/console/errorlog");
+					Services.getInstance().getCommandService().execute(commandContext);
 					return true;
 				}
 			});
