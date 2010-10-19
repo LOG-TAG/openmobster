@@ -1,0 +1,11 @@
+<moblet-app>
+	<commands>
+		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+		
+		<command id="run">test.openmobster.core.mobileCloud.rimos.testsuite.moblet.RunTestSuiteCommand</command>
+	</commands>
+	
+	<screens>	    	     
+		<screen id="home">test.openmobster.core.mobileCloud.rimos.testsuite.moblet.HomeScreen</screen>
+	</screens>							
+</moblet-app>

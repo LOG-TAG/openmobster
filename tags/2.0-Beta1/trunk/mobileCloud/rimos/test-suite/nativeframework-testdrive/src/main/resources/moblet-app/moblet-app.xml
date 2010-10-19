@@ -1,0 +1,52 @@
+<moblet-app>
+    <!-- required -->							
+	<bootstrap>
+	    <!--
+	    		Only needed when wanting to override the default: org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand   
+		<command>fully qualified custom class name</command>
+		-->
+		<!-- required -->
+		<screen>org.openmobster.core.mobileCloud.rim_native.framework.sample.screens.HomeScreen</screen>
+	</bootstrap>
+	
+	<!-- optional -->
+	<!--  
+	<push>
+		<command>org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.AppPushCommand</command>
+	</push>
+	-->
+	
+	<!--  Your App Commands -->
+	<commands>
+		<command id="/demo/local">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.DemoLocalCommand</command>
+		<command id="/demo/remote">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.DemoRemoteCommand</command>
+		<command id="/demo/localAppException">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.LocalAppExceptionCommand</command>
+		<command id="/demo/remoteAppException">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.RemoteAppExceptionCommand</command>
+		<command id="/demo/localException">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.LocalExceptionCommand</command>
+		<command id="/demo/remoteException">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.RemoteExceptionCommand</command>
+		<command id="/demo/pushNotification">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.PushNotificationCommand</command>
+		<command id="/demo/asyncCommand">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.DemoAsyncCommand</command>
+		<command id="/demo/remote/timeout">org.openmobster.core.mobileCloud.rim_native.framework.sample.commands.DemoRemoteCommandTimeout</command>		
+	</commands>
+	
+	<!--  Your App Screens -->
+	<screens>
+		<screen id="local">org.openmobster.core.mobileCloud.rim_native.framework.sample.screens.LocalCommandScreen</screen>
+		<screen id="remote">org.openmobster.core.mobileCloud.rim_native.framework.sample.screens.RemoteCommandScreen</screen>
+		<screen id="async">org.openmobster.core.mobileCloud.rim_native.framework.sample.screens.AsyncCommandScreen</screen>
+	</screens>
+			
+	<!--  The Cloud Channels used by this App -->			
+	<channels>
+		<channel>twitterChannel</channel>
+		<channel>emailChannel</channel>
+	</channels>
+	
+	<!-- optional, uses default if absent -->
+	<!--
+	<locale>
+		<language-code>en</language-code>
+		<country-code>GB</country-code>	
+	</locale>
+	-->
+</moblet-app>
