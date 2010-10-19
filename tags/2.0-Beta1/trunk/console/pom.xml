@@ -1,8 +1,8 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>org.openmobster.core</groupId>
 		<artifactId>core</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-Beta1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	
@@ -65,7 +65,7 @@
 								<configuration>
 									<tasks>
 									    <echo>Starting the CloudConsole Binary release.......</echo>	
-										<delete dir="target/console-${project.version}"/>
+										<delete dir="target/console-${project.version}" />
 										
 										<!--  copy assemblies -->
 										<copy todir="target/console-${project.version}" overwrite="true">
@@ -75,14 +75,14 @@
 										
 										<!--  copy to lib -->
 										<copy todir="target/console-${project.version}/lib" overwrite="true">
-											<fileset file="${settings.localRepository}/org/openmobster/core/common/${project.version}/common-${project.version}.jar"/>
-											<fileset file="${settings.localRepository}/org/openmobster/core/api-cloudConnector/${project.version}/api-cloudConnector-${project.version}.jar"/>
-											<fileset file="target/console-${project.version}.jar"/>
+											<fileset file="${settings.localRepository}/org/openmobster/core/common/${project.version}/common-${project.version}.jar" />
+											<fileset file="${settings.localRepository}/org/openmobster/core/api-cloudConnector/${project.version}/api-cloudConnector-${project.version}.jar" />
+											<fileset file="target/console-${project.version}.jar" />
 										</copy>
 										
 										<!--  copy layout.xml to /etc -->
 										<copy todir="target/console-${project.version}/etc" overwrite="true">
-											<fileset file="target/classes/layout.xml"/>
+											<fileset file="target/classes/layout.xml" />
 										</copy>
 									</tasks>
 								</configuration>
@@ -122,7 +122,7 @@
 								<configuration>
 									<tasks>
 									    <echo>Starting the CloudConsole Binary release.......</echo>	
-										<delete dir="target/console-${project.version}"/>
+										<delete dir="target/console-${project.version}" />
 										
 										<!--  copy assemblies -->
 										<copy todir="target/console-${project.version}" overwrite="true">
@@ -132,14 +132,14 @@
 										
 										<!--  copy to lib -->
 										<copy todir="target/console-${project.version}/lib" overwrite="true">
-											<fileset file="${settings.localRepository}/org/openmobster/core/common/${project.version}/common-${project.version}.jar"/>
-											<fileset file="${settings.localRepository}/org/openmobster/core/api-cloudConnector/${project.version}/api-cloudConnector-${project.version}.jar"/>
-											<fileset file="target/console-${project.version}.jar"/>
+											<fileset file="${settings.localRepository}/org/openmobster/core/common/${project.version}/common-${project.version}.jar" />
+											<fileset file="${settings.localRepository}/org/openmobster/core/api-cloudConnector/${project.version}/api-cloudConnector-${project.version}.jar" />
+											<fileset file="target/console-${project.version}.jar" />
 										</copy>
 										
 										<!--  copy layout.xml to /etc -->
 										<copy todir="target/console-${project.version}/etc" overwrite="true">
-											<fileset file="target/classes/layout.xml"/>
+											<fileset file="target/classes/layout.xml" />
 										</copy>
 									</tasks>
 								</configuration>

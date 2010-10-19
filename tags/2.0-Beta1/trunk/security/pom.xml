@@ -1,8 +1,8 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>org.openmobster.core</groupId>
 		<artifactId>core</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-Beta1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	
@@ -41,8 +41,7 @@
 								<configuration>
 									<tasks>
 										<echo>Installing Deployment Artifacts...</echo>
-										<copy file="${basedir}/target/${project.artifactId}-${project.version}.jar"
-											todir="/Users/openmobster/projects/openmobster/runtime/jboss-5.1.0.GA/server/openmobster/deploy/openmobster.last" />
+										<copy file="${basedir}/target/${project.artifactId}-${project.version}.jar" todir="/Users/openmobster/projects/openmobster/runtime/jboss-5.1.0.GA/server/openmobster/deploy/openmobster.last" />
 									</tasks>
 								</configuration>
 							</execution>

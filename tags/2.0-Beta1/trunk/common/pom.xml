@@ -1,8 +1,8 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>org.openmobster.core</groupId>
 		<artifactId>core</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-Beta1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	
@@ -60,14 +60,11 @@
 		          	  </goals>		          	  
 			          <configuration>
 			          		<tasks>
-			          			<jar basedir="${project.build.directory}/../target/test-classes/bean1" 
-			          			destfile="${project.build.directory}/../target/test-classes/bean1.jar">
+			          			<jar basedir="${project.build.directory}/../target/test-classes/bean1" destfile="${project.build.directory}/../target/test-classes/bean1.jar">
 			          			</jar>
-			          			<jar basedir="${project.build.directory}/../target/test-classes/bean2" 
-			          			destfile="${project.build.directory}/../target/test-classes/bean2.jar">
+			          			<jar basedir="${project.build.directory}/../target/test-classes/bean2" destfile="${project.build.directory}/../target/test-classes/bean2.jar">
 			          			</jar>
-			          			<jar basedir="${project.build.directory}/../target/test-classes/validation" 
-			          			destfile="${project.build.directory}/../target/test-classes/validation.jar">
+			          			<jar basedir="${project.build.directory}/../target/test-classes/validation" destfile="${project.build.directory}/../target/test-classes/validation.jar">
 			          			</jar>       							
 			          		</tasks>
 			          </configuration>			          

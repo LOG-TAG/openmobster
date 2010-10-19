@@ -1,17 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
     	<groupId>org.openmobster.core</groupId>
    		<artifactId>openmobster-documentation-parent</artifactId>
-   		<version>2.0-snapshot</version>
+   		<version>2.0-Beta1</version>
     	<relativePath>../pom.xml</relativePath>
    	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
     <artifactId>android-developer-guide</artifactId>
     <name>Android_Developer_Guide</name>
-    <version>2.0-snapshot</version>
+    <version>2.0-Beta1</version>
     <packaging>jdocbook</packaging>        
     
     <build>
@@ -26,10 +24,10 @@
 						<configuration>
 							<tasks>								    
 								<echo>Documentation Cleanup</echo>	
-								<delete file="target/docbook/publish/en-US/html/images/community/jbossorglogo.png"/>	
-								<delete file="target/docbook/publish/en-US/html/images/community/community_doc.png"/>
-								<delete file="target/docbook/publish/en-US/html/images/seamframework/seamlogo.png"/>
-								<delete file="target/docbook/publish/en-US/html/images/seamframework/community_doc.png"/>																				       																							
+								<delete file="target/docbook/publish/en-US/html/images/community/jbossorglogo.png" />	
+								<delete file="target/docbook/publish/en-US/html/images/community/community_doc.png" />
+								<delete file="target/docbook/publish/en-US/html/images/seamframework/seamlogo.png" />
+								<delete file="target/docbook/publish/en-US/html/images/seamframework/community_doc.png" />																				       																							
 							</tasks>
 						</configuration>
 						<goals>
