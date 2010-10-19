@@ -54,18 +54,9 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>start-bb-release</id>
+			<id>deploy-core</id>
 			<modules>
 				<module>mobileCloud</module>
-				<module>dev-tools</module>
-				<module>documentation</module>
-				<module>binary-release</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>finish-bb-release</id>
-			<modules>
-				<module>binary-release</module>
 			</modules>
 		</profile>
 		<profile>
@@ -75,12 +66,6 @@
 				<module>dev-tools</module>
 				<module>documentation</module>
 				<module>binary-release</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>deploy-core</id>
-			<modules>
-				<module>mobileCloud</module>
 			</modules>
 		</profile>
 	</profiles>

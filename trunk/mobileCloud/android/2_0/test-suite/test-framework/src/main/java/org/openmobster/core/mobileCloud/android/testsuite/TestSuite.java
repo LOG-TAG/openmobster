@@ -15,6 +15,13 @@ import java.util.Vector;
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 
+import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
+import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.testsuite.ui.framework.BusyAsyncTask;
+
+import android.content.Context;
+
 /**
  * 
  * @author openmobster@gmail.com
@@ -48,9 +55,19 @@ public final class TestSuite
 			//Load up cloud activation related configuration
 			Properties properties = new Properties();
 			properties.load(TestSuite.class.getResourceAsStream("/moblet-app/activation.properties"));
+			
+			
 			this.cloudServer = properties.getProperty("cloud_server_ip");
 			this.email = properties.getProperty("email");
 			this.password = properties.getProperty("password");
+			
+			Context context = Registry.getActiveInstance().getContext();
+			final Configuration conf = Configuration.getInstance(context);
+			String registeredIp = conf.getServerIp();
+			if(registeredIp != null && registeredIp.trim().length()>0)
+			{
+				this.cloudServer = registeredIp;
+			}
 		}
 		catch(Exception e)
 		{
@@ -134,12 +151,19 @@ public final class TestSuite
 	 * 
 	 *
 	 */
-	public final void execute()
+	public final void execute(CommandContext commandContext)
 	{
-		for(int i=0,size=this.tests.size(); i<size; i++)
+		int numberOfTests = this.tests.size();
+		for(int i=0,size=numberOfTests; i<size; i++)
 		{
 			Test test = (Test)this.tests.elementAt(i);
-			System.out.println("Starting "+test.getInfo()+"......");
+			String startMessage = "Executing ["+test.getInfo()+"]";
+			System.out.println(startMessage);
+			
+			StringBuilder buffer = new StringBuilder(startMessage+"\n\n");
+			buffer.append("("+(i+1)+" out of "+numberOfTests+")");
+			
+			this.publishMessage(buffer.toString(), commandContext);
 			try
 			{
 				test.setTestSuite(this);
@@ -168,11 +192,12 @@ public final class TestSuite
 		}
 		else
 		{
-			buffer.append("TestSuite succefully executed all tests...");
+			buffer.append("TestSuite successfully executed all tests...");
 		}
 		this.status = buffer.toString();
 		
 		System.out.println(status);
+		commandContext.setAttribute("status", this.status);
 	}
 	
 	public Vector getErrors()
@@ -224,5 +249,12 @@ public final class TestSuite
 	public String getStatus()
 	{
 		return this.status;
+	}
+	
+	private void publishMessage(String message, CommandContext commandContext)
+	{
+		commandContext.setAttribute("publish-message", message);
+		BusyAsyncTask activeTask = (BusyAsyncTask)commandContext.getAttribute("active-task");
+		activeTask.publishMessage();
 	}
 }

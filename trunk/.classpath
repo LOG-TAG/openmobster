@@ -131,6 +131,10 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/crud/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/crud/app-android/src/main/java" />
 	
+	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/cloud/src/test/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/app-android/src/main/java" />
+	
 	<!--  
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworld/app-rimos/src/main/java"/>
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworldsensitive/app-rimos/src/main/java"/>

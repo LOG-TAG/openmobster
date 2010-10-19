@@ -27,5 +27,6 @@
 		<command id="loadAppStore">org.openmobster.core.mobileCloud.manager.gui.command.LoadAppStore</command>
 		<command id="checkCloudStatus">org.openmobster.core.mobileCloud.manager.gui.command.CheckCloudStatus</command>
 		<command id="manualSync">org.openmobster.core.mobileCloud.manager.gui.command.ManualSync</command>
+		<command id="/console/errorlog">org.openmobster.core.mobileCloud.manager.gui.command.UploadErrorLog</command>
 	</commands>
 </moblet-app>

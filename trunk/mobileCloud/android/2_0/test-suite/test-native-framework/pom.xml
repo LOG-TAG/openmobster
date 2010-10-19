@@ -20,47 +20,13 @@
         	<artifactId>test-framework</artifactId>
         	<version>${project.version}</version>
     	</dependency>
-    	<!-- this should be aggregated into device-sdk -->
     	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>common</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>bus</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>mobileObject</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>  
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>connection</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>  	
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>sync</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>mobileCloud-runtime</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>api</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-        	<artifactId>native-framework</artifactId>
-        	<version>${project.version}</version>
-    	</dependency>
+			<groupId>org.openmobster.core.mobileCloud.android.2_0
+			</groupId>
+			<artifactId>device-sdk</artifactId>
+			<classifier>full</classifier>
+			<version>${project.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
