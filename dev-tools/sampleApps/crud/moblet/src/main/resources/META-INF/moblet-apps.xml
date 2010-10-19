@@ -5,14 +5,6 @@
 	<moblet-app>	    
 	    <name>crud</name>
 	    <description>crud</description>
-		<bin-loc>/crud-1.0-snapshot-zipped.apk</bin-loc>	
-	</moblet-app>	
-	
-	<!-- BlackBerry version -->
-	<moblet-app>	    
-	    <name>crud</name>
-	    <description>crud</description>
-		<bin-loc>/crud.cod</bin-loc>	
-		<config-loc>/crud.jad</config-loc>	
-	</moblet-app>	
+		<bin-loc>/crud-1.0-zipped.apk</bin-loc>	
+	</moblet-app>		
 </moblet-apps>

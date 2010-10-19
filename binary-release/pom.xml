@@ -345,12 +345,12 @@
 
 										<!-- Pre-Installed Sample Apps -->
 										<unjar
-											src="${basedir}/../dev-tools/sampleApps/offlineapp/moblet/target/offlineapp-${project.version}-moblet.jar"
+											src="${basedir}/../dev-tools/sampleApps/offlineapp/moblet/target/offlineapp-1.0-moblet.jar"
 											dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/offlineapp"
 											overwrite="true">
 										</unjar>
 										<unjar
-											src="${basedir}/../dev-tools/sampleApps/crud/moblet/target/crud-1.0-snapshot-moblet.jar"
+											src="${basedir}/../dev-tools/sampleApps/crud/moblet/target/crud-1.0-moblet.jar"
 											dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/crud"
 											overwrite="true">
 										</unjar>

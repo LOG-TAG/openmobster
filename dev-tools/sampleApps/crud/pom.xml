@@ -5,7 +5,7 @@
 	<groupId>org.crud</groupId>
 	<name>crud-parent</name>
 	<artifactId>crud</artifactId>
-	<version>1.0-snapshot</version>
+	<version>1.0</version>
 	<url>http://www.myapp.com</url>	
 	<properties>
 		<openmobster.version>2.0-snapshot</openmobster.version>

@@ -5,7 +5,7 @@
 	<groupId>com.offlineApp</groupId>
 	<name>offlineApp-parent</name>
 	<artifactId>offlineapp</artifactId>
-	<version>2.0-snapshot</version>
+	<version>1.0</version>
 	<url>http://www.myapp.com</url>
 	<properties>
 		<openmobster.version>2.0-snapshot</openmobster.version>
