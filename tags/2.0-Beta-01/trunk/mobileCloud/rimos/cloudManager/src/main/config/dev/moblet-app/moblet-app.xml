@@ -1,0 +1,27 @@
+<moblet-app>
+	<commands>
+		<command id="startup">org.openmobster.core.mobileCloud.rim_native.framework.command.MobletBootstrapCommand</command>
+		<command id="activate">org.openmobster.core.mobileCloud.manager.gui.command.ActivationCommand</command> 
+		<command id="cometConfig">org.openmobster.core.mobileCloud.manager.gui.command.CometConfig</command>
+		<command id="loadAppStore">org.openmobster.core.mobileCloud.manager.gui.command.LoadAppStore</command>
+		<command id="manualSync">org.openmobster.core.mobileCloud.manager.gui.command.ManualSync</command>
+		<command id="switchSSLMode">org.openmobster.core.mobileCloud.manager.gui.command.SwitchSSLMode</command>
+		<command id="checkCloudStatus">org.openmobster.core.mobileCloud.manager.gui.command.CheckCloudStatus</command>
+	</commands>
+	
+	<screens>	    	     
+		<screen id="home">org.openmobster.core.mobileCloud.manager.gui.screens.DevHomeScreen</screen>
+		
+		<!--  Comet Configuration -->	
+		<screen id="cometConfig">org.openmobster.core.mobileCloud.manager.gui.screens.CometConfigScreen</screen>
+		
+		<!--  AppStore screen -->
+		<screen id="appstore">org.openmobster.core.mobileCloud.manager.gui.screens.AppStoreScreen</screen>
+		
+		<!-- Manual Sync screen -->
+		<screen id="manualSync">org.openmobster.core.mobileCloud.manager.gui.screens.ManualSyncScreen</screen>
+		
+		<!--  Security screen -->
+		<screen id="security">org.openmobster.core.mobileCloud.manager.gui.screens.SecurityScreen</screen>
+	</screens>							
+</moblet-app>

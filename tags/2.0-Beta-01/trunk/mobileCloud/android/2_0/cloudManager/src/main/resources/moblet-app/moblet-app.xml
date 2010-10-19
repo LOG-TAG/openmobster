@@ -1,0 +1,32 @@
+<moblet-app>
+	<bootstrap>
+    	<screen>org.openmobster.core.mobileCloud.manager.gui.screens.HomeScreen</screen>
+    </bootstrap>
+       			
+	<screens>
+		<screen id="cometConfig">
+			org.openmobster.core.mobileCloud.manager.gui.screens.CometConfigScreen
+		</screen>
+		<screen id="security">
+			org.openmobster.core.mobileCloud.manager.gui.screens.SecurityScreen
+		</screen>
+		<screen id="manualSync">
+			org.openmobster.core.mobileCloud.manager.gui.screens.ManualSyncScreen
+		</screen>
+		<screen id="appstore">
+			org.openmobster.core.mobileCloud.manager.gui.screens.AppStoreScreen
+		</screen>
+	</screens>
+	
+	<commands>
+		<command id="activate">org.openmobster.core.mobileCloud.manager.gui.command.ActivationCommand</command>
+		<command id="cometStatus">org.openmobster.core.mobileCloud.manager.gui.command.CometStatus</command>
+		<command id="cometConfig">org.openmobster.core.mobileCloud.manager.gui.command.CometConfig</command>
+		<command id="cometStop">org.openmobster.core.mobileCloud.manager.gui.command.CometStop</command>
+		<command id="switchSSLMode">org.openmobster.core.mobileCloud.manager.gui.command.SwitchSSLMode</command>
+		<command id="loadAppStore">org.openmobster.core.mobileCloud.manager.gui.command.LoadAppStore</command>
+		<command id="checkCloudStatus">org.openmobster.core.mobileCloud.manager.gui.command.CheckCloudStatus</command>
+		<command id="manualSync">org.openmobster.core.mobileCloud.manager.gui.command.ManualSync</command>
+		<command id="/console/errorlog">org.openmobster.core.mobileCloud.manager.gui.command.UploadErrorLog</command>
+	</commands>
+</moblet-app>
