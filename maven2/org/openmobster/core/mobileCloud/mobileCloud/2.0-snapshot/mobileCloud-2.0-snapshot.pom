@@ -8,7 +8,10 @@
 	<url>http://www.openmobster.org</url>
 	
 	<modules>
-		<module>rimos</module>	
+	    <!-- deprecated since 2.0-M4 -->
+	    <!--  
+		<module>rimos</module>
+		-->	
 		<module>android</module>
 	</modules>
 	
