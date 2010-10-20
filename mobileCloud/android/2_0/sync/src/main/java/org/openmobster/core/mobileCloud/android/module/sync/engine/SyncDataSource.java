@@ -118,18 +118,22 @@ public final class SyncDataSource extends Service
 	 * 
 	 * @return
 	 */
-	public Anchor readAnchor() throws DBException
+	public Anchor readAnchor(String target) throws DBException
 	{
-		Anchor stored = null;
-		
 		Context context = Registry.getActiveInstance().getContext();
 		Set<Record> anchors = Database.getInstance(context).selectAll(Database.sync_anchor);
 		if(anchors!=null && !anchors.isEmpty())
 		{
-			stored = new Anchor(anchors.iterator().next());
+			for(Record local:anchors)
+			{
+				if(local.getValue("target").equals(target))
+				{
+					return new Anchor(local);
+				}
+			}
 		}
 		
-		return stored;		
+		return null;		
 	}
 	
 	/**
@@ -137,8 +141,9 @@ public final class SyncDataSource extends Service
 	 *
 	 */
 	public void saveAnchor(Anchor anchor) throws DBException
-	{		
-		Anchor stored = this.readAnchor();
+	{
+		String target = anchor.getTarget();
+		Anchor stored = this.readAnchor(target);
 		Context context = Registry.getActiveInstance().getContext();
 		
 		if(stored == null)
@@ -152,22 +157,28 @@ public final class SyncDataSource extends Service
 			Set<Record> anchors = Database.getInstance(context).selectAll(Database.sync_anchor);
 			if(anchors != null)
 			{
-				Record record = (Record)anchors.iterator().next();
-				
-				//Update the existing anchor in the database
-				record.setValue("target", anchor.getTarget());			
-				record.setValue("lastSync", anchor.getLastSync());			
-				record.setValue("nextSync", anchor.getNextSync());			
-				Database.getInstance(context).update(Database.sync_anchor, record);
+				for(Record local:anchors)
+				{
+					String localTarget = local.getValue("target");
+					
+					if(localTarget.equals(target))
+					{
+						//Update the existing anchor in the database
+						local.setValue("target", anchor.getTarget());			
+						local.setValue("lastSync", anchor.getLastSync());			
+						local.setValue("nextSync", anchor.getNextSync());			
+						Database.getInstance(context).update(Database.sync_anchor, local);
+					}
+				}
 			}
 		}		
-	}	
+	}
 	
 	/**
 	 * 
 	 * @throws DBException
 	 */
-	public void deleteAnchor() throws DBException
+	public void deleteAllAnchors() throws DBException
 	{
 		Context context = Registry.getActiveInstance().getContext();
 		Database.getInstance(context).deleteAll(Database.sync_anchor);

@@ -87,8 +87,20 @@ public class EnterInitialize implements ActionHandler
 			String anchorXml = XMLUtilities.removeCData(item.getMeta());
 			Anchor clientAnchor = syncObjectGenerator.parseAnchor(anchorXml);
 			clientAnchor.setTarget(session.getSource()+"/"+item.getSource());
+			
+			log.debug("**************************************************");
+			log.debug("Incoming Target: "+clientAnchor.getTarget());
+			log.debug("Incoming LastSync: "+clientAnchor.getLastSync());
+			log.debug("Incoming NextSync: "+clientAnchor.getNextSync());
+			
+			
+			
 			if(currentAnchor != null)
-			{				
+			{
+				log.debug("Active Target: "+currentAnchor.getTarget());
+				log.debug("Active LastSync: "+currentAnchor.getLastSync());
+				log.debug("Active NextSync: "+currentAnchor.getNextSync());
+				
 				//Make sure the anchors match
 				if(
 						!clientAnchor.getTarget().equals(currentAnchor.getTarget()) ||
@@ -114,6 +126,8 @@ public class EnterInitialize implements ActionHandler
 				session.setAnchor(clientAnchor);
 				syncEngine.updateAnchor(session.getAnchor());
 			}
+			log.debug("Anchor Error: "+anchorError);
+			log.debug("**************************************************");
 			
 			//Setup Status
 			Status status = Utilities.getStatus(cmdId++, 

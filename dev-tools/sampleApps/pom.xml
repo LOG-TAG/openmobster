@@ -15,5 +15,6 @@
 		<module>offlineapp</module>
 		<module>crud</module>
 		<module>asyncserviceapp</module>
+		<module>showcase</module>
 	</modules>
 </project>
