@@ -1,8 +1,8 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>org.openmobster.core</groupId>
 		<artifactId>core</artifactId>
-		<version>2.0-snapshot</version>
+		<version>2.0-Beta1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	
@@ -43,12 +43,12 @@
 		  						<tasks>
 		  							<echo>Generating Test Artifacts...</echo>
 		  							
-		  							<delete dir="${basedir}/openmobster"/>
-		  							<delete file="${basedir}/target/testsuite.jar"/>		  							
+		  							<delete dir="${basedir}/openmobster" />
+		  							<delete file="${basedir}/target/testsuite.jar" />		  							
 		  							 							
 		  							<zip destfile="${basedir}/target/testsuite.jar">
-		  								<fileset dir="${basedir}/target/classes"/>		  											  								
-		  								<fileset dir="${basedir}/src/main/config"/>
+		  								<fileset dir="${basedir}/target/classes" />		  											  								
+		  								<fileset dir="${basedir}/src/main/config" />
 		  							</zip>  									  									  							
 		  						</tasks>
 		  					</configuration>
@@ -151,12 +151,12 @@
 		  						<tasks>
 		  							<echo>Generating Test Artifacts...</echo>
 		  							
-		  							<delete dir="${basedir}/openmobster"/>
-		  							<delete file="${basedir}/target/testsuite.jar"/>		  							
+		  							<delete dir="${basedir}/openmobster" />
+		  							<delete file="${basedir}/target/testsuite.jar" />		  							
 		  							 							
 		  							<zip destfile="${basedir}/target/testsuite.jar">
-		  								<fileset dir="${basedir}/target/classes"/>		  											  								
-		  								<fileset dir="${basedir}/src/main/config"/>
+		  								<fileset dir="${basedir}/target/classes" />		  											  								
+		  								<fileset dir="${basedir}/src/main/config" />
 		  							</zip>  									  									  							
 		  						</tasks>
 		  					</configuration>
