@@ -1,4 +1,4 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openmobster.core.dev.tools</groupId>
 	<name>showcase</name>
@@ -101,30 +101,22 @@
 								<tasks> 
 									<echo>Hot Deploying the Offline App....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
-										<arg
-										line="install -r ${settings.localRepository}/com/offlineApp/android/app/offlineapp/${project.version}/offlineapp-${project.version}.apk" 
-										/>
+										<arg line="install -r ${settings.localRepository}/com/offlineApp/android/app/offlineapp/${project.version}/offlineapp-${project.version}.apk" />
 									</exec>
 									
 									<echo>Hot Deploying the Hibernate CRUD App....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
-										<arg
-										line="install -r ${settings.localRepository}/org/crud/android/app/crud/${project.version}/crud-${project.version}.apk" 
-										/>
+										<arg line="install -r ${settings.localRepository}/org/crud/android/app/crud/${project.version}/crud-${project.version}.apk" />
 									</exec>
 									
 									<echo>Hot Deploying the AsyncService App....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
-										<arg
-										line="install -r ${settings.localRepository}/org/async/service/app/android/app/asyncserviceapp/${project.version}/asyncserviceapp-${project.version}.apk" 
-										/>
+										<arg line="install -r ${settings.localRepository}/org/async/service/app/android/app/asyncserviceapp/${project.version}/asyncserviceapp-${project.version}.apk" />
 									</exec>
 									
 									<echo>Hot Deploying the Development Mode CloudManager....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
-										<arg
-										line="install -r ${settings.localRepository}/org/openmobster/core/dev/tools/android-devcloud/${openmobster.version}/android-devcloud-${openmobster.version}.apk" 
-										/>
+										<arg line="install -r ${settings.localRepository}/org/openmobster/core/dev/tools/android-devcloud/${openmobster.version}/android-devcloud-${openmobster.version}.apk" />
 									</exec>
 								</tasks>
 							</configuration>

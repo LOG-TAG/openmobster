@@ -1,4 +1,4 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- User Provided -->
@@ -135,10 +135,8 @@
 								<configuration>
 									<tasks>
 										<property name="preverify_target" value="${basedir}/target/app-binary" />
-										<property name="preverify_src"
-											value="${basedir}/target/${project.artifactId}.jar" />
-										<property name="rapc_src"
-											value="${preverify_target}/${project.artifactId}.jar" />
+										<property name="preverify_src" value="${basedir}/target/${project.artifactId}.jar" />
+										<property name="rapc_src" value="${preverify_target}/${project.artifactId}.jar" />
 										<property name="rapc_config" value="${basedir}/app.rapc" />
 
 										<delete dir="${preverify_target}" />
@@ -146,9 +144,7 @@
 										<mkdir dir="${preverify_target}" />
 
 										<delete dir="${basedir}/target/thirdparty" />
-										<unzip
-											src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/device-sdk/${openmobster.version}/device-sdk-${openmobster.version}-full.jar"
-											dest="${basedir}/target/thirdparty" overwrite="true" />
+										<unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/device-sdk/${openmobster.version}/device-sdk-${openmobster.version}-full.jar" dest="${basedir}/target/thirdparty" overwrite="true" />
 
 										<jar file="${preverify_src}">
 											<fileset dir="${basedir}/target/classes" />
@@ -162,21 +158,17 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_target}" executable="preverify">
-											<arg
-												line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
+											<arg line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_target} ${preverify_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_target}" executable="rapc">
-											<arg
-												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
+											<arg line="import=${bb.jde.home}/lib/net_rim_api.jar codename=${project.name} ${rapc_config} ${rapc_src}" />
 										</exec>
 										
 										<echo>Generating the Desktop Application Loader......</echo>
-										<copy todir="${basedir}/target/app-binary" overwrite="true"
-										file="${basedir}/app.alx"
-										/>
+										<copy todir="${basedir}/target/app-binary" overwrite="true" file="${basedir}/app.alx" />
 
 										<echo>Deploying into the Simulator....</echo>
 										<copy todir="${bb.simulator.home}" overwrite="true">
@@ -197,29 +189,20 @@
 											the actual production deployment
 										--> 
 										<property name="preverify_cloud_target" value="${basedir}/target/cloud-binary" />
-										<property name="preverify_cloud_src"
-											value="${basedir}/target/cloud-binary/temp/DevCloud.jar" />
-										<property name="rapc_cloud_src"
-											value="${preverify_cloud_target}/DevCloud.jar" />
+										<property name="preverify_cloud_src" value="${basedir}/target/cloud-binary/temp/DevCloud.jar" />
+										<property name="rapc_cloud_src" value="${preverify_cloud_target}/DevCloud.jar" />
 										<property name="rapc_cloud_config" value="${basedir}/devcloud.rapc" />
 
 										<delete dir="${preverify_cloud_target}" />
 										<delete file="${preverify_cloud_src}" />
 										<mkdir dir="${preverify_cloud_target}" />
 
-										<unzip
-											src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/mobileCloud/${openmobster.version}/mobileCloud-${openmobster.version}-bin.jar"
-											dest="${basedir}/target/cloud-binary/temp/thirdparty"
-											overwrite="true" />
-										<unzip
-											src="${settings.localRepository}/org/openmobster/core/dev/tools/rimos-devcloud/${openmobster.version}/rimos-devcloud-${openmobster.version}.jar"
-											dest="${basedir}/target/cloud-binary/temp/thirdparty"
-											overwrite="true" />
+										<unzip src="${settings.localRepository}/org/openmobster/core/mobileCloud/rimos/mobileCloud/${openmobster.version}/mobileCloud-${openmobster.version}-bin.jar" dest="${basedir}/target/cloud-binary/temp/thirdparty" overwrite="true" />
+										<unzip src="${settings.localRepository}/org/openmobster/core/dev/tools/rimos-devcloud/${openmobster.version}/rimos-devcloud-${openmobster.version}.jar" dest="${basedir}/target/cloud-binary/temp/thirdparty" overwrite="true" />
 
 										<jar file="${preverify_cloud_src}">
 											<fileset dir="${basedir}/target/cloud-binary/temp/thirdparty">
-												<exclude
-													name="**/org/openmobster/core/mobileCloud/MobileCloud.class" />
+												<exclude name="**/org/openmobster/core/mobileCloud/MobileCloud.class" />
 											</fileset>
 											<fileset file="${basedir}/activation.properties" />
 										</jar>
@@ -229,15 +212,13 @@
 
 										<echo>Preverifying....</echo>
 										<exec dir="${preverify_cloud_target}" executable="preverify">
-											<arg
-												line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_cloud_target} ${preverify_cloud_src}" />
+											<arg line="-classpath ${bb.jde.home}/lib/net_rim_api.jar -d ${preverify_cloud_target} ${preverify_cloud_src}" />
 										</exec>
 
 
 										<echo>Generating the Executable....</echo>
 										<exec dir="${preverify_cloud_target}" executable="rapc">
-											<arg
-												line="import=${bb.jde.home}/lib/net_rim_api.jar codename=DevCloud ${rapc_cloud_config} ${rapc_cloud_src}" />
+											<arg line="import=${bb.jde.home}/lib/net_rim_api.jar codename=DevCloud ${rapc_cloud_config} ${rapc_cloud_src}" />
 										</exec>
 
 										<echo>Deploying into the Simulator....</echo>

@@ -1,9 +1,9 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openmobster.core</groupId>
 	<artifactId>core</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0-snapshot</version>
+	<version>2.0-Beta1</version>
 	<name>The OpenMobster Core Platform</name>
 	<url>http://www.openmobster.org</url>
 
@@ -457,8 +457,7 @@
 						<configuration>
 							<tasks>
 								<property environment="env" />
-								<fail
-									message="RIM_JDE_HOME environment variable must be set to the home directory of the Blackberry JDE Environment. For instance, when using the eclipse JDE plugin, it could look something like: C:\projects\eclipse\plugins\net.rim.eide.componentpack4.5.0_4.5.0.16\components">
+								<fail message="RIM_JDE_HOME environment variable must be set to the home directory of the Blackberry JDE Environment. For instance, when using the eclipse JDE plugin, it could look something like: C:\projects\eclipse\plugins\net.rim.eide.componentpack4.5.0_4.5.0.16\components">
 									<condition>
 										<and>
 											<os family="windows" />
