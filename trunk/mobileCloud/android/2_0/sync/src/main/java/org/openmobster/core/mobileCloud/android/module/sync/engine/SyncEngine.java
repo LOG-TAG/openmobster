@@ -549,7 +549,7 @@ public class SyncEngine
 	{
 		try
 		{
-			Anchor currentAnchor = SyncDataSource.getInstance().readAnchor();
+			Anchor currentAnchor = SyncDataSource.getInstance().readAnchor(target);
 			
 			if (currentAnchor != null)
 			{	
@@ -575,6 +575,13 @@ public class SyncEngine
 			
 			//Persist the new anchor
 			this.updateAnchor(currentAnchor);
+			
+			
+			//System.out.println("***********************************************************");
+			//System.out.println("Anchor Target: "+currentAnchor.getTarget());
+			//System.out.println("Anchor LastSync: "+currentAnchor.getLastSync());
+			//System.out.println("Anchor NextSync: "+currentAnchor.getNextSync());
+			//System.out.println("************************************************************");
 	
 			return currentAnchor;
 		}

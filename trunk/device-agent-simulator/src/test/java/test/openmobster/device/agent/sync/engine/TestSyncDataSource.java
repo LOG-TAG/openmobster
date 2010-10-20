@@ -48,7 +48,7 @@ public class TestSyncDataSource extends TestCase
 		this.createAnchor();
 		
 		//Read
-		Anchor anchor = this.syncDataSource.readAnchor();
+		Anchor anchor = this.syncDataSource.readAnchor("test://target");
 		assertNotNull("Anchor should be stored", anchor);
 		assertNotNull("Anchor ID should not be null", anchor.getId());
 		assertEquals("Anchor Target Does Not Match", "test://target", anchor.getTarget());
@@ -60,7 +60,7 @@ public class TestSyncDataSource extends TestCase
 		anchor.setNextSync("test://nextSync/updated");
 		this.syncDataSource.saveAnchor(anchor);
 		
-		anchor = this.syncDataSource.readAnchor();
+		anchor = this.syncDataSource.readAnchor("test://target");
 		assertNotNull("Anchor should be stored", anchor);
 		assertNotNull("Anchor ID should not be null", anchor.getId());
 		assertEquals("Anchor Target Does Not Match", "test://target", anchor.getTarget());
@@ -69,7 +69,7 @@ public class TestSyncDataSource extends TestCase
 		
 		//Delete
 		this.syncDataSource.deleteAnchor();
-		anchor = this.syncDataSource.readAnchor();
+		anchor = this.syncDataSource.readAnchor("test://target");
 		this.assertNull("Anchor must be deleted", anchor);
 	}
 	

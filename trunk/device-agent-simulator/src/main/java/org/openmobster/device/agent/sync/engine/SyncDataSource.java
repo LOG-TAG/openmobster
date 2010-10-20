@@ -79,18 +79,20 @@ public final class SyncDataSource
 	 * 
 	 * @return
 	 */
-	public Anchor readAnchor() throws DBException
+	public Anchor readAnchor(String target) throws DBException
 	{
-		Anchor stored = null;
-		
 		Enumeration anchors = this.database.selectAll(Database.sync_anchor);
-		if(anchors.hasMoreElements())
+		while(anchors.hasMoreElements())
 		{
 			Record record = (Record)anchors.nextElement();
-			stored = new Anchor(record);
+			String localTarget = record.getValue("target");
+			if(localTarget.equals(target))
+			{
+				return new Anchor(record);
+			}
 		}
 		
-		return stored;		
+		return null;		
 	}
 	
 	/**
@@ -98,8 +100,9 @@ public final class SyncDataSource
 	 *
 	 */
 	public void saveAnchor(Anchor anchor) throws DBException
-	{		
-		Anchor stored = this.readAnchor();
+	{
+		String target = anchor.getTarget();
+		Anchor stored = this.readAnchor(target);
 		
 		if(stored == null)
 		{
@@ -110,13 +113,22 @@ public final class SyncDataSource
 		else
 		{
 			Enumeration anchors = this.database.selectAll(Database.sync_anchor);
-			Record record = (Record)anchors.nextElement();
-			
-			//Update the existing anchor in the database
-			record.setValue("target", anchor.getTarget());			
-			record.setValue("lastSync", anchor.getLastSync());			
-			record.setValue("nextSync", anchor.getNextSync());			
-			this.database.update(Database.sync_anchor, record);			
+			if(anchors != null)
+			{
+				while(anchors.hasMoreElements())
+				{
+					Record record = (Record)anchors.nextElement();
+					String localTarget = record.getValue("target");
+					if(localTarget.equals(target))
+					{
+						//Update the existing anchor in the database
+						record.setValue("target", anchor.getTarget());			
+						record.setValue("lastSync", anchor.getLastSync());			
+						record.setValue("nextSync", anchor.getNextSync());			
+						this.database.update(Database.sync_anchor, record);
+					}
+				}
+			}
 		}		
 	}	
 	

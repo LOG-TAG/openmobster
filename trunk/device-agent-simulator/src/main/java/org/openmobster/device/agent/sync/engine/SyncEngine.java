@@ -492,7 +492,7 @@ public class SyncEngine
 	{
 		try
 		{
-			Anchor currentAnchor = syncDataSource.readAnchor();
+			Anchor currentAnchor = syncDataSource.readAnchor(target);
 			
 			if (currentAnchor != null)
 			{	
