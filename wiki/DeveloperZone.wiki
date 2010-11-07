@@ -1,4 +1,7 @@
 #summary Developer Zone
+#labels Featured
+
+*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
 
 == Introduction ==
 
@@ -8,3 +11,6 @@ This zone contains various tutorials related to OpenMobster Cloud Platform.
 == Mobilize a Hibernate Backend ==
 
 [MobilizeHibernate Android/Hibernate CRUD App] covers an Android App that operates in offline mode via synchronization. It dissects the CRUD (Create,Read,Update,Delete) usecases end-to-end. It also includes receiving Push notifications on the device, when data changes are detected in the database.
+
+
+*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
