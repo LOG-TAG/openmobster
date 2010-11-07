@@ -1,6 +1,6 @@
 #summary Project Roadmap.
 
-*Related Links:* [GetStarted Tutorial]
+*Related Links:* [GetStarted Get Started]
 
 ----
 
@@ -86,4 +86,4 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 
 ----
 
-*Related Links:* [GetStarted Tutorial]
+*Related Links:* [GetStarted Get Started]
