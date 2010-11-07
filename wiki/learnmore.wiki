@@ -1,5 +1,7 @@
 #summary OpenMobster - Open Source Mobile Cloud Platform - Overview
 
+*Related Links:* [GetStarted Get Started]
+
 === Introduction ===
 *OpenMobster* is an open source platform for integrating Mobile Apps (on-device apps) with _Cloud_ services. Its goal is to provide the infrastructure for the Mobile App developer
 to productively build apps that consume information that resides in the Cloud. It provides seamless application state/data synchronization, comet-style push notifications, 
@@ -15,13 +17,13 @@ Cloud data is made available inside an App's _local storage_. This allows the Ap
 to function seamlessly in both _online_ as well as _offline_ modes. The data is automatically synchronized with the Cloud service based on local state changes. These state changes are auto detected and does not require any device-side sync-related programming on the part of the developer.
 
 
-==== Comet-Style Push Notifications ====
+==== Push Notifications ====
 
-[http://en.wikipedia.org/wiki/Comet_%28programming%29 Comet] is an umbrella term for pushing state changes to an App from the server, instead of an App proactively requesting it. The _Push_ mechanism uses pure network/socket based approach instead of clunky methodologies like sending sms alerts or email alerts. The Push notifications happen inside the App's execution environment. 
+App state changes are proactively pushed to an App from the Cloud server. The _Push_ mechanism uses pure network/socket based approach instead of clunky methodologies like sending sms alerts or email alerts. The Push notifications happen inside the App's execution environment. 
 
 ==== Simple Mobile RPC (Remote Procedure Call) ====
 
-Provides a simple way of exposing your server-side coarse grained business services. These services are invoked via a simple RPC mechanism without any low-level programming like http-client code, client side REST library, etc on the part of the App developer. There is a simple RPC API that is used for making these calls.
+Exposes your server-side coarse grained business services. These services are invoked via a simple RPC mechanism without any low-level programming like http-client code, client side REST library, etc on the part of the App developer. There is a RPC API that is used for making these calls.
 
 
 ==== Management Console ====
@@ -60,11 +62,12 @@ Please see [Concepts Programming Concepts] for more details.
 
 === What mobile platforms are supported? ===
 
-The project is evolving at a rapid pace. At the time of the current release (2.0-M3), the supported mobile platform is *Blackberry OS version 4.3.0 and above*.
-The goal is to support all the major smartphone platforms such as *Google Android*, *Apple iPhone*, *Palm webOS*, *Nokia Symbian*, and *Windows Phone 7 series*.
+The project is evolving at a rapid pace. At the time of the current release (2.0-Beta1), the supported mobile platforms are *Android version 2.0 and above*, and *Blackberry OS version 4.3.0 and above*. The goal is to support all the major smartphone platforms such as *Apple iPhone*, *Palm webOS*, *Nokia Symbian*, and *Windows Phone 7 series*.
 More details can be found on our [roadmap project roadmap].
 
 ----
 
 === Read to write your first Mobile Cloud App? ===
-[http://code.google.com/p/openmobster/downloads/list Download] our latest stable release. A _*Hello Mobster*_ [GetStarted tutorial] is covered in more detail.
+[http://code.google.com/p/openmobster/downloads/list Download] the latest stable release.
+
+*Related Links:* [GetStarted Get Started]
