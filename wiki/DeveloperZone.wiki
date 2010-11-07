@@ -1,5 +1,5 @@
 #summary Developer Zone
-#labels Featured
+#labels Featured,Tutorials
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
 
