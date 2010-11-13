@@ -12,3 +12,21 @@ This tutorial covers the following how-to's
   * Bootstrapping the Android App using *Boot Sync* on the sync channel in the Cloud.
   * Synchronizing new information in the Cloud via *Push* notification.
   * Writing a basic Sync Channel for the Cloud Server.
+
+= Development Environment Setup =
+  * [Latest http://openmobster.googlecode.com/files/openmobster-android-2.0-snapshot.zip] OpenMobster Cloud Platform
+
+  * Java SE, JDK 6
+
+  * Apache Maven 2.2.1
+
+  * Android SDK
+
+  * SVN client to checkout the source code
+
+  * Any IDE for a little help. Not required. I use Eclipse
+
+= Getting the Sample =
+
+  * You can download the sample [http://openmobster.googlecode.com/svn/samples/offlineapp.zip]
+  * Or you can check it out using: svn co http://openmobster.googlecode.com/svn/samples/offlineapp
