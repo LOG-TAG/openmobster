@@ -29,4 +29,17 @@ This tutorial covers the following how-to's
 = Getting the Sample =
 
   * You can download the sample [http://openmobster.googlecode.com/svn/samples/offlineapp.zip]
+
   * Or you can check it out using: svn co http://openmobster.googlecode.com/svn/samples/offlineapp
+
+  * Building the sample: *mvn install*. This will compile and setup the artifacts into your local maven repository. It will also automatically download all the *OpenMobster* binaries that are needed for this App.
+
+= Running the Sample =
+
+  * Install the Android App on the device or emulator
+    * *cd* app-android 
+    * mvn -Phot-deploy install
+
+  * Run the *OpenMobster* Cloud Server including the Sync Channel from this sample
+    * *cd* cloud
+    * mvn -PrunCloud integration-test
