@@ -146,7 +146,7 @@ the details about a locally stored "Demo Bean" when selected from a list of bean
 
 It uses the MobileBean API component to access the channel data. In this case, it issues a *queryByEqualsAll* method where the criteria is the value of the *demoString* field of the bean.
 
-== Configuration --
+== Configuration ==
 
   * moblet-app.xml : Contains the *OpenMobster* configuration
  
