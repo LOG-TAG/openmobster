@@ -159,7 +159,7 @@ On the Cloud Server, the components of interest are [http://openmobster.googleco
 
 === DemoBean.java ===
 
-*DemoBean* is the POJO bean that is synchronized and made available on the device side via the generic MobileBean interface. There are a couple of aspects that it needs to meet to register with the Cloud Server.
+[http://openmobster.googlecode.com/svn/samples/offlineapp/cloud/src/main/java/com/offlineApp/cloud/sync/DemoBean.java DemoBean.java] is the POJO bean that is synchronized and made available on the device side via the generic MobileBean interface. There are a couple of aspects that it needs to meet to register with the Cloud Server.
 
   * It need to implement the _org.openmobster.server.api.model.MobileBean_ marker interface
     * {{{public class DemoBean implements MobileBean}}}
@@ -169,7 +169,7 @@ On the Cloud Server, the components of interest are [http://openmobster.googleco
 
 === DemoChannel.java ===
 
-*DemoChannel* implements the Channel lifecycle. It is a simple CRUD-oriented lifecycle. It does not have any synchronization-oriented code involved. All code is associated with dealing with the data and exposing the appropriate set of beans based on the App's requirement.
+[http://openmobster.googlecode.com/svn/samples/offlineapp/cloud/src/main/java/com/offlineApp/cloud/sync/DemoChannel.java DemoChannel.java] implements the Channel lifecycle. It is a simple CRUD-oriented lifecycle. It does not have any synchronization-oriented code involved. All code is associated with dealing with the data and exposing the appropriate set of beans based on the App's requirement.
 
 This simple SyncApp depends on the following three methods for its functionality.
 
@@ -241,4 +241,7 @@ public String[] scanForNew(Device device, Date lastScanTimestamp)
 	}
 }}}
 
-This method is used to *Push* an new beans that are added to the backend. In this case, its using mock data for demo purposes, but in a real setting this would produce the beans by querying a real backend data store.
+This method is used to *Push* any new beans that are added to the backend. In this case, its using mock data for demo purposes, but in a real setting this would produce the beans by querying a real backend data store.
+
+=== Configuration ===
+  * [http://openmobster.googlecode.com/svn/samples/offlineapp/cloud/src/main/resources/META-INF/openmobster-config.xml META-INF/openmobster-config.xml]: Contains the [http://www.jboss.org/jbossmc JBoss Microcontainer] based configuration to register the Cloud components with the *OpenMobster* Cloud Server
