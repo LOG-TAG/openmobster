@@ -154,3 +154,20 @@ It uses the MobileBean API component to access the channel data. In this case, i
 
 
 = Sync Channel Code =
+
+On the Cloud Server, the components of interest are [http://openmobster.googlecode.com/svn/samples/offlineapp/cloud/src/main/java/com/offlineApp/cloud/sync/DemoBean.java DemoBean.java] and [http://openmobster.googlecode.com/svn/samples/offlineapp/cloud/src/main/java/com/offlineApp/cloud/sync/DemoChannel.java DemoChannel.java]
+
+=== DemoBean.java ===
+
+*DemoBean* is the POJO bean that is synchronized and made available on the device side via the generic MobileBean interface. There are a couple of aspects that it needs to meet to register with the Cloud Server.
+
+  * It need to implement the _org.openmobster.server.api.model.MobileBean_ marker interface
+    * {{{
+      public class DemoBean implements MobileBean 
+      }}}
+
+  * It needs to specify a field that uniquely identifies an instance. This is done using the _org.openmobster.server.api.model.MobileBeanId_ annotation
+    * {{{
+        @MobileBeanId
+	private String beanId;
+      }}}
