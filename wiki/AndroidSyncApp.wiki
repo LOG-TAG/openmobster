@@ -99,4 +99,58 @@ When this App is launched, it waits on the Cloud Service to bootstrap this chann
 	}
 }}}
 
+Notice: It only waits for the bootstrapping via the MobileBean API component. It does not actually perform the *Boot Sync*. The *Boot Sync* is performed by the Cloud Service running inside the CloudManager App.
+
+[http://openmobster.googlecode.com/svn/samples/offlineapp/app-android/src/main/java/com/offlineApp/android/app/command/DemoDetails.java DemoDetails] component is used to display
+the details about a locally stored "Demo Bean" when selected from a list of beans on the Home screen. 
+
+{{{
+/**
+	 * Finds the appropriate bean and sets it into the CommandContext for display
+	 */
+	public void doAction(CommandContext commandContext) 
+	{
+		try
+		{
+			//Find the selected bean from the HomeScreen
+			String channel = "offlineapp_demochannel";
+			String selectedBean = (String)commandContext.getAttribute("selectedBean");
+			
+			//System.out.println("---------------------------------------");
+			//System.out.println("Bean: "+selectedBean);
+			//System.out.println("---------------------------------------");
+			
+			String details = null;
+			
+			//Lookup by state..in this case, that of 'demoString' field of the bean
+			GenericAttributeManager criteria = new GenericAttributeManager();
+			criteria.setAttribute("demoString", selectedBean);
+			MobileBean[] beans = MobileBean.queryByEqualsAll(channel, criteria);
+			MobileBean unique = beans[0];
+		
+			//Sets up the String that will be displayed
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("DemoString: "+unique.getValue("demoString"));
+			details = buffer.toString();
+			
+			//Sets up the state of the CommandContext
+			commandContext.setAttribute("details", details);
+		}
+		catch(Exception e)
+		{
+			//e.printStackTrace(System.out);
+			throw new RuntimeException(e.toString());
+		}
+	}	
+}}}
+
+It uses the MobileBean API component to access the channel data. In this case, it issues a *queryByEqualsAll* method where the criteria is the value of the *demoString* field of the bean.
+
+== Configuration --
+
+  * moblet-app.xml : Contains the *OpenMobster* configuration
+ 
+  * AndroidManifest.xml: Contains the *Android* configuration
+
+
 = Sync Channel Code =
