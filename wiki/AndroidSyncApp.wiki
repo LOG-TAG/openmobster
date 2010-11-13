@@ -148,9 +148,9 @@ It uses the MobileBean API component to access the channel data. In this case, i
 
 == Configuration ==
 
-  * moblet-app.xml : Contains the *OpenMobster* configuration
+  * [http://openmobster.googlecode.com/svn/samples/offlineapp/app-android/src/main/resources/moblet-app/moblet-app.xml moblet-app.xml] : Contains the *OpenMobster* configuration
  
-  * AndroidManifest.xml: Contains the *Android* configuration
+  * [http://openmobster.googlecode.com/svn/samples/offlineapp/app-android/AndroidManifest.xml AndroidManifest.xml]: Contains the *Android* configuration
 
 
 = Sync Channel Code =
