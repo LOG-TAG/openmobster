@@ -162,12 +162,83 @@ On the Cloud Server, the components of interest are [http://openmobster.googleco
 *DemoBean* is the POJO bean that is synchronized and made available on the device side via the generic MobileBean interface. There are a couple of aspects that it needs to meet to register with the Cloud Server.
 
   * It need to implement the _org.openmobster.server.api.model.MobileBean_ marker interface
-    * {{{
-      public class DemoBean implements MobileBean 
-      }}}
+    * {{{public class DemoBean implements MobileBean}}}
 
   * It needs to specify a field that uniquely identifies an instance. This is done using the _org.openmobster.server.api.model.MobileBeanId_ annotation
-    * {{{
-        @MobileBeanId
-	private String beanId;
-      }}}
+    * {{{@MobileBeanId private String beanId;}}}
+
+=== DemoChannel.java ===
+
+*DemoChannel* implements the Channel lifecycle. It is a simple CRUD-oriented lifecycle. It does not have any synchronization-oriented code involved. All code is associated with dealing with the data and exposing the appropriate set of beans based on the App's requirement.
+
+This simple SyncApp depends on the following three methods for its functionality.
+
+==== bootup ====
+{{{
+public List<? extends MobileBean> bootup() 
+	{
+		List<MobileBean> list = new ArrayList<MobileBean>();
+		
+		//Just get only the top 5 beans to bootup the service on device side
+		for(int i=0; i<1; i++)
+		{
+			DemoBean bean = this.demoRepository.getData().get(""+i);
+			list.add(bean);
+		}
+		
+		return list;
+	}
+}}}
+In this case, only one bean is needed to have a functional App. Other beans are synchronized in the background
+
+==== readAll() ====
+{{{
+public List<? extends MobileBean> readAll() 
+	{		
+		List<MobileBean> list = new ArrayList<MobileBean>();
+		
+		//Get all the beans
+		Set<String> beanIds = this.demoRepository.getData().keySet();
+		for(String beanId: beanIds)
+		{
+			list.add(this.demoRepository.getData().get(beanId));
+		}
+		
+		return list;
+	}
+}}}
+This method returns all the beans that the App wants to mobilize. In this case, its all of them.
+
+==== scanForNew ====
+{{{
+public String[] scanForNew(Device device, Date lastScanTimestamp) 
+	{
+		
+		List<DemoBean> newBeans = this.demoRepository.getNewBeans();
+		if(newBeans != null && !newBeans.isEmpty())
+		{
+			System.out.println("Starting Push---------------------------------------------------------------");
+			
+			//Just wait a little to make sure the device is probably in standby after triggering the push
+			//This is used to demonstrate that 'Realtime Push' is delivered even when the device is in standby mode
+			//try{Thread.currentThread().sleep(60000);}catch(Exception e){}
+			
+			//Creating stub data...In a real App setup, this information would be extracted by querying
+			//the backend for the arrival of any new data on this channel
+			List<String> newIds = new ArrayList<String>();
+			for(DemoBean newBean:newBeans)
+			{
+				System.out.println("Pushing: "+newBean.getBeanId());
+				newIds.add(newBean.getBeanId());
+			}
+			this.demoRepository.cleanNewBeans();
+			System.out.println("-------------------------------------------------------------------------");
+			
+			return newIds.toArray(new String[0]);
+		}
+		
+		return null;
+	}
+}}}
+
+This method is used to *Push* an new beans that are added to the backend. In this case, its using mock data for demo purposes, but in a real setting this would produce the beans by querying a real backend data store.
