@@ -1,0 +1,14 @@
+#summary Android Sync App: Beginner Level
+
+= Introduction =
+
+This is beginner level tutorial for writing an *Android Sync App*. Since this is a beginner level tutorial, it only covers *Boot Sync*. For a much more detailed example that covers all the four *CRUD* (Create, Read, Update, Delete) operations, see [MobilizeHibernate tutorial]. 
+
+
+= Coverage =
+
+This tutorial covers the following how-to's
+
+  * Bootstrapping the Android App using *Boot Sync* on the sync channel in the Cloud.
+  * Synchronizing new information in the Cloud via *Push* notification.
+  * Writing a basic Sync Channel for the Cloud Server.
