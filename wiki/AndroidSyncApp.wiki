@@ -1,4 +1,5 @@
 #summary Android Sync App: Beginner Level
+#labels Featured,Tutorial
 
 = Introduction =
 
