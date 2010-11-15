@@ -1,6 +1,8 @@
 #summary Android Sync App: Beginner Level
 #labels Featured,Tutorial
 
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
+
 = Introduction =
 
 This is beginner level tutorial for writing an *Android Sync App*. Since this is a beginner level tutorial, it only covers *Boot Sync*. For a much more detailed example that covers all the four *CRUD* (Create, Read, Update, Delete) operations, see [MobilizeHibernate tutorial]. 
@@ -248,3 +250,5 @@ This method is used to *Push* any new beans that are added to the backend. In th
 
 === Configuration ===
   * [http://openmobster.googlecode.com/svn/samples/offlineapp/cloud/src/main/resources/META-INF/openmobster-config.xml META-INF/openmobster-config.xml]: Contains the [http://www.jboss.org/jbossmc JBoss Microcontainer] based configuration to register the Cloud components with the *OpenMobster* Cloud Server
+
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
