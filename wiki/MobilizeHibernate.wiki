@@ -1,6 +1,8 @@
 #labels Hibernate,Sync,Push
 Android CRUD (Create,Read,Update,Delete) App with Hibernate - (Under Construction)
 
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
+
 = Introduction =
 
 Goal of this tutorial is to understand the inner workings of architecting an Android CRUD App. This App operates in *offline mode* with *synchronization* and real time *push updates* from the Cloud. Hibernate serves as the ORM layer in the Cloud for storing the originating data in a relational database system.
@@ -286,3 +288,5 @@ created on the Cloud.
 }}}
 
 For demonstration purposes, the trigger to generate new beans in the backend is actually present in the App under the "Demo Push" option of the "Home Screen". In an actual setting, new beans would be created via other external methods like enterprise web applications, CRM Workflows etc.
+
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
