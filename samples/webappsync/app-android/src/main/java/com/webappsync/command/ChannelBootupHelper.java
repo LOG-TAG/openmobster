@@ -17,6 +17,7 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 
 /**
+ * Checks to make sure that the data is loaded in the sync channel used by the App
  * 
  * @author openmobster@gmail.com
  */

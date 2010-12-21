@@ -23,6 +23,9 @@ import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 
 /**
+ * Android Activity that integrates the OpenMobster Cloud as a service. This activity displays its HTML5 based GUI via the
+ * standard 'WebView' Android component
+ * 
  * @author openmobster@gmail.com
  */
 public class SyncWebApp extends BaseCloudActivity
@@ -33,6 +36,7 @@ public class SyncWebApp extends BaseCloudActivity
     @Override
     public void displayMainScreen() 
     { 
+        //Checks if the sync channel in the Cloud has data loaded on the device
         if(!MobileBean.isBooted("offlineapp_demochannel"))
         {
             CommandContext commandContext = new CommandContext();
@@ -51,12 +55,17 @@ public class SyncWebApp extends BaseCloudActivity
         WebSettings webSettings = this.webView.getSettings();
         webSettings.setSavePassword(false);
         webSettings.setSaveFormData(false);
-        webSettings.setJavaScriptEnabled(true);
         webSettings.setSupportZoom(false);
         
+        //Javascript must be enabled to take advantage of HTML5/Javascript based UI layer
+        webSettings.setJavaScriptEnabled(true); 
+        
         this.webView.setWebChromeClient(new MyWebChromeClient());
+        
+        //Javascript bridge to the OpenMobster MobileBean service. This provides access to data loaded in via the sync channel
         this.webView.addJavascriptInterface(new MobileBeanBridge(), "mobileBean");
         
+        //The application's main content specified in index.html file bundled with the App in the asset folder
         this.webView.loadUrl("file:///android_asset/html/index.html");
     }
     
