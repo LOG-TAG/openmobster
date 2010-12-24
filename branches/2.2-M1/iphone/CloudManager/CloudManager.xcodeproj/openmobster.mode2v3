@@ -434,8 +434,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A267E55512C545B600693E1A</string>
-				<string>A267E55612C545B600693E1A</string>
+				<string>A267E61612C555A500693E1A</string>
+				<string>A267E61712C555A500693E1A</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -694,7 +694,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A267E55712C545B600693E1A</string>
+				<string>A267E61812C555A500693E1A</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -816,13 +816,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A267E55812C545B600693E1A</string>
+				<string>A267E63512C5563800693E1A</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A267E55912C545B600693E1A</string>
-				<string>A267E55A12C545B600693E1A</string>
-				<string>A267E55B12C545B600693E1A</string>
-				<string>A267E55C12C545B600693E1A</string>
-				<string>A267E55D12C545B600693E1A</string>
+				<string>A267E63612C5563800693E1A</string>
+				<string>A267E63712C5563800693E1A</string>
+				<string>A267E63812C5563800693E1A</string>
+				<string>A267E63912C5563800693E1A</string>
+				<string>A267E63A12C5563800693E1A</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -976,7 +976,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A267E55E12C545B600693E1A</string>
+				<string>A267E63B12C5563800693E1A</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
