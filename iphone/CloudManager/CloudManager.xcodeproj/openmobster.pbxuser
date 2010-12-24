@@ -1,0 +1,93 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* CloudManagerAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavSelRange = "{246, 21}";
+			sepNavVisRange = "{0, 479}";
+			sepNavWindowFrame = "{{15, 86}, {750, 787}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 1326}}";
+			sepNavSelRange = "{2671, 7}";
+			sepNavVisRange = "{2519, 233}";
+			sepNavWindowFrame = "{{447, 158}, {750, 720}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* CloudManager */ = {
+		activeExec = 0;
+		executables = (
+			A22D3DB8122698FA00C0A112 /* CloudManager */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = A22D3DB8122698FA00C0A112 /* CloudManager */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* CloudManager */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* CloudManager */,
+		);
+		codeSenseManager = A22D3DCE1226990600C0A112 /* Code sense */;
+		executables = (
+			A22D3DB8122698FA00C0A112 /* CloudManager */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 314918156;
+			PBXWorkspaceStateSaveDate = 314918156;
+		};
+		sourceControlManager = A22D3DCD1226990600C0A112 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 592}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 365}";
+		};
+	};
+	A22D3DB8122698FA00C0A112 /* CloudManager */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = CloudManager;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	A22D3DCD1226990600C0A112 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	A22D3DCE1226990600C0A112 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
