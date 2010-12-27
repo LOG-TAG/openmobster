@@ -45,9 +45,9 @@
 								<include>**/RunServer.java</include>
 							</includes>
 
-							<!-- toggle to activate debugger -->  
-							<forkMode>none</forkMode>
-							<!--  
+							<!-- toggle to activate debugger -->
+							<forkMode>none</forkMode> 
+							<!--   
 							<debugForkedProcess>true</debugForkedProcess>
 							-->
 						</configuration>

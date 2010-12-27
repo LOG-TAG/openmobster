@@ -85,9 +85,9 @@ public class ServerHandler extends IoHandlerAdapter
 					
     public void messageSent(IoSession session, Object message) throws Exception
     {
-    	log.debug("---------------------------------");
-		log.debug("Message(Sent)="+message);
-		log.debug("---------------------------------");
+    	//log.debug("---------------------------------");
+		//log.debug("Message(Sent)="+message);
+		//log.debug("---------------------------------");
     }
         
 	public void exceptionCaught(IoSession session, Throwable t) throws Exception 
@@ -98,9 +98,9 @@ public class ServerHandler extends IoHandlerAdapter
 	//------------------------------------------------------------------------------------------------------------------------
 	public void messageReceived(IoSession session, Object message) 
 	{
-		log.debug("---------------------------------");
-		log.debug("Message(Received)="+message);
-		log.debug("---------------------------------");																				
+		//log.debug("---------------------------------");
+		//log.debug("Message(Received)="+message);
+		//log.debug("---------------------------------");																				
 		try
 		{							
 			//Now route this message to the proper Processor

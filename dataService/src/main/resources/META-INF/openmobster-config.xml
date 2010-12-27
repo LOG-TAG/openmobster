@@ -12,9 +12,10 @@
    	  	Uncomment: Turns this into a secure SSL based connection
    	  -->
    	  <!--  
-   	  <property name="keyStoreLocation">/openmobster/openmobster.keystore</property> 
-   	  <property name="keyStorePassword"></property>
+   	  <property name="keyStoreLocation">/Users/openmobster/openmobster.keystore</property> 
+   	  <property name="keyStorePassword">password</property>
    	  -->
+   	  
    	  <property name="handler"><inject bean="dataService://ServerHandler"/></property>
    	  
    	  <property name="payloadFilter">

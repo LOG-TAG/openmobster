@@ -35,6 +35,13 @@
 			<artifactId>device-sdk</artifactId>
 			<classifier>full</classifier>
 		</dependency>
+		<dependency>
+			<groupId>org.openmobster.core.dev.tools
+			</groupId>
+			<artifactId>android-devcloud</artifactId>
+			<version>${openmobster.version}</version>
+			<type>apk</type>
+		</dependency>
 
 		<!-- 
 			More Dependencies can be added here 
@@ -306,6 +313,60 @@
 									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
 										<arg
 										line="install -r ${settings.localRepository}/org/openmobster/core/dev/tools/android-devcloud/${openmobster.version}/android-devcloud-${openmobster.version}.apk" 
+										/>
+									</exec>
+								</tasks>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			  </plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>app-hot-deploy</id>
+			<build>
+				<plugins>
+					<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+					</configuration>
+				</plugin>
+
+				<!--  Android App preparation..Simulator mode -->
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2
+					</groupId>
+					<artifactId>maven-android-plugin</artifactId>
+					<configuration>
+						<sdk>
+							<path>${env.ANDROID_HOME}</path>
+							<platform>${version.android.api}</platform>
+						</sdk>
+						<deleteConflictingFiles>true</deleteConflictingFiles>
+					</configuration>
+					<extensions>true</extensions>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins
+					</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks> 
+									<echo>Hot Deploying the Android App....</echo>
+									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
+										<arg
+										line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" 
 										/>
 									</exec>
 								</tasks>
