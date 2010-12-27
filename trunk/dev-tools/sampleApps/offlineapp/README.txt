@@ -31,33 +31,22 @@ mvn install
 This command builds all the artifacts. 
 
 
-**********************************************									
-Developer Productivity Improvement:          *
-**********************************************
-BlackBerry Development:
+Android Device/Emulator Deployment
+------------------------------------
+mvn -Phot-deploy install
 
-To improve development productivity "mvn package or mvn install" command installs the required "OpenMobster MobileCloud" 
-into the specified Blackeberry Simulator. 
+This installs the Offline App as well as the 'development mode' CloudManager App
 
-The location of the simulator is specified in the "RIM_JDE_HOME" environment variable.
-
-
-Android Development:
-
-For Android, the development mode Mobile Cloud is installed using the android-devcloud module using the following maven command:
-
-cd dev-tools/android-devcloud: mvn package com.jayway.maven.plugins.android.generation2:maven-android-plugin:deploy
-
-
-This Development Mode Mobile Cloud binary improves developer productivity by automating the manual provisioning 
+This 'development mode' CloudManager App improves developer productivity by automating the manual provisioning 
 processes by automatically provisioning a Cloud account under the name: "blah2@gmail.com".
 
-Note: This is a strict development stage only optimization and should not be used in a real world setting.
+Note: This is a strict development stage only optimization and should not be used in a production setting.
+
+
 
 **********************************************									
 Standalone "Development Mode" Cloud Server:  *
 **********************************************
-
 On the Cloud-side of things, there is a fully functional Standalone "Development Mode" Cloud Server provided 
 that you can run right from inside your Maven environment.
 

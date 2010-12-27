@@ -31,6 +31,8 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ArrayAdapter;
 
 /**
+ * This is the home screen of the App. It displays the 'List' of data synchronized with the Cloud. It also presents a 'Menu' for displaying other functions of the App
+ * 
  * @author openmobster@gmail.com
  */
 public class HomeScreen extends Screen
@@ -38,18 +40,24 @@ public class HomeScreen extends Screen
 	private Integer screenId;
 	
 	@Override
+	/**
+	 * Invoked by the MVC runtime so that the screen can perform its layout and obtain a screen id
+	 */
 	public void render()
 	{
 		try
 		{
+			//Gets the currently active 'Activity' instance
 			final Activity currentActivity = (Activity)Registry.getActiveInstance().
 			getContext();
 			
+			//Gets the layout for this screen
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String home = "home";
 			Class clazz = Class.forName(layoutClass);
 			Field field = clazz.getField(home);
 			
+			//Obtains a screen Id
 			this.screenId = field.getInt(clazz);						
 		}
 		catch(Exception e)
@@ -64,20 +72,33 @@ public class HomeScreen extends Screen
 	}
 	
 	@Override
+	/**
+	 * Invoked by the MVC runtime to get the unique screen Id for displaying the screen
+	 */
 	public Object getContentPane()
 	{
 		return this.screenId;
 	}
 	
 	@Override
+	/**
+	 * Invoked by the MVC runtime once the screen is rendered. This callback allows the screen setup the business state of the screen
+	 * and update the UI to show this information
+	 */
 	public void postRender()
 	{
+		//Gets the currently active 'Activity' instance
 		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
 		getContext();
 		
+		//Gets the 'Cloud' configuration
 		AppResources res = Services.getInstance().getResources();
 		Configuration configuration = Configuration.getInstance(listApp);
 		
+		//Makes sure that the device is activated with the 'Cloud' as a security check. If not, a message is shown and the App is closed
+		//In order to activate the device, use the 'DevCloud' app and the 'Activate' function. You may have to use the 'Change IP' option
+		//from the 'DevCloud' menu to point to the proper IP address of the 'Cloud' instance. By default it uses: 192.168.1.102 
+		//'DevCloud' is automatically installed on the device/emulator when the 'mvn -Phot-deploy install' command is used to deploy this App.
 		if(!configuration.isActive())
 		{
 			ViewHelper.getOkModalWithCloseApp(listApp, "App Error", res.localize("inactive_message","inactive_message")).
@@ -86,10 +107,35 @@ public class HomeScreen extends Screen
 			return;
 		}
 		
-		//Show the List of the "Demo Beans" stored on the device
-		if(MobileBean.isBooted("offlineapp_demochannel"))
+		//Check to see if the 'Demo Beans' are synchronized from the 'Cloud'. If not, a 'Boot Sync' is issued.
+		if(!MobileBean.isBooted("offlineapp_demochannel"))
 		{
-			MobileBean[] demoBeans = MobileBean.readAll("offlineapp_demochannel");
+			//Boots up the 'Demo Bean' sync channel
+			CommandContext commandContext = new CommandContext();
+			commandContext.setTarget("/channel/bootup/helper");
+			Services.getInstance().getCommandService().execute(commandContext);
+			
+			return;
+		}
+		
+		//Show the List of "Demo Beans" synchronized from the 'Cloud'. 
+		this.showList(listApp);
+		
+		//Setup the App Menu
+		this.setMenuItems();
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Displays a 'List' of 'Demo Beans'
+	 */
+	private void showList(ListActivity listApp)
+	{
+		//Reads the synchronized/locally stored demo beans from the 'offlineapp_demochannel' channel on the device
+		MobileBean[] demoBeans = MobileBean.readAll("offlineapp_demochannel");
+		
+		//Shows these beans in a List
+		if(demoBeans != null && demoBeans.length >0)
+		{
 			String[] ui = new String[demoBeans.length];
 			for(int i=0,size=ui.length;i<size;i++)
 			{
@@ -103,18 +149,21 @@ public class HomeScreen extends Screen
 			ListItemClickListener clickListener = new ClickListener(demoBeans);
 			NavigationContext.getInstance().addClickListener(clickListener);
 		}
-		
-		//Setup the App Menu
-		this.setMenuItems();
 	}
 	
+	/**
+	 * Sets up the Menu for this App
+	 */
 	private void setMenuItems()
 	{
+		//Get an instance of the 'Options Menu' from the MVC runtime
 		Menu menu = (Menu)NavigationContext.getInstance().
 		getAttribute("options-menu");
 		
+		
 		if(menu != null)
 		{
+			//Reset Channel: This resets the 'offlineapp_demochannel' by issuing a 'Boot Sync'
 			MenuItem resetChannel = menu.add(Menu.NONE, Menu.NONE, 0, "Reset Channel");
 			resetChannel.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
@@ -128,6 +177,8 @@ public class HomeScreen extends Screen
 				}
 			});
 			
+			//Push Trigger: This issues a 'Push Trigger' to demonstrate 'Cloud Push' capabilities. This is for demo only.
+			//In an actual app, the data state changes on the 'Cloud' serve as the trigger to initiate the Push
 			MenuItem pushTrigger = menu.add(Menu.NONE, Menu.NONE, 1, "Push Trigger");
 			pushTrigger.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
@@ -141,6 +192,7 @@ public class HomeScreen extends Screen
 				}
 			});
 			
+			//Make an RPC invocation: Demonstrates an RPC invocation to a service in the 'Cloud'
 			MenuItem rpc = menu.add(Menu.NONE, Menu.NONE, 0, "Make RPC Invocation");
 			rpc.setOnMenuItemClickListener(new OnMenuItemClickListener()
 			{
@@ -156,6 +208,11 @@ public class HomeScreen extends Screen
 		}
 	}
 	
+	/**
+	 * ClickListener for the 'Demo Beans' list
+	 * 
+	 * @author openmobster@gmail.com
+	 */
 	private static class ClickListener implements ListItemClickListener
 	{
 		private MobileBean[] activeBeans;
@@ -167,9 +224,11 @@ public class HomeScreen extends Screen
 		
 		public void onClick(ListItemClickEvent clickEvent)
 		{
+			//Gets the "Demo Bean" in question
 			int selectedIndex = clickEvent.getPosition();
 			MobileBean selectedBean = activeBeans[selectedIndex];
 			
+			//Issues a request to show the details associated with this bean
 			CommandContext commandContext = new CommandContext();
 			commandContext.setTarget("/demo/details");
 			commandContext.setAttribute("selectedBean", selectedBean.getValue("demoString"));
