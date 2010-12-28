@@ -5,18 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-
 #import <UIKit/UIKit.h>
-#import "ModalViewLauncherDelegate.h"
 
-
-@interface SecurityConfig : UIViewController 
-{
-	@private
-	id<ModalViewLauncherDelegate> delegate;
-}
-
-@property(nonatomic,retain) id<ModalViewLauncherDelegate> delegate;
-
--(IBAction) cancel:(id) sender;
+/**
+ * 
+ * @author openmobster@gmail.com
+ */
+@protocol UICommandDelegate
+-(void)doViewAfter:(CommandContext *)commandContext;
+-(void)doViewError:(CommandContext *)commandContext;
 @end

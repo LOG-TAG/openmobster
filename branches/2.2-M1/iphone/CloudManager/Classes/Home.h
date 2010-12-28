@@ -1,20 +1,17 @@
-//
-//  Home.h
-//  CloudManager
-//
-//  Created by openmobster on 12/22/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
+/**
+ * Copyright (c) {2003,2010} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 
 #import <UIKit/UIKit.h>
 #import "ModalViewLauncherDelegate.h"
 #import "ModalActivateDevice.h"
 #import "SecurityConfig.h"
-#import "AsyncSubmit.h"
 
 @interface Home : UIViewController<UITableViewDataSource,UITableViewDelegate,ModalViewLauncherDelegate> 
 {
 }
-
--(IBAction) menu:(id) sender;
 @end

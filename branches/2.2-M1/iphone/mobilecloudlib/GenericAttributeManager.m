@@ -9,9 +9,32 @@
 	{
 		//Initialize the dictionary
 		attributes = [NSMutableDictionary dictionary];
+		isRetained = NO;
 	}
 	
 	return self;
+}
+
+-(id)initWithRetention
+{
+	if(self = [super init])
+	{
+		//Initialize the dictionary
+		attributes = [[NSMutableDictionary alloc] init];
+		isRetained = YES;
+	}
+	
+	return self;
+}
+
+-(void)dealloc
+{
+	if(isRetained)
+	{
+		[attributes release];
+		isRetained = NO;
+	}
+	[super dealloc];
 }
 
 +(id) withInit

@@ -6,17 +6,17 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-#import <UIKit/UIKit.h>
-#import "ModalViewLauncherDelegate.h"
+#import <Foundation/Foundation.h>
+#import "RemoteCommand.h"
 
-
-@interface SecurityConfig : UIViewController 
+/**
+ * 
+ * @author openmobster@gmail.com
+ */
+@interface ActivateDevice : NSObject<RemoteCommand> 
 {
-	@private
-	id<ModalViewLauncherDelegate> delegate;
+
 }
 
-@property(nonatomic,retain) id<ModalViewLauncherDelegate> delegate;
-
--(IBAction) cancel:(id) sender;
++(id)withInit;
 @end

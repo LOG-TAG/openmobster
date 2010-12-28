@@ -4,7 +4,10 @@
 {
 	@private
 	NSMutableDictionary *attributes;
+	BOOL isRetained;
 }
+
+-(id)initWithRetention;
 
 +(id) withInit;
 

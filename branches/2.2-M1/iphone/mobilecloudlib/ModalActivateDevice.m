@@ -1,10 +1,10 @@
-//
-//  ModalActivateDevice.m
-//  CloudManager
-//
-//  Created by openmobster on 12/22/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
+/**
+ * Copyright (c) {2003,2010} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 
 #import "ModalActivateDevice.h"
 
@@ -59,7 +59,7 @@
 
 -(void)dealloc 
 {
-	[delegate release];
+	[(NSObject *)delegate release];
 	[super dealloc];
 }
 
@@ -70,10 +70,31 @@
 
 -(IBAction) submit:(id) sender
 {
-	AsyncSubmit *async = [AsyncSubmit withInit:self];
-	[async start];
+	CommandContext *commandContext = [CommandContext withInit:self];
+	[commandContext setTarget:[ActivateDevice withInit]];
+	CommandService *service = [CommandService getInstance];
+	
+	//start the service invocation
+	[service execute:commandContext];
 }
 
+-(void)doViewAfter:(CommandContext *)commandContext
+{
+	[delegate callback:nil];
+}
+
+-(void)doViewError:(CommandContext *)commandContext
+{
+	NSString *code = [commandContext getErrorCode];
+	NSString *message = [commandContext getErrorMessage];
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message 
+													delegate:nil 
+										   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	[dialog show];
+	
+	[delegate callback:nil];
+}
 //UITableViewDataSource and UITableViewDelegate protocol implementation
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -191,10 +212,5 @@
 		}
 	}
 	return local;
-}
-
--(void)asyncCallback
-{
-	[delegate callback:nil];
 }
 @end
