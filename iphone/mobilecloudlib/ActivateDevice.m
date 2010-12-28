@@ -6,17 +6,24 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-#import <UIKit/UIKit.h>
-#import "ModalViewLauncherDelegate.h"
+#import "ActivateDevice.h"
 
 
-@interface SecurityConfig : UIViewController 
+/**
+ * 
+ * @author openmobster@gmail.com
+ */
+@implementation ActivateDevice
+
++(id)withInit
 {
-	@private
-	id<ModalViewLauncherDelegate> delegate;
+	ActivateDevice *instance = [[ActivateDevice alloc] init];
+	instance = [instance autorelease];
+	return instance;
 }
 
-@property(nonatomic,retain) id<ModalViewLauncherDelegate> delegate;
-
--(IBAction) cancel:(id) sender;
+-(void)doAction:(CommandContext *)commandContext
+{
+	[NSThread sleepForTimeInterval:5];
+}
 @end

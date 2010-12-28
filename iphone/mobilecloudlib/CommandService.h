@@ -7,23 +7,20 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "ActivityIndicatorView.h"
+#import "Service.h"
+#import "CommandContext.h"
+#import "ExecuteOnEDT.h"
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-@interface AsyncSubmit : NSObject 
+@interface CommandService : Service 
 {
-	@private
-	NSOperationQueue *queue;
-	UIViewController *caller;
-	ActivityIndicatorView *activityIndicatorView;
+
 }
 
-+(id)withInit:(UIViewController *) caller;
++(CommandService *)getInstance;
 
--(void)start;
--(void)execute;
--(void)callback;
+-(void)execute:(CommandContext *)commandContext;
 @end

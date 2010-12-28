@@ -16,8 +16,6 @@
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
 		A267E58112C5479000693E1A /* SecurityConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57B12C5478F00693E1A /* SecurityConfig.h */; };
 		A267E58212C5479000693E1A /* SecurityConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E57C12C5479000693E1A /* SecurityConfig.m */; };
-		A267E59112C5484300693E1A /* AsyncSubmit.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58C12C5484300693E1A /* AsyncSubmit.h */; };
-		A267E59212C5484300693E1A /* AsyncSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58D12C5484300693E1A /* AsyncSubmit.m */; };
 		A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58E12C5484300693E1A /* ActivityIndicatorView.h */; };
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
 		A28F5C811246982C00EA2E90 /* PersistentMobileObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A28F5C7F1246982C00EA2E90 /* PersistentMobileObject.h */; };
@@ -27,6 +25,21 @@
 		A28F5CFA124BE66D00EA2E90 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
 		A28F5E09124E88A600EA2E90 /* MobileObjectDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = A28F5E07124E88A600EA2E90 /* MobileObjectDatabase.h */; };
 		A28F5E0A124E88A600EA2E90 /* MobileObjectDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A28F5E08124E88A600EA2E90 /* MobileObjectDatabase.m */; };
+		A2962BF912C9118600928950 /* AppException.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962BF712C9118600928950 /* AppException.h */; };
+		A2962BFA12C9118600928950 /* AppException.m in Sources */ = {isa = PBXBuildFile; fileRef = A2962BF812C9118600928950 /* AppException.m */; };
+		A2962C1112C9363400928950 /* CommandContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C0F12C9363400928950 /* CommandContext.h */; };
+		A2962C1212C9363400928950 /* CommandContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A2962C1012C9363400928950 /* CommandContext.m */; };
+		A2962C2512C93D8E00928950 /* Command.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C2412C93D8E00928950 /* Command.h */; };
+		A2962C2712C93DAA00928950 /* UIInitiatedCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C2612C93DAA00928950 /* UIInitiatedCommand.h */; };
+		A2962C2B12C93DE300928950 /* SystemInitiatedCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C2A12C93DE300928950 /* SystemInitiatedCommand.h */; };
+		A2962C3512C93EC700928950 /* RemoteCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C3412C93EC700928950 /* RemoteCommand.h */; };
+		A2962C3B12C9427800928950 /* CommandService.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C3912C9427800928950 /* CommandService.h */; };
+		A2962C3C12C9427800928950 /* CommandService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2962C3A12C9427800928950 /* CommandService.m */; };
+		A2962C4F12C947B300928950 /* ExecuteOnEDT.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C4D12C947B300928950 /* ExecuteOnEDT.h */; };
+		A2962C5012C947B300928950 /* ExecuteOnEDT.m in Sources */ = {isa = PBXBuildFile; fileRef = A2962C4E12C947B300928950 /* ExecuteOnEDT.m */; };
+		A2962C8812CA16BB00928950 /* ActivateDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */; };
+		A2962C8912CA16BB00928950 /* ActivateDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */; };
+		A2962DD212CA567900928950 /* UICommandDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962DD112CA567900928950 /* UICommandDelegate.h */; };
 		A29D56FD12849BB000DAE753 /* NetworkConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D56FB12849BB000DAE753 /* NetworkConnector.h */; };
 		A29D56FE12849BB000DAE753 /* NetworkConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D56FC12849BB000DAE753 /* NetworkConnector.m */; };
 		A29D570212849BCE00DAE753 /* NetSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D570012849BCE00DAE753 /* NetSession.h */; };
@@ -271,12 +284,10 @@
 		A267E57712C5478F00693E1A /* ModalActivateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalActivateDevice.h; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.h"; sourceTree = "<absolute>"; };
 		A267E57812C5478F00693E1A /* ModalActivateDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalActivateDevice.m; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.m"; sourceTree = "<absolute>"; };
 		A267E57912C5478F00693E1A /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.xib"; sourceTree = "<absolute>"; };
-		A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewLauncherDelegate.h; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalViewLauncherDelegate.h"; sourceTree = "<absolute>"; };
+		A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewLauncherDelegate.h; sourceTree = "<group>"; };
 		A267E57B12C5478F00693E1A /* SecurityConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityConfig.h; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.h"; sourceTree = "<absolute>"; };
 		A267E57C12C5479000693E1A /* SecurityConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityConfig.m; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.m"; sourceTree = "<absolute>"; };
 		A267E57D12C5479000693E1A /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.xib"; sourceTree = "<absolute>"; };
-		A267E58C12C5484300693E1A /* AsyncSubmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSubmit.h; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/AsyncSubmit.h"; sourceTree = DEVELOPER_DIR; };
-		A267E58D12C5484300693E1A /* AsyncSubmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSubmit.m; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/AsyncSubmit.m"; sourceTree = DEVELOPER_DIR; };
 		A267E58E12C5484300693E1A /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		A267E58F12C5484300693E1A /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
 		A267E59012C5484300693E1A /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
@@ -285,6 +296,21 @@
 		A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = mobileobject.xcdatamodel; sourceTree = "<group>"; };
 		A28F5E07124E88A600EA2E90 /* MobileObjectDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileObjectDatabase.h; sourceTree = "<group>"; };
 		A28F5E08124E88A600EA2E90 /* MobileObjectDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileObjectDatabase.m; sourceTree = "<group>"; };
+		A2962BF712C9118600928950 /* AppException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppException.h; sourceTree = "<group>"; };
+		A2962BF812C9118600928950 /* AppException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppException.m; sourceTree = "<group>"; };
+		A2962C0F12C9363400928950 /* CommandContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandContext.h; sourceTree = "<group>"; };
+		A2962C1012C9363400928950 /* CommandContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandContext.m; sourceTree = "<group>"; };
+		A2962C2412C93D8E00928950 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		A2962C2612C93DAA00928950 /* UIInitiatedCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIInitiatedCommand.h; sourceTree = "<group>"; };
+		A2962C2A12C93DE300928950 /* SystemInitiatedCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInitiatedCommand.h; sourceTree = "<group>"; };
+		A2962C3412C93EC700928950 /* RemoteCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteCommand.h; sourceTree = "<group>"; };
+		A2962C3912C9427800928950 /* CommandService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandService.h; sourceTree = "<group>"; };
+		A2962C3A12C9427800928950 /* CommandService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandService.m; sourceTree = "<group>"; };
+		A2962C4D12C947B300928950 /* ExecuteOnEDT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecuteOnEDT.h; sourceTree = "<group>"; };
+		A2962C4E12C947B300928950 /* ExecuteOnEDT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExecuteOnEDT.m; sourceTree = "<group>"; };
+		A2962C8612CA16BB00928950 /* ActivateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivateDevice.h; sourceTree = "<group>"; };
+		A2962C8712CA16BB00928950 /* ActivateDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateDevice.m; sourceTree = "<group>"; };
+		A2962DD112CA567900928950 /* UICommandDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommandDelegate.h; sourceTree = "<group>"; };
 		A29D56FB12849BB000DAE753 /* NetworkConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnector.h; sourceTree = "<group>"; };
 		A29D56FC12849BB000DAE753 /* NetworkConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnector.m; sourceTree = "<group>"; };
 		A29D570012849BCE00DAE753 /* NetSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetSession.h; sourceTree = "<group>"; };
@@ -644,8 +670,8 @@
 		A267E58B12C5482800693E1A /* service */ = {
 			isa = PBXGroup;
 			children = (
-				A267E58C12C5484300693E1A /* AsyncSubmit.h */,
-				A267E58D12C5484300693E1A /* AsyncSubmit.m */,
+				A2962C8612CA16BB00928950 /* ActivateDevice.h */,
+				A2962C8712CA16BB00928950 /* ActivateDevice.m */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -663,11 +689,9 @@
 		A267E5FA12C54ED300693E1A /* view */ = {
 			isa = PBXGroup;
 			children = (
-				A267E58E12C5484300693E1A /* ActivityIndicatorView.h */,
-				A267E58F12C5484300693E1A /* ActivityIndicatorView.m */,
+				A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */,
 				A267E57712C5478F00693E1A /* ModalActivateDevice.h */,
 				A267E57812C5478F00693E1A /* ModalActivateDevice.m */,
-				A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */,
 				A267E57B12C5478F00693E1A /* SecurityConfig.h */,
 				A267E57C12C5479000693E1A /* SecurityConfig.m */,
 			);
@@ -677,6 +701,21 @@
 		A267E5FB12C54F2500693E1A /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				A267E58E12C5484300693E1A /* ActivityIndicatorView.h */,
+				A267E58F12C5484300693E1A /* ActivityIndicatorView.m */,
+				A2962BF712C9118600928950 /* AppException.h */,
+				A2962BF812C9118600928950 /* AppException.m */,
+				A2962C0F12C9363400928950 /* CommandContext.h */,
+				A2962C1012C9363400928950 /* CommandContext.m */,
+				A2962C2412C93D8E00928950 /* Command.h */,
+				A2962C2612C93DAA00928950 /* UIInitiatedCommand.h */,
+				A2962C2A12C93DE300928950 /* SystemInitiatedCommand.h */,
+				A2962C3412C93EC700928950 /* RemoteCommand.h */,
+				A2962C3912C9427800928950 /* CommandService.h */,
+				A2962C3A12C9427800928950 /* CommandService.m */,
+				A2962C4D12C947B300928950 /* ExecuteOnEDT.h */,
+				A2962C4E12C947B300928950 /* ExecuteOnEDT.m */,
+				A2962DD112CA567900928950 /* UICommandDelegate.h */,
 			);
 			name = framework;
 			sourceTree = "<group>";
@@ -1184,8 +1223,17 @@
 				A267E57E12C5479000693E1A /* ModalActivateDevice.h in Headers */,
 				A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */,
 				A267E58112C5479000693E1A /* SecurityConfig.h in Headers */,
-				A267E59112C5484300693E1A /* AsyncSubmit.h in Headers */,
 				A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */,
+				A2962BF912C9118600928950 /* AppException.h in Headers */,
+				A2962C1112C9363400928950 /* CommandContext.h in Headers */,
+				A2962C2512C93D8E00928950 /* Command.h in Headers */,
+				A2962C2712C93DAA00928950 /* UIInitiatedCommand.h in Headers */,
+				A2962C2B12C93DE300928950 /* SystemInitiatedCommand.h in Headers */,
+				A2962C3512C93EC700928950 /* RemoteCommand.h in Headers */,
+				A2962C3B12C9427800928950 /* CommandService.h in Headers */,
+				A2962C4F12C947B300928950 /* ExecuteOnEDT.h in Headers */,
+				A2962C8812CA16BB00928950 /* ActivateDevice.h in Headers */,
+				A2962DD212CA567900928950 /* UICommandDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1587,8 +1635,12 @@
 				A29D6C6E12B8FF1B00DAE753 /* Channel.m in Sources */,
 				A267E57F12C5479000693E1A /* ModalActivateDevice.m in Sources */,
 				A267E58212C5479000693E1A /* SecurityConfig.m in Sources */,
-				A267E59212C5484300693E1A /* AsyncSubmit.m in Sources */,
 				A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */,
+				A2962BFA12C9118600928950 /* AppException.m in Sources */,
+				A2962C1212C9363400928950 /* CommandContext.m in Sources */,
+				A2962C3C12C9427800928950 /* CommandService.m in Sources */,
+				A2962C5012C947B300928950 /* ExecuteOnEDT.m in Sources */,
+				A2962C8912CA16BB00928950 /* ActivateDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

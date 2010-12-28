@@ -1,10 +1,10 @@
-//
-//  Home.m
-//  CloudManager
-//
-//  Created by openmobster on 12/22/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
+/**
+ * Copyright (c) {2003,2010} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 
 #import "Home.h"
 
@@ -34,24 +34,6 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	
-	//Perform customization on the main navigation controller
-	/*CloudManagerAppDelegate *appDelegate = (CloudManagerAppDelegate *)[UIApplication sharedApplication].delegate;
-	
-	UINavigationController *mainView = appDelegate.mainView;
-	
-	//Add the Menu Item to the toolbar
-	UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	spacer = [spacer autorelease];
-	
-	//Create a Menu button item
-	UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered 
-																  target:self 
-																  action:@selector(exit:)];
-	menuButton = [menuButton autorelease];
-	
-	//Add to the toolbar
-	mainView.topViewController.toolbarItems = [NSArray arrayWithObjects:spacer,menuButton,spacer,nil];*/
 }
 
 -(void)didReceiveMemoryWarning 
@@ -181,20 +163,5 @@
 -(void)callback:(NSDictionary *)returnVal
 {
 	[self dismissModalViewControllerAnimated:YES];
-}
-
-//handling interactions from the toolbar
--(IBAction) menu:(id) sender
-{
-	UINavigationController *mainView = self.navigationController;
-	
-	UIActionSheet *menu = [[UIActionSheet alloc] initWithTitle:@"Menu" 
-													  delegate:nil 
-											 cancelButtonTitle:nil 
-										destructiveButtonTitle:nil 
-											 otherButtonTitles:@"Exit",nil];
-	menu = [menu autorelease];
-	
-	[menu showFromToolbar:mainView.toolbar];
 }
 @end
