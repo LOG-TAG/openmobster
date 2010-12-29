@@ -19,10 +19,11 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {    
-    
     // Override point for customization after application launch.
 	[window addSubview:mainView.view];
     [window makeKeyAndVisible];
+	
+	[self startCloudService];
 	
 	return YES;
 }
@@ -43,8 +44,9 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
-	//Kernel *kernel = [Kernel getInstance];
-	//[kernel shutdown];
+	
+	//Shutdown the service layer kernel
+	[self stopCloudService];
 }
 
 
@@ -53,9 +55,9 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-	//Kernel *kernel = [Kernel getInstance];
-	//[kernel startup];
-	[window addSubview:mainView.view];
+	
+	//Startup the service layer kernel
+	[self startCloudService];
 }
 
 
@@ -73,6 +75,7 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+	[self stopCloudService];
 }
 
 
@@ -92,5 +95,18 @@
 	[mainView release];
     [window release];
     [super dealloc];
+}
+
+//---OpenMobster Cloud Layer integration-------------------------------------------------------
+-(void)startCloudService
+{
+	Kernel *kernel = [Kernel getInstance];
+	[kernel startup];
+}
+
+-(void)stopCloudService
+{
+	Kernel *kernel = [Kernel getInstance];
+	[kernel shutdown];
 }
 @end

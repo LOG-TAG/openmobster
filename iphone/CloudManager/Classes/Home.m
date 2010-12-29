@@ -65,10 +65,10 @@
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	UITableViewCell *local = [tableView dequeueReusableCellWithIdentifier:@"control-panel"];
+	UITableViewCell *local = [tableView dequeueReusableCellWithIdentifier:@"home"];
 	if(local == nil)
 	{
-		local = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"control-panel"];
+		local = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"home"];
 		local = [local autorelease];
 	}
 	
@@ -77,15 +77,15 @@
 	switch(index)
 	{
 		case 0:
-			local.textLabel.text = @"Activate Device";
+			local.textLabel.text = @"Hello World";
 		break;
 			
 		case 1:
-			 local.textLabel.text = @"Security";
+			local.textLabel.text = @"Launch Cloud Manager";
 		break;
 			
 		case 2:
-			 local.textLabel.text = @"Cloud Status";
+			local.textLabel.text = @"Launch Device Activation";
 		break;
 	}
 	
@@ -105,63 +105,20 @@
 	
 	if(index == 0)
 	{
-		//Activate Device
-		ModalActivateDevice *modalView = [[ModalActivateDevice alloc] initWithNibName:@"ModalActivateDevice" bundle:nil];
-		modalView.delegate = self;
-	
-		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
-		[modalView release];
-	
-		//Add the Title
-		navCtrl.navigationBar.topItem.title = @"Activate Device";
-	
-		//Add the Cancel button to the navbar
-		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:modalView action:@selector(cancel:)];
-		navCtrl.topViewController.navigationItem.leftBarButtonItem = cancelButton;
-		[cancelButton release];
-		
-		//Add the Activate button to the navbar
-		UIBarButtonItem *activateButton = [[UIBarButtonItem alloc] initWithTitle:@"Activate" style:UIBarButtonItemStyleDone target:modalView action:@selector(submit:)];
-		navCtrl.topViewController.navigationItem.rightBarButtonItem = activateButton;
-		[activateButton release];
-	
-	
-		[self presentModalViewController:navCtrl animated:YES];
-		[navCtrl release];
-	}
-	else if(index == 1)
-	{
-		//Security
-		SecurityConfig *modalView = [[SecurityConfig alloc] initWithNibName:@"SecurityConfig" bundle:nil];
-		modalView.delegate = self;
-		
-		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
-		[modalView release];
-		
-		//Add the Title
-		navCtrl.navigationBar.topItem.title = @"Security";
-		
-		//Add the Cancel button to the navbar
-		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:modalView action:@selector(cancel:)];
-		navCtrl.topViewController.navigationItem.leftBarButtonItem = cancelButton;
-		[cancelButton release];
-		
-		
-		[self presentModalViewController:navCtrl animated:YES];
-		[navCtrl release];
-	}	
-	else if(index == 2)
-	{
-		//Cloud Status
-		//Dialog Popup prototype
-		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Hello!!" message:@"Hello World!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//Launch CloudManager
+		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Hello World!!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		dialog = [dialog autorelease];
 		[dialog show];
 	}
-}
-//protocol for prototyping Modal ViewController
--(void)callback:(NSDictionary *)returnVal
-{
-	[self dismissModalViewControllerAnimated:YES];
+	else if(index == 1)
+	{
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel launchCloudManager:self];
+	}
+	else if(index == 2)
+	{
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel launchDeviceActivation:self];
+	}
 }
 @end

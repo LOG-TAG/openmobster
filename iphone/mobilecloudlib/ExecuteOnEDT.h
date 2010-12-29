@@ -11,8 +11,11 @@
 #import "ActivityIndicatorView.h"
 #import "UICommandDelegate.h"
 #import "SystemException.h"
-#import "AppException.h"
 #import "Command.h"
+#import "LocalCommand.h"
+#import "RemoteCommand.h"
+#import "AsyncCommand.h"
+#import "BusyCommand.h"
 
 /**
  * 
@@ -36,4 +39,11 @@
 -(void)startBusyCommand;
 -(void)invokeBusyAction;
 -(void)endBusyCommand;
+
+-(void)startAsyncCommand;
+-(void)invokeAsyncAction;
+-(void)endAsyncCommand;
+
+-(void)startLocalCommand;
+-(void)endLocalCommand;
 @end

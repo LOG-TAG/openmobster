@@ -7,17 +7,28 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RemoteCommand.h"
-#import "Configuration.h"
+#import <UIKit/UIKit.h>
+#import "CommandService.h"
+#import "CloudManager.h"
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-@interface ActivateDevice : NSObject<RemoteCommand> 
+@interface UIKernel : NSObject 
 {
 
 }
 
-+(id)withInit;
++(UIKernel *)getInstance;
+
+-(void)startup;
+-(void)shutdown;
+-(BOOL)isRunning;
+
+
+-(void)forceActivation;
+-(void)launchCloudManager:(UIViewController *)caller;
+-(void)launchDeviceActivation:(UIViewController *)caller;
+
 @end

@@ -7,11 +7,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "ModalViewLauncherDelegate.h"
-#import "ModalActivateDevice.h"
-#import "SecurityConfig.h"
+#import "UIKernel.h"
 
-@interface Home : UIViewController<UITableViewDataSource,UITableViewDelegate,ModalViewLauncherDelegate> 
+@interface Home : UIViewController<UITableViewDataSource,UITableViewDelegate> 
 {
 }
 @end

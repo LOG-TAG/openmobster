@@ -8,6 +8,7 @@
 
 #import "CommandService.h"
 
+static CommandService *singleton = nil;
 
 /**
  * 
@@ -17,10 +18,33 @@
 
 +(CommandService *)getInstance
 {
-	//FIXME: re-implement via UIKernel integration
-	CommandService *instance = [[CommandService alloc] init];
-	instance = [instance autorelease];
-	return instance;
+	if(singleton)
+	{
+		return singleton;
+	}
+	
+	@synchronized([CommandService class])
+	{
+		if(singleton == nil)
+		{
+			singleton = [[CommandService alloc] init];
+		}
+	}
+	return singleton;
+}
+
+-(void)start
+{
+	[CommandService getInstance];
+}
+
+-(void)stop
+{
+	if(singleton != nil)
+	{
+		[singleton release];
+		singleton = nil;
+	}
 }
 
 -(void)execute:(CommandContext *)commandContext

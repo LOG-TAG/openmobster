@@ -116,6 +116,11 @@
 	return [self.pushMode boolValue];
 }
 
+-(BOOL) isActivated
+{
+	return [self.active boolValue];
+}
+
 //System-wide channel operations
 -(BOOL)establishOwnership:(Channel *)channel :(BOOL)force
 {

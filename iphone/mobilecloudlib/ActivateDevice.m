@@ -25,5 +25,9 @@
 -(void)doAction:(CommandContext *)commandContext
 {
 	[NSThread sleepForTimeInterval:5];
+	
+	Configuration *conf = [Configuration getInstance];
+	conf.active = [NSNumber numberWithBool:YES];
+	[conf saveInstance];
 }
 @end

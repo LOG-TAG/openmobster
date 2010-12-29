@@ -14,10 +14,12 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		A267E51812C542EB00693E1A /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E51712C542EB00693E1A /* libmobilecloudlib.a */; };
-		A267E59F12C548BB00693E1A /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267E59C12C548BB00693E1A /* ModalActivateDevice.xib */; };
-		A267E5A012C548BB00693E1A /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267E59D12C548BB00693E1A /* SecurityConfig.xib */; };
 		A267E5DB12C54BD900693E1A /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E5D912C54BD900693E1A /* Home.m */; };
 		A267E5DC12C54BD900693E1A /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267E5DA12C54BD900693E1A /* Home.xib */; };
+		A296315C12CB960000928950 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296315B12CB960000928950 /* CloudManagerApp.xib */; };
+		A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */; };
+		A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296317012CB96BE00928950 /* ModalActivateDevice.xib */; };
+		A296317512CB96BE00928950 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296317112CB96BE00928950 /* SecurityConfig.xib */; };
 		A29D69F412B7E53800DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F312B7E53800DAE753 /* CFNetwork.framework */; };
 		A29D69F912B7E56300DAE753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F812B7E56300DAE753 /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -34,11 +36,13 @@
 		32CA4F630368D1EE00C91783 /* CloudManager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CloudManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CloudManager-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A267E51712C542EB00693E1A /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
-		A267E59C12C548BB00693E1A /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
-		A267E59D12C548BB00693E1A /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
 		A267E5D812C54BD900693E1A /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Home.h; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.h"; sourceTree = DEVELOPER_DIR; };
 		A267E5D912C54BD900693E1A /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Home.m; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.m"; sourceTree = DEVELOPER_DIR; };
 		A267E5DA12C54BD900693E1A /* Home.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Home.xib; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.xib"; sourceTree = DEVELOPER_DIR; };
+		A296315B12CB960000928950 /* CloudManagerApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CloudManagerApp.xib; path = ../mobilecloudlib/CloudManagerApp.xib; sourceTree = SOURCE_ROOT; };
+		A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
+		A296317012CB96BE00928950 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
+		A296317112CB96BE00928950 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
 		A29D69F312B7E53800DAE753 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A29D69F812B7E56300DAE753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -104,8 +108,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A267E59C12C548BB00693E1A /* ModalActivateDevice.xib */,
-				A267E59D12C548BB00693E1A /* SecurityConfig.xib */,
+				A296315B12CB960000928950 /* CloudManagerApp.xib */,
+				A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */,
+				A296317012CB96BE00928950 /* ModalActivateDevice.xib */,
+				A296317112CB96BE00928950 /* SecurityConfig.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CloudManager-Info.plist */,
 			);
@@ -168,9 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				A267E59F12C548BB00693E1A /* ModalActivateDevice.xib in Resources */,
-				A267E5A012C548BB00693E1A /* SecurityConfig.xib in Resources */,
 				A267E5DC12C54BD900693E1A /* Home.xib in Resources */,
+				A296315C12CB960000928950 /* CloudManagerApp.xib in Resources */,
+				A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */,
+				A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */,
+				A296317512CB96BE00928950 /* SecurityConfig.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

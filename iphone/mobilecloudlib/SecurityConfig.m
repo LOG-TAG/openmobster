@@ -65,6 +65,6 @@
 
 -(IBAction) cancel:(id) sender
 {
-	[delegate callback:nil];
+	[delegate dismissModalViewControllerAnimated:YES];
 }
 @end

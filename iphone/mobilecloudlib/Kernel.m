@@ -46,6 +46,15 @@ static Kernel *singleton = nil;
 		Registry *registry = [Registry getInstance];
 		if([registry isStarted])
 		{
+			//Check to see if device is activated with the cloud...if not,
+			//show the activation dialog
+			Configuration *conf = [Configuration getInstance];
+			if(![conf isActivated])
+			{
+				UIKernel *uiKernel = [UIKernel getInstance];
+				[uiKernel startup];
+				[uiKernel forceActivation];
+			}
 			return;
 		}
 		
@@ -79,6 +88,18 @@ static Kernel *singleton = nil;
 		[registry addService:bus];
 		
 		[registry start];
+		
+		//Also start the UIKernel
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel startup];
+		
+		//Check to see if device is activated with the cloud...if not,
+		//show the activation dialog
+		Configuration *conf = [Configuration getInstance];
+		if(![conf isActivated])
+		{
+			[uiKernel forceActivation];
+		}
 	}
 }
 
@@ -104,6 +125,10 @@ static Kernel *singleton = nil;
 			[singleton release];
 			singleton = nil;
 		}
+		
+		//stop the UIKernel
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel shutdown];
 	}
 }
 @end

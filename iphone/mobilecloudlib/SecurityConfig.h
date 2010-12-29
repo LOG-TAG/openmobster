@@ -7,16 +7,15 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "ModalViewLauncherDelegate.h"
 
 
 @interface SecurityConfig : UIViewController 
 {
 	@private
-	id<ModalViewLauncherDelegate> delegate;
+	UIViewController *delegate;
 }
 
-@property(nonatomic,retain) id<ModalViewLauncherDelegate> delegate;
+@property(nonatomic,retain) UIViewController *delegate;
 
 -(IBAction) cancel:(id) sender;
 @end
