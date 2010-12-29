@@ -33,6 +33,7 @@
 -(NSString *) authHash;
 -(NSString *) serverPort;
 -(BOOL) isInPushMode;
+-(BOOL) isActivated;
 
 //System-wide channel operations
 -(BOOL)establishOwnership:(Channel *)channel :(BOOL)force;

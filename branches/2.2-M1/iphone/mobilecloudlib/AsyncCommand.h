@@ -5,19 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-
-#import <Foundation/Foundation.h>
-#import "RemoteCommand.h"
-#import "Configuration.h"
+#import <UIKit/UIKit.h>
+#import "UIInitiatedCommand.h"
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-@interface ActivateDevice : NSObject<RemoteCommand> 
-{
+@protocol AsyncCommand<UIInitiatedCommand>
 
-}
 
-+(id)withInit;
 @end

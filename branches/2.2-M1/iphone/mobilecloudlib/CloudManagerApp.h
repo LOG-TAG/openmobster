@@ -6,18 +6,16 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-#import <Foundation/Foundation.h>
-#import "RemoteCommand.h"
-#import "Configuration.h"
+#import <UIKit/UIKit.h>
+#import "CloudManager.h"
 
-/**
- * 
- * @author openmobster@gmail.com
- */
-@interface ActivateDevice : NSObject<RemoteCommand> 
+@interface CloudManagerApp : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-
+	@private
+	UIViewController *delegate;
 }
 
-+(id)withInit;
+@property(nonatomic,retain) UIViewController *delegate;
+
+-(IBAction) done:(id) sender;
 @end

@@ -22,5 +22,8 @@
 
 +(CommandService *)getInstance;
 
+-(void)start;
+-(void)stop;
+
 -(void)execute:(CommandContext *)commandContext;
 @end

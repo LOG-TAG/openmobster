@@ -59,13 +59,13 @@
 
 -(void)dealloc 
 {
-	[(NSObject *)delegate release];
+	[delegate release];
 	[super dealloc];
 }
 
 -(IBAction) cancel:(id) sender
 {
-	[delegate callback:nil];
+	[self dismiss];
 }
 
 -(IBAction) submit:(id) sender
@@ -80,20 +80,47 @@
 
 -(void)doViewAfter:(CommandContext *)commandContext
 {
-	[delegate callback:nil];
+	[self dismiss];
 }
 
 -(void)doViewError:(CommandContext *)commandContext
 {
 	NSString *code = [commandContext getErrorCode];
 	NSString *message = [commandContext getErrorMessage];
-	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message 
-													delegate:nil 
-										   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	dialog = [dialog autorelease];
-	[dialog show];
 	
-	[delegate callback:nil];
+	[dialog show];
+}
+
+-(void)forceActivation
+{
+	forceActivation = YES;
+}
+
+-(void)dismiss
+{
+	if(!forceActivation)
+	{
+		[delegate dismissModalViewControllerAnimated:YES];
+	}
+	else 
+	{
+		Configuration *conf = [Configuration getInstance];
+		if([conf isActivated])
+		{
+			[delegate dismissModalViewControllerAnimated:YES];
+		}
+		else 
+		{
+			NSString *code = @"Device Activation";
+			NSString *message = @"Device must be activated with the Cloud before the App can be used";
+			UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];			
+			dialog = [dialog autorelease];
+			
+			[dialog show];
+		}
+	}
 }
 //UITableViewDataSource and UITableViewDelegate protocol implementation
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -106,8 +133,6 @@
 	{
 		return @"Cloud Server";
 	}
-	
-	//return @"";
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

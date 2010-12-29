@@ -19,6 +19,8 @@
 #import "SyncScheduler.h"
 #import "ProxyLoader.h"
 #import "Bus.h"
+#import "UIKernel.h"
+#import "Configuration.h"
 
 /**
  * 

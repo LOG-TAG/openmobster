@@ -87,7 +87,7 @@
 					<object class="IBUIViewController" id="948937479">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="987294057">
 							<reference key="IBUINavigationBar"/>
-							<string key="IBUITitle">Cloud Manager</string>
+							<string key="IBUITitle">Sample App</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIParentViewController" ref="521965603"/>
@@ -128,6 +128,14 @@
 						<reference key="destination" ref="521965603"/>
 					</object>
 					<int key="connectionID">23</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">rootViewController</string>
+						<reference key="source" ref="380026005"/>
+						<reference key="destination" ref="521965603"/>
+					</object>
+					<int key="connectionID">26</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -257,7 +265,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">25</int>
+			<int key="maxID">26</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -315,7 +323,7 @@
 					<string key="superclassName">UIViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Home.h</string>
+						<string key="minorKey">Classes/Home.h</string>
 					</object>
 				</object>
 			</object>

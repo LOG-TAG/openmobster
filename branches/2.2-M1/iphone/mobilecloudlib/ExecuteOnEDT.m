@@ -48,16 +48,24 @@
 
 -(void)run
 {
-	@try 
+	id target = [commandContext getTarget];
+	
+	if([target conformsToProtocol:@protocol(RemoteCommand)] ||
+	   [target conformsToProtocol:@protocol(BusyCommand)]
+	)
 	{
 		[self startBusyCommand];
 	}
-	@catch (NSException * e) 
+	else if([target conformsToProtocol:@protocol(AsyncCommand)])
 	{
-		//FIXME: If this happens show a Global Error Message
+		[self startAsyncCommand];
+	}
+	else if([target conformsToProtocol:@protocol(LocalCommand)])
+	{
+		[self startLocalCommand];
 	}
 }
-
+//----Busy Command implementation...pops up a busy spinner and disables interaction--------------
 -(void)startBusyCommand
 {	
 	//Start the Activity Indicators
@@ -118,43 +126,140 @@
 
 -(void)endBusyCommand
 {
-	@try 
+	//Stop the Activity Indicator
+	[activityIndicatorView.view removeFromSuperview];
+	UIViewController *caller = commandContext.caller;
+	
+	if(caller.navigationController != nil)
 	{
-		//Stop the Activity Indicator
-		[activityIndicatorView.view removeFromSuperview];
-		UIViewController *caller = commandContext.caller;
+		[caller.navigationController.view setUserInteractionEnabled:YES];
+	}
+	if(caller.parentViewController != nil)
+	{
+		[caller.parentViewController.view setUserInteractionEnabled:YES];
+	}
+	if(caller.tabBarController != nil)
+	{
+		[caller.tabBarController.view setUserInteractionEnabled:YES];
+	}
+	[caller.view setUserInteractionEnabled:YES];
 	
-		if(caller.navigationController != nil)
+	if([caller conformsToProtocol:@protocol(UICommandDelegate)])
+	{
+		UIViewController<UICommandDelegate> *local = (UIViewController<UICommandDelegate> *)caller;
+		
+		if(![commandContext hasErrors])
 		{
-			[caller.navigationController.view setUserInteractionEnabled:YES];
+			[local doViewAfter:commandContext];
 		}
-		if(caller.parentViewController != nil)
+		else 
 		{
-			[caller.parentViewController.view setUserInteractionEnabled:YES];
-		}
-		if(caller.tabBarController != nil)
-		{
-			[caller.tabBarController.view setUserInteractionEnabled:YES];
-		}
-		[caller.view setUserInteractionEnabled:YES];
-	
-		if([caller conformsToProtocol:@protocol(UICommandDelegate)])
-		{
-			UIViewController<UICommandDelegate> *local = (UIViewController<UICommandDelegate> *)caller;
-			
-			if(![commandContext hasErrors])
-			{
-				[local doViewAfter:commandContext];
-			}
-			else 
-			{
-				[local doViewError:commandContext];
-			}
+			[local doViewError:commandContext];
 		}
 	}
-	@catch (NSException * e) 
+}
+//--------Asynccommand implementation...performs actions Asynchronously (Ajaxian)----------------
+-(void)startAsyncCommand
+{
+	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(invokeAsyncAction) object:nil];	
+	operation = [operation autorelease];
+	
+	//Add the operation to the queue
+	[queue addOperation:operation];
+}
+
+-(void)invokeAsyncAction
+{
+	@try
 	{
-		//FIXME: If this happens show a Global Error Message
+		id<Command> target = (id<Command>)[commandContext getTarget];
+		[target doAction:commandContext];
+	}
+	@catch(SystemException *syse)
+	{
+		[commandContext setError:@"500" :[syse getMessage]];
+	}
+	@catch (NSException *e) 
+	{
+		NSString *message = @"No Message Found";
+		if([e reason] != nil)
+		{
+			message = [e reason];
+		}
+		else if([e name] != nil)
+		{
+			message = [e name];
+		}
+		[commandContext setError:@"500" :message];	
+	}
+	[self performSelectorOnMainThread:@selector(endAsyncCommand) withObject:nil waitUntilDone:NO];
+}
+
+-(void)endAsyncCommand
+{
+	//Stop the Activity Indicator
+	UIViewController *caller = commandContext.caller;
+	
+	if([caller conformsToProtocol:@protocol(UICommandDelegate)])
+	{
+		UIViewController<UICommandDelegate> *local = (UIViewController<UICommandDelegate> *)caller;
+		
+		if(![commandContext hasErrors])
+		{
+			[local doViewAfter:commandContext];
+		}
+		else 
+		{
+			[local doViewError:commandContext];
+		}
+	}
+}
+//-------Execution of 'LocalCommand'...note: make sure this executes fast as this will freeze the 
+//UI. This is used to read local data, such as locally synced channel data etc
+-(void)startLocalCommand
+{
+	@try
+	{
+		id<Command> target = (id<Command>)[commandContext getTarget];
+		[target doAction:commandContext];
+	}
+	@catch(SystemException *syse)
+	{
+		[commandContext setError:@"500" :[syse getMessage]];
+	}
+	@catch (NSException *e) 
+	{
+		NSString *message = @"No Message Found";
+		if([e reason] != nil)
+		{
+			message = [e reason];
+		}
+		else if([e name] != nil)
+		{
+			message = [e name];
+		}
+		[commandContext setError:@"500" :message];	
+	}
+	[self endLocalCommand];
+}
+
+-(void)endLocalCommand
+{
+	//Stop the Activity Indicator
+	UIViewController *caller = commandContext.caller;
+	
+	if([caller conformsToProtocol:@protocol(UICommandDelegate)])
+	{
+		UIViewController<UICommandDelegate> *local = (UIViewController<UICommandDelegate> *)caller;
+		
+		if(![commandContext hasErrors])
+		{
+			[local doViewAfter:commandContext];
+		}
+		else 
+		{
+			[local doViewError:commandContext];
+		}
 	}
 }
 @end

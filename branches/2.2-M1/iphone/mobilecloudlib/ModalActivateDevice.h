@@ -12,15 +12,22 @@
 #import "CommandService.h"
 #import "UICommandDelegate.h"
 #import "ActivateDevice.h"
+#import "Configuration.h"
 
 @interface ModalActivateDevice : UIViewController<UITableViewDataSource,UITableViewDelegate,UICommandDelegate> 
 {
 	@private
-	id<ModalViewLauncherDelegate> delegate;
+	UIViewController *delegate;
+	BOOL forceActivation;
 }
 
-@property(nonatomic,retain) id<ModalViewLauncherDelegate> delegate;
+@property(nonatomic,retain) UIViewController *delegate;
+
+-(void)forceActivation;
 
 -(IBAction) cancel:(id) sender;
 -(IBAction) submit:(id) sender;
+
+//use internally only
+-(void)dismiss;
 @end

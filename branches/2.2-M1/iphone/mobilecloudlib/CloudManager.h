@@ -7,17 +7,22 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RemoteCommand.h"
-#import "Configuration.h"
+#import <UIKit/UIKit.h>
+#import "ModalActivateDevice.h"
+#import "SecurityConfig.h"
+#import "CloudManagerApp.h"
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-@interface ActivateDevice : NSObject<RemoteCommand> 
+@interface CloudManager : NSObject 
 {
 
 }
 
-+(id)withInit;
++(void)modalCloudManager:(UIViewController *)caller;
++(void)modalActivateDevice:(UIViewController *)caller;
++(void)modalForceActivation:(UIViewController *)caller;
++(void)modalSecurityConfig:(UIViewController *)caller;
 @end

@@ -202,7 +202,7 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>A2962E3612CA608200928950</string>
+				<string>A29632F912CBDF4200928950</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>Home.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
@@ -210,16 +210,18 @@
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>A2962FC212CA87B500928950</string>
+						<string>A29632FE12CBDF9C00928950</string>
 						<key>PBXProjectModuleLabel</key>
 						<string>Home.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A2962FC312CA87B500928950</string>
+						<string>A296334712CBE33200928950</string>
 						<key>history</key>
 						<array>
-							<string>A2962E3512CA608200928950</string>
+							<string>A296332C12CBE29C00928950</string>
+							<string>A296332D12CBE29C00928950</string>
+							<string>A296332E12CBE29C00928950</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -231,11 +233,11 @@
 			<key>Geometry</key>
 			<dict>
 				<key>Frame</key>
-				<string>{{0, 20}, {750, 690}}</string>
+				<string>{{0, 20}, {750, 623}}</string>
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>2 147 750 731 0 0 1440 878 </string>
+				<string>1909 236 750 664 1440 180 1280 720 </string>
 			</dict>
 		</dict>
 	</array>
@@ -305,13 +307,10 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 									<array>
 										<string>29B97314FDCFA39411CA2CEA</string>
-										<string>080E96DDFE201D6D7F000001</string>
-										<string>29B97317FDCFA39411CA2CEA</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>2</integer>
 											<integer>1</integer>
 											<integer>0</integer>
 										</array>
@@ -340,7 +339,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>1440 479 446 419 1440 180 1280 720 </string>
+								<string>1458 473 446 419 1440 180 1280 720 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -494,7 +493,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A2962E3612CA608200928950</string>
+	<string>A29632F912CBDF4200928950</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -519,14 +518,14 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A2962FC412CA87B500928950</string>
 		<string>1C530D5B069F1CE1000CFCEE</string>
 		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
+		<string>A29632F912CBDF4200928950</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/CloudManager.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1440 479 446 419 1440 180 1280 720 </string>
+	<string>1458 473 446 419 1440 180 1280 720 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

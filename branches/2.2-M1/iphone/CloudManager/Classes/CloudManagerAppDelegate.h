@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Kernel.h"
+#import "UIKernel.h"
 
 @interface CloudManagerAppDelegate : NSObject <UIApplicationDelegate> 
 {
@@ -19,5 +20,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *mainView;
 
+-(void)startCloudService;
+-(void)stopCloudService;
 @end
 
