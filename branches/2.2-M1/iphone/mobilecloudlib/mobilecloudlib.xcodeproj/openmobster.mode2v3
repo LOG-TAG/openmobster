@@ -204,7 +204,7 @@
 				<key>PBXProjectModuleGUID</key>
 				<string>A296375C12CE452A00928950</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>ActivateDevice.m</string>
+				<string>NetworkConnector.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
@@ -212,14 +212,28 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>A296376112CE455200928950</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>ActivateDevice.m</string>
+						<string>NetworkConnector.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A296376212CE455200928950</string>
+						<string>A296380912CE8C4300928950</string>
 						<key>history</key>
 						<array>
-							<string>A296375B12CE452A00928950</string>
+							<string>A296379512CE77B900928950</string>
+							<string>A296379612CE77B900928950</string>
+							<string>A296379712CE77B900928950</string>
+							<string>A29637B612CE7F3800928950</string>
+							<string>A29637B712CE7F3800928950</string>
+							<string>A29637B812CE7F3800928950</string>
+							<string>A29637C912CE853E00928950</string>
+							<string>A29637CB12CE853E00928950</string>
+							<string>A29637CC12CE853E00928950</string>
+							<string>A29637F212CE8A8B00928950</string>
+							<string>A29637F612CE8A8B00928950</string>
+							<string>A296380512CE8C4300928950</string>
+							<string>A296380612CE8C4300928950</string>
+							<string>A296380712CE8C4300928950</string>
+							<string>A296380812CE8C4300928950</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -306,13 +320,14 @@
 									<array>
 										<string>0867D691FE84028FC02AAC07</string>
 										<string>A267E39012C40ABA00693E1A</string>
+										<string>A267E5FA12C54ED300693E1A</string>
 										<string>A267E58B12C5482800693E1A</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>7</integer>
-											<integer>5</integer>
+											<integer>16</integer>
+											<integer>14</integer>
 											<integer>1</integer>
 											<integer>0</integer>
 										</array>

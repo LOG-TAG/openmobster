@@ -32,6 +32,10 @@
 {
     [super viewDidLoad];
 	
+	Configuration *conf = [Configuration getInstance];
+	NSString *ip = conf.serverIp;
+	NSString *port = [conf serverPort];
+	
 	//Setup IP Field
 	UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
 	textField = [textField autorelease];
@@ -47,6 +51,10 @@
 	textField.tag = 0;
 	textField.clearButtonMode = UITextFieldViewModeNever; // no clear 'x' button to the right
 	[textField setEnabled: YES];
+	if(![StringUtil isEmpty:ip])
+	{
+		self.cloudIp.text = ip;
+	}
 	
 	//Setup Port Field
 	textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
@@ -63,7 +71,14 @@
 	textField.tag = 0;
 	textField.clearButtonMode = UITextFieldViewModeNever; // no clear 'x' button to the right
 	[textField setEnabled: YES];
-	self.cloudPort.text = @"1502";
+	if([StringUtil isEmpty:port])
+	{
+		self.cloudPort.text = @"1502";
+	}
+	else 
+	{
+		self.cloudPort.text = port;
+	}
 }
 
 /*
@@ -133,6 +148,7 @@
 	
 	[commandContext setAttribute:@"cloudIp" :ip];
 	[commandContext setAttribute:@"cloudPort" :port];
+	[commandContext setTarget:[ActivateDevice withInit]];
 	CommandService *service = [CommandService getInstance];
 	
 	//start the service invocation
@@ -142,6 +158,13 @@
 -(void)doViewAfter:(CommandContext *)callback
 {
 	[self dismiss];
+	
+	NSString *code = @"Device Activation";
+	NSString *message = @"Device successfully activated";
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	
+	[dialog show];
 }
 
 -(void)doViewError:(CommandContext *)callback

@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "RemoteCommand.h"
 #import "Configuration.h"
+#import "Request.h"
+#import "Response.h"
+#import "MobileService.h"
+#import "GeneralTools.h"
+#import "ErrorHandler.h"
+#import "SystemException.h"
+#import "AppException.h"
 
 /**
  * 
@@ -20,4 +27,8 @@
 }
 
 +(id)withInit;
+
+//Used internally
+-(void)activateDevice:(NSString *)deviceIdentifier :(NSString *)cloudIp :(NSString *)cloudPort;
+-(void)processProvisioningSuccess:(NSString *)email :(Response *)response;
 @end

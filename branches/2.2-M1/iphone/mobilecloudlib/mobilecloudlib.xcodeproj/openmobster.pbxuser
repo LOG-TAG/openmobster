@@ -645,6 +645,49 @@
 			A296375612CE444000928950 /* PBXTextBookmark */ = A296375612CE444000928950 /* PBXTextBookmark */;
 			A296375B12CE452A00928950 /* PBXBookmark */ = A296375B12CE452A00928950 /* PBXBookmark */;
 			A296376212CE455200928950 /* PBXTextBookmark */ = A296376212CE455200928950 /* PBXTextBookmark */;
+			A296376D12CE677B00928950 /* PBXTextBookmark */ = A296376D12CE677B00928950 /* PBXTextBookmark */;
+			A296376E12CE677B00928950 /* PBXTextBookmark */ = A296376E12CE677B00928950 /* PBXTextBookmark */;
+			A296376F12CE677B00928950 /* PBXTextBookmark */ = A296376F12CE677B00928950 /* PBXTextBookmark */;
+			A296377012CE677B00928950 /* PBXTextBookmark */ = A296377012CE677B00928950 /* PBXTextBookmark */;
+			A296377112CE677B00928950 /* PBXTextBookmark */ = A296377112CE677B00928950 /* PBXTextBookmark */;
+			A296378512CE73F000928950 /* PBXTextBookmark */ = A296378512CE73F000928950 /* PBXTextBookmark */;
+			A296378612CE73F000928950 /* PBXTextBookmark */ = A296378612CE73F000928950 /* PBXTextBookmark */;
+			A296378712CE73F000928950 /* PBXTextBookmark */ = A296378712CE73F000928950 /* PBXTextBookmark */;
+			A296378812CE73F000928950 /* PBXTextBookmark */ = A296378812CE73F000928950 /* PBXTextBookmark */;
+			A296379512CE77B900928950 /* PBXTextBookmark */ = A296379512CE77B900928950 /* PBXTextBookmark */;
+			A296379612CE77B900928950 /* PBXTextBookmark */ = A296379612CE77B900928950 /* PBXTextBookmark */;
+			A296379712CE77B900928950 /* PBXTextBookmark */ = A296379712CE77B900928950 /* PBXTextBookmark */;
+			A296379812CE77B900928950 /* PBXTextBookmark */ = A296379812CE77B900928950 /* PBXTextBookmark */;
+			A296379912CE77B900928950 /* PBXTextBookmark */ = A296379912CE77B900928950 /* PBXTextBookmark */;
+			A296379A12CE77B900928950 /* PBXTextBookmark */ = A296379A12CE77B900928950 /* PBXTextBookmark */;
+			A29637B612CE7F3800928950 /* PBXTextBookmark */ = A29637B612CE7F3800928950 /* PBXTextBookmark */;
+			A29637B712CE7F3800928950 /* PBXTextBookmark */ = A29637B712CE7F3800928950 /* PBXTextBookmark */;
+			A29637B812CE7F3800928950 /* PBXTextBookmark */ = A29637B812CE7F3800928950 /* PBXTextBookmark */;
+			A29637B912CE7F3800928950 /* PBXTextBookmark */ = A29637B912CE7F3800928950 /* PBXTextBookmark */;
+			A29637BA12CE7F3800928950 /* PBXTextBookmark */ = A29637BA12CE7F3800928950 /* PBXTextBookmark */;
+			A29637C812CE853E00928950 /* PBXTextBookmark */ = A29637C812CE853E00928950 /* PBXTextBookmark */;
+			A29637C912CE853E00928950 /* PBXTextBookmark */ = A29637C912CE853E00928950 /* PBXTextBookmark */;
+			A29637CA12CE853E00928950 /* PBXTextBookmark */ = A29637CA12CE853E00928950 /* PBXTextBookmark */;
+			A29637CB12CE853E00928950 /* PBXTextBookmark */ = A29637CB12CE853E00928950 /* PBXTextBookmark */;
+			A29637CC12CE853E00928950 /* PBXTextBookmark */ = A29637CC12CE853E00928950 /* PBXTextBookmark */;
+			A29637CD12CE853E00928950 /* PBXTextBookmark */ = A29637CD12CE853E00928950 /* PBXTextBookmark */;
+			A29637CE12CE853E00928950 /* PBXTextBookmark */ = A29637CE12CE853E00928950 /* PBXTextBookmark */;
+			A29637DA12CE875800928950 /* PBXTextBookmark */ = A29637DA12CE875800928950 /* PBXTextBookmark */;
+			A29637DB12CE875800928950 /* PBXTextBookmark */ = A29637DB12CE875800928950 /* PBXTextBookmark */;
+			A29637DC12CE875800928950 /* PBXTextBookmark */ = A29637DC12CE875800928950 /* PBXTextBookmark */;
+			A29637E112CE885900928950 /* PBXTextBookmark */ = A29637E112CE885900928950 /* PBXTextBookmark */;
+			A29637E212CE885900928950 /* PBXTextBookmark */ = A29637E212CE885900928950 /* PBXTextBookmark */;
+			A29637F212CE8A8B00928950 /* PBXTextBookmark */ = A29637F212CE8A8B00928950 /* PBXTextBookmark */;
+			A29637F312CE8A8B00928950 /* PBXTextBookmark */ = A29637F312CE8A8B00928950 /* PBXTextBookmark */;
+			A29637F412CE8A8B00928950 /* PBXTextBookmark */ = A29637F412CE8A8B00928950 /* PBXTextBookmark */;
+			A29637F512CE8A8B00928950 /* PBXTextBookmark */ = A29637F512CE8A8B00928950 /* PBXTextBookmark */;
+			A29637F612CE8A8B00928950 /* PBXTextBookmark */ = A29637F612CE8A8B00928950 /* PBXTextBookmark */;
+			A29637F712CE8A8B00928950 /* PBXTextBookmark */ = A29637F712CE8A8B00928950 /* PBXTextBookmark */;
+			A296380512CE8C4300928950 /* PBXTextBookmark */ = A296380512CE8C4300928950 /* PBXTextBookmark */;
+			A296380612CE8C4300928950 /* PBXTextBookmark */ = A296380612CE8C4300928950 /* PBXTextBookmark */;
+			A296380712CE8C4300928950 /* PBXTextBookmark */ = A296380712CE8C4300928950 /* PBXTextBookmark */;
+			A296380812CE8C4300928950 /* PBXTextBookmark */ = A296380812CE8C4300928950 /* PBXTextBookmark */;
+			A296380912CE8C4300928950 /* PBXTextBookmark */ = A296380912CE8C4300928950 /* PBXTextBookmark */;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -690,9 +733,9 @@
 	};
 	A267E57812C5478F00693E1A /* ModalActivateDevice.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 3029}}";
-			sepNavSelRange = "{530, 0}";
-			sepNavVisRange = "{2712, 1283}";
+			sepNavIntBoundsRect = "{{0, 0}, {1125, 3107}}";
+			sepNavSelRange = "{4902, 0}";
+			sepNavVisRange = "{4166, 1545}";
 			sepNavWindowFrame = "{{509, 91}, {750, 787}}";
 		};
 	};
@@ -1038,16 +1081,16 @@
 	A2962C8612CA16BB00928950 /* ActivateDevice.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 659}}";
-			sepNavSelRange = "{453, 0}";
-			sepNavVisRange = "{0, 579}";
+			sepNavSelRange = "{623, 0}";
+			sepNavVisRange = "{0, 939}";
 			sepNavWindowFrame = "{{469, 91}, {750, 787}}";
 		};
 	};
 	A2962C8712CA16BB00928950 /* ActivateDevice.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {796, 659}}";
-			sepNavSelRange = "{656, 0}";
-			sepNavVisRange = "{0, 1088}";
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 1716}}";
+			sepNavSelRange = "{1024, 0}";
+			sepNavVisRange = "{2566, 1511}";
 			sepNavWindowFrame = "{{509, 91}, {750, 787}}";
 		};
 	};
@@ -1172,7 +1215,7 @@
 		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
 		name = "ActivateDevice.h: 23";
 		rLen = 0;
-		rLoc = 574;
+		rLoc = 934;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 0;
@@ -1331,7 +1374,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 76";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 938;
 		vrLoc = 1389;
@@ -1391,7 +1434,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 76";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1075;
 		vrLoc = 1659;
@@ -1502,7 +1545,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 105;
+		rLoc = 112;
 		rType = 1;
 	};
 	A2962D5112CA482100928950 /* PBXTextBookmark */ = {
@@ -1510,7 +1553,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 62";
 		rLen = 0;
-		rLoc = 3547;
+		rLoc = 3698;
 		rType = 0;
 		vrLen = 213;
 		vrLoc = 1549;
@@ -1680,7 +1723,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 175";
 		rLen = 0;
-		rLoc = 6937;
+		rLoc = 7033;
 		rType = 0;
 		vrLen = 1007;
 		vrLoc = 4583;
@@ -1690,7 +1733,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 175";
 		rLen = 0;
-		rLoc = 6937;
+		rLoc = 7033;
 		rType = 0;
 		vrLen = 1007;
 		vrLoc = 4583;
@@ -1794,7 +1837,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 105;
+		rLoc = 112;
 		rType = 1;
 	};
 	A2962DA812CA4F2C00928950 /* PBXTextBookmark */ = {
@@ -1802,7 +1845,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 62";
 		rLen = 0;
-		rLoc = 3547;
+		rLoc = 3698;
 		rType = 0;
 		vrLen = 213;
 		vrLoc = 1549;
@@ -1832,7 +1875,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 62";
 		rLen = 0;
-		rLoc = 3549;
+		rLoc = 3700;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 4522;
@@ -1979,7 +2022,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 92";
 		rLen = 0;
-		rLoc = 5976;
+		rLoc = 6072;
 		rType = 0;
 		vrLen = 920;
 		vrLoc = 1639;
@@ -2183,7 +2226,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 89";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1235;
 		vrLoc = 1332;
@@ -2193,7 +2236,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 89";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1245;
 		vrLoc = 1332;
@@ -2203,7 +2246,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 66";
 		rLen = 0;
-		rLoc = 5348;
+		rLoc = 5444;
 		rType = 0;
 		vrLen = 1245;
 		vrLoc = 1332;
@@ -2607,7 +2650,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 91";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 1933;
@@ -2867,7 +2910,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 90";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1243;
 		vrLoc = 1933;
@@ -2887,7 +2930,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 87";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1243;
 		vrLoc = 1933;
@@ -2897,7 +2940,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 90";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1933;
@@ -2907,7 +2950,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 90";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 1933;
@@ -2967,7 +3010,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 86";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1314;
 		vrLoc = 1933;
@@ -3017,7 +3060,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 89";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 1933;
@@ -3077,7 +3120,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 62";
 		rLen = 0;
-		rLoc = 3547;
+		rLoc = 3698;
 		rType = 0;
 		vrLen = 534;
 		vrLoc = 2140;
@@ -3146,7 +3189,7 @@
 		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
 		name = "ActivateDevice.h: 20";
 		rLen = 0;
-		rLoc = 574;
+		rLoc = 934;
 		rType = 0;
 		vrLen = 537;
 		vrLoc = 0;
@@ -3166,7 +3209,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 22";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 607;
 		vrLoc = 0;
@@ -3176,7 +3219,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 75";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1172;
 		vrLoc = 1713;
@@ -3296,7 +3339,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 74";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1180;
 		vrLoc = 1713;
@@ -3306,7 +3349,7 @@
 		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
 		name = "ActivateDevice.h: 21";
 		rLen = 0;
-		rLoc = 573;
+		rLoc = 933;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 0;
@@ -3805,7 +3848,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 83";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 1641;
@@ -4140,7 +4183,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 67";
 		rLen = 0;
-		rLoc = 5320;
+		rLoc = 5416;
 		rType = 0;
 		vrLen = 1349;
 		vrLoc = 1455;
@@ -4150,7 +4193,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 96";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1425;
 		vrLoc = 1761;
@@ -4160,7 +4203,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 96";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1523;
 		vrLoc = 4;
@@ -4190,7 +4233,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 124";
 		rLen = 0;
-		rLoc = 5370;
+		rLoc = 5466;
 		rType = 0;
 		vrLen = 1190;
 		vrLoc = 2636;
@@ -4230,7 +4273,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 75";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5463;
 		rType = 0;
 		vrLen = 1125;
 		vrLoc = 1298;
@@ -4240,7 +4283,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 89";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5463;
 		rType = 0;
 		vrLen = 1217;
 		vrLoc = 1549;
@@ -4250,7 +4293,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 89";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5463;
 		rType = 0;
 		vrLen = 1426;
 		vrLoc = 1815;
@@ -4260,7 +4303,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 89";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5463;
 		rType = 0;
 		vrLen = 1412;
 		vrLoc = 1815;
@@ -4270,7 +4313,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 88";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5463;
 		rType = 0;
 		vrLen = 1415;
 		vrLoc = 1815;
@@ -4280,7 +4323,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 88";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5463;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 1815;
@@ -4300,7 +4343,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 120";
 		rLen = 0;
-		rLoc = 5949;
+		rLoc = 6045;
 		rType = 0;
 		vrLen = 282;
 		vrLoc = 5308;
@@ -4400,7 +4443,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 124";
 		rLen = 0;
-		rLoc = 5974;
+		rLoc = 6070;
 		rType = 0;
 		vrLen = 1143;
 		vrLoc = 2485;
@@ -4410,7 +4453,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 135";
 		rLen = 0;
-		rLoc = 6160;
+		rLoc = 6256;
 		rType = 0;
 		vrLen = 1164;
 		vrLoc = 1298;
@@ -4440,7 +4483,7 @@
 		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
 		name = "ActivateDevice.h: 11";
 		rLen = 0;
-		rLoc = 453;
+		rLoc = 623;
 		rType = 0;
 		vrLen = 579;
 		vrLoc = 0;
@@ -4470,7 +4513,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 30";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 800;
 		vrLoc = 0;
@@ -4480,7 +4523,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 31";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 822;
 		vrLoc = 0;
@@ -4494,9 +4537,9 @@
 	};
 	A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1379, 3146}}";
-			sepNavSelRange = "{7008, 0}";
-			sepNavVisRange = "{5130, 420}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 3419}}";
+			sepNavSelRange = "{4261, 0}";
+			sepNavVisRange = "{1862, 1563}";
 			sepNavWindowFrame = "{{463, 91}, {750, 787}}";
 		};
 	};
@@ -4505,7 +4548,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 135";
 		rLen = 0;
-		rLoc = 6160;
+		rLoc = 6256;
 		rType = 0;
 		vrLen = 985;
 		vrLoc = 1637;
@@ -4525,7 +4568,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 56";
 		rLen = 0;
-		rLoc = 3160;
+		rLoc = 3425;
 		rType = 0;
 		vrLen = 1307;
 		vrLoc = 158;
@@ -4595,7 +4638,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 68";
 		rLen = 0;
-		rLoc = 5314;
+		rLoc = 5410;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 1426;
@@ -4655,7 +4698,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 71";
 		rLen = 0;
-		rLoc = 5314;
+		rLoc = 5410;
 		rType = 0;
 		vrLen = 1210;
 		vrLoc = 1426;
@@ -4665,7 +4708,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 72";
 		rLen = 0;
-		rLoc = 5314;
+		rLoc = 5410;
 		rType = 0;
 		vrLen = 1144;
 		vrLoc = 1426;
@@ -4675,7 +4718,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 72";
 		rLen = 0;
-		rLoc = 5314;
+		rLoc = 5410;
 		rType = 0;
 		vrLen = 1144;
 		vrLoc = 1426;
@@ -4745,7 +4788,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 172;
+		rLoc = 195;
 		rType = 1;
 	};
 	A29633EA12CCFBE900928950 /* PBXTextBookmark */ = {
@@ -4753,7 +4796,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 92";
 		rLen = 0;
-		rLoc = 5241;
+		rLoc = 5848;
 		rType = 0;
 		vrLen = 354;
 		vrLoc = 2028;
@@ -4813,7 +4856,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 177";
 		rLen = 0;
-		rLoc = 7139;
+		rLoc = 7235;
 		rType = 0;
 		vrLen = 1919;
 		vrLoc = 3671;
@@ -4823,7 +4866,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 139";
 		rLen = 0;
-		rLoc = 6637;
+		rLoc = 7244;
 		rType = 0;
 		vrLen = 1912;
 		vrLoc = 3407;
@@ -4833,7 +4876,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 181";
 		rLen = 0;
-		rLoc = 7012;
+		rLoc = 7619;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 650;
@@ -4843,7 +4886,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 181";
 		rLen = 0;
-		rLoc = 7012;
+		rLoc = 7619;
 		rType = 0;
 		vrLen = 1331;
 		vrLoc = 1469;
@@ -4853,7 +4896,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 80";
 		rLen = 0;
-		rLoc = 5314;
+		rLoc = 5410;
 		rType = 0;
 		vrLen = 1261;
 		vrLoc = 1460;
@@ -4867,7 +4910,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 31";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 822;
 		vrLoc = 0;
@@ -4877,7 +4920,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 86";
 		rLen = 0;
-		rLoc = 5197;
+		rLoc = 5804;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 1466;
@@ -4897,7 +4940,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 70";
 		rLen = 0;
-		rLoc = 4553;
+		rLoc = 4704;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 3396;
@@ -4907,7 +4950,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 78";
 		rLen = 0;
-		rLoc = 4553;
+		rLoc = 4704;
 		rType = 0;
 		vrLen = 1505;
 		vrLoc = 1252;
@@ -4941,7 +4984,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 73";
 		rLen = 175;
-		rLoc = 4376;
+		rLoc = 4527;
 		rType = 0;
 		vrLen = 1535;
 		vrLoc = 1400;
@@ -4961,7 +5004,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 84";
 		rLen = 0;
-		rLoc = 4469;
+		rLoc = 4789;
 		rType = 0;
 		vrLen = 1391;
 		vrLoc = 1894;
@@ -5011,7 +5054,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 65";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1172;
 		vrLoc = 1542;
@@ -5021,7 +5064,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 82";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1541;
 		vrLoc = 1400;
@@ -5031,7 +5074,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 70";
 		rLen = 0;
-		rLoc = 3648;
+		rLoc = 3799;
 		rType = 0;
 		vrLen = 1541;
 		vrLoc = 1400;
@@ -5051,7 +5094,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 66";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 1450;
@@ -5061,7 +5104,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 65";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1241;
 		vrLoc = 1232;
@@ -5071,7 +5114,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 65";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 55;
@@ -5111,7 +5154,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 82";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5053;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 1400;
@@ -5121,7 +5164,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 65";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1207;
 		vrLoc = 908;
@@ -5131,7 +5174,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 78";
 		rLen = 0;
-		rLoc = 4196;
+		rLoc = 4461;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 910;
@@ -5151,7 +5194,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 66";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1121;
 		vrLoc = 702;
@@ -5161,7 +5204,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 68";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1384;
 		vrLoc = 910;
@@ -5171,7 +5214,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 66";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1382;
 		vrLoc = 910;
@@ -5181,7 +5224,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 107";
 		rLen = 0;
-		rLoc = 5241;
+		rLoc = 5848;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 3090;
@@ -5230,7 +5273,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 74";
 		rLen = 0;
-		rLoc = 4469;
+		rLoc = 4620;
 		rType = 0;
 		vrLen = 1398;
 		vrLoc = 1592;
@@ -5240,7 +5283,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 66";
 		rLen = 0;
-		rLoc = 3255;
+		rLoc = 3520;
 		rType = 0;
 		vrLen = 1234;
 		vrLoc = 758;
@@ -5250,7 +5293,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 4193;
+		rLoc = 4458;
 		rType = 0;
 		vrLen = 1318;
 		vrLoc = 1135;
@@ -5270,7 +5313,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 82";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 1592;
@@ -5320,7 +5363,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 72";
 		rLen = 0;
-		rLoc = 3228;
+		rLoc = 3493;
 		rType = 0;
 		vrLen = 1507;
 		vrLoc = 977;
@@ -5330,7 +5373,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 82";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1408;
 		vrLoc = 1592;
@@ -5340,7 +5383,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 87";
 		rLen = 0;
-		rLoc = 4245;
+		rLoc = 4510;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 1617;
@@ -5370,7 +5413,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 80";
 		rLen = 0;
-		rLoc = 4615;
+		rLoc = 4766;
 		rType = 0;
 		vrLen = 1342;
 		vrLoc = 1592;
@@ -5380,7 +5423,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 69";
 		rLen = 0;
-		rLoc = 3206;
+		rLoc = 3471;
 		rType = 0;
 		vrLen = 1343;
 		vrLoc = 1617;
@@ -5390,7 +5433,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 69";
 		rLen = 0;
-		rLoc = 3206;
+		rLoc = 3471;
 		rType = 0;
 		vrLen = 1343;
 		vrLoc = 1617;
@@ -5400,7 +5443,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 69";
 		rLen = 0;
-		rLoc = 3206;
+		rLoc = 3471;
 		rType = 0;
 		vrLen = 1403;
 		vrLoc = 0;
@@ -5420,7 +5463,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 68";
 		rLen = 0;
-		rLoc = 3589;
+		rLoc = 3740;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 1592;
@@ -5430,7 +5473,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 68";
 		rLen = 0;
-		rLoc = 3589;
+		rLoc = 3740;
 		rType = 0;
 		vrLen = 2066;
 		vrLoc = 3908;
@@ -5450,7 +5493,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 69";
 		rLen = 0;
-		rLoc = 3206;
+		rLoc = 3471;
 		rType = 0;
 		vrLen = 1440;
 		vrLoc = 1060;
@@ -5460,7 +5503,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 200";
 		rLen = 0;
-		rLoc = 6938;
+		rLoc = 7545;
 		rType = 0;
 		vrLen = 1993;
 		vrLoc = 4146;
@@ -5480,7 +5523,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 84";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 1619;
@@ -5490,7 +5533,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 89";
 		rLen = 0;
-		rLoc = 4245;
+		rLoc = 4510;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 1270;
@@ -5530,7 +5573,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 85";
 		rLen = 0;
-		rLoc = 4196;
+		rLoc = 4461;
 		rType = 0;
 		vrLen = 1272;
 		vrLoc = 1394;
@@ -5550,7 +5593,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 90";
 		rLen = 0;
-		rLoc = 4957;
+		rLoc = 5053;
 		rType = 0;
 		vrLen = 1465;
 		vrLoc = 1674;
@@ -5560,7 +5603,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 79";
 		rLen = 0;
-		rLoc = 4594;
+		rLoc = 4745;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 1674;
@@ -5570,7 +5613,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 86";
 		rLen = 0;
-		rLoc = 4229;
+		rLoc = 4494;
 		rType = 0;
 		vrLen = 1160;
 		vrLoc = 1503;
@@ -5590,7 +5633,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 86";
 		rLen = 0;
-		rLoc = 4229;
+		rLoc = 4494;
 		rType = 0;
 		vrLen = 1160;
 		vrLoc = 1503;
@@ -5600,7 +5643,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1161;
 		vrLoc = 1503;
@@ -5669,7 +5712,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 88";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 1707;
@@ -5689,7 +5732,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 2085;
 		vrLoc = 3757;
@@ -5699,7 +5742,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1992;
 		vrLoc = 3869;
@@ -5719,7 +5762,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1992;
 		vrLoc = 3869;
@@ -5729,7 +5772,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 1005;
@@ -5739,7 +5782,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 1005;
@@ -5759,7 +5802,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 87";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1499;
 		vrLoc = 1154;
@@ -5769,7 +5812,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 87";
 		rLen = 0;
-		rLoc = 4918;
+		rLoc = 5014;
 		rType = 0;
 		vrLen = 1770;
 		vrLoc = 3792;
@@ -5789,7 +5832,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 4193;
+		rLoc = 4458;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 1196;
@@ -5799,7 +5842,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 76";
 		rLen = 0;
-		rLoc = 4193;
+		rLoc = 4458;
 		rType = 0;
 		vrLen = 1397;
 		vrLoc = 0;
@@ -6149,7 +6192,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 88";
 		rLen = 0;
-		rLoc = 4472;
+		rLoc = 4792;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 1604;
@@ -6159,7 +6202,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 90";
 		rLen = 0;
-		rLoc = 4472;
+		rLoc = 4792;
 		rType = 0;
 		vrLen = 1320;
 		vrLoc = 1604;
@@ -6169,7 +6212,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 90";
 		rLen = 0;
-		rLoc = 4472;
+		rLoc = 4792;
 		rType = 0;
 		vrLen = 1320;
 		vrLoc = 1604;
@@ -6199,7 +6242,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 88";
 		rLen = 0;
-		rLoc = 4472;
+		rLoc = 4792;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 1604;
@@ -6239,7 +6282,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 90";
 		rLen = 0;
-		rLoc = 4472;
+		rLoc = 4792;
 		rType = 0;
 		vrLen = 1321;
 		vrLoc = 1604;
@@ -6279,7 +6322,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 88";
 		rLen = 0;
-		rLoc = 4473;
+		rLoc = 4793;
 		rType = 0;
 		vrLen = 1203;
 		vrLoc = 1604;
@@ -6349,7 +6392,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 84";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 1540;
@@ -6359,7 +6402,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 87";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1324;
 		vrLoc = 1540;
@@ -6369,7 +6412,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 84";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 1540;
@@ -6389,7 +6432,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 84";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 1540;
@@ -6399,7 +6442,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 87";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1265;
 		vrLoc = 1540;
@@ -6517,7 +6560,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 83";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1263;
 		vrLoc = 1540;
@@ -6527,7 +6570,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 87";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 1540;
@@ -6537,7 +6580,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 87";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 1540;
@@ -6597,7 +6640,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 81";
 		rLen = 0;
-		rLoc = 4353;
+		rLoc = 4673;
 		rType = 0;
 		vrLen = 1126;
 		vrLoc = 1540;
@@ -6607,7 +6650,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 88";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 1540;
@@ -6687,7 +6730,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 88";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 1540;
@@ -6697,7 +6740,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 68";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1184;
 		vrLoc = 1540;
@@ -6717,7 +6760,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 68";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1340;
 		vrLoc = 288;
@@ -6727,7 +6770,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 68";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 983;
@@ -6736,8 +6779,8 @@
 		isa = PBXTextBookmark;
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 84";
-		rLen = 270;
-		rLoc = 4687;
+		rLen = 215;
+		rLoc = 4838;
 		rType = 0;
 		vrLen = 1625;
 		vrLoc = 1791;
@@ -6747,7 +6790,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 68";
 		rLen = 0;
-		rLoc = 3230;
+		rLoc = 3495;
 		rType = 0;
 		vrLen = 1264;
 		vrLoc = 1395;
@@ -6757,7 +6800,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 87";
 		rLen = 0;
-		rLoc = 4418;
+		rLoc = 4738;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 1395;
@@ -6807,7 +6850,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 92";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1355;
 		vrLoc = 1542;
@@ -6857,7 +6900,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 105";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1475;
 		vrLoc = 1559;
@@ -6867,7 +6910,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 100";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1445;
 		vrLoc = 1559;
@@ -6877,7 +6920,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 100";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1445;
 		vrLoc = 1559;
@@ -6977,7 +7020,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 92";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1455;
 		vrLoc = 1559;
@@ -7017,7 +7060,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 92";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1455;
 		vrLoc = 1559;
@@ -7027,7 +7070,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 92";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 1559;
@@ -7037,7 +7080,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 92";
 		rLen = 0;
-		rLoc = 4471;
+		rLoc = 4791;
 		rType = 0;
 		vrLen = 1450;
 		vrLoc = 1559;
@@ -7047,7 +7090,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 44";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 0;
@@ -7087,7 +7130,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 43";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 0;
@@ -7098,7 +7141,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 239;
+		rLoc = 262;
 		rType = 1;
 	};
 	A29636F212CE1B7400928950 /* PBXTextBookmark */ = {
@@ -7106,7 +7149,7 @@
 		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
 		name = "ActivateDevice.m: 43";
 		rLen = 0;
-		rLoc = 1080;
+		rLoc = 2065;
 		rType = 0;
 		vrLen = 1365;
 		vrLoc = 0;
@@ -7136,7 +7179,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 83";
 		rLen = 0;
-		rLoc = 4418;
+		rLoc = 4738;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 2505;
@@ -7146,7 +7189,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 83";
 		rLen = 0;
-		rLoc = 4418;
+		rLoc = 4738;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 2505;
@@ -7177,7 +7220,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 239;
+		rLoc = 262;
 		rType = 1;
 	};
 	A29636FE12CE2DFF00928950 /* PBXTextBookmark */ = {
@@ -7185,7 +7228,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 209";
 		rLen = 0;
-		rLoc = 7008;
+		rLoc = 7615;
 		rType = 0;
 		vrLen = 447;
 		vrLoc = 5632;
@@ -7205,7 +7248,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 83";
 		rLen = 0;
-		rLoc = 4418;
+		rLoc = 4738;
 		rType = 0;
 		vrLen = 1153;
 		vrLoc = 722;
@@ -7239,7 +7282,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 77";
 		rLen = 0;
-		rLoc = 4374;
+		rLoc = 4525;
 		rType = 0;
 		vrLen = 1861;
 		vrLoc = 4351;
@@ -7249,7 +7292,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 192";
 		rLen = 0;
-		rLoc = 6938;
+		rLoc = 7545;
 		rType = 0;
 		vrLen = 1981;
 		vrLoc = 4086;
@@ -7259,7 +7302,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 93";
 		rLen = 280;
-		rLoc = 4541;
+		rLoc = 5148;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 1628;
@@ -7269,7 +7312,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 78";
 		rLen = 0;
-		rLoc = 4027;
+		rLoc = 4178;
 		rType = 0;
 		vrLen = 1474;
 		vrLoc = 2529;
@@ -7279,7 +7322,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 90";
 		rLen = 0;
-		rLoc = 4153;
+		rLoc = 4304;
 		rType = 0;
 		vrLen = 1493;
 		vrLoc = 1674;
@@ -7299,7 +7342,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 82";
 		rLen = 0;
-		rLoc = 3994;
+		rLoc = 4145;
 		rType = 0;
 		vrLen = 2081;
 		vrLoc = 4801;
@@ -7309,7 +7352,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 196";
 		rLen = 0;
-		rLoc = 6838;
+		rLoc = 7445;
 		rType = 0;
 		vrLen = 1370;
 		vrLoc = 1450;
@@ -7319,7 +7362,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 196";
 		rLen = 0;
-		rLoc = 6828;
+		rLoc = 7435;
 		rType = 0;
 		vrLen = 1727;
 		vrLoc = 4277;
@@ -7338,8 +7381,8 @@
 		isa = PBXTextBookmark;
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 35";
-		rLen = 1627;
-		rLoc = 1084;
+		rLen = 1693;
+		rLoc = 1169;
 		rType = 0;
 		vrLen = 2077;
 		vrLoc = 916;
@@ -7359,7 +7402,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 232";
 		rLen = 0;
-		rLoc = 6938;
+		rLoc = 7545;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 5764;
@@ -7369,7 +7412,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 66";
 		rLen = 0;
-		rLoc = 2498;
+		rLoc = 2763;
 		rType = 0;
 		vrLen = 2086;
 		vrLoc = 747;
@@ -7379,7 +7422,7 @@
 		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
 		name = "ActivateDeviceCloudInfo.m: 52";
 		rLen = 0;
-		rLoc = 1732;
+		rLoc = 1916;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 5796;
@@ -7399,7 +7442,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 38";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1341;
 		rType = 0;
 		vrLen = 2094;
 		vrLoc = 899;
@@ -7409,7 +7452,7 @@
 		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
 		name = "ModalActivateDevice.m: 153";
 		rLen = 0;
-		rLoc = 5180;
+		rLoc = 5276;
 		rType = 0;
 		vrLen = 1703;
 		vrLoc = 3648;
@@ -7428,6 +7471,436 @@
 		vrLen = 1088;
 		vrLoc = 0;
 	};
+	A296376D12CE677B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D5BAC1292C15000DAE753 /* ActivationUtil.h */;
+		name = "ActivationUtil.h: 24";
+		rLen = 0;
+		rLoc = 667;
+		rType = 0;
+		vrLen = 983;
+		vrLoc = 0;
+	};
+	A296376E12CE677B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
+		name = "ActivateDevice.h: 14";
+		rLen = 0;
+		rLoc = 623;
+		rType = 0;
+		vrLen = 646;
+		vrLoc = 0;
+	};
+	A296376F12CE677B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D5BAD1292C15000DAE753 /* ActivationUtil.m */;
+		name = "ActivationUtil.m: 35";
+		rLen = 340;
+		rLoc = 884;
+		rType = 0;
+		vrLen = 1532;
+		vrLoc = 443;
+	};
+	A296377012CE677B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 32";
+		rLen = 0;
+		rLoc = 960;
+		rType = 0;
+		vrLen = 1092;
+		vrLoc = 0;
+	};
+	A296377112CE677B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 36";
+		rLen = 0;
+		rLoc = 960;
+		rType = 0;
+		vrLen = 1439;
+		vrLoc = 0;
+	};
+	A296378512CE73F000928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
+		name = "ActivateDevice.h: 31";
+		rLen = 0;
+		rLoc = 938;
+		rType = 0;
+		vrLen = 830;
+		vrLoc = 0;
+	};
+	A296378612CE73F000928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D5BAD1292C15000DAE753 /* ActivationUtil.m */;
+		name = "ActivationUtil.m: 73";
+		rLen = 1524;
+		rLoc = 2088;
+		rType = 0;
+		vrLen = 1395;
+		vrLoc = 2332;
+	};
+	A296378712CE73F000928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 47";
+		rLen = 0;
+		rLoc = 3702;
+		rType = 0;
+		vrLen = 1250;
+		vrLoc = 368;
+	};
+	A296378812CE73F000928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 33";
+		rLen = 0;
+		rLoc = 960;
+		rType = 0;
+		vrLen = 1447;
+		vrLoc = 1795;
+	};
+	A296379512CE77B900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D5BAD1292C15000DAE753 /* ActivationUtil.m */;
+		name = "ActivationUtil.m: 107";
+		rLen = 0;
+		rLoc = 3263;
+		rType = 0;
+		vrLen = 1533;
+		vrLoc = 442;
+	};
+	A296379612CE77B900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2DF3CD71225B864004C908F /* GeneralTools.h */;
+		name = "GeneralTools.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 143;
+		vrLoc = 0;
+	};
+	A296379712CE77B900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2DF3CD81225B864004C908F /* GeneralTools.m */;
+		name = "GeneralTools.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 427;
+		vrLoc = 0;
+	};
+	A296379812CE77B900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
+		name = "ActivateDevice.h: 30";
+		rLen = 0;
+		rLoc = 858;
+		rType = 0;
+		vrLen = 915;
+		vrLoc = 0;
+	};
+	A296379912CE77B900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 35";
+		rLen = 0;
+		rLoc = 2065;
+		rType = 0;
+		vrLen = 1481;
+		vrLoc = 258;
+	};
+	A296379A12CE77B900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 22";
+		rLen = 0;
+		rLoc = 602;
+		rType = 0;
+		vrLen = 1833;
+		vrLoc = 474;
+	};
+	A29637B612CE7F3800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D5BAC1292C15000DAE753 /* ActivationUtil.h */;
+		name = "ActivationUtil.h: 24";
+		rLen = 0;
+		rLoc = 667;
+		rType = 0;
+		vrLen = 983;
+		vrLoc = 0;
+	};
+	A29637B712CE7F3800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A25E9DAB1225CB9500A8AE19 /* SystemException.h */;
+		name = "SystemException.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 413;
+		vrLoc = 0;
+	};
+	A29637B812CE7F3800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8612CA16BB00928950 /* ActivateDevice.h */;
+		name = "ActivateDevice.h: 18";
+		rLen = 0;
+		rLoc = 623;
+		rType = 0;
+		vrLen = 939;
+		vrLoc = 0;
+	};
+	A29637B912CE7F3800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 59";
+		rLen = 0;
+		rLoc = 2061;
+		rType = 0;
+		vrLen = 1700;
+		vrLoc = 490;
+	};
+	A29637BA12CE7F3800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 26";
+		rLen = 0;
+		rLoc = 656;
+		rType = 0;
+		vrLen = 1639;
+		vrLoc = 4;
+	};
+	A29637C812CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 26";
+		rLen = 0;
+		rLoc = 656;
+		rType = 0;
+		vrLen = 1827;
+		vrLoc = 549;
+	};
+	A29637C912CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A267E57712C5478F00693E1A /* ModalActivateDevice.h */;
+		name = "ModalActivateDevice.h: 35";
+		rLen = 58;
+		rLoc = 1018;
+		rType = 0;
+		vrLen = 1234;
+		vrLoc = 0;
+	};
+	A29637CA12CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
+		name = "ModalActivateDevice.m: 36";
+		rLen = 81;
+		rLoc = 1084;
+		rType = 0;
+		vrLen = 2089;
+		vrLoc = 1034;
+	};
+	A29637CB12CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2DF3D151225BD29004C908F /* Configuration.m */;
+		name = "Configuration.m: 121";
+		rLen = 0;
+		rLoc = 2623;
+		rType = 0;
+		vrLen = 1006;
+		vrLoc = 2205;
+	};
+	A29637CC12CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2DF3D141225BD29004C908F /* Configuration.h */;
+		name = "Configuration.h: 36";
+		rLen = 0;
+		rLoc = 1209;
+		rType = 0;
+		vrLen = 1484;
+		vrLoc = 0;
+	};
+	A29637CD12CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 37";
+		rLen = 0;
+		rLoc = 1013;
+		rType = 0;
+		vrLen = 2159;
+		vrLoc = 309;
+	};
+	A29637CE12CE853E00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 80";
+		rLen = 0;
+		rLoc = 2760;
+		rType = 0;
+		vrLen = 1902;
+		vrLoc = 865;
+	};
+	A29637DA12CE875800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 68";
+		rLen = 0;
+		rLoc = 2271;
+		rType = 0;
+		vrLen = 1805;
+		vrLoc = 1577;
+	};
+	A29637DB12CE875800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 36";
+		rLen = 0;
+		rLoc = 975;
+		rType = 0;
+		vrLen = 2124;
+		vrLoc = 527;
+	};
+	A29637DC12CE875800928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 162";
+		rLen = 0;
+		rLoc = 4903;
+		rType = 0;
+		vrLen = 1571;
+		vrLoc = 3947;
+	};
+	A29637E112CE885900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 31";
+		rLen = 0;
+		rLoc = 863;
+		rType = 0;
+		vrLen = 1881;
+		vrLoc = 196;
+	};
+	A29637E212CE885900928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 33";
+		rLen = 0;
+		rLoc = 1024;
+		rType = 0;
+		vrLen = 1700;
+		vrLoc = 401;
+	};
+	A29637F212CE8A8B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D5B6612906D9000DAE753 /* MobileService.m */;
+		name = "MobileService.m: 180";
+		rLen = 0;
+		rLoc = 4500;
+		rType = 0;
+		vrLen = 1036;
+		vrLoc = 368;
+	};
+	A29637F312CE8A8B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D56FC12849BB000DAE753 /* NetworkConnector.m */;
+		name = "NetworkConnector.m: 26";
+		rLen = 0;
+		rLoc = 738;
+		rType = 0;
+		vrLen = 1149;
+		vrLoc = 318;
+	};
+	A29637F412CE8A8B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D570112849BCE00DAE753 /* NetSession.m */;
+		name = "NetSession.m: 17";
+		rLen = 0;
+		rLoc = 465;
+		rType = 0;
+		vrLen = 1204;
+		vrLoc = 3902;
+	};
+	A29637F512CE8A8B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 81";
+		rLen = 0;
+		rLoc = 2539;
+		rType = 0;
+		vrLen = 1623;
+		vrLoc = 1917;
+	};
+	A29637F612CE8A8B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */;
+		name = "ModalActivateDevice.m: 151";
+		rLen = 0;
+		rLoc = 4902;
+		rType = 0;
+		vrLen = 1545;
+		vrLoc = 4166;
+	};
+	A29637F712CE8A8B00928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 151";
+		rLen = 0;
+		rLoc = 4614;
+		rType = 0;
+		vrLen = 1554;
+		vrLoc = 3545;
+	};
+	A296380512CE8C4300928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */;
+		name = "ActivateDeviceCloudInfo.m: 139";
+		rLen = 0;
+		rLoc = 4261;
+		rType = 0;
+		vrLen = 1563;
+		vrLoc = 1862;
+	};
+	A296380612CE8C4300928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D570112849BCE00DAE753 /* NetSession.m */;
+		name = "NetSession.m: 166";
+		rLen = 0;
+		rLoc = 4233;
+		rType = 0;
+		vrLen = 1502;
+		vrLoc = 185;
+	};
+	A296380712CE8C4300928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2962C8712CA16BB00928950 /* ActivateDevice.m */;
+		name = "ActivateDevice.m: 31";
+		rLen = 0;
+		rLoc = 1024;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 2566;
+	};
+	A296380812CE8C4300928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D56FC12849BB000DAE753 /* NetworkConnector.m */;
+		name = "NetworkConnector.m: 28";
+		rLen = 0;
+		rLoc = 786;
+		rType = 0;
+		vrLen = 1241;
+		vrLoc = 185;
+	};
+	A296380912CE8C4300928950 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D56FC12849BB000DAE753 /* NetworkConnector.m */;
+		name = "NetworkConnector.m: 28";
+		rLen = 0;
+		rLoc = 786;
+		rType = 0;
+		vrLen = 1241;
+		vrLoc = 185;
+	};
 	A29D56FB12849BB000DAE753 /* NetworkConnector.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 659}}";
@@ -7438,9 +7911,9 @@
 	};
 	A29D56FC12849BB000DAE753 /* NetworkConnector.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {880, 689}}";
-			sepNavSelRange = "{1160, 0}";
-			sepNavVisRange = "{0, 1419}";
+			sepNavIntBoundsRect = "{{0, 0}, {880, 702}}";
+			sepNavSelRange = "{786, 0}";
+			sepNavVisRange = "{185, 1241}";
 			sepNavWindowFrame = "{{483, 90}, {750, 787}}";
 		};
 	};
@@ -7455,8 +7928,8 @@
 	A29D570112849BCE00DAE753 /* NetSession.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {859, 2652}}";
-			sepNavSelRange = "{4870, 0}";
-			sepNavVisRange = "{0, 1632}";
+			sepNavSelRange = "{4233, 0}";
+			sepNavVisRange = "{185, 1502}";
 			sepNavWindowFrame = "{{498, 91}, {750, 787}}";
 		};
 	};
@@ -7600,24 +8073,24 @@
 	};
 	A29D5B6612906D9000DAE753 /* MobileService.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1379, 2678}}";
-			sepNavSelRange = "{5164, 0}";
-			sepNavVisRange = "{4330, 922}";
+			sepNavIntBoundsRect = "{{0, 0}, {1377, 2743}}";
+			sepNavSelRange = "{4500, 0}";
+			sepNavVisRange = "{368, 1036}";
 			sepNavWindowFrame = "{{500, 90}, {750, 787}}";
 		};
 	};
 	A29D5BAC1292C15000DAE753 /* ActivationUtil.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 659}}";
-			sepNavSelRange = "{543, 0}";
+			sepNavSelRange = "{667, 0}";
 			sepNavVisRange = "{0, 983}";
 		};
 	};
 	A29D5BAD1292C15000DAE753 /* ActivationUtil.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1379, 1729}}";
-			sepNavSelRange = "{3683, 5}";
-			sepNavVisRange = "{2674, 1053}";
+			sepNavIntBoundsRect = "{{0, 0}, {887, 1729}}";
+			sepNavSelRange = "{3263, 0}";
+			sepNavVisRange = "{442, 1533}";
 		};
 	};
 	A29D5BF31293204D00DAE753 /* CloudPayload.h */ = {
@@ -7925,7 +8398,7 @@
 	};
 	A2DF3CD81225B864004C908F /* GeneralTools.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 427}";
 		};
@@ -7981,9 +8454,9 @@
 	};
 	A2DF3D151225BD29004C908F /* Configuration.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {887, 2613}}";
+			sepNavIntBoundsRect = "{{0, 0}, {887, 2704}}";
 			sepNavSelRange = "{2623, 0}";
-			sepNavVisRange = "{2203, 993}";
+			sepNavVisRange = "{2205, 1006}";
 			sepNavWindowFrame = "{{465, 89}, {750, 787}}";
 		};
 	};
