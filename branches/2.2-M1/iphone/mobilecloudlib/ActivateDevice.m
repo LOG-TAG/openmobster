@@ -24,7 +24,10 @@
 
 -(void)doAction:(CommandContext *)commandContext
 {
-	[NSThread sleepForTimeInterval:5];
+	NSString *login = (NSString *)[commandContext getAttribute:@"login"];
+	NSString *password = (NSString *)[commandContext getAttribute:@"password"];
+	NSString *cloudIp = (NSString *)[commandContext getAttribute:@"cloudIp"];
+	NSString *cloudPort = (NSString *)[commandContext getAttribute:@"cloudPort"];
 	
 	Configuration *conf = [Configuration getInstance];
 	conf.active = [NSNumber numberWithBool:YES];

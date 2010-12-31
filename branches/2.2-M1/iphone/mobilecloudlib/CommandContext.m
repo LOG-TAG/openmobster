@@ -97,4 +97,14 @@
 {
 	return ([self getAttribute:@"activate_timeout"] != nil);
 }
+
+-(void)setAppException:(AppException *)appe
+{
+	[self setAttribute:@"app_exception" :appe];
+}
+
+-(AppException *)getAppException
+{
+	return (AppException *)[self getAttribute:@"app_exception"];
+}
 @end

@@ -6,6 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 #import <UIKit/UIKit.h>
+#import "CommandContext.h"
 
 /**
  * 
@@ -14,4 +15,5 @@
 @protocol UICommandDelegate
 -(void)doViewAfter:(CommandContext *)commandContext;
 -(void)doViewError:(CommandContext *)commandContext;
+-(void)doViewAppException:(CommandContext *)commandContext;
 @end

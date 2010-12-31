@@ -24,17 +24,17 @@
 	[modalView release];
 	
 	//Add the Title
-	navCtrl.navigationBar.topItem.title = @"Activate Device";
+	navCtrl.navigationBar.topItem.title = @"Login";
 	
 	//Add the Cancel button to the navbar
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:modalView action:@selector(cancel:)];
 	navCtrl.topViewController.navigationItem.leftBarButtonItem = cancelButton;
 	[cancelButton release];
 	
-	//Add the Activate button to the navbar
-	UIBarButtonItem *activateButton = [[UIBarButtonItem alloc] initWithTitle:@"Activate" style:UIBarButtonItemStyleDone target:modalView action:@selector(submit:)];
-	navCtrl.topViewController.navigationItem.rightBarButtonItem = activateButton;
-	[activateButton release];
+	//Add the Next button to the navbar
+	UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:modalView action:@selector(next:)];
+	navCtrl.topViewController.navigationItem.rightBarButtonItem = nextButton;
+	[nextButton release];
 	
 	
 	[caller presentModalViewController:navCtrl animated:YES];
@@ -45,13 +45,13 @@
 {
 	ModalActivateDevice *modalView = [[ModalActivateDevice alloc] initWithNibName:@"ModalActivateDevice" bundle:nil];
 	modalView.delegate = caller;
-	[modalView forceActivation];
+	modalView.forceActivation = YES;
 	
 	UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
 	[modalView release];
 	
 	//Add the Title
-	navCtrl.navigationBar.topItem.title = @"Activate Device";
+	navCtrl.navigationBar.topItem.title = @"Login";
 	
 	//Add the Cancel button to the navbar
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:modalView action:@selector(cancel:)];
@@ -59,9 +59,9 @@
 	[cancelButton release];
 	
 	//Add the Activate button to the navbar
-	UIBarButtonItem *activateButton = [[UIBarButtonItem alloc] initWithTitle:@"Activate" style:UIBarButtonItemStyleDone target:modalView action:@selector(submit:)];
-	navCtrl.topViewController.navigationItem.rightBarButtonItem = activateButton;
-	[activateButton release];
+	UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:modalView action:@selector(next:)];
+	navCtrl.topViewController.navigationItem.rightBarButtonItem = nextButton;
+	[nextButton release];
 	
 	
 	[caller presentModalViewController:navCtrl animated:YES];

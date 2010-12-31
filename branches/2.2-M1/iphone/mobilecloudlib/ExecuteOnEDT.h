@@ -16,6 +16,7 @@
 #import "RemoteCommand.h"
 #import "AsyncCommand.h"
 #import "BusyCommand.h"
+#import "AppException.h"
 
 /**
  * 

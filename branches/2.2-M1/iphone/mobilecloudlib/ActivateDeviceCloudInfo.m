@@ -1,26 +1,25 @@
-/**
- * Copyright (c) {2003,2010} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- */
+//
+//  ActivateDeviceCloudInfo.m
+//  mobilecloudlib
+//
+//  Created by openmobster on 12/29/10.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//
 
-#import "ModalActivateDevice.h"
+#import "ActivateDeviceCloudInfo.h"
 
 
-@implementation ModalActivateDevice
+@implementation ActivateDeviceCloudInfo
 
 @synthesize delegate;
 @synthesize forceActivation;
-@synthesize login;
-@synthesize password;
-@synthesize next;
+@synthesize cloudIp;
+@synthesize cloudPort;
+@synthesize commandContext;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
     }
@@ -33,13 +32,13 @@
 {
     [super viewDidLoad];
 	
-	//Setup Login TextField
+	//Setup IP Field
 	UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
 	textField = [textField autorelease];
-	self.login = textField;
+	self.cloudIp = textField;
 	textField.adjustsFontSizeToFitWidth = YES;
 	textField.textColor = [UIColor blackColor];
-	textField.keyboardType = UIKeyboardTypeEmailAddress;
+	textField.keyboardType = UIKeyboardTypeURL;
 	textField.returnKeyType = UIReturnKeyNext;
 	textField.backgroundColor = [UIColor whiteColor];
 	textField.autocorrectionType = UITextAutocorrectionTypeNo; // no auto correction support
@@ -49,15 +48,14 @@
 	textField.clearButtonMode = UITextFieldViewModeNever; // no clear 'x' button to the right
 	[textField setEnabled: YES];
 	
-	//Setup Password TextField
+	//Setup Port Field
 	textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
 	textField = [textField autorelease];
-	self.password = textField;
+	self.cloudPort = textField;
 	textField.adjustsFontSizeToFitWidth = YES;
 	textField.textColor = [UIColor blackColor];
-	textField.keyboardType = UIKeyboardTypeDefault;
-	textField.returnKeyType = UIReturnKeyDone;
-	textField.secureTextEntry = YES;			
+	textField.keyboardType = UIKeyboardTypeNumberPad;
+	textField.returnKeyType = UIReturnKeyNext;
 	textField.backgroundColor = [UIColor whiteColor];
 	textField.autocorrectionType = UITextAutocorrectionTypeNo; // no auto correction support
 	textField.autocapitalizationType = UITextAutocapitalizationTypeNone; // no auto capitalization support
@@ -65,22 +63,18 @@
 	textField.tag = 0;
 	textField.clearButtonMode = UITextFieldViewModeNever; // no clear 'x' button to the right
 	[textField setEnabled: YES];
-	
-	ActivateDeviceCloudInfo *cloudInfo = [[ActivateDeviceCloudInfo alloc] initWithNibName:@"ActivateDeviceCloudInfo" bundle:nil];
-	self.next = cloudInfo;
-	[cloudInfo release];
+	self.cloudPort.text = @"1502";
 }
 
 /*
 // Override to allow orientations other than the default portrait orientation.
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
 
--(void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning 
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -88,7 +82,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)viewDidUnload 
+- (void)viewDidUnload 
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -96,24 +90,24 @@
 }
 
 
--(void)dealloc 
+- (void)dealloc 
 {
 	[delegate release];
 	
-	[login release];
-	[password release];
-	[next release];
+	[cloudIp release];
+	[cloudPort release];
 	
-	[super dealloc];
+	[commandContext release];
+    [super dealloc];
 }
 
--(IBAction) next:(id) sender
+-(IBAction) submit:(id) sender
 {
 	//Validation
-	if([StringUtil isEmpty:login.text])
+	if([StringUtil isEmpty:cloudIp.text])
 	{
 		NSString *code = @"Validation Error";
-		NSString *message = @"Email is Required";
+		NSString *message = @"Cloud IP or Host address is Required";
 		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		dialog = [dialog autorelease];
 		
@@ -121,10 +115,10 @@
 		
 		return;
 	}
-	else if([StringUtil isEmpty:password.text])
+	else if([StringUtil isEmpty:cloudPort.text])
 	{
 		NSString *code = @"Validation Error";
-		NSString *message = @"Password is Required";
+		NSString *message = @"Cloud Port is Required";
 		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		dialog = [dialog autorelease];
 		
@@ -134,30 +128,42 @@
 	}
 	
 	//Read the email and password information
-	NSString *inputLogin = [NSString stringWithString:login.text];
-	NSString *inputPassword = [NSString stringWithString:password.text];
+	NSString *ip = [NSString stringWithString:cloudIp.text];
+	NSString *port = [NSString stringWithString:cloudPort.text];
 	
-	UINavigationController *navCtrl = self.navigationController;
-	next.delegate = delegate;
-	next.forceActivation = forceActivation;
+	[commandContext setAttribute:@"cloudIp" :ip];
+	[commandContext setAttribute:@"cloudPort" :port];
+	CommandService *service = [CommandService getInstance];
 	
-	CommandContext *commandContext = [CommandContext withInit:next];
-	[commandContext setTarget:[ActivateDevice withInit]];
-	[commandContext setAttribute:@"login" :inputLogin];
-	[commandContext setAttribute:@"password" :inputPassword];
-	next.commandContext = commandContext;
-	
-	[navCtrl pushViewController:next animated:YES];
-	
-	//Add the Activate button to the navbar
-	UIBarButtonItem *activateButton = [[UIBarButtonItem alloc] initWithTitle:@"Activate" style:UIBarButtonItemStyleDone target:next action:@selector(submit:)];
-	navCtrl.topViewController.navigationItem.rightBarButtonItem = activateButton;
-	[activateButton release];
+	//start the service invocation
+	[service execute:commandContext];
 }
 
--(IBAction) cancel:(id) sender
+-(void)doViewAfter:(CommandContext *)callback
 {
 	[self dismiss];
+}
+
+-(void)doViewError:(CommandContext *)callback
+{
+	NSString *code = [callback getErrorCode];
+	NSString *message = [callback getErrorMessage];
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	
+	[dialog show];
+}
+
+-(void)doViewAppException:(CommandContext *)callback
+{
+	AppException *appe = [callback getAppException];
+	
+	NSString *code = [appe getType];
+	NSString *message = [appe getMessage];
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	
+	[dialog show];
 }
 
 -(void)dismiss
@@ -184,10 +190,11 @@
 		}
 	}
 }
+
 //UITableViewDataSource and UITableViewDelegate protocol implementation
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	return @"Login";
+	return @"Cloud Server";
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -218,13 +225,13 @@
 	switch(index)
 	{
 		case 0:
-			local.textLabel.text = @"Email :";
-			[local addSubview:self.login];
+			local.textLabel.text = @"IP or Host :";
+			[local addSubview:self.cloudIp];
 		break;
 			
 		case 1:
-			local.textLabel.text = @"Password :";
-			[local addSubview:self.password];
+			local.textLabel.text = @"Port :";
+			[local addSubview:self.cloudPort];
 		break;
 	}
 	

@@ -20,6 +20,7 @@
 		A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */; };
 		A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296317012CB96BE00928950 /* ModalActivateDevice.xib */; };
 		A296317512CB96BE00928950 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296317112CB96BE00928950 /* SecurityConfig.xib */; };
+		A296335712CBF36400928950 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */; };
 		A29D69F412B7E53800DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F312B7E53800DAE753 /* CFNetwork.framework */; };
 		A29D69F912B7E56300DAE753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F812B7E56300DAE753 /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
 		A296317012CB96BE00928950 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
 		A296317112CB96BE00928950 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
+		A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = SOURCE_ROOT; };
 		A29D69F312B7E53800DAE753 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A29D69F812B7E56300DAE753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */,
 				A296315B12CB960000928950 /* CloudManagerApp.xib */,
 				A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */,
 				A296317012CB96BE00928950 /* ModalActivateDevice.xib */,
@@ -179,6 +182,7 @@
 				A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */,
 				A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */,
 				A296317512CB96BE00928950 /* SecurityConfig.xib in Resources */,
+				A296335712CBF36400928950 /* ActivateDeviceCloudInfo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

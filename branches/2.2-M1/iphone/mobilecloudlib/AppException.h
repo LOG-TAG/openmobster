@@ -19,16 +19,13 @@
 	GenericAttributeManager *attrMgr;
 }
 
-+(id)withInit;
++(id)withInit:(NSString *)type :(NSString *) message;
 
 -(void)setAttribute:(NSString *)name :(id)value;
 -(id)getAttribute:(NSString *)name;
 
 -(void)setType:(NSString *)type;
 -(NSString *)getType;
-
--(void)setMessageKey:(NSString *)messageKey;
--(NSString *)getMessageKey;
 
 -(void)setMessage:(NSString *)message;
 -(NSString *)getMessage;
