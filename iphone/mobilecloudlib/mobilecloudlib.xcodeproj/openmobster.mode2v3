@@ -202,7 +202,7 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>A296312112CB901600928950</string>
+				<string>A296375C12CE452A00928950</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>ActivateDevice.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
@@ -210,32 +210,16 @@
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>A296315F12CB960500928950</string>
+						<string>A296376112CE455200928950</string>
 						<key>PBXProjectModuleLabel</key>
 						<string>ActivateDevice.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A29632F412CBDD8200928950</string>
+						<string>A296376212CE455200928950</string>
 						<key>history</key>
 						<array>
-							<string>A296316112CB960500928950</string>
-							<string>A296316312CB960500928950</string>
-							<string>A296316412CB960500928950</string>
-							<string>A296321512CBC99200928950</string>
-							<string>A296321612CBC99200928950</string>
-							<string>A296324112CBD13B00928950</string>
-							<string>A296324312CBD13B00928950</string>
-							<string>A296325912CBD23700928950</string>
-							<string>A296325F12CBD28F00928950</string>
-							<string>A296329C12CBD72F00928950</string>
-							<string>A29632ED12CBDD8200928950</string>
-							<string>A29632EE12CBDD8200928950</string>
-							<string>A29632EF12CBDD8200928950</string>
-							<string>A29632F012CBDD8200928950</string>
-							<string>A29632F112CBDD8200928950</string>
-							<string>A29632F212CBDD8200928950</string>
-							<string>A29632F312CBDD8200928950</string>
+							<string>A296375B12CE452A00928950</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -251,7 +235,7 @@
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>481 145 750 731 0 0 1440 878 </string>
+				<string>509 147 750 731 0 0 1440 878 </string>
 			</dict>
 		</dict>
 	</array>
@@ -322,23 +306,19 @@
 									<array>
 										<string>0867D691FE84028FC02AAC07</string>
 										<string>A267E39012C40ABA00693E1A</string>
-										<string>A267E5FA12C54ED300693E1A</string>
 										<string>A267E58B12C5482800693E1A</string>
-										<string>A29D663912A6EAB300DAE753</string>
-										<string>A2DF3C9E1225B4D0004C908F</string>
-										<string>A2DF3D131225BD29004C908F</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>38</integer>
-											<integer>37</integer>
-											<integer>33</integer>
+											<integer>7</integer>
+											<integer>5</integer>
+											<integer>1</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 351}, {429, 333}}</string>
+									<string>{{0, 0}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -516,7 +496,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A296312112CB901600928950</string>
+	<string>A296375C12CE452A00928950</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -544,7 +524,7 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
-		<string>A296312112CB901600928950</string>
+		<string>A296375C12CE452A00928950</string>
 	</array>
 	<key>WindowString</key>
 	<string>6 456 446 419 0 0 1440 878 </string>
@@ -705,7 +685,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>UIKernel.m</string>
+								<string>ActivateDeviceCloudInfo.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

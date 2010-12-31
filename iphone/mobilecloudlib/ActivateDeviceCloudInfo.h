@@ -12,31 +12,29 @@
 #import "UICommandDelegate.h"
 #import "ActivateDevice.h"
 #import "Configuration.h"
-#import "ActivateDeviceCloudInfo.h"
+#import "AppException.h"
 #import "StringUtil.h"
 
-@interface ModalActivateDevice : UIViewController<UITableViewDataSource,UITableViewDelegate> 
+
+@interface ActivateDeviceCloudInfo : UIViewController<UITableViewDataSource,UITableViewDelegate,UICommandDelegate> 
 {
 	@private
 	UIViewController *delegate;
 	BOOL forceActivation;
 	
-	//Form elements
-	UITextField *login;
-	UITextField *password;
-	
-	//next screen
-	ActivateDeviceCloudInfo *next;
+	//Form fields
+	UITextField *cloudIp;
+	UITextField *cloudPort;
+	CommandContext *commandContext;
 }
 
 @property(nonatomic,retain) UIViewController *delegate;
-@property(nonatomic,retain) UITextField *login;
-@property(nonatomic,retain) UITextField *password;
-@property(nonatomic,retain) ActivateDeviceCloudInfo *next;
+@property(nonatomic,retain) UITextField *cloudIp;
+@property(nonatomic,retain) UITextField *cloudPort;
+@property(nonatomic,retain) CommandContext *commandContext;
 @property(nonatomic,assign) BOOL forceActivation;
 
--(IBAction) cancel:(id) sender;
--(IBAction) next:(id) sender;
+-(IBAction) submit:(id) sender;
 
 //use internally only
 -(void)dismiss;

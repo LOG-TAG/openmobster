@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "GenericAttributeManager.h"
+#import "AppException.h"
 
 /**
  * 
@@ -40,4 +41,6 @@
 -(void)deactivateTimeout;
 -(BOOL)isTimeoutActivated;
 
+-(void)setAppException:(AppException *)appe;
+-(AppException *)getAppException;
 @end

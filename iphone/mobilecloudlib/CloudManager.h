@@ -11,6 +11,7 @@
 #import "ModalActivateDevice.h"
 #import "SecurityConfig.h"
 #import "CloudManagerApp.h"
+#import "ActivateDeviceCloudInfo.h"
 
 /**
  * 

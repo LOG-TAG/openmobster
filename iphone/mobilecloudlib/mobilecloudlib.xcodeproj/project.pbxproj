@@ -49,6 +49,8 @@
 		A29630D212CB81C000928950 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A29630D012CB81C000928950 /* CloudManager.m */; };
 		A296311712CB8F5700928950 /* CloudManagerApp.h in Headers */ = {isa = PBXBuildFile; fileRef = A296311412CB8F5700928950 /* CloudManagerApp.h */; };
 		A296311812CB8F5700928950 /* CloudManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A296311512CB8F5700928950 /* CloudManagerApp.m */; };
+		A296334E12CBF27200928950 /* ActivateDeviceCloudInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A296334B12CBF27200928950 /* ActivateDeviceCloudInfo.h */; };
+		A296334F12CBF27200928950 /* ActivateDeviceCloudInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */; };
 		A29D56FD12849BB000DAE753 /* NetworkConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D56FB12849BB000DAE753 /* NetworkConnector.h */; };
 		A29D56FE12849BB000DAE753 /* NetworkConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D56FC12849BB000DAE753 /* NetworkConnector.m */; };
 		A29D570212849BCE00DAE753 /* NetSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D570012849BCE00DAE753 /* NetSession.h */; };
@@ -330,6 +332,9 @@
 		A296311412CB8F5700928950 /* CloudManagerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManagerApp.h; sourceTree = "<group>"; };
 		A296311512CB8F5700928950 /* CloudManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudManagerApp.m; sourceTree = "<group>"; };
 		A296311612CB8F5700928950 /* CloudManagerApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CloudManagerApp.xib; sourceTree = "<group>"; };
+		A296334B12CBF27200928950 /* ActivateDeviceCloudInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivateDeviceCloudInfo.h; sourceTree = "<group>"; };
+		A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateDeviceCloudInfo.m; sourceTree = "<group>"; };
+		A296334D12CBF27200928950 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivateDeviceCloudInfo.xib; sourceTree = "<group>"; };
 		A29D56FB12849BB000DAE753 /* NetworkConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnector.h; sourceTree = "<group>"; };
 		A29D56FC12849BB000DAE753 /* NetworkConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnector.m; sourceTree = "<group>"; };
 		A29D570012849BCE00DAE753 /* NetSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetSession.h; sourceTree = "<group>"; };
@@ -698,6 +703,7 @@
 		A267E5F912C54EA200693E1A /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				A296334D12CBF27200928950 /* ActivateDeviceCloudInfo.xib */,
 				A296311612CB8F5700928950 /* CloudManagerApp.xib */,
 				A267E59012C5484300693E1A /* ActivityIndicatorView.xib */,
 				A267E57912C5478F00693E1A /* ModalActivateDevice.xib */,
@@ -716,6 +722,8 @@
 				A267E57C12C5479000693E1A /* SecurityConfig.m */,
 				A296311412CB8F5700928950 /* CloudManagerApp.h */,
 				A296311512CB8F5700928950 /* CloudManagerApp.m */,
+				A296334B12CBF27200928950 /* ActivateDeviceCloudInfo.h */,
+				A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -725,8 +733,6 @@
 			children = (
 				A267E58E12C5484300693E1A /* ActivityIndicatorView.h */,
 				A267E58F12C5484300693E1A /* ActivityIndicatorView.m */,
-				A2962BF712C9118600928950 /* AppException.h */,
-				A2962BF812C9118600928950 /* AppException.m */,
 				A2962C2412C93D8E00928950 /* Command.h */,
 				A2962C4D12C947B300928950 /* ExecuteOnEDT.h */,
 				A2962C4E12C947B300928950 /* ExecuteOnEDT.m */,
@@ -737,6 +743,8 @@
 		A29630A612CB675100928950 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				A2962BF712C9118600928950 /* AppException.h */,
+				A2962BF812C9118600928950 /* AppException.m */,
 				A2962C0F12C9363400928950 /* CommandContext.h */,
 				A2962C1012C9363400928950 /* CommandContext.m */,
 				A2962C2612C93DAA00928950 /* UIInitiatedCommand.h */,
@@ -1277,6 +1285,7 @@
 				A296307A12CAB0AE00928950 /* UIKernel.h in Headers */,
 				A29630D112CB81C000928950 /* CloudManager.h in Headers */,
 				A296311712CB8F5700928950 /* CloudManagerApp.h in Headers */,
+				A296334E12CBF27200928950 /* ActivateDeviceCloudInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1687,6 +1696,7 @@
 				A296307B12CAB0AE00928950 /* UIKernel.m in Sources */,
 				A29630D212CB81C000928950 /* CloudManager.m in Sources */,
 				A296311812CB8F5700928950 /* CloudManagerApp.m in Sources */,
+				A296334F12CBF27200928950 /* ActivateDeviceCloudInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

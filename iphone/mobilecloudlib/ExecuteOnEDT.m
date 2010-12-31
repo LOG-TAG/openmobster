@@ -108,6 +108,10 @@
 	{
 		[commandContext setError:@"500" :[syse getMessage]];
 	}
+	@catch(AppException *appe)
+	{
+		[commandContext setAppException:appe];
+	}
 	@catch (NSException *e) 
 	{
 		NSString *message = @"No Message Found";
@@ -121,6 +125,7 @@
 		}
 		[commandContext setError:@"500" :message];	
 	}
+	
 	[self performSelectorOnMainThread:@selector(endBusyCommand) withObject:nil waitUntilDone:NO];
 }
 
@@ -150,7 +155,15 @@
 		
 		if(![commandContext hasErrors])
 		{
-			[local doViewAfter:commandContext];
+			AppException *appe = [commandContext getAppException];
+			if(appe == nil)
+			{
+				[local doViewAfter:commandContext];
+			}
+			else 
+			{
+				[local doViewAppException:commandContext];
+			}
 		}
 		else 
 		{
@@ -179,6 +192,10 @@
 	{
 		[commandContext setError:@"500" :[syse getMessage]];
 	}
+	@catch(AppException *appe)
+	{
+		[commandContext setAppException:appe];
+	}
 	@catch (NSException *e) 
 	{
 		NSString *message = @"No Message Found";
@@ -206,7 +223,15 @@
 		
 		if(![commandContext hasErrors])
 		{
-			[local doViewAfter:commandContext];
+			AppException *appe = [commandContext getAppException];
+			if(appe == nil)
+			{
+				[local doViewAfter:commandContext];
+			}
+			else 
+			{
+				[local doViewAppException:commandContext];
+			}
 		}
 		else 
 		{
@@ -226,6 +251,10 @@
 	@catch(SystemException *syse)
 	{
 		[commandContext setError:@"500" :[syse getMessage]];
+	}
+	@catch(AppException *appe)
+	{
+		[commandContext setAppException:appe];
 	}
 	@catch (NSException *e) 
 	{
@@ -254,7 +283,15 @@
 		
 		if(![commandContext hasErrors])
 		{
-			[local doViewAfter:commandContext];
+			AppException *appe = [commandContext getAppException];
+			if(appe == nil)
+			{
+				[local doViewAfter:commandContext];
+			}
+			else 
+			{
+				[local doViewAppException:commandContext];
+			}
 		}
 		else 
 		{

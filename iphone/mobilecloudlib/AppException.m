@@ -17,18 +17,36 @@
 
 -init
 {
-	if(self == [super init])
+	self = [self initWithName:@"AppException" reason:@"AppException" userInfo:nil];
+	if(self)
 	{
-		attrMgr = [GenericAttributeManager withInit];
+		attrMgr = [[GenericAttributeManager alloc] initWithRetention];
 	}
 	return self;
 }
 
-+(id)withInit
++(id)withInit:(NSString *)type :(NSString *) message
 {
 	AppException *instance = [[AppException alloc] init];
 	instance = [instance autorelease];
+	
+	if(type != nil)
+	{
+		[instance setType:type];
+	}
+	
+	if(message != nil)
+	{
+		[instance setMessage:message];
+	}
+	
 	return instance;
+}
+
+-(void)dealloc
+{
+	[attrMgr release];
+	[super dealloc];
 }
 
 -(void)setAttribute:(NSString *)name :(id)value
@@ -49,16 +67,6 @@
 -(NSString *)getType
 {
 	return [self getAttribute:@"type"];
-}
-
--(void)setMessageKey:(NSString *)messageKey
-{
-	[self setAttribute:@"message_key" :messageKey];
-}
-
--(NSString *)getMessageKey
-{
-	return [self getAttribute:@"message_key"];
 }
 
 -(void)setMessage:(NSString *)message
