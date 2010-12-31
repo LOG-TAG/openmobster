@@ -33,6 +33,9 @@
 {
     [super viewDidLoad];
 	
+	Configuration *conf = [Configuration getInstance];
+	NSString *email = conf.email;
+	
 	//Setup Login TextField
 	UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
 	textField = [textField autorelease];
@@ -48,6 +51,10 @@
 	textField.tag = 0;
 	textField.clearButtonMode = UITextFieldViewModeNever; // no clear 'x' button to the right
 	[textField setEnabled: YES];
+	if(![StringUtil isEmpty:email])
+	{
+		self.login.text = email;
+	}
 	
 	//Setup Password TextField
 	textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
@@ -142,7 +149,6 @@
 	next.forceActivation = forceActivation;
 	
 	CommandContext *commandContext = [CommandContext withInit:next];
-	[commandContext setTarget:[ActivateDevice withInit]];
 	[commandContext setAttribute:@"login" :inputLogin];
 	[commandContext setAttribute:@"password" :inputPassword];
 	next.commandContext = commandContext;

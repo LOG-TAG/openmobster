@@ -26,6 +26,7 @@
 	Configuration *configuration = [Configuration getInstance];
 	
 	NSString *serverIp = configuration.serverIp;
+	
 	if([StringUtil isEmpty:serverIp])
 	{
 		NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"device_inactive",nil];
