@@ -34,35 +34,30 @@
 		<module>testdrive-server</module>
 		<module>sar</module>
 		<module>cloud-sdk</module>
+		<module>android</module>
 	</modules>
 
 	<profiles>
+	    <!-- used to build only the *codebase* -->
 		<profile>
-			<id>mobileCloud</id>
+			<id>build</id>
 			<modules>
-				<module>mobileCloud</module>
 				<module>dev-tools</module>
 			</modules>
 		</profile>
+		<!-- used to build everything including codebase,documentation, etc -->
 		<profile>
-			<id>all</id>
+			<id>build-all</id>
 			<modules>
-				<module>mobileCloud</module>
 				<module>dev-tools</module>
 				<module>documentation</module>
 				<module>binary-release</module>
 			</modules>
 		</profile>
-		<profile>
-			<id>deploy-core</id>
-			<modules>
-				<module>mobileCloud</module>
-			</modules>
-		</profile>
+		<!-- used to do an android release resulting binaries located under binary-release/target -->
 		<profile>
 			<id>android-release</id>
 			<modules>
-				<module>mobileCloud</module>
 				<module>dev-tools</module>
 				<module>documentation</module>
 				<module>binary-release</module>
