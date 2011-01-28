@@ -34,21 +34,15 @@
 		<module>testdrive-server</module>
 		<module>sar</module>
 		<module>cloud-sdk</module>
+		<module>perf-framework</module>
+		<module>android</module>
 	</modules>
 
 	<profiles>
-	    <!-- used to deploy artifacts to the googlecode maven repository -->
-		<profile>
-			<id>deploy-core</id>
-			<modules>
-				<module>android</module>
-			</modules>
-		</profile>
 		<!-- used to do a full release producing the binaries -->
 		<profile>
-			<id>android-release</id>
+			<id>release</id>
 			<modules>
-				<module>android</module>
 				<module>dev-tools</module>
 				<module>documentation</module>
 				<module>binary-release</module>
@@ -58,7 +52,6 @@
 		<profile>
 			<id>build-all</id>
 			<modules>
-				<module>android</module>
 				<module>dev-tools</module>
 			</modules>
 		</profile>
