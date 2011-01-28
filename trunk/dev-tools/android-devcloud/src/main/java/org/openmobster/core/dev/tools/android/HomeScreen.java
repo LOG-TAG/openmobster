@@ -1,10 +1,11 @@
 /**
- * Copyright (c) {2003,2010} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
+ * Copyright (c) {2003,2011} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
+
 package org.openmobster.core.dev.tools.android;
 
 import java.lang.reflect.Field;
@@ -42,10 +43,6 @@ public class HomeScreen extends Screen
 {
 	private Integer screenId;
 	
-	private String server;
-	private String email;
-	private String password;
-	
 	@Override
 	public void render()
 	{
@@ -53,6 +50,7 @@ public class HomeScreen extends Screen
 		{
 			final Activity currentActivity = (Activity)Registry.getActiveInstance().
 			getContext();
+			Configuration conf = Configuration.getInstance(currentActivity);
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String home = "home";
@@ -60,16 +58,6 @@ public class HomeScreen extends Screen
 			Field field = clazz.getField(home);
 			
 			this.screenId = field.getInt(clazz);
-			
-			//Initialize the activation properties
-			if(this.server == null || this.email == null || this.password == null)
-			{
-				Properties properties = new Properties();
-				properties.load(HomeScreen.class.getResourceAsStream("/moblet-app/activation.properties"));
-				this.server = properties.getProperty("cloud_server_ip");
-				this.email = properties.getProperty("email");
-				this.password = properties.getProperty("password");
-			}
 		}
 		catch(Exception e)
 		{
@@ -104,10 +92,6 @@ public class HomeScreen extends Screen
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
 		String storedCloudIp = conf.getServerIp();
-		if(storedCloudIp != null && storedCloudIp.trim().length()>0)
-		{
-			this.server = storedCloudIp;
-		}
 		
 		ListItemClickListener clickListener = new ListItemClickListener()
 		{
@@ -226,11 +210,34 @@ public class HomeScreen extends Screen
 	{
 		final Activity currentActivity = (Activity)Registry.getActiveInstance().
 		getContext();
+		Configuration conf = Configuration.getInstance(currentActivity);
+		
+		String cloudIp = conf.getServerIp();
 		
 		this.startup(currentActivity);
 		
-		//make this externally configurable 
-		this.activateDevice(this.server, "1502", this.email, this.password);
+		//Initialize the activation properties
+		Properties properties = new Properties();
+		properties.load(HomeScreen.class.getResourceAsStream("/moblet-app/activation.properties"));
+		
+		String server = properties.getProperty("cloud_server_ip");
+		if(cloudIp == null || cloudIp.trim().length() == 0)
+		{
+			conf.setServerIp(server);
+		}
+		else
+		{
+			conf.setServerIp(cloudIp);
+		}
+		
+		String email = properties.getProperty("email");
+		String password = properties.getProperty("password");
+		conf.setEmail(email);
+		conf.setAuthenticationHash(password);
+		conf.setAuthenticationNonce(password);
+		conf.save(currentActivity);
+		
+		this.activateDevice(conf.getServerIp(), "1502", email, password);
 	}
 	
 	private void resetChannels() throws Exception
@@ -256,7 +263,6 @@ public class HomeScreen extends Screen
 		Context context = Registry.getActiveInstance().getContext();
 		final Configuration conf = Configuration.getInstance(context);
 		
-		String currentIp = conf.getServerIp();
 		AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
 		builder.setCancelable(false);
 		
@@ -271,7 +277,7 @@ public class HomeScreen extends Screen
 			public void onClick(DialogInterface dialog, int id)
 			{
 				conf.setServerIp(serverField.getText().toString());
-				HomeScreen.this.server = conf.getServerIp();
+				conf.save(currentActivity);
 				dialog.dismiss();
 				Toast.makeText(currentActivity, "Cloud Server IP Address now set to: "+conf.getServerIp(), 
 						Toast.LENGTH_SHORT).show();
@@ -336,12 +342,12 @@ public class HomeScreen extends Screen
 		CommandContext commandContext = new CommandContext();
 		commandContext.setTarget("activate");
 		
-		//System.out.println("-------------------------------------------------");
-		//System.out.println("Server: "+server);
-		//System.out.println("Port: "+port);
-		//System.out.println("Email: "+email);
-		//System.out.println("Password: "+password);
-		//System.out.println("-------------------------------------------------");
+		/*System.out.println("-------------------------------------------------");
+		System.out.println("Server: "+server);
+		System.out.println("Port: "+port);
+		System.out.println("Email: "+email);
+		System.out.println("Password: "+password);
+		System.out.println("-------------------------------------------------");*/
 		
 		commandContext.setAttribute("server", server);
 		commandContext.setAttribute("email", email);

@@ -12,7 +12,6 @@
 	    <!--  
 		<module>rimos</module>
 		-->	
-		<module>android</module>
 	</modules>
 	
 	<profiles>

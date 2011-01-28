@@ -9,7 +9,10 @@
 	
 	<modules>
 	    <module>appCreator</module>
-		<module>rimos-devcloud</module>		
+	    <!-- deprecated since 2.0-M4 -->
+	    <!--  
+		<module>rimos-devcloud</module>
+		-->		
 		<module>dev-cloudServer</module>	
 		<module>android-devcloud</module>
 		<module>sampleApps</module>					
@@ -20,7 +23,10 @@
 			<id>deploy-tools</id>
 			<modules>
 				<module>appCreator</module>
-				<module>rimos-devcloud</module>		
+				<!-- deprecated since 2.0-M4 -->
+				<!--  
+				<module>rimos-devcloud</module>
+				-->		
 				<module>dev-cloudServer</module>
 				<module>android-devcloud</module>
 			</modules>
