@@ -34,7 +34,6 @@
 		<module>testdrive-server</module>
 		<module>sar</module>
 		<module>cloud-sdk</module>
-		<module>perf-framework</module>
 		<module>android</module>
 	</modules>
 
