@@ -37,35 +37,29 @@
 	</modules>
 
 	<profiles>
-		<profile>
-			<id>mobileCloud</id>
-			<modules>
-				<module>mobileCloud</module>
-				<module>dev-tools</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>all</id>
-			<modules>
-				<module>mobileCloud</module>
-				<module>dev-tools</module>
-				<module>documentation</module>
-				<module>binary-release</module>
-			</modules>
-		</profile>
+	    <!-- used to deploy artifacts to the googlecode maven repository -->
 		<profile>
 			<id>deploy-core</id>
 			<modules>
-				<module>mobileCloud</module>
+				<module>android</module>
 			</modules>
 		</profile>
+		<!-- used to do a full release producing the binaries -->
 		<profile>
 			<id>android-release</id>
 			<modules>
-				<module>mobileCloud</module>
+				<module>android</module>
 				<module>dev-tools</module>
 				<module>documentation</module>
 				<module>binary-release</module>
+			</modules>
+		</profile>
+		<!-- used to build all the artifacts but not a full release -->
+		<profile>
+			<id>build-all</id>
+			<modules>
+				<module>android</module>
+				<module>dev-tools</module>
 			</modules>
 		</profile>
 	</profiles>

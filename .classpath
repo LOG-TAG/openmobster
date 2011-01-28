@@ -95,26 +95,26 @@
     <classpathentry kind="var" path="RIM_JDE_HOME/lib/net_rim_api.jar"/>
     -->
 	
-	<classpathentry kind="src" path="mobileCloud/android/2_0/api/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/native-framework/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/cloudManager/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/common/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/mobileObject/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/bus/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/connection/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/sync/src/main/java"/>	
-	<classpathentry kind="src" path="mobileCloud/android/2_0/mobileCloud-runtime/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/moblet-runtime/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-framework/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-api-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-common-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-mobileObject-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-bus-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-sync-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-connection-port/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-native-framework/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/test-suite/test-cloud-as-service/src/main/java"/>
-	<classpathentry kind="src" path="mobileCloud/android/2_0/ide_hack"/>
+	<classpathentry kind="src" path="android/api/src/main/java"/>
+	<classpathentry kind="src" path="android/native-framework/src/main/java"/>
+	<classpathentry kind="src" path="android/cloudManager/src/main/java"/>
+	<classpathentry kind="src" path="android/common/src/main/java"/>
+	<classpathentry kind="src" path="android/mobileObject/src/main/java"/>
+	<classpathentry kind="src" path="android/bus/src/main/java"/>
+	<classpathentry kind="src" path="android/connection/src/main/java"/>
+	<classpathentry kind="src" path="android/sync/src/main/java"/>	
+	<classpathentry kind="src" path="android/mobileCloud-runtime/src/main/java"/>
+	<classpathentry kind="src" path="android/moblet-runtime/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-framework/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-api-port/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-common-port/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-mobileObject-port/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-bus-port/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-sync-port/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-connection-port/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-native-framework/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-cloud-as-service/src/main/java"/>
+	<classpathentry kind="src" path="android/ide_hack"/>
 	
 	
 	<classpathentry kind="src" path="dev-tools/android-devcloud/src/main/java"/>
@@ -134,6 +134,10 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/app-android/src/main/java" />
+	
+	<classpathentry kind="src" path="dev-tools/sampleApps/webappsync/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/webappsync/cloud/src/test/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/webappsync/app-android/src/main/java" />
 	
 	<!--  
 	<classpathentry kind="src" path="mobileCloud/rimos/test-suite/realdevice/helloworld/app-rimos/src/main/java"/>

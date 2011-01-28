@@ -16,7 +16,10 @@
 
 	<modules>
 		<module>cloud</module>
+		<!-- deprecated since 2.0-M4 -->
+		<!--  
 		<module>app-rimos</module>
+		-->
 		<module>app-android</module>
 		<module>moblet</module>
 	</modules>
@@ -131,6 +134,8 @@
 			</dependency>
 			
 			<!-- RIMOS Dependencies -->
+			<!-- deprecated since 2.0-M4 -->
+			<!--  
 			<dependency>
 		      <groupId>net.rim</groupId>
 		      <artifactId>net_rim_api</artifactId>
@@ -138,7 +143,7 @@
 		      <scope>system</scope>
 		      <systemPath>${env.RIM_JDE_HOME}/lib/net_rim_api.jar</systemPath>
 		    </dependency>
-
+		    -->
 			<!--
 					More Dependencies can be added here  
 			 -->

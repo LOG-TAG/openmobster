@@ -16,5 +16,6 @@
 		<module>crud</module>
 		<module>asyncserviceapp</module>
 		<module>showcase</module>
+		<module>webappsync</module>
 	</modules>
 </project>
