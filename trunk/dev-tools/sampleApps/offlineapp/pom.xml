@@ -16,10 +16,6 @@
 
 	<modules>
 		<module>cloud</module>
-		<!-- deprecated since 2.0-M4 -->
-		<!--  
-		<module>app-rimos</module>
-		-->
 		<module>app-android</module>
 		<module>moblet</module>
 	</modules>
@@ -34,30 +30,12 @@
 			</modules>
 		</profile>
 		
-		<profile>
-			<id>rimos</id>
-			<modules>
-				<module>cloud</module>
-				<module>app-rimos</module>
-				<module>moblet</module>
-			</modules>
-		</profile>
-		
 		<!-- profiles used only during the release process..Not needed for core AppCreator module -->
 		<profile>
 			<id>android-release</id>
 			<modules>
 				<module>cloud</module>
 				<module>app-android</module>
-				<module>moblet</module>
-			</modules>
-		</profile>
-		
-		<profile>
-			<id>start-bb-release</id>
-			<modules>
-				<module>cloud</module>
-				<module>app-rimos</module>
 				<module>moblet</module>
 			</modules>
 		</profile>
@@ -133,17 +111,6 @@
 				<classifier>full</classifier>
 			</dependency>
 			
-			<!-- RIMOS Dependencies -->
-			<!-- deprecated since 2.0-M4 -->
-			<!--  
-			<dependency>
-		      <groupId>net.rim</groupId>
-		      <artifactId>net_rim_api</artifactId>
-		      <version>4.3.0</version>
-		      <scope>system</scope>
-		      <systemPath>${env.RIM_JDE_HOME}/lib/net_rim_api.jar</systemPath>
-		    </dependency>
-		    -->
 			<!--
 					More Dependencies can be added here  
 			 -->
