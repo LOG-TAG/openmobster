@@ -12,3 +12,55 @@ The [http://openmobster.googlecode.com/svn/trunk/android/native-framework/src/ma
   * Step 2: Implement *public void displayMainScreen()*
 
   * Step 3: Register this component with *AndroidManifest.xml*
+
+
+= Step 1 =
+
+In order to use the component the developer must extend *org.openmobster.android.cloud.app.BaseCloudActivity*. This component fully takes care of the Activity lifecycle leaving the developer to
+focus on the task of writing the code to display the UI. This is done by implementing the *public void displayMainScreen()* method.
+
+= Step 2 =
+
+Implement *public void displayMainScreen()* to display the UI associated with this Activity. Here is a sample implementation:
+
+{{{
+@Override
+        public void displayMainScreen()
+        {
+                try
+                {
+                        //render the main screen
+                        String layoutClass = this.getPackageName()+".R$layout";
+                        String main = "main";
+                        Class clazz = Class.forName(layoutClass);
+                        Field field = clazz.getField(main);
+                        int screenId = field.getInt(clazz);
+                        this.setContentView(screenId);
+                        
+                        //setup the button
+                        Button checkCloudStatus = (Button)ViewHelper.findViewById(this,"bootstrap_status");
+                        checkCloudStatus.setOnClickListener(
+                                        new OnClickListener()
+                                        {
+                                                public void onClick(View clicked)
+                                                {
+                                                        //Show Bootstrap status
+                                                        if(Registry.isActive())
+                                                        {
+                                                                Registry registry = Registry.getActiveInstance();
+                                                                System.out.println("App-------------------------------------");
+                                                                System.out.println("Registry : "+registry);
+                                                                System.out.println("Registry isMoblet: "+!(registry.isContainer()));
+                                                                System.out.println("-------------------------------------");
+                                                        }
+                                                }
+                                        }
+                        );
+                }
+                catch(Exception e)
+                {
+                        throw new RuntimeException(e);
+                }
+        }
+}}}
+ 
