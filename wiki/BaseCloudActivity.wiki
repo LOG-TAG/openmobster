@@ -1,13 +1,8 @@
-#summary One-sentence summary of this page.
+#summary BaseCloudActivity component
 
 = Introduction =
 
-Add your content here.
+The BaseCloudActivity component bundles the OpenMobster Cloud Runtime for use with an Android App. It takes care of the lifecycle associated with the Cloud Runtime. 
 
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Usage =
