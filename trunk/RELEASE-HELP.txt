@@ -4,18 +4,20 @@ Generate a Binary Release (includes documents, source code, and deployable binar
 Step 1:
 ---------------
 Skip Tests:
-mvn -Dmaven.test.skip -Pandroid-release clean 
-mvn -Dmaven.test.skip -Pandroid-release javadoc:aggregate install
-
+mvn -DskipTests -Pbuild-all install
 
 With Tests:
-mvn -Pandroid-release clean 
-mvn -Pandroid-release javadoc:aggregate install
+mvn -Pbuild-all install 
+
+
+Step 2:
+----------------
+mvn -DskipTests -Pandroid-release javadoc:aggregate install
 
 
 Modifying the project version for creating a new branch or tag:
 -----------------------------------------------------------------
-mvn release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=2.0-M2 -Prelease
+mvn release:update-versions -DautoVersionSubmodules=true -DdevelopmentVersion=2.0-CR1 -Pbuild-all
 
 
 Updating the Source/License Header:
