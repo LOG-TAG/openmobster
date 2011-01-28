@@ -25,5 +25,6 @@
 		<module>test-native-framework</module>
 		<module>test-api-port</module>
 		<module>test-cloud-as-service</module>
+		<module>test-real-device</module>
 	</modules>
 </project>
