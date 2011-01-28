@@ -38,20 +38,29 @@
 	</modules>
 
 	<profiles>
-		<!-- used to do a full release producing the binaries -->
+	    <!-- used to build only the *codebase* -->
 		<profile>
-			<id>release</id>
+			<id>build</id>
+			<modules>
+				<module>dev-tools</module>
+			</modules>
+		</profile>
+		<!-- used to build everything including codebase,documentation, etc -->
+		<profile>
+			<id>build-all</id>
 			<modules>
 				<module>dev-tools</module>
 				<module>documentation</module>
 				<module>binary-release</module>
 			</modules>
 		</profile>
-		<!-- used to build all the artifacts but not a full release -->
+		<!-- used to do an android release resulting binaries located under binary-release/target -->
 		<profile>
-			<id>build-all</id>
+			<id>android-release</id>
 			<modules>
 				<module>dev-tools</module>
+				<module>documentation</module>
+				<module>binary-release</module>
 			</modules>
 		</profile>
 	</profiles>
