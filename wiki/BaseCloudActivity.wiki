@@ -6,3 +6,9 @@ The [http://openmobster.googlecode.com/svn/trunk/android/native-framework/src/ma
 
 
 = Usage =
+
+  * Step 1: Extend _org.openmobster.android.cloud.app.BaseCloudActivity_
+
+  * Step 2: Implement _public void displayMainScreen()_
+
+  * Step 3: Register this component with _AndroidManifest.xml_
