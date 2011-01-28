@@ -18,7 +18,7 @@ This zone contains various tutorials related to OpenMobster Cloud Platform.
 
 == Understanding the BaseCloudActivity Activity component ==
 
-[http://openmobster.googlecode.com/svn/tags/2.0-Beta1/trunk/mobileCloud/android/2_0/native-framework/src/main/java/org/openmobster/core/mobileCloud/android_native/framework/BaseCloudActivity.java BaseCloudActivity] component is an Android Activity component that bundles the OpenMobster Cloud Runtime for use within an Android App. Learn how to use this component [BaseCloudActivity here].
+[http://openmobster.googlecode.com/svn/trunk/android/native-framework/src/main/java/org/openmobster/core/mobileCloud/android_native/framework/BaseCloudActivity.java BaseCloudActivity] component is an Android Activity component that bundles the OpenMobster Cloud Runtime for use within an Android App. Learn how to use this component [BaseCloudActivity here].
 
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
