@@ -16,5 +16,7 @@ This zone contains various tutorials related to OpenMobster Cloud Platform.
 
 [MobilizeHibernate Android/Hibernate CRUD App] covers an Android App that operates in offline mode via synchronization with a Hibernate based backend. It dissects the CRUD (Create,Read,Update,Delete) usecases end-to-end. It also includes receiving Push notifications on the device, when data changes are detected in the database.
 
+== Understanding the [http://openmobster.googlecode.com/svn/tag/2.0-Beta/trunk/mobileCloud/android/2_0/native-framework/src/main/java/org/openmobster/core/mobileCloud/android_native/framework/BaseCloudActivity.java BaseCloudActivity] Activity component ==
+
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
