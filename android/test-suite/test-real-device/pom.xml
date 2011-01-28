@@ -5,7 +5,7 @@
     <parent>
 	   <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
 	   <artifactId>test-suite</artifactId>
-	   <version>2.0-snapshot</version>
+	   <version>2.0-CR1</version>
 	   <relativePath>../pom.xml</relativePath>
 	</parent>
 	
@@ -66,22 +66,14 @@
 								<configuration>
 									<tasks>
 										<echo>Installing the CloudSide TestSuite components into a JBoss AS instance</echo>
-										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy"
-										 overwrite="true"
-										 file="${basedir}/target/${project.artifactId}-${project.version}-moblet.jar">
+										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-moblet.jar">
 										</copy>
 										
-										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy"
-										 overwrite="true"
-										 file="${settings.localRepository}/org/openmobster/core/device-agent-simulator/${project.version}/device-agent-simulator-${project.version}.jar">
+										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy" overwrite="true" file="${settings.localRepository}/org/openmobster/core/device-agent-simulator/${project.version}/device-agent-simulator-${project.version}.jar">
 										</copy>
-										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy"
-										 overwrite="true"
-										 file="${settings.localRepository}/org/openmobster/core/device-agent-frameworks/${project.version}/device-agent-frameworks-${project.version}.jar">
+										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy" overwrite="true" file="${settings.localRepository}/org/openmobster/core/device-agent-frameworks/${project.version}/device-agent-frameworks-${project.version}.jar">
 										</copy>
-										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy"
-										 overwrite="true"
-										 file="${settings.localRepository}/org/openmobster/core/api-cloudConnector/${project.version}/api-cloudConnector-${project.version}.jar">
+										<copy todir="${env.JBOSS_HOME}/server/openmobster/deploy" overwrite="true" file="${settings.localRepository}/org/openmobster/core/api-cloudConnector/${project.version}/api-cloudConnector-${project.version}.jar">
 										</copy>
 									</tasks>
 								</configuration>
