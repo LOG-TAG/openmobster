@@ -10,7 +10,8 @@
 	<modules>
 	    <module>appCreator</module>
 		<module>dev-cloudServer</module>	
-		<module>android-devcloud</module>			
+		<module>android-devcloud</module>
+		<module>sampleApps</module>			
 	</modules>
 	
 	<properties>
