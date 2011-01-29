@@ -239,12 +239,6 @@
 												<exclude name="**/target/**" />
 											</fileset>
 										</copy>
-										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/src/mobileCloud"
-											overwrite="true">
-											<fileset dir="${basedir}/../mobileCloud">
-												<exclude name="**/target/**" />
-											</fileset>
-										</copy>
 										<copy
 											todir="target/openmobster-${project.version}/openmobster-${project.version}-android/src/testdrive-server"
 											overwrite="true">
