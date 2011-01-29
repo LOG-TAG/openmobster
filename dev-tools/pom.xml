@@ -9,29 +9,10 @@
 	
 	<modules>
 	    <module>appCreator</module>
-	    <!-- deprecated since 2.0-M4 -->
-	    <!--  
-		<module>rimos-devcloud</module>
-		-->		
 		<module>dev-cloudServer</module>	
 		<module>android-devcloud</module>
-		<module>sampleApps</module>					
+		<module>sampleApps</module>			
 	</modules>
-	
-	<profiles>
-		<profile>
-			<id>deploy-tools</id>
-			<modules>
-				<module>appCreator</module>
-				<!-- deprecated since 2.0-M4 -->
-				<!--  
-				<module>rimos-devcloud</module>
-				-->		
-				<module>dev-cloudServer</module>
-				<module>android-devcloud</module>
-			</modules>
-		</profile>
-	</profiles>
 	
 	<properties>
 		<version.net.rim.api>4.3.0</version.net.rim.api>	
