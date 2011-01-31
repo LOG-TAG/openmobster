@@ -22,7 +22,7 @@ This zone contains various tutorials related to OpenMobster Cloud Platform.
 
 == HTML5 Sync App ==
 
-This tutorial covers a HTML5 Sync App written using html and javascript. The App synchronizes its data with the OpenMobster Cloud Server. 
+This tutorial covers a [HTML5SyncApp HTML5 Sync App] written using html and javascript. The App synchronizes its data with the OpenMobster Cloud Server. 
 
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
