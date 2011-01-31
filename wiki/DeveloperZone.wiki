@@ -20,5 +20,9 @@ This zone contains various tutorials related to OpenMobster Cloud Platform.
 
 [http://openmobster.googlecode.com/svn/trunk/android/native-framework/src/main/java/org/openmobster/core/mobileCloud/android_native/framework/BaseCloudActivity.java BaseCloudActivity] component is an Android Activity component that bundles the OpenMobster Cloud Runtime for use within an Android App. Learn how to use this component [BaseCloudActivity here].
 
+== HTML5 Sync App ==
+
+This tutorial covers a HTML5 Sync App written using html and javascript. The App synchronizes its data with the OpenMobster Cloud Server. 
+
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
