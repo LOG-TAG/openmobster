@@ -40,4 +40,29 @@ The App uses the *Android WebView* component and its Javascript bridging capabil
         
         //The application's main content specified in index.html file bundled with the App in the asset folder
         this.webView.loadUrl("file:///android_asset/html/index.html");
+}}}
+
+[http://openmobster.googlecode.com/svn/samples/webappsync/app-android/src/main/java/org/openmobster/core/mobileCloud/api/javascript/MobileBeanBridge.java MobileBeanBridge] exposes the OpenMobster Java API to the Javascript layer.
+
+== Displaying the Mobile Beans ==
+
+The list of synchronized Mobile Beans are extracted inside the UI side Javascript layer as follows:
+
+{{{
+function loadList()
+{
+	var beans = mobileBean.readAll(channel); //accesses the MobileBean service via the Javascript bridge
+	beans = (""+beans).split(","); //converts the list of MobileBean oids into an array
+	var length = beans.length;
+	var listArray = new Array(length);
+	for(var i=0; i<length; i++)
+	{
+		var oid = beans[i];
+		var title = mobileBean.getValue(channel,oid,"title"); //extracts the value of the field named 'title'
+		listArray[i] = {title:title,id:oid};
+	}
+	
+	var list = new joMenu(listArray); //populates the Menu with the information extracted from the MobileBean instances
+	return list;
+}
 }}}   
