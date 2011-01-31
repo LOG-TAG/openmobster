@@ -2,12 +2,9 @@
 
 = Introduction =
 
-Add your content here.
+This tutorial covers a HTML5 Sync App written using html and javascript. This app synchronizes its local data with the OpenMobster Cloud Server. 
 
 
-= Details =
+= Getting and Running this App =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * Step 1: svn co 
