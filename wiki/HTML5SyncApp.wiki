@@ -7,4 +7,6 @@ This tutorial covers a HTML5 Sync App written using html and javascript. This ap
 
 == Getting and Running this App ==
 
-  * Step 1: svn co 
+  * Step 1: [http://openmobster.googlecode.com/svn/samples/webappsync.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/webappsync
+
+  * Step 2:  
