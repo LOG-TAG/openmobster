@@ -65,4 +65,34 @@ function loadList()
 	var list = new joMenu(listArray); //populates the Menu with the information extracted from the MobileBean instances
 	return list;
 }
+}}}
+
+== Saving a Mobile Bean ==
+
+In this CRUD App, the Mobile Bean is saved during the Create and Update operations. The beans are saved via the MobileBean bridge so that the changes can be synchronized with the Cloud.
+
+{{{
+saveButton.selectEvent.subscribe(function(){
+    	var inputTitle = title.getData();
+    	var inputComment = comments.getData();
+    	
+    	//Validation
+    	if(inputTitle == "")
+    	{
+    		scn.alert("Validation","Title is required");
+    		return;
+    	}
+    	
+    	if(inputComment == "")
+    	{
+    		scn.alert("Validation","Comment is required");
+    		return;
+    	}
+    
+    	mobileBean.setValue(channel,oid,"title",inputTitle);
+    	mobileBean.setValue(channel,oid,"comment",inputComment);
+    	
+    	alert("jo-refresh");
+     }
+    );
 }}}   
