@@ -20,7 +20,7 @@ This tutorial covers a HTML5 Sync App written using html and javascript. This ap
 
 == Bootstrapping the App ==
 
-The App uses the *Android WebView* component and its Javascript bridging capabilities. This is bootstrapped with the Android activity called *SyncWebApp*.
+The App uses the *Android WebView* component and its Javascript bridging capabilities. This is bootstrapped with the Android activity called [http://openmobster.googlecode.com/svn/samples/webappsync/app-android/src/main/java/com/webappsync/activity/SyncWebApp.java SyncWebApp].
 
 {{{
 //Get the activity's WebView instance
