@@ -1,5 +1,7 @@
 #summary HTML5 Sync App
 
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
+
 == Introduction ==
 
 This tutorial covers a HTML5 Sync App written using html and javascript. This app synchronizes its local data with the OpenMobster Cloud Server. 
@@ -102,3 +104,5 @@ saveButton.selectEvent.subscribe(function(){
 This is a full blown CRUD App, so reading the code is most likely the best way to understand what is happening. But in a nutshell, the WebView component provides all the plumbing needed to bridge the gap between the Java side of Android, and the Javascript side of the WebKit layer.
 
 A special thanks to [http://joapp.com/ Jo HTML5 Mobile App Framework] for developing a light weight Javascript library.  
+
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
