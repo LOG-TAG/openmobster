@@ -1,15 +1,17 @@
 #summary BaseCloudActivity component
 
-= Introduction =
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
+
+== Introduction ==
 
 The [http://openmobster.googlecode.com/svn/trunk/android/native-framework/src/main/java/org/openmobster/core/mobileCloud/android_native/framework/BaseCloudActivity.java BaseCloudActivity] component bundles the OpenMobster Cloud Runtime for use with an Android App. It takes care of the lifecycle associated with the Cloud Runtime. 
 
-= Get the Sample App =
+== Get the Sample App ==
 
 [http://openmobster.googlecode.com/svn/samples/basecloudactivity.zip BaseCloudActivity Sample]
 
 
-= Usage =
+== Usage ==
 
   * Step 1: Extend *org.openmobster.android.cloud.app.BaseCloudActivity*
 
@@ -18,12 +20,12 @@ The [http://openmobster.googlecode.com/svn/trunk/android/native-framework/src/ma
   * Step 3: Register this component with *AndroidManifest.xml*
 
 
-= Step 1 =
+== Step 1 ==
 
 In order to use the component the developer must extend *org.openmobster.android.cloud.app.BaseCloudActivity*. This component fully takes care of the Activity lifecycle leaving the developer to
 focus on the task of writing the code to display the UI. This is done by implementing the *public void displayMainScreen()* method.
 
-= Step 2 =
+== Step 2 ==
 
 Implement *public void displayMainScreen()* to display the UI associated with this Activity. Here is a sample implementation:
 
@@ -68,7 +70,7 @@ Implement *public void displayMainScreen()* to display the UI associated with th
         }
 }}}
 
-= Step 3 =
+== Step 3 ==
 
 This component must now be registered with the *AndroidManifest.xml* file.
 
@@ -84,4 +86,5 @@ This component must now be registered with the *AndroidManifest.xml* file.
             </intent-filter>
 </activity>
 }}}
- 
+
+*Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started] 
