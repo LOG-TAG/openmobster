@@ -95,4 +95,10 @@ saveButton.selectEvent.subscribe(function(){
     	alert("jo-refresh");
      }
     );
-}}}   
+}}} 
+
+== Conclusion ==
+
+This is a full blown CRUD App, so reading the code is mot likely the best way to understand what is happening. But in a nutshell, the WebView component provides all the plumbing needed to bridge the gap between the Java side of Android, and the Javascript side of the WebKit layer.
+
+A special thanks to [http://joapp.com/ Jo HTML5 Mobile App Framework] for developing a light weight Javascript library.  
