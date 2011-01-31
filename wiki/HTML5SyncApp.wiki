@@ -13,4 +13,31 @@ This tutorial covers a HTML5 Sync App written using html and javascript. This ap
 
   * Step 3: Install the App: (*cd app-android*), (*mvn -Phot-deploy install*)
 
-  * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)   
+  * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)
+
+
+== Bootstrapping the App ==
+
+The App uses the *Android WebView* component and its Javascript bridging capabilities. This is bootstrapped with the Android activity called *SyncWebApp*.
+
+{{{
+//Get the activity's WebView instance
+        this.webView = (WebView)ViewHelper.findViewById(this, "webview");
+        
+        //Configure the webview
+        WebSettings webSettings = this.webView.getSettings();
+        webSettings.setSavePassword(false);
+        webSettings.setSaveFormData(false);
+        webSettings.setSupportZoom(false);
+        
+        //Javascript must be enabled to take advantage of HTML5/Javascript based UI layer
+        webSettings.setJavaScriptEnabled(true); 
+        
+        this.webView.setWebChromeClient(new MyWebChromeClient());
+        
+        //Javascript bridge to the OpenMobster MobileBean service. This provides access to data loaded in via the sync channel
+        this.webView.addJavascriptInterface(new MobileBeanBridge(), "mobileBean");
+        
+        //The application's main content specified in index.html file bundled with the App in the asset folder
+        this.webView.loadUrl("file:///android_asset/html/index.html");
+}}}   
