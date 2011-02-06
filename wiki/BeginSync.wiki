@@ -34,7 +34,7 @@ As seen in the code, you must annotate your Channel using the [http://openmobste
 
 When the channel is bootstrapped for the very first time on the device, _public List<? extends MobileBean> bootup()_ is invoked.
 {{{
-/**
+        /**
 	 * 'bootup' provides just enough number of ticket instances to make sure the mobile app is functional
 	 * 
 	 * This saves the user to having to wait on a long sync cycle before app can be used. How many instances are provided
