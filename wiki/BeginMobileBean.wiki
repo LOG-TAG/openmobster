@@ -2,12 +2,29 @@
 
 === Introduction ===
 
-A MobileBean is the App-side component used to access the data synchronized via a Sync Channel. This tutorial provides some useful code snippets to demonstrate the use of the MobileBean component
+A MobileBean is the App-side component used to access the data synchronized via a Sync Channel. This tutorial provides some useful code snippets to demonstrate the use of the MobileBean component.
+
+=== Getting and Running this App ===
+
+  * Step 1: [http://openmobster.googlecode.com/svn/samples/showcase.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/showcase
+
+  * Step 2: Build the Code: *mvn install*
+
+  * Step 3: Install the App: (*cd app-android*), (*mvn -Phot-deploy install*)
+
+  * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)
 
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== Display a list of MobileBeans ===
+{{{
+MobileBean[] beans = MobileBean.readAll(AppConstants.webappsync);
+		
+		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+		for(MobileBean local:beans)
+		{
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("empty", "");
+			map.put("title", local.getValue("title"));
+			mylist.add(map);
+		}
+}}}
