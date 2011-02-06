@@ -29,3 +29,30 @@ You must implement a [http://openmobster.googlecode.com/svn/trunk/api/src/main/j
 public class TicketChannel implements Channel
 }}}
 As seen in the code, you must annotate your Channel using the [http://openmobster.googlecode.com/svn/trunk/api/src/main/java/org/openmobster/server/api/model/ChannelInfo.java org.openmobster.server.api.model.ChannelInfo] annotation. The *uri* value denotes the unique way to identify this channel on the App side, and the *mobileBeanClass* denotes the bean whose data will be synchronized via this channel.
+
+=== Step 2: Implement Channel Bootstrapping
+
+When the channel is bootstrapped for the very first time on the device, _public List<? extends MobileBean> bootup()_ is invoked.
+{{{
+/**
+	 * 'bootup' provides just enough number of ticket instances to make sure the mobile app is functional
+	 * 
+	 * This saves the user to having to wait on a long sync cycle before app can be used. How many instances are provided
+	 * at channel boot time is completely at the discretion of the App requirement
+	 */
+	public List<? extends MobileBean> bootup()
+	{
+		List<Ticket> bootup = new ArrayList<Ticket>();
+		
+		List<Ticket> all = this.ds.readAll();
+		if(all != null)
+		{
+			for(int i=0; i<5; i++)
+			{
+				bootup.add(all.get(i));
+			}
+		}
+		
+		return bootup; 
+	}
+}}}
