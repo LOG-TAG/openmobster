@@ -17,14 +17,19 @@ A MobileBean is the App-side component used to access the data synchronized via 
 
 === Display a list of MobileBeans ===
 {{{
-MobileBean[] beans = MobileBean.readAll(AppConstants.webappsync);
+           //Read all the beans loaded via the channel
+            MobileBean[] beans = MobileBean.readAll(AppConstants.webappsync);
 		
 		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
 		for(MobileBean local:beans)
 		{
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("empty", "");
+
+                        //Display the 'title' property of each bean
 			map.put("title", local.getValue("title"));
 			mylist.add(map);
 		}
 }}}
+
+This code snippet shows how to populate an Android ListView with the 'title' property of the beans.
