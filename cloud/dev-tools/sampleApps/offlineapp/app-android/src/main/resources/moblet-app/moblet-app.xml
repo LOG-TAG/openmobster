@@ -1,0 +1,25 @@
+<moblet-app>
+    <bootstrap>
+    	<screen>com.offlineApp.android.app.screen.HomeScreen</screen>
+    </bootstrap>
+    
+    <!--  
+       In Android's case this is not needed for this App...The Android core + OpenMobster core framework gives everything you need for the usecase on this App..
+       I stand corrected...Android is actually superior to BlackBerry Platform (atleast upto 4.0.x...have not used 5.0.x yet to have an opinion)
+    <push>
+    	<command>org.openmobster.core.examples.offline.command.PushHandler</command>
+    </push>
+	-->
+	
+	<commands>				
+	    <command id="/channel/bootup/helper">com.offlineApp.android.app.command.ChannelBootupHelper</command>	
+		<command id="/demo/details">com.offlineApp.android.app.command.DemoDetails</command>
+		<command id="/offlineapp/pushtrigger">com.offlineApp.android.app.command.PushTrigger</command> 
+		<command id="/offlineapp/reset">com.offlineApp.android.app.command.ResetChannel</command>
+		<command id="/offlineapp/rpc">com.offlineApp.android.app.command.DemoMobileRPC</command>
+	</commands>	
+	
+	<channels>
+		<channel>offlineapp_demochannel</channel>
+	</channels>					
+</moblet-app>

@@ -1,0 +1,20 @@
+<moblet-app>
+	<bootstrap>
+    	<screen>org.openmobster.showcase.app.HomeScreen</screen>
+    </bootstrap>
+    
+	<commands>
+		<command id="/channel/bootup/helper">org.openmobster.showcase.app.ChannelBootupHelper</command>	
+		<command id="/delete/ticket">org.openmobster.showcase.app.crud.DeleteTicket</command>	
+		<command id="/save/ticket">org.openmobster.showcase.app.crud.SaveTicket</command>
+	</commands>
+	
+	<screens>
+		<screen id="/crud">org.openmobster.showcase.app.crud.CRUDMainScreen</screen>
+		<screen id="/save/ticket">org.openmobster.showcase.app.crud.SaveTicketScreen</screen>	
+	</screens>
+	
+	<channels>
+		<channel>webappsync_ticket_channel</channel>
+	</channels>		
+</moblet-app>
