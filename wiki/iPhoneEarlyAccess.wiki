@@ -1,5 +1,5 @@
 #summary iPhone Early Access
-#labels Tutorial
+#labels Tutorial,Featured
 
 === System Requirements ===
 
