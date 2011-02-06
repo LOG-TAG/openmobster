@@ -1,6 +1,6 @@
 #summary MobileBean tutorial
 
-*Related Links:* [BeginSyncChannel Sync Channel tutorial]
+*Related Links:* [BeginSync Sync Channel tutorial]
 
 === Introduction ===
 
@@ -94,4 +94,4 @@ This part is self-explanatory. When a user selects the bean to delete, this code
 
 The 'MobileBean' component shields the developer from any low-level sync details. The core platform does all the heavy lifting while the developer can focus on the CRUD aspect of the application.
 
-*Related Links:* [BeginSyncChannel Sync Channel tutorial]
+*Related Links:* [BeginSync Sync Channel tutorial]
