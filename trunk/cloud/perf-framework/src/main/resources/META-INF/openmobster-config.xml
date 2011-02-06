@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+  <bean name="deviceStack" class="org.openmobster.perf.framework.DeviceStackRunner">
+   		<property name="deviceId">IMEI:8675309</property>
+   		<property name="serverId">http://www.openmobster.org/sync-server</property>
+   		<property name="service">perf_framework_demochannel</property>
+   		<property name="user">blah2@gmail.com</property>
+   		<property name="credential">blahblah</property>
+   		
+   		<property name="deviceSyncEngine">
+   			<inject bean="simulator://SyncEngine"/>
+   		</property>
+   		<property name="provisioner">
+   			<inject bean="security://Provisioner"/>
+   		</property>
+   		<property name="deviceDatabase">
+   			<inject bean="mobileObject://MobileObjectDatabase"/>
+   		</property>
+   		<property name="configuration">
+   			<inject bean="/deviceStack/configuration"/>
+   		</property>
+   </bean>   
+   
+   <bean name="/deviceStack/configuration" 
+   class="org.openmobster.device.agent.test.framework.Configuration">
+   </bean>
+   
+   <!-- SyncChannel used for performance testing -->
+   <bean name="/perf/framework/demorepo" class="org.openmobster.perf.framework.channel.DemoDataRepository"/>
+    
+   <bean name="/perf/framework/demochannel" class="org.openmobster.perf.framework.channel.DemoChannel">
+   		<property name="demoRepository"><inject bean="/perf/framework/demorepo"/></property>
+   </bean>
+</deployment>
