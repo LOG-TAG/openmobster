@@ -5,7 +5,7 @@
 
 == Introduction ==
 
-This zone contains various tutorials related to OpenMobster Cloud Platform.
+This zone contains advanced tutorials related to OpenMobster Cloud Platform. For simpler tutorials you can checkout the [BeginnerZone Beginner Zone].
 
 == Simple Android Sync App ==
 
