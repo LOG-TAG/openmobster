@@ -8,3 +8,8 @@ mobile development. For more advanced tutorials, you can check out the
 === Channel Development ===
 
 A basic [BeginSync tutorial] which covers developing a Sync Channel. 
+
+
+=== MobileBean component ===
+
+A basic [BeginMobileBean tutorial] on how to use the MobileBean component to access the synchronized channel data on the App
