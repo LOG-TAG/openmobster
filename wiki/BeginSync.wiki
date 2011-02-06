@@ -1,0 +1,15 @@
+#summary Sync Channel Tutorial
+
+=== Introduction ===
+
+A Sync Channel is a Cloud component that bridges the data between a backend repository to an App deployed on the mobile device.
+
+=== Getting and Running this App ===
+
+  * Step 1: [http://openmobster.googlecode.com/svn/samples/showcase.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/showcase
+
+  * Step 2: Build the Code: *mvn install*
+
+  * Step 3: Install the App: (*cd app-android*), (*mvn -Phot-deploy install*)
+
+  * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)
