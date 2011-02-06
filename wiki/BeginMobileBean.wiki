@@ -67,3 +67,27 @@ In this snippet, the MobileBean is updated when user supplies the data from the 
 		}
 	}	
 }}}
+
+=== Delete Phase ===
+{{{
+        public void doAction(CommandContext commandContext) 
+	{
+		try
+		{
+			MobileBean ticketToDelete = (MobileBean)commandContext.getAttribute("active-bean");
+			ticketToDelete.delete();
+		}
+		catch(Exception e)
+		{
+			AppException appe = new AppException();
+			appe.setMessage(e.getMessage());
+			ErrorHandler.getInstance().handle(appe);
+			
+			throw appe;
+		}
+	}	
+}}}
+This part is self-explanatory. When a user selects the bean to delete, this code commits it for synchronization with the Cloud.
+
+
+The 'MobileBean' component shields the developer from any low-level sync details. The core platform does all the heavy lifting while the developer can focus on the CRUD aspect of the application.
