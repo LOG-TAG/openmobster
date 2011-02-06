@@ -19,7 +19,7 @@
 
   * cd cloud
 
-  * mvn -Pbuild-all install
+  * mvn -DskipTests -Pbuild-all install
 
 === Open iPhone XCode projects ===
 
