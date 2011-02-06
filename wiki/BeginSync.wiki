@@ -13,3 +13,18 @@ A Sync Channel is a Cloud component that bridges the data between a backend repo
   * Step 3: Install the App: (*cd app-android*), (*mvn -Phot-deploy install*)
 
   * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)
+
+=== Step1: Implement a Channel ===
+
+You must implement a [http://openmobster.googlecode.com/svn/trunk/api/src/main/java/org/openmobster/server/api/model/Channel.java org.openmobster.server.api.model.Channel] component.
+
+{{{
+/**
+ * 'TicketChannel' is a channel that mobilizes the tickets stored in a CRM system. It integrates with
+ * the core 'Sync' + 'Push' engines
+ * 
+ * @author openmobster@gmail.com
+ */
+@ChannelInfo(uri="webappsync_ticket_channel", mobileBeanClass="org.openmobster.showcase.cloud.channel.Ticket")
+public class TicketChannel implements Channel
+}}}
