@@ -1,5 +1,7 @@
 #summary Sync Channel Tutorial
 
+*Related Links:* [BeginMobileBean MobileBean tutorial]
+
 === Introduction ===
 
 A Sync Channel is a Cloud component that bridges the data between a backend repository to an App deployed on the mobile device.
@@ -111,3 +113,5 @@ Since channel is CRUD oriented, you implement methods related to each. The read 
 }}}
 
 Voila!!! That is all you need to successfully write a Sync Channel. The included ShowCase app will throw more light of how everything comes together end-to-end. I do recommend looking at the code as there is no better tutorial than code itself.
+
+*Related Links:* [BeginMobileBean MobileBean tutorial]
