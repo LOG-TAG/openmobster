@@ -78,3 +78,34 @@ Since channel is CRUD oriented, you implement methods related to each. The read 
 		return this.ds.readByTicketId(ticketId);
 	}
 }}}
+
+=== Step 4: Implement the *Create*, *Update* and *Delete* methods ===
+
+{{{
+        /**
+	 * Adds a new ticket created on the device to the backend db
+	 */
+	public String create(MobileBean mobileBean)
+	{
+		Ticket local = (Ticket)mobileBean;
+		return this.ds.create(local);
+	}
+
+	/**
+	 * Synchronizes device side update with the backend db
+	 */
+	public void update(MobileBean mobileBean)
+	{
+		Ticket local = (Ticket)mobileBean;
+		this.ds.update(local);
+	}
+	
+	/**
+	 * Deletes any instances that are deleted on the device side
+	 */
+	public void delete(MobileBean mobileBean)
+	{
+		Ticket local = (Ticket)mobileBean;
+		this.ds.delete(local);
+	}
+}}}
