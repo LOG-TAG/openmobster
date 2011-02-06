@@ -1,7 +1,33 @@
 #summary iPhone Early Access
 
-=== Introduction ===
+=== System Requirements ===
 
+  * Java SE, JDK 6
 
+  * Apache Maven 2.2.1
+
+  * XCode with iPhone4 SDK
+
+  * SVN client to checkout the source code
+
+=== Getting the source code ===
+
+  * svn co https://openmobster.googlecode.com/svn/trunk
+
+=== Building the source code ==
+
+  * cd cloud
+
+  * mvn -Pbuild-all install
+
+=== Open iPhone XCode projects ===
+
+  * Open *mobilecloudlib* by opening *iphone/mobilecloudlib/mobilecloudlib.xcodeproj
+
+  * Open *CloudManager* by opening *iphone/CloudManager/CloudManager.xcodeproj*
+
+  * On the above projects, do a *Clean All Targets*, and *Build All*
+
+=== Start the Cloud Server ===
 
 
