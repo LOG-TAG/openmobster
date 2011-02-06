@@ -1,0 +1,13 @@
+#summary MobileBean tutorial
+
+=== Introduction ===
+
+A MobileBean is the App-side component used to access the data synchronized via a Sync Channel. This tutorial provides some useful code snippets to demonstrate the use of the MobileBean component
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
