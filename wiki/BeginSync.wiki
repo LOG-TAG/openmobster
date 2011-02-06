@@ -56,3 +56,25 @@ When the channel is bootstrapped for the very first time on the device, _public 
 		return bootup; 
 	}
 }}}
+
+=== Step 3: Implement the *Read* methods ===
+
+Since channel is CRUD oriented, you implement methods related to each. The read methods are self-explanatory from the code
+
+{{{
+       /**
+	* Reads all the instances stored in the db
+	*/
+	public List<? extends MobileBean> readAll()
+	{
+		return this.ds.readAll();
+	}
+
+	/**
+	 * Reads a specific ticket instance based on the unique 'ticketId'
+	 */
+	public MobileBean read(String ticketId)
+	{
+		return this.ds.readByTicketId(ticketId);
+	}
+}}}
