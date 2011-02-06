@@ -33,3 +33,37 @@ A MobileBean is the App-side component used to access the data synchronized via 
 }}}
 
 This code snippet shows how to populate an Android ListView with the 'title' property of the beans.
+
+=== Updating data via MobileBean ===
+{{{
+//Creates a new ticket instance on the device. Once 'saved', it will be seamlessly synchronized with the Cloud
+		MobileBean activeBean = MobileBean.newInstance(AppConstants.webappsync);
+		
+                //populate the 'title' property from text field
+		EditText title = (EditText)ViewHelper.findViewById(currentActivity, "title");
+		activeBean.setValue("title", title.getText().toString());
+		
+                //populate the 'comment' property from text field
+		EditText comments = (EditText)ViewHelper.findViewById(currentActivity, "comments");
+		activeBean.setValue("comment", comments.getText().toString());
+}}}
+
+In this snippet, the MobileBean is updated when user supplies the data from the GUI. Once, everything is done, it is committed for synchronization. This is the commit phase.
+{{{
+        public void doAction(CommandContext commandContext) 
+	{
+		try
+		{
+			MobileBean bean = (MobileBean)commandContext.getAttribute("active-bean");
+			bean.save();
+		}
+		catch(Exception e)
+		{
+			AppException appe = new AppException();
+			appe.setMessage(e.getMessage());
+			ErrorHandler.getInstance().handle(appe);
+			
+			throw appe;
+		}
+	}	
+}}}
