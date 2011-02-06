@@ -1,5 +1,5 @@
 #summary Android Sync App: Beginner Level
-#labels Featured,Tutorial
+#labels Tutorial
 
 *Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
 
