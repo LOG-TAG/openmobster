@@ -28,3 +28,4 @@ You must implement a [http://openmobster.googlecode.com/svn/trunk/api/src/main/j
 @ChannelInfo(uri="webappsync_ticket_channel", mobileBeanClass="org.openmobster.showcase.cloud.channel.Ticket")
 public class TicketChannel implements Channel
 }}}
+As seen in the code, you must annotate your Channel using the [http://openmobster.googlecode.com/svn/trunk/api/src/main/java/org/openmobster/server/api/model/ChannelInfo.java org.openmobster.server.api.model.ChannelInfo] annotation. The *uri* value denotes the unique way to identify this channel on the App side, and the *mobileBeanClass* denotes the bean whose data will be synchronized via this channel.
