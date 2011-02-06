@@ -1,4 +1,3 @@
-
 === Beginner Zone ===
 
 The beginner zone will cover basic tutorials related to OpenMobster based
@@ -8,4 +7,4 @@ mobile development. For more advanced tutorials, you can check out the
 
 === Channel Development ===
 
-A basic tutorial which covers developing a Sync Channel.
+A basic [BeginSync tutorial] which covers developing a Sync Channel. 
