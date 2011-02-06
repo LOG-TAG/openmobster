@@ -1,4 +1,3 @@
-#summary Beginner Zone
 
 === Beginner Zone ===
 
