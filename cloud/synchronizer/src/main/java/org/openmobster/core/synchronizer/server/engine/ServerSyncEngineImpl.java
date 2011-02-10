@@ -37,13 +37,6 @@ import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.server.api.model.MobileBean;
 import org.openmobster.server.api.model.MobileBeanStreamable;
 
-/**
- * TODO: Properly lay down the Design principles for Transaction Management within the Context
- * of a Sync Session
- * 
- * 2/ Support better merge algorithms
- * 
- */
 
 /**
  * 
@@ -61,6 +54,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			
 	
 	private MapEngine mapEngine = null;
+	
+	private ConflictEngine conflictEngine;
 
 	
 	public ServerSyncEngineImpl()
@@ -101,6 +96,18 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		this.mapEngine = mapEngine;
 	}
 		
+	public ConflictEngine getConflictEngine()
+	{
+		return conflictEngine;
+	}
+
+
+	public void setConflictEngine(ConflictEngine conflictEngine)
+	{
+		this.conflictEngine = conflictEngine;
+	}
+
+
 	public void start()
 	{
 		logger.info("ServerSide Synchronization Engine successfully started.........");
@@ -174,7 +181,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				{
 					// Create a Sync Add Command from this record data					
 					commands.add(this.getCommand(record, messageSize, 
-							ServerSyncEngine.OPERATION_ADD));					
+							ServerSyncEngine.OPERATION_ADD));
+					
+					//Start an optimistic lock for this record
+					this.conflictEngine.startOptimisticLock(record);
 				}
 			}
 
@@ -204,7 +214,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				{
 					// Create a Sync Add Command from this record data					
 					commands.add(this.getCommand(record, messageSize, 
-							ServerSyncEngine.OPERATION_UPDATE));					
+							ServerSyncEngine.OPERATION_UPDATE));
+					
+					//Start an optimistic lock for this record
+					this.conflictEngine.startOptimisticLock(record);
 				}
 			}
 
@@ -322,7 +335,15 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			{
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
-				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, command));
+				
+				if(e.toString().contains("optimistic_lock_error"))
+				{
+					status.add(this.getStatus(SyncServer.OPTIMISTIC_LOCK_ERROR, command));
+				}
+				else
+				{
+					status.add(this.getStatus(SyncServer.COMMAND_FAILURE, command));
+				}
 			}
 		}
 
@@ -356,7 +377,15 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			{
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
-				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, add));
+				
+				if(e.toString().contains("optimistic_lock_error"))
+				{
+					status.add(this.getStatus(SyncServer.OPTIMISTIC_LOCK_ERROR, add));
+				}
+				else
+				{
+					status.add(this.getStatus(SyncServer.COMMAND_FAILURE, add));
+				}
 			}
 		}
 
@@ -387,7 +416,15 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			{
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
-				status.add(this.getStatus(SyncServer.COMMAND_FAILURE,replace));
+				
+				if(e.toString().contains("optimistic_lock_error"))
+				{
+					status.add(this.getStatus(SyncServer.OPTIMISTIC_LOCK_ERROR, replace));
+				}
+				else
+				{
+					status.add(this.getStatus(SyncServer.COMMAND_FAILURE, replace));
+				}
 			}
 		}
 
@@ -433,7 +470,9 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 
 			// Create a Sync Add Command from this record data				
 			commands.add((Add)this.getCommand(record, session.getMaxClientSize(), 
-			ServerSyncEngine.OPERATION_ADD));				
+			ServerSyncEngine.OPERATION_ADD));
+			
+			this.conflictEngine.startOptimisticLock(record);
 		}
 		
 		return commands;
@@ -686,8 +725,18 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		MobileBean cour = this.gateway.readRecord(pluginId, recordId);		
 		if(cour != null)
 		{
+			//Check against Optimistic Lock Error
+			boolean safe = this.conflictEngine.checkOptimisticLock(cour);
+			
 			//Update this record
-			this.gateway.updateRecord(pluginId, recordId, xml);
+			if(safe)
+			{
+				this.gateway.updateRecord(pluginId, recordId, xml);
+			}
+			else
+			{
+				throw new SyncException("optimistic_lock_error");
+			}
 		}
 		else
 		{

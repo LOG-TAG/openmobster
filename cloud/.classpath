@@ -118,6 +118,10 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/showcase/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/showcase/app-android/src/main/java" />
 	
+	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/cloud/src/test/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/app-android/src/main/java" />
+	
 	<classpathentry kind="output" path="bin"/>
 	
 	<classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar"/>

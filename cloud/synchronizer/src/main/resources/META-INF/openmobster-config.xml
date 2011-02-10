@@ -35,7 +35,10 @@
    		</property>
    		<property name="mapEngine">
    			<inject bean="synchronizer://MapEngine"/>
-   		</property>   		
+   		</property>  
+   		<property name="conflictEngine">
+   			<inject bean="ConflictEngine"/>
+   		</property>    		
    </bean> 
       
    <!-- Server Synchronizer Adapter --> 
@@ -56,4 +59,17 @@
    			<inject bean="synchronizer://ServerSyncEngine"/>
    		</property>      
    </bean>
+   
+   <!-- Conflict Detection Engine -->
+   <bean name="ConflictEngine" class="org.openmobster.core.synchronizer.server.engine.ConflictEngine">   		  		  	
+   		<property name="hibernateManager">
+   			<inject bean="synchronizer://HibernateManager"/>
+   		</property>
+   		<property name="serializer">
+   			<inject bean="mobileObject://MobileObjectSerializer"/>
+   		</property>   		
+  		<property name="hibernateManager">
+   			<inject bean="synchronizer://HibernateManager"/>
+   		</property>
+   </bean> 
 </deployment>

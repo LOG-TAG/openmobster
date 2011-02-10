@@ -36,5 +36,15 @@
         <property name="target" type="string" column="target" not-null="true"/>
         <property name="guid" type="string" column="guid" not-null="true"/>
         <property name="luid" type="string" column="luid" not-null="true"/>        
-    </class>                                        
+    </class> 
+    
+    <!--  Conflict entry -->
+    <class name="org.openmobster.core.synchronizer.server.engine.ConflictEntry" table="sync_engine_conflict_entry">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="deviceId" type="string" column="deviceId" not-null="true"/>
+        <property name="oid" type="string" column="oid" not-null="true"/>
+        <property name="state" type="string" column="state" not-null="true"/>       
+    </class>                  
 </hibernate-mapping>

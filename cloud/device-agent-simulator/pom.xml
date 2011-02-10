@@ -86,7 +86,8 @@
 	          			<include>**/TestOneWayDeviceSyncMapping.java</include>
 	          			<include>**/TestBootSync.java</include>          				          				          				          				          					          			         			         					          				          				          			
 	          			<include>**/TestObjectStreaming.java</include>          				          				          				          				          					          			         			         					          				          			
-	          			<include>**/TestDeviceErrorHandling.java</include>          				          				          				          				          					          			         			         					          				          				          			
+	          			<include>**/TestDeviceErrorHandling.java</include>  
+	          			<include>**/TestConflictResolution.java</include>        				          				          				          				          					          			         			         					          				          				          			
 	          			<include>**/TestMapSupportErrorHandling.java</include>
 	          			<!--
 	          			    the unit test framework is not suitable for multi-device support. Port perf-framework to add this here  	          				          			          				          				          				          			

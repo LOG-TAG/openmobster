@@ -30,7 +30,7 @@ public class TestSerialization extends TestCase
 {
 	private static Logger log = Logger.getLogger(TestSerialization.class);
 	
-	private MobileObjectSerializer serializer;
+	protected MobileObjectSerializer serializer;
 			
 	protected void setUp() throws Exception 
 	{		
@@ -204,7 +204,7 @@ public class TestSerialization extends TestCase
 		this.assertEquals("POJO2 Value must match!!!", "I am pojo2", pojo1.getDefaultPOJO().getValue());
 	}		
 	//---------------------------------------------------------------------------------------------------
-	private MockPOJO createPOJOWithStrings(String name, boolean leaveChildArrayNull)
+	protected MockPOJO createPOJOWithStrings(String name, boolean leaveChildArrayNull)
 	{
 		MockPOJO mockPOJO = new MockPOJO(name);
 		
@@ -223,7 +223,7 @@ public class TestSerialization extends TestCase
 		return mockPOJO;
 	}
 	
-	private void serializeWithDefaultXStream(Object pojo)
+	protected void serializeWithDefaultXStream(Object pojo)
 	{
 		log.info("--------------------------------------");
 		XStream coreXStream = new XStream()

@@ -54,6 +54,7 @@ public interface SyncServer
 	public static final String STREAM = "250";
 	public static final String STREAM_RECORD_ID = "streamRecordId";
 	public static final String BOOT_SYNC = "260";
+	public static final String OPTIMISTIC_LOCK_ERROR = "501";
 	
 	
 	/**

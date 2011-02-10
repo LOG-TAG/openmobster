@@ -116,6 +116,11 @@ public class HomeScreen extends Screen
 		map.put("title", "CRUD/Sync Showcase");
 		mylist.add(map);
 		
+		HashMap<String, String> map2 = new HashMap<String, String>();
+		map2.put("empty", "");
+		map2.put("title", "Camera Showcase");
+		mylist.add(map2);
+		
 		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, ViewHelper.findLayoutId(activity, "home_row"),
 	            new String[] {"empty", "title"}, new int[] {ViewHelper.findViewId(activity, "empty"), ViewHelper.findViewId(activity, "title")});
 	    view.setAdapter(showcaseAdapter);
@@ -143,6 +148,10 @@ public class HomeScreen extends Screen
 					Services.getInstance().getCommandService().execute(commandContext);
 				}
 				NavigationContext.getInstance().navigate("/crud");
+			}
+			else if(selectedIndex == 1)
+			{
+				NavigationContext.getInstance().navigate("/camera");
 			}
 		}
 	}
