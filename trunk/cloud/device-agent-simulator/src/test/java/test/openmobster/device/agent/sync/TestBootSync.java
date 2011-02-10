@@ -8,6 +8,10 @@
 
 package test.openmobster.device.agent.sync;
 
+import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
+
+import test.openmobster.device.agent.sync.server.ServerRecord;
+
 /**
  * @author openmobster@gmail.com
  */
@@ -36,5 +40,5 @@ public class TestBootSync extends AbstractSync
 		//TODO: Assert the State of the Server Sync Engine
 		
 		//TODO: Assert the State of teh Device Sync Engine
-	}	
+	}
 }

@@ -12,6 +12,9 @@
 	<screens>
 		<screen id="/crud">org.openmobster.showcase.app.crud.CRUDMainScreen</screen>
 		<screen id="/save/ticket">org.openmobster.showcase.app.crud.SaveTicketScreen</screen>	
+		
+		<screen id="/camera">org.openmobster.showcase.app.camera.CameraMainScreen</screen>
+		<screen id="/camera/preview">org.openmobster.showcase.app.camera.PreviewScreen</screen>
 	</screens>
 	
 	<channels>

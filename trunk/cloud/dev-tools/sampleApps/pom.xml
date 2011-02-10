@@ -17,6 +17,7 @@
 		<module>asyncserviceapp</module>
 		<module>showcase</module>
 		<module>webappsync</module>
+		<module>pushmail</module>
 	</modules>
 	
 	<build>

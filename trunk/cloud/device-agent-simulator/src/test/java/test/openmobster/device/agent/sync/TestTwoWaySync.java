@@ -84,24 +84,4 @@ public class TestTwoWaySync extends AbstractSync
 		
 		//TODO: Assert Device Sync State
 	}
-	
-	public void testConflict() throws Exception
-	{
-		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
-		ServerRecord serverRecord = this.updateServerRecord("unique-1");
-		
-		this.performTwoWaySync();
-		
-		//Rule for TwoWaySync: The device state wins over the server state
-		
-		//Assert Server State
-		this.assertServerPresence("unique-1");
-		this.assertServerPresence("unique-2");
-		this.assertServerMessage("unique-1", deviceRecord.getValue("message"));
-		
-		//Assert Device State
-		this.assertDevicePresence("unique-1");
-		this.assertDevicePresence("unique-2");
-		this.assertDeviceMessage("unique-1", deviceRecord.getValue("message"));
-	}
 }

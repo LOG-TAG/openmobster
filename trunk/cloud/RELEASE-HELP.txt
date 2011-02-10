@@ -1,4 +1,4 @@
-mvn Generate a Binary Release (includes documents, source code, and deployable binaries)
+Generate a Binary Release (includes documents, source code, and deployable binaries)
 ------------------------------------------------------------------------------------
 
 Step 1:
