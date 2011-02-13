@@ -22,7 +22,11 @@ This zone contains advanced tutorials related to OpenMobster Cloud Platform. For
 
 === HTML5 Sync App ===
 
-This tutorial covers a [HTML5SyncApp HTML5 Sync App] written using html and javascript. The App synchronizes its data with the OpenMobster Cloud Server. 
+This tutorial covers a [HTML5SyncApp HTML5 Sync App] written using html and javascript. The App synchronizes its data with the OpenMobster Cloud Server.
+
+=== Architecting a Push Email App ===
+
+This [PushMail tutorial] will cover the architectural aspects of developing a typical Push Email App. 
 
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
