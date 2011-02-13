@@ -7,7 +7,15 @@
 This tutorial will cover the architectural aspects of designing a *Push Email* App. It should cover design principles that can carry over to any enterprise mobile app.
 
 
-=== Getting the App ===
+=== Getting and Running this App ===
+
+  * Step 1: [http://openmobster.googlecode.com/svn/samples/pushmail.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/pushmail
+
+  * Step 2: Build the Code: *mvn install*
+
+  * Step 3: Install the App: (*cd app-android*), (*mvn -Phot-deploy install*)
+
+  * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)
 
 
 *Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
