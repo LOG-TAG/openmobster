@@ -26,7 +26,13 @@ of one entity which is *Email*.
 Such is the case with any Enterprise App, but in the case of a mobile app
 you must also take into account the model design based on integration with a *Sync Engine*. The *Sync Engine* will have serialization needs that must be met by the entities in your domain model.
 
-The OpenMobster sync engine is *POJO-oriented*. 
+The OpenMobster sync engine is *POJO-oriented*. As fields it allows all primitives, and String objects. It also allows other POJOs that meet this same specification.
+
+Keeping that in mind, our [http://openmobster.googlecode.com/svn/samples/pushmail/cloud/src/main/java/org/openmobster/pushmail/cloud/channel/MailBean.java MailBean.java] is modeled using 5 String fields. Thing to notice here is that, the "Date" field was modeled as a formatted String instead of a _java.util.Date_ object. The serialization framework of the Sync engine will not support that.
+
+Once the MobileBean is designed, next step is to architect the [http://openmobster.googlecode.com/svn/samples/pushmail/cloud/src/main/java/org/openmobster/pushmail/cloud/domain/MailProcessor.java MailProcessor.java]. This is a simple MailProcessor that connects with an IMAP-based Email server. This can be made as complex as you need, as long as it produces the Mobile Bean that integrates with the Sync engine.
+
+
 
 
 === Architecting Device Components ===
