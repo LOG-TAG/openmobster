@@ -66,7 +66,7 @@ It exposes the first initial set of beans needed to get the App in a functional 
 
 ==== CRUD Operation Support ====
 {{{
-public List<? extends MobileBean> readAll() 
+        public List<? extends MobileBean> readAll() 
 	{
 		List<MailBean> inbox = this.mailProcessor.readInbox();
 		
