@@ -112,6 +112,49 @@ It exposes the first initial set of beans needed to get the App in a functional 
 }}}
 Support for the usual CRUD (Create, Read, Update, Delete) operations. The code is self-explanatory.
 
+==== Push Support ====
+
+The system periodically pings the Mobile Channel for any new beans that need to be synchronized. This is accomplished by invoking the following:
+{{{
+        public String[] scanForNew(Device device, Date lastScanTimestamp) 
+	{
+		PushFilter myFilter = this.pushFilters.get(device.getIdentifier());
+		if(myFilter == null)
+		{
+			return null;
+		}
+		
+		
+		List<String> pushme = new ArrayList<String>();
+		
+		//Read the inbox
+		List<MailBean> inbox = this.mailProcessor.readInbox();
+		
+		
+		for(MailBean local:inbox)
+		{
+			String oid = local.getOid();
+			if(!myFilter.isOnDevice(oid))
+			{
+				pushme.add(oid);
+				myFilter.addToFilter(oid);
+			}
+			
+			log.debug("*******Push Checking****************************");
+			log.debug("OID: "+oid);
+		}
+		
+		String[] returnMe = pushme.toArray(new String[]{});
+		for(String push:returnMe)
+		{
+			log.info("*******Pushing****************************");
+			log.info("OID: "+push);
+		}
+		
+		return returnMe;
+	}
+}}}
+The input device lets you find the data associated with the user, and the lastScan time lets you decide which of this data needs to be pushed to the device.
 
 === Architecting Device Components ===
 
