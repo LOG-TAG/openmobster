@@ -11,7 +11,7 @@ This tutorial will cover the architectural aspects of designing a *Push Email* A
 
   * Step 1: [http://openmobster.googlecode.com/svn/samples/pushmail.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/pushmail
 
-  * Step 2: Build the Code: *mvn install*
+  * Step 2: Build the Code: *mvn -DskipTests install*
 
   * Step 3: Install the App: (*cd app-android*), (*mvn -Phot-deploy install*)
 
