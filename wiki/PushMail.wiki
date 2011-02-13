@@ -64,6 +64,54 @@ Once the domain is in place, next step is to design the [http://openmobster.goog
 }}}
 It exposes the first initial set of beans needed to get the App in a functional state. The rest of the beans are synchronized in the background without any user intervention.
 
+==== CRUD Operation Support ====
+{{{
+public List<? extends MobileBean> readAll() 
+	{
+		List<MailBean> inbox = this.mailProcessor.readInbox();
+		
+		//Bootstrap the Push State, such that only new emails are pushed
+		String deviceId = SyncContext.getInstance().getDeviceId();
+		this.initPushFilter(deviceId, inbox);
+		
+		//returns all the instances in the inbox
+		return inbox;
+	}
+	
+	public MobileBean read(String id) 
+	{		
+		List<MailBean> inbox = this.mailProcessor.readInbox();
+		for(MailBean local:inbox)
+		{
+			if(local.getOid().equals(id))
+			{
+				return local;
+			}
+		}
+		return null;
+	}
+
+        public void delete(MobileBean mobileBean) 
+	{
+		MailBean mailBean = (MailBean)mobileBean;
+		
+		//Deletes the email from the mail server
+		this.mailProcessor.delete(mailBean);
+	}
+
+	public String create(MobileBean mobileBean) 
+	{
+		//Not Applicable
+		return null;
+	}
+	
+	public void update(MobileBean mobileBean) 
+	{
+		//Not Applicable
+	}	
+}}}
+Support for the usual CRUD (Create, Read, Update, Delete) operations. The code is self-explanatory.
+
 
 === Architecting Device Components ===
 
