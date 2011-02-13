@@ -18,4 +18,9 @@ This tutorial will cover the architectural aspects of designing a *Push Email* A
   * Step 4: Run the Cloud Server: (*cd cloud*), (*mvn -PrunCloud integration-test*)
 
 
+=== Architecting Cloud Components ===
+
+
+=== Architecting Device Components ===
+
 *Related Links:* [DeveloperZone Developer Zone], [GetStarted Get Started]
