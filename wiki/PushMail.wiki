@@ -32,7 +32,37 @@ Keeping that in mind, our [http://openmobster.googlecode.com/svn/samples/pushmai
 
 Once the MobileBean is designed, next step is to architect the [http://openmobster.googlecode.com/svn/samples/pushmail/cloud/src/main/java/org/openmobster/pushmail/cloud/domain/MailProcessor.java MailProcessor.java]. This is a simple MailProcessor that connects with an IMAP-based Email server. This can be made as complex as you need, as long as it produces the Mobile Bean that integrates with the Sync engine.
 
+Once the domain is in place, next step is to design the [http://openmobster.googlecode.com/svn/samples/pushmail/cloud/src/main/java/org/openmobster/pushmail/cloud/channel/MailChannel.java MailChannel.java] which exposes the Mobile Bean to the Sync Engine.
 
+
+==== Channel Bootstrap ====
+
+{{{
+        public List<? extends MobileBean> bootup() 
+	{	
+		List<MailBean> inbox = this.mailProcessor.readInbox();
+		
+		//If total # of emails in the inbox are greater than the favorable active number
+		int active = 100;
+		if(inbox.size() > active)
+		{
+			List<MailBean> list = new ArrayList<MailBean>();
+			for(int i=0; i<active; i++)
+			{
+				list.add(inbox.get(i));
+			}
+			
+			return list;
+		}
+		
+		//Bootstrap the Push State, such that only new emails are pushed
+		String deviceId = SyncContext.getInstance().getDeviceId();
+		this.initPushFilter(deviceId, inbox);
+		
+		return inbox;
+	}
+}}}
+It exposes the first initial set of beans needed to get the App in a functional state. The rest of the beans are synchronized in the background without any user intervention.
 
 
 === Architecting Device Components ===
