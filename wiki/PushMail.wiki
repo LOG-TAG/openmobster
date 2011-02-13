@@ -20,6 +20,14 @@ This tutorial will cover the architectural aspects of designing a *Push Email* A
 
 === Architecting Cloud Components ===
 
+Before architecting any Mobile App it is important to design the domain model of the system. In the case of a Push Email app, this model consists
+of one entity which is *Email*.
+
+Such is the case with any Enterprise App, but in the case of a mobile app
+you must also take into account the model design based on integration with a *Sync Engine*. The *Sync Engine* will have serialization needs that must be met by the entities in your domain model.
+
+The OpenMobster sync engine is *POJO-oriented*. 
+
 
 === Architecting Device Components ===
 
