@@ -11,5 +11,10 @@
    <bean name="test://mobileContainer/MockMobileService" class="test.openmobster.core.mobileContainer.MockMobileBeanService">
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
-   </bean>                       
+   </bean>   
+   
+   <!-- Deploy the MockCloudCameraCommand -->
+   <bean name="test://camera/MockCloudCameraCommand" class="test.openmobster.core.mobileContainer.MockCloudCameraCommand">
+   		<depends>services://CloudCameraService</depends>
+   </bean>                     
 </deployment>

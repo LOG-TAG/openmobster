@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.util.Hashtable;
 import java.util.Vector;
 import java.util.Locale;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,6 +27,7 @@ import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.api.push.PushCommand;
 
 /**
  * @author openmobster@gmail.com
@@ -172,10 +175,37 @@ public final class AppConfig
 					}
 					this.attrMgr.setAttribute("channels", registeredChannels);
 				}
+				
+				//Parse Push-Commands if they are registered
+				NodeList pNodes = root.getElementsByTagName("push-commands");
+				if(pNodes != null && pNodes.getLength()>0)
+				{
+					Element pushCommands = (Element)pNodes.item(0);
+					NodeList pCommands = pushCommands.getElementsByTagName("command");
+					Map<String, PushCommand> configMap = new HashMap<String, PushCommand>();
+					if(pCommands != null && pCommands.getLength()>0)
+					{
+						int size = pCommands.getLength();
+						for(int i=0; i<size; i++)
+						{
+							Element local = (Element)pCommands.item(i);
+							
+							String id = local.getAttribute("id");
+							String commandClass = local.getFirstChild().getNodeValue().trim();
+							
+							PushCommand pushCommand = (PushCommand)Class.forName(commandClass).newInstance();
+							
+							configMap.put(id, pushCommand);
+						}
+					}
+					
+					this.attrMgr.setAttribute("push-commands", configMap);
+				}
 			}
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			SystemException syse = new SystemException(this.getClass().getName(), "init", new Object[]{
 				"Exception: "+e.toString(),
 				"Message: "+e.getMessage()
@@ -300,6 +330,31 @@ public final class AppConfig
 			}
 			this.attrMgr.setAttribute("channels", registeredChannels);
 		}
+		
+		//Parse Push-Commands if they are registered
+		NodeList pNodes = root.getElementsByTagName("push-commands");
+		if(pNodes != null && pNodes.getLength()>0)
+		{
+			Element pushCommands = (Element)pNodes.item(0);
+			NodeList pCommands = pushCommands.getElementsByTagName("command");
+			Map<String, PushCommand> configMap = new HashMap<String, PushCommand>();
+			if(pCommands != null && pCommands.getLength()>0)
+			{
+				int size = pCommands.getLength();
+				for(int i=0; i<size; i++)
+				{
+					Element local = (Element)pCommands.item(i);
+					
+					String id = local.getAttribute("id");
+					String commandClass = local.getFirstChild().getNodeValue().trim();
+					
+					PushCommand pushCommand = (PushCommand)Class.forName(commandClass).newInstance();
+					
+					configMap.put(id, pushCommand);
+				}
+			}
+			this.attrMgr.setAttribute("push-commands", configMap);
+		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------						
 	public Locale getAppLocale()
@@ -335,5 +390,10 @@ public final class AppConfig
 			return true;
 		}
 		return false;
+	}
+	
+	public Map<String, PushCommand> getPushCommands()
+	{
+		return (Map<String, PushCommand>)this.attrMgr.getAttribute("push-commands");
 	}
 }

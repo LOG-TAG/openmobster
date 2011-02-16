@@ -57,16 +57,40 @@ public class Notifier
 			
 			command = commandBuilder.toString()+Constants.endOfCommand;
 			deviceToNotify = notification.getMetaData(Constants.device);
-		}
-		
-		if(deviceToNotify != null && command != null)
-		{
-			BusMessage busMessage = new BusMessage();
-			busMessage.setBusUri(deviceToNotify);
-			busMessage.setSenderUri(notification.getMetaData(Constants.service));
-			busMessage.setAttribute(Constants.command, command);
 			
-			Bus.sendMessage(busMessage);
+			if(deviceToNotify != null && command != null)
+			{
+				BusMessage busMessage = new BusMessage();
+				busMessage.setBusUri(deviceToNotify);
+				busMessage.setSenderUri(notification.getMetaData(Constants.service));
+				busMessage.setAttribute(Constants.command, command);
+				busMessage.setAttribute("notification-type", "channel");
+				
+				Bus.sendMessage(busMessage);
+			}
+		}
+		else if(notification.getType() == NotificationType.RPC)
+		{
+			log.debug("PushRPC Notification for "+notification.getMetaData(Constants.device));
+			
+			String rpc_request = (String)notification.getMetaData("rpc-request");
+			StringBuilder commandBuilder = new StringBuilder();
+			commandBuilder.append(Constants.command+"="+Constants.pushrpc+Constants.separator);	
+			commandBuilder.append(Constants.payload+"="+rpc_request);
+			
+			command = commandBuilder.toString()+Constants.endOfCommand;
+			deviceToNotify = notification.getMetaData(Constants.device);
+			
+			if(deviceToNotify != null && command != null)
+			{
+				BusMessage busMessage = new BusMessage();
+				busMessage.setBusUri(deviceToNotify);
+				busMessage.setSenderUri(notification.getMetaData(Constants.service));
+				busMessage.setAttribute(Constants.command, command);
+				busMessage.setAttribute("notification-type", "push-rpc");
+				
+				Bus.sendMessage(busMessage);
+			}
 		}
 	}
 }

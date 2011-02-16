@@ -152,6 +152,7 @@ public final class CometSession implements Serializable,BusListener
 	{
 		if(this.isActive())
 		{
+			log.debug("Comet is Active!!!");
 			if(this.allowNotification(busMessage))
 			{
 				log.debug("Actually Sending-------------------------------------------------");
@@ -167,6 +168,10 @@ public final class CometSession implements Serializable,BusListener
 			}
 			
 			busMessage.acknowledge();
+		}
+		else
+		{
+			log.debug("Comet is inactive!!!!");
 		}
 	}
 	
@@ -184,6 +189,12 @@ public final class CometSession implements Serializable,BusListener
 	
 	private boolean allowNotification(BusMessage busMessage)
 	{
+		String notificationType = (String)busMessage.getAttribute("notification-type");
+		if(!notificationType.equals("channel"))
+		{
+			return true;
+		}
+		
 		String channel = busMessage.getSenderUri();
 		
 		SubscriptionManager mgr = (SubscriptionManager)this.activeSession.getAttribute(Constants.subscription);

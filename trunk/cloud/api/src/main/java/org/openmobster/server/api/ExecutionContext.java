@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
 
+import org.openmobster.core.security.device.Device;
+
 
 /**
  * Provides Contextual information to a Channel about the Invocation such as
@@ -127,5 +129,15 @@ public class ExecutionContext
 	public void setSyncContext(Object syncContext)
 	{
 		this.setAttribute(SYNC_CONTEXT, syncContext);
+	}
+	
+	public Device getDevice()
+	{
+		return (Device)this.getAttribute("device");
+	}
+	
+	public void setDevice(Device device)
+	{
+		this.setAttribute("device", device);
 	}
 }

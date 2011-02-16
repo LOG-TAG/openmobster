@@ -26,5 +26,6 @@
 		<module>test-api-port</module>
 		<module>test-cloud-as-service</module>
 		<module>test-real-device</module>
+		<module>testapp</module>
 	</modules>
 </project>

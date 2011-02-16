@@ -17,4 +17,5 @@ public enum NotificationType
 {
 	SYNC, //Synchronization related
 	DM, //Device Management related	
+	RPC//RPC Invocation from Server to Device Component
 }

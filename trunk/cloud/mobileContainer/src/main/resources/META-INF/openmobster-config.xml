@@ -36,5 +36,12 @@
    		<property name="id">/service/invoke</property>
    		<property name="monitor"><inject bean="services://MobileServiceMonitor"/></property>
    		<depends>mobileContainer://MobileContainer</depends>
-   </bean>             
+   </bean> 
+   
+   <bean name="services://CloudCameraService" class="org.openmobster.core.mobileContainer.CloudCameraService">
+        <incallback method="register"/>
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   		<depends>mobileContainer://InvokeMobileService</depends>
+   </bean>                   
 </deployment>

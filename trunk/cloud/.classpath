@@ -122,6 +122,16 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/app-android/src/main/java" />
 	
+	<classpathentry kind="src" path="dev-tools/sampleApps/pushrpc/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/pushrpc/cloud/src/test/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/pushrpc/app-android/src/main/java" />
+	
+	<!-- Javascript bridge -->
+	<classpathentry kind="src" path="android/javascript-bridge/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/testapp/cloud/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/testapp/app-android/src/main/java"/>
+	
+	
 	<classpathentry kind="output" path="bin"/>
 	
 	<classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar"/>

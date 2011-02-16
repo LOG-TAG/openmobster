@@ -11,12 +11,15 @@ package org.openmobster.core.mobileCloud.android.module.connection;
 import java.util.Map;
 import java.util.HashMap;
 
+
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
+import org.openmobster.core.mobileCloud.android.util.Base64;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
+import org.openmobster.core.mobileCloud.android.module.bus.PushRPCInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 
 /**
@@ -71,6 +74,10 @@ public final class CommandProcessor extends Service
 				{
 					this.sync(input);
 				}
+				else if(inputCommand.equals(Constants.pushrpc))
+				{
+					this.pushrpc(input);
+				}
 			}
 		}
 	}
@@ -79,6 +86,12 @@ public final class CommandProcessor extends Service
 	{
 		Thread t = new Thread(new SyncCommandHandler(input));
 		t.start();		
+	}
+	
+	private void pushrpc(Map<String,String> input)
+	{
+		Thread t = new Thread(new PushRPCHandler(input));
+		t.start();	
 	}
 	
 	private static class SyncCommandHandler implements Runnable
@@ -109,6 +122,43 @@ public final class CommandProcessor extends Service
 				SyncInvocation.oneWayServerOnly, service);
 				syncInvocation.activateBackgroundSync();
 				Bus.getInstance().invokeService(syncInvocation);
+			}
+			catch(Exception e)
+			{
+				SystemException se = new SystemException(this.getClass().getName(),"run", 
+						new Object[]{
+							"Exception="+e.toString(),
+							"Message="+e.getMessage()
+						});
+				ErrorHandler.getInstance().handle(se);
+			}
+		}
+	}
+	
+	private static class PushRPCHandler implements Runnable
+	{
+		private Map<String,String> input;
+		
+		private PushRPCHandler(Map<String,String> input)
+		{
+			this.input = input;
+		}
+		public void run()
+		{
+			try
+			{
+				String payload = input.get(Constants.payload);
+				
+				byte[] decoded = Base64.decode(payload.getBytes());
+				payload = new String(decoded);
+				
+				//leave for debugging
+				//System.out.println(payload);
+				//System.out.println("PushRPC Started......"+Registry.getActiveInstance().getContext().getPackageName());
+				
+				PushRPCInvocation invocation = new PushRPCInvocation(
+					"org.openmobster.core.mobileCloud.api.push.PushRPCInvocationHandler",payload);
+				Bus.getInstance().broadcast(invocation);
 			}
 			catch(Exception e)
 			{

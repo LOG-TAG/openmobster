@@ -20,4 +20,6 @@ public interface Constants
 	public String service = "service";
 	public String notify = "notify";
 	public String device = "device";
+	public String pushrpc = "pushrpc";
+	public String payload = "payload";
 }
