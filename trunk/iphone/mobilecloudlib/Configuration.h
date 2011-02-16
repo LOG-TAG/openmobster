@@ -37,6 +37,7 @@
 
 //System-wide channel operations
 -(BOOL)establishOwnership:(Channel *)channel :(BOOL)force;
+-(NSDictionary *)getChannelRegistry;
 
 //App-level channel operations
 -(void)addAppChannel:(NSString *)appChannel;

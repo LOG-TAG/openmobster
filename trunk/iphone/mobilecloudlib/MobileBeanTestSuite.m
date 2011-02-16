@@ -1,5 +1,6 @@
 
 #import "MobileBeanTestSuite.h"
+#import "TestReadOnlyChannel.h"
 
 
 @implementation MobileBeanTestSuite
@@ -17,6 +18,7 @@
 	[suite addTest:[TestSimpleAccess withInit]];
 	[suite addTest:[TestArrayAccess withInit]];
 	[suite addTest:[TestCRUD withInit]];
+	[suite addTest:[TestReadOnlyChannel withInit]];
 	
 	//execute the suite
 	[suite execute];

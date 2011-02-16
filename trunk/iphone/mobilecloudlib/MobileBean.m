@@ -7,6 +7,7 @@
  */
 
 #import "MobileBean.h"
+#import "AppService.h"
 
 
 /**
@@ -18,6 +19,7 @@
 @synthesize data;
 @synthesize isNew;
 @synthesize isDirty;
+@synthesize readonly;
 
 +(id)withInit:(MobileObject *)data
 {
@@ -26,6 +28,18 @@
 	instance.data = data;
 	instance.isNew = NO;
 	instance.isDirty = NO;
+	
+	AppService *service = [AppService getInstance];
+	NSString *channel = data.service;
+	if(![service isWritable:channel])
+	{
+		instance.readonly = YES;
+	}
+	else 
+	{
+		instance.readonly = NO;
+	}
+
 	
 	return instance;
 }
@@ -37,6 +51,16 @@
 	MobileObject *data = [MobileObject withInit];
 	data.createdOnDevice = YES;
 	data.service = channel;
+	
+	AppService *service = [AppService getInstance];
+	if(![service isWritable:channel])
+	{
+		instance.readonly = YES;
+	}
+	else 
+	{
+		instance.readonly = NO;
+	}
 	
 	instance.data = data;
 	instance.isNew = YES;
@@ -369,6 +393,13 @@
 			SystemException *ex = [SystemException withContext:@"MobileBean" method:@"delete" parameters:params];
 			@throw ex;
 		}
+		
+		if(readonly)
+		{
+			NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is ReadOnly",nil];
+			SystemException *ex = [SystemException withContext:@"MobileBean" method:@"delete" parameters:params];
+			@throw ex;
+		}
 	
 		MobileObjectDatabase *mdb = [MobileObjectDatabase getInstance];
 		NSString *channel = [self getChannel];
@@ -395,6 +426,13 @@
 {
 	@synchronized([MobileBean class])
 	{
+		if(readonly)
+		{
+			NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is ReadOnly",nil];
+			SystemException *ex = [SystemException withContext:@"MobileBean" method:@"save" parameters:params];
+			@throw ex;
+		}
+		
 		MobileObjectDatabase *deviceDB = [MobileObjectDatabase getInstance];
 		
 		//bean created on the device

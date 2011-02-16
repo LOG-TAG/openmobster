@@ -13,6 +13,13 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		A2502850130A27BD006DC2C8 /* AjaxShowList.m in Sources */ = {isa = PBXBuildFile; fileRef = A250284E130A27BD006DC2C8 /* AjaxShowList.m */; };
+		A2502851130A27BD006DC2C8 /* AjaxShowList.xib in Resources */ = {isa = PBXBuildFile; fileRef = A250284F130A27BD006DC2C8 /* AjaxShowList.xib */; };
+		A250287B130AA77F006DC2C8 /* AjaxGetListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */; };
+		A250289C130AAC06006DC2C8 /* EmailBean.m in Sources */ = {isa = PBXBuildFile; fileRef = A250289B130AAC06006DC2C8 /* EmailBean.m */; };
+		A2502902130ADA15006DC2C8 /* AjaxGetDetailsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */; };
+		A2502922130ADD7D006DC2C8 /* AjaxShowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */; };
+		A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */; };
 		A267E51812C542EB00693E1A /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E51712C542EB00693E1A /* libmobilecloudlib.a */; };
 		A267E5DB12C54BD900693E1A /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E5D912C54BD900693E1A /* Home.m */; };
 		A267E5DC12C54BD900693E1A /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267E5DA12C54BD900693E1A /* Home.xib */; };
@@ -47,6 +54,18 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CloudManager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CloudManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CloudManager-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A250284D130A27BD006DC2C8 /* AjaxShowList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxShowList.h; sourceTree = "<group>"; };
+		A250284E130A27BD006DC2C8 /* AjaxShowList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxShowList.m; sourceTree = "<group>"; };
+		A250284F130A27BD006DC2C8 /* AjaxShowList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjaxShowList.xib; sourceTree = "<group>"; };
+		A2502879130AA77F006DC2C8 /* AjaxGetListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxGetListCommand.h; sourceTree = "<group>"; };
+		A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxGetListCommand.m; sourceTree = "<group>"; };
+		A250289A130AAC06006DC2C8 /* EmailBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailBean.h; sourceTree = "<group>"; };
+		A250289B130AAC06006DC2C8 /* EmailBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailBean.m; sourceTree = "<group>"; };
+		A2502900130ADA15006DC2C8 /* AjaxGetDetailsCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxGetDetailsCommand.h; sourceTree = "<group>"; };
+		A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxGetDetailsCommand.m; sourceTree = "<group>"; };
+		A250291F130ADD7D006DC2C8 /* AjaxShowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxShowDetails.h; sourceTree = "<group>"; };
+		A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxShowDetails.m; sourceTree = "<group>"; };
+		A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjaxShowDetails.xib; sourceTree = "<group>"; };
 		A267E51712C542EB00693E1A /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 		A267E5D812C54BD900693E1A /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Home.h; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.h"; sourceTree = DEVELOPER_DIR; };
 		A267E5D912C54BD900693E1A /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Home.m; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.m"; sourceTree = DEVELOPER_DIR; };
@@ -116,6 +135,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A250284C130A251D006DC2C8 /* Ajax */,
 				A2869AAA12F8BE2800A4792E /* CRUD */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -164,6 +184,25 @@
 				A29D69F812B7E56300DAE753 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A250284C130A251D006DC2C8 /* Ajax */ = {
+			isa = PBXGroup;
+			children = (
+				A250284D130A27BD006DC2C8 /* AjaxShowList.h */,
+				A250284E130A27BD006DC2C8 /* AjaxShowList.m */,
+				A250284F130A27BD006DC2C8 /* AjaxShowList.xib */,
+				A2502879130AA77F006DC2C8 /* AjaxGetListCommand.h */,
+				A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */,
+				A250289A130AAC06006DC2C8 /* EmailBean.h */,
+				A250289B130AAC06006DC2C8 /* EmailBean.m */,
+				A2502900130ADA15006DC2C8 /* AjaxGetDetailsCommand.h */,
+				A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */,
+				A250291F130ADD7D006DC2C8 /* AjaxShowDetails.h */,
+				A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */,
+				A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */,
+			);
+			name = Ajax;
 			sourceTree = "<group>";
 		};
 		A2869AAA12F8BE2800A4792E /* CRUD */ = {
@@ -237,6 +276,8 @@
 				A2E5558212F0F1F9008B3FCE /* openmobster-app.xml in Resources */,
 				A2869AB012F8BF0200A4792E /* ShowList.xib in Resources */,
 				A2869B4B12F8D57E00A4792E /* SaveTicket.xib in Resources */,
+				A2502851130A27BD006DC2C8 /* AjaxShowList.xib in Resources */,
+				A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +299,11 @@
 				A2869B9712F9014500A4792E /* SaveTicketCommand.m in Sources */,
 				A2869B9A12F9016500A4792E /* DeleteTicketCommand.m in Sources */,
 				A2869B9D12F9017F00A4792E /* ChannelBootstrapCommand.m in Sources */,
+				A2502850130A27BD006DC2C8 /* AjaxShowList.m in Sources */,
+				A250287B130AA77F006DC2C8 /* AjaxGetListCommand.m in Sources */,
+				A250289C130AAC06006DC2C8 /* EmailBean.m in Sources */,
+				A2502902130ADA15006DC2C8 /* AjaxGetDetailsCommand.m in Sources */,
+				A2502922130ADD7D006DC2C8 /* AjaxShowDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +357,7 @@
 				HEADER_SEARCH_PATHS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
-				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2M1/iphone/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2/iphone/**";
 			};
 			name = Debug;
 		};

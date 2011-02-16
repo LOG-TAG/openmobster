@@ -154,6 +154,11 @@
 	return NO;
 }
 
+-(NSDictionary *)getChannelRegistry
+{
+	return [NSDictionary dictionaryWithDictionary:self.channels];
+}
+
 //App-level channel operations
 -(void)addAppChannel:(NSString *)appChannel
 {

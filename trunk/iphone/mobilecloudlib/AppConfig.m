@@ -64,19 +64,25 @@
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
-{
-	local = [[Channel alloc] init];
-	
-	NSString *access = [attributeDict objectForKey:@"access"];
-	if([access isEqualToString:@"write"])
+{	
+	if([elementName isEqualToString:@"channel"])
 	{
-		local.writable = YES;
+		local = [[Channel alloc] init];
+	
+		NSString *access = [attributeDict objectForKey:@"access"];
+		if([access isEqualToString:@"write"])
+		{
+			local.writable = YES;
+		}
 	}
 }
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-	[channelRegistry addObject:local];
+	if([elementName isEqualToString:@"channel"])
+	{
+		[channelRegistry addObject:local];
+	}
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string

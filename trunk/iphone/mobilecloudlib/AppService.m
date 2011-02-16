@@ -7,6 +7,7 @@
  */
 
 #import "AppService.h"
+#import "Bus.h"
 
 
 /**
@@ -45,26 +46,40 @@
 
 -(void)start
 {
+	//Synchronize the local Conf with System Conf
+	Bus *bus = [Bus getInstance];
+	[bus synchronizeConf];
+	
 	Configuration *conf = [Configuration getInstance];
 	NSString *owner = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
 	AppConfig *appConfig = [AppConfig getInstance];
 	
 	//Load up registered channels
 	NSArray *channelRegistry = [appConfig getChannels];
-	for(Channel *local in channelRegistry)
+	BOOL broadcastConf = NO;
+	if(channelRegistry != nil)
 	{
-		local.owner = owner;
-				
-		if(local.writable)
+		for(Channel *local in channelRegistry)
 		{
-			//see if this can be made owner system-wide
-			BOOL ownership = [conf establishOwnership:local :NO];
-			if(ownership)
+			local.owner = owner;
+				
+			if(local.writable)
 			{
-				[writableChannels addObject:local];
+				//see if this can be made owner system-wide
+				BOOL ownership = [conf establishOwnership:local :NO];
+				if(ownership)
+				{
+					[writableChannels addObject:local];
+					broadcastConf = YES;
+				}
 			}
+			[allChannels addObject:local];
 		}
-		[allChannels addObject:local];
+	}
+	
+	if(broadcastConf)
+	{
+		[bus postSharedConf:conf];
 	}
 	
 	//Start the Sync Daemons

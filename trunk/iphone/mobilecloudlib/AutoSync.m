@@ -26,6 +26,8 @@
 
 -(void)sync
 {
+	@try 
+	{
 	AppService *appService = [AppService getInstance];
 	SyncService *sync = [SyncService getInstance];
 	NSMutableDictionary *booted = [NSMutableDictionary dictionary];
@@ -95,6 +97,11 @@
 			NSString *name = local.name;
 			[self proxySync:name];
 		}
+	}
+	}
+	@catch(NSException *e)
+	{
+		//saves from a crash...tried to sync
 	}
 }
 
