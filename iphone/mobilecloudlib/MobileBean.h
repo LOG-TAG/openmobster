@@ -28,11 +28,13 @@
 	MobileObject *data;
 	BOOL isDirty;
 	BOOL isNew;
+	BOOL readonly;
 }
 
 @property (retain) MobileObject *data;
 @property (assign) BOOL isDirty;
 @property (assign) BOOL isNew;
+@property (assign) BOOL readonly;
 
 
 +(id)withInit:(MobileObject *)data;

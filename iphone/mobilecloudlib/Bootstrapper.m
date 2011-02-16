@@ -7,6 +7,7 @@
  */
 
 #import "Bootstrapper.h"
+#import "UIKernel.h"
 
 
 /**
@@ -44,6 +45,10 @@
 	//Activate the device with the Cloud
 	ActivationUtil *activationUtil = [ActivationUtil withInit];
 	[activationUtil activateDevice:suite];
+	
+	//Startup the UIKernel
+	UIKernel *uiKernel = [UIKernel getInstance];
+	[uiKernel startup:nil];
 	
 	return suite;
 }

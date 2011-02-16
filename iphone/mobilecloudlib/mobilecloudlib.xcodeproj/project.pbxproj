@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
+		A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
+		A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */; };
 		A25E9DAD1225CB9500A8AE19 /* ErrorHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A25E9DA91225CB9500A8AE19 /* ErrorHandler.h */; };
 		A25E9DAE1225CB9500A8AE19 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E9DAA1225CB9500A8AE19 /* ErrorHandler.m */; };
 		A25E9DAF1225CB9500A8AE19 /* SystemException.h in Headers */ = {isa = PBXBuildFile; fileRef = A25E9DAB1225CB9500A8AE19 /* SystemException.h */; };
@@ -320,6 +323,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2502467130580EC006DC2C8 /* TestReadOnlyChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestReadOnlyChannel.h; sourceTree = "<group>"; };
+		A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReadOnlyChannel.m; sourceTree = "<group>"; };
 		A25E9DA91225CB9500A8AE19 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorHandler.h; path = ../../ErrorHandler.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E9DAA1225CB9500A8AE19 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorHandler.m; path = ../../ErrorHandler.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E9DAB1225CB9500A8AE19 /* SystemException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemException.h; path = ../../SystemException.h; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -644,6 +649,7 @@
 				A2DF3E5E1225C639004C908F /* libmobilecloudlib.a in Frameworks */,
 				A2DF3E5F1225C648004C908F /* CoreData.framework in Frameworks */,
 				A29D5A5B128C592200DAE753 /* CFNetwork.framework in Frameworks */,
+				A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +660,7 @@
 				A2E557B012F76A80008B3FCE /* CoreData.framework in Frameworks */,
 				A2E557AF12F76A80008B3FCE /* CFNetwork.framework in Frameworks */,
 				A28694F412F774F600A4792E /* libmobilecloudlib.a in Frameworks */,
+				A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1289,6 +1296,8 @@
 				A286969D12F7DE8300A4792E /* TestArrayAccess.m */,
 				A286974C12F8697100A4792E /* TestCRUD.h */,
 				A286974D12F8697100A4792E /* TestCRUD.m */,
+				A2502467130580EC006DC2C8 /* TestReadOnlyChannel.h */,
+				A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */,
 			);
 			name = "integration-tests";
 			sourceTree = "<group>";
@@ -1775,6 +1784,7 @@
 				A286957112F77F3B00A4792E /* TestSimpleAccess.m in Sources */,
 				A286969E12F7DE8300A4792E /* TestArrayAccess.m in Sources */,
 				A286974E12F8697100A4792E /* TestCRUD.m in Sources */,
+				A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1961,7 +1971,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
-				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2M1/iphone/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2/iphone/**";
 			};
 			name = Debug;
 		};

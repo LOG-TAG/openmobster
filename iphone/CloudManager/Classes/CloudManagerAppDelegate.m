@@ -46,6 +46,38 @@
      */
 	AppService *appService = [AppService getInstance];
 	[appService start];
+	
+	//FIXME: remove this
+	Configuration *conf = [Configuration getInstance];
+	NSDictionary *channelRegistry = [conf getChannelRegistry];
+	NSArray *allKeys = [channelRegistry allKeys];
+	NSLog(@"*********************************************");
+	for(NSString *local in allKeys)
+	{
+		NSString *value = (NSString *)[channelRegistry valueForKey:local];
+		NSLog(@"Key: %@, Value: %@",local,value);
+	}
+	NSLog(@"*********************************************");
+	
+	//Read-Only Channels
+	NSArray *readonly = [appService readonlyChannels];
+	for(Channel *local in readonly)
+	{
+		NSLog(@"ReadOnly : %@, Owner: %@",local.name,local.owner);
+	}
+	
+	//Writable Channels
+	NSArray *writable = [appService writableChannels];
+	for(Channel *local in writable)
+	{
+		NSLog(@"Writable : %@, Owner: %@",local.name,local.owner);
+	}
+	
+	BOOL isWritable = [appService isWritable:@"webappsync_ticket_channel"];
+	NSLog(@"IsWritable(websync_ticket_channel) : %d",isWritable);
+	
+	isWritable = [appService isWritable:@"push_mail_channel"];
+	NSLog(@"IsWritable(push_mail_channel) : %d",isWritable);
 }
 
 -(void)applicationWillResignActive:(UIApplication *)application 
@@ -94,19 +126,35 @@
 //---OpenMobster Cloud Layer integration-------------------------------------------------------
 -(void)startCloudService
 {
-	Kernel *kernel = [Kernel getInstance];
-	[kernel startup];
-	
-	UIKernel *uiKernel = [UIKernel getInstance];
-	[uiKernel startup:mainView];
+	@try 
+	{
+		Kernel *kernel = [Kernel getInstance];
+		[kernel startup];
+		
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel startup:mainView];
+	}
+	@catch (NSException * e) 
+	{
+		//something caused the kernel to crash
+		//stop the kernel
+		[self stopCloudService];
+	}
 }
 
 -(void)stopCloudService
 {
-	UIKernel *uiKernel = [UIKernel getInstance];
-	[uiKernel shutdown];
+	@try
+	{
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel shutdown];
 	
-	Kernel *kernel = [Kernel getInstance];
-	[kernel shutdown];
+		Kernel *kernel = [Kernel getInstance];
+		[kernel shutdown];
+	}
+	@catch (NSException *e) 
+	{
+		
+	}
 }
 @end

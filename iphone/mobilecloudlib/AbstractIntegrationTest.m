@@ -7,6 +7,7 @@
  */
 
 #import "AbstractIntegrationTest.h"
+#import "Channel.h"
 
 
 /**
@@ -20,6 +21,12 @@
 	TestSuite *suite = (TestSuite *)self.suite;
 	TestContext *context = suite.context;
 	channel = [context getAttribute:@"channel"];
+	
+	//Setup the AppService with readonly channel
+	AppService *service = [AppService getInstance];
+	Channel *myChannel = [Channel withInit:channel :@"mock"];
+	[service.allChannels addObject:myChannel];
+	[service.writableChannels addObject:myChannel];
 }
 
 -(void) tearDown

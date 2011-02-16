@@ -7,6 +7,7 @@
  */
 
 #import "TestSuite.h"
+#import "UIKernel.h"
 
 
 /**
@@ -95,6 +96,8 @@
 	//Cleanup
 	Kernel *kernel = [Kernel getInstance];
 	[kernel shutdown];
+	UIKernel *uiKernel = [UIKernel getInstance];
+	[uiKernel shutdown];
 	
 	NSLog(@"%@",status);
 }

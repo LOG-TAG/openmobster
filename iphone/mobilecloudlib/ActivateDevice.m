@@ -7,6 +7,7 @@
  */
 
 #import "ActivateDevice.h"
+#import "Bus.h"
 
 
 /**
@@ -127,5 +128,7 @@
 	conf.active = [NSNumber numberWithBool:YES];
 	
 	[conf saveInstance];
+	Bus *bus = [Bus getInstance];
+	[bus postSharedConf:conf];
 }
 @end
