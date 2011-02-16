@@ -80,4 +80,14 @@ public class Notification implements Serializable
 		
 		return syncNotification;
 	}
+	
+	public static Notification createPushRPCNotification(Device device, String service)
+	{
+		Notification notification = new Notification(NotificationType.RPC);
+		
+		notification.setMetaData("device", device.getIdentifier());	
+		notification.setMetaData("service", service);
+		
+		return notification;
+	}
 }

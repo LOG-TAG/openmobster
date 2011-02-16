@@ -104,4 +104,11 @@
    <bean name="/IMEI:67890/configuration" 
    class="org.openmobster.device.agent.test.framework.Configuration">
    </bean>
+   
+   <bean name="/test/start/pushrpc" class="test.openmobster.device.agent.StartPushRPC"/>
+   
+   <!-- Deploy the UploadPictureCommand -->
+   <bean name="/upload/picture" class="test.openmobster.device.agent.api.camera.UploadPictureCommand">
+   		<depends>services://CloudCameraService</depends>
+   </bean>
 </deployment>

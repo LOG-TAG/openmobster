@@ -34,4 +34,5 @@ public interface Constants
 	public final String payloadBuilder = "payloadBuilder";
 	public final String anonymousMode = "anonymousMode";
 	public final String consoleSession = "consoleSession";
+	public final String pushrpc = "pushrpc";
 }

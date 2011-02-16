@@ -44,6 +44,7 @@
 		<module>moblet-runtime</module>
 		<module>native-framework</module>
 		<module>test-suite</module>
+		<module>javascript-bridge</module>
 		<!-- aggregations -->
 		<module>device-sdk</module>
 		<module>mobileCloud</module>

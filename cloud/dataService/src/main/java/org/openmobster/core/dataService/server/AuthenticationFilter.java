@@ -24,6 +24,7 @@ import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.services.CometService;
 import org.openmobster.core.services.subscription.SubscriptionManager;
 import org.openmobster.core.services.subscription.Subscription;
+import org.openmobster.server.api.ExecutionContext;
 
 /**
  * @author openmobster@gmail.com
@@ -68,6 +69,15 @@ public class AuthenticationFilter extends IoFilterAdapter
 		}		
 		
 		//connecting device was successfully authenticated...proceed
+		
+		//Setup ThreadLocal information
+		SubscriptionManager local = (SubscriptionManager)session.getAttribute(Constants.subscription);
+		if(local != null)
+		{
+			Device device = local.getDevice();
+			ExecutionContext.getInstance().setDevice(device);
+		}
+		
 		nextFilter.messageReceived(session, message);
 	}	
 	//-------------------------------------------------------------------------------------------------------------------

@@ -117,5 +117,12 @@
    		<property name="syncAdapter">
    			<inject bean="synchronizer://SyncServerAdapter"/>
    		</property>   		
-   </bean>                              
+   </bean>  
+   
+   <!--  Push RPC Service -->  
+   <bean name="push_rpc" 
+   class="org.openmobster.core.dataService.push.PushRPC">	
+   		<property name="notifier"><inject bean="dataService://notification/Notifier"/></property>
+   		<property name="deviceController"><inject bean="security://DeviceController"/></property>	 	   		
+   </bean>                          
 </deployment>

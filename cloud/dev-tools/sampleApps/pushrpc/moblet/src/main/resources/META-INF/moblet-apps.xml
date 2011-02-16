@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<moblet-apps>
+	<!-- Android version -->
+	<moblet-app>	    
+	    <name>pushrpc</name>
+	    <description>pushrpc</description>
+		<bin-loc>/pushrpc-1.0-zipped.apk</bin-loc>	
+	</moblet-app>		
+</moblet-apps>

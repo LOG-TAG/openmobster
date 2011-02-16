@@ -69,6 +69,7 @@ public final class MobileService
 		}		
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			ErrorHandler.getInstance().handle(e);
 			throw new ServiceInvocationException(MobileService.class.getName(), "invoke", new Object[]{
 				"Service being Invoked="+request.getService(),
@@ -141,6 +142,7 @@ public final class MobileService
 		}	
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			ErrorHandler.getInstance().handle(new SystemException(MobileService.class.getName(), "sendRequest", new Object[]{
 				"Request="+beanRequest,
 				"Exception="+e.toString(),
@@ -157,7 +159,7 @@ public final class MobileService
 		}
 	}
 	
-	private static String serialize(Request request)
+	public static String serialize(Request request)
 	{
 		StringBuffer buffer = new StringBuffer();
 		
@@ -187,7 +189,7 @@ public final class MobileService
 		return buffer.toString();
 	}
 	
-	private static Response parse(String response) throws Exception
+	public static Response parse(String response) throws Exception
 	{		
 		InputStream is = null;
 		try
