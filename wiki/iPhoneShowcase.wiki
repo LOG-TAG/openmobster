@@ -27,3 +27,14 @@ This tutorial is to guide you through the process of running the iPhone Showcase
   * Build/Run the project in Xcode
 
   * The iPhone Simulator must start and launch the App
+
+=== Notes ===
+
+If the App launches with a Device Activation screen go ahead with the Activation wizard. The values to use are:
+
+*Login:* blah2@gmail.com
+*Password:* blahblah2
+*IP :* IP address of Cloud Server. Usually a 192.168.1.x adrress. *localhost* will not work
+Port: 1502 (default)
+
+For security purposes, the device must provisioned before using the Cloud services.
