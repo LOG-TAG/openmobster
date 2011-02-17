@@ -14,3 +14,7 @@ A basic [BeginSync tutorial] which covers developing a Sync Channel.
 === MobileBean component ===
 
 A basic [BeginMobileBean tutorial] on how to use the MobileBean component to access the synchronized channel data on the App
+
+=== iPhone Showcase ===
+
+This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
