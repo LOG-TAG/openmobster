@@ -1,5 +1,5 @@
 #summary iPhone Early Access
-#labels Tutorial,Featured
+#labels Tutorial,Deprecated
 
 === System Requirements ===
 
