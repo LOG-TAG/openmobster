@@ -3,3 +3,7 @@
 === Introduction ===
 
 This tutorial is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
+
+==== Getting the Showcase App ====
+
+  * You can download the app here:[http://openmobster.googlecode.com/svn/samples/showcase.zip Showcase]
