@@ -1,5 +1,5 @@
 #summary iPhone Showcase App
 
-==== Introduction ====
+=== Introduction ===
 
 This tutorial is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
