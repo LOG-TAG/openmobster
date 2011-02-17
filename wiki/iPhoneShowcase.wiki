@@ -4,6 +4,26 @@
 
 This tutorial is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
 
-==== Getting the Showcase App ====
+=== Getting the Showcase App ===
 
   * You can download the app here:[http://openmobster.googlecode.com/svn/samples/showcase.zip Showcase]
+
+=== Running the Cloud Server ===
+
+  * Go To _cloud_ directory: *cd cloud*
+
+  * Run the Cloud Server: *mvn -PrunCloud integration-test*
+
+=== Compiling the mobilecloudlib Xcode Project ===
+
+  * Open the mobilecloudlib xcode project by opening: *mobilecloudlib/mobilecloudlib.xcodeproj*
+
+  * Build the project in Xcode
+
+=== Build/Run the CloudManager ===
+
+  * Open the CloudManager project by opening: CloudManager/CloudManager.xcodeproj
+
+  * Build/Run the project in Xcode
+
+  * The iPhone Simulator must start and launch the App
