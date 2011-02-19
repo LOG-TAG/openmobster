@@ -116,3 +116,14 @@ This _doViewError_ phase in invoked in case some exception occurs during the act
 		}
 	}
 }}}
+
+=== Configuration ===
+
+Before the command can be invoked, it must be registered in the moblet-app/moblet-app.xml file
+{{{
+<!-- Command Framework -->
+		<command id="/ajax/command">org.openmobster.showcase.app.command.framework.AjaxCommand</command>
+		<command id="/busy/command">org.openmobster.showcase.app.command.framework.BusyCommand</command>
+		<command id="/fast/command">org.openmobster.showcase.app.command.framework.FastCommand</command>
+	</commands>
+}}}
