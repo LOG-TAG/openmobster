@@ -1,4 +1,6 @@
 #labels Featured,Tutorials
+*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
+
 === Beginner Zone ===
 
 The beginner zone will cover basic tutorials related to OpenMobster based
@@ -45,3 +47,5 @@ This [iPhoneShowcase tutorial] is to guide you through the process of running th
 === iPhone UITableView Tutorial ===
 
 This [iPhoneUITableView tutorial] covers the iPhone UITableView component including some sample code
+
+*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
