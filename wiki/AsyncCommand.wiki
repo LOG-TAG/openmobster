@@ -1,0 +1,33 @@
+#summary AsyncCommand component
+
+=== Introduction ===
+
+The OpenMobster command framework provides a way for developers to encapsulate their service logic within commands. These commands are executed in response to a user interaction. The commands are invoked during the event handling lifecycle. There are three types of commands that are supported
+
+  * AsyncCommand: For Ajax usecases
+
+  * RemoteCommand: For commands that take a long time to execute. It automatically provides a busy indicator and does not allow any user interaction until the command is finished
+
+  * LocalCommand: This is for fast commands.
+
+=== AsyncCommand ===
+
+Implement the *org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand* interface
+{{{
+public final class AjaxCommand implements AsyncCommand
+}}}
+
+
+=== doViewBefore ===
+
+The _doViewBefore_ is invoked right before the actual service logic is called. This is for some UI related pre-processing. This phase executes on the UI thread.
+{{{
+        public void doViewBefore(CommandContext commandContext)
+	{
+		//Show a message before Action phase
+		Activity activity = (Activity)commandContext.getAppContext();
+		Toast.makeText(activity, 
+				"Pre-Action Processing in progess", 
+				Toast.LENGTH_LONG).show();
+	}
+}}}
