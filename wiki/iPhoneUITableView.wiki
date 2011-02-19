@@ -34,6 +34,19 @@ UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 === Step 4 === 
   * Populate the countries NSArray with mock data
+{{{
+-(void)viewDidLoad 
+{
+	[super viewDidLoad];
+	
+	self.countries = [NSMutableArray array];
+	[countries addObject:@"USA"];
+	[countries addObject:@"Russia"];
+	[countries addObject:@"France"];
+	[countries addObject:@"China"];
+	[countries addObject:@"Italy"];
+}
+}}}
 
 === Step 5 ===
 
