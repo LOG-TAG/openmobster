@@ -9,7 +9,7 @@ mobile development. For more advanced tutorials, you can check out the
 === Channel Development ===
 
 A basic [BeginSync tutorial] which covers developing a Sync Channel. 
-
+----
 
 === MobileBean component ===
 
