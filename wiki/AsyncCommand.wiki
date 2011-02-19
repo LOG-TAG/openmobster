@@ -66,3 +66,17 @@ This _doViewAfter_ phase consists of UI related code after the service invocatio
 		show();
 	}
 }}}
+
+=== doViewError ===
+
+This _doViewError_ phase in invoked in case some exception occurs during the action phase. It allows the user to recover by showing some error message to the user
+{{{
+        public void doViewError(CommandContext commandContext)
+	{
+		//Show message upon App Exception
+		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		ViewHelper.getOkModal(currentActivity, "App Error", 
+		this.getClass().getName()+" had an error!!\n\n"+commandContext.getAppException().getMessage()).
+		show();
+	}
+}}}
