@@ -13,6 +13,17 @@ In this tutorial we will try to show a list of countries.
 === Step 2 ===
 
   * Open TableViewTutorialViewController and let it implement the UITableViewDataSource and UITableViewDelegate protocols.
+{{{
+@interface TableViewTutorialViewController : 
+UIViewController<UITableViewDataSource,UITableViewDelegate> 
+{
+	@private
+	NSMutableArray *countries; //a list of counties to be displayed in the table
+}
+
+@property(nonatomic,retain)NSArray *countries;
+@end
+}}}
 
   * The UITableViewDataSource provides callbacks for displaying the UITableView, and UITableViewDelegate provides callbacks for responding to user interaction.
 
