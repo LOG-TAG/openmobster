@@ -81,7 +81,7 @@ This _doViewError_ phase in invoked in case some exception occurs during the act
 	}
 }}}
 
-=== Event Handling ===
+=== How to invoke the command? ===
 {{{
         private static class ClickListener implements OnItemClickListener
 	{	
