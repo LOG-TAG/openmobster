@@ -80,3 +80,39 @@ This _doViewError_ phase in invoked in case some exception occurs during the act
 		show();
 	}
 }}}
+
+=== Event Handling ===
+{{{
+        private static class ClickListener implements OnItemClickListener
+	{	
+		private ClickListener()
+		{
+		}
+		
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id)
+		{
+			if(position == 0)
+			{
+				//Execute the Ajax Command
+				CommandContext commandContext = new CommandContext();
+		     	commandContext.setTarget("/ajax/command");
+		     	Services.getInstance().getCommandService().execute(commandContext);
+			}
+			else if(position == 1)
+			{
+				//Execute the Busy Command
+				CommandContext commandContext = new CommandContext();
+		     	commandContext.setTarget("/busy/command");
+		     	Services.getInstance().getCommandService().execute(commandContext);
+			}
+			else if(position == 2)
+			{
+				//Execute the Fast Command
+				CommandContext commandContext = new CommandContext();
+		     	commandContext.setTarget("/fast/command");
+		     	Services.getInstance().getCommandService().execute(commandContext);
+			}
+		}
+	}
+}}}
