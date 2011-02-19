@@ -50,17 +50,73 @@ UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 === Step 5 ===
 
-  * Implement
+  * Implement datasource portion that gives the # of rows in the table
+{{{
+//Callback to check how many rows in a table
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+	return [countries count];
+}
+}}}
 
 === Step 6 === 
 
-  * Implement
+  * Implement the datasource portion that renders the cell inside a row
+{{{
+//Callback to setup an individual table cell for display
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	//Setup the UITableCell to be rendered
+	UITableViewCell *local = [tableView dequeueReusableCellWithIdentifier:@"country-table"];
+	if(local == nil)
+	{
+		local = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+								reuseIdentifier:@"country-table"];
+		local = [local autorelease];
+	}
+	
+	int index = indexPath.row;
+	
+	//Find the country that needs to be displayed
+    NSString *country = [countries objectAtIndex:index];
+	
+	//Set the cell value to the country
+	local.textLabel.text = country;
+	
+	return local;
+}
+}}}
 
 === Step 7 === 
 
-  * Implement
+  * Implement Event Handling on clicking the row of a table
+{{{
+//Event Handler in response to selecting a table item
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	//Select the item  
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[tableView scrollToRowAtIndexPath:indexPath 
+					 atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+	
+	int index = indexPath.row;
+	
+	//Find the country that was selected
+    NSString *country = [countries objectAtIndex:index];
+	NSString *message = [NSString stringWithFormat:@"Welcome to %@!!",country];
+	
+	//Construct a UIAlertView to show a message
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:country 
+						message:message delegate:nil 
+						cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	
+	dialog = [dialog autorelease];
+	[dialog show];
+}
+}}}
 
 === Useful Links ===
 
-Download this tutorial
-Try the iPhone Showcase for OpenMobster with more detailed scenarios
+  * Download this tutorial
+
+  * Try the iPhone Showcase for OpenMobster with more detailed scenarios
