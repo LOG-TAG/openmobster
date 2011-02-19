@@ -1,1 +1,3 @@
 #summary iPhone UITableView component
+
+While working on the iOS showcase for OpenMobster, I realized how important the UITableView component is on the system. It is practically part of any simple or complicated GUI. Keeping that in mind I wanted to share a simple tutorial on the topic
