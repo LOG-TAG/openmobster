@@ -6,24 +6,37 @@ UITableView represents a UI component for displaying list and hierarchial data i
 
 In this tutorial we will try to show a list of countries.
 
-Step 1: Create a View Based Application from XCode called TableViewTutorial. You should have an App skeleton consisting of your delegates and a Classes/TableViewTutorialViewController class
+=== Step 1 === 
 
-Step 2: Open TableViewTutorialViewController and let it implement the UITableViewDataSource and UITableViewDelegate protocols.
+  * Create a View Based Application from XCode called TableViewTutorial. You should have an App skeleton consisting of your delegates and a Classes/TableViewTutorialViewController class
 
-The UITableViewDataSource provides callbacks for displaying the UITableView, and UITableViewDelegate provides callbacks for responding to user interaction.
+=== Step 2 ===
 
-Step 3: Inside Interface Builder open the Resources/TableViewTutorialViewController.xib file. From the Library add a TableView component to the View. Then from the component Inspector, on the new TableView, wire up the dataSource and delegate to the "File's Owner".
+  * Open TableViewTutorialViewController and let it implement the UITableViewDataSource and UITableViewDelegate protocols.
 
-This wires up the callbacks from the UITableView to the TableViewTutorialViewController class.
+  * The UITableViewDataSource provides callbacks for displaying the UITableView, and UITableViewDelegate provides callbacks for responding to user interaction.
 
-Step 4: Populate the countries NSArray with mock data
+=== Step 3 === 
+  * Inside Interface Builder open the Resources/TableViewTutorialViewController.xib file. From the Library add a TableView component to the View. Then from the component Inspector, on the new TableView, wire up the dataSource and delegate to the "File's Owner".
 
-Step 5: Implement
+  * This wires up the callbacks from the UITableView to the TableViewTutorialViewController class.
 
-Step 6: Implement
+=== Step 4 === 
+  * Populate the countries NSArray with mock data
 
-Step 7: Implement
+=== Step 5 ===
 
-Useful Links:
+  * Implement
+
+=== Step 6 === 
+
+  * Implement
+
+=== Step 7 === 
+
+  * Implement
+
+=== Useful Links ===
+
 Download this tutorial
 Try the iPhone Showcase for OpenMobster with more detailed scenarios
