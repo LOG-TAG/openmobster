@@ -18,3 +18,7 @@ A basic [BeginMobileBean tutorial] on how to use the MobileBean component to acc
 === iPhone Showcase ===
 
 This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
+
+=== iPhone UITableView Tutorial ===
+
+This [iPhoneUITableView tutorial] covers the iPhone UITableView component including some sample code
