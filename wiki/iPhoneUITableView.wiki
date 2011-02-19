@@ -13,3 +13,17 @@ Step 2: Open TableViewTutorialViewController and let it implement the UITableVie
 The UITableViewDataSource provides callbacks for displaying the UITableView, and UITableViewDelegate provides callbacks for responding to user interaction.
 
 Step 3: Inside Interface Builder open the Resources/TableViewTutorialViewController.xib file. From the Library add a TableView component to the View. Then from the component Inspector, on the new TableView, wire up the dataSource and delegate to the "File's Owner".
+
+This wires up the callbacks from the UITableView to the TableViewTutorialViewController class.
+
+Step 4: Populate the countries NSArray with mock data
+
+Step 5: Implement
+
+Step 6: Implement
+
+Step 7: Implement
+
+Useful Links:
+Download this tutorial
+Try the iPhone Showcase for OpenMobster with more detailed scenarios
