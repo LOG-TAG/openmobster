@@ -266,20 +266,18 @@
 										<string>0867D691FE84028FC02AAC07</string>
 										<string>A2869F3A12F9F1AF00A4792E</string>
 										<string>A29D683D12B6D7A400DAE753</string>
-										<string>A2DF3C9E1225B4D0004C908F</string>
-										<string>A2DF3D131225BD29004C908F</string>
+										<string>A29D5B271290534E00DAE753</string>
+										<string>A29630A612CB675100928950</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>29</integer>
-											<integer>28</integer>
-											<integer>24</integer>
+											<integer>44</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 285}, {429, 333}}</string>
+									<string>{{0, 270}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -441,8 +439,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2502833130A02A9006DC2C8</string>
-				<string>A2502834130A02A9006DC2C8</string>
+				<string>A2502CA613102B55006DC2C8</string>
+				<string>A2502CA713102B55006DC2C8</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -481,7 +479,6 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
 	</array>
@@ -700,7 +697,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2502835130A02A9006DC2C8</string>
+				<string>A2502CA813102B55006DC2C8</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
