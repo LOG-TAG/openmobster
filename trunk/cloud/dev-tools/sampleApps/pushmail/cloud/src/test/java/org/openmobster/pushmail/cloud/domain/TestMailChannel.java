@@ -42,10 +42,12 @@ public class TestMailChannel extends TestCase
 		ServiceManager.shutdown();
 	}
 	
+	//Disabling from testsuite as Email credentials don't need to be part of the package
+	//for security reasons
 	public void testBootUp() throws Exception
 	{
 		//Assert the state on the device side
-		List<MobileObject> beans = this.runner.getDeviceDatabase().readByStorage(this.runner.getService());
+		/*List<MobileObject> beans = this.runner.getDeviceDatabase().readByStorage(this.runner.getService());
 		assertTrue("On Device pushmail_channel service should not be empty!!!", (beans != null && !beans.isEmpty()));
 		
 		for(MobileObject mobileObject: beans)
@@ -63,6 +65,6 @@ public class TestMailChannel extends TestCase
 				log.info("Message: "+message);
 			}
 			log.info("-----------------------------------------------------------------");
-		 }
+		 }*/
 	 }
 }

@@ -118,8 +118,13 @@ public class HomeScreen extends Screen
 		
 		HashMap<String, String> map2 = new HashMap<String, String>();
 		map2.put("empty", "");
-		map2.put("title", "Camera Showcase");
+		map2.put("title", "Command Framework Showcase");
 		mylist.add(map2);
+		
+		HashMap<String, String> map3 = new HashMap<String, String>();
+		map3.put("empty", "");
+		map3.put("title", "Camera Showcase");
+		mylist.add(map3);
 		
 		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, ViewHelper.findLayoutId(activity, "home_row"),
 	            new String[] {"empty", "title"}, new int[] {ViewHelper.findViewId(activity, "empty"), ViewHelper.findViewId(activity, "title")});
@@ -150,6 +155,10 @@ public class HomeScreen extends Screen
 				NavigationContext.getInstance().navigate("/crud");
 			}
 			else if(selectedIndex == 1)
+			{
+				NavigationContext.getInstance().navigate("/command/framework");
+			}
+			else if(selectedIndex == 2)
 			{
 				NavigationContext.getInstance().navigate("/camera");
 			}

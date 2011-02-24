@@ -4,7 +4,7 @@
 jo.load();
 
 //Global values
-var channel = "webappsync_ticket_channel";
+var channel = "testapp_ticket_channel";
 var appTitle = "HTML5 Sync App";
 var homeScn;
 

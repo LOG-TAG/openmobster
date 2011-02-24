@@ -8,6 +8,8 @@
 
 package org.testapp.cloud;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.io.Serializable;
 
 import org.openmobster.server.api.model.MobileBean;
@@ -32,9 +34,16 @@ public class Ticket implements MobileBean,Serializable
 	private String title;
 	private String comment;
 	
+	private List<String> mockList;
+	
+	
 	public Ticket()
 	{
-		
+		this.mockList = new ArrayList<String>();
+		for(int i=0; i<10; i++)
+		{
+			mockList.add("mockList://"+i);
+		}
 	}
 
 	public long getId()
@@ -75,5 +84,15 @@ public class Ticket implements MobileBean,Serializable
 	public void setComment(String comment)
 	{
 		this.comment = comment;
+	}
+
+	public List<String> getMockList()
+	{
+		return mockList;
+	}
+
+	public void setMockList(List<String> mockList)
+	{
+		this.mockList = mockList;
 	}
 }
