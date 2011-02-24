@@ -25,6 +25,7 @@ import org.openmobster.core.mobileCloud.api.model.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.jscript.bridge.MobileBeanBridge;
+import org.openmobster.core.mobileCloud.jscript.bridge.MobileRPC;
 
 /**
  * Android Activity that integrates the OpenMobster Cloud as a service. This activity displays its HTML5 based GUI via the
@@ -41,7 +42,7 @@ public class SyncWebApp extends BaseCloudActivity
     public void displayMainScreen() 
     { 
         //Checks if the sync channel in the Cloud has data loaded on the device
-        if(!MobileBean.isBooted("webappsync_ticket_channel"))
+        if(!MobileBean.isBooted(Constants.channel))
         {
             CommandContext commandContext = new CommandContext();
             commandContext.setTarget("/channel/bootup/helper");
@@ -68,9 +69,10 @@ public class SyncWebApp extends BaseCloudActivity
         
         //Javascript bridge to the OpenMobster MobileBean service. This provides access to data loaded in via the sync channel
         this.webView.addJavascriptInterface(new MobileBeanBridge(), "mobileBean");
+        this.webView.addJavascriptInterface(new MobileRPC(), "rpc");
         
         //The application's main content specified in index.html file bundled with the App in the asset folder
-        this.webView.loadUrl("file:///android_asset/html/index.html");
+        SyncWebApp.this.webView.loadUrl("file:///android_asset/html/api/api.html");
     }
     
     @Override
@@ -81,15 +83,14 @@ public class SyncWebApp extends BaseCloudActivity
     		return true;
     	}
     	
-    	
-    	//Add the 'New Ticket' Menu Item
-		MenuItem newTicket = menu.add(Menu.NONE, Menu.NONE, 0, "New Ticket");
-		newTicket.setOnMenuItemClickListener(new OnMenuItemClickListener()
+		//Add the 'Back' Menu Item
+		MenuItem back = menu.add(Menu.NONE, Menu.NONE, 0, "Back");
+		back.setOnMenuItemClickListener(new OnMenuItemClickListener()
 		{
 			public boolean onMenuItemClick(MenuItem clickedItem)
 			{
 				//Load the New Ticket screen
-				SyncWebApp.this.webView.loadUrl("file:///android_asset/html/newticketindex.html");
+				SyncWebApp.this.webView.loadUrl("file:///android_asset/html/api/api.html");
 				return true;
 			}
 		});
@@ -108,12 +109,6 @@ public class SyncWebApp extends BaseCloudActivity
         {
             Log.d(LOG_TAG, message);
             result.confirm();
-            
-            if(message.equals("jo-refresh"))
-            {
-            	SyncWebApp.this.webView.loadUrl("file:///android_asset/html/index.html");
-            }
-            
             return true;
         }
     }

@@ -8,15 +8,15 @@
 
 package org.openmobster.core.mobileCloud.jscript.bridge;
 
+import org.json.JSONObject;
+import org.json.JSONException;
+
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
 import org.openmobster.core.mobileCloud.api.model.BeanList;
 
 /**
  * A Javascript bridge that exposes the OpenMobster MobileBean service to the HTML5/Javascript layer of the App.
  * 
- * This is just a prototypical bridge. A more standardized OpenMobster Javascript API will be finalized in the 2.2 release cycle
- * 
- * This bridge only exposes functionality necessary by the simple tutorial App
  * 
  * @author openmobster@gmail.com
  */
@@ -101,6 +101,7 @@ public final class MobileBeanBridge
     }
     
     /**
+     * Saves the specified 'field' value on the bean instance
      * 
      * @param channel
      * @param oid

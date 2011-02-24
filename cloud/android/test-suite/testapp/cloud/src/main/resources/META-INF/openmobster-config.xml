@@ -9,6 +9,12 @@
    		<depends>/testapp/bootstrap/data</depends>
    </bean>
    
+   <!--  RPC service -->
+   <bean name="/user/profile" class="org.testapp.cloud.MockRPC">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+   
    <!-- Storage services based on Hibernate -->
    <bean name="/testapp/HibernateManager" class="org.openmobster.core.common.database.HibernateManager"/>
    <bean name="/testapp/TicketDS" class="org.testapp.cloud.TicketDS">

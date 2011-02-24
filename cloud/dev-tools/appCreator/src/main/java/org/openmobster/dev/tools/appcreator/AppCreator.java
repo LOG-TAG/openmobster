@@ -76,6 +76,8 @@ public class AppCreator
 		String openMobsterVersion = config.getProperty("openmobster.version"); //user with default
 		String projectVersion = "1.0"; //user with default
 		
+		boolean sampleApp = true; //by default
+		
 		
 		projectName = this.askUser("Project Name", projectName);
 		String[] split = projectName.split(" ");
@@ -89,6 +91,13 @@ public class AppCreator
 		projectVersion = this.askUser("Project Version", projectVersion);
 		projectUrl = this.askUser("Project Url", projectUrl);
 		openMobsterVersion = this.askUser("Version of the OpenMobster Platform", openMobsterVersion);
+		
+		//Decide if sample workspace or sketelon (hello world) workspace
+		String sampleCode = this.askUser("Generate Sample Code", "yes/no");
+		if(!sampleCode.equals("yes/no") && !sampleCode.equals("yes"))
+		{
+			sampleApp = false;
+		}
 		
 		//Ask user to select the mobile platforms of interest
 		List<String> supportedPlatforms = new ArrayList<String>();
@@ -155,7 +164,16 @@ public class AppCreator
 		
 		userValues.put("openmobster.version.value", openMobsterVersion);
 		
-		File projectDir = this.generateWorkspace(supportedPlatforms,userValues);
+		File projectDir = null;
+		if(sampleApp)
+		{
+			projectDir = this.generateWorkspace(supportedPlatforms,userValues);
+		}
+		else
+		{
+			SkeletonWorkspace skeleton = new SkeletonWorkspace();
+			projectDir = skeleton.generateWorkspace(supportedPlatforms,userValues);
+		}
 		
 		//Show output
 		System.out.println("----------------------------------------------------");

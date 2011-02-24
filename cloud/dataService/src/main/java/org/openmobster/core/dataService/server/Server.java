@@ -195,7 +195,9 @@ public class Server
 	        }
 	        
 	        //
-	        TextLineCodecFactory textLine = new TextLineCodecFactory(Charset.forName("UTF-8"));	        
+	        TextLineCodecFactory textLine = new TextLineCodecFactory(Charset.forName("UTF-8"));	
+	        textLine.setDecoderMaxLineLength(Integer.MAX_VALUE);
+	        textLine.setEncoderMaxLineLength(Integer.MAX_VALUE);
 	        ProtocolCodecFilter codecFilter = new ProtocolCodecFilter(textLine);
 	        cfg.getFilterChain().addLast( "codec", codecFilter);
 	        
