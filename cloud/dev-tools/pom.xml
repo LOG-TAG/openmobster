@@ -14,6 +14,16 @@
 		<module>sampleApps</module>			
 	</modules>
 	
+	<profiles>
+		<profile>
+			<id>deploy-tools</id>
+			<modules>
+				<module>appCreator</module>
+				<module>dev-cloudServer</module>
+			</modules>
+		</profile>
+	</profiles>
+	
 	<properties>
 		<version.net.rim.api>4.3.0</version.net.rim.api>	
 		<bb.jde.home>${env.RIM_JDE_HOME}
