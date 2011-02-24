@@ -60,7 +60,14 @@
 	          <target>1.5</target>
 	        </configuration>
 	      </plugin>
-    	</plugins>		
+    	</plugins>
+    	<extensions>
+			<extension>
+				<groupId>org.jvnet.wagon-svn</groupId>
+				<artifactId>wagon-svn</artifactId>
+				<version>1.8</version>
+			</extension>
+		</extensions>		
 	</build>
 	
 	<repositories>
