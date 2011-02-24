@@ -20,6 +20,13 @@
 		A2502902130ADA15006DC2C8 /* AjaxGetDetailsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */; };
 		A2502922130ADD7D006DC2C8 /* AjaxShowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */; };
 		A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */; };
+		A2502BB3130C693D006DC2C8 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502BB1130C693D006DC2C8 /* Form.m */; };
+		A2502BB4130C693D006DC2C8 /* Form.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502BB2130C693D006DC2C8 /* Form.xib */; };
+		A2502C9913102A20006DC2C8 /* UICommandFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502C9713102A20006DC2C8 /* UICommandFramework.m */; };
+		A2502C9A13102A20006DC2C8 /* UICommandFramework.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502C9813102A20006DC2C8 /* UICommandFramework.xib */; };
+		A2502CD113103215006DC2C8 /* AjaxCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CD013103215006DC2C8 /* AjaxCommand.m */; };
+		A2502CF8131037B6006DC2C8 /* BusyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CF7131037B6006DC2C8 /* BusyCommand.m */; };
+		A2502CFF1310381F006DC2C8 /* FastCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CFE1310381F006DC2C8 /* FastCommand.m */; };
 		A267E51812C542EB00693E1A /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E51712C542EB00693E1A /* libmobilecloudlib.a */; };
 		A267E5DB12C54BD900693E1A /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E5D912C54BD900693E1A /* Home.m */; };
 		A267E5DC12C54BD900693E1A /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267E5DA12C54BD900693E1A /* Home.xib */; };
@@ -66,6 +73,18 @@
 		A250291F130ADD7D006DC2C8 /* AjaxShowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxShowDetails.h; sourceTree = "<group>"; };
 		A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxShowDetails.m; sourceTree = "<group>"; };
 		A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjaxShowDetails.xib; sourceTree = "<group>"; };
+		A2502BB0130C693D006DC2C8 /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
+		A2502BB1130C693D006DC2C8 /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Form.m; sourceTree = "<group>"; };
+		A2502BB2130C693D006DC2C8 /* Form.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Form.xib; sourceTree = "<group>"; };
+		A2502C9613102A20006DC2C8 /* UICommandFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommandFramework.h; sourceTree = "<group>"; };
+		A2502C9713102A20006DC2C8 /* UICommandFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommandFramework.m; sourceTree = "<group>"; };
+		A2502C9813102A20006DC2C8 /* UICommandFramework.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICommandFramework.xib; sourceTree = "<group>"; };
+		A2502CCF13103215006DC2C8 /* AjaxCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxCommand.h; sourceTree = "<group>"; };
+		A2502CD013103215006DC2C8 /* AjaxCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxCommand.m; sourceTree = "<group>"; };
+		A2502CF6131037B6006DC2C8 /* BusyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusyCommand.h; sourceTree = "<group>"; };
+		A2502CF7131037B6006DC2C8 /* BusyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusyCommand.m; sourceTree = "<group>"; };
+		A2502CFD1310381F006DC2C8 /* FastCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCommand.h; sourceTree = "<group>"; };
+		A2502CFE1310381F006DC2C8 /* FastCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastCommand.m; sourceTree = "<group>"; };
 		A267E51712C542EB00693E1A /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 		A267E5D812C54BD900693E1A /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Home.h; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.h"; sourceTree = DEVELOPER_DIR; };
 		A267E5D912C54BD900693E1A /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Home.m; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.m"; sourceTree = DEVELOPER_DIR; };
@@ -135,6 +154,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A2502C95131029C7006DC2C8 /* CommandFramework */,
+				A2502BAF130C68E7006DC2C8 /* FormSubmission */,
 				A250284C130A251D006DC2C8 /* Ajax */,
 				A2869AAA12F8BE2800A4792E /* CRUD */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -203,6 +224,32 @@
 				A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */,
 			);
 			name = Ajax;
+			sourceTree = "<group>";
+		};
+		A2502BAF130C68E7006DC2C8 /* FormSubmission */ = {
+			isa = PBXGroup;
+			children = (
+				A2502BB0130C693D006DC2C8 /* Form.h */,
+				A2502BB1130C693D006DC2C8 /* Form.m */,
+				A2502BB2130C693D006DC2C8 /* Form.xib */,
+			);
+			name = FormSubmission;
+			sourceTree = "<group>";
+		};
+		A2502C95131029C7006DC2C8 /* CommandFramework */ = {
+			isa = PBXGroup;
+			children = (
+				A2502C9613102A20006DC2C8 /* UICommandFramework.h */,
+				A2502C9713102A20006DC2C8 /* UICommandFramework.m */,
+				A2502C9813102A20006DC2C8 /* UICommandFramework.xib */,
+				A2502CCF13103215006DC2C8 /* AjaxCommand.h */,
+				A2502CD013103215006DC2C8 /* AjaxCommand.m */,
+				A2502CF6131037B6006DC2C8 /* BusyCommand.h */,
+				A2502CF7131037B6006DC2C8 /* BusyCommand.m */,
+				A2502CFD1310381F006DC2C8 /* FastCommand.h */,
+				A2502CFE1310381F006DC2C8 /* FastCommand.m */,
+			);
+			name = CommandFramework;
 			sourceTree = "<group>";
 		};
 		A2869AAA12F8BE2800A4792E /* CRUD */ = {
@@ -278,6 +325,8 @@
 				A2869B4B12F8D57E00A4792E /* SaveTicket.xib in Resources */,
 				A2502851130A27BD006DC2C8 /* AjaxShowList.xib in Resources */,
 				A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */,
+				A2502BB4130C693D006DC2C8 /* Form.xib in Resources */,
+				A2502C9A13102A20006DC2C8 /* UICommandFramework.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +353,11 @@
 				A250289C130AAC06006DC2C8 /* EmailBean.m in Sources */,
 				A2502902130ADA15006DC2C8 /* AjaxGetDetailsCommand.m in Sources */,
 				A2502922130ADD7D006DC2C8 /* AjaxShowDetails.m in Sources */,
+				A2502BB3130C693D006DC2C8 /* Form.m in Sources */,
+				A2502C9913102A20006DC2C8 /* UICommandFramework.m in Sources */,
+				A2502CD113103215006DC2C8 /* AjaxCommand.m in Sources */,
+				A2502CF8131037B6006DC2C8 /* BusyCommand.m in Sources */,
+				A2502CFF1310381F006DC2C8 /* FastCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
