@@ -26,7 +26,7 @@ AppCreator tool is located under dev-tools/appCreator. To use from source:
 
   * java -jar appCreator.jar
 
-More details are available [http://code.google.com/p/openmobster/wiki/GetStarted here]
+Instructions on sample app with AppCreator are available [http://code.google.com/p/openmobster/wiki/GetStarted here]
 
 === Cloud Server Modules Reference ===
 
