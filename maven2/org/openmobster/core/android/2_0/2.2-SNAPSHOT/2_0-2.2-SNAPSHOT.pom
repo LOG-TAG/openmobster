@@ -50,6 +50,16 @@
 		<module>mobileCloud</module>
 	</modules>
 	
+	<profiles>
+		<profile>
+			<id>deploy-android</id>
+			<modules>
+				<module>device-sdk</module>
+				<module>mobileCloud</module>
+			</modules>
+		</profile>
+	</profiles>
+	
 	<build>
 		<plugins>
 	      <plugin>
