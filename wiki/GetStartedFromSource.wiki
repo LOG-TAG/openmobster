@@ -9,9 +9,9 @@
 
 === Build the Project ===
 
-  * Full Build: *mvn -Dmaven.test.skip -PmobileCloud install*
+  * Full Build: *mvn -DskipTests -Pbuild-all install*
 
-This will build the entire project which includes the _Cloud Server Modules_, _Android System Modules_, _BlackBerry System Modules_, and _Development Tools_ like the *AppCreator*.
+This will build the entire project which includes the _Cloud Server Modules_, _Android System Modules_, and _Development Tools_ like the *AppCreator*.
 
 
 === Running AppCreator ===
