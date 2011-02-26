@@ -81,7 +81,7 @@ When the preview screen is removed from view, this callback is used to perform c
 		preview.addView(cameraSurfaceView);
 }}}
 
-Step 6: Add a Button for 'Taking the Picture'
+===Step 6: Add a Button for _Taking the Picture_===
 {{{
 //Setup the 'Take Picture' button to take a picture
 		Button takeAPicture = (Button)ViewHelper.findViewById(this, "buttonClick");
@@ -120,7 +120,7 @@ You must supply a _Callback_ to process the information that the camera sends ba
 }}}
 Inside this callback, you can do whatever you need with the picture. You can store it on your local file system, in a sqlite database, or in this case, send it to a remote service located in the cloud.
 
-Step 7: Acquire permission for using the Camera hardware
+===Step 7: Acquire permission for using the Camera hardware===
 {{{
    <uses-permission android:name="android.permission.CAMERA" />
 }}}
