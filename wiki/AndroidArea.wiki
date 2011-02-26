@@ -2,7 +2,7 @@
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
 
-=== iPhone Area ===
+=== Android Area ===
 
 This zone consists of various interesting Android development tips and tutorials
 
