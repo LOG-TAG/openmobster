@@ -8,37 +8,37 @@ mobile development. For more advanced tutorials, you can check out the
 [DeveloperZone Developer Area]
 
 
-=== Channel Development ===
+==== Channel Development ====
 
 A basic [BeginSync tutorial] which covers developing a Sync Channel. 
 ----
 
-=== MobileBean component ===
+==== MobileBean component ====
 
 A basic [BeginMobileBean tutorial] on how to use the MobileBean component to access the synchronized channel data on the App
 
 ----
 
-=== AsyncCommand component ===
+==== AsyncCommand component ====
 
 A basic [AsyncCommand tutorial] on how to perform an Ajax usecase within
 a user interaction
 
 ----
 
-=== RemoteCommand component ===
+==== RemoteCommand component ====
 
 A basic [RemoteCommand tutorial] on how to perform a busy command usecase within a user interaction
 
 ----
 
-=== LocalCommand component ===
+==== LocalCommand component ====
 
 A basic [LocalCommand tutorial] on how to perform a simple fast command within a user interaction
 
 ----
 
-=== iPhone Showcase ===
+==== iPhone Showcase ====
 
 This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
 
