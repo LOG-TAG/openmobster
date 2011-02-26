@@ -7,7 +7,7 @@
 
 This zone consists of various interesting iPhone/iOS development tips and tutorials
 
-=== iPhone UITableView Tutorial ===
+==== iPhone UITableView Tutorial ====
 
 This [iPhoneUITableView tutorial] covers the iPhone UITableView component including some sample code
 
