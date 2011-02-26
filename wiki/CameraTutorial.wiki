@@ -5,7 +5,7 @@
 A simple guide for integrating the Camera Hardware inside your Android App.
 
 
-=== Step 1: === Create a class that extends SurfaceView and implements SurfaceHolder.Callback
+=== Step 1:  Create a class that extends SurfaceView and implements SurfaceHolder.Callback ===
 
 Before you can integrate the Camera hardware with your Activity, you must provide a Preview screen. The camera's Preview output is supplied to this screen. The *SurfaceView* instance with a *SurfaceHolder.Callback*
 implementation provides such a View
@@ -26,7 +26,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 	}
 }}}
 
-===Step 2:=== In the surfaceCreated method, get an instance of the Camera
+===Step 2: In the surfaceCreated method, get an instance of the Camera ===
 {{{
         @Override
 	public void surfaceCreated(SurfaceHolder holder) 
@@ -44,3 +44,31 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 	}
 }}}
 
+=== Step 3: In the surfaceChanged callback ===
+{{{
+        @Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) 
+	{
+		// Now that the size is known, set up the camera parameters and begin
+		// the preview.
+		Camera.Parameters parameters = camera.getParameters();
+		parameters.setPreviewSize(width, height);
+		camera.setParameters(parameters);
+		camera.startPreview();
+	}
+}}}
+During this callback, you get an idea of how big your preview screen is going to be. Based on that, assign the proper size to the Camera.
+
+===Step 4: Implement surfaceDestroyed to cleanup ===
+{{{
+        @Override
+	public void surfaceDestroyed(SurfaceHolder holder) 
+	{
+		// Surface will be destroyed when replaced with a new screen
+		//Always make sure to release the Camera instance
+		camera.stopPreview();
+		camera.release();
+		camera = null;
+	}
+}}}
+When the preview screen is removed from view, this callback is used to perform cleanup. In this phase, make sure the preview is stopped and the Camera hardware is released
