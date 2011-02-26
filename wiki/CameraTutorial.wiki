@@ -205,7 +205,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
   * Go to the *cloud* directory: *mvn -PrunCloud integration-test*
 
-  * Go the the *app-android* directory: mvn -Phot-deploy install
+  * Go the the *app-android* directory: *mvn -Phot-deploy install*
 
   * Go to the *DevCloud* app and activate the device with the Cloud
 
