@@ -1,5 +1,4 @@
 #summary Get Started
-#labels Featured
 
 *Related Links:* [GetStartedFromSource Get Started From Source], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
 
