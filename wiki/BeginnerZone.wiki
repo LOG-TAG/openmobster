@@ -5,7 +5,7 @@
 
 The beginner zone will cover basic tutorials related to OpenMobster based
 mobile development. For more advanced tutorials, you can check out the
-[DeveloperZone Developer Zone]
+[DeveloperZone Developer Area]
 
 
 === Channel Development ===
