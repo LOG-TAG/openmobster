@@ -1,5 +1,7 @@
 #summary Android Camera Integration
 
+*Related Links:* [BeginnerZone Beginner Area]
+
 === Introduction ===
 
 A simple guide for integrating the Camera Hardware inside your Android App.
@@ -210,3 +212,5 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
   * Go to the *DevCloud* app and activate the device with the Cloud
 
   * Run the *CloudCamera* app
+
+*Related Links:* [BeginnerZone Beginner Area]
