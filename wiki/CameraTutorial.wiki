@@ -1,0 +1,46 @@
+#summary Android Camera Integration
+
+=== Introduction ===
+
+A simple guide for integrating the Camera Hardware inside your Android App.
+
+
+=== Step 1: === Create a class that extends SurfaceView and implements SurfaceHolder.Callback
+
+Before you can integrate the Camera hardware with your Activity, you must provide a Preview screen. The camera's Preview output is supplied to this screen. The *SurfaceView* instance with a *SurfaceHolder.Callback*
+implementation provides such a View
+{{{
+public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback
+{
+	private SurfaceHolder holder;
+	private Camera camera;
+	
+	public CameraSurfaceView(Context context) 
+	{
+		super(context);
+		
+		//Initiate the Surface Holder properly
+		this.holder = this.getHolder();
+		this.holder.addCallback(this);
+		this.holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+	}
+}}}
+
+===Step 2:=== In the surfaceCreated method, get an instance of the Camera
+{{{
+        @Override
+	public void surfaceCreated(SurfaceHolder holder) 
+	{
+		try
+		{
+			//Open the Camera in preview mode
+			this.camera = Camera.open();
+			this.camera.setPreviewDisplay(this.holder);
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace(System.out);
+		}
+	}
+}}}
+
