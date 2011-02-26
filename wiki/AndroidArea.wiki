@@ -1,4 +1,5 @@
 #summary Android Tutorials
+#labels Featured
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
 
