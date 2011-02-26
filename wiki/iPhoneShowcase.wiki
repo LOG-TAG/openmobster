@@ -1,5 +1,5 @@
 #summary iPhone Showcase App
-#labels Featured,Tutorial
+#labels Tutorial
 
 === Introduction ===
 
