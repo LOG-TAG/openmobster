@@ -12,6 +12,8 @@
 
   * IDE: Eclipse (Can be any IDE, but Eclipse is what all the development has been done on)
 
+  * IDE: XCode for iPhone Apps
+
 ----
 
 ===Setting up Local Maven Repository===
