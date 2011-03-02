@@ -37,3 +37,21 @@ Once you have the source code, you can install it into the local maven repositor
 In order for this to succeed, make sure you have the *ANDROID_HOME* environment variable set to point to the directory where the Android SDK is installed
 
 ----
+
+=== Sample Apps ===
+
+In order to get started developing, the src comes packaged with lots of Sample Apps. They are located under:
+
+  * Sample Apps: *src/dev-tools/sampleApps*
+
+These are all multi-module maven apps with the following directory structure
+
+  * app-android: The Android App
+  
+  * cloud: Consists of the Cloud artifacts like your Mobile Channels, RPC components, etc
+
+  * moblet: This is an aggregation artifact which prepares a consolidated jar file for deployment into a JBoss instance
+
+While developing, you only need to worry about _app_android_ and _cloud_ modules.
+
+----
