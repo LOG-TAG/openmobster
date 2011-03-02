@@ -7,6 +7,13 @@ The beginner zone will cover basic tutorials related to OpenMobster based
 mobile development. For more advanced tutorials, you can check out the
 [DeveloperZone Developer Area]
 
+----
+
+==== Development Setup ====
+
+A [DevSetup tutorial] for setting up the development enviroment to start developing OpenMobster based apps
+
+----
 
 ==== Channel Development ====
 
