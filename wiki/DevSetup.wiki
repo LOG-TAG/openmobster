@@ -54,4 +54,14 @@ These are all multi-module maven apps with the following directory structure
 
 While developing, you only need to worry about _app_android_ and _cloud_ modules.
 
+==== Installing Android App into the Simulator ====
+
+Under, *app-android*: mvn -Phot-deploy install
+
+==== Running the Cloud Server ====
+
+Under, *cloud* : mvn -PrunCloud integration-test
+
 ----
+
+=== XCode ===
