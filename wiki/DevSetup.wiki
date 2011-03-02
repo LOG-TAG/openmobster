@@ -1,6 +1,6 @@
 #summary Development Environment Setup
 
-==System Requirements==
+===System Requirements===
 
   * Java SE JDK v6.0
 
@@ -11,5 +11,29 @@
   * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
 
   * IDE: Eclipse (Can be any IDE, but Eclipse is what all the development has been done on)
+
+----
+
+===Setting up Local Maven Repository===
+
+In order to build your apps with OpenMobster SDK, you must make sure the Local Maven repository is loaded with OpenMobster artifacts. This provides the build time as well as runtime environment for your apps. It allows you to run the Cloud Server in a POJO environment right from your maven project. You can get the source code by downloading it or getting it from the svn repository
+
+  * [http://code.google.com/p/openmobster/downloads/list Download]
+
+or
+
+  * svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
+
+When downloading, the entire src is included under the *src* folder
+
+----
+
+===Building the source code===
+
+Once you have the source code, you can install it into the local maven repository using the following command:
+
+  * mvn -DskipTests -Pbuild-all install
+
+In order for this to succeed, make sure you have the *ANDROID_HOME* environment variable set to point to the directory where the Android SDK is installed
 
 ----
