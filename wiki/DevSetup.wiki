@@ -46,11 +46,11 @@ In order to get started developing, the src comes packaged with lots of Sample A
 
 These are all multi-module maven apps with the following directory structure
 
-  * app-android: The Android App
+  * *app-android*: The Android App
   
-  * cloud: Consists of the Cloud artifacts like your Mobile Channels, RPC components, etc
+  * *cloud*: Consists of the Cloud artifacts like your Mobile Channels, RPC components, etc
 
-  * moblet: This is an aggregation artifact which prepares a consolidated jar file for deployment into a JBoss instance
+  * *moblet*: This is an aggregation artifact which prepares a consolidated jar file for deployment into a JBoss instance
 
 While developing, you only need to worry about _app_android_ and _cloud_ modules.
 
