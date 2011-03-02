@@ -1,0 +1,15 @@
+#summary Development Environment Setup
+
+==System Requirements==
+
+  * Java SE JDK v6.0
+
+  * Apache Maven 2.2.1
+
+  * Android SDK
+
+  * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
+
+  * IDE: Eclipse (Can be any IDE, but Eclipse is what all the development has been done on)
+
+----
