@@ -72,7 +72,7 @@ Under, *cloud* : mvn -PrunCloud integration-test
 
 With XCode, you must create a static link to the *mobilecloudlib* library
 
-==== Step 1 =====
+===== Step 1 =====
 Build *mobilecloudlib* project. It is included under the *iPhone* folder.
 
 ===== Step 2 =====
@@ -80,4 +80,17 @@ In your project, for the _Frameworks_ group, "Add -> Existing Files".
 Add the static library *libmobilecloudlib.a* located under *mobilecloudlib/build/Debug-iphonesimulator*
 
 ===== Step 3 =====
+In your project, under the _Framework_ group, "Add -> Existing Frameworks". Add the *CoreData.Framework" and "CFData.Framework" packages
+
+===== Step 4 =====
+In your project, under the _Resources_ group, *Drag* the resources located under the *app-bundle* group from the *mobilecloudlib* project
+
+===== Step 5 =====
+In your project, under _Get Info_ -> _Build_ tab, look for the *User Header Search Paths* value located in the *Search Paths" section. There you must add the path to your *mobilecloudlib* project and make it recursive.
+
+This step is needed so that the Headers for the static library are available during the Build.
+
+I agree that the XCode setup is quite complicated. To make things simple, please look the setup of the include *Cloud Manager App*.
+
+For more questions or comments, please feel free to ask on our [http://groups.google.com/group/openmobster-users User Forum]
  
