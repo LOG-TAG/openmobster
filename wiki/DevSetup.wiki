@@ -67,3 +67,17 @@ Under, *cloud* : mvn -PrunCloud integration-test
 ----
 
 === XCode ===
+
+==== Static Linking ====
+
+With XCode, you must create a static link to the *mobilecloudlib* library
+
+==== Step 1 =====
+Build *mobilecloudlib* project. It is included under the *iPhone* folder.
+
+===== Step 2 =====
+In your project, for the _Frameworks_ group, "Add -> Existing Files".
+Add the static library *libmobilecloudlib.a* located under *mobilecloudlib/build/Debug-iphonesimulator*
+
+===== Step 3 =====
+ 
