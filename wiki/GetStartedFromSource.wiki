@@ -1,6 +1,8 @@
 #summary Get Started From Source Code
 
-*Related Links:* [GetStarted Get Started From Binary], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
+*Related Links:* [GetStarted Get Started From Binary], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
+
+----
 
 === Checkout Source Code ===
 
@@ -90,4 +92,6 @@ Development Tools help App Developers develop OpenMobster based Cloud Apps. The 
 
   * *rimos-devcloud*: The Development Phase Cloud Manager App for the BlackBerry OS (version 4.3+)
 
-*Related Links:* [GetStarted Get Started From Binary], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
+----
+
+*Related Links:* [GetStarted Get Started From Binary], [BeginnerZone Beginner Area] [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
