@@ -1,5 +1,8 @@
 #summary Development Environment Setup
 
+[BeginnerZone Beginner Area]
+----
+
 ===System Requirements===
 
   * Java SE JDK v6.0
@@ -93,4 +96,7 @@ This step is needed so that the Headers for the static library are available dur
 I agree that the XCode setup is quite complicated. To make things simple, please look the setup of the included *Cloud Manager App*.
 
 For more questions or comments, please feel free to ask on our [http://groups.google.com/group/openmobster-users User Forum]
+
+----
+[BeginnerZone Beginner Area]
  
