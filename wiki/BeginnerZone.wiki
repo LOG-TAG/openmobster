@@ -26,6 +26,11 @@ A basic [BeginMobileBean tutorial] on how to use the MobileBean component to acc
 
 ----
 
+==== MobileRPC ====
+A basic [MobileRPC tutorial] to understand the Remote Procedure Call setup in OpenMobster
+
+----
+
 ==== AsyncCommand component ====
 
 A basic [AsyncCommand tutorial] on how to perform an Ajax usecase within
