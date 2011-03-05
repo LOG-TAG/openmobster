@@ -1,5 +1,9 @@
 #summary Javascript Bridge
 
+[BeginnerZone Beginner Area], [HTML5SyncApp HTML5 Sync App]
+
+----
+
 This tutorial will cover how to write apps using the traditional HTML/Javascript technologies within an App. It will introduce how to make invocations from the Javascript layer to the native Java Layer.
 
 ==== Step 1: WebView Control ====
@@ -200,3 +204,7 @@ public class MainActivity extends Activity
 
 ==== Conclusion ==== 
 This is a very simple HTML app. This is the stepping stone for many complex HTML5 stuff that is possible using the WebView Control. To get a glimpse of what is possible I would recommend taking a look at the more advanced [HTML5SyncApp HTML5 Sync App tutorial].
+
+----
+
+[BeginnerZone Beginner Area], [HTML5SyncApp HTML5 Sync App]
