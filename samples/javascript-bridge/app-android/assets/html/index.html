@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function invoke(param1,param2)
+			{
+				//invoking the JavascriptBridge registered under the 'jb' namespace
+				var result = jb.callMe(param1,param2);
+				
+				//doing something with the return value, it should be concatenation
+				//of the two input parameters
+				alert(result);
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Demonstrating Android Javascript-To-Java Bridge</h2>
+		
+		<!-- setup a button to invoke the Javascript Bridge -->
+		<input type="button" value="Invoke Bridge" onclick="invoke('Hello','World');"/>
+	</body>
+</html>
