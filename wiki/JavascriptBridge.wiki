@@ -1,0 +1,5 @@
+#summary Javascript Bridge
+
+This tutorial will cover how to write apps using the traditional HTML/Javascript technologies within an App. It will introduce how to make invocations from the Javascript layer to the native Java Layer.
+
+==== Step 1 ====
