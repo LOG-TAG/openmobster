@@ -2,4 +2,18 @@
 
 This tutorial will cover how to write apps using the traditional HTML/Javascript technologies within an App. It will introduce how to make invocations from the Javascript layer to the native Java Layer.
 
-==== Step 1 ====
+==== Step 1: WebView Control ====
+The Android WebView Control can be used to display HTML code inside a native app. It can load the content from a remote server or from a local file. You add a WebView control to your layout just like any other UI control
+{{{
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<WebView
+        android:id="@+id/webview"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+     />                                                                         
+</LinearLayout>
+}}}
