@@ -8,7 +8,12 @@
    		<property name="customConfig"><inject bean="common://CustomConfig"/></property>
    		<property name="provisioner"><inject bean="security://Provisioner"/></property>
    		<property name="identityController"><inject bean="security://IdentityController"/></property>   		
-   </bean> 
+   </bean>
+   <bean name="dm_callback" class="org.openmobster.core.agent.provisioning.DeviceManagementCallback">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>  
+   		<property name="deviceController"><inject bean="security://DeviceController"/></property>    		
+   </bean>  
    <bean name="/status/mobilebeanservice" class="org.openmobster.core.agent.provisioning.status.StatusMobileBeanService"/>     
    <bean name="syncstatuschannel" class="org.openmobster.core.agent.provisioning.status.SyncStatusChannel"/>             
 </deployment>

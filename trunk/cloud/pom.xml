@@ -63,6 +63,32 @@
 				<module>binary-release</module>
 			</modules>
 		</profile>
+		<!--  used for deploying cloud artifacs only -->
+		<profile>
+			<id>deploy-cloud</id>
+			<modules>
+				<module>api</module>
+				<module>api-cloudConnector</module>
+				<module>common</module>
+				<module>services</module>
+				<module>synchronizer</module>
+				<module>dataService</module>
+				<module>mobileObject</module>
+				<module>mobileContainer</module>
+				<module>deviceService</module>
+				<module>security</module>
+				<module>agent-provisioning</module>
+				<module>moblet-management</module>
+				<module>console</module>
+				<module>console-server</module>
+				<module>device-agent-simulator</module>
+				<module>device-agent-frameworks</module>
+				<module>server-testsuite</module>
+				<module>testdrive-server</module>
+				<module>sar</module>
+				<module>cloud-sdk</module>
+			</modules>
+		</profile>
 	</profiles>
 
 	<properties>

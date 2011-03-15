@@ -25,11 +25,13 @@ import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.Daemon;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
 import org.openmobster.core.mobileCloud.android.module.sync.engine.SyncDataSource;
+import org.openmobster.core.mobileCloud.api.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
 import org.openmobster.core.mobileCloud.android.module.connection.NotificationListener;
 import org.openmobster.core.mobileCloud.android.module.connection.CommandProcessor;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
+import org.openmobster.core.mobileCloud.android.module.dm.DeviceManager;
 
 import org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder;
 import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
@@ -166,6 +168,10 @@ public final class DeviceContainer
 			services.add(new CometStatusHandler());
 			services.add(new ChannelBootupHandler());
 			services.add(new StopCometDaemon());
+			services.add(new PushRPCInvocationHandler());
+			
+			//Add the DeviceManager service
+			services.add(new DeviceManager());
 									
 			Registry.getActiveInstance().start(services);
 			
@@ -174,6 +180,10 @@ public final class DeviceContainer
 			
 			//Schedules a background task that silently loads proxies from the server
 			LoadProxyDaemon.getInstance().scheduleProxyTask();
+			
+			//Broadcast deviceManagement meta data to the server
+			DeviceManager dm = DeviceManager.getInstance();
+			dm.sendOsCallback();
 		}
 		catch(Exception e)
 		{						

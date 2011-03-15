@@ -45,10 +45,21 @@
 		<module>native-framework</module>
 		<module>test-suite</module>
 		<module>javascript-bridge</module>
+		<module>dm</module>
 		<!-- aggregations -->
 		<module>device-sdk</module>
 		<module>mobileCloud</module>
 	</modules>
+	
+	<profiles>
+		<profile>
+			<id>deploy-android</id>
+			<modules>
+				<module>device-sdk</module>
+				<module>mobileCloud</module>
+			</modules>
+		</profile>
+	</profiles>
 	
 	<build>
 		<plugins>

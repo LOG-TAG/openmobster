@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<parent>
-		<groupId>org.openmobster.core.android</groupId>
-		<artifactId>2_0</artifactId>
-		<version>2.2-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+	   <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+	   <artifactId>test-suite</artifactId>
+	   <version>2.2-SNAPSHOT</version>
+	   <relativePath>../pom.xml</relativePath>
 	</parent>
-
-	<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
-	<artifactId>cloudManager</artifactId>
-	<name>cloudManager</name>
-	<packaging>apk</packaging>
-
-	<dependencies>
-		<dependency>
+	
+	<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>	
+    <artifactId>test-dm</artifactId>
+    <name>test-dm</name>
+    <packaging>apk</packaging>
+    
+    <dependencies>
+        <!-- Core Kernel based App -->
+    	<dependency>
 			<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
 			<artifactId>common</artifactId>
 			<version>${project.version}</version>
@@ -66,9 +66,15 @@
 			<artifactId>dm</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-	</dependencies>
+        <!--  test framework dependency -->
+    	<dependency>
+    		<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+        	<artifactId>test-framework</artifactId>
+        	<version>${project.version}</version>
+    	</dependency>
+    </dependencies>
 
-	<build>
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
@@ -81,6 +87,47 @@
 					<deleteConflictingFiles>true</deleteConflictingFiles>
 				</configuration>
 				<extensions>true</extensions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins
+				</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>Assembling Android App
+						</echo>
+								<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+									<fileset dir="${basedir}/target">
+										<include name="**/*.apk" />
+									</fileset>
+								</jar>
+							</tasks>
+						</configuration>
+					</execution>
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>Installing Android App
+						</echo>
+								<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/android/2_0/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -151,6 +198,47 @@
 										<argument>target/${project.build.finalName}.apk</argument>
 										<argument>target/${project.build.finalName}-zipped.apk</argument>
 									</arguments>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<plugin>
+						<groupId>org.apache.maven.plugins
+						</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>package</id>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Assembling Android App
+								</echo>
+										<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+											<fileset dir="${basedir}/target">
+												<include name="**/*.apk" />
+											</fileset>
+										</jar>
+									</tasks>
+								</configuration>
+							</execution>
+							<execution>
+								<id>install</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Installing Android App
+								</echo>
+										<copy todir="${settings.localRepository}/org/openmobster/core/mobileCloud/android/2_0/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+										</copy>
+									</tasks>
 								</configuration>
 							</execution>
 						</executions>

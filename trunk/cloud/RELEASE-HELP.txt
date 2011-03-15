@@ -14,6 +14,16 @@ Step 2:
 ----------------
 mvn -DskipTests -Pandroid-release javadoc:aggregate install
 
+Step 3:
+-----------------
+Manually add artifacts from 'console' project
+
+Step 4:
+-----------------
+Manually add artifacts from 'iphone' project
+
+---------------------------------------------------------------------------------------------------------------------------------
+
 
 Modifying the project version for creating a new branch or tag:
 -----------------------------------------------------------------
@@ -30,6 +40,20 @@ Updating the Source/License Header:
  
  cd dev-tools
  mvn -Pdeploy-tools deploy
+ 
+ (Manually)
+ mvn deploy (wait till it fails)
+ All top-level modules (yikes!!!)
+ 
+ cd android
+ mvn -DskipTests deploy (wait till it fails)
+ 
+ Manually deploy: device-sdk and mobileCloud
+ 
+cd dev-tools
+mvn -Pdeploy-tools deploy (wait till it fails)
+
+Manually deploy: appCreator, dev-cloudServer, android-devcloud
 
 
 Some cleanup
