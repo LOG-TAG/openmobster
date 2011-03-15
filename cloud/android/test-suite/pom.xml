@@ -27,5 +27,6 @@
 		<module>test-cloud-as-service</module>
 		<module>test-real-device</module>
 		<module>testapp</module>
+		<module>test-dm</module>
 	</modules>
 </project>
