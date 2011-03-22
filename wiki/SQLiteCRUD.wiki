@@ -111,9 +111,106 @@ private static boolean isTableEmpty(String table)
 ----
 
 ==== Step 2: Read the database ====
+A read operation that reads all the tickets from the tickets table.
+{{{
+public static List<Ticket> readAll()
+	{
+		Cursor cursor = null;
+		try
+		{
+			List<Ticket> all = new ArrayList<Ticket>();
+			
+			cursor = db.rawQuery("SELECT * FROM tickets", null);
+			
+			if(cursor.getCount() > 0)
+			{
+				int idIndex = cursor.getColumnIndex("id");
+				int titleIndex = cursor.getColumnIndex("title");
+				int customerIndex = cursor.getColumnIndex("customer");
+				int specialistIndex = cursor.getColumnIndex("specialist");
+				int commentsIndex = cursor.getColumnIndex("comments");
+				cursor.moveToFirst();
+				do
+				{
+					int id = cursor.getInt(idIndex);
+					String title = cursor.getString(titleIndex);
+					String customer = cursor.getString(customerIndex);
+					String specialist = cursor.getString(specialistIndex);
+					String comments = cursor.getString(commentsIndex);
+					
+					Ticket ticket = new Ticket();
+					ticket.setId(id);
+					ticket.setTitle(title);
+					ticket.setCustomer(customer);
+					ticket.setSpecialist(specialist);
+					ticket.setComments(comments);
+					
+					all.add(ticket);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return all;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
+	}
+}}}
+
+----
 
 ==== Step 3: Insert into the database ====
+Inserting a Ticket into the database.
+{{{
+public static void insert(Ticket ticket)
+	{
+		try
+		{
+			db.beginTransaction();
+			
+			//insert this row
+			String title = ticket.getTitle();
+			String customer = ticket.getCustomer();
+			String specialist = ticket.getSpecialist();
+			String comments = ticket.getComments();
+			String insert = "INSERT INTO tickets "+" (title,customer,specialist,comments) VALUES (?,?,?,?);";
+			db.execSQL(insert,new Object[]{title,customer,specialist,comments});
+			
+			db.setTransactionSuccessful();
+		}
+		finally
+		{
+			db.endTransaction();
+		}
+	}
+}}}
 
 ==== Step 4: Delete from the database ====
+Delete a ticket from the database
+{{{
+public static void delete(Ticket ticket)
+	{
+		try
+		{
+			db.beginTransaction();
+			
+			//delete this record
+			String delete = "DELETE FROM tickets WHERE id='"+ticket.getId()+"'";
+			db.execSQL(delete);
+			
+			db.setTransactionSuccessful();
+		}
+		finally
+		{
+			db.endTransaction();
+		}
+	}
+}}}
 
-=== Download this Tutorial ===
+==== Download this Tutorial ====
