@@ -214,3 +214,8 @@ public static void delete(Ticket ticket)
 }}}
 
 ==== Download this Tutorial ====
+  * [http://openmobster.googlecode.com/svn/samples/storage.zip Download]
+
+  * cd app-android
+
+  * Install on the Simulator: mvn -Papp-hot-deploy install
