@@ -54,6 +54,62 @@ public static void initialize(Context context)
 	}
 }}}
 
+===== createTable =====
+{{{
+private static void createTable(SQLiteDatabase database, String tableName)
+	{
+		try
+		{
+			//begin the transaction
+			database.beginTransaction();
+			
+			// Create a table
+			String tableSql = "CREATE TABLE IF NOT EXISTS " + tableName + " ("
+					+ "id INTEGER PRIMARY KEY AUTOINCREMENT," + "title TEXT," + "customer TEXT," + "specialist TEXT," +"comments TEXT"
+					+ ");";
+			database.execSQL(tableSql);
+			
+			//this makes sure transaction is committed
+			database.setTransactionSuccessful();
+		} 
+		finally
+		{
+			database.endTransaction();
+		}
+	}
+}}}
+
+===== isTableEmpty =====
+{{{
+private static boolean isTableEmpty(String table)
+	{
+		Cursor cursor = null;
+		try
+		{
+			cursor = db.rawQuery("SELECT count(*) FROM "+table, null);
+			
+			int countIndex = cursor.getColumnIndex("count(*)");
+			cursor.moveToFirst();
+			int rowCount = cursor.getInt(countIndex);
+			if(rowCount > 0)
+			{
+				return false;
+			}
+			
+			return true;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
+	}
+}}}
+
+----
+
 ==== Step 2: Read the database ====
 
 ==== Step 3: Insert into the database ====
