@@ -561,15 +561,13 @@
 					<aggregate>true</aggregate>
 					<groups>
 						<group>
-							<title>Public API for App Developers - Cloud SDK
-								(Server-Side Components)</title>
+							<title>Public API for App Developers - Cloud SDK (Server-Side Components)</title>
 							<packages>
 								org.openmobster.server.api.*
 							</packages>
 						</group>
 						<group>
-							<title>Public API for App Developers - RIM OS (version
-								4.3.0 and higher) Device SDK</title>
+							<title>Public API for App Developers - Device SDK (Device-Side Components)</title>
 							<packages>
 								org.openmobster.core.mobileCloud.api.*
 							</packages>
@@ -597,15 +595,13 @@
 					<aggregate>true</aggregate>
 					<groups>
 						<group>
-							<title>Public API for App Developers - Cloud SDK
-								(Server-Side Components)</title>
+							<title>Public API for App Developers - Cloud SDK (Server-Side Components)</title>
 							<packages>
 								org.openmobster.server.api.*
 							</packages>
 						</group>
 						<group>
-							<title>Public API for App Developers - RIM OS (version
-								4.3.0 and higher) Device SDK</title>
+							<title>Public API for App Developers - Device SDK (Device-Side Components)</title>
 							<packages>
 								org.openmobster.core.mobileCloud.api.*
 							</packages>

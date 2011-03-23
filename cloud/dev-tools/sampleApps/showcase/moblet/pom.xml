@@ -21,16 +21,15 @@
 	
 	<dependencies>
 		<dependency>
-	    	<groupId>org.webapp.cloud.app</groupId>
-	    	<artifactId>webappsync-cloud</artifactId>
+	    	<groupId>org.openmobster.showcase.cloud</groupId>
+	    	<artifactId>showcase-cloud</artifactId>
 	    	<version>${project.version}</version>
 	  	</dependency>
 	
 		<dependency>
-	      <groupId>org.webapp.android.app</groupId>
-	      <artifactId>webappsync</artifactId>
+	      <groupId>org.openmobster.showcase.app</groupId>
+	      <artifactId>showcase-app</artifactId>
 	      <version>${project.version}</version>
-	      <classifier>bin</classifier>
 	    </dependency>
 	</dependencies>
 	

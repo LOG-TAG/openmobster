@@ -7,20 +7,18 @@ Skip Tests:
 mvn -DskipTests -Pbuild-all install
 
 With Tests:
-mvn -Pbuild-all install 
-
+mvn -Pbuild-all install
 
 Step 2:
+-----------------
+Build the Console Project
+
+
+Step 3:
 ----------------
 mvn -DskipTests -Pandroid-release javadoc:aggregate install
 
-Step 3:
------------------
-Manually add artifacts from 'console' project
 
-Step 4:
------------------
-Manually add artifacts from 'iphone' project
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
