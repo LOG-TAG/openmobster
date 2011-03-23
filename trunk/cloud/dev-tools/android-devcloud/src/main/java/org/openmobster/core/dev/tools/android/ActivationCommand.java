@@ -116,7 +116,7 @@ public class ActivationCommand implements RemoteCommand
 				"Server:"+ server,
 				"Email:"+email
 			}));
-			throw new RuntimeException(sie.toString());
+			throw new AppException();
 		}
 		catch(BusException be)
 		{
@@ -149,7 +149,7 @@ public class ActivationCommand implements RemoteCommand
 	public void doViewError(CommandContext commandContext) 
 	{
 		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
-		ViewHelper.getOkModal(currentActivity, "", "Development Cloud Activation Failed....").
+		ViewHelper.getOkModal(currentActivity, "", "Development Cloud Activation Failed. You may have to change the Cloud Server Ip from the 'Menu'").
 		show();
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
