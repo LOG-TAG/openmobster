@@ -35,13 +35,12 @@
 			A22D3DB8122698FA00C0A112 /* CloudManager */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 320942158;
-			PBXWorkspaceStateSaveDate = 320942158;
+			PBXPerProjectTemplateStateSaveDate = 322058824;
+			PBXWorkspaceStateSaveDate = 322058824;
 		};
 		perUserProjectItems = {
-			A21EC87B131C32950030ECCE /* PBXBookmark */ = A21EC87B131C32950030ECCE /* PBXBookmark */;
-			A21EC88D131C34EC0030ECCE /* PBXTextBookmark */ = A21EC88D131C34EC0030ECCE /* PBXTextBookmark */;
-			A21EC88E131C34EC0030ECCE /* PBXTextBookmark */ = A21EC88E131C34EC0030ECCE /* PBXTextBookmark */;
+			A262281913323E3A00B1BEB3 /* PBXBookmark */ = A262281913323E3A00B1BEB3 /* PBXBookmark */;
+			A262284C13324E2C00B1BEB3 /* PBXTextBookmark */ = A262284C13324E2C00B1BEB3 /* PBXTextBookmark */;
 		};
 		sourceControlManager = A22D3DCD1226990600C0A112 /* Source Control */;
 		userBuildSettings = {
@@ -61,30 +60,6 @@
 			sepNavVisRange = "{0, 909}";
 			sepNavWindowFrame = "{{540, 157}, {750, 720}}";
 		};
-	};
-	A21EC87B131C32950030ECCE /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = A267E5D912C54BD900693E1A /* Home.m */;
-	};
-	A21EC88D131C34EC0030ECCE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1D3623240D0F684500981E51 /* CloudManagerAppDelegate.h */;
-		name = "CloudManagerAppDelegate.h: 23";
-		rLen = 50;
-		rLoc = 707;
-		rType = 0;
-		vrLen = 764;
-		vrLoc = 0;
-	};
-	A21EC88E131C34EC0030ECCE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */;
-		name = "CloudManagerAppDelegate.m: 135";
-		rLen = 0;
-		rLoc = 4248;
-		rType = 0;
-		vrLen = 519;
-		vrLoc = 4098;
 	};
 	A22D3DB8122698FA00C0A112 /* CloudManager */ = {
 		isa = PBXExecutable;
@@ -132,9 +107,10 @@
 	};
 	A250284D130A27BD006DC2C8 /* AjaxShowList.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {740, 661}}";
-			sepNavSelRange = "{196, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {740, 659}}";
+			sepNavSelRange = "{144, 23}";
 			sepNavVisRange = "{0, 441}";
+			sepNavWindowFrame = "{{15, 91}, {750, 787}}";
 		};
 	};
 	A250284E130A27BD006DC2C8 /* AjaxShowList.m */ = {
@@ -276,6 +252,20 @@
 			sepNavSelRange = "{679, 0}";
 			sepNavVisRange = "{0, 690}";
 		};
+	};
+	A262281913323E3A00B1BEB3 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = A250284D130A27BD006DC2C8 /* AjaxShowList.h */;
+	};
+	A262284C13324E2C00B1BEB3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A250284D130A27BD006DC2C8 /* AjaxShowList.h */;
+		name = "AjaxShowList.h: 9";
+		rLen = 23;
+		rLoc = 144;
+		rType = 0;
+		vrLen = 441;
+		vrLoc = 0;
 	};
 	A267E5D812C54BD900693E1A /* Home.h */ = {
 		uiCtxt = {

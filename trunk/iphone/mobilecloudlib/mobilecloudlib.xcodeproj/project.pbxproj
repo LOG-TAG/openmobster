@@ -14,6 +14,8 @@
 		A25E9DAE1225CB9500A8AE19 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E9DAA1225CB9500A8AE19 /* ErrorHandler.m */; };
 		A25E9DAF1225CB9500A8AE19 /* SystemException.h in Headers */ = {isa = PBXBuildFile; fileRef = A25E9DAB1225CB9500A8AE19 /* SystemException.h */; };
 		A25E9DB01225CB9500A8AE19 /* SystemException.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E9DAC1225CB9500A8AE19 /* SystemException.m */; };
+		A26227E1133234A700B1BEB3 /* DeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A26227DF133234A700B1BEB3 /* DeviceManager.h */; };
+		A26227E2133234A700B1BEB3 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A26227E0133234A700B1BEB3 /* DeviceManager.m */; };
 		A267E57E12C5479000693E1A /* ModalActivateDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57712C5478F00693E1A /* ModalActivateDevice.h */; };
 		A267E57F12C5479000693E1A /* ModalActivateDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */; };
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
@@ -329,6 +331,8 @@
 		A25E9DAA1225CB9500A8AE19 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorHandler.m; path = ../../ErrorHandler.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E9DAB1225CB9500A8AE19 /* SystemException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemException.h; path = ../../SystemException.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E9DAC1225CB9500A8AE19 /* SystemException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemException.m; path = ../../SystemException.m; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26227DF133234A700B1BEB3 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
+		A26227E0133234A700B1BEB3 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
 		A267E57712C5478F00693E1A /* ModalActivateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalActivateDevice.h; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.h"; sourceTree = "<absolute>"; };
 		A267E57812C5478F00693E1A /* ModalActivateDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalActivateDevice.m; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.m"; sourceTree = "<absolute>"; };
 		A267E57912C5478F00693E1A /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.xib"; sourceTree = "<absolute>"; };
@@ -693,6 +697,7 @@
 		0867D691FE84028FC02AAC07 /* mobilecloudlib */ = {
 			isa = PBXGroup;
 			children = (
+				A26227DD13317A4E00B1BEB3 /* dm */,
 				A2869F3A12F9F1AF00A4792E /* app-service */,
 				A2869D7112F9BC0900A4792E /* app-bundle */,
 				A2E557CF12F76C62008B3FCE /* integration-tests */,
@@ -761,6 +766,15 @@
 				A25E9DAC1225CB9500A8AE19 /* SystemException.m */,
 			);
 			name = errors;
+			sourceTree = "<group>";
+		};
+		A26227DD13317A4E00B1BEB3 /* dm */ = {
+			isa = PBXGroup;
+			children = (
+				A26227DF133234A700B1BEB3 /* DeviceManager.h */,
+				A26227E0133234A700B1BEB3 /* DeviceManager.m */,
+			);
+			name = dm;
 			sourceTree = "<group>";
 		};
 		A267E39012C40ABA00693E1A /* ui */ = {
@@ -1415,6 +1429,7 @@
 				A286964B12F7CC0300A4792E /* BeanList.h in Headers */,
 				A2869F3D12F9F1D100A4792E /* AppService.h in Headers */,
 				A286A4BB12FAF53C00A4792E /* AppSession.h in Headers */,
+				A26227E1133234A700B1BEB3 /* DeviceManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1896,6 +1911,7 @@
 				A286964C12F7CC0300A4792E /* BeanList.m in Sources */,
 				A2869F3E12F9F1D100A4792E /* AppService.m in Sources */,
 				A286A4BC12FAF53C00A4792E /* AppSession.m in Sources */,
+				A26227E2133234A700B1BEB3 /* DeviceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
