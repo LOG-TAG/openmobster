@@ -1,5 +1,0 @@
-<app-conf>
-	<channels>
-		<channel access="write">webappsync_ticket_channel</channel>
-	</channels>
-</app-conf>

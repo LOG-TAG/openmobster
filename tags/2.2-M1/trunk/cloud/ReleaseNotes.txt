@@ -1,7 +1,0 @@
-Whats New So Far
-
-* iPhone Support
-
-* Cam-to-Cloud: Seamless integration of device Camera with Cloud services (Android only)
-
-* Cloud-To_Push: Seamless invocation of "device" components in response to an RPC like Push from Cloud (Android Only)
