@@ -1,0 +1,14 @@
+<moblet-app>
+    <!-- Screen that is displayed when the App is launched -->
+    <bootstrap>
+    	<screen>org.async.service.app.cloud.app.screen.HomeScreen</screen>
+    </bootstrap>
+    
+	<commands>
+	    <!-- Get a List of Email Subjects asynchronously (Ajax in the Web world) -->				
+		<command id="/asyncserviceapp/getlist">org.async.service.app.cloud.app.command.AsyncGetList</command>
+		
+		<!-- Get the selected Email instance asynchronously (Ajax in the Web world) -->
+		<command id="/asyncserviceapp/getdetails">org.async.service.app.cloud.app.command.AsyncGetDetails</command>
+	</commands>						
+</moblet-app>

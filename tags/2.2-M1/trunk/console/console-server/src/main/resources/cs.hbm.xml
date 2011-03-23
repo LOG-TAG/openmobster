@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+	Relationships:
+	
+	AdminAccount -> AccountAttribute = one-to-many	(unidirectional/non-lazy)
+-->        
+<hibernate-mapping>	
+	<class name="org.openmobster.core.console.server.admin.AdminAccount" table="cs_account">
+        <id name="id" column="accountId">
+            <generator class="native"/>
+        </id>
+        <property name="username" type="string" column="username"
+        not-null="true"
+        unique="true"
+        />        
+        <property name="password" type="string" column="password"
+        not-null="true"
+        />   
+         
+        <!-- one-many relationship between Identity-IdentityAttribute -->       
+    	<set name="attributes" table="cs_account_attributes" 
+    	cascade="all-delete-orphan"
+    	lazy="false"
+    	>
+	        <key column="accountId" not-null="true"/>
+	        <many-to-many class="org.openmobster.core.console.server.admin.AccountAttribute" unique="true"/>
+    	</set>
+    </class>
+    <class name="org.openmobster.core.console.server.admin.AccountAttribute" table="cs_account_attribute">
+        <id name="id" column="attributeId">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" column="name"
+        not-null="true"
+        />        
+        <property name="value" type="string" column="value"
+        not-null="true"
+        />                        
+    </class>     
+</hibernate-mapping>

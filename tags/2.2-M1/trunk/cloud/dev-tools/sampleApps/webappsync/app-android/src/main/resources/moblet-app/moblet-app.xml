@@ -1,0 +1,9 @@
+<moblet-app>
+    <channels>
+		<channel>webappsync_ticket_channel</channel>
+	</channels>		
+	
+	<commands>
+		<command id="/channel/bootup/helper">com.webappsync.command.ChannelBootupHelper</command>	
+	</commands>		
+</moblet-app>
