@@ -197,49 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>A21EC875131C32270030ECCE</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>ActivationAppViewController.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>A21EC886131C34DF0030ECCE</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>ActivationAppViewController.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>A21EC889131C34DF0030ECCE</string>
-						<key>history</key>
-						<array>
-							<string>A21EC887131C34DF0030ECCE</string>
-							<string>A21EC888131C34DF0030ECCE</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {750, 692}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>455 145 750 733 0 0 1440 878 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -340,7 +298,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>27 457 446 419 0 0 1440 878 </string>
+								<string>455 459 446 419 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -476,8 +434,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A21EC811131C2E460030ECCE</string>
-				<string>A21EC812131C2E460030ECCE</string>
+				<string>A26227CE13316F6600B1BEB3</string>
+				<string>A26227CF13316F6600B1BEB3</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -519,11 +477,10 @@
 		<string>1C530D5B069F1CE1000CFCEE</string>
 		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
-		<string>A21EC875131C32270030ECCE</string>
 		<string>/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/ActivationApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>27 457 446 419 0 0 1440 878 </string>
+	<string>455 459 446 419 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -737,7 +694,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A21EC814131C2E460030ECCE</string>
+				<string>A26227D113316F6600B1BEB3</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -859,13 +816,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A21EC861131C31530030ECCE</string>
+				<string>A26227D213316F6600B1BEB3</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A21EC862131C31530030ECCE</string>
-				<string>A21EC863131C31530030ECCE</string>
-				<string>A21EC864131C31530030ECCE</string>
-				<string>A21EC865131C31530030ECCE</string>
-				<string>A21EC866131C31530030ECCE</string>
+				<string>A26227D313316F6600B1BEB3</string>
+				<string>A26227D413316F6600B1BEB3</string>
+				<string>A26227D513316F6600B1BEB3</string>
+				<string>A26227D613316F6600B1BEB3</string>
+				<string>A26227D713316F6600B1BEB3</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1027,7 +984,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A21EC867131C31530030ECCE</string>
+				<string>A26227D813316F6600B1BEB3</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

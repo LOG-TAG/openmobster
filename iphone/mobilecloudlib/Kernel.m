@@ -60,6 +60,7 @@ static Kernel *singleton = nil;
 		SyncScheduler *syncScheduler = [[[SyncScheduler alloc] init] autorelease];
 		ProxyLoader *proxyLoader = [[[ProxyLoader alloc] init] autorelease];
 		Bus *bus = [[[Bus alloc] init] autorelease];
+		DeviceManager *dm = [[[DeviceManager alloc] init] autorelease];
 		
 		//Add background daemons
 		[registry addService:syncScheduler];
@@ -78,8 +79,11 @@ static Kernel *singleton = nil;
 		//Bus service
 		[registry addService:bus];
 		
-		
 		[registry start];
+		
+		//DeviceManager service
+		[registry addService:dm];
+		[dm sendOsCallback];
 	}
 }
 

@@ -22,6 +22,7 @@
 #import "Configuration.h"
 #import "AppConfig.h"
 #import "AppService.h"
+#import "DeviceManager.h"
 
 /**
  * 
