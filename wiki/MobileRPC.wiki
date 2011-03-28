@@ -51,3 +51,34 @@ Register this component with *META-INF/openmobster-config.xml* file.
    </bean>
 </deployment>
 }}}
+
+===== Step 3: Invoke the service bean via the RPC service =====
+{{{
+Request request = new Request("/asyncserviceapp/getdetails");	
+			request.setAttribute("oid", email.getOid());
+			
+			Response response = new MobileService().invoke(request);
+			
+			//Process the Cloud Response
+			String oid = response.getAttribute("oid");
+			String from = response.getAttribute("from");
+			String to = response.getAttribute("to");
+			String subject = response.getAttribute("subject");
+			String date = response.getAttribute("date");
+
+}}}
+
+Create a _org.openmobster.core.mobileCloud.api.service.Request_ object and populate it with attributes to be sent during the RPC call.
+
+Make the invocation via _org.openmobster.core.mobileCloud.api.service.MobileService_.
+
+Process the _org.openmobster.core.mobileCloud.api.service.Response_ received from making the RPC call
+
+===== Download this tutorial =====
+  * [http://openmobster.googlecode.com/svn/samples/asyncserviceapp.zip Download]
+
+  * Install the Android App from the app-android dir: *mvn -Phot-deploy install*
+
+  * Run the Cloud from the cloud directory: *mvn -PrunCloud integration-test*
+
+Note: You must Activate with the Cloud using the DevCloud App installed via the *mvn -Phot-deploy install* command.
