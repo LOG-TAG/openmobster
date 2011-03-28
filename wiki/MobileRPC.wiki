@@ -1,10 +1,10 @@
 #summary Mobile RPC (Remote Procedure Call)
 
-===== Introduction =====
+==== Introduction ====
 This is a simple tutorial to learn the RPC (Remote Procedure Call) service
 in OpenMobster.
 
-===== Step 1: Developing the Server Side Component =====
+==== Step 1: Developing the Server Side Component ====
 The server side consists of creating a service bean. A service bean is an implementation of the _org.openmobster.server.api.service.MobileServiceBean_ interface.
 {{{
 @ServiceInfo(uri="/asyncserviceapp/getlist")
@@ -34,7 +34,7 @@ public Response invoke(Request request)
 	}
 }}}
 
-===== Step 2: Register the service bean with the system =====
+==== Step 2: Register the service bean with the system ====
 Register this component with *META-INF/openmobster-config.xml* file.
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
@@ -52,7 +52,7 @@ Register this component with *META-INF/openmobster-config.xml* file.
 </deployment>
 }}}
 
-===== Step 3: Invoke the service bean via the RPC service =====
+==== Step 3: Invoke the service bean via the RPC service ====
 {{{
 Request request = new Request("/asyncserviceapp/getdetails");	
 			request.setAttribute("oid", email.getOid());
@@ -74,11 +74,11 @@ Make the invocation via _org.openmobster.core.mobileCloud.api.service.MobileServ
 
 Process the _org.openmobster.core.mobileCloud.api.service.Response_ received from making the RPC call
 
-===== Download this tutorial =====
+==== Download this tutorial ====
   * [http://openmobster.googlecode.com/svn/samples/asyncserviceapp.zip Download]
 
-  * Install the Android App from the app-android dir: *mvn -Phot-deploy install*
+  * Install the Android App from the *app-android* dir: *mvn -Phot-deploy install*
 
-  * Run the Cloud from the cloud directory: *mvn -PrunCloud integration-test*
+  * Run the Cloud from the *cloud* directory: *mvn -PrunCloud integration-test*
 
 Note: You must Activate with the Cloud using the DevCloud App installed via the *mvn -Phot-deploy install* command.
