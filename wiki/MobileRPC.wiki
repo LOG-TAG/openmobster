@@ -1,1 +1,53 @@
 #summary Mobile RPC (Remote Procedure Call)
+
+===== Introduction =====
+This is a simple tutorial to learn the RPC (Remote Procedure Call) service
+in OpenMobster.
+
+===== Step 1: Developing the Server Side Component =====
+The server side consists of creating a service bean. A service bean is an implementation of the _org.openmobster.server.api.service.MobileServiceBean_ interface.
+{{{
+@ServiceInfo(uri="/asyncserviceapp/getlist")
+public class GetList implements MobileServiceBean
+}}}
+
+The _org.openmobster.server.api.service.ServiceInfo_ annotation creates a unique way to identify the service bean. This *uri* is used on the device side to make an invocation on the service bean.
+{{{
+public Response invoke(Request request) 
+	{	
+		Response response = new Response();
+		
+		//Get a list emails
+		List<EmailBean> mockBeans = EmailBean.generateMockBeans();
+		
+		//Create a list of subjects to be returned for display
+		List<String> subjects = new ArrayList<String>();
+		for(EmailBean local:mockBeans)
+		{
+			subjects.add("id="+local.getOid()+":subject="+local.getSubject());
+		}
+		
+		//Set the information in the response object
+		response.setListAttribute("subjects", subjects);
+		
+		return response;
+	}
+}}}
+
+===== Step 2: Register the service bean with the system =====
+Register this component with *META-INF/openmobster-config.xml* file.
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+   <bean name="/asyncserviceapp/getlist" class="org.async.service.app.cloud.app.GetList">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+   
+   <bean name="/asyncserviceapp/getdetails" class="org.async.service.app.cloud.app.GetDetails">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+</deployment>
+}}}
