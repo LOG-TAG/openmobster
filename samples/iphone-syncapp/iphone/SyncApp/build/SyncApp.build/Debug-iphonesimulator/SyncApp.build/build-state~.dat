@@ -1,0 +1,256 @@
+TSyncApp
+v7
+r0
+t323275042.688906
+cCheck dependencies
+cProcessInfoPlistFile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/Info.plist SyncApp-Info.plist
+cCompileXIB /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/MainWindow.xib
+cCompileXIB /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncAppViewController.xib
+cProcessPCH /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch.gch SyncApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/main.o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppAppDelegate.o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppViewController.o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp normal i386
+cGenerateDSYMFile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app.dSYM /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp
+cTouch /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004CC128950000000000000110
+t1287727253
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.h
+c000000004D94919100000000000001DE
+t1301582225
+s478
+i<UIKit/UIKit.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m
+c000000004D9491910000000000000A94
+t1301582225
+s2708
+i"SyncAppAppDelegate.h"
+i"SyncAppViewController.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.h
+c000000004D94919100000000000000ED
+t1301582225
+s237
+i<UIKit/UIKit.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m
+c000000004D94919100000000000005C0
+t1301582225
+s1472
+i"SyncAppViewController.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/MainWindow.xib
+c000000004D9491910000000000004E29
+t1301582225
+s20009
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncAppViewController.xib
+c000000004D9491910000000000001A45
+t1301582225
+s6725
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncApp_Prefix.pch
+c000000004D94919100000000000000B7
+t1301582225
+s183
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app
+t1301582242
+s238
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app.dSYM
+t1301582242
+s102
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/Info.plist
+t1301582240
+s591
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/MainWindow.nib
+t1301582241
+s1123
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/PkgInfo
+t1301582240
+s8
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp
+t1301582242
+s17440
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncAppViewController.nib
+t1301582241
+s795
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncApp.LinkFileList
+c000000004D9491A00000000000000247
+t1301582240
+s583
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppAppDelegate.o
+t1301582242
+s51020
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppViewController.o
+t1301582242
+s37624
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/main.o
+t1301582242
+s6428
+
+N/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m
+c000000004D9491910000000000000168
+t1301582225
+s360
+i<UIKit/UIKit.h>
+
+N/var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch.gch
+t1301582242
+s15453392
+
+NSyncApp-Info.plist
+c000000004D949191000000000000038D
+t1301582225
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies323275040#323275040#0(0"0(0#1#0"8623679296#0"0#
+
+CCompileC build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppAppDelegate.o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s323275042.315328
+e323275042.506062
+r1
+xCompileC
+xbuild/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppAppDelegate.o
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@137"Compile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m323275042#323275042#0(0"0(0#0#129"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m8610469536#2632"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/include -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources/i386 -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppAppDelegate.m -o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppAppDelegate.o0#
+
+CCompileC build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppViewController.o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s323275042.504214
+e323275042.566751
+r1
+xCompileC
+xbuild/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppViewController.o
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@140"Compile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m323275042#323275042#0(0"0(0#0#132"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m8625637248#2638"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/include -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources/i386 -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/Classes/SyncAppViewController.m -o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncAppViewController.o0#
+
+CCompileC build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/main.o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s323275042.313812
+e323275042.504090
+r1
+xCompileC
+xbuild/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/main.o
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@115"Compile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m323275042#323275042#0(0"0(0#0#107"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m8632909216#2596"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/include -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources/i386 -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/main.m -o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/MainWindow.xib
+s323275040.759911
+e323275041.149162
+r1
+xCompileXIB
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib323275040#323275041#0(0"0(0#0#115"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/MainWindow.xib8625443232#756"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/MainWindow.nib /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncAppViewController.xib
+s323275040.773383
+e323275041.149493
+r1
+xCompileXIB
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncAppViewController.xib
+lSLF07#2@36"CompileXIB SyncAppViewController.xib323275040#323275041#0(0"0(0#0#126"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncAppViewController.xib8624585888#778"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncAppViewController.nib /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncAppViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CGenerateDSYMFile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app.dSYM /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp
+s323275042.669407
+e323275042.685890
+r1
+xGenerateDSYMFile
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app.dSYM
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp
+lSLF07#2@109"GenerateDSYMFile build/Debug-iphonesimulator/SyncApp.app.dSYM build/Debug-iphonesimulator/SyncApp.app/SyncApp323275042#323275042#0(0"0(0#0#148"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp8621277536#569"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp -o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app.dSYM0#
+
+CLd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp normal i386
+s323275042.566846
+e323275042.669299
+r1
+xLd
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp
+xnormal
+xi386
+lSLF07#2@153"Link /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp323275042#323275042#0(0"0(0#0#0"8624721344#1210"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator -F/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator -filelist /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/Objects-normal/i386/SyncApp.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/SyncApp0#
+
+CProcessInfoPlistFile /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/Info.plist SyncApp-Info.plist
+s323275040.738024
+e323275040.759818
+r1
+xProcessInfoPlistFile
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/Info.plist
+xSyncApp-Info.plist
+lSLF07#2@26"Process SyncApp-Info.plist323275040#323275040#0(0"0(0#0#119"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncApp-Info.plist8613476736#665"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility SyncApp-Info.plist -genpkginfo /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app/Info.plist0#
+
+CProcessPCH /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch.gch SyncApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s323275041.149585
+e323275042.313567
+r1
+xProcessPCH
+x/var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch.gch
+xSyncApp_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@29"Precompile SyncApp_Prefix.pch323275041#323275042#0(0"0(0#0#119"/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncApp_Prefix.pch8617278912#2426"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/SyncApp-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/include -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources/i386 -I/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/SyncApp.build/Debug-iphonesimulator/SyncApp.build/DerivedSources -c /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/SyncApp_Prefix.pch -o /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/SyncApp_Prefix-edcinwpozbukeqfrgruxkksbydhu/SyncApp_Prefix.pch.gch0#
+
+CTouch /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app
+s323275042.685985
+e323275042.688865
+r1
+xTouch
+x/Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app
+lSLF07#2@146"Touch /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app323275042#323275042#0(0"0(0#0#0"8618915392#402"    cd /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/openmobster/projects/openmobster/googlecode/tutorials/workspace/iphone-syncapp/iphone/SyncApp/build/Debug-iphonesimulator/SyncApp.app0#
+

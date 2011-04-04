@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<moblet-apps>
+	<!-- Android version -->
+	<moblet-app>	    
+	    <name>iphone-syncapp</name>
+	    <description>iphone-syncapp</description>
+		<bin-loc>/iphone-syncapp-1.0-zipped.apk</bin-loc>	
+	</moblet-app>		
+</moblet-apps>

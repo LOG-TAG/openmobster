@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+   <!--  Register the SyncBeanChannel -->
+   <bean name="sync_bean_channel" class="org.openmobster.sync.app.SyncBeanChannel">
+   </bean>
+</deployment>

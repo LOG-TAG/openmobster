@@ -1,0 +1,109 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* SyncAppAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 661}}";
+			sepNavSelRange = "{524, 0}";
+			sepNavVisRange = "{0, 532}";
+			sepNavWindowFrame = "{{15, 84}, {750, 789}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* SyncAppAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1690}}";
+			sepNavSelRange = "{778, 0}";
+			sepNavVisRange = "{2581, 935}";
+			sepNavWindowFrame = "{{447, 89}, {750, 789}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* SyncApp */ = {
+		activeExec = 0;
+		executables = (
+			A2622AAF1344C91100B1BEB3 /* SyncApp */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* SyncAppViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {817, 664}}";
+			sepNavSelRange = "{440, 0}";
+			sepNavVisRange = "{0, 447}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* SyncAppViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {789, 2093}}";
+			sepNavSelRange = "{291, 0}";
+			sepNavVisRange = "{0, 1280}";
+			sepNavWindowFrame = "{{444, 86}, {750, 792}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = A2622AAF1344C91100B1BEB3 /* SyncApp */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* SyncApp */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* SyncApp */,
+		);
+		codeSenseManager = A2622AC31344C92300B1BEB3 /* Code sense */;
+		executables = (
+			A2622AAF1344C91100B1BEB3 /* SyncApp */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 323385692;
+			PBXWorkspaceStateSaveDate = 323385692;
+		};
+		sourceControlManager = A2622AC21344C92300B1BEB3 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	A2622AAF1344C91100B1BEB3 /* SyncApp */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SyncApp;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	A2622AC21344C92300B1BEB3 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	A2622AC31344C92300B1BEB3 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	A2622B28134651BB00B1BEB3 /* openmobster-app.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 407}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 102}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
+		};
+	};
+}
