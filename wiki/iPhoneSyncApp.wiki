@@ -121,3 +121,105 @@ _bootup_ method provides just enough MobileBean instances that are needed to mak
 _read_ provides the specified MobileBean instance.
 
 _readAll_ provides all the MobileBean instances.
+
+==== Step 3: Get the Number of beans ====
+Now, on the iPhone App side, we need to get the number of beans that will be displayed in the UITableView.
+{{{
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	//Read the synchronized beans from the channel
+	NSArray *beans = [MobileBean readAll:@"sync_bean_channel"];
+	
+	if(beans == nil || [beans count] == 0)
+	{
+		channelIsEmpty = YES;
+		return 1;
+	}
+	else 
+	{
+		channelIsEmpty = NO;
+		return [beans count];
+	}
+}
+}}}
+
+==== Step 4: Display each individual bean within the table cell ====
+{{{
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	//Prepare the table cell 
+	UITableViewCell *local = [tableView dequeueReusableCellWithIdentifier:@"sync_bean"];
+	if(local == nil)
+	{
+		local = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"sync_bean"];
+		local = [local autorelease];
+	}
+	
+	//Check in case the channel is empty and needs manual synchronization
+	if(channelIsEmpty)
+	{
+		local.textLabel.text = @"Sync Manually";
+		return local;
+	}
+	
+	//Read the synchronized beans from the channel
+	NSArray *beans = [MobileBean readAll:@"sync_bean_channel"];
+	
+	//Find the Bean in question
+	int index = indexPath.row;
+	MobileBean *bean = [beans objectAtIndex:index];
+	
+	//Display the 'value1' field of the bean
+	NSString *display = [bean getValue:@"value1"];
+	local.textLabel.text = display;
+	
+	return local;
+	
+}
+}}}
+
+==== Step 5: Show bean details when selected ====
+{{{
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	//Handle selection of the item
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+	
+	//Check if the channel is empty and needs manual synchronization
+	if(channelIsEmpty)
+	{
+		SyncService *syncService = [SyncService getInstance];
+		[syncService performBootSync:@"sync_bean_channel" :NO];
+		channelIsEmpty = NO;
+		
+		//reload the table
+		[beanList reloadData];
+		
+		return;
+	}
+	
+	//Read all the beans
+	NSArray *beans = [MobileBean readAll:@"sync_bean_channel"];
+	
+	//Get the selected bean
+	int index = indexPath.row;
+	MobileBean *bean = [beans objectAtIndex:index];
+	
+	//Get the value of all the fields
+	NSString *value1 = [bean getValue:@"value1"];
+	NSString *value2 = [bean getValue:@"value2"];
+	NSString *value3 = [bean getValue:@"value3"];
+	NSString *message = [NSString stringWithFormat:@"Value2=%@, Value3=%@",value2,value3];
+	
+	//Setup the Dialog Box
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:value1
+													 message:message 
+													delegate:self cancelButtonTitle:@"OK" 
+										   otherButtonTitles:nil];
+	
+	//Display the dialog
+	dialog = [dialog autorelease];
+	[dialog show];
+}
+}}}
