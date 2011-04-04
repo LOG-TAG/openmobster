@@ -1,0 +1,123 @@
+#summary iPhone Sync App tutorial
+
+This tutorial teaches how to architect a simple Sync App for the iPhone platform
+
+==== Step 1: Write the server side MobileBean component
+This step involves writing your bean that will be mobilized. It implements the _org.openmobster.server.api.model.MobileBean_ interface which is merely a marker interface.
+{{{
+/**
+ * The 'SyncBean' that will be stored/synchronized with the device
+ * 
+ * @author openmobster@gmail.com
+ */
+public class SyncBean implements MobileBean, Serializable
+{
+	private static final long serialVersionUID = 8484238078447118385L;
+
+	@MobileBeanId
+	private String beanId; //uniquely identifies the bean to the sync system	
+	private String value1;
+	private String value2;
+	private String value3;
+	
+	public SyncBean()
+	{
+		
+	}
+
+	public String getBeanId() 
+	{
+		return beanId;
+	}
+
+	public void setBeanId(String beanId) 
+	{
+		this.beanId = beanId;
+	}
+
+	public String getValue1() 
+	{
+		return value1;
+	}
+
+	public void setValue1(String value1)
+	{
+		this.value1 = value1;
+	}
+
+	public String getValue2() 
+	{
+		return value2;
+	}
+
+	public void setValue2(String value2) 
+	{
+		this.value2 = value2;
+	}
+
+	public String getValue3() 
+	{
+		return value3;
+	}
+
+	public void setValue3(String value3) 
+	{
+		this.value3 = value3;
+	}
+}
+}}}
+
+This bean is uniquely identified by the field that is annotated with the _org.openmobster.server.api.model.MobileBeanId_ annotation.
+
+
+==== Step 2: Develop the Synchronization Channel ====
+This step involves developing a sync channel that mobilizes the _org.openmobster.sync.app.SyncBean_ instances. 
+{{{
+/**
+ * The SyncBeanChannel mobilizes the 'SyncBean' instances by integrating with the Sync Engine
+ * 
+ * @author openmobster@gmail.com
+ */
+@ChannelInfo(uri="sync_bean_channel", mobileBeanClass="org.openmobster.sync.app.SyncBean")
+public class SyncBeanChannel implements Channel
+}}}
+The ChannelInfo annotation: uri = unique id for this channel, mobileBeanClass = identifies the MobileBean class that is managed by this channel
+
+SyncBeanChannel implements the Channel interface.
+
+{{{
+@Override
+	public List<? extends MobileBean> bootup() 
+	{
+		List<SyncBean> beans = this.store.getAll();
+		List<SyncBean> bootupOnly = new ArrayList<SyncBean>();
+		
+		//Only send first 5 beans during booting up the sync channel
+		for(int i=0; i<5; i++)
+		{
+			bootupOnly.add(beans.get(i));
+		}
+		
+		return bootupOnly;
+	}
+}}}
+
+_bootup_ method provides just enough MobileBean instances that are needed to make the App functional. The remaining beans are synchronized in the background without holding up the App.
+
+{{{
+@Override
+	public MobileBean read(String id) 
+	{
+		return this.store.get(id);
+	}
+
+	@Override
+	public List<? extends MobileBean> readAll() 
+	{
+		return this.store.getAll();
+	}
+}}}
+
+_read_ provides the specified MobileBean instance.
+
+_readAll_ provides all the MobileBean instances.
