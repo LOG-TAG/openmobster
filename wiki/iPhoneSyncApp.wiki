@@ -2,7 +2,7 @@
 
 This tutorial teaches how to architect a simple Sync App for the iPhone platform
 
-==== Step 1: Write the server side MobileBean component
+==== Step 1: Write the server side MobileBean component ====
 This step involves writing your bean that will be mobilized. It implements the _org.openmobster.server.api.model.MobileBean_ interface which is merely a marker interface.
 {{{
 /**
