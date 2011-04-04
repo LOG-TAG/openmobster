@@ -6,9 +6,17 @@
 === iPhone Zone ===
 
 This zone consists of various interesting iPhone/iOS development tips and tutorials
+----
 
 ==== iPhone UITableView Tutorial ====
 
 This [iPhoneUITableView tutorial] covers the iPhone UITableView component including some sample code
+----
+
+==== iPhone Sync App Tutorial ====
+
+This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
+
+----
 
 *Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
