@@ -223,3 +223,27 @@ Now, on the iPhone App side, we need to get the number of beans that will be dis
 	[dialog show];
 }
 }}}
+
+==== Step 6: Configuration ====
+
+You must specify the channels that your App will be using. This is done in the _Resources/openmobster-app.xml_ file.
+{{{
+<app-conf>
+	<channels>
+		<channel access="write">sync_bean_channel</channel>
+	</channels>
+</app-conf>
+}}}
+
+==== Download this Tutorial ====
+  * [http://openmobster.googlecode.com/samples/iphone-syncapp.zip Download]
+
+  * Start the Cloud Server: cd cloud : *mvn -PrunCloud integration-test*
+
+  * You should be able to open SyncApp project inside XCode.
+
+  * Inside XCode do a 'Build and Run'. This should launch the App inside a simulator
+
+  * At first you will have to activate the App with the Cloud. Use the account, Username: blah2@gmail.com, Password: blahblah2
+
+  * Then specify the IP address of the Cloud Server. It should something like a 192.168.xx.xx address. Do not use _localhost_ or _127.0.0.1_.
