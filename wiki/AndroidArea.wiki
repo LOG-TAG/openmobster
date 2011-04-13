@@ -18,6 +18,8 @@ A simple [CameraTutorial guide] for integrating the Camera Hardware inside your 
 ==== Javascript/Java Integration ====
 A step by step [JavascriptBridge tutorial] for invoking native Java code from Javascript
 
+----
+
 ==== SQLite-based CRUD App ====
 A [SQLiteCRUD tutorial] to learn how to use Android's local database system.
 
