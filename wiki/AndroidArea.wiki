@@ -1,7 +1,7 @@
 #summary Android Tutorials
 #labels Featured
 
-*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner],[iPhoneZone iPhone Area],[DeveloperZone Advanced Tutorials]
 
 === Android Area ===
 
@@ -22,4 +22,4 @@ A step by step [JavascriptBridge tutorial] for invoking native Java code from Ja
 A [SQLiteCRUD tutorial] to learn how to use Android's local database system.
 
 ----
-*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner],[iPhoneZone iPhone Area],[DeveloperZone Advanced Tutorials]
