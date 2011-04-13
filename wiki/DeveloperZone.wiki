@@ -1,7 +1,7 @@
 #summary Developer Zone
 #labels Featured,Tutorials
 
-*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner],[iPhoneZone iPhone Area],[AndroidArea Android Area]
 
 ----
 
@@ -37,4 +37,4 @@ This [PushMail tutorial] will cover the architectural aspects of developing a ty
 
 ----
 
-*Related Links:* [GetStarted Get Started],[GetStartedFromSource Get Started From Source]
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner],[iPhoneZone iPhone Area],[AndroidArea Android Area]
