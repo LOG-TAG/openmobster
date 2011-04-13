@@ -1,7 +1,7 @@
 #summary iPhone Tutorials
 #labels Featured
 
-*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner],[AndroidArea Android Area],[DeveloperZone Advanced Tutorials]
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [AndroidArea Android Area], [DeveloperZone Advanced Tutorials]
 
 === iPhone Zone ===
 
@@ -19,4 +19,4 @@ This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
 
 ----
 
-*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner],[AndroidArea Android Area],[DeveloperZone Advanced Tutorials]
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [AndroidArea Android Area], [DeveloperZone Advanced Tutorials]
