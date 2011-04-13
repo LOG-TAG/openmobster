@@ -1,5 +1,5 @@
 #labels Featured,Tutorials
-*Related Links:* [GetStarted Get Started], [AndroidArea Android Area],[iPhoneZone iPhone Area],[DeveloperZone Advanced Tutorials]
+*Related Links:* [GetStarted Get Started], [AndroidArea Android Area], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
 
 === Beginner Zone ===
 
@@ -56,4 +56,4 @@ This [iPhoneShowcase tutorial] is to guide you through the process of running th
 
 ----
 
-*Related Links:* [GetStarted Get Started], [AndroidArea Android Area],[iPhoneZone iPhone Area],[DeveloperZone Advanced Tutorials]
+*Related Links:* [GetStarted Get Started], [AndroidArea Android Area], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
