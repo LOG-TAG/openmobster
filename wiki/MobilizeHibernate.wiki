@@ -33,7 +33,7 @@ The tutorial will focus on the following features:
 
   * *Step 1:* Check out the openmobster trunk code, *svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only*
 
-  * *Step 2:* Compile and Deploy the core OpenMobster artifacts in your local maven repository, *mvn -DskipTests -Pdeploy-core install*
+  * *Step 2:* Compile and Deploy the core OpenMobster artifacts in your local maven repository, *mvn -DskipTests -Pbuild-all install*
 
   * *Step 3:* You are set. The CRUD App is located under *trunk/dev-tools/sampleApps/crud*. It has 3 modules. cloud - for the Cloud Side components, app-android - for the Android App, and moblet - For aggregating all the components and generating a single deployable artifact. For sake of simplicity, we won't worry about the moblet module for now.
 
