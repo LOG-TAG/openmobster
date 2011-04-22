@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>javapns</groupId>
+  <artifactId>javapns-jdk15</artifactId>
+  <version>165</version>
+  <versioning>
+    <versions>
+      <version>165</version>
+    </versions>
+    <lastUpdated>20110422190429</lastUpdated>
+  </versioning>
+</metadata>
