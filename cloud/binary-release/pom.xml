@@ -205,6 +205,11 @@
 												<exclude name="**/target/**" />
 											</fileset>
 										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/src/push-apn" overwrite="true">
+											<fileset dir="${basedir}/../push-apn">
+												<exclude name="**/target/**" />
+											</fileset>
+										</copy>
 
 										<!--  Management Console -->
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/console" overwrite="true">

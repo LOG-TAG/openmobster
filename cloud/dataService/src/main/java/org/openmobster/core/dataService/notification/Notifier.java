@@ -15,6 +15,9 @@ import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusMessage;
 
+import org.openmobster.core.security.device.DeviceController;
+import org.openmobster.core.security.device.Device;
+
 /**
  * This component processes all notifications/updates that must be sent to actively connected devices
  * 
@@ -23,6 +26,8 @@ import org.openmobster.core.common.bus.BusMessage;
 public class Notifier 
 {
 	private static Logger log = Logger.getLogger(Notifier.class);
+	
+	private DeviceController deviceController;
 	
 	
 	public Notifier()
@@ -42,6 +47,16 @@ public class Notifier
 		
 	}
 	
+	public DeviceController getDeviceController()
+	{
+		return deviceController;
+	}
+
+	public void setDeviceController(DeviceController deviceController)
+	{
+		this.deviceController = deviceController;
+	}
+
 	public void process(Notification notification)
 	{
 		String deviceToNotify = null;
@@ -60,13 +75,20 @@ public class Notifier
 			
 			if(deviceToNotify != null && command != null)
 			{
-				BusMessage busMessage = new BusMessage();
-				busMessage.setBusUri(deviceToNotify);
-				busMessage.setSenderUri(notification.getMetaData(Constants.service));
-				busMessage.setAttribute(Constants.command, command);
-				busMessage.setAttribute("notification-type", "channel");
+				Device device = this.deviceController.read(deviceToNotify);
+				String os = device.getOs();
 				
-				Bus.sendMessage(busMessage);
+				if(os != null)
+				{
+					BusMessage busMessage = new BusMessage();
+					busMessage.setBusUri(deviceToNotify);
+					busMessage.setSenderUri(notification.getMetaData(Constants.service));
+					busMessage.setAttribute(Constants.command, command);
+					busMessage.setAttribute("notification-type", "channel");
+					busMessage.setAttribute("os", os);
+					
+					Bus.sendMessage(busMessage);
+				}
 			}
 		}
 		else if(notification.getType() == NotificationType.RPC)
@@ -83,13 +105,20 @@ public class Notifier
 			
 			if(deviceToNotify != null && command != null)
 			{
-				BusMessage busMessage = new BusMessage();
-				busMessage.setBusUri(deviceToNotify);
-				busMessage.setSenderUri(notification.getMetaData(Constants.service));
-				busMessage.setAttribute(Constants.command, command);
-				busMessage.setAttribute("notification-type", "push-rpc");
+				Device device = this.deviceController.read(deviceToNotify);
+				String os = device.getOs();
 				
-				Bus.sendMessage(busMessage);
+				if(os != null)
+				{
+					BusMessage busMessage = new BusMessage();
+					busMessage.setBusUri(deviceToNotify);
+					busMessage.setSenderUri(notification.getMetaData(Constants.service));
+					busMessage.setAttribute(Constants.command, command);
+					busMessage.setAttribute("notification-type", "push-rpc");
+					busMessage.setAttribute("os", os);
+					
+					Bus.sendMessage(busMessage);
+				}
 			}
 		}
 	}

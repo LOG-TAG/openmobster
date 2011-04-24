@@ -732,6 +732,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			if(safe)
 			{
 				this.gateway.updateRecord(pluginId, recordId, xml);
+				
+				//update the optimistic lock state
+				MobileBean updatedBean = this.gateway.readRecord(pluginId, recordId);
+				this.conflictEngine.startOptimisticLock(updatedBean);
 			}
 			else
 			{

@@ -29,12 +29,14 @@ public class IntegTestDynamicDeviceComet extends AbstractCometTest
 	{					
 		//Add another device
 		this.device_12345.activateDevice();
+		this.registerDeviceType("IMEI:12345", "android");
 		this.device_12345.startCometDaemon();
 		
 		Thread.currentThread().sleep(30000);
 		
 		//Add another device
 		this.device_67890.activateDevice();
+		this.registerDeviceType("IMEI:67890", "iphone");
 		this.device_67890.startCometDaemon();
 								
 		synchronized(this)

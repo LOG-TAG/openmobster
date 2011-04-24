@@ -71,6 +71,8 @@
 	<classpathentry excluding="**" kind="src" path="testdrive-server/src/test/resources"/>
 	<classpathentry kind="src" path="perf-framework/src/main/java"/>
 	<classpathentry kind="src" path="perf-framework/src/test/java"/>
+	<classpathentry kind="src" path="push-apn/src/main/java"/>
+	<classpathentry kind="src" path="push-apn/src/test/java"/>
 	
 	<classpathentry kind="src" path="android/api/src/main/java"/>
 	<classpathentry kind="src" path="android/native-framework/src/main/java"/>

@@ -27,6 +27,8 @@ public class IntegTestTwoDeviceComet extends AbstractCometTest
 	{					
 		this.device_12345.activateDevice();
 		this.device_67890.activateDevice();
+		this.registerDeviceType("IMEI:12345", "android");
+		this.registerDeviceType("IMEI:67890", "iphone");
 		
 		//Start comet daemon
 		this.device_12345.startCometDaemon();		

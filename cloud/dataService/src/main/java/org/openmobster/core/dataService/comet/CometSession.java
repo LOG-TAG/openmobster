@@ -135,16 +135,25 @@ public final class CometSession implements Serializable,BusListener
 	public void messageIncoming(BusMessage busMessage) 
 	{
 		String command = (String)busMessage.getAttribute(Constants.command);
+		String os = (String)busMessage.getAttribute("os");
 		
 		log.debug("-------------------------------------------------");
 		log.debug("Bus Message received by: "+busMessage.getBusUri());
 		log.debug("Sent by: "+busMessage.getSenderUri());
 		log.debug("Command: "+command);
+		log.debug("OS: "+os);
 		log.debug("-------------------------------------------------");
 		
 		if(command != null)
 		{
-			this.sendPacket(command, busMessage);
+			if(os.trim().equalsIgnoreCase("android"))
+			{
+				this.sendPacket(command, busMessage);
+			}
+			else if(os.trim().equalsIgnoreCase("iphone"))
+			{
+				this.sendiPhoneNotification(command, busMessage);
+			}
 		}
 	}
 	//----------------------------------------------------------------------------------------------------------
@@ -203,5 +212,20 @@ public final class CometSession implements Serializable,BusListener
 			return true;
 		}
 		return false;
+	}
+	//--------------iPhone APN integration-----------------------------------------------------------------
+	private synchronized void sendiPhoneNotification(String command, BusMessage busMessage)
+	{
+		log.debug("Actually Sending-------------------------------------------------");
+		log.debug("Bus Message received by: "+busMessage.getBusUri());
+		log.debug("Sent by: "+busMessage.getSenderUri());
+		log.debug("-----------------------------------------------------------------");
+		
+		if(command != null)
+		{
+			log.debug("****************************************");
+			log.debug("Handing over to the iphone-push component");
+			log.debug("*****************************************");
+		}
 	}
 }

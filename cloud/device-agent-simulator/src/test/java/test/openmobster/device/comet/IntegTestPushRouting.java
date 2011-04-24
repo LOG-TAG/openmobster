@@ -8,6 +8,10 @@
 
 package test.openmobster.device.comet;
 
+import org.openmobster.core.security.device.DeviceController;
+import org.openmobster.core.security.device.Device;
+import org.openmobster.core.security.device.DeviceAttribute;
+
 /**
  * Usecase being tested:
  * 
@@ -21,29 +25,21 @@ package test.openmobster.device.comet;
  * 
  * @author openmobster@gmail.com
  */
-public class IntegTestCometQueue extends AbstractCometTest
+public class IntegTestPushRouting extends AbstractCometTest
 {
 	public void test() throws Exception
 	{	
 		//Just activate the device, but no active connection
 		this.device_12345.activateDevice();
-		this.registerDeviceType("IMEI:12345", "android");
+		this.registerDeviceType("IMEI:12345","android");
 		
-		//Wait for some messages in the comet queue, and then connect
-		Thread.currentThread().sleep(10000);
-		
-		//Connect to the server, and messages in the queue should be delivered
-		this.device_12345.startCometDaemon();
-		
-		Thread.currentThread().sleep(20000);
-		
-		this.device_12345.stop();
-		this.device_12345.start();
-		this.device_12345.startCometDaemon();
+		//Active the iphone device, but no active connection
+		this.device_67890.activateDevice();
+		this.registerDeviceType("IMEI:67890","iphone");
 		
 		synchronized(this)
 		{
 			wait();
 		}
-	}	
+	}
 }

@@ -180,10 +180,6 @@ public final class DeviceContainer
 			
 			//Schedules a background task that silently loads proxies from the server
 			LoadProxyDaemon.getInstance().scheduleProxyTask();
-			
-			//Broadcast deviceManagement meta data to the server
-			DeviceManager dm = DeviceManager.getInstance();
-			dm.sendOsCallback();
 		}
 		catch(Exception e)
 		{						

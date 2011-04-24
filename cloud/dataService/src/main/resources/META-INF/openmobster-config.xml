@@ -89,6 +89,9 @@
    </bean>
    
    <bean name="dataService://notification/Notifier" class="org.openmobster.core.dataService.notification.Notifier">
+   		<property name="deviceController">
+   			<inject bean="security://DeviceController"/>
+   		</property>
    </bean>
    
    <!-- MobileServiceBean Invocation Processor -->
