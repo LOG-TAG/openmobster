@@ -10,10 +10,10 @@
 	};
 	1D3623250D0F684500981E51 /* ActivationAppAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 1443}}";
-			sepNavSelRange = "{2521, 0}";
-			sepNavVisRange = "{789, 2000}";
-			sepNavWindowFrame = "{{438, 89}, {750, 789}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1664}}";
+			sepNavSelRange = "{3016, 0}";
+			sepNavVisRange = "{2778, 729}";
+			sepNavWindowFrame = "{{1890, 180}, {750, 720}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* ActivationApp */ = {
@@ -31,10 +31,10 @@
 	};
 	28D7ACF70DDB3853001CB0EB /* ActivationAppViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {733, 1404}}";
-			sepNavSelRange = "{2543, 0}";
-			sepNavVisRange = "{1357, 1187}";
-			sepNavWindowFrame = "{{455, 91}, {750, 787}}";
+			sepNavIntBoundsRect = "{{0, 0}, {733, 1482}}";
+			sepNavSelRange = "{2698, 0}";
+			sepNavVisRange = "{1169, 1328}";
+			sepNavWindowFrame = "{{94, 91}, {750, 787}}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -50,8 +50,8 @@
 			A21EC80A131C2E300030ECCE /* ActivationApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 322006843;
-			PBXWorkspaceStateSaveDate = 322006843;
+			PBXPerProjectTemplateStateSaveDate = 323883205;
+			PBXWorkspaceStateSaveDate = 323883205;
 		};
 		sourceControlManager = A21EC815131C2E460030ECCE /* Source Control */;
 		userBuildSettings = {

@@ -11,9 +11,9 @@
 	1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1965, 2080}}";
-			sepNavSelRange = "{4248, 0}";
-			sepNavVisRange = "{4098, 519}";
-			sepNavWindowFrame = "{{645, 257}, {750, 558}}";
+			sepNavSelRange = "{1519, 71}";
+			sepNavVisRange = "{468, 1516}";
+			sepNavWindowFrame = "{{454, 128}, {750, 720}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* CloudManager */ = {
@@ -35,12 +35,8 @@
 			A22D3DB8122698FA00C0A112 /* CloudManager */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 322058824;
-			PBXWorkspaceStateSaveDate = 322058824;
-		};
-		perUserProjectItems = {
-			A262281913323E3A00B1BEB3 /* PBXBookmark */ = A262281913323E3A00B1BEB3 /* PBXBookmark */;
-			A262284C13324E2C00B1BEB3 /* PBXTextBookmark */ = A262284C13324E2C00B1BEB3 /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 325355382;
+			PBXWorkspaceStateSaveDate = 325355382;
 		};
 		sourceControlManager = A22D3DCD1226990600C0A112 /* Source Control */;
 		userBuildSettings = {
@@ -107,17 +103,17 @@
 	};
 	A250284D130A27BD006DC2C8 /* AjaxShowList.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {740, 659}}";
+			sepNavIntBoundsRect = "{{0, 0}, {740, 407}}";
 			sepNavSelRange = "{144, 23}";
 			sepNavVisRange = "{0, 441}";
-			sepNavWindowFrame = "{{15, 91}, {750, 787}}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A250284E130A27BD006DC2C8 /* AjaxShowList.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1146, 2249}}";
-			sepNavSelRange = "{3858, 1178}";
-			sepNavVisRange = "{3428, 1614}";
+			sepNavSelRange = "{4256, 0}";
+			sepNavVisRange = "{1421, 1369}";
 			sepNavWindowFrame = "{{472, 91}, {750, 787}}";
 		};
 	};
@@ -132,8 +128,9 @@
 	A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 897}}";
-			sepNavSelRange = "{720, 48}";
-			sepNavVisRange = "{521, 1329}";
+			sepNavSelRange = "{1791, 0}";
+			sepNavVisRange = "{554, 1296}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A250289A130AAC06006DC2C8 /* EmailBean.h */ = {
@@ -182,7 +179,7 @@
 	};
 	A2502BB0130C693D006DC2C8 /* Form.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 638}}";
 			sepNavSelRange = "{239, 0}";
 			sepNavVisRange = "{0, 376}";
 			sepNavWindowFrame = "{{492, 89}, {750, 789}}";
@@ -198,7 +195,7 @@
 	};
 	A2502C9613102A20006DC2C8 /* UICommandFramework.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 661}}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 638}}";
 			sepNavSelRange = "{315, 0}";
 			sepNavVisRange = "{0, 451}";
 		};
@@ -253,54 +250,41 @@
 			sepNavVisRange = "{0, 690}";
 		};
 	};
-	A262281913323E3A00B1BEB3 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = A250284D130A27BD006DC2C8 /* AjaxShowList.h */;
-	};
-	A262284C13324E2C00B1BEB3 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = A250284D130A27BD006DC2C8 /* AjaxShowList.h */;
-		name = "AjaxShowList.h: 9";
-		rLen = 23;
-		rLoc = 144;
-		rType = 0;
-		vrLen = 441;
-		vrLoc = 0;
-	};
-	A267E5D812C54BD900693E1A /* Home.h */ = {
+	A26229AB13413B5600B1BEB3 /* Home.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {796, 659}}";
-			sepNavSelRange = "{630, 17}";
-			sepNavVisRange = "{0, 659}";
-			sepNavWindowFrame = "{{552, 112}, {750, 720}}";
+			sepNavIntBoundsRect = "{{0, 0}, {796, 638}}";
+			sepNavSelRange = "{538, 0}";
+			sepNavVisRange = "{0, 550}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
-	A267E5D912C54BD900693E1A /* Home.m */ = {
+	A26229AC13413B5600B1BEB3 /* Home.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1342, 4121}}";
-			sepNavSelRange = "{5520, 0}";
-			sepNavVisRange = "{5442, 1118}";
-			sepNavWindowFrame = "{{1884, 342}, {750, 558}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1118, 3211}}";
+			sepNavSelRange = "{7210, 233}";
+			sepNavVisRange = "{6692, 1058}";
+			sepNavWindowFrame = "{{1790, 342}, {750, 558}}";
 		};
 	};
 	A2869AAC12F8BF0200A4792E /* ShowList.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 659}}";
-			sepNavSelRange = "{635, 29}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 430}}";
+			sepNavSelRange = "{572, 61}";
 			sepNavVisRange = "{0, 739}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A2869AAD12F8BF0200A4792E /* ShowList.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 2769}}";
-			sepNavSelRange = "{3605, 0}";
-			sepNavVisRange = "{3237, 1441}";
-			sepNavWindowFrame = "{{512, 149}, {750, 720}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1097, 2665}}";
+			sepNavSelRange = "{4407, 37}";
+			sepNavVisRange = "{4870, 933}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A2869B4712F8D57E00A4792E /* SaveTicket.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {719, 647}}";
+			sepNavIntBoundsRect = "{{0, 0}, {719, 661}}";
 			sepNavSelRange = "{195, 56}";
 			sepNavVisRange = "{0, 678}";
 			sepNavWindowFrame = "{{473, 75}, {750, 803}}";
@@ -346,7 +330,7 @@
 	};
 	A2869B9B12F9017F00A4792E /* ChannelBootstrapCommand.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {796, 592}}";
+			sepNavIntBoundsRect = "{{0, 0}, {796, 638}}";
 			sepNavSelRange = "{558, 0}";
 			sepNavVisRange = "{0, 562}";
 			sepNavWindowFrame = "{{456, 89}, {750, 789}}";
@@ -354,18 +338,18 @@
 	};
 	A2869B9C12F9017F00A4792E /* ChannelBootstrapCommand.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 871}}";
-			sepNavSelRange = "{1933, 0}";
-			sepNavVisRange = "{0, 1451}";
-			sepNavWindowFrame = "{{562, 80}, {750, 795}}";
+			sepNavIntBoundsRect = "{{0, 0}, {908, 832}}";
+			sepNavSelRange = "{782, 0}";
+			sepNavVisRange = "{711, 1103}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
-			sepNavSelRange = "{0, 0}";
+			sepNavSelRange = "{0, 110}";
 			sepNavVisRange = "{0, 110}";
-			sepNavWindowFrame = "{{448, 309}, {750, 558}}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 }
