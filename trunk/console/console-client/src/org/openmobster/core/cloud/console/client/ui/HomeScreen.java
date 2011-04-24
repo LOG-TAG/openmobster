@@ -7,10 +7,12 @@
  */
 package org.openmobster.core.cloud.console.client.ui;
 
+import org.openmobster.core.cloud.console.client.common.Constants;
 import org.openmobster.core.cloud.console.client.ui.accounts.AccountsScreen;
 import org.openmobster.core.cloud.console.client.ui.user.AdminScreenLoader;
 import org.openmobster.core.cloud.console.client.ui.user.ApproveAdminScreen;
 import org.openmobster.core.cloud.console.client.ui.accounts.DeviceScreenLoader;
+import org.openmobster.core.cloud.console.client.ui.apn.PushAppLoader;
 
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -66,7 +68,7 @@ public class HomeScreen implements Screen
 
         tileGrid.setFields(iconField, nameField);
         
-        tileGrid.setData(NavigationController.manageAccounts);
+        tileGrid.setData(NavigationController.all);
         
         tileGrid.addRecordClickHandler(new HomeScreenHandler());
         
@@ -89,6 +91,10 @@ public class HomeScreen implements Screen
 	        else if(id.equals("admin_approvals"))
 	        {
 	            AdminScreenLoader.load(id);
+	        }
+	        else if(id.equals("id_push_setup"))
+	        {
+	        	PushAppLoader.load(Constants.push_app);
 	        }
 	    }
 	}

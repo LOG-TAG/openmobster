@@ -36,6 +36,7 @@ import org.openmobster.core.cloud.console.client.flow.TransitionService;
 import org.openmobster.core.cloud.console.client.model.AdminAccount;
 import org.openmobster.core.cloud.console.client.state.AppContext;
 import org.openmobster.core.cloud.console.client.state.ContextRegistry;
+import org.openmobster.core.cloud.console.client.ui.apn.UploadCertificateDialog;
 
 /**
  *
@@ -93,12 +94,8 @@ public class AuthenticationDialog implements Screen
         createAccount.setTitle("Create Account");
         createAccount.addClickHandler(new StartCreateAccountHandler());
         
-        //Button forgotPassword = new Button();
-        //forgotPassword.setTitle("Forgot Password?");
-        
         toolbar.addMember(login);
         toolbar.addMember(createAccount);
-        //toolbar.addMember(forgotPassword);
         
         
         winModal.addItem(formLayout);
@@ -114,6 +111,7 @@ public class AuthenticationDialog implements Screen
 	    @Override
 	    public void onClick(ClickEvent event) 
 	    {
+	    	//FIXME: only for hosted development
 	    	Object emailVal = AuthenticationDialog.this.email.getValue();
 	    	Object passwordVal = AuthenticationDialog.this.password.getValue();
 	    	
@@ -170,6 +168,13 @@ public class AuthenticationDialog implements Screen
 							}
 						}
 			});
+	    	
+	    	/*
+	    	TransitionService transitionService = FlowServiceRegistry.getTransitionService();
+			transitionService.closeActiveWindow();
+        
+			MainScreen mainScreen = new MainScreen();
+			transitionService.transitionHost(mainScreen);*/
 	    }
 	}
 	
