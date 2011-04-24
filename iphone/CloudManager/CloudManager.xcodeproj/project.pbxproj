@@ -13,7 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		A21EC7CE131C0C080030ECCE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC7CD131C0C080030ECCE /* libmobilecloudlib.a */; };
 		A2502850130A27BD006DC2C8 /* AjaxShowList.m in Sources */ = {isa = PBXBuildFile; fileRef = A250284E130A27BD006DC2C8 /* AjaxShowList.m */; };
 		A2502851130A27BD006DC2C8 /* AjaxShowList.xib in Resources */ = {isa = PBXBuildFile; fileRef = A250284F130A27BD006DC2C8 /* AjaxShowList.xib */; };
 		A250287B130AA77F006DC2C8 /* AjaxGetListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */; };
@@ -28,8 +27,8 @@
 		A2502CD113103215006DC2C8 /* AjaxCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CD013103215006DC2C8 /* AjaxCommand.m */; };
 		A2502CF8131037B6006DC2C8 /* BusyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CF7131037B6006DC2C8 /* BusyCommand.m */; };
 		A2502CFF1310381F006DC2C8 /* FastCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CFE1310381F006DC2C8 /* FastCommand.m */; };
-		A267E5DB12C54BD900693E1A /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E5D912C54BD900693E1A /* Home.m */; };
-		A267E5DC12C54BD900693E1A /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = A267E5DA12C54BD900693E1A /* Home.xib */; };
+		A26229AE13413B5600B1BEB3 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = A26229AC13413B5600B1BEB3 /* Home.m */; };
+		A26229AF13413B5600B1BEB3 /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26229AD13413B5600B1BEB3 /* Home.xib */; };
 		A28698BB12F88DD700A4792E /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28698BA12F88DD700A4792E /* configuration.xcdatamodel */; };
 		A28698BD12F88DDD00A4792E /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28698BC12F88DDD00A4792E /* sync.xcdatamodel */; };
 		A28698BF12F88DE400A4792E /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28698BE12F88DE400A4792E /* mobileobject.xcdatamodel */; };
@@ -47,6 +46,7 @@
 		A296335712CBF36400928950 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */; };
 		A29D69F412B7E53800DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F312B7E53800DAE753 /* CFNetwork.framework */; };
 		A29D69F912B7E56300DAE753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F812B7E56300DAE753 /* CoreData.framework */; };
+		A2E1C1381364878E003B2B18 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1C1371364878E003B2B18 /* libmobilecloudlib.a */; };
 		A2E5558212F0F1F9008B3FCE /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +61,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CloudManager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CloudManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CloudManager-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A21EC7CD131C0C080030ECCE /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 		A250284D130A27BD006DC2C8 /* AjaxShowList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxShowList.h; sourceTree = "<group>"; };
 		A250284E130A27BD006DC2C8 /* AjaxShowList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxShowList.m; sourceTree = "<group>"; };
 		A250284F130A27BD006DC2C8 /* AjaxShowList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjaxShowList.xib; sourceTree = "<group>"; };
@@ -86,9 +85,9 @@
 		A2502CF7131037B6006DC2C8 /* BusyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusyCommand.m; sourceTree = "<group>"; };
 		A2502CFD1310381F006DC2C8 /* FastCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCommand.h; sourceTree = "<group>"; };
 		A2502CFE1310381F006DC2C8 /* FastCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastCommand.m; sourceTree = "<group>"; };
-		A267E5D812C54BD900693E1A /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Home.h; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.h"; sourceTree = DEVELOPER_DIR; };
-		A267E5D912C54BD900693E1A /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Home.m; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.m"; sourceTree = DEVELOPER_DIR; };
-		A267E5DA12C54BD900693E1A /* Home.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Home.xib; path = "../Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/CloudManager/Classes/Home.xib"; sourceTree = DEVELOPER_DIR; };
+		A26229AB13413B5600B1BEB3 /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		A26229AC13413B5600B1BEB3 /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
+		A26229AD13413B5600B1BEB3 /* Home.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Home.xib; sourceTree = "<group>"; };
 		A28698BA12F88DD700A4792E /* configuration.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = configuration.xcdatamodel; path = ../mobilecloudlib/configuration.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		A28698BC12F88DDD00A4792E /* sync.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = sync.xcdatamodel; path = ../mobilecloudlib/sync.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		A28698BE12F88DE400A4792E /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = mobileobject.xcdatamodel; path = ../mobilecloudlib/mobileobject.xcdatamodel; sourceTree = SOURCE_ROOT; };
@@ -111,6 +110,7 @@
 		A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = SOURCE_ROOT; };
 		A29D69F312B7E53800DAE753 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A29D69F812B7E56300DAE753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A2E1C1371364878E003B2B18 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 		A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +124,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				A29D69F412B7E53800DAE753 /* CFNetwork.framework in Frameworks */,
 				A29D69F912B7E56300DAE753 /* CoreData.framework in Frameworks */,
-				A21EC7CE131C0C080030ECCE /* libmobilecloudlib.a in Frameworks */,
+				A2E1C1381364878E003B2B18 /* libmobilecloudlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,11 +134,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A267E5D812C54BD900693E1A /* Home.h */,
-				A267E5D912C54BD900693E1A /* Home.m */,
-				A267E5DA12C54BD900693E1A /* Home.xib */,
 				1D3623240D0F684500981E51 /* CloudManagerAppDelegate.h */,
 				1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */,
+				A26229AB13413B5600B1BEB3 /* Home.h */,
+				A26229AC13413B5600B1BEB3 /* Home.m */,
+				A26229AD13413B5600B1BEB3 /* Home.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -197,7 +197,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A21EC7CC131C0BEF0030ECCE /* openmobster */,
+				A2E1C1371364878E003B2B18 /* libmobilecloudlib.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -205,14 +205,6 @@
 				A29D69F812B7E56300DAE753 /* CoreData.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A21EC7CC131C0BEF0030ECCE /* openmobster */ = {
-			isa = PBXGroup;
-			children = (
-				A21EC7CD131C0C080030ECCE /* libmobilecloudlib.a */,
-			);
-			name = openmobster;
 			sourceTree = "<group>";
 		};
 		A250284C130A251D006DC2C8 /* Ajax */ = {
@@ -329,7 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				A267E5DC12C54BD900693E1A /* Home.xib in Resources */,
 				A296315C12CB960000928950 /* CloudManagerApp.xib in Resources */,
 				A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */,
 				A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */,
@@ -342,6 +333,7 @@
 				A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */,
 				A2502BB4130C693D006DC2C8 /* Form.xib in Resources */,
 				A2502C9A13102A20006DC2C8 /* UICommandFramework.xib in Resources */,
+				A26229AF13413B5600B1BEB3 /* Home.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +346,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* CloudManagerAppDelegate.m in Sources */,
-				A267E5DB12C54BD900693E1A /* Home.m in Sources */,
 				A28698BB12F88DD700A4792E /* configuration.xcdatamodel in Sources */,
 				A28698BD12F88DDD00A4792E /* sync.xcdatamodel in Sources */,
 				A28698BF12F88DE400A4792E /* mobileobject.xcdatamodel in Sources */,
@@ -373,6 +364,7 @@
 				A2502CD113103215006DC2C8 /* AjaxCommand.m in Sources */,
 				A2502CF8131037B6006DC2C8 /* BusyCommand.m in Sources */,
 				A2502CFF1310381F006DC2C8 /* FastCommand.m in Sources */,
+				A26229AE13413B5600B1BEB3 /* Home.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

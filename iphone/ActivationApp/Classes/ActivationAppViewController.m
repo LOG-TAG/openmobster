@@ -64,6 +64,12 @@
     [super dealloc];
 }
 
+ // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+ - (void)viewDidLoad 
+ {
+	 [super viewDidLoad];
+ }
+
 //-----UITableViewDataSource implementation--------------------------------------------
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UIKernel.h"
+#import "UICommandDelegate.h"
 
-@interface Home : UIViewController<UITableViewDataSource,UITableViewDelegate> 
+@interface Home : UIViewController<UITableViewDataSource,UITableViewDelegate,UICommandDelegate> 
 {
 }
 @end

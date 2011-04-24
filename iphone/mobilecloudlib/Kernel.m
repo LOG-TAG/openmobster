@@ -83,7 +83,6 @@ static Kernel *singleton = nil;
 		
 		//DeviceManager service
 		[registry addService:dm];
-		[dm sendOsCallback];
 	}
 }
 

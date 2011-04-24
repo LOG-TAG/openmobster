@@ -8,6 +8,7 @@
 
 #import "ActivateDevice.h"
 #import "Bus.h"
+#import "DeviceManager.h"
 
 
 /**
@@ -130,5 +131,9 @@
 	[conf saveInstance];
 	Bus *bus = [Bus getInstance];
 	[bus postSharedConf:conf];
+	
+	//Register Device Meta Data with the Cloud
+	DeviceManager *dm = [DeviceManager getInstance];
+	[dm sendOsCallback];
 }
 @end

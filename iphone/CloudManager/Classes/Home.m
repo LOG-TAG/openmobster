@@ -7,7 +7,13 @@
  */
 
 #import "Home.h"
-
+#import "ChannelBootstrapCommand.h"
+#import "ShowList.h"
+#import "AjaxShowList.h"
+#import "AjaxGetListCommand.h"
+#import "AppSession.h"
+#import "Form.h"
+#import "UICommandFramework.h"
 
 @implementation Home
 
@@ -60,7 +66,7 @@
 //UITableViewDataSource and UITableViewDelegate protocol implementation
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 3;
+	return 5;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -77,15 +83,23 @@
 	switch(index)
 	{
 		case 0:
-			local.textLabel.text = @"Hello World";
+			local.textLabel.text = @"CRUD/Sync Showcase";
 		break;
 			
 		case 1:
-			local.textLabel.text = @"Launch Cloud Manager";
+			local.textLabel.text = @"Ajax Showcase";
 		break;
 			
 		case 2:
-			local.textLabel.text = @"Launch Device Activation";
+			local.textLabel.text = @"Form Submission Showcase";
+		break;
+		
+		case 3:
+			local.textLabel.text = @"Command Framework Showcase";
+		break;
+			
+		case 4:
+			local.textLabel.text = @"Showcase Not Working?";
 		break;
 	}
 	
@@ -102,23 +116,139 @@
 	
 	int index = indexPath.row;
 	
-	
 	if(index == 0)
 	{
-		//Launch CloudManager
-		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"Hello World!!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		dialog = [dialog autorelease];
-		[dialog show];
+		CommandContext *commandContext = [CommandContext withInit:self];
+		[commandContext setTarget:[ChannelBootstrapCommand withInit]];
+		[commandContext setAttribute:@"indexPath" :indexPath];
+		
+		CommandService *service = [CommandService getInstance];
+		[service execute:commandContext];		
 	}
 	else if(index == 1)
 	{
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel launchCloudManager:self];
+		CommandContext *commandContext = [CommandContext withInit:self];
+		[commandContext setTarget:[AjaxGetListCommand withInit]];
+		[commandContext setAttribute:@"indexPath" :indexPath];
+		
+		CommandService *service = [CommandService getInstance];
+		[service execute:commandContext];
 	}
 	else if(index == 2)
+	{
+		Form *modalView = [[Form alloc] initWithNibName:@"Form" bundle:nil];
+		modalView.delegate = self;
+		
+		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
+		[modalView release];
+		
+		//Add the Title
+		navCtrl.navigationBar.topItem.title = @"Form Submission";
+		
+		//Add the Done button to the navbar
+		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:modalView action:@selector(done:)];
+		navCtrl.topViewController.navigationItem.leftBarButtonItem = doneButton;
+		[doneButton release];
+		
+		
+		[self presentModalViewController:navCtrl animated:YES];
+		[navCtrl release];		
+	}
+	else if(index == 3)
+	{
+		UICommandFramework *modalView = [[UICommandFramework alloc] initWithNibName:@"UICommandFramework" bundle:nil];
+		modalView.delegate = self;
+		
+		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
+		[modalView release];
+		
+		//Add the Title
+		navCtrl.navigationBar.topItem.title = @"Command Framework Demo";
+		
+		//Add the Done button to the navbar
+		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:modalView action:@selector(done:)];
+		navCtrl.topViewController.navigationItem.leftBarButtonItem = doneButton;
+		[doneButton release];
+		
+		
+		[self presentModalViewController:navCtrl animated:YES];
+		[navCtrl release];
+	}
+	else if(index == 4)
 	{
 		UIKernel *uiKernel = [UIKernel getInstance];
 		[uiKernel launchDeviceActivation:self];
 	}
 }
+//------UICommandDelegate impl-----------------------------------------------------
+-(void)doViewAfter:(CommandContext *)commandContext
+{
+	NSIndexPath *indexPath = [commandContext getAttribute:@"indexPath"];
+	int index = indexPath.row;
+	
+	if(index == 0)
+	{
+		ShowList *modalView = [[ShowList alloc] initWithNibName:@"ShowList" bundle:nil];
+		modalView.delegate = self;
+	
+		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
+		[modalView release];
+	
+		//Add the Title
+		navCtrl.navigationBar.topItem.title = @"CRUD/Sync Showcase";
+	
+		//Add the Done button to the navbar
+		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:modalView action:@selector(done:)];
+		navCtrl.topViewController.navigationItem.leftBarButtonItem = doneButton;
+		[doneButton release];
+	
+	
+		[self presentModalViewController:navCtrl animated:YES];
+		[navCtrl release];
+	}
+	else if(index == 1)
+	{
+		NSArray *emails = [commandContext getAttribute:@"emails"];
+	
+		AppSession *appSession = [AppSession getInstance];
+		[appSession setAttribute:@"emails" :emails];
+	
+		AjaxShowList *modalView = [[AjaxShowList alloc] initWithNibName:@"AjaxShowList" bundle:nil];
+		modalView.delegate = self;
+	 
+		UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
+		[modalView release];
+	 
+		//Add the Title
+		navCtrl.navigationBar.topItem.title = @"Ajax Showcase";
+	 
+		//Add the Done button to the navbar
+		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:modalView action:@selector(done:)];
+		navCtrl.topViewController.navigationItem.leftBarButtonItem = doneButton;
+		[doneButton release];
+	 
+	 
+		[self presentModalViewController:navCtrl animated:YES];
+		[navCtrl release];
+	}
+}
+
+-(void)doViewError:(CommandContext *)commandContext
+{
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Error"
+													 message:@"Unkown System Error" delegate:nil 
+										   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	[dialog show];
+}
+
+-(void)doViewAppException:(CommandContext *)commandContext
+{
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Error"
+													 message:@"Unkown System Error" delegate:nil 
+										   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	[dialog show];
+}
+
 @end

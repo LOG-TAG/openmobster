@@ -16,11 +16,11 @@
 		A25E9DB01225CB9500A8AE19 /* SystemException.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E9DAC1225CB9500A8AE19 /* SystemException.m */; };
 		A26227E1133234A700B1BEB3 /* DeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A26227DF133234A700B1BEB3 /* DeviceManager.h */; };
 		A26227E2133234A700B1BEB3 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A26227E0133234A700B1BEB3 /* DeviceManager.m */; };
-		A267E57E12C5479000693E1A /* ModalActivateDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57712C5478F00693E1A /* ModalActivateDevice.h */; };
-		A267E57F12C5479000693E1A /* ModalActivateDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E57812C5478F00693E1A /* ModalActivateDevice.m */; };
+		A262293A13412CBE00B1BEB3 /* ModalActivateDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A262293613412CBE00B1BEB3 /* ModalActivateDevice.h */; };
+		A262293B13412CBE00B1BEB3 /* ModalActivateDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A262293713412CBE00B1BEB3 /* ModalActivateDevice.m */; };
+		A262293C13412CBE00B1BEB3 /* SecurityConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A262293813412CBE00B1BEB3 /* SecurityConfig.h */; };
+		A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A262293913412CBE00B1BEB3 /* SecurityConfig.m */; };
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
-		A267E58112C5479000693E1A /* SecurityConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57B12C5478F00693E1A /* SecurityConfig.h */; };
-		A267E58212C5479000693E1A /* SecurityConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E57C12C5479000693E1A /* SecurityConfig.m */; };
 		A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58E12C5484300693E1A /* ActivityIndicatorView.h */; };
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
 		A28694F412F774F600A4792E /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
@@ -333,13 +333,13 @@
 		A25E9DAC1225CB9500A8AE19 /* SystemException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemException.m; path = ../../SystemException.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26227DF133234A700B1BEB3 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		A26227E0133234A700B1BEB3 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
-		A267E57712C5478F00693E1A /* ModalActivateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalActivateDevice.h; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.h"; sourceTree = "<absolute>"; };
-		A267E57812C5478F00693E1A /* ModalActivateDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalActivateDevice.m; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.m"; sourceTree = "<absolute>"; };
-		A267E57912C5478F00693E1A /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.xib"; sourceTree = "<absolute>"; };
+		A262293413412C8900B1BEB3 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalActivateDevice.xib; sourceTree = "<group>"; };
+		A262293513412C9B00B1BEB3 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityConfig.xib; sourceTree = "<group>"; };
+		A262293613412CBE00B1BEB3 /* ModalActivateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalActivateDevice.h; sourceTree = "<group>"; };
+		A262293713412CBE00B1BEB3 /* ModalActivateDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalActivateDevice.m; sourceTree = "<group>"; };
+		A262293813412CBE00B1BEB3 /* SecurityConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityConfig.h; sourceTree = "<group>"; };
+		A262293913412CBE00B1BEB3 /* SecurityConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityConfig.m; sourceTree = "<group>"; };
 		A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewLauncherDelegate.h; sourceTree = "<group>"; };
-		A267E57B12C5478F00693E1A /* SecurityConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityConfig.h; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.h"; sourceTree = "<absolute>"; };
-		A267E57C12C5479000693E1A /* SecurityConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityConfig.m; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.m"; sourceTree = "<absolute>"; };
-		A267E57D12C5479000693E1A /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = "/Users/openmobster/projects/openmobster/googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.xib"; sourceTree = "<absolute>"; };
 		A267E58E12C5484300693E1A /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		A267E58F12C5484300693E1A /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
 		A267E59012C5484300693E1A /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
@@ -799,11 +799,11 @@
 		A267E5FA12C54ED300693E1A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A262293613412CBE00B1BEB3 /* ModalActivateDevice.h */,
+				A262293713412CBE00B1BEB3 /* ModalActivateDevice.m */,
+				A262293813412CBE00B1BEB3 /* SecurityConfig.h */,
+				A262293913412CBE00B1BEB3 /* SecurityConfig.m */,
 				A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */,
-				A267E57712C5478F00693E1A /* ModalActivateDevice.h */,
-				A267E57812C5478F00693E1A /* ModalActivateDevice.m */,
-				A267E57B12C5478F00693E1A /* SecurityConfig.h */,
-				A267E57C12C5479000693E1A /* SecurityConfig.m */,
 				A296311412CB8F5700928950 /* CloudManagerApp.h */,
 				A296311512CB8F5700928950 /* CloudManagerApp.m */,
 				A296334B12CBF27200928950 /* ActivateDeviceCloudInfo.h */,
@@ -827,14 +827,14 @@
 		A2869D7112F9BC0900A4792E /* app-bundle */ = {
 			isa = PBXGroup;
 			children = (
+				A262293513412C9B00B1BEB3 /* SecurityConfig.xib */,
+				A262293413412C8900B1BEB3 /* ModalActivateDevice.xib */,
 				A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */,
 				A2DF3D241225BDDA004C908F /* sync.xcdatamodel */,
 				A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */,
 				A296334D12CBF27200928950 /* ActivateDeviceCloudInfo.xib */,
 				A296311612CB8F5700928950 /* CloudManagerApp.xib */,
 				A267E59012C5484300693E1A /* ActivityIndicatorView.xib */,
-				A267E57912C5478F00693E1A /* ModalActivateDevice.xib */,
-				A267E57D12C5479000693E1A /* SecurityConfig.xib */,
 			);
 			name = "app-bundle";
 			sourceTree = "<group>";
@@ -1401,9 +1401,7 @@
 				A29D67B012B41FDD00DAE753 /* ProxySync.h in Headers */,
 				A29D684912B6DA9C00DAE753 /* Bus.h in Headers */,
 				A29D6C6D12B8FF1B00DAE753 /* Channel.h in Headers */,
-				A267E57E12C5479000693E1A /* ModalActivateDevice.h in Headers */,
 				A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */,
-				A267E58112C5479000693E1A /* SecurityConfig.h in Headers */,
 				A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */,
 				A2962BF912C9118600928950 /* AppException.h in Headers */,
 				A2962C1112C9363400928950 /* CommandContext.h in Headers */,
@@ -1430,6 +1428,8 @@
 				A2869F3D12F9F1D100A4792E /* AppService.h in Headers */,
 				A286A4BB12FAF53C00A4792E /* AppSession.h in Headers */,
 				A26227E1133234A700B1BEB3 /* DeviceManager.h in Headers */,
+				A262293A13412CBE00B1BEB3 /* ModalActivateDevice.h in Headers */,
+				A262293C13412CBE00B1BEB3 /* SecurityConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1892,8 +1892,6 @@
 				A29D67B112B41FDD00DAE753 /* ProxySync.m in Sources */,
 				A29D684A12B6DA9C00DAE753 /* Bus.m in Sources */,
 				A29D6C6E12B8FF1B00DAE753 /* Channel.m in Sources */,
-				A267E57F12C5479000693E1A /* ModalActivateDevice.m in Sources */,
-				A267E58212C5479000693E1A /* SecurityConfig.m in Sources */,
 				A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */,
 				A2962BFA12C9118600928950 /* AppException.m in Sources */,
 				A2962C1212C9363400928950 /* CommandContext.m in Sources */,
@@ -1912,6 +1910,8 @@
 				A2869F3E12F9F1D100A4792E /* AppService.m in Sources */,
 				A286A4BC12FAF53C00A4792E /* AppSession.m in Sources */,
 				A26227E2133234A700B1BEB3 /* DeviceManager.m in Sources */,
+				A262293B13412CBE00B1BEB3 /* ModalActivateDevice.m in Sources */,
+				A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2007,7 +2007,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

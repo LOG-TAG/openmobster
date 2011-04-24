@@ -24,8 +24,8 @@
 		A21EC850131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC848131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib */; };
 		A21EC851131C2FB10030ECCE /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC849131C2FB10030ECCE /* CloudManagerApp.xib */; };
 		A21EC852131C2FB10030ECCE /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */; };
-		A21EC853131C2FB10030ECCE /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC84B131C2FB10030ECCE /* ModalActivateDevice.xib */; };
-		A21EC854131C2FB10030ECCE /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC84C131C2FB10030ECCE /* SecurityConfig.xib */; };
+		A262297E1341336E00B1BEB3 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A262297C1341336E00B1BEB3 /* SecurityConfig.xib */; };
+		A262297F1341336E00B1BEB3 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,8 +51,8 @@
 		A21EC848131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = SOURCE_ROOT; };
 		A21EC849131C2FB10030ECCE /* CloudManagerApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CloudManagerApp.xib; path = ../mobilecloudlib/CloudManagerApp.xib; sourceTree = SOURCE_ROOT; };
 		A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
-		A21EC84B131C2FB10030ECCE /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = "../../../../../googlecode/src/2.2-M1/iphone/mobilecloudlib/ModalActivateDevice.xib"; sourceTree = SOURCE_ROOT; };
-		A21EC84C131C2FB10030ECCE /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = "../../../../../googlecode/src/2.2-M1/iphone/mobilecloudlib/SecurityConfig.xib"; sourceTree = SOURCE_ROOT; };
+		A262297C1341336E00B1BEB3 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
+		A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,13 +116,13 @@
 			isa = PBXGroup;
 			children = (
 				A21EC845131C2FB10030ECCE /* configuration.xcdatamodel */,
+				A262297C1341336E00B1BEB3 /* SecurityConfig.xib */,
+				A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */,
 				A21EC846131C2FB10030ECCE /* sync.xcdatamodel */,
 				A21EC847131C2FB10030ECCE /* mobileobject.xcdatamodel */,
 				A21EC848131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib */,
 				A21EC849131C2FB10030ECCE /* CloudManagerApp.xib */,
 				A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */,
-				A21EC84B131C2FB10030ECCE /* ModalActivateDevice.xib */,
-				A21EC84C131C2FB10030ECCE /* SecurityConfig.xib */,
 				2899E5210DE3E06400AC0155 /* ActivationAppViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* ActivationApp-Info.plist */,
@@ -197,8 +197,8 @@
 				A21EC850131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib in Resources */,
 				A21EC851131C2FB10030ECCE /* CloudManagerApp.xib in Resources */,
 				A21EC852131C2FB10030ECCE /* ActivityIndicatorView.xib in Resources */,
-				A21EC853131C2FB10030ECCE /* ModalActivateDevice.xib in Resources */,
-				A21EC854131C2FB10030ECCE /* SecurityConfig.xib in Resources */,
+				A262297E1341336E00B1BEB3 /* SecurityConfig.xib in Resources */,
+				A262297F1341336E00B1BEB3 /* ModalActivateDevice.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
