@@ -17,6 +17,41 @@ import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
  */
 public class TestConflictResolution extends AbstractSync 
 {
+	public void testOptimisticLockStateManagement() throws Exception
+	{
+		//Make sure both nodes are prepared
+		this.deviceDatabase.deleteAll(this.service);
+		this.performBootSync();
+		
+		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
+		
+		this.performTwoWaySync();
+		
+		//Assert Server State
+		this.assertServerPresence("unique-1");
+		this.assertServerPresence("unique-2");
+		this.assertServerMessage("unique-1", deviceRecord.getValue("message"));
+		
+		//Assert Device State
+		this.assertDevicePresence("unique-1");
+		this.assertDevicePresence("unique-2");
+		this.assertDeviceMessage("unique-1", deviceRecord.getValue("message"));
+		
+		deviceRecord = this.updateDeviceRecord("unique-1","updated again!!");
+		
+		this.performTwoWaySync();
+		
+		//Assert Server State
+		this.assertServerPresence("unique-1");
+		this.assertServerPresence("unique-2");
+		this.assertServerMessage("unique-1", deviceRecord.getValue("message"));
+		
+		//Assert Device State
+		this.assertDevicePresence("unique-1");
+		this.assertDevicePresence("unique-2");
+		this.assertDeviceMessage("unique-1", deviceRecord.getValue("message"));
+	}
+	
 	public void testTwoWaySyncConflict() throws Exception
 	{
 		//Make sure both nodes are prepared

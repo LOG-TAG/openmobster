@@ -96,7 +96,17 @@ public class Device implements Serializable
 	public void setIdentity(Identity identity) 
 	{
 		this.identity = identity;
-	}	
+	}
+	
+	public String getOs()
+	{
+		DeviceAttribute osAttr = this.readAttribute("os");
+		if(osAttr != null)
+		{
+			return osAttr.getValue();
+		}
+		return null;
+	}
 	//-------------------------------------------------------------------------------------------------------	
 	public void addAttribute(DeviceAttribute attribute)
 	{				

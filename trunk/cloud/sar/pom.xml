@@ -77,6 +77,10 @@
 									<fileset file="${settings.localRepository}/oro/oro/${version.oro}/oro-${version.oro}.jar" />
 									<fileset file="${settings.localRepository}/org/hornetq/hornetq-core/${version.org.hornetq}/hornetq-core-${version.org.hornetq}.jar" />
 									<fileset file="${settings.localRepository}/org/hornetq/hornetq-core-client/${version.org.hornetq}/hornetq-core-client-${version.org.hornetq}.jar" />
+									<fileset file="${settings.localRepository}/org/apache/commons/commons-lang/${version.commons.lang}/commons-lang-${version.commons.lang}.jar" />
+									<fileset file="${settings.localRepository}/org/apache/commons/commons-io/${version.commons.io}/commons-io-${version.commons.io}.jar" />
+									<fileset file="${settings.localRepository}/bouncycastle/bcprov-jdk16/${version.bouncycastle}/bcprov-jdk16-${version.bouncycastle}.jar" />
+									<fileset file="${settings.localRepository}/javapns/javapns-jdk15/${version.javapns}/javapns-jdk15-${version.javapns}.jar" />
 								</copy>
 							    <delete dir="${server.dir}/deploy/openmobster.last" />																	        					        																								       							       							       							
        							<copy todir="${server.dir}/deploy/openmobster.last" overwrite="true">									
@@ -153,6 +157,10 @@
 									<fileset file="${settings.localRepository}/oro/oro/${version.oro}/oro-${version.oro}.jar" />							
 									<fileset file="${settings.localRepository}/org/hornetq/hornetq-core/${version.org.hornetq}/hornetq-core-${version.org.hornetq}.jar" />
 									<fileset file="${settings.localRepository}/org/hornetq/hornetq-core-client/${version.org.hornetq}/hornetq-core-client-${version.org.hornetq}.jar" />
+									<fileset file="${settings.localRepository}/org/apache/commons/commons-lang/${version.commons.lang}/commons-lang-${version.commons.lang}.jar" />
+									<fileset file="${settings.localRepository}/org/apache/commons/commons-io/${version.commons.io}/commons-io-${version.commons.io}.jar" />
+									<fileset file="${settings.localRepository}/bouncycastle/bcprov-jdk16/${version.bouncycastle}/bcprov-jdk16-${version.bouncycastle}.jar" />
+									<fileset file="${settings.localRepository}/javapns/javapns-jdk15/${version.javapns}/javapns-jdk15-${version.javapns}.jar" />
 								</copy>
 							    <delete dir="${server.dir}/deploy/openmobster.last" />																	        					        																								       							       							       							
        							<copy todir="${server.dir}/deploy/openmobster.last" overwrite="true">									
@@ -225,6 +233,10 @@
 												<fileset file="${settings.localRepository}/oro/oro/${version.oro}/oro-${version.oro}.jar" />
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core/${version.org.hornetq}/hornetq-core-${version.org.hornetq}.jar" />
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core-client/${version.org.hornetq}/hornetq-core-client-${version.org.hornetq}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-lang/${version.commons.lang}/commons-lang-${version.commons.lang}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-io/${version.commons.io}/commons-io-${version.commons.io}.jar" />
+												<fileset file="${settings.localRepository}/bouncycastle/bcprov-jdk16/${version.bouncycastle}/bcprov-jdk16-${version.bouncycastle}.jar" />
+												<fileset file="${settings.localRepository}/javapns/javapns-jdk15/${version.javapns}/javapns-jdk15-${version.javapns}.jar" />
 											</copy>
 											
 											<copy tofile="target/mysql5/openmobster-ds.xml" file="${basedir}/src/main/config/mysql5/openmobster-ds.xml" overwrite="true" />
@@ -272,6 +284,10 @@
 												<fileset file="${settings.localRepository}/oro/oro/${version.oro}/oro-${version.oro}.jar" />							
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core/${version.org.hornetq}/hornetq-core-${version.org.hornetq}.jar" />
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core-client/${version.org.hornetq}/hornetq-core-client-${version.org.hornetq}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-lang/${version.commons.lang}/commons-lang-${version.commons.lang}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-io/${version.commons.io}/commons-io-${version.commons.io}.jar" />
+												<fileset file="${settings.localRepository}/bouncycastle/bcprov-jdk16/${version.bouncycastle}/bcprov-jdk16-${version.bouncycastle}.jar" />
+												<fileset file="${settings.localRepository}/javapns/javapns-jdk15/${version.javapns}/javapns-jdk15-${version.javapns}.jar" />
 											</copy>
 											
 											<copy tofile="target/hsqldb/openmobster-ds.xml" file="${basedir}/src/main/config/hsqldb/openmobster-ds.xml" overwrite="true" />																																															       																							
@@ -342,6 +358,10 @@
 												<fileset file="${settings.localRepository}/oro/oro/${version.oro}/oro-${version.oro}.jar" />
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core/${version.org.hornetq}/hornetq-core-${version.org.hornetq}.jar" />
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core-client/${version.org.hornetq}/hornetq-core-client-${version.org.hornetq}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-lang/${version.commons.lang}/commons-lang-${version.commons.lang}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-io/${version.commons.io}/commons-io-${version.commons.io}.jar" />
+												<fileset file="${settings.localRepository}/bouncycastle/bcprov-jdk16/${version.bouncycastle}/bcprov-jdk16-${version.bouncycastle}.jar" />
+												<fileset file="${settings.localRepository}/javapns/javapns-jdk15/${version.javapns}/javapns-jdk15-${version.javapns}.jar" />
 											</copy>
 											
 											<copy tofile="target/mysql5/openmobster-ds.xml" file="${basedir}/src/main/config/mysql5/openmobster-ds.xml" overwrite="true" />
@@ -389,6 +409,10 @@
 												<fileset file="${settings.localRepository}/oro/oro/${version.oro}/oro-${version.oro}.jar" />							
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core/${version.org.hornetq}/hornetq-core-${version.org.hornetq}.jar" />
 												<fileset file="${settings.localRepository}/org/hornetq/hornetq-core-client/${version.org.hornetq}/hornetq-core-client-${version.org.hornetq}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-lang/${version.commons.lang}/commons-lang-${version.commons.lang}.jar" />
+												<fileset file="${settings.localRepository}/org/apache/commons/commons-io/${version.commons.io}/commons-io-${version.commons.io}.jar" />
+												<fileset file="${settings.localRepository}/bouncycastle/bcprov-jdk16/${version.bouncycastle}/bcprov-jdk16-${version.bouncycastle}.jar" />
+												<fileset file="${settings.localRepository}/javapns/javapns-jdk15/${version.javapns}/javapns-jdk15-${version.javapns}.jar" />
 											</copy>
 											
 											<copy tofile="target/hsqldb/openmobster-ds.xml" file="${basedir}/src/main/config/hsqldb/openmobster-ds.xml" overwrite="true" />																																															       																							

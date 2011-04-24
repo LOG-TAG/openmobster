@@ -26,6 +26,7 @@ public class IntegTestSingleDeviceComet extends AbstractCometTest
 	public void test() throws Exception
 	{					
 		this.device_12345.activateDevice();
+		this.registerDeviceType("IMEI:12345", "android");
 		
 		//Start comet daemon
 		this.device_12345.startCometDaemon();		

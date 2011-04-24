@@ -407,6 +407,25 @@ public abstract class AbstractSync extends TestCase
 		return deviceRecord;
 	}
 	
+	protected MobileObject updateDeviceRecord(String recordId,String message) throws Exception
+	{
+		//update a record on the device
+		MobileObject deviceRecord = (MobileObject)this.getDeviceRecord(recordId);
+		deviceRecord.setValue("message",message);
+		this.deviceDatabase.update(deviceRecord);
+				
+		Vector changelog = new Vector();
+		org.openmobster.device.agent.sync.engine.ChangeLogEntry entry = 
+		new org.openmobster.device.agent.sync.engine.ChangeLogEntry();
+		entry.setNodeId(this.service);
+		entry.setOperation(SyncEngine.OPERATION_UPDATE);
+		entry.setRecordId(deviceRecord.getRecordId());
+		changelog.add(entry);
+		this.deviceSyncEngine.addChangeLogEntries(changelog);
+		
+		return deviceRecord;
+	}
+	
 	protected String deleteDeviceRecord(String recordId) throws Exception
 	{
 		//delete a record on the device

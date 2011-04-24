@@ -11,6 +11,9 @@ package test.openmobster.device.comet;
 import junit.framework.TestCase;
 
 import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.security.device.Device;
+import org.openmobster.core.security.device.DeviceAttribute;
+import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.device.agent.test.framework.MobileBeanRunner;
 
 import org.apache.log4j.Logger;
@@ -37,5 +40,17 @@ public abstract class AbstractCometTest extends TestCase
 	protected void tearDown() throws Exception 
 	{						
 		ServiceManager.shutdown();
-	}		
+	}
+	
+	protected void registerDeviceType(String deviceId,String deviceType)
+	{
+		DeviceController deviceController = DeviceController.getInstance();
+		Device toBeUpdated = deviceController.read(deviceId);
+		DeviceAttribute osAttribute = new DeviceAttribute("os",deviceType);
+		DeviceAttribute versionAttribute = new DeviceAttribute("version","2.0");
+		toBeUpdated.updateAttribute(osAttribute);
+		toBeUpdated.updateAttribute(versionAttribute);
+		
+		deviceController.update(toBeUpdated);
+	}
 }

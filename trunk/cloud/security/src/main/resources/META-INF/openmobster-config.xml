@@ -17,6 +17,10 @@
    		<property name="hibernateManager"><inject bean="security://HibernateManager"/></property>
    </bean>
    
+   <bean name="security://PushAppController" class="org.openmobster.core.security.device.PushAppController">
+   		<property name="hibernateManager"><inject bean="security://HibernateManager"/></property>
+   </bean>
+   
    <bean name="security://Provisioner" class="org.openmobster.core.security.Provisioner">
    		<property name="identityController"><inject bean="security://IdentityController"/></property>
    		<property name="deviceController"><inject bean="security://DeviceController"/></property>
