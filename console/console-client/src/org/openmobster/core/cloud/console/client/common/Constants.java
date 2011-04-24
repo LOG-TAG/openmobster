@@ -15,4 +15,5 @@ public interface Constants
 {
 	public String admin_accounts = "admin-accounts";
 	public String devices = "devices";
+	public String push_app = "push-app";
 }

@@ -7,8 +7,10 @@
  */
 package org.openmobster.core.cloud.console.client.ui;
 
+import org.openmobster.core.cloud.console.client.common.Constants;
 import org.openmobster.core.cloud.console.client.ui.accounts.AccountsScreen;
 import org.openmobster.core.cloud.console.client.ui.accounts.DeviceScreenLoader;
+import org.openmobster.core.cloud.console.client.ui.apn.PushAppLoader;
 import org.openmobster.core.cloud.console.client.ui.user.AdminScreenLoader;
 import org.openmobster.core.cloud.console.client.ui.user.ApproveAdminScreen;
 
@@ -157,8 +159,19 @@ public final class NavigationController
 		createNavigationNode("Administrators", "admin_approvals", "manage_accounts", "openmobster/admin-32.png", "openmobster/admin-128.png", true),
 	};
 	
+	public static TreeNode[] iphone = new TreeNode[]{
+		createNavigationNode("Push Setup", "id_push_setup", "push_setup", "openmobster/push-32.png", "openmobster/push-128.png", true),
+	};
+	
 	public static TreeNode[] adminNodes = new TreeNode[]{
 		createNavigationNode("Account Management","manage_accounts","root", "silk/house.png", null, true, manageAccounts),
+		createNavigationNode("iPhone","iphone_setup","root", "silk/house.png", null, true, iphone),
+	};
+	
+	public static TreeNode[] all = new TreeNode[]{
+		createNavigationNode("Devices", "devices", "manage_devices", "openmobster/devices-32.png", "openmobster/devices-128.png", true),
+		createNavigationNode("Administrators", "admin_approvals", "manage_accounts", "openmobster/admin-32.png", "openmobster/admin-128.png", true),
+		createNavigationNode("Push Setup", "id_push_setup", "push_setup", "openmobster/push-32.png", "openmobster/push-128.png", true),
 	};
 	
 	private static class NavBarHandler implements LeafClickHandler 
@@ -176,6 +189,10 @@ public final class NavigationController
 	        else if(id.equals("admin_approvals"))
 	        {
 	            AdminScreenLoader.load(id);
+	        }
+	        else if(id.equals("id_push_setup"))
+	        {
+	        	PushAppLoader.load(Constants.push_app);
 	        }
 	    }
 	}

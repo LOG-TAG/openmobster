@@ -29,6 +29,28 @@
   </servlet>
   -->
   
+  <servlet>
+    <servlet-name>PushAppServlet</servlet-name>
+    <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceImpl</servlet-class>
+  </servlet>
+  <!--     
+  <servlet>
+    <servlet-name>PushAppServlet</servlet-name>
+    <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceStubImpl</servlet-class>
+  </servlet>
+  -->
+  
+  <servlet>
+    <servlet-name>APNServlet</servlet-name>
+    <servlet-class>org.openmobster.core.cloud.console.server.APNServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>DownloadAPNCertificateServlet</servlet-name>
+    <servlet-class>org.openmobster.core.cloud.console.server.DownloadAPNCertificateServlet</servlet-class>
+  </servlet>
+  
+  
   <servlet-mapping>
     <servlet-name>pingServlet</servlet-name>
     <url-pattern>/app/ping</url-pattern>
@@ -42,6 +64,21 @@
   <servlet-mapping>
     <servlet-name>DeviceServlet</servlet-name>
     <url-pattern>/app/device</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>PushAppServlet</servlet-name>
+    <url-pattern>/app/pushapp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>APNServlet</servlet-name>
+    <url-pattern>/app/apn</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DownloadAPNCertificateServlet</servlet-name>
+    <url-pattern>/app/apn/certificate/download</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

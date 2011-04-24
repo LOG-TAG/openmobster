@@ -15,6 +15,8 @@
     <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
 	
  	<pathelement location="smartgwt-2.2.jar"/>
+  	<pathelement location="commons-fileupload-1.2.2.jar"/>
+  	<pathelement location="commons-io-2.0.1.jar"/>
   	<pathelement location="${env.HOME}/.m2/repository/org/openmobster/core/console/server/console-server/2.2-SNAPSHOT/console-server-2.2-SNAPSHOT.jar"/>
   </path>
 
@@ -23,6 +25,8 @@
     <copy todir="war/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet.jar" />
   	
     <!-- Add any additional server libs that need to be copied -->
+  	<copy todir="war/WEB-INF/lib" file="commons-fileupload-1.2.2.jar" />
+  	<copy todir="war/WEB-INF/lib" file="commons-io-2.0.1.jar" />
   	<copy todir="war/WEB-INF/lib" file="${env.HOME}/.m2/repository/org/openmobster/core/console/server/console-server/2.2-SNAPSHOT/console-server-2.2-SNAPSHOT.jar" />
   </target>
 
