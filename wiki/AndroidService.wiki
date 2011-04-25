@@ -208,7 +208,7 @@ public class DemoService extends Service
 
 ==== Download this tutorial ====
 
-  * [http://openmobster.googlecode.com/svn/service.zip Download]
+  * [http://openmobster.googlecode.com/svn/samples/service.zip Download]
 
   * Run the Android Emulator
 
