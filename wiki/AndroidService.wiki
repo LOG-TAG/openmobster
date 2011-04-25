@@ -1,2 +1,12 @@
 #summary Android Service Component (Start/Stop type)
 
+==== Introduction ====
+A service is an application component that can run some long running task in the background without the need for a user interface. Some other application component can start the service and this service will then keep on running even if the user switches to another application.
+
+There are two types of service components
+
+  * Started : This service is started by another application component. Once started it keeps running until someone stops the service. This type of service provides several callbacks which is the topic of this  tutorial.
+
+  * Bound: A service is bound when another application component invokes the _bindService_ method. Service binding is used to perform client-server like communication between the service and the caller. These invocations can be performed between different processes as well. Multiple callers can bind to a service. The service stays active until there is atleast one caller bound to the service.
+
+This tutorial will cover the *Started* service component.
