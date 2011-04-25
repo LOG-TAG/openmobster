@@ -10,3 +10,79 @@ There are two types of service components
   * Bound: A service is bound when another application component invokes the _bindService_ method. Service binding is used to perform client-server like communication between the service and the caller. These invocations can be performed between different processes as well. Multiple callers can bind to a service. The service stays active until there is atleast one caller bound to the service.
 
 This tutorial will cover the *Started* service component.
+
+==== Step 1: Create a *Service* component ====
+{{{
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.widget.Toast;
+
+/**
+ * 
+ * @author openmobster@gmail.com
+ */
+public class DemoService extends Service
+}}}
+
+==== Step 2: Implement the *onStartCommand* callback ====
+{{{
+@Override
+	public int onStartCommand(Intent intent, int flags, int startId) 
+	{
+		super.onStartCommand(intent, flags, startId);
+		
+		//Announcement about starting
+		Toast.makeText(this, "Starting the Demo Service", Toast.LENGTH_SHORT).show();
+		
+		//Start a Background thread
+		isRunning = true;
+		Thread backgroundThread = new Thread(new BackgroundThread());
+		backgroundThread.start();
+		
+	    // We want this service to continue running until it is explicitly
+	    // stopped, so return sticky.
+	    return START_STICKY;
+	}
+}}}
+
+==== Step 3: Implement the *onDestroy* callback ====
+{{{
+@Override
+	public void onDestroy() 
+	{
+		super.onDestroy();
+		
+		//Stop the Background thread
+		isRunning = false;
+		
+		//Announcement about stopping
+		Toast.makeText(this, "Stopping the Demo Service", Toast.LENGTH_SHORT).show();
+	}
+}}}
+
+==== Step 4: Implement the *Background Thread* ====
+{{{
+private class BackgroundThread implements Runnable
+	{
+		int counter = 0;
+		public void run()
+		{
+			try
+			{
+				counter = 0;
+				while(isRunning)
+				{
+					System.out.println(""+counter++);
+					Thread.currentThread().sleep(5000);
+				}
+				
+				System.out.println("Background Thread is finished.........");
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+}}}
