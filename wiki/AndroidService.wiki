@@ -1,5 +1,9 @@
 #summary Android Service Component (Start/Stop type)
 
+Related Links: [AndroidArea Android Tutorials]
+
+----
+
 ==== Introduction ====
 A service is an application component that can run some long running task in the background without the need for a user interface. Some other application component can start the service and this service will then keep on running even if the user switches to another application.
 
@@ -216,3 +220,7 @@ public class DemoService extends Service
   {{{
       mvn -Papp-hot-deploy install
   }}}
+
+----
+
+Related Links: [AndroidArea Android Tutorials]
