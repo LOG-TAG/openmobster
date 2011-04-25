@@ -1,0 +1,2 @@
+#summary Android Service Component (Start/Stop type)
+
