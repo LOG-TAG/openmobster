@@ -23,5 +23,8 @@ A step by step [JavascriptBridge tutorial] for invoking native Java code from Ja
 ==== SQLite-based CRUD App ====
 A [SQLiteCRUD tutorial] to learn how to use Android's local database system.
 
+==== Service Component ====
+A [AndroidService tutorial] to learn how to write an Android Service component
+
 ----
 *Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
