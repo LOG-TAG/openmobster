@@ -203,3 +203,16 @@ public class DemoService extends Service
 	}
 }
 }}}
+
+----
+
+==== Download this tutorial ====
+
+  * [http://openmobster.googlecode.com/svn/service.zip Download]
+
+  * Run the Android Emulator
+
+  * cd app-android
+  {{{
+      mvn -Papp-hot-deploy install
+  }}}
