@@ -62,7 +62,7 @@ Please see [Concepts Programming Concepts] for more details.
 
 === What mobile platforms are supported? ===
 
-The project is evolving at a rapid pace. At the time of the current release (2.0-Beta1), the supported mobile platforms are *Android version 2.0 and above*, and *Blackberry OS version 4.3.0 and above*. The goal is to support all the major smartphone platforms such as *Apple iPhone*, *Palm webOS*, *Nokia Symbian*, and *Windows Phone 7 series*.
+The project is evolving at a rapid pace. At the time of the current release (2.2-M1), the supported mobile platforms are *Android version 2.0 and above*, and *iPhone/iOS version 3.0 and above*.
 More details can be found on our [roadmap project roadmap].
 
 ----
