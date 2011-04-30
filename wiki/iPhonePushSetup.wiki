@@ -83,3 +83,17 @@ On the OpenMobster side, Apps that want Push notifications must be registered wi
   }}}  
 
 These two operations registers the Application for Push notifications both on the device and on the OpenMobster Push Service.
+
+===== Step 2: Upload the certificate .p12 file =====
+
+  * Login to the Management Console: http://cloud-server-address/console
+
+  * Select *Push Setup*
+
+  * Find the App associated with this certificate
+
+  * Upload the certificate and supply its password
+
+  * If successfull, the icon next to the App will turn green
+
+===== Step 3: Send a Test Push =====
