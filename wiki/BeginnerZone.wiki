@@ -50,6 +50,12 @@ A basic [LocalCommand tutorial] on how to perform a simple fast command within a
 
 ----
 
+==== Setup iPhone Push ====
+
+A [iPhonePushSetup guide] for integrating iPhone Push with the OpenMobster Push service
+
+----
+
 ==== iPhone Showcase ====
 
 This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
