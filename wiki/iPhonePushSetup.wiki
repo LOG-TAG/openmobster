@@ -97,3 +97,11 @@ These two operations registers the Application for Push notifications both on th
   * If successfull, the icon next to the App will turn green
 
 ===== Step 3: Send a Test Push =====
+
+  * Click on the App
+
+  * Click the 'Test Push' button
+
+  * Select the 'Device' where it should be sent
+
+  * You should receive a Push alert on your phone
