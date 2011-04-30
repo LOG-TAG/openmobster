@@ -7,6 +7,6 @@ This is a guide to integrate the iPhone Apple Push Notification (APN) based syst
 
 ==== Apple Provisioning ====
 
-===== Step 1: Obtain the Application Certificate
+===== Step 1: Obtain the Application Certificate ====
 
 In order to push via the APN service, the provider side (OpenMobster->APN connection) requires a certificate for each App registered for Push Notifications. The best instructions for doing the proper provisioning and obtaining a certificate is explained at : [http://mobiforge.com/developing/story/programming-apple-push-notification-services http://mobiforge.com/developing/story/programming-apple-push-notification-services].
