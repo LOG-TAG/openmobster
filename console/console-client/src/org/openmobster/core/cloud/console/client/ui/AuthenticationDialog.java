@@ -112,7 +112,7 @@ public class AuthenticationDialog implements Screen
 	    public void onClick(ClickEvent event) 
 	    {
 	    	//FIXME: only for hosted development
-	    	Object emailVal = AuthenticationDialog.this.email.getValue();
+	    	/*Object emailVal = AuthenticationDialog.this.email.getValue();
 	    	Object passwordVal = AuthenticationDialog.this.password.getValue();
 	    	
 	    	String email = (emailVal != null)?emailVal.toString():"null";
@@ -167,14 +167,14 @@ public class AuthenticationDialog implements Screen
 								transitionService.transitionHost(mainScreen);
 							}
 						}
-			});
+			});*/
+	    	//SC.say("Login", "Internal Server Error. Please try again.Debug",null);
 	    	
-	    	/*
 	    	TransitionService transitionService = FlowServiceRegistry.getTransitionService();
 			transitionService.closeActiveWindow();
         
 			MainScreen mainScreen = new MainScreen();
-			transitionService.transitionHost(mainScreen);*/
+			transitionService.transitionHost(mainScreen);
 	    }
 	}
 	
