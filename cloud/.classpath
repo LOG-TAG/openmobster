@@ -197,5 +197,7 @@
     <!-- Android Dependencies -->
     <classpathentry kind="var" path="ANDROID_HOME/platforms/android-5/android.jar"/>
     
+    <classpathentry kind="var" path="M2_REPO/javapns/javapns-jdk15/165/javapns-jdk15-165.jar"/>
+    
     <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>

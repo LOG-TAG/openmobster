@@ -23,6 +23,8 @@ import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.services.subscription.Subscription;
 import org.openmobster.core.services.subscription.SubscriptionManager;
 
+import org.openmobster.core.push.apn.PushService;
+
 /**
  * @author openmobster@gmail.com
  */
@@ -219,13 +221,13 @@ public final class CometSession implements Serializable,BusListener
 		log.debug("Actually Sending-------------------------------------------------");
 		log.debug("Bus Message received by: "+busMessage.getBusUri());
 		log.debug("Sent by: "+busMessage.getSenderUri());
+		log.debug("Command: "+command);
+		log.debug("NotificationType: "+busMessage.getAttribute("notification-type"));
 		log.debug("-----------------------------------------------------------------");
 		
 		if(command != null)
 		{
-			log.debug("****************************************");
-			log.debug("Handing over to the iphone-push component");
-			log.debug("*****************************************");
+			PushService.getInstance().push(busMessage);
 		}
 	}
 }

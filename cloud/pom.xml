@@ -413,6 +413,11 @@
 				<artifactId>console-server</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.openmobster.core</groupId>
+				<artifactId>push-apn</artifactId>
+				<version>${project.version}</version>				
+			</dependency>
 			
 			<!-- Push-APN component JavaAPNs dependencies -->
 			<dependency>
