@@ -53,4 +53,19 @@ public abstract class AbstractCometTest extends TestCase
 		
 		deviceController.update(toBeUpdated);
 	}
+	
+	protected void registerDeviceType(String deviceId,String deviceType, String deviceToken)
+	{
+		DeviceController deviceController = DeviceController.getInstance();
+		Device toBeUpdated = deviceController.read(deviceId);
+		
+		DeviceAttribute osAttribute = new DeviceAttribute("os",deviceType);
+		DeviceAttribute versionAttribute = new DeviceAttribute("version","2.0");
+		DeviceAttribute deviceTokenAttr = new DeviceAttribute("device-token",deviceToken);
+		toBeUpdated.updateAttribute(osAttribute);
+		toBeUpdated.updateAttribute(versionAttribute);
+		toBeUpdated.updateAttribute(deviceTokenAttr);
+		
+		deviceController.update(toBeUpdated);
+	}
 }

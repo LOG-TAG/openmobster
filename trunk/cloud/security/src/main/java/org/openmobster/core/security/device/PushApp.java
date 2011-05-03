@@ -22,10 +22,12 @@ public class PushApp
 	private String certificateName;
 	private String certificatePassword;
 	private Set<String> channels;
+	private Set<String> devices;
 	
 	public PushApp()
 	{
 		this.channels = new HashSet<String>();
+		this.devices = new HashSet<String>();
 	}
 	
 	public long getId()
@@ -91,5 +93,20 @@ public class PushApp
 	public void addChannel(String channel)
 	{
 		this.channels.add(channel);
+	}
+
+	public Set<String> getDevices()
+	{
+		return devices;
+	}
+
+	public void setDevices(Set<String> devices)
+	{
+		this.devices = devices;
+	}
+	
+	public void addDevice(String device)
+	{
+		this.devices.add(device);
 	}
 }

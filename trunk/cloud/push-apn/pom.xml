@@ -28,5 +28,15 @@
 			<groupId>javapns</groupId>
 			<artifactId>javapns-jdk15</artifactId>
 		</dependency>
+		
+		<!-- OpenMobster Dependencies -->
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>common</artifactId>				
+		</dependency>
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>security</artifactId>				
+		</dependency>
 	</dependencies>
 </project>

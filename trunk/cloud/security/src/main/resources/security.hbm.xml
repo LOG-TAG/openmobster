@@ -150,6 +150,10 @@
         <set name="channels" lazy="false" table="openmobster_push_channel">
         	<key column="id"/>
         	<element type="string" column="channel" not-null="true"/>
-        </set>           
+        </set> 
+        <set name="devices" lazy="false" table="openmobster_push_devices">
+        	<key column="id"/>
+        	<element type="string" column="deviceId" not-null="true"/>
+        </set>          
      </class>
 </hibernate-mapping>

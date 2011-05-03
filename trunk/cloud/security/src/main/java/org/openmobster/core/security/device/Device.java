@@ -107,6 +107,16 @@ public class Device implements Serializable
 		}
 		return null;
 	}
+	
+	public String getDeviceToken()
+	{
+		DeviceAttribute attr = this.readAttribute("device-token");
+		if(attr != null)
+		{
+			return attr.getValue();
+		}
+		return null;
+	}
 	//-------------------------------------------------------------------------------------------------------	
 	public void addAttribute(DeviceAttribute attribute)
 	{				
