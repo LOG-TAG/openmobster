@@ -42,7 +42,7 @@ public final class ManagePushApp
 					//FIXME: Development time code only...comment me out when shipping
 					//this is because PushApp instaces can only be created via
 					//iphone registration
-					/*TransactionHelper.startTx();
+					TransactionHelper.startTx();
 					try
 					{
 						PushAppController controller = PushAppController.getInstance();
@@ -61,7 +61,7 @@ public final class ManagePushApp
 					finally
 					{
 						TransactionHelper.commitTx();
-					}*/
+					}
 				}
 			}
 		}
