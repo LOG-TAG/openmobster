@@ -17,23 +17,23 @@
     <servlet-class>org.openmobster.core.cloud.console.server.AccountServiceStubImpl</servlet-class>
   </servlet>
   -->
-  
+   
   <servlet>
     <servlet-name>DeviceServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.DeviceServiceImpl</servlet-class>
-  </servlet>      
-  <!--  
+  </servlet>
+  <!--          
   <servlet>
     <servlet-name>DeviceServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.DeviceServiceStubImpl</servlet-class>
   </servlet>
   -->
-  
+    
   <servlet>
     <servlet-name>PushAppServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceImpl</servlet-class>
   </servlet>
-  <!--     
+  <!--       
   <servlet>
     <servlet-name>PushAppServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceStubImpl</servlet-class>

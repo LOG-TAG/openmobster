@@ -22,6 +22,7 @@ import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;  
 import com.smartgwt.client.util.SC;
+import com.smartgwt.client.util.BooleanCallback;
 
 import org.openmobster.core.cloud.console.client.ui.Screen;
 import org.openmobster.core.cloud.console.client.ui.TabController;
@@ -157,7 +158,15 @@ public class UploadCertificateDialog implements Screen
 	public void uploadComplete(String fileName) 
 	{
 		SC.clearPrompt();
-		SC.say("Certificate is stored successfully");
+		SC.say("Certificate is stored successfully", new BooleanCallback(){
+			@Override
+			public void execute(Boolean value) 
+			{	
+				FlowServiceRegistry.getTransitionService().closeActiveWindow();
+		    	TabController.getInstance().closeTab(Constants.push_app);
+		    	PushAppLoader.load(Constants.push_app);
+			}
+		});
 		
 		this.fileItem.setValue("");
 		this.password.setValue("");
