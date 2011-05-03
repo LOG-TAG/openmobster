@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>A2E1C1FA1369BAD2003B2B18</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>CloudManagerAppDelegate.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>A2E1C2041369BF4D003B2B18</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>CloudManagerAppDelegate.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>A2E1C2051369BF4D003B2B18</string>
+						<key>history</key>
+						<array>
+							<string>A2E1C1F91369BAD2003B2B18</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {750, 623}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>454 184 750 664 0 0 1440 878 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -262,10 +303,16 @@
 								<key>PBXSmartGroupTreeModuleOutlineStateKey_v7</key>
 								<dict>
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
-									<array/>
+									<array>
+										<string>29B97314FDCFA39411CA2CEA</string>
+										<string>080E96DDFE201D6D7F000001</string>
+										<string>29B97323FDCFA39411CA2CEA</string>
+									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
+											<integer>7</integer>
+											<integer>5</integer>
 											<integer>0</integer>
 										</array>
 									</array>
@@ -293,7 +340,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>7 455 446 419 0 0 1440 878 </string>
+								<string>472 455 446 419 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -433,8 +480,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2E1C13313648777003B2B18</string>
-				<string>A2E1C13413648777003B2B18</string>
+				<string>A2E1C2021369BF4D003B2B18</string>
+				<string>A2E1C2031369BF4D003B2B18</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -448,7 +495,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A2E1C10313648564003B2B18</string>
+	<string>A2E1C1FA1369BAD2003B2B18</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -473,13 +520,11 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D5B069F1CE1000CFCEE</string>
-		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/CloudManager.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>7 455 446 419 0 0 1440 878 </string>
+	<string>472 455 446 419 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -693,7 +738,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2E1C13513648777003B2B18</string>
+				<string>A2E1C2061369BF4D003B2B18</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -815,13 +860,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A2E1C14A13648A11003B2B18</string>
+				<string>A2E1C17A13678212003B2B18</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A2E1C14B13648A11003B2B18</string>
-				<string>A2E1C14C13648A11003B2B18</string>
-				<string>A2E1C14D13648A11003B2B18</string>
-				<string>A2E1C14E13648A11003B2B18</string>
-				<string>A2E1C14F13648A11003B2B18</string>
+				<string>A2E1C17B13678212003B2B18</string>
+				<string>A2E1C17C13678212003B2B18</string>
+				<string>A2E1C17D13678212003B2B18</string>
+				<string>A2E1C17E13678212003B2B18</string>
+				<string>A2E1C17F13678212003B2B18</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -975,7 +1020,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A2E1C15013648A11003B2B18</string>
+				<string>A2E1C18013678212003B2B18</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
