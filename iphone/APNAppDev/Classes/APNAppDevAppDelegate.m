@@ -16,6 +16,7 @@
 #import "Response.h"
 #import "MobileService.h"
 #import "StringUtil.h"
+#import "SubmitDeviceToken.h"
 
 @implementation APNAppDevAppDelegate
 
@@ -67,6 +68,8 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+	AppService *appService = [AppService getInstance];
+	[appService start];
 }
 
 
@@ -108,59 +111,54 @@
 	deviceTokenStr = [StringUtil replaceAll:deviceTokenStr :@"<" :@""];
 	deviceTokenStr = [StringUtil replaceAll:deviceTokenStr :@">" :@""];
 	
-	//For debugging
-	//show this in an alert dialog
-	/*UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Device Token"
-													 message:deviceTokenStr delegate:nil 
-										   cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	dialog = [dialog autorelease];
-	[dialog show];*/
-	@try
+	NSLog(@"DeviceToken: %@",deviceTokenStr);
+
+	@try 
 	{
-		AppService *appService = [AppService getInstance];
-		NSString *deviceToken = deviceTokenStr;
-		NSString *os = @"iphone";
-		NSString *appId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-		NSArray *myChannels = [appService myChannels];
-		NSMutableArray *channelNames = [NSMutableArray array];
-		
-		for(Channel *local in myChannels)
-		{
-			[channelNames addObject:local.name];
-		}
-		
-		//Register this information with the Cloud
-		Configuration *conf = [Configuration getInstance];
-		if(![conf isActivated])
-		{
-			return;
-		}
-		
-		//Setup the Request
-		Request *request = [Request withInit:@"iphone_push_callback"];
-		[request setAttribute:@"os" :os];
-		[request setAttribute:@"deviceToken" :deviceToken];
-		[request setAttribute:@"appId" :appId];
-		[request setListAttribute:@"channels" :[NSArray arrayWithArray:channelNames]];
-		
-		//Setup MobileService
-		MobileService *mobileService = [MobileService withInit];
-		[mobileService invoke:request];
+		SubmitDeviceToken *submit = [SubmitDeviceToken withInit];
+		[submit submit:deviceTokenStr];
 	}
-	@catch(SystemException *syse)
+	@catch (SystemException * syse) 
 	{
-		//Do Nothing
-		//NSLog(@"Problem Registering With the Cloud");
-		[ErrorHandler handleException:syse];
+		UIAlertView *dialog = [[UIAlertView alloc] 
+							   initWithTitle:@"Token Registration Error"
+							   message:@"Device Token Cloud Registration Failed. Please make sure your device is activated with the Cloud using the ActivationApp. Re-start this App to start the token registration again" 
+							   delegate:nil 
+							   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		dialog = [dialog autorelease];
+		[dialog show];
 	}
-	
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err { 
 	
     NSString *str = [NSString stringWithFormat: @"Error: %@", err];
-    NSLog(@"%@",str);    
+    NSLog(@"%@",str); 
 	
+	
+	//This is just simulator code. Remove for real device
+	//This is because Push is not available in the Simulator
+	//so during Simulation Mode, using a dummy device token
+	NSString *deviceToken = @"<9a47d66a ce92c38c fcdc0835 c26224ea 27b296c9 d057a06f f3431bbd 4931ee10>";
+	NSString *deviceTokenStr = [NSString stringWithFormat:@"%@",deviceToken];
+	deviceTokenStr = [StringUtil replaceAll:deviceTokenStr :@"<" :@""];
+	deviceTokenStr = [StringUtil replaceAll:deviceTokenStr :@">" :@""];
+	
+	@try
+	{
+		SubmitDeviceToken *submit = [SubmitDeviceToken withInit];
+		[submit submit:deviceTokenStr];
+	}
+	@catch(SystemException *syse)
+	{
+		UIAlertView *dialog = [[UIAlertView alloc] 
+							   initWithTitle:@"Token Registration Error"
+							   message:@"Device Token Cloud Registration Failed. Please make sure your device is activated with the Cloud using the ActivationApp. Re-start this App to start the token registration again" 
+							   delegate:nil 
+							   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		dialog = [dialog autorelease];
+		[dialog show];
+	}
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

@@ -25,8 +25,8 @@
 		A2E1C03C13608EBF003B2B18 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E1C03413608EBF003B2B18 /* ActivityIndicatorView.xib */; };
 		A2E1C03E13608ED6003B2B18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1C03D13608ED6003B2B18 /* CFNetwork.framework */; };
 		A2E1C04013608EE0003B2B18 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1C03F13608EE0003B2B18 /* CoreData.framework */; };
-		A2E1C04213608EF9003B2B18 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1C04113608EF9003B2B18 /* libmobilecloudlib.a */; };
 		A2E1C04A13608F80003B2B18 /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A2E1C04913608F80003B2B18 /* openmobster-app.xml */; };
+		A2E1C2081369BF7F003B2B18 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1C2071369BF7F003B2B18 /* libmobilecloudlib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +53,8 @@
 		A2E1C03413608EBF003B2B18 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
 		A2E1C03D13608ED6003B2B18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A2E1C03F13608EE0003B2B18 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		A2E1C04113608EF9003B2B18 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphoneos/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 		A2E1C04913608F80003B2B18 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
+		A2E1C2071369BF7F003B2B18 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				A2E1C03E13608ED6003B2B18 /* CFNetwork.framework in Frameworks */,
 				A2E1C04013608EE0003B2B18 /* CoreData.framework in Frameworks */,
-				A2E1C04213608EF9003B2B18 /* libmobilecloudlib.a in Frameworks */,
+				A2E1C2081369BF7F003B2B18 /* libmobilecloudlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A2E1C04113608EF9003B2B18 /* libmobilecloudlib.a */,
+				A2E1C2071369BF7F003B2B18 /* libmobilecloudlib.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -238,6 +238,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = APNAppDev;
 			};
@@ -254,6 +255,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = APNAppDev;
 				VALIDATE_PRODUCT = YES;

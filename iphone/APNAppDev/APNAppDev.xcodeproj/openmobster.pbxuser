@@ -2,10 +2,10 @@
 {
 	1D3623250D0F684500981E51 /* APNAppDevAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 2717}}";
-			sepNavSelRange = "{935, 0}";
-			sepNavVisRange = "{5027, 950}";
-			sepNavWindowFrame = "{{498, 89}, {750, 789}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2678}}";
+			sepNavSelRange = "{4217, 0}";
+			sepNavVisRange = "{2955, 1584}";
+			sepNavWindowFrame = "{{1615, 180}, {750, 720}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* APNAppDev */ = {
@@ -17,6 +17,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = A2E1BFED13608A1F003B2B18 /* APNAppDev */;
+		activeSDKPreference = iphonesimulator4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* APNAppDev */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* APNAppDev */,
@@ -26,8 +27,12 @@
 			A2E1BFED13608A1F003B2B18 /* APNAppDev */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 325093919;
-			PBXWorkspaceStateSaveDate = 325093919;
+			PBXPerProjectTemplateStateSaveDate = 325634274;
+			PBXWorkspaceStateSaveDate = 325634274;
+		};
+		perUserProjectItems = {
+			A2E1C2B7136F1B73003B2B18 /* PBXTextBookmark */ = A2E1C2B7136F1B73003B2B18 /* PBXTextBookmark */;
+			A2E1C2B8136F1B73003B2B18 /* PBXTextBookmark */ = A2E1C2B8136F1B73003B2B18 /* PBXTextBookmark */;
 		};
 		sourceControlManager = A2E1BFF313608A3D003B2B18 /* Source Control */;
 		userBuildSettings = {
@@ -79,10 +84,30 @@
 	};
 	A2E1C04913608F80003B2B18 /* openmobster-app.xml */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 661}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 151}";
-			sepNavWindowFrame = "{{15, 91}, {750, 787}}";
+			sepNavWindowFrame = "{{498, 89}, {750, 789}}";
 		};
+	};
+	A2E1C2B7136F1B73003B2B18 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* APNAppDevAppDelegate.m */;
+		name = "APNAppDevAppDelegate.m: 110";
+		rLen = 0;
+		rLoc = 3395;
+		rType = 0;
+		vrLen = 1240;
+		vrLoc = 0;
+	};
+	A2E1C2B8136F1B73003B2B18 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* APNAppDevAppDelegate.m */;
+		name = "APNAppDevAppDelegate.m: 130";
+		rLen = 0;
+		rLoc = 4217;
+		rType = 0;
+		vrLen = 1584;
+		vrLoc = 2955;
 	};
 }
