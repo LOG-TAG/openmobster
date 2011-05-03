@@ -260,6 +260,8 @@
 		A2DF3EDB1225C98B004C908F /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3ED71225C98B004C908F /* Service.m */; };
 		A2DF3EDC1225C98B004C908F /* Registry.h in Headers */ = {isa = PBXBuildFile; fileRef = A2DF3ED81225C98B004C908F /* Registry.h */; };
 		A2DF3EDD1225C98B004C908F /* Registry.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3ED91225C98B004C908F /* Registry.m */; };
+		A2E1C2241369C43D003B2B18 /* SubmitDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = A2E1C2221369C43D003B2B18 /* SubmitDeviceToken.h */; };
+		A2E1C2251369C43D003B2B18 /* SubmitDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E1C2231369C43D003B2B18 /* SubmitDeviceToken.m */; };
 		A2E5551112F0D38B008B3FCE /* AppConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A2E5550F12F0D38B008B3FCE /* AppConfig.h */; };
 		A2E5551212F0D38B008B3FCE /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E5551012F0D38B008B3FCE /* AppConfig.m */; };
 		A2E5562F12F722CF008B3FCE /* MobileBeanMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = A2E5562D12F722CF008B3FCE /* MobileBeanMetaData.h */; };
@@ -585,6 +587,8 @@
 		A2DF3ED71225C98B004C908F /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Service.m; path = ../../Service.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF3ED81225C98B004C908F /* Registry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Registry.h; path = ../../Registry.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF3ED91225C98B004C908F /* Registry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Registry.m; path = ../../Registry.m; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2E1C2221369C43D003B2B18 /* SubmitDeviceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitDeviceToken.h; sourceTree = "<group>"; };
+		A2E1C2231369C43D003B2B18 /* SubmitDeviceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitDeviceToken.m; sourceTree = "<group>"; };
 		A2E5550F12F0D38B008B3FCE /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		A2E5551012F0D38B008B3FCE /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
 		A2E5562D12F722CF008B3FCE /* MobileBeanMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanMetaData.h; sourceTree = "<group>"; };
@@ -905,6 +909,7 @@
 		A29D5B271290534E00DAE753 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				A2E1C2211369C3E7003B2B18 /* push */,
 				A2E5562412F72192008B3FCE /* sync */,
 				A29630A612CB675100928950 /* ui */,
 				A29D5B281290542800DAE753 /* rpc */,
@@ -1282,6 +1287,15 @@
 			path = ../..;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A2E1C2211369C3E7003B2B18 /* push */ = {
+			isa = PBXGroup;
+			children = (
+				A2E1C2221369C43D003B2B18 /* SubmitDeviceToken.h */,
+				A2E1C2231369C43D003B2B18 /* SubmitDeviceToken.m */,
+			);
+			name = push;
+			sourceTree = "<group>";
+		};
 		A2E5562412F72192008B3FCE /* sync */ = {
 			isa = PBXGroup;
 			children = (
@@ -1430,6 +1444,7 @@
 				A26227E1133234A700B1BEB3 /* DeviceManager.h in Headers */,
 				A262293A13412CBE00B1BEB3 /* ModalActivateDevice.h in Headers */,
 				A262293C13412CBE00B1BEB3 /* SecurityConfig.h in Headers */,
+				A2E1C2241369C43D003B2B18 /* SubmitDeviceToken.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1912,6 +1927,7 @@
 				A26227E2133234A700B1BEB3 /* DeviceManager.m in Sources */,
 				A262293B13412CBE00B1BEB3 /* ModalActivateDevice.m in Sources */,
 				A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */,
+				A2E1C2251369C43D003B2B18 /* SubmitDeviceToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
