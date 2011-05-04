@@ -35,4 +35,7 @@ public interface Constants
 	public final String anonymousMode = "anonymousMode";
 	public final String consoleSession = "consoleSession";
 	public final String pushrpc = "pushrpc";
+	public final String notification_type = "notification-type";
+	public final String channel = "channel";
+	public final String os = "os";
 }

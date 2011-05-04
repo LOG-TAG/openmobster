@@ -137,7 +137,7 @@ public final class CometSession implements Serializable,BusListener
 	public void messageIncoming(BusMessage busMessage) 
 	{
 		String command = (String)busMessage.getAttribute(Constants.command);
-		String os = (String)busMessage.getAttribute("os");
+		String os = (String)busMessage.getAttribute(Constants.os);
 		
 		log.debug("-------------------------------------------------");
 		log.debug("Bus Message received by: "+busMessage.getBusUri());
@@ -200,8 +200,8 @@ public final class CometSession implements Serializable,BusListener
 	
 	private boolean allowNotification(BusMessage busMessage)
 	{
-		String notificationType = (String)busMessage.getAttribute("notification-type");
-		if(!notificationType.equals("channel"))
+		String notificationType = (String)busMessage.getAttribute(Constants.notification_type);
+		if(!notificationType.equals(Constants.channel))
 		{
 			return true;
 		}
@@ -222,7 +222,7 @@ public final class CometSession implements Serializable,BusListener
 		log.debug("Bus Message received by: "+busMessage.getBusUri());
 		log.debug("Sent by: "+busMessage.getSenderUri());
 		log.debug("Command: "+command);
-		log.debug("NotificationType: "+busMessage.getAttribute("notification-type"));
+		log.debug("NotificationType: "+busMessage.getAttribute(Constants.notification_type));
 		log.debug("-----------------------------------------------------------------");
 		
 		if(command != null)

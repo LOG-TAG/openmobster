@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import org.openmobster.core.security.device.Device;
+import org.openmobster.core.dataService.Constants;
 
 /**
  * Encapsulates the Notification meta data to be processed by the Notifier. Notification Object is used by
@@ -65,8 +66,8 @@ public class Notification implements Serializable
 	{
 		Notification syncNotification = new Notification(NotificationType.SYNC);
 		
-		syncNotification.setMetaData("device", device.getIdentifier());
-		syncNotification.setMetaData("service", service);		
+		syncNotification.setMetaData(Constants.device, device.getIdentifier());
+		syncNotification.setMetaData(Constants.service, service);		
 		
 		return syncNotification;
 	}
@@ -75,8 +76,8 @@ public class Notification implements Serializable
 	{
 		Notification syncNotification = new Notification(NotificationType.SYNC);
 		
-		syncNotification.setMetaData("device", deviceIdentifier);
-		syncNotification.setMetaData("service", service);		
+		syncNotification.setMetaData(Constants.device, deviceIdentifier);
+		syncNotification.setMetaData(Constants.service, service);		
 		
 		return syncNotification;
 	}
@@ -85,8 +86,8 @@ public class Notification implements Serializable
 	{
 		Notification notification = new Notification(NotificationType.RPC);
 		
-		notification.setMetaData("device", device.getIdentifier());	
-		notification.setMetaData("service", service);
+		notification.setMetaData(Constants.device, device.getIdentifier());	
+		notification.setMetaData(Constants.service, service);
 		
 		return notification;
 	}
