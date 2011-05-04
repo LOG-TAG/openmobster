@@ -84,8 +84,8 @@ public class Notifier
 					busMessage.setBusUri(deviceToNotify);
 					busMessage.setSenderUri(notification.getMetaData(Constants.service));
 					busMessage.setAttribute(Constants.command, command);
-					busMessage.setAttribute("notification-type", "channel");
-					busMessage.setAttribute("os", os);
+					busMessage.setAttribute(Constants.notification_type, Constants.channel);
+					busMessage.setAttribute(Constants.os, os);
 					
 					Bus.sendMessage(busMessage);
 				}
@@ -114,8 +114,8 @@ public class Notifier
 					busMessage.setBusUri(deviceToNotify);
 					busMessage.setSenderUri(notification.getMetaData(Constants.service));
 					busMessage.setAttribute(Constants.command, command);
-					busMessage.setAttribute("notification-type", "push-rpc");
-					busMessage.setAttribute("os", os);
+					busMessage.setAttribute(Constants.notification_type, "push-rpc");
+					busMessage.setAttribute(Constants.os, os);
 					
 					Bus.sendMessage(busMessage);
 				}
