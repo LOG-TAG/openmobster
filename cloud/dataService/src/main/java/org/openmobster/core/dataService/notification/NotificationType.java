@@ -18,5 +18,5 @@ public enum NotificationType
 	SYNC, //Synchronization related
 	DM, //Device Management related	
 	RPC,//RPC Invocation from Server to Device Component
-	POPUP //pops up a message on the user's phone drawing attention
+	PUSH //originated from a user
 }

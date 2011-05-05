@@ -38,4 +38,7 @@ public interface Constants
 	public final String notification_type = "notification-type";
 	public final String channel = "channel";
 	public final String os = "os";
+	public final String message = "message";
+	public final String extras = "extras";
+	public final String push = "push";
 }

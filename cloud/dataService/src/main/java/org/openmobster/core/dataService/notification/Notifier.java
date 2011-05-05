@@ -8,6 +8,8 @@
 
 package org.openmobster.core.dataService.notification;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 import org.openmobster.core.dataService.Constants;
@@ -17,6 +19,7 @@ import org.openmobster.core.common.bus.BusMessage;
 
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
+import org.openmobster.core.common.XMLUtilities;
 
 /**
  * This component processes all notifications/updates that must be sent to actively connected devices
@@ -64,14 +67,14 @@ public class Notifier
 		
 		if(notification.getType() == NotificationType.SYNC)
 		{
-			log.debug("Sync Notification for "+notification.getMetaData(Constants.device));
+			log.debug("Sync Notification for "+notification.getMetaDataAsString(Constants.device));
 			
 			StringBuilder commandBuilder = new StringBuilder();
 			commandBuilder.append(Constants.command+"="+Constants.sync+Constants.separator);
-			commandBuilder.append(Constants.service+"="+notification.getMetaData(Constants.service));			
+			commandBuilder.append(Constants.service+"="+notification.getMetaDataAsString(Constants.service));			
 			
 			command = commandBuilder.toString()+Constants.endOfCommand;
-			deviceToNotify = notification.getMetaData(Constants.device);
+			deviceToNotify = notification.getMetaDataAsString(Constants.device);
 			
 			if(deviceToNotify != null && command != null)
 			{
@@ -82,7 +85,7 @@ public class Notifier
 				{
 					BusMessage busMessage = new BusMessage();
 					busMessage.setBusUri(deviceToNotify);
-					busMessage.setSenderUri(notification.getMetaData(Constants.service));
+					busMessage.setSenderUri(notification.getMetaDataAsString(Constants.service));
 					busMessage.setAttribute(Constants.command, command);
 					busMessage.setAttribute(Constants.notification_type, Constants.channel);
 					busMessage.setAttribute(Constants.os, os);
@@ -93,15 +96,15 @@ public class Notifier
 		}
 		else if(notification.getType() == NotificationType.RPC)
 		{
-			log.debug("PushRPC Notification for "+notification.getMetaData(Constants.device));
+			log.debug("PushRPC Notification for "+notification.getMetaDataAsString(Constants.device));
 			
-			String rpc_request = (String)notification.getMetaData("rpc-request");
+			String rpc_request = notification.getMetaDataAsString("rpc-request");
 			StringBuilder commandBuilder = new StringBuilder();
 			commandBuilder.append(Constants.command+"="+Constants.pushrpc+Constants.separator);	
 			commandBuilder.append(Constants.payload+"="+rpc_request);
 			
 			command = commandBuilder.toString()+Constants.endOfCommand;
-			deviceToNotify = notification.getMetaData(Constants.device);
+			deviceToNotify = notification.getMetaDataAsString(Constants.device);
 			
 			if(deviceToNotify != null && command != null)
 			{
@@ -112,10 +115,44 @@ public class Notifier
 				{
 					BusMessage busMessage = new BusMessage();
 					busMessage.setBusUri(deviceToNotify);
-					busMessage.setSenderUri(notification.getMetaData(Constants.service));
+					busMessage.setSenderUri(notification.getMetaDataAsString(Constants.service));
 					busMessage.setAttribute(Constants.command, command);
 					busMessage.setAttribute(Constants.notification_type, "push-rpc");
 					busMessage.setAttribute(Constants.os, os);
+					
+					Bus.sendMessage(busMessage);
+				}
+			}
+		}
+		else if(notification.getType() == NotificationType.PUSH)
+		{
+			log.debug("Push Notification for "+notification.getMetaDataAsString(Constants.device));
+			
+			StringBuilder commandBuilder = new StringBuilder();
+			commandBuilder.append(Constants.command+"="+Constants.push+Constants.separator);
+			commandBuilder.append(Constants.message+"="+notification.getMetaDataAsString(Constants.message));
+			Map<String,String> extras = (Map<String,String>)notification.getMetaData(Constants.extras);
+			String extrasStr = XMLUtilities.marshal(extras);
+			commandBuilder.append(Constants.separator+Constants.extras+"="+extrasStr);
+			
+			command = commandBuilder.toString()+Constants.endOfCommand;
+			deviceToNotify = notification.getMetaDataAsString(Constants.device);
+			
+			if(deviceToNotify != null && command != null)
+			{
+				Device device = this.deviceController.read(deviceToNotify);
+				String os = device.getOs();
+				
+				if(os != null)
+				{
+					BusMessage busMessage = new BusMessage();
+					busMessage.setBusUri(deviceToNotify);
+					busMessage.setSenderUri(Constants.push);
+					busMessage.setAttribute(Constants.command, command);
+					busMessage.setAttribute(Constants.notification_type, Constants.push);
+					busMessage.setAttribute(Constants.os, os);
+					busMessage.setAttribute(Constants.message, notification.getMetaDataAsString(Constants.message));
+					busMessage.setAttribute(Constants.extras, notification.getMetaData(Constants.extras));
 					
 					Bus.sendMessage(busMessage);
 				}

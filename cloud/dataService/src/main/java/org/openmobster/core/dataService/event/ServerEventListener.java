@@ -79,8 +79,8 @@ public class ServerEventListener implements NetworkEventListener
 				for(Notification notification: notifications)
 				{
 					log.debug("Notification----------------------------------------------");
-					log.debug("Device: "+notification.getMetaData("device")+", Channel: "+
-					notification.getMetaData("service"));
+					log.debug("Device: "+notification.getMetaDataAsString("device")+", Channel: "+
+					notification.getMetaDataAsString("service"));
 					log.debug("----------------------------------------------");
 					this.notifier.process(notification);
 				}
