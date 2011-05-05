@@ -134,6 +134,12 @@ public final class PushService
 				String channel = busMessage.getSenderUri();
 				this.sendSyncNotification(deviceId, channel);
 			}
+			else if(notificationType.equals("push"))
+			{
+				String message = (String)busMessage.getAttribute("message");
+				Map<String,String> extras = (Map<String,String>)busMessage.getAttribute("extras");
+				this.sendPushNotification(deviceId, message, extras);
+			}
 		}
 		catch(Exception e)
 		{
@@ -154,7 +160,40 @@ public final class PushService
 		this.disqualifyApps(pushApps, channel);
 		
 		//actually send the push
-		this.push(device, pushApps);
+		this.push(device, pushApps, "You have new information", null);
+	}
+	
+	private void sendPushNotification(String deviceId,String message, Map<String,String> extras) throws Exception
+	{
+		//Get the Device Token of the device that should receive the push notification
+		Device device = this.deviceController.read(deviceId);
+		
+		List<PushApp> deviceApps = this.findDevicePushApps(deviceId);
+		
+		//Find the application where this message should be pushed
+		String appId = extras.get("app-id");
+		PushApp app = null;
+		if(deviceApps != null && !deviceApps.isEmpty())
+		{
+			for(PushApp local:deviceApps)
+			{
+				if(local.getAppId().equals(appId))
+				{
+					app = local;
+					break;
+				}
+			}
+		}
+		if(app == null)
+		{
+			return;
+		}
+		
+		//Send a Push Message to the App
+		List<PushApp> apps = new ArrayList<PushApp>();
+		apps.add(app);
+		
+		this.push(device, apps, message, extras);
 	}
 	
 	private List<PushApp> findDevicePushApps(String deviceId)
@@ -187,7 +226,7 @@ public final class PushService
 		apps.removeAll(remove);
 	}
 	
-	private void push(Device device,List<PushApp> apps) throws Exception
+	private void push(Device device,List<PushApp> apps, String message, Map<String,String> extras) throws Exception
 	{
 		if(apps != null && !apps.isEmpty())
 		{
@@ -209,8 +248,21 @@ public final class PushService
 				// Setup up a simple message
 	            PayLoad aPayload = new PayLoad();
 	            aPayload.addBadge(0);
-	            aPayload.addAlert("You have new information");
+	            aPayload.addAlert(message);
 	            aPayload.addSound("default");
+	            if(extras != null && !extras.isEmpty())
+	            {
+	            	Set<String> names = extras.keySet();
+	            	for(String name:names)
+	            	{
+	            		if(name.equals("app-id"))
+	            		{
+	            			continue;
+	            		}
+	            		String value = extras.get(name);
+	            		aPayload.addCustomDictionary(name, value);
+	            	}
+	            }
 	            
 	            pushNotificationManager.sendNotification(pushDevice, aPayload);
 			}

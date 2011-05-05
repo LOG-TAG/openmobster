@@ -68,4 +68,11 @@ public abstract class AbstractCometTest extends TestCase
 		
 		deviceController.update(toBeUpdated);
 	}
+	
+	protected Device findDevice(String deviceId)
+	{
+		DeviceController deviceController = DeviceController.getInstance();
+		Device device = deviceController.read(deviceId);
+		return device;
+	}
 }

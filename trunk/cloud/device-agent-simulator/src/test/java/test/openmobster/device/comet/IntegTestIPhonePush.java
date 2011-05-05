@@ -11,7 +11,12 @@ package test.openmobster.device.comet;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.dataService.notification.Notification;
+import org.openmobster.core.dataService.notification.Notifier;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceAttribute;
@@ -38,11 +43,6 @@ public class IntegTestIPhonePush extends AbstractCometTest
 	{
 		super.setUp();
 		
-		//Just activate the device, but no active connection
-		this.device_12345.activateDevice();
-		//this.registerDeviceType("IMEI:12345","iphone","9a47d66a ce92c38c fcdc0835 c26224ea 27b296c9 d057a06f f3431bbd 4931ee10");
-		this.registerDeviceType("IMEI:12345","iphone","ec0f1e1c 632411ab 0312747f 589db653 420a82dc 8cea7dc4 89b5c69c bd37d8aa");
-		
 		//Create some PushApps for this device
 		PushApp app1 = new PushApp();
 		app1.setAppId("app1");
@@ -66,6 +66,24 @@ public class IntegTestIPhonePush extends AbstractCometTest
 	{	
 		synchronized(this)
 		{
+			//Just activate the device, but no active connection
+			this.device_12345.activateDevice();
+			//this.registerDeviceType("IMEI:12345","iphone","9a47d66a ce92c38c fcdc0835 c26224ea 27b296c9 d057a06f f3431bbd 4931ee10");
+			this.registerDeviceType("IMEI:12345","iphone","ec0f1e1c 632411ab 0312747f 589db653 420a82dc 8cea7dc4 89b5c69c bd37d8aa");
+			
+			Notifier notifier = (Notifier)ServiceManager.locate("dataService://notification/Notifier");
+			Device device = this.findDevice("IMEI:12345");
+			Map<String,String> extras = new HashMap<String,String>(); 
+			extras.put("app-id", "app1");
+			for(int i=0; i<5; i++)
+			{
+				extras.put("blah"+i, ""+i);
+			}
+			
+			Notification notification = Notification.createPushNotification(device, "You've Got Mail", extras);
+			
+			notifier.process(notification);
+			
 			wait();
 		}
 	}

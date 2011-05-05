@@ -30,12 +30,12 @@ public class Notification implements Serializable
 	 */
 	private NotificationType type;
 	
-	private Map<String, String> metaData;
+	private Map<String, Object> metaData;
 	
 	public Notification(NotificationType type)
 	{
 		this.type = type;
-		this.metaData = new HashMap<String, String>();
+		this.metaData = new HashMap<String, Object>();
 	}
 	
 	public NotificationType getType()
@@ -43,7 +43,7 @@ public class Notification implements Serializable
 		return this.type;
 	}
 	
-	public void setMetaData(String name, String value)
+	public void setMetaData(String name, Object value)
 	{
 		if(name == null || name.trim().length() == 0)
 		{
@@ -57,9 +57,14 @@ public class Notification implements Serializable
 		this.metaData.put(name, value);
 	}
 	
-	public String getMetaData(String name)
+	public Object getMetaData(String name)
 	{
 		return this.metaData.get(name);
+	}
+	
+	public String getMetaDataAsString(String name)
+	{
+		return (String)this.metaData.get(name);
 	}
 	
 	public static Notification createSyncNotification(Device device, String service)
@@ -88,6 +93,21 @@ public class Notification implements Serializable
 		
 		notification.setMetaData(Constants.device, device.getIdentifier());	
 		notification.setMetaData(Constants.service, service);
+		
+		return notification;
+	}
+	
+	public static Notification createPushNotification(Device device, String message, Map<String,String> extras)
+	{
+		if(extras == null || extras.isEmpty())
+		{
+			new IllegalArgumentException("Extras cannot be null");
+		}
+		Notification notification = new Notification(NotificationType.PUSH);
+		
+		notification.setMetaData(Constants.device, device.getIdentifier());
+		notification.setMetaData(Constants.message,message);
+		notification.setMetaData(Constants.extras,extras);
 		
 		return notification;
 	}
