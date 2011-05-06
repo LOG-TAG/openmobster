@@ -43,10 +43,10 @@
 		<module>mobileCloud-runtime</module>
 		<module>moblet-runtime</module>
 		<module>native-framework</module>
-		<module>test-suite</module>
 		<module>javascript-bridge</module>
 		<module>dm</module>
-		<!-- aggregations -->
+		
+		
 		<module>device-sdk</module>
 		<module>mobileCloud</module>
 	</modules>
@@ -59,6 +59,18 @@
 				<module>mobileCloud</module>
 			</modules>
 		</profile>
+		<profile>
+			<id>build-all</id>
+			<modules>
+				<module>test-suite</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>android-release</id>
+			<modules>
+				<module>test-suite</module>
+			</modules>
+		 </profile>
 	</profiles>
 	
 	<build>

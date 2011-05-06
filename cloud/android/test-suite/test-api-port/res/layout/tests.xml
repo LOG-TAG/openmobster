@@ -16,6 +16,11 @@
     <Button android:id="@+id/pushrpc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test PushRPC" />                  
+            android:text="Test PushRPC" />  
+    
+    <Button android:id="@+id/push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Push" />                
 </LinearLayout>
 

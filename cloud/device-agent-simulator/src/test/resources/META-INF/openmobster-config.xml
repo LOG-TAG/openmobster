@@ -106,6 +106,7 @@
    </bean>
    
    <bean name="/test/start/pushrpc" class="test.openmobster.device.agent.StartPushRPC"/>
+    <bean name="/test/start/push" class="test.openmobster.device.comet.StartPush"/>
    
    <!-- Deploy the UploadPictureCommand -->
    <bean name="/upload/picture" class="test.openmobster.device.agent.api.camera.UploadPictureCommand">
