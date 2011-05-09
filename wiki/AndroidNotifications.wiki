@@ -20,7 +20,7 @@ Notification notification = new Notification(icon,"Simple Notification",System.c
 
 An icon names 'push.png' is packaged under res/drawable-* folders
 
-==== Step 3: Setup the Intent to open an Activity when clicked
+==== Step 3: Setup the Intent to open an Activity when clicked ====
 {{{
 //Setup the Intent to open this Activity when clicked
 Intent toLaunch = new Intent(MainActivity.this,MainActivity.class);
