@@ -18,7 +18,7 @@ int icon = ViewHelper.findDrawableId(MainActivity.this, "push");
 Notification notification = new Notification(icon,"Simple Notification",System.currentTimeMillis());
 }}}
 
-An icon names 'push.png' is packaged under res/drawable-* folders
+An icon names *push.png* is packaged under res/drawable folders
 
 ==== Step 3: Setup the Intent to open an Activity when clicked ====
 {{{
@@ -54,5 +54,127 @@ notifier.notify(0x007, notification);
 }}}
 
 *0x007* is a unique id to identify this notification. This comes in handy when the same notification needs to be updated with new information instead creating a brand new notification.
+
+You can also set a custom sound to be played for a notification. The following code shows how that is done.
+{{{
+//Adding the Custom Sound
+notification.audioStreamType = AudioManager.STREAM_NOTIFICATION;
+String uri = "android.resource://org.openmobster.notify.android.app/"+
+MainActivity.this.findSoundId(MainActivity.this, "beep");
+notification.sound = Uri.parse(uri);
+}}}
+
+In this case it assigns a custom *beep.wav* file to be played with the notification.
+
+=== Full Source ===
+{{{
+//Simple Notification
+		Button simpleNotification = (Button)ViewHelper.findViewById(this, "simpleNotification");
+		simpleNotification.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View view) 
+			{
+				//Get the Notification Service
+				NotificationManager notifier = (NotificationManager)MainActivity.this.
+				getSystemService(Context.NOTIFICATION_SERVICE);
+				
+				//Get the icon for the notification
+				int icon = ViewHelper.findDrawableId(MainActivity.this, "push");
+				Notification notification = new Notification(icon,"Simple Notification",System.currentTimeMillis());
+				
+				//Setup the Intent to open this Activity when clicked
+				Intent toLaunch = new Intent(MainActivity.this,MainActivity.class);
+				PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 0, toLaunch, 0);
+				
+				//Set the Notification Info
+				notification.setLatestEventInfo(MainActivity.this, "Hi!!", "This is a simple notification", contentIntent);
+				
+				//Setting Notification Flags
+				notification.flags |= Notification.FLAG_AUTO_CANCEL;
+				notification.flags |= Notification.DEFAULT_SOUND;
+				
+				//Send the notification
+				notifier.notify(0x007, notification);
+			}
+		});
+		
+		//Update Notification
+		Button updateNotification = (Button)ViewHelper.findViewById(this, "updateNotification");
+		updateNotification.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View view) 
+			{
+				//Get the Notification Service
+				NotificationManager notifier = (NotificationManager)MainActivity.this.
+				getSystemService(Context.NOTIFICATION_SERVICE);
+				
+				//Get the icon for the notification
+				int icon = ViewHelper.findDrawableId(MainActivity.this, "push");
+				Notification notification = new Notification(icon,"Simple Notification",System.currentTimeMillis());
+				
+				//Setup the Intent to open this Activity when clicked
+				Intent toLaunch = new Intent(MainActivity.this,MainActivity.class);
+				PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 0, toLaunch, 0);
+				
+				//Set the Notification Info
+				notification.setLatestEventInfo(MainActivity.this, "Hello!!", "This is an update notification", contentIntent);
+				
+				//Set a number on the Status Bar
+				notification.number = 2;
+				
+				//Setting Notification Flags
+				notification.flags |= Notification.FLAG_AUTO_CANCEL;
+				notification.flags |= Notification.DEFAULT_SOUND;
+				
+				//Send the notification
+				notifier.notify(0x007, notification);
+			}
+		});
+		
+		//Custom Sound Notification
+		Button customSound = (Button)ViewHelper.findViewById(this, "customSound");
+		customSound.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View view) 
+			{
+				//Get the Notification Service
+				NotificationManager notifier = (NotificationManager)MainActivity.this.
+				getSystemService(Context.NOTIFICATION_SERVICE);
+				
+				//Get the icon for the notification
+				int icon = ViewHelper.findDrawableId(MainActivity.this, "push");
+				Notification notification = new Notification(icon,"Custom Sound Notification",System.currentTimeMillis());
+				
+				//Setup the Intent to open this Activity when clicked
+				Intent toLaunch = new Intent(MainActivity.this,MainActivity.class);
+				PendingIntent contentIntent = PendingIntent.getActivity(MainActivity.this, 0, toLaunch, 0);
+				
+				//Set the Notification Info
+				notification.setLatestEventInfo(MainActivity.this, "Hi!!", "This is a custom sound notification", contentIntent);
+				
+				//Setting Notification Flags
+				notification.flags |= Notification.FLAG_AUTO_CANCEL;
+				
+				//Adding the Custom Sound
+				notification.audioStreamType = AudioManager.STREAM_NOTIFICATION;
+				String uri = "android.resource://org.openmobster.notify.android.app/"+
+				MainActivity.this.findSoundId(MainActivity.this, "beep");
+				notification.sound = Uri.parse(uri);
+				
+				System.out.println("**************************************");
+				System.out.println("Uri: "+uri);
+				System.out.println("**************************************");
+				
+				//Send the notification
+				notifier.notify(0x009, notification);
+			}
+		});
+}}}
+
+=== Download this sample ===
+
 
  
