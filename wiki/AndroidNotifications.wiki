@@ -176,5 +176,11 @@ In this case it assigns a custom *beep.wav* file to be played with the notificat
 
 === Download this sample ===
 
+  * [http://openmobster.googlecode.com/svn/samples/notification.zip Download]
 
+  * {{{
+         cd app-android
+         
+         mvn -Papp-hot-deploy install
+    }}}
  
