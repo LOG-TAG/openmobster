@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:id="@+id/simpleNotification"
+		android:text="Simple Notification" 
+		android:layout_gravity="center">
+	</Button>  
+	
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:id="@+id/updateNotification"
+		android:text="Update Notification" 
+		android:layout_gravity="center">
+	</Button> 
+	
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:id="@+id/customSound"
+		android:text="Custom Sound Notification" 
+		android:layout_gravity="center">
+	</Button>                                                                      
+</LinearLayout>
+
