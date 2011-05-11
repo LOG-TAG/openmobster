@@ -18,6 +18,7 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.BusException;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
+import org.openmobster.core.mobileCloud.android.module.dm.DeviceManager;
 import org.openmobster.core.mobileCloud.moblet.BootupConfiguration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
@@ -165,5 +166,9 @@ public class ActivationCommand implements RemoteCommand
 		configuration.setActive(true);
 		
 		configuration.save(context);
+		
+		//Broadcast deviceManagement meta data to the server
+		DeviceManager dm = DeviceManager.getInstance();
+		dm.sendOsCallback();
 	}			
 }
