@@ -8,8 +8,16 @@
 
 package test.openmobster.device.comet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
+import org.openmobster.server.api.ExecutionContext;
+import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.dataService.notification.Notification;
+import org.openmobster.core.dataService.notification.Notifier;
+import org.openmobster.core.security.device.Device;
 import org.openmobster.server.api.service.Request;
 import org.openmobster.server.api.service.Response;
 import org.openmobster.server.api.service.MobileServiceBean;
@@ -40,6 +48,18 @@ public class StartPush implements MobileServiceBean
 	public Response invoke(Request request) 
 	{	
 		Response response = new Response();
+		
+		Notifier notifier = (Notifier)ServiceManager.locate("dataService://notification/Notifier");
+		Device device = ExecutionContext.getInstance().getDevice();
+		Map<String,String> extras = new HashMap<String,String>(); 
+		
+		extras.put("title", "Title");
+		extras.put("detail", "Details about this message");
+		
+		Notification notification = Notification.createPushNotification(device, "You've Got Mail", extras);
+		
+		notifier.process(notification);
+		
 		return response;
 	}
 }

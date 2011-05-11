@@ -22,4 +22,5 @@ public interface Constants
 	public String device = "device";
 	public String pushrpc = "pushrpc";
 	public String payload = "payload";
+	public String push = "push";
 }
