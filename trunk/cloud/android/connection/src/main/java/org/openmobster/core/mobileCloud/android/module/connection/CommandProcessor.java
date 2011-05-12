@@ -132,6 +132,16 @@ public final class CommandProcessor extends Service
 				String title = extrasData.get("title");
 				String details = extrasData.get("detail");
 				
+				if(title == null || title.trim().length()==0)
+				{
+					title = message;
+				}
+				
+				if(details == null || details.trim().length()==0)
+				{
+					details = "";
+				}
+				
 				//Get the Notification Service
 				Context context = Registry.getActiveInstance().getContext();
 				NotificationManager notifier = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
