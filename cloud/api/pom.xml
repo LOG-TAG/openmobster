@@ -19,7 +19,11 @@
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>common</artifactId>				
-		</dependency>						
+		</dependency>	
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>dataService</artifactId>				
+		</dependency>					
 	</dependencies>
 	
 	<!-- build configuration -->

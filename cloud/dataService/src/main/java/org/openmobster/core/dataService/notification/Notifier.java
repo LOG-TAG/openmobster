@@ -19,6 +19,7 @@ import org.openmobster.core.common.bus.BusMessage;
 
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
+import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.common.XMLUtilities;
 
 /**
@@ -36,6 +37,11 @@ public class Notifier
 	public Notifier()
 	{
 		
+	}
+	
+	public static Notifier getInstance()
+	{
+		return (Notifier)ServiceManager.locate("dataService://notification/Notifier");
 	}
 	
 	public void start()
