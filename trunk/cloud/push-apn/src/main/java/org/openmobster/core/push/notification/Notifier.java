@@ -39,7 +39,7 @@ public class Notifier
 	
 	public static Notifier getInstance()
 	{
-		return (Notifier)ServiceManager.locate("dataService://notification/Notifier");
+		return (Notifier)ServiceManager.locate("org.openmobster.core.push.notification.Notifier");
 	}
 	
 	public void start()

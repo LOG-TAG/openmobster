@@ -103,7 +103,7 @@
    
    <bean name="dataService://ServerEventListener" 
    class="org.openmobster.core.dataService.event.ServerEventListener">	
-   		<property name="notifier"><inject bean="dataService://notification/Notifier"/></property>	   		
+   		<property name="notifier"><inject bean="org.openmobster.core.push.notification.Notifier"/></property>	   		
    </bean>
    
    <bean name="dataService://CometSessionManager" 
@@ -125,7 +125,7 @@
    <!--  Push RPC Service -->  
    <bean name="push_rpc" 
    class="org.openmobster.core.dataService.push.PushRPC">	
-   		<property name="notifier"><inject bean="dataService://notification/Notifier"/></property>
+   		<property name="notifier"><inject bean="org.openmobster.core.push.notification.Notifier"/></property>
    		<property name="deviceController"><inject bean="security://DeviceController"/></property>	 	   		
    </bean>                          
 </deployment>
