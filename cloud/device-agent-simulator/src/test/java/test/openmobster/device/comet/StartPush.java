@@ -23,6 +23,8 @@ import org.openmobster.server.api.service.Response;
 import org.openmobster.server.api.service.MobileServiceBean;
 import org.openmobster.server.api.service.ServiceInfo;
 
+import org.openmobster.server.api.push.PushService;
+
 /**
  * Service Bean that will be invoked from the device. It returns the "Email" selected for viewing by the user
  * 
@@ -49,7 +51,7 @@ public class StartPush implements MobileServiceBean
 	{	
 		Response response = new Response();
 		
-		Notifier notifier = (Notifier)ServiceManager.locate("dataService://notification/Notifier");
+		/*Notifier notifier = (Notifier)ServiceManager.locate("dataService://notification/Notifier");
 		Device device = ExecutionContext.getInstance().getDevice();
 		Map<String,String> extras = new HashMap<String,String>(); 
 		
@@ -58,7 +60,11 @@ public class StartPush implements MobileServiceBean
 		
 		Notification notification = Notification.createPushNotification(device, "You've Got Mail", extras);
 		
-		notifier.process(notification);
+		notifier.process(notification);*/
+		
+		Device device = ExecutionContext.getInstance().getDevice();
+		PushService pushService = PushService.getInstance();
+		pushService.push(device.getIdentity().getPrincipal(), null, "Hello From Push", "Title", "Details");
 		
 		return response;
 	}
