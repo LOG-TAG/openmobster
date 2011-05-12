@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openmobster.core.common.ServiceManager;
-import org.openmobster.core.dataService.notification.Notification;
-import org.openmobster.core.dataService.notification.Notifier;
+import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceAttribute;

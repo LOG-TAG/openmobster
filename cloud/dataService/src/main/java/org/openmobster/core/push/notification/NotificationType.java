@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.dataService.notification;
+package org.openmobster.core.push.notification;
 
 /**
  * Represents the types of Notifications supported by the device side container

@@ -10,10 +10,10 @@ package org.openmobster.server.api.push;
 import java.util.Map;
 import java.util.HashMap;
 
+import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.core.dataService.notification.Notification;
-import org.openmobster.core.dataService.notification.Notifier;
 
 /**
  * PushService provides a cross platform API for pushing notifications to devices.
