@@ -11,18 +11,13 @@ package test.openmobster.device.comet;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.openmobster.core.common.ServiceManager;
-import org.openmobster.core.push.notification.Notification;
-import org.openmobster.core.push.notification.Notifier;
-import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.core.security.device.DeviceAttribute;
 
 import org.openmobster.core.security.device.PushApp;
 import org.openmobster.core.security.device.PushAppController;
+
+import org.openmobster.server.api.push.PushService;
 
 /**
  * Usecase being tested:
@@ -71,18 +66,9 @@ public class IntegTestIPhonePush extends AbstractCometTest
 			//this.registerDeviceType("IMEI:12345","iphone","9a47d66a ce92c38c fcdc0835 c26224ea 27b296c9 d057a06f f3431bbd 4931ee10");
 			this.registerDeviceType("IMEI:12345","iphone","ec0f1e1c 632411ab 0312747f 589db653 420a82dc 8cea7dc4 89b5c69c bd37d8aa");
 			
-			Notifier notifier = (Notifier)ServiceManager.locate("dataService://notification/Notifier");
 			Device device = this.findDevice("IMEI:12345");
-			Map<String,String> extras = new HashMap<String,String>(); 
-			extras.put("app-id", "app1");
-			for(int i=0; i<5; i++)
-			{
-				extras.put("blah"+i, ""+i);
-			}
-			
-			Notification notification = Notification.createPushNotification(device, "You've Got Mail", extras);
-			
-			notifier.process(notification);
+			PushService pushService = PushService.getInstance();
+			pushService.push(device.getIdentity().getPrincipal(), "app1", "Hello From Push", "Title", "Details");
 			
 			wait();
 		}
