@@ -12,8 +12,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.core.dataService.Constants;
-
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusMessage;
 

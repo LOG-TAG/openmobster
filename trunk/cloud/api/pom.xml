@@ -22,7 +22,7 @@
 		</dependency>	
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
-			<artifactId>dataService</artifactId>				
+			<artifactId>push-apn</artifactId>				
 		</dependency>					
 	</dependencies>
 	

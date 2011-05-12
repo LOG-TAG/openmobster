@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 import org.openmobster.core.security.device.Device;
-import org.openmobster.core.dataService.Constants;
 
 /**
  * Encapsulates the Notification meta data to be processed by the Notifier. Notification Object is used by
