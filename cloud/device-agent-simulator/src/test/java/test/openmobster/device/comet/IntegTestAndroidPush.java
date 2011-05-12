@@ -42,7 +42,7 @@ public class IntegTestAndroidPush extends AbstractCometTest
 		this.registerDeviceType("IMEI:12345","android");
 		this.device_12345.startCometDaemon();
 		
-		Notifier notifier = (Notifier)ServiceManager.locate("dataService://notification/Notifier");
+		Notifier notifier = Notifier.getInstance();
 		Device device = this.findDevice("IMEI:12345");
 		Map<String,String> extras = new HashMap<String,String>(); 
 		for(int i=0; i<5; i++)
