@@ -15,8 +15,8 @@ import org.apache.log4j.Logger;
 
 import org.openmobster.server.api.ExecutionContext;
 import org.openmobster.core.common.ServiceManager;
-import org.openmobster.core.dataService.notification.Notification;
-import org.openmobster.core.dataService.notification.Notifier;
+import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.server.api.service.Request;
 import org.openmobster.server.api.service.Response;

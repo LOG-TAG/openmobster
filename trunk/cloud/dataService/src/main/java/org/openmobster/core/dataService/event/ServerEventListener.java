@@ -15,12 +15,12 @@ import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 
+import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.services.event.NetworkEventListener;
 import org.openmobster.core.services.event.NetworkEvent;
 import org.openmobster.core.services.channel.ChannelBeanMetaData;
 
-import org.openmobster.core.dataService.notification.Notifier;
-import org.openmobster.core.dataService.notification.Notification;
 
 /**
  * @author openmobster@gmail.com
