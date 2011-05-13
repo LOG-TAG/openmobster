@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* CloudManagerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		A2502850130A27BD006DC2C8 /* AjaxShowList.m in Sources */ = {isa = PBXBuildFile; fileRef = A250284E130A27BD006DC2C8 /* AjaxShowList.m */; };
+		A2502851130A27BD006DC2C8 /* AjaxShowList.xib in Resources */ = {isa = PBXBuildFile; fileRef = A250284F130A27BD006DC2C8 /* AjaxShowList.xib */; };
+		A250287B130AA77F006DC2C8 /* AjaxGetListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */; };
+		A250289C130AAC06006DC2C8 /* EmailBean.m in Sources */ = {isa = PBXBuildFile; fileRef = A250289B130AAC06006DC2C8 /* EmailBean.m */; };
+		A2502902130ADA15006DC2C8 /* AjaxGetDetailsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */; };
+		A2502922130ADD7D006DC2C8 /* AjaxShowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */; };
+		A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */; };
+		A2502BB3130C693D006DC2C8 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502BB1130C693D006DC2C8 /* Form.m */; };
+		A2502BB4130C693D006DC2C8 /* Form.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502BB2130C693D006DC2C8 /* Form.xib */; };
+		A2502C9913102A20006DC2C8 /* UICommandFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502C9713102A20006DC2C8 /* UICommandFramework.m */; };
+		A2502C9A13102A20006DC2C8 /* UICommandFramework.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2502C9813102A20006DC2C8 /* UICommandFramework.xib */; };
+		A2502CD113103215006DC2C8 /* AjaxCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CD013103215006DC2C8 /* AjaxCommand.m */; };
+		A2502CF8131037B6006DC2C8 /* BusyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CF7131037B6006DC2C8 /* BusyCommand.m */; };
+		A2502CFF1310381F006DC2C8 /* FastCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502CFE1310381F006DC2C8 /* FastCommand.m */; };
+		A26229AE13413B5600B1BEB3 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = A26229AC13413B5600B1BEB3 /* Home.m */; };
+		A26229AF13413B5600B1BEB3 /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26229AD13413B5600B1BEB3 /* Home.xib */; };
+		A28698BB12F88DD700A4792E /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28698BA12F88DD700A4792E /* configuration.xcdatamodel */; };
+		A28698BD12F88DDD00A4792E /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28698BC12F88DDD00A4792E /* sync.xcdatamodel */; };
+		A28698BF12F88DE400A4792E /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28698BE12F88DE400A4792E /* mobileobject.xcdatamodel */; };
+		A2869AAF12F8BF0200A4792E /* ShowList.m in Sources */ = {isa = PBXBuildFile; fileRef = A2869AAD12F8BF0200A4792E /* ShowList.m */; };
+		A2869AB012F8BF0200A4792E /* ShowList.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2869AAE12F8BF0200A4792E /* ShowList.xib */; };
+		A2869B4A12F8D57E00A4792E /* SaveTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = A2869B4812F8D57E00A4792E /* SaveTicket.m */; };
+		A2869B4B12F8D57E00A4792E /* SaveTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2869B4912F8D57E00A4792E /* SaveTicket.xib */; };
+		A2869B9712F9014500A4792E /* SaveTicketCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2869B9612F9014500A4792E /* SaveTicketCommand.m */; };
+		A2869B9A12F9016500A4792E /* DeleteTicketCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2869B9912F9016500A4792E /* DeleteTicketCommand.m */; };
+		A2869B9D12F9017F00A4792E /* ChannelBootstrapCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A2869B9C12F9017F00A4792E /* ChannelBootstrapCommand.m */; };
+		A296315C12CB960000928950 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296315B12CB960000928950 /* CloudManagerApp.xib */; };
+		A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */; };
+		A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296317012CB96BE00928950 /* ModalActivateDevice.xib */; };
+		A296317512CB96BE00928950 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296317112CB96BE00928950 /* SecurityConfig.xib */; };
+		A296335712CBF36400928950 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */; };
+		A29D69F412B7E53800DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F312B7E53800DAE753 /* CFNetwork.framework */; };
+		A29D69F912B7E56300DAE753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29D69F812B7E56300DAE753 /* CoreData.framework */; };
+		A2E1C1381364878E003B2B18 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1C1371364878E003B2B18 /* libmobilecloudlib.a */; };
+		A2E5558212F0F1F9008B3FCE /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* CloudManagerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManagerAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudManagerAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* CloudManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* CloudManager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* CloudManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CloudManager-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A250284D130A27BD006DC2C8 /* AjaxShowList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxShowList.h; sourceTree = "<group>"; };
+		A250284E130A27BD006DC2C8 /* AjaxShowList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxShowList.m; sourceTree = "<group>"; };
+		A250284F130A27BD006DC2C8 /* AjaxShowList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjaxShowList.xib; sourceTree = "<group>"; };
+		A2502879130AA77F006DC2C8 /* AjaxGetListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxGetListCommand.h; sourceTree = "<group>"; };
+		A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxGetListCommand.m; sourceTree = "<group>"; };
+		A250289A130AAC06006DC2C8 /* EmailBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailBean.h; sourceTree = "<group>"; };
+		A250289B130AAC06006DC2C8 /* EmailBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailBean.m; sourceTree = "<group>"; };
+		A2502900130ADA15006DC2C8 /* AjaxGetDetailsCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxGetDetailsCommand.h; sourceTree = "<group>"; };
+		A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxGetDetailsCommand.m; sourceTree = "<group>"; };
+		A250291F130ADD7D006DC2C8 /* AjaxShowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxShowDetails.h; sourceTree = "<group>"; };
+		A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxShowDetails.m; sourceTree = "<group>"; };
+		A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AjaxShowDetails.xib; sourceTree = "<group>"; };
+		A2502BB0130C693D006DC2C8 /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
+		A2502BB1130C693D006DC2C8 /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Form.m; sourceTree = "<group>"; };
+		A2502BB2130C693D006DC2C8 /* Form.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Form.xib; sourceTree = "<group>"; };
+		A2502C9613102A20006DC2C8 /* UICommandFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommandFramework.h; sourceTree = "<group>"; };
+		A2502C9713102A20006DC2C8 /* UICommandFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommandFramework.m; sourceTree = "<group>"; };
+		A2502C9813102A20006DC2C8 /* UICommandFramework.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICommandFramework.xib; sourceTree = "<group>"; };
+		A2502CCF13103215006DC2C8 /* AjaxCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjaxCommand.h; sourceTree = "<group>"; };
+		A2502CD013103215006DC2C8 /* AjaxCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjaxCommand.m; sourceTree = "<group>"; };
+		A2502CF6131037B6006DC2C8 /* BusyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusyCommand.h; sourceTree = "<group>"; };
+		A2502CF7131037B6006DC2C8 /* BusyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusyCommand.m; sourceTree = "<group>"; };
+		A2502CFD1310381F006DC2C8 /* FastCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCommand.h; sourceTree = "<group>"; };
+		A2502CFE1310381F006DC2C8 /* FastCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastCommand.m; sourceTree = "<group>"; };
+		A26229AB13413B5600B1BEB3 /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		A26229AC13413B5600B1BEB3 /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
+		A26229AD13413B5600B1BEB3 /* Home.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Home.xib; sourceTree = "<group>"; };
+		A28698BA12F88DD700A4792E /* configuration.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = configuration.xcdatamodel; path = ../mobilecloudlib/configuration.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		A28698BC12F88DDD00A4792E /* sync.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = sync.xcdatamodel; path = ../mobilecloudlib/sync.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		A28698BE12F88DE400A4792E /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = mobileobject.xcdatamodel; path = ../mobilecloudlib/mobileobject.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		A2869AAC12F8BF0200A4792E /* ShowList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowList.h; sourceTree = "<group>"; };
+		A2869AAD12F8BF0200A4792E /* ShowList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowList.m; sourceTree = "<group>"; };
+		A2869AAE12F8BF0200A4792E /* ShowList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowList.xib; sourceTree = "<group>"; };
+		A2869B4712F8D57E00A4792E /* SaveTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTicket.h; sourceTree = "<group>"; };
+		A2869B4812F8D57E00A4792E /* SaveTicket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTicket.m; sourceTree = "<group>"; };
+		A2869B4912F8D57E00A4792E /* SaveTicket.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveTicket.xib; sourceTree = "<group>"; };
+		A2869B9512F9014500A4792E /* SaveTicketCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTicketCommand.h; sourceTree = "<group>"; };
+		A2869B9612F9014500A4792E /* SaveTicketCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTicketCommand.m; sourceTree = "<group>"; };
+		A2869B9812F9016500A4792E /* DeleteTicketCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteTicketCommand.h; sourceTree = "<group>"; };
+		A2869B9912F9016500A4792E /* DeleteTicketCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteTicketCommand.m; sourceTree = "<group>"; };
+		A2869B9B12F9017F00A4792E /* ChannelBootstrapCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelBootstrapCommand.h; sourceTree = "<group>"; };
+		A2869B9C12F9017F00A4792E /* ChannelBootstrapCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelBootstrapCommand.m; sourceTree = "<group>"; };
+		A296315B12CB960000928950 /* CloudManagerApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CloudManagerApp.xib; path = ../mobilecloudlib/CloudManagerApp.xib; sourceTree = SOURCE_ROOT; };
+		A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
+		A296317012CB96BE00928950 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
+		A296317112CB96BE00928950 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
+		A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = SOURCE_ROOT; };
+		A29D69F312B7E53800DAE753 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A29D69F812B7E56300DAE753 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A2E1C1371364878E003B2B18 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
+		A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				A29D69F412B7E53800DAE753 /* CFNetwork.framework in Frameworks */,
+				A29D69F912B7E56300DAE753 /* CoreData.framework in Frameworks */,
+				A2E1C1381364878E003B2B18 /* libmobilecloudlib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* CloudManagerAppDelegate.h */,
+				1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */,
+				A26229AB13413B5600B1BEB3 /* Home.h */,
+				A26229AC13413B5600B1BEB3 /* Home.m */,
+				A26229AD13413B5600B1BEB3 /* Home.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* CloudManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				A2502C95131029C7006DC2C8 /* CommandFramework */,
+				A2502BAF130C68E7006DC2C8 /* FormSubmission */,
+				A250284C130A251D006DC2C8 /* Ajax */,
+				A2869AAA12F8BE2800A4792E /* CRUD */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* CloudManager_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A28698BA12F88DD700A4792E /* configuration.xcdatamodel */,
+				A28698BE12F88DE400A4792E /* mobileobject.xcdatamodel */,
+				A28698BC12F88DDD00A4792E /* sync.xcdatamodel */,
+				A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */,
+				A296335612CBF36400928950 /* ActivateDeviceCloudInfo.xib */,
+				A296315B12CB960000928950 /* CloudManagerApp.xib */,
+				A296316F12CB96BE00928950 /* ActivityIndicatorView.xib */,
+				A296317012CB96BE00928950 /* ModalActivateDevice.xib */,
+				A296317112CB96BE00928950 /* SecurityConfig.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* CloudManager-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2E1C1371364878E003B2B18 /* libmobilecloudlib.a */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				A29D69F312B7E53800DAE753 /* CFNetwork.framework */,
+				A29D69F812B7E56300DAE753 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A250284C130A251D006DC2C8 /* Ajax */ = {
+			isa = PBXGroup;
+			children = (
+				A250284D130A27BD006DC2C8 /* AjaxShowList.h */,
+				A250284E130A27BD006DC2C8 /* AjaxShowList.m */,
+				A250284F130A27BD006DC2C8 /* AjaxShowList.xib */,
+				A2502879130AA77F006DC2C8 /* AjaxGetListCommand.h */,
+				A250287A130AA77F006DC2C8 /* AjaxGetListCommand.m */,
+				A250289A130AAC06006DC2C8 /* EmailBean.h */,
+				A250289B130AAC06006DC2C8 /* EmailBean.m */,
+				A2502900130ADA15006DC2C8 /* AjaxGetDetailsCommand.h */,
+				A2502901130ADA15006DC2C8 /* AjaxGetDetailsCommand.m */,
+				A250291F130ADD7D006DC2C8 /* AjaxShowDetails.h */,
+				A2502920130ADD7D006DC2C8 /* AjaxShowDetails.m */,
+				A2502921130ADD7D006DC2C8 /* AjaxShowDetails.xib */,
+			);
+			name = Ajax;
+			sourceTree = "<group>";
+		};
+		A2502BAF130C68E7006DC2C8 /* FormSubmission */ = {
+			isa = PBXGroup;
+			children = (
+				A2502BB0130C693D006DC2C8 /* Form.h */,
+				A2502BB1130C693D006DC2C8 /* Form.m */,
+				A2502BB2130C693D006DC2C8 /* Form.xib */,
+			);
+			name = FormSubmission;
+			sourceTree = "<group>";
+		};
+		A2502C95131029C7006DC2C8 /* CommandFramework */ = {
+			isa = PBXGroup;
+			children = (
+				A2502C9613102A20006DC2C8 /* UICommandFramework.h */,
+				A2502C9713102A20006DC2C8 /* UICommandFramework.m */,
+				A2502C9813102A20006DC2C8 /* UICommandFramework.xib */,
+				A2502CCF13103215006DC2C8 /* AjaxCommand.h */,
+				A2502CD013103215006DC2C8 /* AjaxCommand.m */,
+				A2502CF6131037B6006DC2C8 /* BusyCommand.h */,
+				A2502CF7131037B6006DC2C8 /* BusyCommand.m */,
+				A2502CFD1310381F006DC2C8 /* FastCommand.h */,
+				A2502CFE1310381F006DC2C8 /* FastCommand.m */,
+			);
+			name = CommandFramework;
+			sourceTree = "<group>";
+		};
+		A2869AAA12F8BE2800A4792E /* CRUD */ = {
+			isa = PBXGroup;
+			children = (
+				A2869AAC12F8BF0200A4792E /* ShowList.h */,
+				A2869AAD12F8BF0200A4792E /* ShowList.m */,
+				A2869AAE12F8BF0200A4792E /* ShowList.xib */,
+				A2869B4712F8D57E00A4792E /* SaveTicket.h */,
+				A2869B4812F8D57E00A4792E /* SaveTicket.m */,
+				A2869B4912F8D57E00A4792E /* SaveTicket.xib */,
+				A2869B9512F9014500A4792E /* SaveTicketCommand.h */,
+				A2869B9612F9014500A4792E /* SaveTicketCommand.m */,
+				A2869B9812F9016500A4792E /* DeleteTicketCommand.h */,
+				A2869B9912F9016500A4792E /* DeleteTicketCommand.m */,
+				A2869B9B12F9017F00A4792E /* ChannelBootstrapCommand.h */,
+				A2869B9C12F9017F00A4792E /* ChannelBootstrapCommand.m */,
+			);
+			name = CRUD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* CloudManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "CloudManager" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudManager;
+			productName = CloudManager;
+			productReference = 1D6058910D05DD3D006BFB54 /* CloudManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CloudManager" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* CloudManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				A296315C12CB960000928950 /* CloudManagerApp.xib in Resources */,
+				A296317312CB96BE00928950 /* ActivityIndicatorView.xib in Resources */,
+				A296317412CB96BE00928950 /* ModalActivateDevice.xib in Resources */,
+				A296317512CB96BE00928950 /* SecurityConfig.xib in Resources */,
+				A296335712CBF36400928950 /* ActivateDeviceCloudInfo.xib in Resources */,
+				A2E5558212F0F1F9008B3FCE /* openmobster-app.xml in Resources */,
+				A2869AB012F8BF0200A4792E /* ShowList.xib in Resources */,
+				A2869B4B12F8D57E00A4792E /* SaveTicket.xib in Resources */,
+				A2502851130A27BD006DC2C8 /* AjaxShowList.xib in Resources */,
+				A2502923130ADD7D006DC2C8 /* AjaxShowDetails.xib in Resources */,
+				A2502BB4130C693D006DC2C8 /* Form.xib in Resources */,
+				A2502C9A13102A20006DC2C8 /* UICommandFramework.xib in Resources */,
+				A26229AF13413B5600B1BEB3 /* Home.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* CloudManagerAppDelegate.m in Sources */,
+				A28698BB12F88DD700A4792E /* configuration.xcdatamodel in Sources */,
+				A28698BD12F88DDD00A4792E /* sync.xcdatamodel in Sources */,
+				A28698BF12F88DE400A4792E /* mobileobject.xcdatamodel in Sources */,
+				A2869AAF12F8BF0200A4792E /* ShowList.m in Sources */,
+				A2869B4A12F8D57E00A4792E /* SaveTicket.m in Sources */,
+				A2869B9712F9014500A4792E /* SaveTicketCommand.m in Sources */,
+				A2869B9A12F9016500A4792E /* DeleteTicketCommand.m in Sources */,
+				A2869B9D12F9017F00A4792E /* ChannelBootstrapCommand.m in Sources */,
+				A2502850130A27BD006DC2C8 /* AjaxShowList.m in Sources */,
+				A250287B130AA77F006DC2C8 /* AjaxGetListCommand.m in Sources */,
+				A250289C130AAC06006DC2C8 /* EmailBean.m in Sources */,
+				A2502902130ADA15006DC2C8 /* AjaxGetDetailsCommand.m in Sources */,
+				A2502922130ADD7D006DC2C8 /* AjaxShowDetails.m in Sources */,
+				A2502BB3130C693D006DC2C8 /* Form.m in Sources */,
+				A2502C9913102A20006DC2C8 /* UICommandFramework.m in Sources */,
+				A2502CD113103215006DC2C8 /* AjaxCommand.m in Sources */,
+				A2502CF8131037B6006DC2C8 /* BusyCommand.m in Sources */,
+				A2502CFF1310381F006DC2C8 /* FastCommand.m in Sources */,
+				A26229AE13413B5600B1BEB3 /* Home.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CloudManager_Prefix.pch;
+				HEADER_SEARCH_PATHS = /Users/openmobster/projects/openmobster/private/iphone_mobileCloud/mobilecloudlib;
+				INFOPLIST_FILE = "CloudManager-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = CloudManager;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CloudManager_Prefix.pch;
+				INFOPLIST_FILE = "CloudManager-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = CloudManager;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2/iphone/**";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2M1/iphone/**";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "CloudManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CloudManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

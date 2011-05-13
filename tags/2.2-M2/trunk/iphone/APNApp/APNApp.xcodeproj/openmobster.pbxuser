@@ -1,0 +1,89 @@
+// !$*UTF8*$!
+{
+	1D3623250D0F684500981E51 /* APNAppAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2496}}";
+			sepNavSelRange = "{2567, 0}";
+			sepNavVisRange = "{4165, 1501}";
+			sepNavWindowFrame = "{{476, 148}, {750, 720}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* APNApp */ = {
+		activeExec = 0;
+		executables = (
+			A2622C73134E0E3400B1BEB3 /* APNApp */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = A2622C73134E0E3400B1BEB3 /* APNApp */;
+		activeSDKPreference = iphonesimulator4.2;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* APNApp */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* APNApp */,
+		);
+		codeSenseManager = A2622C87134E0E4400B1BEB3 /* Code sense */;
+		executables = (
+			A2622C73134E0E3400B1BEB3 /* APNApp */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 326994558;
+			PBXWorkspaceStateSaveDate = 326994558;
+		};
+		sourceControlManager = A2622C86134E0E4400B1BEB3 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	A2622C73134E0E3400B1BEB3 /* APNApp */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = APNApp;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	A2622C86134E0E4400B1BEB3 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	A2622C87134E0E4400B1BEB3 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	A2622D13134E1CAE00B1BEB3 /* openmobster-app.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 569}}";
+			sepNavSelRange = "{10, 0}";
+			sepNavVisRange = "{0, 151}";
+			sepNavWindowFrame = "{{1455, 180}, {750, 720}}";
+		};
+	};
+}
