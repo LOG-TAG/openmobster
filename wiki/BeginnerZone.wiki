@@ -37,6 +37,11 @@ A basic [MobileRPC tutorial] to understand the Remote Procedure Call setup in Op
 
 ----
 
+==== iPhone Cloud App Setup ====
+A step-by-step [iPhoneCloudAppSetup guide] for integrating the OpenMobster static library into your App
+
+----
+
 ==== AsyncCommand component ====
 
 A basic [AsyncCommand tutorial] on how to perform an Ajax usecase within
