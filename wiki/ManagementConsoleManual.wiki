@@ -26,7 +26,11 @@ De-activates the 'Device' account and makes it available to be assigned to anoth
 
 ==== Administrators ====
 
+Used for managing the 'Admin' accounts.
+
 ===== Activate/De-Activate =====
+
+Activates and De-Activates the 'Admin' account. 
 
 ----
 
