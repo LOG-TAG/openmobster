@@ -22,3 +22,11 @@ Now, a Push is finally sent.
   * parameter 3: The core message of the Push
   * parameter 4: The title of the Push
   * parameter 5: A detailed message associated with the Push
+
+----
+
+Before the PushService works you must make sure all your Platform specific configuration is setup.
+
+  * Android: No configuration needed
+
+  * iPhone: APN setup is needed as described [iPhonePushSetup here]
