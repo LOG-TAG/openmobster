@@ -12,8 +12,8 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1965, 2080}}";
 			sepNavSelRange = "{1607, 0}";
-			sepNavVisRange = "{3782, 835}";
-			sepNavWindowFrame = "{{454, 128}, {750, 720}}";
+			sepNavVisRange = "{2533, 1240}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* CloudManager */ = {
@@ -35,12 +35,8 @@
 			A22D3DB8122698FA00C0A112 /* CloudManager */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 325696195;
-			PBXWorkspaceStateSaveDate = 325696195;
-		};
-		perUserProjectItems = {
-			A2E1C1F91369BAD2003B2B18 /* PBXBookmark */ = A2E1C1F91369BAD2003B2B18 /* PBXBookmark */;
-			A2E1C2051369BF4D003B2B18 /* PBXTextBookmark */ = A2E1C2051369BF4D003B2B18 /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 326994337;
+			PBXWorkspaceStateSaveDate = 326994337;
 		};
 		sourceControlManager = A22D3DCD1226990600C0A112 /* Source Control */;
 		userBuildSettings = {
@@ -264,10 +260,10 @@
 	};
 	A26229AC13413B5600B1BEB3 /* Home.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1118, 3211}}";
-			sepNavSelRange = "{7210, 233}";
-			sepNavVisRange = "{6692, 1058}";
-			sepNavWindowFrame = "{{1790, 342}, {750, 558}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1118, 3068}}";
+			sepNavSelRange = "{7151, 0}";
+			sepNavVisRange = "{4567, 1218}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A2869AAC12F8BF0200A4792E /* ShowList.h */ = {
@@ -347,20 +343,6 @@
 			sepNavVisRange = "{711, 1103}";
 			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
-	};
-	A2E1C1F91369BAD2003B2B18 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */;
-	};
-	A2E1C2051369BF4D003B2B18 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */;
-		name = "CloudManagerAppDelegate.m: 50";
-		rLen = 0;
-		rLoc = 1607;
-		rType = 0;
-		vrLen = 835;
-		vrLoc = 3782;
 	};
 	A2E5558112F0F1F9008B3FCE /* openmobster-app.xml */ = {
 		uiCtxt = {
