@@ -14,6 +14,9 @@ import org.openmobster.core.common.transaction.TransactionHelper;
 import org.openmobster.core.console.server.Server;
 import org.openmobster.core.security.device.PushAppController;
 import org.openmobster.core.security.device.PushApp;
+import org.openmobster.core.security.device.DeviceController;
+import org.openmobster.core.security.device.Device;
+import org.openmobster.server.api.push.PushService;
 
 /**
  * 
@@ -42,7 +45,7 @@ public final class ManagePushApp
 					//FIXME: Development time code only...comment me out when shipping
 					//this is because PushApp instaces can only be created via
 					//iphone registration
-					TransactionHelper.startTx();
+					/*TransactionHelper.startTx();
 					try
 					{
 						PushAppController controller = PushAppController.getInstance();
@@ -61,7 +64,7 @@ public final class ManagePushApp
 					finally
 					{
 						TransactionHelper.commitTx();
-					}
+					}*/
 				}
 			}
 		}
@@ -154,8 +157,28 @@ public final class ManagePushApp
 		}
 	}
 	
-	public void testPush(String appId) throws ManagePushAppException
+	public void testPush(String deviceId, String appId) throws ManagePushAppException
 	{
-		//TODO: implement me
+		TransactionHelper.startTx();
+		try
+		{
+			//TODO: implement me
+			Device device = DeviceController.getInstance().read(deviceId);
+			/*System.out.println("Test Push---------------------------");
+			System.out.println("DeviceId: "+deviceId);
+			System.out.println("AppID: "+appId);
+			System.out.println("Device Token: "+device.getDeviceToken());
+			System.out.println("Operating System: "+device.getOs());*/
+			
+			if(device != null)
+			{
+				PushService pushService = PushService.getInstance();
+				pushService.push(device.getIdentity().getPrincipal(), appId, "Test Push", "Test Push", "Test Push");
+			}
+		}
+		finally
+		{
+			TransactionHelper.commitTx();
+		}
 	}
 }

@@ -21,6 +21,11 @@
 		<artifactId>security</artifactId>
 		<version>${openmobster.version}</version>				
 	</dependency>
+	<dependency>
+		<groupId>org.openmobster.core</groupId>
+		<artifactId>api</artifactId>
+		<version>${openmobster.version}</version>				
+	</dependency>
 	
 	<!-- third party dependencies -->
 	<dependency>
