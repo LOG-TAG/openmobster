@@ -1,0 +1,13 @@
+#summary Integrating the OpenMobster static library
+
+=== Introduction ===
+
+When developing for the iPhone, OpenMobster is integrated as a static library. Besides the library, there are other resources that also need to be linked to within your project. This is a step-by-step guide that lets you accomplish this task.
+
+==== Step 1: Locating the projects ====
+
+For simplicity, if possible try to locate the two projects (Your project and mobilecloudlib project) within the same directory.
+
+==== Step 2: Link libmobilecloudlib.a file ====
+
+In your project, under Frameworks, do "Add Existing Files", locate the library stored in the build folder of mobilecloudlib.
