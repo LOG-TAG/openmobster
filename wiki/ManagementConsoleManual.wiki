@@ -6,13 +6,21 @@ This is the user manual for the Management Console. The Management Console is us
 
 ==== Create Account ====
 
+This lets you create an 'Admin' account. This creation has to be approved by another administrator before you can login.
+
 ----
 
 ==== Devices ====
 
+This lets you manage your devices such activation, deactivation, etc. As the software matures it may add more system level functions like remote wipe, remote lock down, etc.
+
 ===== Activate/De-Activate =====
 
+Activates or Deactivates the 'Device' account. If de-activated, none of the Cloud services will be available to the device. They will be available as soon as the account is activated.
+
 ===== Re-assign =====
+
+De-activates the 'Device' account and makes it available to be assigned to another user. This is so that when a user leaves, his device can be re-assigned to another user.
 
 ----
 
