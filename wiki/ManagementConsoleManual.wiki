@@ -35,3 +35,7 @@ Activates and De-Activates the 'Admin' account.
 ----
 
 ==== Push Setup ====
+
+This is used to configure the Apple Push Notification service. As part of the system, a security certificate has to be assigned to an application before messages can be pushed to it. You can learn more about it [iPhonePushSetup here]. 
+
+This is where your certificate can be uploaded and assigned to an App. Once this is successful, you can send a test push to your iPhone.
