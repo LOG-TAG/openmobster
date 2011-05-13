@@ -15,6 +15,7 @@
 #import "Request.h"
 #import "Response.h"
 #import "MobileService.h"
+#import "SubmitDeviceToken.h"
 
 @implementation APNAppAppDelegate
 
@@ -67,8 +68,16 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-	//AppService *appService = [AppService getInstance];
-	//[appService start];
+	AppService *appService = [AppService getInstance];
+	[appService start];
+	
+	UIAlertView *dialog = [[UIAlertView alloc] 
+						   initWithTitle:@"APNApp"
+						   message:@"App successfully launched" 
+						   delegate:nil 
+						   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	[dialog show];
 }
 
 
@@ -108,7 +117,6 @@
 { 
 	
     NSString *str = [NSString stringWithFormat:@"Device Token=%@",deviceToken];
-    NSLog(@"%@",str);
 	
 	//show this in an alert dialog
 	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Device Token"
@@ -116,52 +124,40 @@
 										   cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	dialog = [dialog autorelease];
 	[dialog show];
+	
+	
+	NSString *deviceTokenStr = [NSString stringWithFormat:@"%@",deviceToken];
+	deviceTokenStr = [StringUtil replaceAll:deviceTokenStr :@"<" :@""];
+	deviceTokenStr = [StringUtil replaceAll:deviceTokenStr :@">" :@""];
+	
+	@try 
+	{
+		SubmitDeviceToken *submit = [SubmitDeviceToken withInit];
+		[submit submit:deviceTokenStr];
+	}
+	@catch (SystemException * syse) 
+	{
+		UIAlertView *dialog = [[UIAlertView alloc] 
+							   initWithTitle:@"Token Registration Error"
+							   message:@"Device Token Cloud Registration Failed. Please make sure your device is activated with the Cloud using the ActivationApp. Re-start this App to start the token registration again" 
+							   delegate:nil 
+							   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		dialog = [dialog autorelease];
+		[dialog show];
+	}
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err { 
 	
     NSString *str = [NSString stringWithFormat: @"Error: %@", err];
-    NSLog(@"%@",str);   
-	
-	//FIXME: This should be in registration success code...this is onlt
-	//because remote notifications are not allowed on the Simulator
-	/*@try
-	{
-		AppService *appService = [AppService getInstance];
-		NSString *deviceToken = @"mock-token";
-		NSString *os = @"iphone";
-		NSString *appId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-		NSArray *myChannels = [appService myChannels];
-		NSMutableArray *channelNames = [NSMutableArray array];
-	
-		for(Channel *local in myChannels)
-		{
-			[channelNames addObject:local.name];
-		}
-	
-		//Register this information with the Cloud
-		Configuration *conf = [Configuration getInstance];
-		if(![conf isActivated])
-		{
-			return;
-		}
-	
-		//Setup the Request
-		Request *request = [Request withInit:@"iphone_push_callback"];
-		[request setAttribute:@"os" :os];
-		[request setAttribute:@"deviceToken" :deviceToken];
-		[request setAttribute:@"appId" :appId];
-		[request setListAttribute:@"channels" :[NSArray arrayWithArray:channelNames]];
-	
-		//Setup MobileService
-		MobileService *mobileService = [MobileService withInit];
-		[mobileService invoke:request];
-	}
-	@catch(SystemException *syse)
-	{
-		//Do Nothing
-		[ErrorHandler handleException:syse];
-	}*/
+    
+	UIAlertView *dialog = [[UIAlertView alloc] 
+						   initWithTitle:@"Token Registration Error"
+						   message:str 
+						   delegate:nil 
+						   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	[dialog show];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
