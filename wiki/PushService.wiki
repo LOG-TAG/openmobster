@@ -25,8 +25,8 @@ Now, a Push is finally sent.
 
 ----
 
-Before the PushService works you must make sure all your Platform specific configuration is setup.
+Before the PushService works you must make sure all your platform specific configuration is setup.
 
   * *Android*: No configuration needed
 
-  * *iPhone*: APN setup is needed as described [iPhonePushSetup here]
+  * *iPhone*: Apple Push Notification setup is needed as described [iPhonePushSetup here]
