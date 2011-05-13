@@ -26,7 +26,7 @@
 		A2622CA1134E0FEA00B1BEB3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2622CA0134E0FEA00B1BEB3 /* CFNetwork.framework */; };
 		A2622CA3134E0FEA00B1BEB3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2622CA2134E0FEA00B1BEB3 /* CoreData.framework */; };
 		A2622D14134E1CAE00B1BEB3 /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A2622D13134E1CAE00B1BEB3 /* openmobster-app.xml */; };
-		A2E1BF67135FF80A003B2B18 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E1BF66135FF80A003B2B18 /* libmobilecloudlib.a */; };
+		A2F4987A137D8A9600CB871D /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F49879137D8A9600CB871D /* libmobilecloudlib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		A2622CA0134E0FEA00B1BEB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A2622CA2134E0FEA00B1BEB3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A2622D13134E1CAE00B1BEB3 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
-		A2E1BF66135FF80A003B2B18 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphoneos/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
+		A2F49879137D8A9600CB871D /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				A2622CA1134E0FEA00B1BEB3 /* CFNetwork.framework in Frameworks */,
 				A2622CA3134E0FEA00B1BEB3 /* CoreData.framework in Frameworks */,
-				A2E1BF67135FF80A003B2B18 /* libmobilecloudlib.a in Frameworks */,
+				A2F4987A137D8A9600CB871D /* libmobilecloudlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A2E1BF66135FF80A003B2B18 /* libmobilecloudlib.a */,
+				A2F49879137D8A9600CB871D /* libmobilecloudlib.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -277,7 +277,7 @@
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD636D7F-F300-4254-98E1-F0AD8E5C570E";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2/iphone/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/**";
 			};
 			name = Debug;
 		};
