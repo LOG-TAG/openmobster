@@ -268,12 +268,12 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>10</integer>
+											<integer>1</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 245}, {429, 333}}</string>
+									<string>{{0, 0}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -296,7 +296,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>1440 476 446 419 1440 180 1280 720 </string>
+								<string>1440 479 446 419 1440 180 1280 720 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -435,8 +435,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2E1C2B4136F1B6E003B2B18</string>
-				<string>A2E1C2B5136F1B6E003B2B18</string>
+				<string>A2F497BA137C9E6E00CB871D</string>
+				<string>A2F497BB137C9E6E00CB871D</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -450,7 +450,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A2E1C27C136A11C8003B2B18</string>
+	<string>A2F497DB137D794900CB871D</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -475,11 +475,12 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
-		<string>/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
+		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1440 476 446 419 1440 180 1280 720 </string>
+	<string>1440 479 446 419 1440 180 1280 720 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -693,7 +694,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2E1C2B6136F1B6E003B2B18</string>
+				<string>A2F497BC137C9E6E00CB871D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -911,8 +912,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>A2502A75130B066D006DC2C8</string>
-				<string>A2502A76130B066D006DC2C8</string>
+				<string>A2F497E2137D7BCE00CB871D</string>
+				<string>A2F497E3137D7BCE00CB871D</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
