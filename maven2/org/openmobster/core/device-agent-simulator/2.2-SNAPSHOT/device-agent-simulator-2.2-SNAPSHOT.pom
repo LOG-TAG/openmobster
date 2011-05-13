@@ -103,7 +103,10 @@
                         <include>**/TestSimpleActivation.java</include>
                         <include>**/TestSyncAnchorReset.java</include>                        
                         <include>**/TestReActivation.java</include>	    
-                        <include>**/TestInActiveAccountScenarios.java</include>	        				          				          				         			          					          			         			          				          							          				          				          				          				          				          				          				          				          			
+                        <include>**/TestInActiveAccountScenarios.java</include>
+                        
+                        <!-- IPhone Push related usecases -->
+                        <include>**/TestIPhonePushCallback.java</include>	        				          				          				         			          					          			         			          				          							          				          				          				          				          				          				          				          				          			
 	          		</includes>	          			          			          		
 	          </configuration>
 	        </plugin> 
