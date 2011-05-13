@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>A2E1C1FA1369BAD2003B2B18</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>CloudManagerAppDelegate.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>A2E1C2041369BF4D003B2B18</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>CloudManagerAppDelegate.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>A2E1C2051369BF4D003B2B18</string>
-						<key>history</key>
-						<array>
-							<string>A2E1C1F91369BAD2003B2B18</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {750, 623}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>454 184 750 664 0 0 1440 878 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -311,7 +270,7 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>7</integer>
+											<integer>9</integer>
 											<integer>5</integer>
 											<integer>0</integer>
 										</array>
@@ -340,7 +299,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>472 455 446 419 0 0 1440 878 </string>
+								<string>1519 476 446 419 1440 180 1280 720 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -480,8 +439,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2E1C2021369BF4D003B2B18</string>
-				<string>A2E1C2031369BF4D003B2B18</string>
+				<string>A2F49841137D89C000CB871D</string>
+				<string>A2F49842137D89C000CB871D</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -520,11 +479,12 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
-		<string>/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/CloudManager.xcodeproj</string>
+		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/CloudManager.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>472 455 446 419 0 0 1440 878 </string>
+	<string>1519 476 446 419 1440 180 1280 720 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -738,7 +698,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2E1C2061369BF4D003B2B18</string>
+				<string>A2F49843137D89C000CB871D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -860,13 +820,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A2E1C17A13678212003B2B18</string>
+				<string>A2F49844137D89C000CB871D</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A2E1C17B13678212003B2B18</string>
-				<string>A2E1C17C13678212003B2B18</string>
-				<string>A2E1C17D13678212003B2B18</string>
-				<string>A2E1C17E13678212003B2B18</string>
-				<string>A2E1C17F13678212003B2B18</string>
+				<string>A2F49845137D89C000CB871D</string>
+				<string>A2F49846137D89C000CB871D</string>
+				<string>A2F49847137D89C000CB871D</string>
+				<string>A2F49848137D89C000CB871D</string>
+				<string>A2F49849137D89C000CB871D</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
