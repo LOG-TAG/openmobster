@@ -12,11 +12,14 @@ For simplicity, if possible try to locate the two projects (Your project and mob
 
 In your project, under Frameworks, do "Add Existing Files", locate the library stored in the build folder of mobilecloudlib.
 
-==== Step 3: Copy Resources ====
+==== Step 3: Link CFNetwork.Framework and CoreData.Framework ====
+Under Frameworks, do "Add Existing Frameworks", locate both the frameworks and add them
+
+==== Step 4: Copy Resources ====
 
 Drag-n-Drop all the resources located under the *app-bundle* group of mobilecloudlib into the *Resources* group of your project.
 
-==== Step 4: Integrate via the App Delegate ====
+==== Step 5: Integrate via the App Delegate ====
 
 You can add code to start and stop the Cloud infrastructure within your App delegate object. The code for doing this follows:
 
