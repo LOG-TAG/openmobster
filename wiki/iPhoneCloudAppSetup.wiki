@@ -84,3 +84,15 @@ These two methods are called by various App Delegate methods depending on the li
 	AppService *appService = [AppService getInstance];
 	[appService start];
 }}}
+
+===== -(void)applicationWillTerminate:(UIApplication *)application =====
+{{{
+-(void)applicationWillTerminate:(UIApplication *)application 
+{
+    /*
+     Called when the application is about to terminate.
+     See also applicationDidEnterBackground:.
+     */
+	[self stopCloudService];
+}
+}}}
