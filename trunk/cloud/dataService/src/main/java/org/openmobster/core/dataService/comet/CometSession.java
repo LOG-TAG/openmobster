@@ -19,6 +19,7 @@ import org.apache.mina.common.IoSession;
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusListener;
 import org.openmobster.core.common.bus.BusMessage;
+import org.openmobster.core.common.transaction.TransactionHelper;
 import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.services.subscription.Subscription;
 import org.openmobster.core.services.subscription.SubscriptionManager;
@@ -136,26 +137,34 @@ public final class CometSession implements Serializable,BusListener
 	//-----Bus Listener implementation--------------------------------------------------------------------------------------------------------
 	public void messageIncoming(BusMessage busMessage) 
 	{
-		String command = (String)busMessage.getAttribute(Constants.command);
-		String os = (String)busMessage.getAttribute(Constants.os);
-		
-		log.debug("-------------------------------------------------");
-		log.debug("Bus Message received by: "+busMessage.getBusUri());
-		log.debug("Sent by: "+busMessage.getSenderUri());
-		log.debug("Command: "+command);
-		log.debug("OS: "+os);
-		log.debug("-------------------------------------------------");
-		
-		if(command != null)
+		TransactionHelper.startTx();
+		try
 		{
-			if(os.trim().equalsIgnoreCase("android"))
+			String command = (String)busMessage.getAttribute(Constants.command);
+			String os = (String)busMessage.getAttribute(Constants.os);
+			
+			log.debug("-------------------------------------------------");
+			log.debug("Bus Message received by: "+busMessage.getBusUri());
+			log.debug("Sent by: "+busMessage.getSenderUri());
+			log.debug("Command: "+command);
+			log.debug("OS: "+os);
+			log.debug("-------------------------------------------------");
+			
+			if(command != null)
 			{
-				this.sendPacket(command, busMessage);
+				if(os.trim().equalsIgnoreCase("android"))
+				{
+					this.sendPacket(command, busMessage);
+				}
+				else if(os.trim().equalsIgnoreCase("iphone"))
+				{
+					this.sendiPhoneNotification(command, busMessage);
+				}
 			}
-			else if(os.trim().equalsIgnoreCase("iphone"))
-			{
-				this.sendiPhoneNotification(command, busMessage);
-			}
+		}
+		finally
+		{
+			TransactionHelper.commitTx();
 		}
 	}
 	//----------------------------------------------------------------------------------------------------------
