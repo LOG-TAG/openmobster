@@ -36,6 +36,13 @@ public class PushAppServiceImpl extends RemoteServiceServlet implements PushAppS
 			String xml = this.all();	
 			return xml;
 		}
+		else if(action.equalsIgnoreCase("testPush"))
+		{
+			String deviceId = parameters.get(1);
+			String appId = parameters.get(2);
+			
+			return this.testPush(deviceId, appId);
+		}
 		
 		return "500"; //If I get here, error occurred
 	}
@@ -55,5 +62,22 @@ public class PushAppServiceImpl extends RemoteServiceServlet implements PushAppS
 			t.printStackTrace();
 			return "500";
 		}
+	}
+	
+	private String testPush(String deviceId, String appId)
+	{
+		try
+		{
+			ManagePushApp managePushApp = ManagePushApp.getInstance();
+			
+			managePushApp.testPush(deviceId, appId);
+			
+			return "200";
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+			return "500";
+		}	
 	}
 }

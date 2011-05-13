@@ -19,18 +19,24 @@ import com.smartgwt.client.widgets.form.fields.SelectItem;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Encoding;
 import com.smartgwt.client.types.VerticalAlignment;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;  
 
+import org.openmobster.core.cloud.console.client.rpc.PushAppService;
+import org.openmobster.core.cloud.console.client.rpc.PushAppServiceAsync;
 import org.openmobster.core.cloud.console.client.state.ContextRegistry;
 import org.openmobster.core.cloud.console.client.ui.Screen;
 import org.openmobster.core.cloud.console.client.common.Constants;
+import org.openmobster.core.cloud.console.client.common.Payload;
 import org.openmobster.core.cloud.console.client.flow.FlowServiceRegistry;
+import org.openmobster.core.cloud.console.client.flow.TransitionService;
 import org.openmobster.core.cloud.console.client.model.Device;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.NamedFrame; 
 import com.google.gwt.http.client.URL;
 
@@ -102,13 +108,39 @@ public class TestPushDialog implements Screen
         this.devices.setValueMap(valueMap);
         
         
-        Button pushButton = new Button("Push");
-        pushButton.addClickHandler(new ClickHandler(){
+        Button send = new Button("Push");
+        send.addClickHandler(new ClickHandler(){
         	public void onClick(ClickEvent e) 
         	{
         		String selectedDeviceId = TestPushDialog.this.devices.getValue().toString();
-        		
-        		//TODO: implement this
+
+        		SC.showPrompt("Loading....");
+
+        		final PushAppServiceAsync service = GWT.create(PushAppService.class);
+        		String payload = Payload.encode(new String[]{"testPush",selectedDeviceId, TestPushDialog.this.appId});
+
+        		service.invoke(payload,new AsyncCallback<String>(){
+        			public void onFailure(Throwable caught) 
+        			{
+        				SC.clearPrompt();
+        				SC.say("System Error", "Unexpected Network Error. Please try again.",null);
+        			}
+        			
+        			public void onSuccess(String result)
+        			{
+        				SC.clearPrompt();
+        				if(result.trim().equals("500"))
+        				{
+        					//validation error
+        					SC.say("System Error", "Internal Server Error. Please try again.",null);
+        				}
+        				else
+        				{
+        					//Just confirmation
+        					SC.say("Send Push", "Your Push was successfully sent",null);
+        				}
+        			}
+        		});
         	}
         });
         
@@ -127,7 +159,7 @@ public class TestPushDialog implements Screen
         //Button bar
         HLayout toolbar = new HLayout();
         toolbar.setAlign(Alignment.CENTER);
-        toolbar.addMember(pushButton);
+        toolbar.addMember(send);
         toolbar.addMember(close);
         
         NamedFrame frame = new NamedFrame(this.title());
