@@ -272,13 +272,12 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>3</integer>
-											<integer>1</integer>
+											<integer>21</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 0}, {429, 333}}</string>
+									<string>{{0, 143}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -301,7 +300,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>1440 475 446 419 1440 180 1280 720 </string>
+								<string>1496 477 446 419 1440 180 1280 720 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -324,7 +323,7 @@
 								<dict>
 									<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 									<array>
-										<real>333</real>
+										<real>429</real>
 									</array>
 									<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 									<array>
@@ -334,15 +333,18 @@
 								<key>PBXSmartGroupTreeModuleOutlineStateKey_v7</key>
 								<dict>
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
-									<array/>
+									<array>
+										<string>1C37FBAC04509CD000000102</string>
+									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
 											<integer>1</integer>
+											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 0}, {333, 329}}</string>
+									<string>{{0, 0}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -352,11 +354,11 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{10, 31}, {350, 347}}</string>
+								<string>{{10, 27}, {446, 351}}</string>
 								<key>GroupTreeTableConfiguration</key>
 								<array>
 									<string>MainColumn</string>
-									<real>333</real>
+									<real>429</real>
 								</array>
 							</dict>
 							<key>Module</key>
@@ -437,8 +439,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2622CC4134E143600B1BEB3</string>
-				<string>A2622CC5134E143600B1BEB3</string>
+				<string>A2F49867137D8A2100CB871D</string>
+				<string>A2F49868137D8A2100CB871D</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -452,7 +454,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A2622CB6134E112700B1BEB3</string>
+	<string>A2F497FB137D7C3600CB871D</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -477,11 +479,12 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
-		<string>/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/ActivationApp.xcodeproj</string>
+		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/ActivationApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1440 475 446 419 1440 180 1280 720 </string>
+	<string>1496 477 446 419 1440 180 1280 720 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -695,7 +698,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2622CC6134E143600B1BEB3</string>
+				<string>A2F49869137D8A2100CB871D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -817,13 +820,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A2622A99134251D100B1BEB3</string>
+				<string>A2F4986A137D8A2100CB871D</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A2622A9A134251D100B1BEB3</string>
-				<string>A2622A9B134251D100B1BEB3</string>
-				<string>A2622A9C134251D100B1BEB3</string>
-				<string>A2622A9D134251D100B1BEB3</string>
-				<string>A2622A9E134251D100B1BEB3</string>
+				<string>A2F4986B137D8A2100CB871D</string>
+				<string>A2F4986C137D8A2100CB871D</string>
+				<string>A2F4986D137D8A2100CB871D</string>
+				<string>A2F4986E137D8A2100CB871D</string>
+				<string>A2F4986F137D8A2100CB871D</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -985,7 +988,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A2622A9F134251D100B1BEB3</string>
+				<string>A2F49828137D883800CB871D</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
