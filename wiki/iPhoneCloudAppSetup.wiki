@@ -11,3 +11,67 @@ For simplicity, if possible try to locate the two projects (Your project and mob
 ==== Step 2: Link libmobilecloudlib.a file ====
 
 In your project, under Frameworks, do "Add Existing Files", locate the library stored in the build folder of mobilecloudlib.
+
+==== Step 3: Copy Resources ====
+
+Drag-n-Drop all the resources located under the *app-bundle* group of mobilecloudlib into the *Resources* group of your project.
+
+==== Step 4: Integrate via the App Delegate ====
+
+You can add code to start and stop the Cloud infrastructure within your App delegate object. The code for doing this follows:
+
+===== Start Cloud Service =====
+{{{
+-(void)startCloudService
+{
+	@try 
+	{
+		Kernel *kernel = [Kernel getInstance];
+		[kernel startup];
+		
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel startup:mainView];
+	}
+	@catch (NSException * e) 
+	{
+		//something caused the kernel to crash
+		//stop the kernel
+		[self stopCloudService];
+	}
+}
+}}} 
+
+===== Stop Cloud Service =====
+{{{
+-(void)stopCloudService
+{
+	@try
+	{
+		UIKernel *uiKernel = [UIKernel getInstance];
+		[uiKernel shutdown];
+	
+		Kernel *kernel = [Kernel getInstance];
+		[kernel shutdown];
+	}
+	@catch (NSException *e) 
+	{
+		
+	}
+}
+}}}
+
+These two methods are called by various App Delegate methods depending on the life cycle. Here are the various integration points
+
+===== -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions =====
+{{{
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{    
+    // Override point for customization after application launch.
+	[window addSubview:mainView.view];
+    [window makeKeyAndVisible];
+	
+	[self startCloudService];
+	
+	return YES;
+}
+}}}
