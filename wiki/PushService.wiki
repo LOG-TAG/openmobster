@@ -17,8 +17,8 @@ if(device != null)
 Initially a device is obtained using its device id. If a device is found, it can now receive Push. An instance of the *PushService* is obtained.
 Now, a Push is finally sent.
 
-parameter 1: the user that is the target of the Push
-parameter 2: the application on the device that is associated with this Push
-parameter 3: The core message of the Push
-parameter 4: The title of the Push
-parameter 5: A detailed message associated with the Push
+  * parameter 1: the user that is the target of the Push
+  * parameter 2: the application on the device that is associated with this Push
+  * parameter 3: The core message of the Push
+  * parameter 4: The title of the Push
+  * parameter 5: A detailed message associated with the Push
