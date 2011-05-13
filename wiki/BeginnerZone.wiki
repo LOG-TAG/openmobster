@@ -61,6 +61,12 @@ A basic [LocalCommand tutorial] on how to perform a simple fast command within a
 
 ----
 
+==== Management Console User Manual ====
+
+A [ManagementConsoleManual user manual] for the Management Console
+
+----
+
 ==== Setup iPhone Push ====
 
 A [iPhonePushSetup guide] for integrating iPhone Push with the OpenMobster Push service
