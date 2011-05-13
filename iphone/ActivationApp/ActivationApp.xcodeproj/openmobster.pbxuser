@@ -12,7 +12,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1965, 1664}}";
 			sepNavSelRange = "{3016, 0}";
-			sepNavVisRange = "{2778, 729}";
+			sepNavVisRange = "{0, 1597}";
 			sepNavWindowFrame = "{{1890, 180}, {750, 720}}";
 		};
 	};
@@ -33,8 +33,8 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {733, 1482}}";
 			sepNavSelRange = "{2698, 0}";
-			sepNavVisRange = "{1169, 1328}";
-			sepNavWindowFrame = "{{94, 91}, {750, 787}}";
+			sepNavVisRange = "{1629, 1069}";
+			sepNavWindowFrame = "{{1890, 180}, {750, 720}}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -50,8 +50,8 @@
 			A21EC80A131C2E300030ECCE /* ActivationApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 323883205;
-			PBXWorkspaceStateSaveDate = 323883205;
+			PBXPerProjectTemplateStateSaveDate = 326994378;
+			PBXWorkspaceStateSaveDate = 326994378;
 		};
 		sourceControlManager = A21EC815131C2E460030ECCE /* Source Control */;
 		userBuildSettings = {
@@ -81,6 +81,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = ActivationApp;
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);

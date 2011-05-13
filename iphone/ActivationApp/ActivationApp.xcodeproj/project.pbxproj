@@ -17,7 +17,6 @@
 		28D7ACF80DDB3853001CB0EB /* ActivationAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ActivationAppViewController.m */; };
 		A21EC840131C2F790030ECCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC83F131C2F790030ECCE /* CFNetwork.framework */; };
 		A21EC842131C2F790030ECCE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC841131C2F790030ECCE /* CoreData.framework */; };
-		A21EC844131C2F9B0030ECCE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC843131C2F9B0030ECCE /* libmobilecloudlib.a */; };
 		A21EC84D131C2FB10030ECCE /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21EC845131C2FB10030ECCE /* configuration.xcdatamodel */; };
 		A21EC84E131C2FB10030ECCE /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21EC846131C2FB10030ECCE /* sync.xcdatamodel */; };
 		A21EC84F131C2FB10030ECCE /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21EC847131C2FB10030ECCE /* mobileobject.xcdatamodel */; };
@@ -26,6 +25,7 @@
 		A21EC852131C2FB10030ECCE /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */; };
 		A262297E1341336E00B1BEB3 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A262297C1341336E00B1BEB3 /* SecurityConfig.xib */; };
 		A262297F1341336E00B1BEB3 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */; };
+		A2F49866137D8A1E00CB871D /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F49865137D8A1E00CB871D /* libmobilecloudlib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,6 @@
 		8D1107310486CEB800E47090 /* ActivationApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ActivationApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A21EC83F131C2F790030ECCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A21EC841131C2F790030ECCE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		A21EC843131C2F9B0030ECCE /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 		A21EC845131C2FB10030ECCE /* configuration.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = configuration.xcdatamodel; path = ../mobilecloudlib/configuration.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		A21EC846131C2FB10030ECCE /* sync.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = sync.xcdatamodel; path = ../mobilecloudlib/sync.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		A21EC847131C2FB10030ECCE /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = mobileobject.xcdatamodel; path = ../mobilecloudlib/mobileobject.xcdatamodel; sourceTree = SOURCE_ROOT; };
@@ -53,6 +52,7 @@
 		A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
 		A262297C1341336E00B1BEB3 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
 		A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
+		A2F49865137D8A1E00CB871D /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				A21EC840131C2F790030ECCE /* CFNetwork.framework in Frameworks */,
 				A21EC842131C2F790030ECCE /* CoreData.framework in Frameworks */,
-				A21EC844131C2F9B0030ECCE /* libmobilecloudlib.a in Frameworks */,
+				A2F49866137D8A1E00CB871D /* libmobilecloudlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +133,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A21EC843131C2F9B0030ECCE /* libmobilecloudlib.a */,
+				A2F49865137D8A1E00CB871D /* libmobilecloudlib.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -234,6 +234,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = ActivationApp;
 			};
@@ -250,6 +251,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = ActivationApp;
 				VALIDATE_PRODUCT = YES;
