@@ -6,14 +6,20 @@ This is the user manual for the Management Console. The Management Console is us
 
 ==== Create Account ====
 
+----
+
 ==== Devices ====
 
 ===== Activate/De-Activate =====
 
 ===== Re-assign =====
 
+----
+
 ==== Administrators ====
 
 ===== Activate/De-Activate =====
+
+----
 
 ==== Push Setup ====
