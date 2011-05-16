@@ -24,6 +24,12 @@ To build from source code, see [http://code.google.com/p/openmobster/wiki/GetSta
 
 ----
 
+==Test Drive==
+
+Before you start development, you can take the system for a test drive. Instructions for doing that are [WhatNext here].
+
+----
+
 ==AppCreator==
 
 *AppCreator* is a Maven-based App development tool. It generates a multi-module App project. Along with project/sample code generation it generates the relevant maven poms for each module. This makes sure that all the dependencies are properly satisfied and downloaded from the internet. It produces the following modules:
