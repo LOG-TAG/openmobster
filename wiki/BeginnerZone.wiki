@@ -9,6 +9,12 @@ mobile development. For more advanced tutorials, you can check out the
 
 ----
 
+==== Test Drive ====
+
+So you downloaded the software, [WhatNext What Next?]. This gives detailed instructions on how to run the system end-to-end.
+
+----
+
 ==== Development Setup ====
 
 A [DevSetup tutorial] for setting up the development enviroment to start developing OpenMobster based apps
