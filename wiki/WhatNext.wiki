@@ -7,7 +7,28 @@ After you download OpenMobster, there are two ways you can go.
 
   * Start writing your own App. This is covered in the [GetStarted Get Started] document.
 
-  * Take the OpenMobster system for a ride. This is the topic of this document.
+  * Take the *OpenMobster system* for a ride. This is the topic of this document.
 
 
 Before you decide to take the software for a spin, make sure your machine is setup properly. You can find those instructions [DevSetup here].
+
+=== Step 1: Prepare the JBoss AS server ===
+Download JBoss 5.1.0 server from [http://www.jboss.org/jbossas/downloads here]. Extract the zip file
+
+Now install the OpenMobster Cloud Server into the JBoss AS. You can do that by copying cloudServer/hsqldb/openmobster to the JBOSS_HOME/server directory
+{{{
+cp -r cloudServer/hsqldb/openmobster $JBOSS_HOME/server/openmobster
+}}}
+
+=== Step 2: Run the OpenMobster Cloud Server ===
+Go to $JBOSS_HOME/bin directory. Inside there:
+{{{
+./run.sh -c openmobster -b 192.168.1.103
+}}}
+
+This starts the server and binds it whatever your local IP is.
+
+On MacOSX, you need Admin rights to run the web server on port 80. Hence, on the Mac the same command is:
+{{{
+sudo ./run.sh -c openmobster -b 192.168.1.103
+}}}
