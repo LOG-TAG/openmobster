@@ -2,3 +2,12 @@
 
 I have always wondered what goes through a user's mind after downloading a big piece of software. Good software comes with *README* files to navigate through the maze. Even though OpenMobster comes with a bunch of *README* files, I want to go a little further in providing more information.
 
+
+After you download OpenMobster, there are two ways you can go.
+
+  * Start writing your own App. This is covered in the [GetStarted Get Started] document.
+
+  * Take the OpenMobster system for a ride. This is the topic of this document.
+
+
+Before you decide to take the software for a spin, make sure your machine is setup properly. You can find those instructions [DevSetup here].
