@@ -1,0 +1,4 @@
+#summary I downloaded the software. What Next?
+
+I have always wondered what goes through a user's mind after downloading a big piece of software. Good software comes with *README* files to navigate through the maze. Even though OpenMobster comes with a bunch of *README* files, I want to go a little further in providing more information.
+
