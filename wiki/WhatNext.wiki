@@ -1,4 +1,5 @@
 #summary I downloaded the software. What Next?
+#labels Featured
 
 I have always wondered what goes through a user's mind after downloading a big piece of software. Good software comes with *README* files to navigate through the maze. Even though OpenMobster comes with a bunch of *README* files, I want to go a little further in providing more information.
 
@@ -64,5 +65,6 @@ You can launch the Cloud Manager App. There you can choose "Activate" and follow
 
 === Step 6: Install Sample Apps ===
 
+From the Cloud Manager App, select *Corporate App Store*. This will give you a list of some sample apps that are installed on the server. You can now download, install and play around with some of them.
 
-}}}
+That's it. This concludes the process of take the OpenMobster system for a test drive. It definitely give you an idea of how the entities are setup architecturally.
