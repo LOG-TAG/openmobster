@@ -32,3 +32,37 @@ On MacOSX, you need Admin rights to run the web server on port 80. Hence, on the
 {{{
 sudo ./run.sh -c openmobster -b 192.168.1.103
 }}}
+
+These instructions can also be found in the *README* file under the *cloudServer* folder.
+
+=== Step 3: Run the Android Emulator ===
+
+Start the Emulator
+{{{
+emulator -avd openmobster
+}}}
+
+Start the Debugger
+{{{
+ddms
+}}}
+
+=== Step 4: Install the Cloud Manager App ===
+
+Now that your device is ready and your server is ready, its time to install the Cloud Manager App over the air. You can do this by starting the browser on the device, and typing the following url:
+{{{
+http://192.168.1.103/o/android/cloudmanager
+}}}
+
+This will download the app and install it.
+
+Note: In the Emulator you must have an SD Card for this OTA download to work
+
+=== Step 5: Activate the device ===
+
+You can launch the Cloud Manager App. There you can choose "Activate" and follow the activation wizard.
+
+=== Step 6: Install Sample Apps ===
+
+
+}}}
