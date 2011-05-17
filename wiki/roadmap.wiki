@@ -65,23 +65,25 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
   * iPhone Support
 
 ==== Cloud Side ====
-  * Location Awareness Engine
-
-  * More out-of-the-box Enterprise Channels (Email, Calendar, Exchange Integration, Google Services, etc)
-	
-  * More out-of-the-box Consumer Channels (Facebook, Twitter, Google Services, etc)
 	
   * A GWT-based Management Console
+
+  * A Javascript API/Bridge for the Sync and the RPC (Remote Procedure Call) services. This will help integrate with Apps written in html,css, and Javascript
+
+  * Push based programming via a cross platform API. Same API for pushing to both Android and iPhone devices.
+
+  * Integration with Apple Push Notification Service
+
+  * Sync Channel Encryption
+
+  * Integration with Appcelerator to develop cross platform Cloud Apps using html, css, and javascript
+
+  * Experiment with Location Based Programming
 	
-  * More device management fuctions for the console, remote wipe, remote lockdown, device tracking, push-based moblet provisioning, etc  
-
-==== Some innovation ideas ====
-  * A Widget Framework to improve management of code portability across multiple platforms
-
 ----
 
 === Release 2.4 ===
-  * Support for Palm webOS, Nokia Symbian
+  * Support for Palm webOS, Windows Phone, etc
   * ?????
 
 ----
