@@ -35,4 +35,9 @@ A [AndroidNotifications tutorial] that covers the Android Notification System
 
 ----
 
+==== Inter-App Communication ====
+A [InterAppComm tutorial] that shows how to perform inter-app communication between two apps
+
+----
+
 *Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
