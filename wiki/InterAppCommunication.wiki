@@ -319,3 +319,31 @@ public class MainActivity extends Activity
 	}
 }
 }}}
+
+----
+
+==== Download and Install Service App ====
+
+  * [http://openmobster.googlecode.com/svn/samples/remoteservice.zip Download]
+
+  * {{{
+        cd app-android
+    }}}
+ 
+  * {{{
+        mvn -Papp-hot-deploy install
+    }}}
+
+==== Download and Install Client App ====
+
+  * [http://openmobster.googlecode.com/svn/samples/remoteclient.zip Download]
+
+  * {{{
+      cd app-android
+    }}}
+
+  * {{{
+      mvn -Papp-hot-deploy install
+    }}}
+
+  * Launch the Client App and Press the 'Invoke Service' button
