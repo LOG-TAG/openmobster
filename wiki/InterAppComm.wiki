@@ -1,0 +1,33 @@
+#summary Inter-App Communication
+
+=== Introduction ===
+
+This tutorial covers the mechanism for performing Inter-App Communication. It comes with two apps. A client app that makes the request and a service app that processes the request and sends a response back.
+
+
+==== Step 1: Create the Service ====
+You must create a service that will be bound to before invocation. The service must return an *IBinder* object during the *onBind* invocation
+{{{
+public class RemoteService extends Service
+{
+	private Messenger messenger; //receives remote invocations
+	
+	@Override
+	public IBinder onBind(Intent intent) 
+	{
+		if(this.messenger == null)
+		{
+			synchronized(RemoteService.class)
+			{
+				if(this.messenger == null)
+				{
+					this.messenger = new Messenger(new IncomingHandler());
+				}
+			}
+		}
+		//Return the proper IBinder instance
+		return this.messenger.getBinder();
+	}
+}}} 
+
+The service uses a *Messenger* and sends it binder back. A *Messenger* is the component that makes inter process communication possible.
