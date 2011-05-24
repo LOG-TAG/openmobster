@@ -1,5 +1,9 @@
 #summary Inter-App Communication
 
+Vote it up: [http://www.dzone.com/links/tutorial_android_interapp_communication.html DZone]
+
+----
+
 === Introduction ===
 
 This tutorial covers the mechanism for performing Inter-App Communication. It comes with two apps. A client app that makes the request and a service app that processes the request and sends a response back.
