@@ -1,5 +1,9 @@
 #summary Inter-App Communication
 
+Related: [AndroidArea Android Area]
+
+----
+
 === Introduction ===
 
 This tutorial covers the mechanism for performing Inter-App Communication. It comes with two apps. A client app that makes the request and a service app that processes the request and sends a response back.
@@ -347,3 +351,7 @@ public class MainActivity extends Activity
 }}}
 
   * Launch the Client App and Press the *Invoke Service* button
+
+----
+
+Related: [AndroidArea Android Area]
