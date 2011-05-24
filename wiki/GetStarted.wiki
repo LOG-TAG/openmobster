@@ -24,7 +24,7 @@ To build from source code, see [http://code.google.com/p/openmobster/wiki/GetSta
 
 ----
 
-==Test Drive==
+==[WhatNext Test Drive]==
 
 Before you start development, you can take the system for a test drive. Instructions for doing that are [WhatNext here].
 
