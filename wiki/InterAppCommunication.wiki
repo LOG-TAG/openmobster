@@ -1,6 +1,6 @@
 #summary Inter-App Communication
 
-Related: [AndroidArea Android Area]
+*Related:* [AndroidArea Android Area]
 
 ----
 
@@ -354,4 +354,4 @@ public class MainActivity extends Activity
 
 ----
 
-Related: [AndroidArea Android Area]
+*Related:* [AndroidArea Android Area]
