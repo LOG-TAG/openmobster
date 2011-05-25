@@ -57,8 +57,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 326933436;
-			PBXWorkspaceStateSaveDate = 326933436;
+			PBXPerProjectTemplateStateSaveDate = 328049381;
+			PBXWorkspaceStateSaveDate = 328049381;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -140,6 +140,13 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{780, 1006}";
 			sepNavWindowFrame = "{{15, 86}, {750, 787}}";
+		};
+	};
+	A263E563138DA976000145FA /* BootupKernel.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavSelRange = "{218, 0}";
+			sepNavVisRange = "{0, 229}";
 		};
 	};
 	A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */ = {
@@ -589,17 +596,17 @@
 	A296307812CAB0AE00928950 /* UIKernel.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 659}}";
-			sepNavSelRange = "{730, 0}";
+			sepNavSelRange = "{650, 115}";
 			sepNavVisRange = "{0, 937}";
 			sepNavWindowFrame = "{{465, 91}, {750, 787}}";
 		};
 	};
 	A296307912CAB0AE00928950 /* UIKernel.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {796, 1599}}";
+			sepNavIntBoundsRect = "{{0, 0}, {796, 1586}}";
 			sepNavSelRange = "{1816, 0}";
-			sepNavVisRange = "{0, 950}";
-			sepNavWindowFrame = "{{481, 91}, {750, 787}}";
+			sepNavVisRange = "{690, 1128}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A29630CF12CB81C000928950 /* CloudManager.h */ = {
@@ -1002,9 +1009,9 @@
 	A29D663E12A6FB2900DAE753 /* Kernel.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 1469}}";
-			sepNavSelRange = "{2098, 0}";
-			sepNavVisRange = "{1715, 763}";
-			sepNavWindowFrame = "{{468, 134}, {750, 720}}";
+			sepNavSelRange = "{2220, 0}";
+			sepNavVisRange = "{1990, 488}";
+			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	A29D66CD12A9AFE200DAE753 /* SyncScheduler.h */ = {
@@ -2171,9 +2178,9 @@
 	A2E5551012F0D38B008B3FCE /* AppConfig.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1370, 1417}}";
-			sepNavSelRange = "{1633, 0}";
-			sepNavVisRange = "{999, 1308}";
-			sepNavWindowFrame = "{{510, 91}, {750, 787}}";
+			sepNavSelRange = "{1236, 0}";
+			sepNavVisRange = "{1850, 690}";
+			sepNavWindowFrame = "{{468, 319}, {750, 558}}";
 		};
 	};
 	A2E5562D12F722CF008B3FCE /* MobileBeanMetaData.h */ = {

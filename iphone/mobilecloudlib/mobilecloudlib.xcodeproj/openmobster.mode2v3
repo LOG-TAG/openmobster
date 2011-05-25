@@ -264,16 +264,17 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 									<array>
 										<string>0867D691FE84028FC02AAC07</string>
+										<string>A29D663912A6EAB300DAE753</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>1</integer>
+											<integer>7</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 0}, {429, 333}}</string>
+									<string>{{0, 100}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -296,7 +297,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>1440 479 446 419 1440 180 1280 720 </string>
+								<string>4 456 446 419 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -435,8 +436,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2F497BA137C9E6E00CB871D</string>
-				<string>A2F497BB137C9E6E00CB871D</string>
+				<string>A263E51D138D97A2000145FA</string>
+				<string>A263E51E138D97A2000145FA</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -450,7 +451,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A2F497DB137D794900CB871D</string>
+	<string>A2CBF8CA138C6F21001990A3</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -475,12 +476,11 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1440 479 446 419 1440 180 1280 720 </string>
+	<string>4 456 446 419 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -694,7 +694,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2F497BC137C9E6E00CB871D</string>
+				<string>A263E51F138D97A2000145FA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

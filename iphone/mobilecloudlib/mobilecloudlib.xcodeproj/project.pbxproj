@@ -20,6 +20,8 @@
 		A262293B13412CBE00B1BEB3 /* ModalActivateDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A262293713412CBE00B1BEB3 /* ModalActivateDevice.m */; };
 		A262293C13412CBE00B1BEB3 /* SecurityConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A262293813412CBE00B1BEB3 /* SecurityConfig.h */; };
 		A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A262293913412CBE00B1BEB3 /* SecurityConfig.m */; };
+		A263E565138DA976000145FA /* BootupKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = A263E563138DA976000145FA /* BootupKernel.h */; };
+		A263E566138DA976000145FA /* BootupKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = A263E564138DA976000145FA /* BootupKernel.m */; };
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
 		A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58E12C5484300693E1A /* ActivityIndicatorView.h */; };
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
@@ -341,6 +343,8 @@
 		A262293713412CBE00B1BEB3 /* ModalActivateDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalActivateDevice.m; sourceTree = "<group>"; };
 		A262293813412CBE00B1BEB3 /* SecurityConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityConfig.h; sourceTree = "<group>"; };
 		A262293913412CBE00B1BEB3 /* SecurityConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityConfig.m; sourceTree = "<group>"; };
+		A263E563138DA976000145FA /* BootupKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootupKernel.h; sourceTree = "<group>"; };
+		A263E564138DA976000145FA /* BootupKernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootupKernel.m; sourceTree = "<group>"; };
 		A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewLauncherDelegate.h; sourceTree = "<group>"; };
 		A267E58E12C5484300693E1A /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		A267E58F12C5484300693E1A /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
@@ -955,6 +959,8 @@
 				A296307912CAB0AE00928950 /* UIKernel.m */,
 				A29D663D12A6FB2900DAE753 /* Kernel.h */,
 				A29D663E12A6FB2900DAE753 /* Kernel.m */,
+				A263E563138DA976000145FA /* BootupKernel.h */,
+				A263E564138DA976000145FA /* BootupKernel.m */,
 			);
 			name = kernel;
 			sourceTree = "<group>";
@@ -1445,6 +1451,7 @@
 				A262293A13412CBE00B1BEB3 /* ModalActivateDevice.h in Headers */,
 				A262293C13412CBE00B1BEB3 /* SecurityConfig.h in Headers */,
 				A2E1C2241369C43D003B2B18 /* SubmitDeviceToken.h in Headers */,
+				A263E565138DA976000145FA /* BootupKernel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1928,6 +1935,7 @@
 				A262293B13412CBE00B1BEB3 /* ModalActivateDevice.m in Sources */,
 				A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */,
 				A2E1C2251369C43D003B2B18 /* SubmitDeviceToken.m in Sources */,
+				A263E566138DA976000145FA /* BootupKernel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
