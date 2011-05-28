@@ -1,5 +1,6 @@
 #import "CloudDBManager.h"
 #import "SystemException.h"
+#import "ManagedObjectModelFactory.h"
 
 static CloudDBManager *singleton = nil;
 
@@ -111,9 +112,23 @@ static CloudDBManager *singleton = nil;
 
 -(NSManagedObjectModel *)managedModel
 {
-	NSArray *allBundles = [NSBundle allBundles];
+	//NSArray *allBundles = [NSBundle allBundles];
+	//NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:allBundles];
 	
-	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:allBundles];
+	ManagedObjectModelFactory *factory = [ManagedObjectModelFactory withInit];
+	NSManagedObjectModel *confModel = [factory buildConfigurationModel];
+	NSManagedObjectModel *mobileObjectModel = [factory buildMobileObjectModel];
+	NSManagedObjectModel *anchorModel = [factory buildAnchorModel];
+	NSManagedObjectModel *changelogModel = [factory buildChangeLogModel];
+	NSManagedObjectModel *syncErrorModel = [factory buildSyncErrorModel];
+	NSArray *models = [NSArray arrayWithObjects:confModel,
+					   mobileObjectModel,
+					   anchorModel,
+					   changelogModel,
+					   syncErrorModel,
+					   nil];
+	
+	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel modelByMergingModels:models];
 	
     return managedObjectModel;
 }

@@ -7,4 +7,6 @@
 
 }
 
+-(void) testConfiguration;
+
 @end
