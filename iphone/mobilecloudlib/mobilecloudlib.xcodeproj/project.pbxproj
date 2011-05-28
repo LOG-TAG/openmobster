@@ -22,6 +22,8 @@
 		A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A262293913412CBE00B1BEB3 /* SecurityConfig.m */; };
 		A263E565138DA976000145FA /* BootupKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = A263E563138DA976000145FA /* BootupKernel.h */; };
 		A263E566138DA976000145FA /* BootupKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = A263E564138DA976000145FA /* BootupKernel.m */; };
+		A263E7E4139043ED000145FA /* ManagedObjectModelFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = A263E7E2139043ED000145FA /* ManagedObjectModelFactory.h */; };
+		A263E7E5139043ED000145FA /* ManagedObjectModelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A263E7E3139043ED000145FA /* ManagedObjectModelFactory.m */; };
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
 		A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58E12C5484300693E1A /* ActivityIndicatorView.h */; };
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
@@ -345,6 +347,9 @@
 		A262293913412CBE00B1BEB3 /* SecurityConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityConfig.m; sourceTree = "<group>"; };
 		A263E563138DA976000145FA /* BootupKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootupKernel.h; sourceTree = "<group>"; };
 		A263E564138DA976000145FA /* BootupKernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootupKernel.m; sourceTree = "<group>"; };
+		A263E66E138F1219000145FA /* mom-tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mom-tests-Info.plist"; sourceTree = "<group>"; };
+		A263E7E2139043ED000145FA /* ManagedObjectModelFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectModelFactory.h; sourceTree = "<group>"; };
+		A263E7E3139043ED000145FA /* ManagedObjectModelFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectModelFactory.m; sourceTree = "<group>"; };
 		A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewLauncherDelegate.h; sourceTree = "<group>"; };
 		A267E58E12C5484300693E1A /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		A267E58F12C5484300693E1A /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
@@ -738,6 +743,7 @@
 				A2E5579B12F7695F008B3FCE /* syncTests-Info copy.plist */,
 				A2E557A612F769FB008B3FCE /* integration-tests-Info.plist */,
 				A28694EA12F774AA00A4792E /* CoreGraphics.framework */,
+				A263E66E138F1219000145FA /* mom-tests-Info.plist */,
 			);
 			name = mobilecloudlib;
 			sourceTree = "<group>";
@@ -1042,6 +1048,8 @@
 			children = (
 				A2DF3D171225BD29004C908F /* CloudDBManager.h */,
 				A2DF3D181225BD29004C908F /* CloudDBManager.m */,
+				A263E7E2139043ED000145FA /* ManagedObjectModelFactory.h */,
+				A263E7E3139043ED000145FA /* ManagedObjectModelFactory.m */,
 			);
 			name = storage;
 			path = ../..;
@@ -1452,6 +1460,7 @@
 				A262293C13412CBE00B1BEB3 /* SecurityConfig.h in Headers */,
 				A2E1C2241369C43D003B2B18 /* SubmitDeviceToken.h in Headers */,
 				A263E565138DA976000145FA /* BootupKernel.h in Headers */,
+				A263E7E4139043ED000145FA /* ManagedObjectModelFactory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1936,6 +1945,7 @@
 				A262293D13412CBE00B1BEB3 /* SecurityConfig.m in Sources */,
 				A2E1C2251369C43D003B2B18 /* SubmitDeviceToken.m in Sources */,
 				A263E566138DA976000145FA /* BootupKernel.m in Sources */,
+				A263E7E5139043ED000145FA /* ManagedObjectModelFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
