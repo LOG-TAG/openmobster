@@ -28,7 +28,10 @@
 @property (nonatomic,retain)NSMutableArray *channelRegistry;
 
 +(AppConfig *)getInstance;
+
 -(void)start;
+
+-(void)start:(NSString *)relativePath;
 
 -(NSArray *)getChannels;
 @end

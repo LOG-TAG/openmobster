@@ -264,18 +264,16 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 									<array>
 										<string>0867D691FE84028FC02AAC07</string>
-										<string>A2DF3E361225C434004C908F</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>17</integer>
 											<integer>15</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 97}, {429, 333}}</string>
+									<string>{{0, 0}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -479,7 +477,6 @@
 	<array>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
-		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>9 454 446 419 0 0 1440 878 </string>
