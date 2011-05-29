@@ -54,6 +54,20 @@
 	[parser parse];
 }
 
+-(void)start:(NSString *)relativePath
+{
+	NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:relativePath];
+	NSURL *confUrl = [NSURL fileURLWithPath:path];
+	
+	NSXMLParser *parser = [[[NSXMLParser alloc] initWithContentsOfURL:confUrl] autorelease];
+	
+	//Set the Deletegate to self
+	[parser setDelegate:self];
+	
+	//Start parsing
+	[parser parse];
+}
+
 -(NSArray *)getChannels
 {
 	return channelRegistry;
