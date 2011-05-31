@@ -20,7 +20,6 @@
 @interface Bus : Service<NSXMLParserDelegate> 
 {
 	@private
-	UIPasteboard *sharedConf;
 	
 	Configuration *sharedInstance;
 	Channel *sharedChannel;
