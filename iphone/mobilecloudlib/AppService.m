@@ -83,11 +83,27 @@
 	}
 	
 	//Start the Sync Daemons
+	//NSLog(@"ISActivated: %d",[conf isActivated]);
 	if([conf isActivated])
 	{
+	//	NSLog(@"Starting Sync Daemons...........");
 		SyncService *sync = [SyncService getInstance];
 		[sync startDaemons];
 	}
+	
+	//MyChannles
+	//NSArray *myChannels = [self allChannels];
+	//if(myChannels != nil && [myChannels count] >0)
+	//{
+	//	for(Channel *local in myChannels)
+	//	{
+	//		NSLog(@"Channel: %@",local.name);
+	//	}
+	//}
+	//else 
+	//{
+	//	NSLog(@"Empty Channels......");
+	//}
 }
 
 -(NSArray *)myChannels

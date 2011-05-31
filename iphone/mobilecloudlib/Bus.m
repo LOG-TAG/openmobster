@@ -19,15 +19,15 @@
 {
 	if(self == [super init])
 	{
-		sharedConf = [UIPasteboard pasteboardWithName:@"openmobster_shared_conf" create:YES];
-		if(!sharedConf.persistent)
-		{
-			sharedConf.persistent = YES;
-		}
+		//Causes memory issues in Simulator mode...Not producable on device
+		//sharedConf = [UIPasteboard pasteboardWithName:@"openmobster_shared_conf" create:YES];
+		//if(!sharedConf.persistent)
+		//{
+		//	sharedConf.persistent = YES;
+		//}
 	}
 	return self;
 }
-
 
 +(Bus *)getInstance
 {
@@ -35,14 +35,29 @@
 	return (Bus *)[registry lookup:[Bus class]];
 }
 
+-(UIPasteboard *) loadPastBoard
+{
+	UIPasteboard *sharedConf = [UIPasteboard pasteboardWithName:@"openmobster_shared_conf" create:YES];
+	if(!sharedConf.persistent)
+	{
+		sharedConf.persistent = YES;
+	}
+	return sharedConf;
+}
+
 -(void)synchronizeConf
 {
+	UIPasteboard *sharedConf = [self loadPastBoard];
 	Configuration *myConf = [Configuration getInstance];
+	//NSLog(@"Bus:IsActivated: %d",[myConf isActivated]);
+	
 	
 	//Read the shared configuration payload from the pasteboard
 	NSString *confXml = (NSString *)[sharedConf valueForPasteboardType:@"public.utf8-plain-text"];
+	//NSLog(@"Bus:ConfXml:%@",confXml);
 	if([StringUtil isEmpty:confXml])
 	{
+		//NSLog(@"Bus:PostingMyConf to system");
 		//write your own conf to the pasteboard
 		[self postSharedConf:myConf];
 		return;
@@ -50,6 +65,7 @@
 	
 	//A Configuration found on the pasteboard...this will be the latest, replace my own
 	//conf with this one...90% of times these are the same
+	//NSLog(@"Using the system conf....");
 	[self replaceWithSharedConf :confXml];
 }
 
@@ -62,7 +78,10 @@
 
 -(void)postSharedConf:(Configuration *)conf
 {
+	UIPasteboard *sharedConf = [self loadPastBoard];
 	NSString *confXml = [self confToXml:conf];
+	
+	//NSLog(@"Posting Config: %@",confXml);
 	[sharedConf setValue:confXml forPasteboardType:@"public.utf8-plain-text"];
 }
 
