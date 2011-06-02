@@ -55,9 +55,15 @@ public class TicketDS
 			session = this.hibernateManager.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 
-			String ticketId = Utilities.generateUID();
+			String ticketId = ticket.getTicketId();
+			if(ticketId == null || ticketId.trim().length() == 0)
+			{
+				ticketId = Utilities.generateUID();
+			}
 			ticket.setTicketId(ticketId);
 			session.save(ticket);
+			
+			session.flush();
 						
 			tx.commit();
 			
@@ -95,6 +101,8 @@ public class TicketDS
 			{
 				tickets.addAll(cour);
 			}
+			
+			session.flush();
 						
 			tx.commit();
 			
@@ -127,6 +135,8 @@ public class TicketDS
 			
 			ticket = (Ticket)session.createQuery(query).setParameter(0, ticketId).uniqueResult();
 						
+			session.flush();
+			
 			tx.commit();
 			
 			return ticket;
@@ -153,7 +163,8 @@ public class TicketDS
 			tx = session.beginTransaction();
 						
 			session.update(ticket);
-						
+			
+			session.flush();
 			tx.commit();
 		}
 		catch(Exception e)
@@ -178,6 +189,8 @@ public class TicketDS
 			tx = session.beginTransaction();
 			
 			session.delete(ticket);
+			
+			session.flush();
 						
 			tx.commit();
 		}
@@ -210,7 +223,9 @@ public class TicketDS
 				{
 					session.delete(ticket);
 				}
-			}						
+			}
+			
+			session.flush();
 						
 			tx.commit();
 		}
