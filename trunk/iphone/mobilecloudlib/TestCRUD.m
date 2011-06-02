@@ -91,6 +91,8 @@
 	[newInstance save];
 	oid = [newInstance getId];
 	
+	[sync performTwoWaySync:channel :NO];
+	
 	[self assertTrue:oid != nil :@"/TestCRUD/testAdd/oid_check"];
 	[self assertTrue:[newInstance isInitialized] :@"/TestCRUD/testAdd/init_check"];
 	[self assertTrue:[newInstance isCreatedOnDevice] :@"/TestCRUD/testAdd/created_on_device"];
@@ -125,6 +127,8 @@
 		[self assertTrue:![oldFrom isEqualToString:newFrom] :@"/TestDRUD/testReplace/old_new_check"];
 		[self assertTrue:[newFrom isEqualToString:@"From://Updated"] :@"/TestDRUD/testReplace/new_check"];
 	}
+	
+	[sync performTwoWaySync:channel :NO];
 	
 	//Test Optimistic Locking
 	MobileBean *instance1 = [MobileBean readById:channel :@"unique-1"];
