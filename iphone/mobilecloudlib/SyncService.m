@@ -108,6 +108,9 @@
 		[entries addObject:attr];
 	
 		[engine addChangeLogEntries:entries];
+		
+		//sync in the background
+		[self startDaemons];
 	}
 }
 

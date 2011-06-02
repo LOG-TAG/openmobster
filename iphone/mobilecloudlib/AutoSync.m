@@ -117,6 +117,7 @@
 			if(local.proxy)
 			{
 				NSString *oid = local.recordId;
+				//NSLog(@"Performing Load Proxy sync....");
 				[sync performStreamSync:channel :NO :oid];
 			}
 		}

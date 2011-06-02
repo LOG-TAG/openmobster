@@ -88,24 +88,19 @@
 {
 	NSMutableArray *commands = [NSMutableArray array];	
 	NSArray *changelog = [self getChangeLog:channel operation:_Delete];
-	MobileObjectDatabase *db = [MobileObjectDatabase getInstance];
 	if(changelog != nil)
 	{
 		for(ChangeLogEntry *local in changelog)
 		{
-			MobileObject *cour = [db read:channel :local.recordId];
-			if(cour != nil)
-			{
-				//Create a Sync Delete Command from this record data
-				Delete *command = [Delete withInit];
-				NSString *id = [self marshalId:local.recordId];
-				Item *item = [Item withInit];
+			//Create a Sync Delete Command from this record data
+			Delete *command = [Delete withInit];
+			NSString *id = [self marshalId:local.recordId];
+			Item *item = [Item withInit];
 				
-				item.data = id;
-				[command addItem:item];
+			item.data = id;
+			[command addItem:item];
 				
-				[commands addObject:command];
-			}
+			[commands addObject:command];
 		}
 	}
 	
