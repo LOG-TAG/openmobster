@@ -71,3 +71,48 @@ Implement this to handle requests for the MIME type of the data at the given URI
 		return cursor;
 	}
 }}}
+
+The query method returns a _Cursor_ instance. This _Cursor_ object can be the _Cursor_ object that is used in the underlying SQLite database. In the implementation, it sets up a _SQLiteQueryBuilder_ to help construct the query to be made to the database. Using the _UriMatcher_ the method is able to decide if a single row is requested or all the rows of the table are to be returned. At the end of the database call, the _Cursor_ is setup to receive a notification if the data changes in the database after this _Cursor_ was returned
+
+===== Invoking the query method =====
+{{{
+@Override
+			public void onClick(View view) 
+			{	
+				System.out.println("*********ReadAll********************");
+				
+				//Set up the Content Provider URI where request needs to be made
+				//in this case it is setup to read all the objects
+				Uri uri = Uri.parse(TutorialContentProvider.CONTENT_URI+"/objects");
+				
+				//Get the ContentResolver to make the request
+				ContentResolver resolver = MainActivity.this.getContentResolver();
+				
+				//Make the invocation
+				Cursor cursor = resolver.query(uri, null, null, null, null);
+				if(cursor.getCount() == 0)
+				{
+					return;
+				}
+				
+				//Read the cursor and its data
+				int idIndex = cursor.getColumnIndex(TutorialContentProvider.ID);
+				int nameIndex = cursor.getColumnIndex(TutorialContentProvider.NAME);
+				int valueIndex = cursor.getColumnIndex(TutorialContentProvider.VALUE);
+				
+				cursor.moveToFirst();
+				do
+				{
+					String id = cursor.getString(idIndex);
+					String name = cursor.getString(nameIndex);
+					String value = cursor.getString(valueIndex);
+					
+					System.out.println("---------------------------------");
+					System.out.println("ID: "+id);
+					System.out.println("Name: "+name);
+					System.out.println("Value: "+value);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+}}} 
