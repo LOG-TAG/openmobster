@@ -1,5 +1,5 @@
 #summary Sharing Content using the ContentProvider
 
-==== Introduction ====
+=== Introduction ===
 
 This tutorial covers how to use the ContentProvider component to share your content with other Apps.
