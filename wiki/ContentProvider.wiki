@@ -6,11 +6,11 @@ This tutorial covers how to use the ContentProvider component to share your cont
 
 ----
 
-=== Step 1: Extend android.content.ContentProvider ===
+==== Step 1: Extend android.content.ContentProvider ====
 
 To start developing a ContentProvider, you must extend the _android.content.ContentProvider_ class and implement its 6 important methods. This tutorial will go through these methods and their usage one at a time
 
-=== Step 2: Implement onCreate ===
+==== Step 2: Implement onCreate ====
 {{{
         @Override
 	public boolean onCreate() 
@@ -29,4 +29,12 @@ To start developing a ContentProvider, you must extend the _android.content.Cont
 }}}
 The onCreate is invoked when a ContentProvider is first created by the system. In this method you would do some setup related tasks. In this case, it is preparing the SQLite database for storage, and a UriMatcher instance to deal with Content Uris
 
-=== Step 3: 
+==== Step 3: Implement getType ====
+{{{
+        @Override
+	public String getType(Uri uri) 
+	{
+		return "vnd.android.cursor.dir"
+	}
+}}}
+Implement this to handle requests for the MIME type of the data at the given URI. The returned MIME type should start with vnd.android.cursor.item for a single record, or vnd.android.cursor.dir/ for multiple items.
