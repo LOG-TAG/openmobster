@@ -172,3 +172,19 @@ The incoming values are inserted into the database. A _Uri_ is created using the
 				System.out.println("NewUri: "+newUri);
 			}
 }}}
+
+----
+
+====Step 6: update====
+
+----
+
+====Step 7: delete====
+
+----
+
+==== Full Source ====
+
+----
+
+
