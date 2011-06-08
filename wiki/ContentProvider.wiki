@@ -3,3 +3,30 @@
 === Introduction ===
 
 This tutorial covers how to use the ContentProvider component to share your content with other Apps.
+
+----
+
+=== Step 1: Extend android.content.ContentProvider ===
+
+To start developing a ContentProvider, you must extend the _android.content.ContentProvider_ class and implement its 6 important methods. This tutorial will go through these methods and their usage one at a time
+
+=== Step 2: Implement onCreate ===
+{{{
+        @Override
+	public boolean onCreate() 
+	{
+		//Open the database
+		this.sqliteOpenHelper = new DBHelper(this.getContext(),"tutorialdb",null,1);
+		((DBHelper)this.sqliteOpenHelper).prePopulate(this.sqliteOpenHelper.getWritableDatabase(), TABLE);
+		
+		//Setup the UriMatcher
+		this.uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+		this.uriMatcher.addURI(AUTHORITY, "objects", MATCH_ALL);
+		this.uriMatcher.addURI(AUTHORITY, "object/#", MATCH_ID);
+		
+		return true;
+	}
+}}}
+The onCreate is invoked when a ContentProvider is first created by the system. In this method you would do some setup related tasks. In this case, it is preparing the SQLite database for storage, and a UriMatcher instance to deal with Content Uris
+
+=== Step 3: 
