@@ -145,3 +145,30 @@ The query method returns a _Cursor_ instance. This _Cursor_ object can be the _C
 		return newUri;
 	}
 }}}
+The incoming values are inserted into the database. A _Uri_ is created using the oid of the inserted record. Using this new _Uri_ a notification is sent telling the system that changes have occurred to the underlying data
+
+==== Invoking the insert method ====
+{{{
+@Override
+			public void onClick(View view) 
+			{	
+				System.out.println("*********Insert********************");
+				
+				//Setup the Uri for the invocation
+				Uri uri = Uri.parse(TutorialContentProvider.CONTENT_URI+"/object");
+				
+				//Get the Resolver
+				ContentResolver resolver = MainActivity.this.getContentResolver();
+				
+				//Setup the data to be inserted
+				ContentValues newContent = new ContentValues();
+				String id = GeneralTools.generateUniqueId();
+				newContent.put("name", "NAME://"+id);
+				newContent.put("value","VALUE://"+id);
+				
+				//Make the invocation. A new uri will be sent back
+				Uri newUri = resolver.insert(uri, newContent);
+				
+				System.out.println("NewUri: "+newUri);
+			}
+}}}
