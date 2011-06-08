@@ -10,7 +10,7 @@ This tutorial covers how to use the ContentProvider component to share your cont
 
 To start developing a ContentProvider, you must extend the _android.content.ContentProvider_ class and implement its 6 important methods. This tutorial will go through these methods and their usage one at a time
 
-==== Step 2: Implement onCreate ====
+==== Step 2: onCreate() ====
 {{{
         @Override
 	public boolean onCreate() 
@@ -29,7 +29,9 @@ To start developing a ContentProvider, you must extend the _android.content.Cont
 }}}
 The onCreate is invoked when a ContentProvider is first created by the system. In this method you would do some setup related tasks. In this case, it is preparing the SQLite database for storage, and a UriMatcher instance to deal with Content Uris
 
-==== Step 3: Implement getType ====
+----
+
+==== Step 3: getType() ====
 {{{
         @Override
 	public String getType(Uri uri) 
@@ -38,3 +40,32 @@ The onCreate is invoked when a ContentProvider is first created by the system. I
 	}
 }}}
 Implement this to handle requests for the MIME type of the data at the given URI. The returned MIME type should start with vnd.android.cursor.item for a single record, or vnd.android.cursor.dir/ for multiple items.
+
+----
+
+==== Step 4: query ====
+{{{
+        @Override
+	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,String sortOrder) 
+	{
+		//Query building helper class
+		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+		
+		//Set the table to query
+		builder.setTables(TABLE);
+		
+		//See if this is a request to get all the objects or just the one with the specified oid
+		if(uriMatcher.match(uri) == MATCH_ID)
+		{
+			builder.appendWhere("id="+uri.getLastPathSegment());
+		}
+		
+		//execute the query
+		Cursor cursor = builder.query(this.sqliteOpenHelper.getReadableDatabase(), projection, selection, selectionArgs, null, null, sortOrder,null);
+		
+		//sets up data watch so that the cursor is notified if data changes after it is returned
+		cursor.setNotificationUri(this.getContext().getContentResolver(), uri);
+		
+		return cursor;
+	}
+}}}
