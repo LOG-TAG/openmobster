@@ -116,3 +116,32 @@ The query method returns a _Cursor_ instance. This _Cursor_ object can be the _C
 				}while(!cursor.isAfterLast());
 			}
 }}} 
+
+----
+
+==== Step 5: insert ====
+{{{
+@Override
+	public Uri insert(Uri uri, ContentValues values) 
+	{
+		//Get an instance of writable database
+		SQLiteDatabase db = this.sqliteOpenHelper.getWritableDatabase();
+		
+		//Insert the data into the database
+		long newId = db.insert(TABLE, null, values);
+		
+		//Make sure data is successfully added
+		if(newId < 0)
+		{
+			throw new SQLException("Insert Failure on: "+uri);
+		}
+		
+		//Setup the newUri to identify this newly created object
+		Uri newUri = ContentUris.withAppendedId(uri, newId);
+		
+		//notify the system that a change has been made to the underlying data
+		this.getContext().getContentResolver().notifyChange(newUri, null);
+		
+		return newUri;
+	}
+}}}
