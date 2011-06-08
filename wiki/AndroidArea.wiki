@@ -40,4 +40,9 @@ A [InterAppCommunication tutorial] that shows how to perform inter-app communica
 
 ----
 
+==== Content Sharing ====
+A [ContentProvider tutorial] that shows how to share your content with other apps using the ContentProvider component
+
+----
+
 *Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
