@@ -74,7 +74,7 @@ Implement this to handle requests for the MIME type of the data at the given URI
 
 The query method returns a _Cursor_ instance. This _Cursor_ object can be the _Cursor_ object that is used in the underlying SQLite database. In the implementation, it sets up a _SQLiteQueryBuilder_ to help construct the query to be made to the database. Using the _UriMatcher_ the method is able to decide if a single row is requested or all the rows of the table are to be returned. At the end of the database call, the _Cursor_ is setup to receive a notification if the data changes in the database after this _Cursor_ was returned
 
-===== Invoking the query method =====
+==== Invoking the query method ====
 {{{
 @Override
 			public void onClick(View view) 
