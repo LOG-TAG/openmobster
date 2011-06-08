@@ -10,6 +10,8 @@ This tutorial covers how to use the ContentProvider component to share your cont
 
 To start developing a ContentProvider, you must extend the _android.content.ContentProvider_ class and implement its 6 important methods. This tutorial will go through these methods and their usage one at a time
 
+----
+
 ==== Step 2: onCreate() ====
 {{{
         @Override
