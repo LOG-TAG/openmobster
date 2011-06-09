@@ -1,5 +1,9 @@
 #summary Sharing Content using the ContentProvider
 
+*Related:* [AndroidArea Android Area], [BeginnerZone Beginner Area]
+
+----
+
 === Introduction ===
 
 This tutorial covers how to use the ContentProvider component to share your content with other Apps.
@@ -474,3 +478,7 @@ cd app-android
 {{{
 mvn -Papp-hot-deploy install
 }}}
+
+----
+
+*Related:* [AndroidArea Android Area], [BeginnerZone Beginner Area]
