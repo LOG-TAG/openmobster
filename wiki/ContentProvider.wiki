@@ -462,3 +462,14 @@ public class TutorialContentProvider extends ContentProvider
 ----
 
 ==== Example App ====
+
+  * [http://openmobster.googlecode.com/svn/samples/contentprovider.zip Download] the App
+
+  * Install the App
+{{{
+cd app-android
+}}}
+
+{{{
+mvn -Papp-hot-deploy install
+}}}
