@@ -176,10 +176,66 @@ The incoming values are inserted into the database. A _Uri_ is created using the
 ----
 
 ====Step 6: update====
+{{{
+@Override
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) 
+	{
+		if(this.uriMatcher.match(uri) != MATCH_ID)
+		{
+			//no object designated for update
+			return 0;
+		}
+		
+		//Get an instance of writable database
+		SQLiteDatabase db = this.sqliteOpenHelper.getWritableDatabase();
+		
+		//Find the id of the object being updated
+		String id = uri.getLastPathSegment();
+		int rowsUpdated = 0;
+		if(selection == null || selection.trim().length()==0)
+		{
+			rowsUpdated = db.update(TABLE, values, "id="+id, null);
+		}
+		else
+		{
+			String whereClause = selection + "and" + "id=" + id;
+			rowsUpdated = db.update(TABLE, values, whereClause, selectionArgs);
+		}
+		
+		return rowsUpdated;
+	}
+}}}
+The update method is used to modify an existing row of data. The incoming _Uri_ and the _selection_ information are used to identify the row(s) to be modified. In this particular implementation, the row is selected based on the _id_ specified on the _Uri_
 
+==== Invoking the update method ====
+{{{
+@Override
+			public void onClick(View view) 
+			{	
+				System.out.println("*********Update********************");
+				
+				//Setup the Uri for the invocation
+				Uri uri = Uri.parse(TutorialContentProvider.CONTENT_URI+"/object/3");
+				
+				//Get the Resolver
+				ContentResolver resolver = MainActivity.this.getContentResolver();
+				
+				//Setup the data to be updated
+				ContentValues updateContent = new ContentValues();
+				String updateValue = GeneralTools.generateUniqueId();
+				updateContent.put("name", "NAME://"+updateValue);
+				updateContent.put("value","VALUE://"+updateValue);
+				
+				//Make the invocation. # of rows updated will be sent back
+				int rows = resolver.update(uri, updateContent, null, null);
+				
+				System.out.println("Rows Updated: "+rows);
+			}
+}}}
 ----
 
 ====Step 7: delete====
+
 
 ----
 
