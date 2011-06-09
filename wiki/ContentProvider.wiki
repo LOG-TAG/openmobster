@@ -466,6 +466,7 @@ public class TutorialContentProvider extends ContentProvider
   * [http://openmobster.googlecode.com/svn/samples/contentprovider.zip Download] the App
 
   * Install the App
+
 {{{
 cd app-android
 }}}
