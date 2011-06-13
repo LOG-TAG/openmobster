@@ -12,7 +12,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1965, 1664}}";
 			sepNavSelRange = "{3016, 0}";
-			sepNavVisRange = "{0, 1597}";
+			sepNavVisRange = "{2778, 729}";
 			sepNavWindowFrame = "{{1890, 180}, {750, 720}}";
 		};
 	};
@@ -50,11 +50,19 @@
 			A21EC80A131C2E300030ECCE /* ActivationApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 326994378;
-			PBXWorkspaceStateSaveDate = 326994378;
+			PBXPerProjectTemplateStateSaveDate = 329680492;
+			PBXWorkspaceStateSaveDate = 329680492;
 		};
 		sourceControlManager = A21EC815131C2E460030ECCE /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 366}";
+			sepNavWindowFrame = "{{15, 91}, {750, 787}}";
 		};
 	};
 	A21EC80A131C2E300030ECCE /* ActivationApp */ = {

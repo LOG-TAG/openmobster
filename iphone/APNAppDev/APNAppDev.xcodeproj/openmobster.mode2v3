@@ -438,8 +438,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2F4989C137D8AD700CB871D</string>
-				<string>A2F4989D137D8AD700CB871D</string>
+				<string>A263EA7713940CBF000145FA</string>
+				<string>A263EA7813940CBF000145FA</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -476,7 +476,7 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D54069F1CE1000CFCEE</string>
+		<string>A263EA7A13940CBF000145FA</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/APNAppDev.xcodeproj</string>
 	</array>
@@ -695,7 +695,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2F4989E137D8AD700CB871D</string>
+				<string>A263EA7913940CBF000145FA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

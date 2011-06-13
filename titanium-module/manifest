@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+description: My module
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2010 by Your Company
+
+
+# these should not be edited
+name: titanium-module
+moduleid: org.openmobster.titanium.module
+guid: 259abfb8-8b92-49b1-a86a-48d1ea25a486
+platform: android
+minsdk: 1.6.2

@@ -1,0 +1,1624 @@
+Ttitanium_module_iphone
+v7
+r0
+t328567864.813366
+cCheck dependencies
+cProcessPCH /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch.gch OrgOpenmobsterCloud_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch.gch OrgOpenmobsterCloud_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModule.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModuleAssets.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SyncProxy.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSObject+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSString+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonBase.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonParser.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonWriter.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/TitaniumKernel.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModule.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModuleAssets.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cLibtool /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a normal armv6
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SyncProxy.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSObject+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSString+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonBase.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonParser.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonWriter.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/TitaniumKernel.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cLibtool /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a normal armv7
+cCreateUniversalBinary /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/libOrgOpenmobsterCloud.a normal "armv6 armv7"
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk
+c000000004DDD5D9B0000000000000110
+t1306353051
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004CC10EEE00000000002C9710
+t1287720686
+s2922256
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFNetwork.h
+c000000004CC10EAD00000000000004CF
+t1287720621
+s1231
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004CC10FA70000000000300DE0
+t1287720871
+s3149280
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004CC10F8D000000000000046B
+t1287720845
+s1131
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
+c000000004CC10D700000000000000AB3
+t1287720304
+s2739
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC10EF500000000003532B0
+t1287720693
+s3486384
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC10F4700000000003E1F20
+t1287720775
+s4071200
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC10F1C0000000000001466
+t1287720732
+s5222
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC11AE60000000000000AA1
+t1287723750
+s2721
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC11B750000000000C769F0
+t1287723893
+s13068784
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/usr/include/AvailabilityMacros.h
+c000000004CB3FBB8000000000000673C
+t1286863800
+s26428
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/usr/include/pthread.h
+c000000004CB3E4B800000000000038F0
+t1286857912
+s14576
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/usr/lib/gcc/arm-apple-darwin10/4.2.1/include/stdbool.h
+c000000004C5A56870000000000000644
+t1280988807
+s1604
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/usr/lib/gcc/arm-apple-darwin10/4.2.1/include/stddef.h
+c000000004C5A56870000000000003197
+t1280988807
+s12695
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/Bridge.h
+c000000004CEBDABC0000000000000268
+t1290525372
+s616
+i"TiProxy.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/KrollCallback.h
+c000000004CEBDAB80000000000000466
+t1290525368
+s1126
+i<Foundation/Foundation.h>
+i"TiCore.h"
+i"KrollContext.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/KrollContext.h
+c000000004CD96B680000000000000D82
+t1289317224
+s3458
+i<Foundation/Foundation.h>
+i"TiCore.h"
+i"TiBase.h"
+i"TiContextRefPrivate.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/KrollObject.h
+c000000004CD96B680000000000000714
+t1289317224
+s1812
+i<Foundation/Foundation.h>
+i"TiCore.h"
+i"TiBase.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiBase.h
+c000000004D51FD860000000000002ACB
+t1297218950
+s10955
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"defines.h"
+i"TiThreading.h"
+i"TiPublicAPI.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiColor.h
+c000000004CD96B6800000000000002E6
+t1289317224
+s742
+i<UIKit/UIKit.h>
+i"TiProxy.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/Ti.h
+c000000004CD96B68000000000000071C
+t1289317224
+s1820
+i<TiCore/TiBase.h>
+i<TiCore/TiContextRef.h>
+i<TiCore/TiStringRef.h>
+i<TiCore/TiObjectRef.h>
+i<TiCore/TiValueRef.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiBase.h
+c000000004CD96B680000000000001A03
+t1289317224
+s6659
+i<stdbool.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiContextRef.h
+c000000004CD96B6800000000000014D8
+t1289317224
+s5336
+i<TiCore/TiObjectRef.h>
+i<TiCore/TiValueRef.h>
+i<TiCore/WebKitAvailability.h>
+i<stdbool.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiContextRefPrivate.h
+c000000004CD96B680000000000000860
+t1289317224
+s2144
+i<TiCore/TiObjectRef.h>
+i<TiCore/TiValueRef.h>
+i<TiCore/WebKitAvailability.h>
+i<stdbool.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiCore.h
+c000000004CD96B68000000000000069B
+t1289317224
+s1691
+i<TiCore/Ti.h>
+i<TiCore/TiStringRefCF.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiObjectRef.h
+c000000004CD96B68000000000000945D
+t1289317224
+s37981
+i<TiCore/TiBase.h>
+i<TiCore/TiValueRef.h>
+i<TiCore/WebKitAvailability.h>
+i<stdbool.h>
+i<stddef.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiStringRef.h
+c000000004CD96B68000000000000168A
+t1289317224
+s5770
+i<TiCore/TiValueRef.h>
+i<stdbool.h>
+i<stddef.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiStringRefCF.h
+c000000004CD96B680000000000000A3B
+t1289317224
+s2619
+i"TiBase.h"
+i<CoreFoundation/CoreFoundation.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/TiValueRef.h
+c000000004CD96B680000000000002AE2
+t1289317224
+s10978
+i<TiCore/TiBase.h>
+i<stdbool.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore/WebKitAvailability.h
+c000000004CD96B680000000000006BD6
+t1289317224
+s27606
+i<AvailabilityMacros.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiDimension.h
+c000000004D51FD86000000000000119C
+t1297218950
+s4508
+i"TiBase.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiEvaluator.h
+c000000004CEBDABC0000000000000346
+t1290525372
+s838
+i<Foundation/Foundation.h>
+i"KrollContext.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiFile.h
+c000000004CEBDABC0000000000000368
+t1290525372
+s872
+i"TiProxy.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiHost.h
+c000000004CDC272A00000000000004A6
+t1289496362
+s1190
+i"TiProxy.h"
+i"Bridge.h"
+i"TiEvaluator.h"
+i"TiStylesheet.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiModule.h
+c000000004D07EE360000000000000409
+t1292365366
+s1033
+i"TiUtils.h"
+i"TiEvaluator.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiProxy.h
+c000000004CDC272A0000000000001233
+t1289496362
+s4659
+i"TiBase.h"
+i"TiEvaluator.h"
+i"KrollCallback.h"
+i"KrollObject.h"
+i<pthread.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiPublicAPI.h
+c000000004CEBDAB80000000000000A62
+t1290525368
+s2658
+i<Foundation/Foundation.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiStylesheet.h
+c000000004D51FD86000000000000027F
+t1297218950
+s639
+i"TiBase.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiThreading.h
+c000000004CEBDAB800000000000009CE
+t1290525368
+s2510
+i<Foundation/Foundation.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiUtils.h
+c000000004D07EE360000000000001523
+t1292365366
+s5411
+i"TiColor.h"
+i"TiDimension.h"
+i"WebFont.h"
+i"TiFile.h"
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/WebFont.h
+c000000004CD96B6800000000000003C2
+t1289317224
+s962
+i<UIKit/UIKit.h>
+
+N/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/defines.h
+c000000004CEBDABC000000000000087F
+t1290525372
+s2175
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/AbstractOperation.h
+c000000004DC08FD30000000000000196
+t1304465363
+s406
+i<Foundation/Foundation.h>
+i"Item.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/ActionHandler.h
+c000000004DC08FD300000000000001FA
+t1304465363
+s506
+i"Context.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Add.h
+c000000004DC08FD4000000000000007A
+t1304465364
+s122
+i<Foundation/Foundation.h>
+i"AbstractOperation.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Alert.h
+c000000004DC08FD4000000000000018C
+t1304465364
+s396
+i<Foundation/Foundation.h>
+i"Item.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Anchor.h
+c000000004DC08FD4000000000000019F
+t1304465364
+s415
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+i"CloudDBManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/AppConfig.h
+c000000004DE26FA20000000000000359
+t1306685346
+s857
+i<Foundation/Foundation.h>
+i"StringUtil.h"
+i"SyncScheduler.h"
+i"ProxyLoader.h"
+i"Channel.h"
+i"Service.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/AppService.h
+c000000004DC08FD400000000000003C9
+t1304465364
+s969
+i<Foundation/Foundation.h>
+i"Registry.h"
+i"AppConfig.h"
+i"Service.h"
+i"Configuration.h"
+i"SyncService.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/ArrayMetaData.h
+c000000004DC08FD40000000000000334
+t1304465364
+s820
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/AutoSync.h
+c000000004DC08FD4000000000000022D
+t1304465364
+s557
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/BootupKernel.h
+c000000004DDD72700000000000000138
+t1306358384
+s312
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Bus.h
+c000000004DE5040200000000000003DA
+t1306854402
+s986
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"Registry.h"
+i"Service.h"
+i"Configuration.h"
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/ChangeLogEntry.h
+c000000004DC08FD40000000000000590
+t1304465364
+s1424
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+i"Item.h"
+i"CloudDBManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Channel.h
+c000000004DC08FD40000000000000316
+t1304465364
+s790
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/CloseSession.h
+c000000004DC08FD400000000000002B2
+t1304465364
+s690
+i<Foundation/Foundation.h>
+i"ActionHandler.h"
+i"WorkflowManager.h"
+i"SyncMessage.h"
+i"SyncHelper.h"
+i"Session.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/CloudDBManager.h
+c000000004DE0088900000000000001DA
+t1306527881
+s474
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/CloudPayload.h
+c000000004DC08FD40000000000000279
+t1304465364
+s633
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Configuration.h
+c000000004DC08FD400000000000005F1
+t1304465364
+s1521
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+i"GenericAttributeManager.h"
+i"Channel.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Context.h
+c000000004DC08FD400000000000002EB
+t1304465364
+s747
+i<Foundation/Foundation.h>
+i"GenericAttributeManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Credential.h
+c000000004DC08FD4000000000000014A
+t1304465364
+s330
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/DecideEndClose.h
+c000000004DC08FD4000000000000025E
+t1304465364
+s606
+i<Foundation/Foundation.h>
+i"DecisionHandler.h"
+i"WorkflowManager.h"
+i"Session.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/DecideEndInit.h
+c000000004DC08FD4000000000000025E
+t1304465364
+s606
+i<Foundation/Foundation.h>
+i"DecisionHandler.h"
+i"WorkflowManager.h"
+i"Session.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/DecideEndSync.h
+c000000004DC08FD4000000000000025E
+t1304465364
+s606
+i<Foundation/Foundation.h>
+i"DecisionHandler.h"
+i"WorkflowManager.h"
+i"Session.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/DecisionHandler.h
+c000000004DC08FD400000000000001FB
+t1304465364
+s507
+i"Context.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Delete.h
+c000000004DC08FD400000000000000F5
+t1304465364
+s245
+i<Foundation/Foundation.h>
+i"AbstractOperation.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/DeviceManager.h
+c000000004DC08FD400000000000001EF
+t1304465364
+s495
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i"Service.h"
+i"Registry.h"
+i"SystemException.h"
+i"ErrorHandler.h"
+i"Configuration.h"
+i"Request.h"
+i"Response.h"
+i"MobileService.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/DeviceSerializer.h
+c000000004DC08FD400000000000002E6
+t1304465364
+s742
+i<Foundation/Foundation.h>
+i"MobileObject.h"
+i"MobileObjectReader.h"
+i"StringUtil.h"
+i"XMLUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/ErrorHandler.h
+c000000004DC08FD400000000000000B4
+t1304465364
+s180
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Field.h
+c000000004DC08FD400000000000002EF
+t1304465364
+s751
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/GeneralTools.h
+c000000004DC08FD4000000000000008F
+t1304465364
+s143
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/GenericAttributeManager.h
+c000000004DC08FD40000000000000190
+t1304465364
+s400
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Item.h
+c000000004DC08FD400000000000001B8
+t1304465364
+s440
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Kernel.h
+c000000004DC08FD40000000000000401
+t1304465364
+s1025
+i<Foundation/Foundation.h>
+i"Registry.h"
+i"Service.h"
+i"NetworkConnector.h"
+i"SyncDataSource.h"
+i"SyncObjectGenerator.h"
+i"SyncService.h"
+i"MobileObjectDatabase.h"
+i"DeviceSerializer.h"
+i"CloudDBManager.h"
+i"SyncScheduler.h"
+i"ProxyLoader.h"
+i"Bus.h"
+i"Configuration.h"
+i"AppConfig.h"
+i"AppService.h"
+i"DeviceManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/MapItem.h
+c000000004DC08FD400000000000000DA
+t1304465364
+s218
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/MobileObject.h
+c000000004DC08FD40000000000000896
+t1304465364
+s2198
+i<Foundation/Foundation.h>
+i"Field.h"
+i"ArrayMetaData.h"
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/MobileObjectDatabase.h
+c000000004DC08FD40000000000000435
+t1304465364
+s1077
+i<Foundation/Foundation.h>
+i"Service.h"
+i"Registry.h"
+i"MobileObject.h"
+i"GenericAttributeManager.h"
+i"PersistentMobileObject.h"
+i"SystemException.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/MobileObjectReader.h
+c000000004DC08FD40000000000000395
+t1304465364
+s917
+i<Foundation/Foundation.h>
+i"MobileObject.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/MobileService.h
+c000000004DC08FD40000000000000468
+t1304465364
+s1128
+i<Foundation/Foundation.h>
+i"Request.h"
+i"Response.h"
+i"StringUtil.h"
+i"CloudPayload.h"
+i"Configuration.h"
+i"NetworkConnector.h"
+i"NetSession.h"
+i"SystemException.h"
+i"ErrorHandler.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/NetSession.h
+c000000004DC08FD400000000000003F4
+t1304465364
+s1012
+i<Foundation/Foundation.h>
+i<CFNetwork/CFNetwork.h>
+i"StringUtil.h"
+i"SystemException.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/NetworkConnector.h
+c000000004DC08FD400000000000002FF
+t1304465364
+s767
+i<Foundation/Foundation.h>
+i"Service.h"
+i"Registry.h"
+i"Configuration.h"
+i"SystemException.h"
+i"StringUtil.h"
+i"NetSession.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Node.h
+c000000004DC08FD40000000000000344
+t1304465364
+s836
+i<Foundation/Foundation.h>
+i"Context.h"
+i"ActionHandler.h"
+i"DecisionHandler.h"
+i"GenericAttributeManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/PersistentMobileObject.h
+c000000004DC08FD40000000000000686
+t1304465364
+s1670
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+i"CloudDBManager.h"
+i"Field.h"
+i"ArrayMetaData.h"
+i"MobileObject.h"
+i"GeneralTools.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Process.h
+c000000004DC08FD400000000000003C5
+t1304465364
+s965
+i<Foundation/Foundation.h>
+i"GenericAttributeManager.h"
+i"Context.h"
+i"Node.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/ProxyLoader.h
+c000000004DC08FD400000000000002B1
+t1304465364
+s689
+i<Foundation/Foundation.h>
+i"Registry.h"
+i"Service.h"
+i"ProxySync.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/ProxySync.h
+c000000004DC08FD40000000000000215
+t1304465364
+s533
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/RecordMap.h
+c000000004DC08FD400000000000001F4
+t1304465364
+s500
+i<Foundation/Foundation.h>
+i"MapItem.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Registry.h
+c000000004DC08FD40000000000000148
+t1304465364
+s328
+i<Foundation/Foundation.h>
+i"Service.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Replace.h
+c000000004DC08FD40000000000000080
+t1304465364
+s128
+i<Foundation/Foundation.h>
+i"AbstractOperation.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Request.h
+c000000004DC08FD400000000000003DE
+t1304465364
+s990
+i<Foundation/Foundation.h>
+i"GenericAttributeManager.h"
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Response.h
+c000000004DC08FD40000000000000421
+t1304465364
+s1057
+i<Foundation/Foundation.h>
+i"GenericAttributeManager.h"
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Service.h
+c000000004DC08FD40000000000000087
+t1304465364
+s135
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Session.h
+c000000004DC08FD400000000000008D1
+t1304465364
+s2257
+i<Foundation/Foundation.h>
+i"Anchor.h"
+i"SyncPackage.h"
+i"SyncMessage.h"
+i"Status.h"
+i"StringUtil.h"
+i"GenericAttributeManager.h"
+i"SyncXMLTags.h"
+i"ChangeLogEntry.h"
+i"DeviceSerializer.h"
+i"MobileObject.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/StartClose.h
+c000000004DC08FD40000000000000286
+t1304465364
+s646
+i<Foundation/Foundation.h>
+i"ActionHandler.h"
+i"WorkflowManager.h"
+i"SyncMessage.h"
+i"SyncHelper.h"
+i"Session.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/StartHandshake.h
+c000000004DC08FD400000000000002DF
+t1304465364
+s735
+i<Foundation/Foundation.h>
+i"ActionHandler.h"
+i"StringUtil.h"
+i"SyncXMLGenerator.h"
+i"Configuration.h"
+i"SyncEngine.h"
+i"Session.h"
+i"SyncAdapterRequest.h"
+i"WorkflowManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/StartSync.h
+c000000004DC08FD40000000000000287
+t1304465364
+s647
+i<Foundation/Foundation.h>
+i"ActionHandler.h"
+i"Session.h"
+i"WorkflowManager.h"
+i"SyncHelper.h"
+i"SyncConstants.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/Status.h
+c000000004DC08FD40000000000000451
+t1304465364
+s1105
+i<Foundation/Foundation.h>
+i"Credential.h"
+i"Item.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/StringUtil.h
+c000000004DC08FD40000000000000298
+t1304465364
+s664
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncAdapter.h
+c000000004DC08FD400000000000001CD
+t1304465364
+s461
+i<Foundation/Foundation.h>
+i"WorkflowManager.h"
+i"SyncAdapterRequest.h"
+i"SyncAdapterResponse.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncAdapterRequest.h
+c000000004DC08FD4000000000000014D
+t1304465364
+s333
+i<Foundation/Foundation.h>
+i"GenericAttributeManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncAdapterResponse.h
+c000000004DC08FD4000000000000017B
+t1304465364
+s379
+i<Foundation/Foundation.h>
+i"GenericAttributeManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncCommand.h
+c000000004DC08FD400000000000003B3
+t1304465364
+s947
+i<Foundation/Foundation.h>
+i"Add.h"
+i"Replace.h"
+i"Delete.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncConstants.h
+c000000004DC08FD4000000000000069C
+t1304465364
+s1692
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncDataSource.h
+c000000004DC08FD400000000000002CA
+t1304465364
+s714
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+i"CloudDBManager.h"
+i"Service.h"
+i"Registry.h"
+i"ChangeLogEntry.h"
+i"SyncError.h"
+i"Anchor.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncEngine.h
+c000000004DC08FD40000000000000C43
+t1304465364
+s3139
+i<Foundation/Foundation.h>
+i"Session.h"
+i"ChangeLogEntry.h"
+i"SyncError.h"
+i"Anchor.h"
+i"SyncDataSource.h"
+i"GeneralTools.h"
+i"MobileObject.h"
+i"MobileObjectDatabase.h"
+i"DeviceSerializer.h"
+i"SyncXMLTags.h"
+i"StringUtil.h"
+i"XMLUtil.h"
+i"SyncConstants.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncError.h
+c000000004DC08FD400000000000003AF
+t1304465364
+s943
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+i"CloudDBManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncHelper.h
+c000000004DC08FD40000000000000710
+t1304465364
+s1808
+i<Foundation/Foundation.h>
+i"Session.h"
+i"SyncXMLTags.h"
+i"SyncConstants.h"
+i"MobileObject.h"
+i"DeviceSerializer.h"
+i"Context.h"
+i"WorkflowManager.h"
+i"SyncEngine.h"
+i"ErrorHandler.h"
+i"SyncMessage.h"
+i"Credential.h"
+i"Configuration.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncMessage.h
+c000000004DC08FD40000000000000477
+t1304465364
+s1143
+i<Foundation/Foundation.h>
+i"Credential.h"
+i"Alert.h"
+i"Status.h"
+i"RecordMap.h"
+i"SyncCommand.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncObjectGenerator.h
+c000000004DC08FD400000000000005C0
+t1304465364
+s1472
+i<Foundation/Foundation.h>
+i"Session.h"
+i"SyncMessage.h"
+i"Alert.h"
+i"SyncCommand.h"
+i"Status.h"
+i"Item.h"
+i"Add.h"
+i"Replace.h"
+i"Delete.h"
+i"Credential.h"
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncPackage.h
+c000000004DC08FD40000000000000144
+t1304465364
+s324
+i<Foundation/Foundation.h>
+i"SyncMessage.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncScheduler.h
+c000000004DC08FD400000000000002AC
+t1304465364
+s684
+i<Foundation/Foundation.h>
+i"Registry.h"
+i"Service.h"
+i"AutoSync.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncService.h
+c000000004DC08FD400000000000006A0
+t1304465364
+s1696
+i<Foundation/Foundation.h>
+i"Service.h"
+i"Registry.h"
+i"NetworkConnector.h"
+i"NetSession.h"
+i"SyncConstants.h"
+i"CloudPayload.h"
+i"SyncAdapter.h"
+i"SyncAdapterRequest.h"
+i"SyncAdapterResponse.h"
+i"Configuration.h"
+i"SyncEngine.h"
+i"GenericAttributeManager.h"
+i"SyncScheduler.h"
+i"ProxyLoader.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncXMLGenerator.h
+c000000004DC08FD40000000000000558
+t1304465364
+s1368
+i<Foundation/Foundation.h>
+i"SyncXMLTags.h"
+i"Anchor.h"
+i"Item.h"
+i"Status.h"
+i"Alert.h"
+i"SyncCommand.h"
+i"Add.h"
+i"Replace.h"
+i"Delete.h"
+i"SyncMessage.h"
+i"Session.h"
+i"Credential.h"
+i"XMLUtil.h"
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SyncXMLTags.h
+c000000004DC08FD400000000000005BF
+t1304465364
+s1471
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/SystemException.h
+c000000004DC08FD4000000000000019D
+t1304465364
+s413
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/WorkflowManager.h
+c000000004DC08FD40000000000000284
+t1304465364
+s644
+i<Foundation/Foundation.h>
+i"Node.h"
+i"Process.h"
+i"StartSync.h"
+i"StartHandshake.h"
+i"DecideEndInit.h"
+i"DecideEndSync.h"
+i"DecideEndClose.h"
+i"StartClose.h"
+i"CloseSession.h"
+i"Context.h"
+i"SyncConstants.h"
+i"Session.h"
+i"SyncEngine.h"
+i"SyncObjectGenerator.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/XMLUtil.h
+c000000004DC08FD400000000000002A9
+t1304465364
+s681
+i<Foundation/Foundation.h>
+i"StringUtil.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../../../../private/src/2.2/iphone/CoreDataSandbox/build/Debug-iphonesimulator/libCoreDataSandbox.a
+c000000004DE00257000000000000CE90
+t1306526295
+s52880
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/AppConfig.h
+c000000004DE26FA20000000000000359
+t1306685346
+s857
+i<Foundation/Foundation.h>
+i"StringUtil.h"
+i"SyncScheduler.h"
+i"ProxyLoader.h"
+i"Channel.h"
+i"Service.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/AppService.h
+c000000004DC08FD400000000000003C9
+t1304465364
+s969
+i<Foundation/Foundation.h>
+i"Registry.h"
+i"AppConfig.h"
+i"Service.h"
+i"Configuration.h"
+i"SyncService.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/BootupKernel.h
+c000000004DDD72700000000000000138
+t1306358384
+s312
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/CloudDBManager.h
+c000000004DE0088900000000000001DA
+t1306527881
+s474
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/Kernel.h
+c000000004DC08FD40000000000000401
+t1304465364
+s1025
+i<Foundation/Foundation.h>
+i"Registry.h"
+i"Service.h"
+i"NetworkConnector.h"
+i"SyncDataSource.h"
+i"SyncObjectGenerator.h"
+i"SyncService.h"
+i"MobileObjectDatabase.h"
+i"DeviceSerializer.h"
+i"CloudDBManager.h"
+i"SyncScheduler.h"
+i"ProxyLoader.h"
+i"Bus.h"
+i"Configuration.h"
+i"AppConfig.h"
+i"AppService.h"
+i"DeviceManager.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a
+c000000004DE53E7D000000000022CF38
+t1306869373
+s2281272
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/configuration.xcdatamodel
+c000000004D546C7A00000000000000AA
+t1297378426
+s170
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.h
+c000000004DE54A60000000000000010E
+t1306872416
+s270
+i"TiModule.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m
+c000000004DE54A920000000000000974
+t1306872466
+s2420
+i"OrgOpenmobsterCloudModule.h"
+i"TiBase.h"
+i"TiHost.h"
+i"TiUtils.h"
+i"SyncProxy.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.h
+c000000004DDD66AE00000000000000A7
+t1306355374
+s167
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m
+c000000004DDD66AE0000000000000116
+t1306355374
+s278
+i"OrgOpenmobsterCloudModuleAssets.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.h
+c000000004D2B12CC000000000000085F
+t1294668492
+s2143
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m
+c000000004D2B12CC000000000000077D
+t1294668492
+s1917
+i"NSObject+SBJSON.h"
+i"SBJsonWriter.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.h
+c000000004D2B12CC00000000000007F0
+t1294668492
+s2032
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m
+c000000004D2B12CC000000000000075D
+t1294668492
+s1885
+i"NSString+SBJSON.h"
+i"SBJsonParser.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/OrgOpenmobsterCloud_Prefix.pch
+c000000004DDD66AE000000000000003E
+t1306355374
+s62
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.h
+c000000004D2B12CC0000000000000B82
+t1294668492
+s2946
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m
+c000000004D2B12CC0000000000000AC1
+t1294668492
+s2753
+i"SBJsonBase.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.h
+c000000004D2B12CC0000000000000C8F
+t1294668492
+s3215
+i<Foundation/Foundation.h>
+i"SBJsonBase.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m
+c000000004D2B12CC0000000000003B7A
+t1294668492
+s15226
+i"SBJsonParser.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.h
+c000000004D2B12CC00000000000011D9
+t1294668492
+s4569
+i<Foundation/Foundation.h>
+i"SBJsonBase.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m
+c000000004D2B12CC000000000000206D
+t1294668492
+s8301
+i"SBJsonWriter.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.h
+c000000004DE285960000000000000167
+t1306690966
+s359
+i"TiProxy.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m
+c000000004DE553760000000000000390
+t1306874742
+s912
+i"SyncProxy.h"
+i"TiUtils.h"
+i"SBJsonWriter.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.h
+c000000004DE54F230000000000000197
+t1306873635
+s407
+i<Foundation/Foundation.h>
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m
+c000000004DE5533800000000000005ED
+t1306874680
+s1517
+i"TitaniumKernel.h"
+i"Kernel.h"
+i"BootupKernel.h"
+i"AppConfig.h"
+i"AppService.h"
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos//configuration.mom
+t2
+s0
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/libOrgOpenmobsterCloud.a
+t1306875064
+s286184
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSObject+SBJSON.o
+t1306875063
+s7788
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSString+SBJSON.o
+t1306875063
+s7696
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloud.LinkFileList
+c000000004DE554B50000000000000722
+t1306875061
+s1826
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModule.o
+t1306875063
+s17700
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModuleAssets.o
+t1306875063
+s6584
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonBase.o
+t1306875063
+s13184
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonParser.o
+t1306875063
+s35904
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonWriter.o
+t1306875063
+s25924
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SyncProxy.o
+t1306875063
+s13620
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/TitaniumKernel.o
+t1306875064
+s14212
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a
+t1306875064
+s144696
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSObject+SBJSON.o
+t1306875064
+s7768
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSString+SBJSON.o
+t1306875064
+s7676
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloud.LinkFileList
+c000000004DE554B50000000000000722
+t1306875061
+s1826
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModule.o
+t1306875064
+s17524
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModuleAssets.o
+t1306875064
+s6584
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonBase.o
+t1306875064
+s13060
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonParser.o
+t1306875064
+s33832
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonWriter.o
+t1306875064
+s25420
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SyncProxy.o
+t1306875064
+s13500
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/TitaniumKernel.o
+t1306875064
+s13988
+
+N/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a
+t1306875064
+s141440
+
+N/var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch.gch
+t1306875062
+s7199300
+
+N/var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch.gch
+t1306875062
+s6736452
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies328567861#328567861#0(0"0(0#1#0"8638700608#0"0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSObject+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.670477
+e328567863.778548
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSObject+SBJSON.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@109"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m328567863#328567863#0(0"0(0#0#101"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m8664751808#5459"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSObject+SBJSON.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSString+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.717117
+e328567863.785490
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSString+SBJSON.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@109"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m328567863#328567863#0(0"0(0#0#101"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m8677011584#5459"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/NSString+SBJSON.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModule.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.321864
+e328567863.670373
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModule.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@127"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m328567863#328567863#0(0"0(0#0#119"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m8638350176#5487"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModule.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModuleAssets.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.323463
+e328567863.555660
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModuleAssets.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@133"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m328567863#328567863#0(0"0(0#0#125"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m8645563360#5499"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloudModuleAssets.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonBase.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.778668
+e328567863.845478
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonBase.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@104"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m328567863#328567863#0(0"0(0#0#96"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m8672536992#5449"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonBase.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonParser.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.785618
+e328567863.949670
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonParser.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@106"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m328567863#328567863#0(0"0(0#0#98"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m8664836768#5453"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonParser.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonWriter.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.845584
+e328567863.958839
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonWriter.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@106"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m328567863#328567863#0(0"0(0#0#98"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m8646554080#5453"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SBJsonWriter.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SyncProxy.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.555805
+e328567863.717009
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SyncProxy.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@103"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m328567863#328567863#0(0"0(0#0#95"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m8672089312#5447"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/SyncProxy.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/TitaniumKernel.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567863.949771
+e328567864.174410
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/TitaniumKernel.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@108"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m328567863#328567864#0(0"0(0#0#100"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m8679831488#5457"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/TitaniumKernel.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSObject+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.216515
+e328567864.271523
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSObject+SBJSON.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@109"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m328567864#328567864#0(0"0(0#0#101"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m8641161216#5459"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSObject+SBJSON.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSObject+SBJSON.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSString+SBJSON.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.271630
+e328567864.337117
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSString+SBJSON.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@109"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m328567864#328567864#0(0"0(0#0#101"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m8602765664#5459"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/NSString+SBJSON.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/NSString+SBJSON.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModule.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567863.958959
+e328567864.155179
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModule.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@127"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m328567863#328567864#0(0"0(0#0#119"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m8672539040#5487"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModule.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModule.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModuleAssets.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.155676
+e328567864.216422
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModuleAssets.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@133"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m328567864#328567864#0(0"0(0#0#125"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m8671971840#5499"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/Classes/OrgOpenmobsterCloudModuleAssets.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloudModuleAssets.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonBase.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.337222
+e328567864.422292
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonBase.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@104"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m328567864#328567864#0(0"0(0#0#96"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m8664030688#5449"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonBase.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonBase.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonParser.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.376281
+e328567864.531568
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonParser.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@106"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m328567864#328567864#0(0"0(0#0#98"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m8673928128#5453"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonParser.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonParser.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonWriter.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.422408
+e328567864.521702
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonWriter.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@106"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m328567864#328567864#0(0"0(0#0#98"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m8665255168#5453"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SBJsonWriter.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SBJsonWriter.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SyncProxy.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.187206
+e328567864.376182
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SyncProxy.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@103"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m328567864#328567864#0(0"0(0#0#95"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m8663464672#5447"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/SyncProxy.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/SyncProxy.o0#
+
+CCompileC build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/TitaniumKernel.o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567864.521813
+e328567864.686671
+r1
+xCompileC
+xbuild/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/TitaniumKernel.o
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@108"Compile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m328567864#328567864#0(0"0(0#0#100"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m8663741120#5457"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -include /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/TitaniumKernel.m -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/TitaniumKernel.o0#
+
+CCreateUniversalBinary /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/libOrgOpenmobsterCloud.a normal "armv6 armv7"
+s328567864.700281
+e328567864.813321
+r1
+xCreateUniversalBinary
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/libOrgOpenmobsterCloud.a
+xnormal
+xarmv6 armv7
+lSLF07#2@88"CreateUniversalBinary build/Debug-iphoneos/libOrgOpenmobsterCloud.a normal "armv6 armv7"328567864#328567864#0(0"0(0#0#95"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/armv6 armv78663843392#843"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/libOrgOpenmobsterCloud.a0#
+
+CDataModelCompile /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos//configuration.mom /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/configuration.xcdatamodel
+r0
+
+CLibtool /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a normal armv6
+s328567864.174509
+e328567864.187092
+r1
+xLibtool
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a
+xnormal
+xarmv6
+lSLF07#2@145"Libtool build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a normal armv6328567864#328567864#0(0"0(0#0#0"8664932224#1363"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv IPHONEOS_DEPLOYMENT_TARGET 4.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv6 -syslibroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -L/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -L/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/build/Debug-iphonesimulator -L/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../../../../private/src/2.2/iphone/CoreDataSandbox/build/Debug-iphonesimulator -filelist /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/OrgOpenmobsterCloud.LinkFileList -framework Foundation -framework CFNetwork -framework CoreData -lmobilecloudlib -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv6/libOrgOpenmobsterCloud.a0#
+
+CLibtool /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a normal armv7
+s328567864.686772
+e328567864.700175
+r1
+xLibtool
+x/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a
+xnormal
+xarmv7
+lSLF07#2@145"Libtool build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a normal armv7328567864#328567864#0(0"0(0#0#0"8663974496#1363"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv IPHONEOS_DEPLOYMENT_TARGET 4.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv7 -syslibroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -L/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -L/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../iphone/mobilecloudlib/build/Debug-iphonesimulator -L/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/../../../../private/src/2.2/iphone/CoreDataSandbox/build/Debug-iphonesimulator -filelist /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/OrgOpenmobsterCloud.LinkFileList -framework Foundation -framework CFNetwork -framework CoreData -lmobilecloudlib -o /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/Objects-normal/armv7/libOrgOpenmobsterCloud.a0#
+
+CProcessPCH /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch.gch OrgOpenmobsterCloud_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+s328567861.778659
+e328567863.261065
+r1
+xProcessPCH
+x/var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch.gch
+xOrgOpenmobsterCloud_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@41"Precompile OrgOpenmobsterCloud_Prefix.pch328567861#328567863#0(0"0(0#0#114"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/OrgOpenmobsterCloud_Prefix.pch8664715776#5272"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv7 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/OrgOpenmobsterCloud_Prefix.pch -o /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-cfunprqscjvekecrdtnxwequplgd/OrgOpenmobsterCloud_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch.gch OrgOpenmobsterCloud_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+s328567861.777548
+e328567863.321718
+r1
+xProcessPCH
+x/var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch.gch
+xOrgOpenmobsterCloud_Prefix.pch
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@41"Precompile OrgOpenmobsterCloud_Prefix.pch328567861#328567863#0(0"0(0#0#114"/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/OrgOpenmobsterCloud_Prefix.pch8665095968#5272"    cd /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -mfix-and-continue -gdwarf-2 -mthumb -miphoneos-version-min=4.2 -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-generated-files.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-own-target-headers.hmap -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-all-target-headers.hmap -iquote /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/OrgOpenmobsterCloud-project-headers.hmap -F/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/Debug-iphoneos/include "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include" "-I/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/iphone/include/TiCore" -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CoreDataSandbox -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/ActivationApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNApp/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/APNAppDev/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/configuration.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobilecloudlib-1.moved-aside -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/mobileobject.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/mobilecloudlib/sync.xcdatamodel -I/Users/openmobster/projects/openmobster/private/src/2.2/iphone/CloudManager/Classes/Classes-1.moved-aside -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources/armv6 -I/Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/build/titanium_module_iphone.build/Debug-iphoneos/titanium_module_iphone.build/DerivedSources -c /Users/openmobster/projects/openmobster/googlecode/src/trunk/titanium_module_iphone/OrgOpenmobsterCloud_Prefix.pch -o /var/folders/Jn/JnBw1PlfFlWY9in69wXypE+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/OrgOpenmobsterCloud_Prefix-chbvjlzrpytdycawzjplbqmkjiiz/OrgOpenmobsterCloud_Prefix.pch.gch0#
+
