@@ -1,0 +1,128 @@
+// !$*UTF8*$!
+{
+	0867D690FE84028FC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeTarget = D2AAC07D0554694100DB518D /* titanium_module_iphone */;
+		addToTargets = (
+			D2AAC07D0554694100DB518D /* titanium_module_iphone */,
+		);
+		codeSenseManager = A263E52A138DA0BA000145FA /* Code sense */;
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 329696404;
+			PBXWorkspaceStateSaveDate = 329696404;
+		};
+		sourceControlManager = A263E529138DA0BA000145FA /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	24416B8111C4CA220047AFDD /* Build & Test */ = {
+		activeExec = 0;
+	};
+	24DD6CF71134B3F500162E58 /* OrgOpenmobsterCloudModule.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 664}}";
+			sepNavSelRange = "{245, 0}";
+			sepNavVisRange = "{0, 270}";
+			sepNavWindowFrame = "{{15, 91}, {750, 787}}";
+		};
+	};
+	24DD6CF81134B3F500162E58 /* OrgOpenmobsterCloudModule.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1651}}";
+			sepNavSelRange = "{791, 0}";
+			sepNavVisRange = "{1699, 928}";
+			sepNavWindowFrame = "{{470, 91}, {750, 787}}";
+		};
+	};
+	24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 664}}";
+			sepNavSelRange = "{576, 0}";
+			sepNavVisRange = "{0, 580}";
+			sepNavWindowFrame = "{{472, 86}, {750, 792}}";
+		};
+	};
+	A263E529138DA0BA000145FA /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	A263E52A138DA0BA000145FA /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	A263E9841392B9A0000145FA /* SyncProxy.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavSelRange = "{398, 0}";
+			sepNavVisRange = "{0, 636}";
+			sepNavWindowFrame = "{{476, 91}, {750, 787}}";
+		};
+	};
+	A263E9851392B9A0000145FA /* SyncProxy.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 3666}}";
+			sepNavSelRange = "{404, 0}";
+			sepNavVisRange = "{4289, 715}";
+			sepNavWindowFrame = "{{476, 91}, {750, 787}}";
+		};
+	};
+	A263E9FF1393F3F4000145FA /* SBJsonBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1131}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1685, 1261}";
+		};
+	};
+	A263EA001393F3F4000145FA /* SBJsonBase.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1027}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1606, 1147}";
+		};
+	};
+	A263EA011393F3F4000145FA /* SBJsonParser.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {887, 1040}}";
+			sepNavSelRange = "{1076, 0}";
+			sepNavVisRange = "{822, 1827}";
+		};
+	};
+	A263EA021393F3F4000145FA /* SBJsonParser.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {929, 6643}}";
+			sepNavSelRange = "{82, 0}";
+			sepNavVisRange = "{11942, 1086}";
+			sepNavWindowFrame = "{{458, 151}, {750, 720}}";
+		};
+	};
+	A263EA031393F3F4000145FA /* SBJsonWriter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {761, 1664}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{2906, 1594}";
+		};
+	};
+	A263ECB71395844E000145FA /* TitaniumKernel.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 659}}";
+			sepNavSelRange = "{362, 0}";
+			sepNavVisRange = "{0, 400}";
+		};
+	};
+	A263ECB81395844E000145FA /* TitaniumKernel.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {796, 1365}}";
+			sepNavSelRange = "{500, 0}";
+			sepNavVisRange = "{0, 1052}";
+		};
+	};
+	D2AAC07D0554694100DB518D /* titanium_module_iphone */ = {
+		activeExec = 0;
+	};
+}

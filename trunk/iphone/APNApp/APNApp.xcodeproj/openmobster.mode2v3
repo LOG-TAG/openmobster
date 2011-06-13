@@ -271,7 +271,8 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>10</integer>
+											<integer>3</integer>
+											<integer>1</integer>
 											<integer>0</integer>
 										</array>
 									</array>
@@ -440,8 +441,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2F49883137D8AB600CB871D</string>
-				<string>A2F49884137D8AB600CB871D</string>
+				<string>A263EA8613940CE4000145FA</string>
+				<string>A263EA8713940CE4000145FA</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -478,7 +479,7 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D54069F1CE1000CFCEE</string>
+		<string>A263EA8913940CE4000145FA</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/APNApp.xcodeproj</string>
 	</array>
@@ -697,7 +698,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2F49885137D8AB600CB871D</string>
+				<string>A263EA8813940CE4000145FA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

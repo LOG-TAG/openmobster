@@ -2,18 +2,18 @@
 {
 	1D3623240D0F684500981E51 /* CloudManagerAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {796, 430}}";
-			sepNavSelRange = "{707, 50}";
-			sepNavVisRange = "{0, 764}";
+			sepNavIntBoundsRect = "{{0, 0}, {1379, 351}}";
+			sepNavSelRange = "{392, 0}";
+			sepNavVisRange = "{117, 456}";
 			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1965, 2080}}";
-			sepNavSelRange = "{1607, 0}";
-			sepNavVisRange = "{2533, 1240}";
-			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
+			sepNavSelRange = "{678, 0}";
+			sepNavVisRange = "{4098, 519}";
+			sepNavWindowFrame = "{{535, 313}, {750, 558}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* CloudManager */ = {
@@ -35,8 +35,8 @@
 			A22D3DB8122698FA00C0A112 /* CloudManager */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 326994337;
-			PBXWorkspaceStateSaveDate = 326994337;
+			PBXPerProjectTemplateStateSaveDate = 328634051;
+			PBXWorkspaceStateSaveDate = 328634051;
 		};
 		sourceControlManager = A22D3DCD1226990600C0A112 /* Source Control */;
 		userBuildSettings = {
@@ -276,10 +276,10 @@
 	};
 	A2869AAD12F8BF0200A4792E /* ShowList.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1097, 2665}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 2769}}";
 			sepNavSelRange = "{4407, 37}";
-			sepNavVisRange = "{4870, 933}";
-			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
+			sepNavVisRange = "{2396, 1005}";
+			sepNavWindowFrame = "{{1872, 338}, {750, 558}}";
 		};
 	};
 	A2869B4712F8D57E00A4792E /* SaveTicket.h */ = {
@@ -338,9 +338,9 @@
 	};
 	A2869B9C12F9017F00A4792E /* ChannelBootstrapCommand.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 832}}";
+			sepNavIntBoundsRect = "{{0, 0}, {908, 871}}";
 			sepNavSelRange = "{782, 0}";
-			sepNavVisRange = "{711, 1103}";
+			sepNavVisRange = "{846, 1096}";
 			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};

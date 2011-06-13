@@ -1,0 +1,6 @@
+<app-conf>
+	<channels>
+		<channel access="write">webappsync_ticket_channel</channel>
+                <channel access="write">crm_ticket_channel</channel>
+	</channels>
+</app-conf>
