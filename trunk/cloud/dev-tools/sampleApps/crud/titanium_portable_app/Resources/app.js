@@ -7,9 +7,23 @@ var tabGroup = Titanium.UI.createTabGroup(
 	}
 );
 
+var window1Url;
+var window2Url;
+
+if (Titanium.Platform.name == 'iPhone OS')
+{
+	window1Url = 'iphone_issue_list.js';
+	window2Url = 'iphone_new_issue.js';
+}
+else
+{
+	window1Url = 'android_issue_list.js';
+	window2Url = 'android_new_issue.js';
+}
+
 //create the tab1 window
 var window1 = Titanium.UI.createWindow({
-	url:'iphone_issue_list.js',
+	url:window1Url,
     titleImage:'images/appcelerator_small.png'
 });
 
@@ -21,7 +35,7 @@ var tab1 = Titanium.UI.createTab({
 
 //create the tab2 window
 var window2 = Titanium.UI.createWindow({
-	url:'iphone_new_issue.js',
+	url:window2Url,
     titleImage:'images/appcelerator_small.png'
 });
 
