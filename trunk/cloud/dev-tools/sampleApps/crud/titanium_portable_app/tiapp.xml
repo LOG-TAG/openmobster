@@ -30,5 +30,6 @@
 	<android xmlns:android="http://schemas.android.com/apk/res/android">
 	</android>
 	<modules>
+		<module version="0.1">org.openmobster.cloud</module>
 	</modules>
 </ti:app>
