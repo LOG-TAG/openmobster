@@ -17,8 +17,8 @@ if (Titanium.Platform.name == 'iPhone OS')
 }
 else
 {
-	window1Url = 'android_issue_list.js';
-	window2Url = 'android_new_issue.js';
+	window1Url = 'issue_list.js';
+	window2Url = 'new_issue.js';
 }
 
 //create the tab1 window
