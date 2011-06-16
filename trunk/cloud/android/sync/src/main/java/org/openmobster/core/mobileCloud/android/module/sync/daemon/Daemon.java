@@ -63,7 +63,9 @@ public final class Daemon extends Service
 			//that scheduled this should have completed whatever they were doing.
 			//plus, even if they have not, it shouldn't interfere, but trying to execute at different times
 			//will make the CPU utilization better
-			timer.schedule(this.syncTask, 120000);
+			//timer.schedule(this.syncTask, 120000);
+			
+			timer.schedule(this.syncTask,10000);
 		}
 	}
 	

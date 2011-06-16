@@ -64,12 +64,12 @@ public class CloudService
 		return singleton;
 	}
 			
-	public void start(final Activity activity)
+	public void start(final Context context)
 	{
 		//short-fast boostrapping of the kernel
-		if(!Moblet.getInstance(activity).isContainerActive())
+		if(!Moblet.getInstance(context).isContainerActive())
 		{
-			this.bootstrapContainer(activity);
+			this.bootstrapContainer(context);
 		}
 		
 		//longer background services to be executed in a background thread to not hold up the App launch
@@ -79,7 +79,7 @@ public class CloudService
 			{
 				try
 				{
-					bootstrapApplication(activity);
+					bootstrapApplication(context);
 				}
 				catch(Exception e)
 				{
@@ -89,12 +89,14 @@ public class CloudService
 						"Exception:"+e.toString()
 					}));
 					
-					ShowErrorLooper looper = new ShowErrorLooper();
+					//FIXME: Find a way to notify the user of this error
+					//This is on a non-GUI thread with no handle on the current Activity
+					/*ShowErrorLooper looper = new ShowErrorLooper();
 					looper.start();
 					
 					while(!looper.isReady());
 					
-					looper.handler.post(new ShowError());
+					looper.handler.post(new ShowError());*/
 				}
 			}
 		}
@@ -102,7 +104,7 @@ public class CloudService
 		t.start();
 	}
 	
-	public void stop(final Activity activity)
+	public void stop(final Context context)
 	{
 		
 	}
@@ -265,7 +267,6 @@ public class CloudService
 	{
 		public void run()
 		{
-			((Activity)Registry.getActiveInstance().getContext()).showDialog(1);
 		}
 	}
 }
