@@ -74,10 +74,11 @@ function loadWindow()
 	}
 }
 
-
+/*
 Titanium.UI.currentWindow.addEventListener('open',function(){
 	loadWindow();
 });
+*/
 
 Ti.Android.currentActivity.addEventListener('resume', function(e) {
 
