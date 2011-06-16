@@ -117,6 +117,12 @@ public final class IBinderManager extends Service
 			String app = componentName.getPackageName();
 			
 			//System.out.println("Binding To: "+app);
+			//System.out.println("*****************************");
+			//System.out.println("BM: "+bm);
+			//System.out.println("LiveBinders: "+bm.liveBinders);
+			//System.out.println("App: "+app);
+			//System.out.println("Binder: "+binder);
+			//System.out.println("*****************************");
 			
 			bm.liveBinders.put(app, binder);
 		}
