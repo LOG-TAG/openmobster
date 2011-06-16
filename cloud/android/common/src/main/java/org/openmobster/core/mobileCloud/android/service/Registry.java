@@ -326,21 +326,7 @@ public final class Registry
 	}
 	
 	private void registerService(Service service)
-	{							
-		try
-		{
-			service.start();
-		}
-		catch(Exception e)
-		{
-			throw new SystemException(Registry.class.getName(), "register", new Object[]{
-				service.getClass().getName(),
-				"message=Service failed during Startup",
-				"ErrorType="+e,
-				"ErrorMessage="+e.getMessage()
-			});
-		}
-						
+	{	
 		//Possibly unregister a service if it already exists
 		Service registered = this.lookup(service.getClass());
 		if(registered != null)
@@ -353,6 +339,20 @@ public final class Registry
 		//Go ahead and register it
 		String serviceId = this.getRegistrationId();
 		service.setId(serviceId);
-		this.services.add(service);				
+		this.services.add(service);	
+		
+		try
+		{
+			service.start();
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(Registry.class.getName(), "register", new Object[]{
+				service.getClass().getName(),
+				"message=Service failed during Startup",
+				"ErrorType="+e,
+				"ErrorMessage="+e.getMessage()
+			});
+		}			
 	}
 }
