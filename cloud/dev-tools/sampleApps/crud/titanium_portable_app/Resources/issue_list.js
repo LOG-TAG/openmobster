@@ -1,5 +1,11 @@
+var tableView = Titanium.UI.createTableView({});
 function loadWindow()
 {
+	if(tableView != null)
+	{
+		tableView.setData([]);
+	}
+		
 	//Cloud Module
 	var cloudModule = require('org.openmobster.cloud');
 	var sync = cloudModule.sync();
@@ -19,15 +25,13 @@ function loadWindow()
 		}
 		
 		// create table view
-		var tableview = Titanium.UI.createTableView({
-			data:data
-		});
+		tableView.setData(data);
 		
 		// add table view to the window
-		Titanium.UI.currentWindow.add(tableview);
+		Titanium.UI.currentWindow.add(tableView);
 		
 		// create table view event listener
-		tableview.addEventListener('click', function(e)
+		tableView.addEventListener('click', function(e)
 		{
 			if(e.rowData.oid)
 			{
@@ -46,10 +50,11 @@ function loadWindow()
 				//Add an EventHandler
 				issueDialog.addEventListener('click',function(e){
 					
+					var oid = Titanium.App.Properties.getString('oid','');
 					if(e.index == 0)
 					{
 						var updateWindow = Titanium.UI.createWindow({
-							url:'iphone_update_issue.js',
+							url:'update_issue.js',
 			    			titleImage:'images/appcelerator_small.png',
 			    			title:'Update Issue'
 						});
@@ -58,6 +63,8 @@ function loadWindow()
 					else if(e.index == 2)
 					{
 						//Delete this row
+						sync.deleteBean(channel,oid);
+						loadWindow();
 					}
 				});
 			}
@@ -74,14 +81,7 @@ function loadWindow()
 	}
 }
 
-/*
-Titanium.UI.currentWindow.addEventListener('open',function(){
-	loadWindow();
-});
-*/
-
 Ti.Android.currentActivity.addEventListener('resume', function(e) {
-
 	var tabGroup = Ti.UI.currentWindow.tabGroup;
 	var tab = tabGroup.activeTab;
 	if(tab.title == "Support Tickets")
