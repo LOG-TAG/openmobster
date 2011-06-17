@@ -1,5 +1,9 @@
 var win = Titanium.UI.currentWindow;
 
+var cloudModule = require('org.openmobster.cloud');
+var sync = cloudModule.sync();
+var channel = "crm_ticket_channel";
+
 //
 //  Title Field
 //
@@ -43,10 +47,10 @@ var customerPicker = Titanium.UI.createPicker({
 	height:'auto'
 });
 var data = [];
-data[0]=Titanium.UI.createPickerRow({title:'Bananas'});
-data[1]=Titanium.UI.createPickerRow({title:'Strawberries'});
-data[2]=Titanium.UI.createPickerRow({title:'Mangos'});
-data[3]=Titanium.UI.createPickerRow({title:'Grapes'});
+data[0]=Titanium.UI.createPickerRow({title:'Apple'});
+data[1]=Titanium.UI.createPickerRow({title:'Google'});
+data[2]=Titanium.UI.createPickerRow({title:'Oracle'});
+data[3]=Titanium.UI.createPickerRow({title:'Microsoft'});
 customerPicker.add(data);
 
 win.add(customerPicker);
@@ -70,10 +74,10 @@ var specialistPicker = Titanium.UI.createPicker({
 	height:'auto'
 });
 var data = [];
-data[0]=Titanium.UI.createPickerRow({title:'Bananas'});
-data[1]=Titanium.UI.createPickerRow({title:'Strawberries'});
-data[2]=Titanium.UI.createPickerRow({title:'Mangos'});
-data[3]=Titanium.UI.createPickerRow({title:'Grapes'});
+data[0]=Titanium.UI.createPickerRow({title:'Steve J'});
+data[1]=Titanium.UI.createPickerRow({title:'Eric S'});
+data[2]=Titanium.UI.createPickerRow({title:'Larry E'});
+data[3]=Titanium.UI.createPickerRow({title:'Steve B'});
 specialistPicker.add(data);
 
 win.add(specialistPicker);
@@ -100,9 +104,6 @@ var comments = Titanium.UI.createTextArea({
     font:{fontSize:20,fontFamily:'Marker Felt', fontWeight:'bold'},
     color:'#888',
     textAlign:'left',
-    appearance:Titanium.UI.KEYBOARD_APPEARANCE_ALERT,   
-    keyboardType:Titanium.UI.KEYBOARD_NUMBERS_PUNCTUATION,
-    returnKeyType:Titanium.UI.RETURNKEY_EMERGENCY_CALL,
     borderWidth:2,
     borderColor:'#bbb',
     borderRadius:5
@@ -133,11 +134,34 @@ win.add(buttonView);
 
 //Event Handling
 ok.addEventListener('click',function(e){
-	var titleValue = titleField.value;
-	var customerValue = customerPicker.getSelectedRow(0);
+	var title = titleField.value;
+	var customer = customerPicker.getSelectedRow(0).title;
+	var specialist = specialistPicker.getSelectedRow(0).title;
+	var comment = comments.value;
 	
-	Ti.API.info("Title: "+titleValue);
-	Ti.API.info("Customer: "+customerValue);
+	//Data Validation
+	if((title == null || title == '') || (comment == null || comment == ''))
+	{
+		var validationDialog = Titanium.UI.createAlertDialog({
+							title:"Error",
+							message:"All fields are required"
+		});
+		validationDialog.buttonNames = ['Close'];
+		validationDialog.show();
+		
+		return;
+	}
+	
+	//Save the New ticket into the channel
+	sync.newBean(channel);
+	sync.setNewBeanValue(channel,"title",title);
+	sync.setNewBeanValue(channel, "customer", customer);
+	sync.setNewBeanValue(channel, "specialist", specialist);
+	sync.setNewBeanValue(channel, "comment", comment);
+	sync.saveNewBean();
+	
+	var tabGroup = Ti.UI.currentWindow.tabGroup;
+	tabGroup.setActiveTab(0);
 });
 
 cancel.addEventListener('click',function(e){
