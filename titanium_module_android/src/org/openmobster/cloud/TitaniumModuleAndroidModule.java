@@ -15,6 +15,9 @@ import org.appcelerator.kroll.KrollInvocation;
 import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConfig;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+
+import android.app.Activity;
 
 @Kroll.module(name="TitaniumModuleAndroid", id="org.openmobster.cloud")
 public class TitaniumModuleAndroidModule extends KrollModule
@@ -29,6 +32,17 @@ public class TitaniumModuleAndroidModule extends KrollModule
 	public TitaniumModuleAndroidModule(TiContext tiContext) 
 	{
 		super(tiContext);
+		
+		Activity activity = tiContext.getActivity();
+		try
+		{
+			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
+		}
+		catch(Throwable t)
+		{
+			ViewHelper.getOkModal(activity, "System Error", "CloudManager App is either not installed or not running").
+			show();
+		}
 	}
 
 	// Methods
@@ -57,6 +71,19 @@ public class TitaniumModuleAndroidModule extends KrollModule
 	@Kroll.method
 	public SyncProxy sync(KrollInvocation invocation)
 	{
+		Activity activity = invocation.getTiContext().getActivity();
+		try
+		{
+			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
+		}
+		catch(Throwable t)
+		{
+			ViewHelper.getOkModal(activity, "System Error", "CloudManager App is either not installed or not running").
+			show();
+			
+			return null;
+		}
+		
 		SyncProxy proxy = new SyncProxy(invocation.getTiContext());
 		return proxy;
 	}

@@ -7,15 +7,14 @@
  */
 package org.openmobster.cloud;
 
-import org.json.JSONArray;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
-
 import org.appcelerator.kroll.KrollInvocation;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
-
 import org.appcelerator.titanium.TiContext;
+
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.api.model.BeanList;
+import org.openmobster.core.mobileCloud.api.model.MobileBean;
 
 import android.app.Activity;
 
@@ -24,20 +23,28 @@ import android.app.Activity;
  * @author openmobster@gmail.com
  */
 @Kroll.proxy
-public final class SyncProxy extends KrollProxy
-{	
-	public SyncProxy(TiContext context) 
+public final class UpdateBeanProxy extends KrollProxy
+{
+	private MobileBean update;
+	
+	public UpdateBeanProxy(TiContext context)
 	{
 		super(context);
 	}
 	
-	@Kroll.method
-	public String readAll(KrollInvocation invocation,String channel)
+	public void setBean(MobileBean update)
 	{
-		//Validate the input
-		if(channel == null || channel.trim().length()==0)
+		this.update = update;
+	}
+	
+	@Kroll.method
+	public void setValue(KrollInvocation invocation,String fieldUri, String value)
+	{
+		if((fieldUri == null || fieldUri.trim().length() == 0) ||
+			(value == null || value.trim().length() == 0)
+		)
 		{
-			return null;
+			return;
 		}
 		
 		Activity activity = invocation.getTiContext().getActivity();
@@ -47,31 +54,48 @@ public final class SyncProxy extends KrollProxy
 		}
 		catch(Throwable t)
 		{
-			ViewHelper.getOkModal(activity, "System Error", "CloudManager App is either not installed or not running").
+			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
 			show();
 			
-			return null;
+			return;
 		}
 		
-		JSONArray array = new JSONArray();
-		MobileBean[] beans = MobileBean.readAll(channel);
-		if(beans != null && beans.length > 0)
+		if(this.update == null)
 		{
-			for(MobileBean local:beans)
-			{
-				String oid = local.getId();
-				array.put(oid);
-			}
+			return;
 		}
 		
-		return array.toString();
+		this.update.setValue(fieldUri, value);
 	}
 	
 	@Kroll.method
-	public UpdateBeanProxy readById(KrollInvocation invocation,String channel,String oid)
+	public void commit(KrollInvocation invocation)
 	{
-		if((channel == null || channel.trim().length() == 0) ||
-			(oid == null || oid.trim().length() == 0)
+		Activity activity = invocation.getTiContext().getActivity();
+		try
+		{
+			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
+		}
+		catch(Throwable t)
+		{
+			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
+			show();
+			
+			return;
+		}
+		
+		if(this.update == null)
+		{
+			return;
+		}
+		
+		this.update.save();
+	}
+	
+	@Kroll.method
+	public String getValue(KrollInvocation invocation,String fieldUri)
+	{
+		if((fieldUri == null || fieldUri.trim().length() == 0)
 		)
 		{
 			return null;
@@ -90,55 +114,23 @@ public final class SyncProxy extends KrollProxy
 			return null;
 		}
 		
-		MobileBean bean = MobileBean.readById(channel, oid);
-		if(bean == null)
+		if(this.update == null)
 		{
 			return null;
 		}
 		
-		UpdateBeanProxy updateProxy = new UpdateBeanProxy(invocation.getTiContext());
-		updateProxy.setBean(bean);
+		String value = this.update.getValue(fieldUri);
 		
-		return updateProxy;
+		return value;
 	}
 	
 	@Kroll.method
-	public AddBeanProxy newBean(KrollInvocation invocation, String channel)
-	{
-		if((channel == null || channel.trim().length() == 0) 
-			)
-		{
-			return null;
-		}
-		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return null;
-		}
-		
-		MobileBean newBean = MobileBean.newInstance(channel);
-		AddBeanProxy proxy = new AddBeanProxy(invocation.getTiContext());
-		proxy.setBean(newBean);
-		
-		return proxy;
-	}
-	
-	@Kroll.method
-	public String deleteBean(KrollInvocation invocation,String channel, String oid)
-	{
-		if((channel == null || channel.trim().length() == 0) ||
-		   (oid == null || oid.trim().length() == 0)
+	public int arrayLength(KrollInvocation invocation,String arrayUri)
+    {
+		if((arrayUri == null || arrayUri.trim().length() == 0)
 		)
 		{
-			return null;
+					return 0;
 		}
 		
 		Activity activity = invocation.getTiContext().getActivity();
@@ -151,19 +143,20 @@ public final class SyncProxy extends KrollProxy
 			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
 			show();
 			
-			return null;
+			return 0;
 		}
 		
-		MobileBean bean = MobileBean.readById(channel, oid);
-		if(bean == null)
-		{
-			return null;
-		}
-		
-		String beanId = bean.getId();
-		
-		bean.delete();
-		
-		return beanId;
-	}
+        if(this.update == null)
+        {
+        	return 0;
+        }
+        
+        BeanList array = this.update.readList(arrayUri);
+        if(array != null)
+        {
+            return array.size();
+        }
+        
+        return 0;
+    }
 }
