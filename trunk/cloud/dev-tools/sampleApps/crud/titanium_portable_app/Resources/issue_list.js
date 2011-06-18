@@ -1,4 +1,5 @@
 var tableView = Titanium.UI.createTableView({});
+var eventListenerAdded = 0;
 function loadWindow()
 {
 	if(tableView != null)
@@ -19,7 +20,8 @@ function loadWindow()
 		var data = new Array(oids.length);
 		for(var i=0; i<oids.length; i++)
 		{
-			var title = sync.getValue(channel,oids[i],"title");
+			var bean = sync.readById(channel,oids[i]);
+			var title = bean.getValue("title");
 			var rowData = {title:title, hasChild:false, oid:oids[i]};
 			data[i] = rowData;
 		}
@@ -31,6 +33,11 @@ function loadWindow()
 		Titanium.UI.currentWindow.add(tableView);
 		
 		// create table view event listener
+		if(eventListenerAdded > 0)
+		{
+			return;
+		}
+		eventListenerAdded++;
 		tableView.addEventListener('click', function(e)
 		{
 			if(e.rowData.oid)
@@ -49,7 +56,6 @@ function loadWindow()
 				
 				//Add an EventHandler
 				issueDialog.addEventListener('click',function(e){
-					
 					var oid = Titanium.App.Properties.getString('oid','');
 					if(e.index == 0)
 					{

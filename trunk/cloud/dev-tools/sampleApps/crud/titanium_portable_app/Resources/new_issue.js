@@ -153,12 +153,12 @@ ok.addEventListener('click',function(e){
 	}
 	
 	//Save the New ticket into the channel
-	sync.newBean(channel);
-	sync.setNewBeanValue(channel,"title",title);
-	sync.setNewBeanValue(channel, "customer", customer);
-	sync.setNewBeanValue(channel, "specialist", specialist);
-	sync.setNewBeanValue(channel, "comment", comment);
-	sync.saveNewBean();
+	var newBean = sync.newBean(channel);
+	newBean.setValue("title",title);
+	newBean.setValue("customer", customer);
+	newBean.setValue("specialist", specialist);
+	newBean.setValue("comment", comment);
+	newBean.commit();
 	
 	var tabGroup = Ti.UI.currentWindow.tabGroup;
 	tabGroup.setActiveTab(0);
