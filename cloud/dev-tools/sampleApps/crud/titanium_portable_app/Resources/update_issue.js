@@ -7,10 +7,11 @@ var channel = "crm_ticket_channel";
 
 
 Ti.UI.currentWindow.addEventListener('open',function(){	
-	var title = sync.getValue(channel,oid,"title");
-	var customer = sync.getValue(channel,oid,"customer");
-	var specialist = sync.getValue(channel,oid,"specialist");
-	var comment = sync.getValue(channel,oid,"comment");
+	var bean = sync.readById(channel,oid);
+	var title = bean.getValue("title");
+	var customer = bean.getValue("customer");
+	var specialist = bean.getValue("specialist");
+	var comment = bean.getValue("comment");
 	
 	titleField.value = title;
 	
@@ -211,10 +212,12 @@ ok.addEventListener('click', function(){
 		return;
 	}
 	
-	sync.setValue(channel,oid,"title",title);
-	sync.setValue(channel,oid,"customer",customer);
-	sync.setValue(channel,oid,"specialist",specialist);
-	sync.setValue(channel,oid,"comment",comment);
+	var bean = sync.readById(channel,oid);
+	bean.setValue("title",title);
+	bean.setValue("customer",customer);
+	bean.setValue("specialist",specialist);
+	bean.setValue("comment",comment);
+	bean.commit();
 	
 	Titanium.UI.currentWindow.close();
 });
