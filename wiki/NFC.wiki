@@ -4,11 +4,11 @@
 
 ----
 
-=== Introduction ===
+==== Introduction ====
 
-=== NdefMessage and NdefRecord ===
+==== NdefMessage and NdefRecord ====
 ----
-=== Simulating NFC Tag Discovery === 
+==== Simulating NFC Tag Discovery ==== 
 
 ----
 
