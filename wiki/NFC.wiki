@@ -4,6 +4,12 @@
 
 ----
 
+=== Introduction ===
+
+=== NdefMessage and NdefRecord ===
+----
+=== Simulating NFC Tag Discovery === 
+
 ----
 
 *Related:* [AndroidArea Android Area], [BeginnerZone Beginner Area]
