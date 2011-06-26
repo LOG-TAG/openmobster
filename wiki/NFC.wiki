@@ -7,6 +7,8 @@
 ==== Introduction ====
 Near Field Communication (NFC) is a set of short-range wireless technologies, typically requiring a distance of 4cm or less. NFC operates at 13.56mhz, and at rates ranging from 106 kbit/s to 848 kbit/s. NFC communication always involves an initiator and a target. The initiator actively generates an RF field that can power a passive target. This enables NFC targets to take very simple form factors such as tags, stickers or cards that do not require power. NFC peer-to-peer communication is also possible, where both devices are powered.
 
+----
+
 ==== Payload ====
 The NFC Payload conforms to the standard NFC Forum data structure. On Android, this is represented by a NdefMessage type. NdefMessage consists of zero or more NdefRecord objects. Each NDEF record has a type such as text, URL, smart poster, or any MIME data. The type of the first NDEF record in the NDEF message is used to dispatch a tag to an activity on Android.
 
