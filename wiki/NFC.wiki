@@ -271,7 +271,7 @@ public class MainActivity extends ListActivity
 
 ==== Download this tutorial ====
 
-  * [http://openmobster.googlecode.com/samples/nfcsample.zip Download]
+  * [http://openmobster.googlecode.com/svn/samples/nfcsample.zip Download]
 
   {{{
       cd app-android
