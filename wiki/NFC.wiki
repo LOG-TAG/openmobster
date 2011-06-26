@@ -271,6 +271,10 @@ public class MainActivity extends ListActivity
 
 ---- 
 
+==== Configuration ====
+
+----
+
 ==== Download this tutorial ====
 
   * [http://openmobster.googlecode.com/svn/samples/nfcsample.zip Download]
