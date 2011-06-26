@@ -215,17 +215,17 @@ public class MainActivity extends ListActivity
 	@Override
     public void onNewIntent(Intent intent) 
 	{
-        setIntent(intent);
-        resolveIntent(intent);
-    }
+          setIntent(intent);
+          resolveIntent(intent);
+        }
 	
 	private void resolveIntent(Intent intent)
 	{
 		//Get the Action
 		String action = intent.getAction();
 		
-		if(action.equals(NfcAdapter.ACTION_TAG_DISCOVERED))
-		{
+	if(action.equals(NfcAdapter.ACTION_TAG_DISCOVERED))
+	{
 			//Get the NFC Tag Data from the intent
 			Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             NdefMessage[] msgs;
@@ -257,13 +257,13 @@ public class MainActivity extends ListActivity
             	this.adapter.add(text);
             }
 		}
-		else
-		{
-			Log.e("NFC/MainActivity", "Unknown intent " + intent);
-            finish();
-            return;
-		}
+	else
+	{
+	      Log.e("NFC/MainActivity", "Unknown intent " + intent);
+              finish();
+              return;
 	}
+    }
 }
 }}}
 
