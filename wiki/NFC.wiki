@@ -269,9 +269,35 @@ public class MainActivity extends ListActivity
 }
 }}}
 
----- 
+==== AndroidManifest.xml ====
 
-==== Configuration ====
+Permission to access the NFC hardware
+{{{
+<uses-permission android:name="android.permission.NFC" />
+}}}
+
+The minimum SDK version that your application can support. API level 9 only supports limited tag dispatch via ACTION_TAG_DISCOVERED, and only gives access to NDEF messages via the EXTRA_NDEF_MESSAGES extra. No other tag properties or I/O operations are accessible. You probably want to use API level 10 which includes comprehensive reader/writer support. 
+{{{
+<uses-sdk android:minSdkVersion="9" />
+}}}
+
+The uses-feature element so that your application can show up in the Android Market for devices that have NFC hardware: 
+{{{
+<uses-feature android:name="android.hardware.nfc" android:required="true" />
+}}}
+
+The intent filter on the Activity that processes the Tag Dispatch
+{{{
+<activity android:name="org.openmobster.app.MainActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+        >
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+</activity>
+}}}
+
 
 ----
 
