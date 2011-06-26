@@ -13,9 +13,9 @@ The NFC Payload conforms to the standard NFC Forum data structure. On Android, t
 ==== Parsing an NdefRecord ====
 {{{
 public static TextRecord parse(NdefRecord record)
-	{
-		//Validation
-		Preconditions.checkArgument(record.getTnf() == NdefRecord.TNF_WELL_KNOWN);
+{
+	//Validation
+	Preconditions.checkArgument(record.getTnf() == NdefRecord.TNF_WELL_KNOWN);
         Preconditions.checkArgument(Arrays.equals(record.getType(), NdefRecord.RTD_TEXT));
         try
         {
@@ -51,7 +51,7 @@ public static TextRecord parse(NdefRecord record)
         {
         	throw new RuntimeException("Record Parsing Failure!!");
         }
-	}
+}
 }}}
  
 ----
