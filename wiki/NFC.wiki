@@ -10,7 +10,7 @@ Near Field Communication (NFC) is a set of short-range wireless technologies, ty
 ==== Payload ====
 The NFC Payload conforms to the standard NFC Forum data structure. On Android, this is represented by a NdefMessage type. NdefMessage consists of zero or more NdefRecord objects. Each NDEF record has a type such as text, URL, smart poster, or any MIME data. The type of the first NDEF record in the NDEF message is used to dispatch a tag to an activity on Android.
 
-==== Parsing an NdefRecord ====
+===== Parsing an NdefRecord =====
 {{{
 public static TextRecord parse(NdefRecord record)
 {
