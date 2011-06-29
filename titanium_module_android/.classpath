@@ -8,5 +8,5 @@
 	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/android/titanium.jar"/>
 	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/1.6.2/android/js.jar"/>
 	<classpathentry kind="lib" path="lib/device-sdk-2.2-SNAPSHOT-full.jar"/>
-	<classpathentry kind="output" path="eclipse-bin"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
