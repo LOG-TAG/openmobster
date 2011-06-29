@@ -10,6 +10,11 @@ function loadWindow()
 	//Cloud Module
 	var cloudModule = require('org.openmobster.cloud');
 	var sync = cloudModule.sync();
+	if(sync == null)
+	{
+		return;
+	}
+	
 	var channel = "crm_ticket_channel";
 	var oids = sync.readAll(channel);
 	
