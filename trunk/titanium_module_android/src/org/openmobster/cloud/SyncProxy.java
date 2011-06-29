@@ -8,7 +8,7 @@
 package org.openmobster.cloud;
 
 import org.json.JSONArray;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
 
 import org.appcelerator.kroll.KrollInvocation;
@@ -16,8 +16,6 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 
 import org.appcelerator.titanium.TiContext;
-
-import android.app.Activity;
 
 /**
  *
@@ -37,19 +35,6 @@ public final class SyncProxy extends KrollProxy
 		//Validate the input
 		if(channel == null || channel.trim().length()==0)
 		{
-			return null;
-		}
-		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModal(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
 			return null;
 		}
 		
@@ -74,19 +59,6 @@ public final class SyncProxy extends KrollProxy
 			(oid == null || oid.trim().length() == 0)
 		)
 		{
-			return null;
-		}
-		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
 			return null;
 		}
 		

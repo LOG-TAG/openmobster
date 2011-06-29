@@ -13,7 +13,6 @@ import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.KrollInvocation;
 
 import org.appcelerator.titanium.TiContext;
-import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConfig;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
@@ -40,33 +39,10 @@ public class TitaniumModuleAndroidModule extends KrollModule
 		}
 		catch(Throwable t)
 		{
-			ViewHelper.getOkModal(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
+			t.printStackTrace();
 		}
 	}
 
-	// Methods
-	@Kroll.method
-	public String example() 
-	{
-		Log.d(LCAT, "example called");
-		return "hello world";
-	}
-	
-	// Properties
-	@Kroll.getProperty
-	public String getExampleProp() 
-	{
-		Log.d(LCAT, "get example property");
-		return "hello world";
-	}
-	
-	
-	@Kroll.setProperty
-	public void setExampleProp(String value) 
-	{
-		Log.d(LCAT, "set example property: " + value);
-	}
 	
 	@Kroll.method
 	public SyncProxy sync(KrollInvocation invocation)
@@ -78,7 +54,7 @@ public class TitaniumModuleAndroidModule extends KrollModule
 		}
 		catch(Throwable t)
 		{
-			ViewHelper.getOkModal(activity, "System Error", "CloudManager App is either not installed or not running").
+			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
 			show();
 			
 			return null;
