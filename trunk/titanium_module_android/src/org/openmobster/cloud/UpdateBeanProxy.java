@@ -12,11 +12,8 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiContext;
 
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.model.BeanList;
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
-
-import android.app.Activity;
 
 /**
  *
@@ -38,6 +35,16 @@ public final class UpdateBeanProxy extends KrollProxy
 	}
 	
 	@Kroll.method
+	public String oid()
+	{
+		if(this.update == null)
+		{
+			return null;
+		}
+		return this.update.getId();
+	}
+	
+	@Kroll.method
 	public void setValue(KrollInvocation invocation,String fieldUri, String value)
 	{
 		if((fieldUri == null || fieldUri.trim().length() == 0) ||
@@ -47,18 +54,6 @@ public final class UpdateBeanProxy extends KrollProxy
 			return;
 		}
 		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return;
-		}
 		
 		if(this.update == null)
 		{
@@ -71,18 +66,6 @@ public final class UpdateBeanProxy extends KrollProxy
 	@Kroll.method
 	public void commit(KrollInvocation invocation)
 	{
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return;
-		}
 		
 		if(this.update == null)
 		{
@@ -101,18 +84,6 @@ public final class UpdateBeanProxy extends KrollProxy
 			return null;
 		}
 		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return null;
-		}
 		
 		if(this.update == null)
 		{
@@ -131,19 +102,6 @@ public final class UpdateBeanProxy extends KrollProxy
 		)
 		{
 					return 0;
-		}
-		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return 0;
 		}
 		
         if(this.update == null)

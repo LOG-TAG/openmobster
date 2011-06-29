@@ -111,19 +111,6 @@ public final class SyncProxy extends KrollProxy
 			return null;
 		}
 		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return null;
-		}
-		
 		MobileBean newBean = MobileBean.newInstance(channel);
 		AddBeanProxy proxy = new AddBeanProxy(invocation.getTiContext());
 		proxy.setBean(newBean);
@@ -138,19 +125,6 @@ public final class SyncProxy extends KrollProxy
 		   (oid == null || oid.trim().length() == 0)
 		)
 		{
-			return null;
-		}
-		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
 			return null;
 		}
 		

@@ -12,10 +12,7 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiContext;
 
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
-
-import android.app.Activity;
 
 /**
  *
@@ -31,9 +28,39 @@ public final class AddBeanProxy extends KrollProxy
 		super(context);
 	}
 	
+	@Kroll.method
+	public String oid()
+	{
+		if(this.bean == null)
+		{
+			return null;
+		}
+		return this.bean.getId();
+	}
+	
 	public void setBean(MobileBean bean)
 	{
 		this.bean = bean;
+	}
+	
+	@Kroll.method
+	public String getValue(KrollInvocation invocation,String fieldUri)
+	{
+		if((fieldUri == null || fieldUri.trim().length() == 0)
+		)
+		{
+			return null;
+		}
+		
+		
+		if(this.bean == null)
+		{
+			return null;
+		}
+		
+		String value = this.bean.getValue(fieldUri);
+		
+		return value;
 	}
 	
 	@Kroll.method
@@ -43,19 +70,6 @@ public final class AddBeanProxy extends KrollProxy
 			(value == null || value.trim().length() == 0)
 		)
 		{
-			return;
-		}
-		
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
 			return;
 		}
 		
@@ -70,19 +84,6 @@ public final class AddBeanProxy extends KrollProxy
 	@Kroll.method
 	public String commit(KrollInvocation invocation)
 	{
-		Activity activity = invocation.getTiContext().getActivity();
-		try
-		{
-			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
-		}
-		catch(Throwable t)
-		{
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
-			show();
-			
-			return null;
-		}
-		
 		if(this.bean == null)
 		{
 			return null;
