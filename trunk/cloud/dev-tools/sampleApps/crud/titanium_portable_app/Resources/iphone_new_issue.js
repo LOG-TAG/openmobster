@@ -1,5 +1,9 @@
 var win = Titanium.UI.currentWindow;
 
+var cloudModule = require('org.openmobster.cloud');
+var sync = cloudModule.sync();
+var channel = "crm_ticket_channel";
+
 //
 //  Title Field
 //
@@ -45,10 +49,10 @@ var customerPicker = Titanium.UI.createPicker({
 	transform:transformPicker
 });
 var data = [];
-data[0]=Titanium.UI.createPickerRow({title:'Bananas'});
-data[1]=Titanium.UI.createPickerRow({title:'Strawberries'});
-data[2]=Titanium.UI.createPickerRow({title:'Mangos'});
-data[3]=Titanium.UI.createPickerRow({title:'Grapes'});
+data[0]=Titanium.UI.createPickerRow({title:'Apple'});
+data[1]=Titanium.UI.createPickerRow({title:'Google'});
+data[2]=Titanium.UI.createPickerRow({title:'Oracle'});
+data[3]=Titanium.UI.createPickerRow({title:'Microsoft'});
 customerPicker.add(data);
 customerPicker.selectionIndicator = true;
 
@@ -74,10 +78,10 @@ var specialistPicker = Titanium.UI.createPicker({
 	transform:transformPicker
 });
 var data = [];
-data[0]=Titanium.UI.createPickerRow({title:'Bananas'});
-data[1]=Titanium.UI.createPickerRow({title:'Strawberries'});
-data[2]=Titanium.UI.createPickerRow({title:'Mangos'});
-data[3]=Titanium.UI.createPickerRow({title:'Grapes'});
+data[0]=Titanium.UI.createPickerRow({title:'Steve J'});
+data[1]=Titanium.UI.createPickerRow({title:'Eric S'});
+data[2]=Titanium.UI.createPickerRow({title:'Larry E'});
+data[3]=Titanium.UI.createPickerRow({title:'Steve B'});
 specialistPicker.add(data);
 specialistPicker.selectionIndicator = true;
 
@@ -130,6 +134,31 @@ commandBar.addEventListener('click', function(e){
 	if(e.index == 0)
 	{
 		//OK
+		var title = titleField.value;
+		var customer = customerPicker.getSelectedRow(0).title;
+		var specialist = specialistPicker.getSelectedRow(0).title;
+		var comment = comments.value;
+		
+		//Data Validation
+		if((title == null || title == '') || (comment == null || comment == ''))
+		{
+			var validationDialog = Titanium.UI.createAlertDialog({
+								title:"Error",
+								message:"All fields are required"
+			});
+			validationDialog.buttonNames = ['Close'];
+			validationDialog.show();
+			
+			return;
+		}
+		
+		//Save the New ticket into the channel
+		var newBean = sync.newBean(channel);
+		newBean.setValue("title",title);
+		newBean.setValue("customer", customer);
+		newBean.setValue("specialist", specialist);
+		newBean.setValue("comment", comment);
+		newBean.commit();
 	}
 	else
 	{

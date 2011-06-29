@@ -64,8 +64,17 @@ function loadWindow()
 					var oid = Titanium.App.Properties.getString('oid','');
 					if(e.index == 0)
 					{
+						var updateUrl;
+						if (Titanium.Platform.name != 'iPhone OS')
+						{
+							updateUrl = "update_issue.js";
+						}
+						else
+						{
+							updateUrl = "iphone_update_issue.js"
+						}
 						var updateWindow = Titanium.UI.createWindow({
-							url:'update_issue.js',
+							url:updateUrl,
 			    			titleImage:'images/appcelerator_small.png',
 			    			title:'Update Issue'
 						});
@@ -92,11 +101,40 @@ function loadWindow()
 	}
 }
 
-Ti.Android.currentActivity.addEventListener('resume', function(e) {
-	var tabGroup = Ti.UI.currentWindow.tabGroup;
-	var tab = tabGroup.activeTab;
-	if(tab.title == "Support Tickets")
-	{
+if (Titanium.Platform.name != 'iPhone OS')
+{
+	Ti.Android.currentActivity.addEventListener('resume', function(e) {
+		var tabGroup = Ti.UI.currentWindow.tabGroup;
+		var tab = tabGroup.activeTab;
+		if(tab.title == "Support Tickets")
+		{
+			loadWindow();
+		}
+	});
+}
+else
+{
+	Titanium.UI.currentWindow.addEventListener('open',function(){
 		loadWindow();
-	}
-});
+	});
+	
+	Titanium.UI.currentWindow.addEventListener('focus',function(){
+		var tabGroup = Ti.UI.currentWindow.tabGroup;
+		var tab = tabGroup.activeTab;
+		
+		if(tab.title == "Support Tickets")
+		{
+			loadWindow();
+		}
+	});
+
+	Ti.App.addEventListener('resume', function(e) {
+		var tabGroup = Ti.UI.currentWindow.tabGroup;
+		var tab = tabGroup.activeTab;
+		
+		if(tab.title == "Support Tickets")
+		{
+			loadWindow();
+		}
+	});
+}
