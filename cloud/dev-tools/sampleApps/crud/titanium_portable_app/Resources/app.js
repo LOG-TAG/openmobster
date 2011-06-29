@@ -10,17 +10,15 @@ function loadApp()
 		}
 	);
 	
-	var window1Url;
+	var window1Url = 'issue_list.js';
 	var window2Url;
 	
 	if (Titanium.Platform.name == 'iPhone OS')
 	{
-		window1Url = 'iphone_issue_list.js';
 		window2Url = 'iphone_new_issue.js';
 	}
 	else
 	{
-		window1Url = 'issue_list.js';
 		window2Url = 'new_issue.js';
 	}
 	
@@ -62,15 +60,22 @@ function loadApp()
 	});
 }
 
-Ti.Android.currentActivity.addEventListener('resume', function(e) 
+if (Titanium.Platform.name != 'iPhone OS')
 {
-	//Cloud Module
-	var cloudModule = require('org.openmobster.cloud');
-	var sync = cloudModule.sync();
-	
-	//If Module is ready to take invocations
-	if(sync != null)
+	Ti.Android.currentActivity.addEventListener('resume', function(e) 
 	{
-		loadApp();
-	}
-});
+		//Cloud Module
+		var cloudModule = require('org.openmobster.cloud');
+		var sync = cloudModule.sync();
+		
+		//If Module is ready to take invocations
+		if(sync != null)
+		{
+			loadApp();
+		}
+	});
+}
+else
+{
+	loadApp();
+}
