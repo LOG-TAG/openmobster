@@ -301,7 +301,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>-1 459 446 419 0 0 1440 878 </string>
+								<string>0 459 446 419 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -440,8 +440,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A296CDD813A6867300FC0C42</string>
-				<string>A296CDD913A6867300FC0C42</string>
+				<string>A252E24513B93BF8004F5344</string>
+				<string>A252E24613B93BF8004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -480,13 +480,11 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D5B069F1CE1000CFCEE</string>
-		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/ActivationApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>-1 459 446 419 0 0 1440 878 </string>
+	<string>0 459 446 419 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -700,7 +698,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A296CDDA13A6867300FC0C42</string>
+				<string>A252E24713B93BF8004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
