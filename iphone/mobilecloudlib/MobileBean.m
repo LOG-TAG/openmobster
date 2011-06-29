@@ -368,7 +368,7 @@
 {
 	@synchronized([MobileBean class])
 	{
-		data = nil;
+		self.data = nil;
 		isDirty = NO;
 		isNew = NO;
 	}
@@ -440,7 +440,7 @@
 		{
 			NSString *newOid = [deviceDB create:data];
 			NSString *channel = data.service;
-			data = [deviceDB read:channel : newOid];
+			self.data = [deviceDB read:channel : newOid];
 			
 			isNew = NO;
 			
@@ -491,7 +491,7 @@
 	
 	MobileObjectDatabase *deviceDB = [MobileObjectDatabase getInstance];
 	
-	data = [deviceDB read:[self getChannel] :[self getId]];
+	self.data = [deviceDB read:[self getChannel] :[self getId]];
 	
 	[self clearMetaData];
 }

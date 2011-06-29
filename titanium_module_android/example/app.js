@@ -41,24 +41,6 @@ function listBeans(oids)
 	Ti.API.info("----------------------------------------------------");
 }
 
-/*var oids = sync.readAll(channel);
-oids = eval('('+oids+')');
-	
-if(oids != null)
-{
-	//List Beans
-	listBeans(oids);
-	
-	//SetValue
-	var updateBean = sync.readById(channel,oids[0]);
-	updateBean.setValue("title", "updated://title");
-	updateBean.setValue("customer", "updated://customer");
-	updateBean.setValue("specialist","updated://specialist");
-	updateBean.setValue("comment", "updated://comment");
-	updateBean.commit();
-	
-	listBeans(oids);
-}*/
 
 button.addEventListener('click',function(){
 	// TODO: write your module tests here
