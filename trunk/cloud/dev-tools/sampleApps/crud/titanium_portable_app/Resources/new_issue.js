@@ -2,7 +2,12 @@ var win = Titanium.UI.currentWindow;
 
 var cloudModule = require('org.openmobster.cloud');
 var sync = cloudModule.sync();
+var rpc = cloudModule.rpc();
 var channel = "crm_ticket_channel";
+
+var response = rpc.invoke('/async/load/spinners','{}');
+response = eval('(' + response + ')');
+
 
 //
 //  Title Field
@@ -46,12 +51,13 @@ var customerPicker = Titanium.UI.createPicker({
 	width:'auto',
 	height:'auto'
 });
-var data = [];
-data[0]=Titanium.UI.createPickerRow({title:'Apple'});
-data[1]=Titanium.UI.createPickerRow({title:'Google'});
-data[2]=Titanium.UI.createPickerRow({title:'Oracle'});
-data[3]=Titanium.UI.createPickerRow({title:'Microsoft'});
-customerPicker.add(data);
+var customerLength = response.customers.length;
+var customerData = [];
+for(var i=0; i<customerLength; i++)
+{
+	customerData[i] = Titanium.UI.createPickerRow({title:response.customers[i]});
+}
+customerPicker.add(customerData);
 
 win.add(customerPicker);
 
@@ -73,12 +79,13 @@ var specialistPicker = Titanium.UI.createPicker({
 	width:'auto',
 	height:'auto'
 });
-var data = [];
-data[0]=Titanium.UI.createPickerRow({title:'Steve J'});
-data[1]=Titanium.UI.createPickerRow({title:'Eric S'});
-data[2]=Titanium.UI.createPickerRow({title:'Larry E'});
-data[3]=Titanium.UI.createPickerRow({title:'Steve B'});
-specialistPicker.add(data);
+var specialistLength = response.specialists.length;
+var specialistData = [];
+for(var i=0; i<specialistLength; i++)
+{
+	specialistData[i] = Titanium.UI.createPickerRow({title:response.specialists[i]});
+}
+specialistPicker.add(specialistData);
 
 win.add(specialistPicker);
 
