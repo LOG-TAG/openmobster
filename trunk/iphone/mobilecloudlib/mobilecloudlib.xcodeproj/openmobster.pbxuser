@@ -57,14 +57,14 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 330992524;
-			PBXWorkspaceStateSaveDate = 330992524;
+			PBXPerProjectTemplateStateSaveDate = 331077596;
+			PBXWorkspaceStateSaveDate = 331077596;
 		};
 		perUserProjectItems = {
-			A252E2C813BA95A9004F5344 /* PBXBookmark */ = A252E2C813BA95A9004F5344 /* PBXBookmark */;
-			A252E2CB13BA96CC004F5344 /* XCBuildMessageTextBookmark */ = A252E2CB13BA96CC004F5344 /* XCBuildMessageTextBookmark */;
-			A252E2CC13BA96CC004F5344 /* PBXTextBookmark */ = A252E2CC13BA96CC004F5344 /* PBXTextBookmark */;
-			A252E2CE13BA96D7004F5344 /* PBXTextBookmark */ = A252E2CE13BA96D7004F5344 /* PBXTextBookmark */;
+			A252E34113BBDAF8004F5344 /* PBXTextBookmark */ = A252E34113BBDAF8004F5344 /* PBXTextBookmark */;
+			A252E34213BBDAF8004F5344 /* PBXTextBookmark */ = A252E34213BBDAF8004F5344 /* PBXTextBookmark */;
+			A252E34313BBDAF8004F5344 /* PBXTextBookmark */ = A252E34313BBDAF8004F5344 /* PBXTextBookmark */;
+			A252E34513BBDBC3004F5344 /* PBXTextBookmark */ = A252E34513BBDBC3004F5344 /* PBXTextBookmark */;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -85,38 +85,45 @@
 			sepNavWindowFrame = "{{518, 91}, {750, 787}}";
 		};
 	};
-	A252E2C813BA95A9004F5344 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = A2E5568512F750C8008B3FCE /* MobileBean.m */;
-	};
-	A252E2CB13BA96CC004F5344 /* XCBuildMessageTextBookmark */ = {
+	A252E34113BBDAF8004F5344 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		comments = "Unused variable 'objectId'";
-		fRef = A2DF3D681225BE24004C908F /* SyncEngine.m */;
-		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 214;
-		rType = 1;
-	};
-	A252E2CC13BA96CC004F5344 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = A2DF3D681225BE24004C908F /* SyncEngine.m */;
-		name = "SyncEngine.m: 215";
+		fRef = A25E9DAB1225CB9500A8AE19 /* SystemException.h */;
+		name = "SystemException.h: 1";
 		rLen = 0;
-		rLoc = 5650;
+		rLoc = 0;
 		rType = 0;
-		vrLen = 396;
-		vrLoc = 5483;
+		vrLen = 413;
+		vrLoc = 0;
 	};
-	A252E2CE13BA96D7004F5344 /* PBXTextBookmark */ = {
+	A252E34213BBDAF8004F5344 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A25E9DAC1225CB9500A8AE19 /* SystemException.m */;
+		name = "SystemException.m: 16";
+		rLen = 0;
+		rLoc = 342;
+		rType = 0;
+		vrLen = 1336;
+		vrLoc = 204;
+	};
+	A252E34313BBDAF8004F5344 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A2E5568512F750C8008B3FCE /* MobileBean.m */;
-		name = "MobileBean.m: 11";
+		name = "MobileBean.m: 426";
 		rLen = 0;
-		rLoc = 414;
+		rLoc = 10306;
 		rType = 0;
-		vrLen = 1178;
-		vrLoc = 1405;
+		vrLen = 1231;
+		vrLoc = 9394;
+	};
+	A252E34513BBDBC3004F5344 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A2E5568512F750C8008B3FCE /* MobileBean.m */;
+		name = "MobileBean.m: 428";
+		rLen = 0;
+		rLoc = 10394;
+		rType = 0;
+		vrLen = 1236;
+		vrLoc = 9429;
 	};
 	A25E9DA91225CB9500A8AE19 /* ErrorHandler.h */ = {
 		uiCtxt = {
@@ -144,9 +151,9 @@
 	};
 	A25E9DAC1225CB9500A8AE19 /* SystemException.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {789, 793}}";
+			sepNavIntBoundsRect = "{{0, 0}, {789, 832}}";
 			sepNavSelRange = "{342, 0}";
-			sepNavVisRange = "{36, 1219}";
+			sepNavVisRange = "{204, 1336}";
 		};
 	};
 	A26227DF133234A700B1BEB3 /* DeviceManager.h */ = {
@@ -2296,15 +2303,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 897}}";
 			sepNavSelRange = "{934, 0}";
-			sepNavVisRange = "{871, 920}";
-			sepNavWindowFrame = "{{440, 83}, {750, 795}}";
+			sepNavVisRange = "{613, 1178}";
+			sepNavWindowFrame = "{{440, 86}, {750, 792}}";
 		};
 	};
 	A2E5568512F750C8008B3FCE /* MobileBean.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {803, 6812}}";
-			sepNavSelRange = "{414, 0}";
-			sepNavVisRange = "{1406, 1179}";
+			sepNavIntBoundsRect = "{{0, 0}, {803, 6513}}";
+			sepNavSelRange = "{10394, 0}";
+			sepNavVisRange = "{9429, 1236}";
 			sepNavWindowFrame = "{{466, 86}, {750, 792}}";
 		};
 	};
