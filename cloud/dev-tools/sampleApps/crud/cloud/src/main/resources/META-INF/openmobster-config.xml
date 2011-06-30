@@ -39,4 +39,9 @@
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
+   
+   <bean name="/titanium/module/tester" class="org.crud.cloud.crm.bootstrap.TitaniumModuleTester">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
 </deployment>
