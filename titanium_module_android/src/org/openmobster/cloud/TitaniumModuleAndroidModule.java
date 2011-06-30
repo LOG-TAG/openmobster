@@ -63,4 +63,24 @@ public class TitaniumModuleAndroidModule extends KrollModule
 		SyncProxy proxy = new SyncProxy(invocation.getTiContext());
 		return proxy;
 	}
+	
+	@Kroll.method
+	public RPCProxy rpc(KrollInvocation invocation)
+	{
+		Activity activity = invocation.getTiContext().getActivity();
+		try
+		{
+			TitaniumKernel.startApp(activity.getApplicationContext(),activity);
+		}
+		catch(Throwable t)
+		{
+			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running").
+			show();
+			
+			return null;
+		}
+		
+		RPCProxy proxy = new RPCProxy(invocation.getTiContext());
+		return proxy;
+	}
 }

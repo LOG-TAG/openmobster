@@ -6,6 +6,7 @@ var window = Ti.UI.createWindow({
 var cloudModule = require('org.openmobster.cloud');
 var sync = cloudModule.sync();
 var channel = "crm_ticket_channel";
+var rpc = cloudModule.rpc();
 
 var button = Titanium.UI.createButton({title:'Run'});
 window.add(button);
@@ -57,6 +58,34 @@ function printNewBean(bean)
    Ti.API.info("-------------------------");
 }
 
+function invokeRPC()
+{
+	var payload = "{'name':'John', 'lastname':'Doe', 'customers':['Apple','Google','Microsoft','Oracle']}";
+	var response = rpc.invoke("/titanium/module/tester", payload);
+	
+	Ti.API.info(response);
+	
+	//Process the json response
+	response = eval('(' + response + ')');
+	
+	Ti.API.info("***************************************");
+	Ti.API.info("Status: "+response.status);
+	Ti.API.info("Status Message: "+response.statusMsg);
+	Ti.API.info("Name: "+response.name);
+	Ti.API.info("Last Name:" +response.lastname);
+	Ti.API.info("Customer Count: "+response.customers.length);
+	Ti.API.info("Specialists Count: "+response.specialists.length);
+	
+	var customerLength = response.customers.length;
+	for(var i=0; i<customerLength; i++)
+	{
+		var local = response.customers[i];
+		Ti.API.info("Customer: "+local);
+	}
+	
+	Ti.API.info("***************************************");
+}
+
 
 button.addEventListener('click',function(){
     var oids = sync.readAll(channel);
@@ -94,6 +123,9 @@ button.addEventListener('click',function(){
     {
 		Ti.API.info("Channel is not booted yet");
     }
+    
+    //Testing RPC
+    invokeRPC();
 });
 
 
