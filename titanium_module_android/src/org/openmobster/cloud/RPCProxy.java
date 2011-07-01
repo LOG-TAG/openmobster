@@ -87,6 +87,7 @@ public final class RPCProxy extends KrollProxy
 						continue;
 					}
 					
+					processedArrays.add(arrayName);
 					JSONArray value = this.parseListAttribute(response, arrayName);
 					if(value != null)
 					{
