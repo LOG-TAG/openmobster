@@ -202,9 +202,51 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
+				<string>A252E3D013BE4C22004F5344</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>MobileService.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>A252E3E413BE4E32004F5344</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>MobileService.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>A252E40013BE50ED004F5344</string>
+						<key>history</key>
+						<array>
+							<string>A252E3F913BE4FDC004F5344</string>
+							<string>A252E3FF13BE50ED004F5344</string>
+							<string>A252E3FA13BE4FDC004F5344</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {750, 461}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>524 337 750 502 0 0 1440 878 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
 				<string>A252E31C13BBD7DF004F5344</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>MobileBean.m</string>
+				<string>Request.h</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
@@ -212,16 +254,17 @@
 						<key>PBXProjectModuleGUID</key>
 						<string>A252E31F13BBD7E3004F5344</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>MobileBean.m</string>
+						<string>Request.h</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A252E34513BBDBC3004F5344</string>
+						<string>A252E40113BE50ED004F5344</string>
 						<key>history</key>
 						<array>
 							<string>A252E34113BBDAF8004F5344</string>
 							<string>A252E34213BBDAF8004F5344</string>
-							<string>A252E34313BBDAF8004F5344</string>
+							<string>A252E3E813BE4E32004F5344</string>
+							<string>A252E3E913BE4E32004F5344</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -307,26 +350,20 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 									<array>
 										<string>0867D691FE84028FC02AAC07</string>
-										<string>A29D5C2212932BA600DAE753</string>
 										<string>A29D5B271290534E00DAE753</string>
-										<string>A2E5562412F72192008B3FCE</string>
-										<string>A2DF3D2F1225BE23004C908F</string>
-										<string>A2DF3D691225BE24004C908F</string>
-										<string>A2DF3C9E1225B4D0004C908F</string>
-										<string>A25E9DA61225CB1F00A8AE19</string>
-										<string>A2DF3D131225BD29004C908F</string>
+										<string>A29D5B281290542800DAE753</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>75</integer>
-											<integer>71</integer>
-											<integer>70</integer>
+											<integer>20</integer>
+											<integer>14</integer>
+											<integer>10</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 1162}, {429, 333}}</string>
+									<string>{{0, 115}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -488,8 +525,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A252E31D13BBD7E3004F5344</string>
-				<string>A252E31E13BBD7E3004F5344</string>
+				<string>A252E3E213BE4E32004F5344</string>
+				<string>A252E3E313BE4E32004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -503,7 +540,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A252E31C13BBD7DF004F5344</string>
+	<string>A252E3D013BE4C22004F5344</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -528,10 +565,9 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
-		<string>A252E31C13BBD7DF004F5344</string>
+		<string>A252E3D013BE4C22004F5344</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 453 446 419 0 0 1440 878 </string>
@@ -692,23 +728,25 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>NetworkConnector.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1440, 0}}</string>
+								<string>{{0, 0}, {1440, 206}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 147 1440 731 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>0pt</string>
+							<string>206pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -723,14 +761,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 5}, {1440, 685}}</string>
+								<string>{{0, 211}, {1440, 480}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 147 1440 731 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>685pt</string>
+							<string>480pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -748,7 +786,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A252E32113BBD7E3004F5344</string>
+				<string>A252E3DF13BE4E18004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
