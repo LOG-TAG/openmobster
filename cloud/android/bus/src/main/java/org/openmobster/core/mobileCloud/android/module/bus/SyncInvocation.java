@@ -53,6 +53,20 @@ public final class SyncInvocation extends Invocation
 		this.setValue("service", service);
 	}
 	
+	public SyncInvocation(String target, int type)
+	{
+		this(target);
+		
+		if(type != slow && type != twoWay && type != oneWayDeviceOnly && type != oneWayServerOnly && type != stream &&
+		   type != updateChangeLog && type != bootSync && type != proxySync
+		)
+		{
+			throw new IllegalArgumentException("Unsupported Sync Type specified!!");
+		}
+		
+		this.setValue("type", String.valueOf(type));
+	}
+	
 		
 	public SyncInvocation(String target, int type, String service, String recordId)
 	{
