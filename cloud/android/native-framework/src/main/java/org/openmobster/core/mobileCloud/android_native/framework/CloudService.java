@@ -79,16 +79,17 @@ public class CloudService
 				{
 					bootstrapApplication(context);
 				}
-				catch(Exception e)
+				catch(Throwable e)
 				{
-					//e.printStackTrace(System.out);
-					ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
+					e.printStackTrace(System.out);
+					ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "start", new Object[]{
 						"Message:"+e.getMessage(),
 						"Exception:"+e.toString()
 					}));
 					
-					//FIXME: Find a way to notify the user of this error
+					
 					//This is on a non-GUI thread with no handle on the current Activity
+					//AFAIK, showing a dialog box is not possible
 					/*ShowErrorLooper looper = new ShowErrorLooper();
 					looper.start();
 					
