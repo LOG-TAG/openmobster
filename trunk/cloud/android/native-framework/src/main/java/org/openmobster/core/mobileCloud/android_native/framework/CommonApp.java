@@ -18,7 +18,6 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -201,18 +200,12 @@ public final class CommonApp
 			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder");
 			invocation.setValue("packageName", Bus.getInstance().getBusId());
 			Bus.getInstance().invokeService(invocation);
-			
-			//bootup channels for this app
-	    	boolean isChannelBootActive = CometUtil.subscribeChannels();
 	    	
 	    	//Handle auto sync checking upon App launch, only if channels are not
 	    	//being initialized
-	    	if(!isChannelBootActive)
-	    	{
-	    		Timer timer = new Timer();
-				timer.schedule(new BackgroundSync(), 
-				5000);
-	    	}
+	    	Timer timer = new Timer();
+			timer.schedule(new BackgroundSync(), 
+			5000);
 		}
 		catch(Exception e)
 		{
@@ -231,30 +224,33 @@ public final class CommonApp
 		{			
 			try
 			{
+				//bootup channels for this app
+		    	CometUtil.subscribeChannels();
+		    	
 				List<String> channelsToSync = this.findChannelsToSync();
 				if(channelsToSync == null || channelsToSync.isEmpty())
 				{
 					return;
 				}
 				
-				Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.CometStatusHandler");
-				InvocationResponse response = Bus.getInstance().invokeService(invocation);
-				String status = response.getValue("status");
-				
 				//Do this only if the Push Daemon is inactive...this means may be Cloud updates have not been pushed
 				//this will synchronize the changes silently
-				if(status != null && status.equalsIgnoreCase(""+Boolean.FALSE))
+				for(String channel:channelsToSync)
 				{
-					for(String channel:channelsToSync)
-					{
-						//check for any new updates, since they may not have been pushed as the push daemon seems to be off
-						SyncInvocation syncInvocation = new SyncInvocation(
-						"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-						SyncInvocation.oneWayServerOnly, channel);
-						syncInvocation.deactivateBackgroundSync(); //so that there are no push notifications...just a quiet sync
-						Bus.getInstance().invokeService(syncInvocation);
-					}
+					//check for any new updates, since they may not have been pushed as the push daemon seems to be off
+					SyncInvocation syncInvocation = new SyncInvocation(
+					"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+					SyncInvocation.twoWay, channel);
+					syncInvocation.deactivateBackgroundSync(); //so that there are no push notifications...just a quiet sync
+					Bus.getInstance().invokeService(syncInvocation);
 				}
+				
+				//Do a proxy sync
+				SyncInvocation syncInvocation = new SyncInvocation(
+						"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+				SyncInvocation.proxySync);
+				syncInvocation.deactivateBackgroundSync(); //so that there are no push notifications...just a quiet sync
+				Bus.getInstance().invokeService(syncInvocation);
 			}
 			catch(Throwable t)
 			{
