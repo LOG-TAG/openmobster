@@ -7,6 +7,7 @@
 //
 
 #import "CloudService.h"
+#import "SystemException.h"
 
 
 static CloudService *singleton = nil;
@@ -66,16 +67,31 @@ static CloudService *singleton = nil;
 {
 	@synchronized(self)
 	{
-		//First start the core kernel
-		[self.kernel startup];
-	
-		//Now the App level kernel
-		[self.bootupKernel startup];
-	
-		//Now UIKernel if necessary
-		if(self.viewController != nil)
+		@try
 		{
-			[self.uiKernel startup:viewController];
+			//First start the core kernel
+			[self.kernel startup];
+	
+			//Now the App level kernel
+			[self.bootupKernel startup];
+	
+			//Now UIKernel if necessary
+			if(self.viewController != nil)
+			{
+				[self.uiKernel startup:viewController];
+			}
+		}
+		@catch(NSException *ex)
+		{
+			/*UIAlertView *dialog = [[UIAlertView alloc] 
+								   initWithTitle:@"CloudService startup error"
+								   message:@"An Error occurred while starting the Cloud Service" 
+								   delegate:self 
+								   cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			dialog = [dialog autorelease];
+			[dialog show];*/
+			SystemException *sys = [SystemException withContext:@"CloudService" method:@"startup" parameters:nil];
+			@throw sys;
 		}
 	}
 }
@@ -102,5 +118,10 @@ static CloudService *singleton = nil;
 			singleton = nil;
 		}
 	}
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	exit(0);
 }
 @end

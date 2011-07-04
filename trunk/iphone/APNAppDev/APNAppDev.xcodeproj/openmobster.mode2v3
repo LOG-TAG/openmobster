@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A252E57313C221B0004F5344</string>
+						<string>A252E5EB13C226D3004F5344</string>
 						<key>history</key>
 						<array>
-							<string>A252E54313C21F7B004F5344</string>
+							<string>A252E57313C221B0004F5344</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -311,8 +311,6 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>9</integer>
-											<integer>8</integer>
 											<integer>0</integer>
 										</array>
 									</array>
@@ -479,8 +477,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A252E56D13C22189004F5344</string>
-				<string>A252E56E13C22189004F5344</string>
+				<string>A252E5E913C226D3004F5344</string>
+				<string>A252E5EA13C226D3004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -517,8 +515,6 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D5B069F1CE1000CFCEE</string>
-		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>A252E56F13C22189004F5344</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/APNAppDev.xcodeproj</string>
@@ -699,8 +695,6 @@
 							<string>460pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -740,7 +734,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A252E54E13C22059004F5344</string>
+				<string>A252E5EC13C226D3004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
