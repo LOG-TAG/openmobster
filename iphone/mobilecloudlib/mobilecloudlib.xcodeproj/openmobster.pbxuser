@@ -57,8 +57,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 331490043;
-			PBXWorkspaceStateSaveDate = 331490043;
+			PBXPerProjectTemplateStateSaveDate = 331491141;
+			PBXWorkspaceStateSaveDate = 331491141;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -81,17 +81,17 @@
 	};
 	A252E49F13C20FBC004F5344 /* CloudService.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 675}}";
-			sepNavSelRange = "{359, 0}";
-			sepNavVisRange = "{0, 748}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 592}}";
+			sepNavSelRange = "{300, 0}";
+			sepNavVisRange = "{0, 769}";
 		};
 	};
 	A252E4A013C20FBC004F5344 /* CloudService.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 1378}}";
-			sepNavSelRange = "{1707, 0}";
-			sepNavVisRange = "{1063, 655}";
-			sepNavWindowFrame = "{{1670, 180}, {750, 720}}";
+			sepNavIntBoundsRect = "{{0, 0}, {810, 1651}}";
+			sepNavSelRange = "{1877, 0}";
+			sepNavVisRange = "{1406, 937}";
+			sepNavWindowFrame = "{{448, 158}, {750, 720}}";
 		};
 	};
 	A25E9DA91225CB9500A8AE19 /* ErrorHandler.h */ = {
@@ -112,7 +112,7 @@
 	};
 	A25E9DAB1225CB9500A8AE19 /* SystemException.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {768, 659}}";
+			sepNavIntBoundsRect = "{{0, 0}, {768, 592}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 413}";
 			sepNavWindowFrame = "{{15, 91}, {750, 787}}";

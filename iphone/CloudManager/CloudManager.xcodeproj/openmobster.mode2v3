@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>A252E52613C21DD5004F5344</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>CloudManagerAppDelegate.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>A252E5C213C22528004F5344</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>CloudManagerAppDelegate.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>A252E5C313C22528004F5344</string>
-						<key>history</key>
-						<array>
-							<string>A252E52513C21DD5004F5344</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {750, 623}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>1740 236 750 664 1440 180 1280 720 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -310,8 +269,6 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>7</integer>
-											<integer>5</integer>
 											<integer>0</integer>
 										</array>
 									</array>
@@ -339,7 +296,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>23 452 446 419 0 0 1440 878 </string>
+								<string>1472 481 446 419 1440 180 1280 720 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -479,8 +436,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A252E5C013C22528004F5344</string>
-				<string>A252E5C113C22528004F5344</string>
+				<string>A252E61B13C22760004F5344</string>
+				<string>A252E61C13C22760004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -519,11 +476,13 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D5B069F1CE1000CFCEE</string>
+		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/CloudManager/CloudManager.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>23 452 446 419 0 0 1440 878 </string>
+	<string>1472 481 446 419 1440 180 1280 720 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -737,7 +696,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A252E5C413C22528004F5344</string>
+				<string>A252E61D13C22760004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -859,13 +818,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A252E47C13BF9D39004F5344</string>
+				<string>A252E64813C22C3A004F5344</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A252E47D13BF9D39004F5344</string>
-				<string>A252E47E13BF9D39004F5344</string>
-				<string>A252E47F13BF9D39004F5344</string>
-				<string>A252E48013BF9D39004F5344</string>
-				<string>A252E48113BF9D39004F5344</string>
+				<string>A252E64913C22C3A004F5344</string>
+				<string>A252E64A13C22C3A004F5344</string>
+				<string>A252E64B13C22C3A004F5344</string>
+				<string>A252E64C13C22C3A004F5344</string>
+				<string>A252E64D13C22C3A004F5344</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1019,7 +978,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A252E50B13C21CF4004F5344</string>
+				<string>A252E64E13C22C3A004F5344</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

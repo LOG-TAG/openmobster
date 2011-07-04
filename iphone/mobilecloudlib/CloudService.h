@@ -11,7 +11,7 @@
 #import "BootupKernel.h"
 #import "UIKernel.h"
 
-@interface CloudService : NSObject 
+@interface CloudService : NSObject<UIAlertViewDelegate> 
 {
 	@private
 	Kernel *kernel;

@@ -2,9 +2,9 @@
 {
 	1D3623250D0F684500981E51 /* APNAppAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1552, 2782}}";
-			sepNavSelRange = "{6093, 0}";
-			sepNavVisRange = "{5211, 887}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2522}}";
+			sepNavSelRange = "{5159, 0}";
+			sepNavVisRange = "{4337, 1470}";
 			sepNavWindowFrame = "{{1864, 180}, {750, 720}}";
 		};
 	};
@@ -27,8 +27,8 @@
 			A2622C73134E0E3400B1BEB3 /* APNApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 331489743;
-			PBXWorkspaceStateSaveDate = 331489743;
+			PBXPerProjectTemplateStateSaveDate = 331491213;
+			PBXWorkspaceStateSaveDate = 331491213;
 		};
 		sourceControlManager = A2622C86134E0E4400B1BEB3 /* Source Control */;
 		userBuildSettings = {
