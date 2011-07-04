@@ -268,7 +268,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2/iphone/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/**";
 			};
 			name = Debug;
 		};

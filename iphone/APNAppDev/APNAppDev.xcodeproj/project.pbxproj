@@ -273,7 +273,7 @@
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1019C1C0-5891-4FF5-80E9-6A60A4C8A492";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/private/src/2.2/iphone/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/**";
 			};
 			name = Debug;
 		};

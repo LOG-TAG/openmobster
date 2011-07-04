@@ -272,8 +272,8 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>8</integer>
-											<integer>6</integer>
+											<integer>2</integer>
+											<integer>1</integer>
 											<integer>0</integer>
 										</array>
 									</array>
@@ -301,7 +301,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>0 459 446 419 0 0 1440 878 </string>
+								<string>14 454 446 419 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -440,8 +440,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A252E35213BBDBF4004F5344</string>
-				<string>A252E35313BBDBF4004F5344</string>
+				<string>A252E5B313C223C0004F5344</string>
+				<string>A252E5B413C223C0004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -455,7 +455,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>A296CD5F13A1306500FC0C42</string>
+	<string>A252E51A13C21DBE004F5344</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -486,7 +486,7 @@
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/ActivationApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 459 446 419 0 0 1440 878 </string>
+	<string>14 454 446 419 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -700,7 +700,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A252E35413BBDBF4004F5344</string>
+				<string>A252E5B513C223C0004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -822,13 +822,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A252E35513BBDBF4004F5344</string>
+				<string>A252E5B613C223C0004F5344</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A252E35613BBDBF4004F5344</string>
-				<string>A252E35713BBDBF4004F5344</string>
-				<string>A252E35813BBDBF4004F5344</string>
-				<string>A252E35913BBDBF4004F5344</string>
-				<string>A252E35A13BBDBF4004F5344</string>
+				<string>A252E5B713C223C0004F5344</string>
+				<string>A252E5B813C223C0004F5344</string>
+				<string>A252E5B913C223C0004F5344</string>
+				<string>A252E5BA13C223C0004F5344</string>
+				<string>A252E5BB13C223C0004F5344</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -990,7 +990,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A252E35B13BBDBF4004F5344</string>
+				<string>A252E5BC13C223C0004F5344</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

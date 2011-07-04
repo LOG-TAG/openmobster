@@ -10,10 +10,10 @@
 	};
 	1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 2080}}";
-			sepNavSelRange = "{678, 0}";
-			sepNavVisRange = "{4098, 519}";
-			sepNavWindowFrame = "{{535, 313}, {750, 558}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2028}}";
+			sepNavSelRange = "{3940, 0}";
+			sepNavVisRange = "{3694, 855}";
+			sepNavWindowFrame = "{{1740, 180}, {750, 720}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* CloudManager */ = {
@@ -35,8 +35,12 @@
 			A22D3DB8122698FA00C0A112 /* CloudManager */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 328634051;
-			PBXWorkspaceStateSaveDate = 328634051;
+			PBXPerProjectTemplateStateSaveDate = 331488722;
+			PBXWorkspaceStateSaveDate = 331488722;
+		};
+		perUserProjectItems = {
+			A252E52513C21DD5004F5344 /* PBXBookmark */ = A252E52513C21DD5004F5344 /* PBXBookmark */;
+			A252E5C313C22528004F5344 /* PBXTextBookmark */ = A252E5C313C22528004F5344 /* PBXTextBookmark */;
 		};
 		sourceControlManager = A22D3DCD1226990600C0A112 /* Source Control */;
 		userBuildSettings = {
@@ -249,6 +253,20 @@
 			sepNavSelRange = "{679, 0}";
 			sepNavVisRange = "{0, 690}";
 		};
+	};
+	A252E52513C21DD5004F5344 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */;
+	};
+	A252E5C313C22528004F5344 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* CloudManagerAppDelegate.m */;
+		name = "CloudManagerAppDelegate.m: 118";
+		rLen = 0;
+		rLoc = 3940;
+		rType = 0;
+		vrLen = 855;
+		vrLoc = 3694;
 	};
 	A26229AB13413B5600B1BEB3 /* Home.h */ = {
 		uiCtxt = {

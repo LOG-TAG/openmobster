@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>A252E56F13C22189004F5344</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>APNAppDevAppDelegate.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>A252E57013C22189004F5344</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>APNAppDevAppDelegate.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>A252E57313C221B0004F5344</string>
+						<key>history</key>
+						<array>
+							<string>A252E54313C21F7B004F5344</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {750, 623}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>1882 236 750 664 1440 180 1280 720 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -270,8 +311,8 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>3</integer>
-											<integer>1</integer>
+											<integer>9</integer>
+											<integer>8</integer>
 											<integer>0</integer>
 										</array>
 									</array>
@@ -438,8 +479,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A263EA7713940CBF000145FA</string>
-				<string>A263EA7813940CBF000145FA</string>
+				<string>A252E56D13C22189004F5344</string>
+				<string>A252E56E13C22189004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -476,8 +517,10 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A263EA7A13940CBF000145FA</string>
+		<string>1C530D5B069F1CE1000CFCEE</string>
+		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
+		<string>A252E56F13C22189004F5344</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNAppDev/APNAppDev.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -656,6 +699,8 @@
 							<string>460pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -695,7 +740,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A263EA7913940CBF000145FA</string>
+				<string>A252E54E13C22059004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -817,13 +862,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A2F4989F137D8AD700CB871D</string>
+				<string>A252E55713C2213F004F5344</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A2F498A0137D8AD700CB871D</string>
-				<string>A2F498A1137D8AD700CB871D</string>
-				<string>A2F498A2137D8AD700CB871D</string>
-				<string>A2F498A3137D8AD700CB871D</string>
-				<string>A2F498A4137D8AD700CB871D</string>
+				<string>A252E55813C2213F004F5344</string>
+				<string>A252E55913C2213F004F5344</string>
+				<string>A252E55A13C2213F004F5344</string>
+				<string>A252E55B13C2213F004F5344</string>
+				<string>A252E55C13C2213F004F5344</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -950,8 +995,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -987,7 +1030,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A2E1C1E91369B965003B2B18</string>
+				<string>A252E57213C22189004F5344</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
