@@ -441,8 +441,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A263EA8613940CE4000145FA</string>
-				<string>A263EA8713940CE4000145FA</string>
+				<string>A252E58C13C22265004F5344</string>
+				<string>A252E58D13C22265004F5344</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -479,7 +479,8 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A263EA8913940CE4000145FA</string>
+		<string>1C530D5B069F1CE1000CFCEE</string>
+		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/APNApp/APNApp.xcodeproj</string>
 	</array>
@@ -698,7 +699,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A263EA8813940CE4000145FA</string>
+				<string>A252E58E13C22265004F5344</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -820,13 +821,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A2F49886137D8AB600CB871D</string>
+				<string>A252E58F13C22265004F5344</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A2F49887137D8AB600CB871D</string>
-				<string>A2F49888137D8AB600CB871D</string>
-				<string>A2F49889137D8AB600CB871D</string>
-				<string>A2F4988A137D8AB600CB871D</string>
-				<string>A2F4988B137D8AB600CB871D</string>
+				<string>A252E59013C22265004F5344</string>
+				<string>A252E59113C22265004F5344</string>
+				<string>A252E59213C22265004F5344</string>
+				<string>A252E59313C22265004F5344</string>
+				<string>A252E59413C22265004F5344</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -988,7 +989,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A2F49809137D7CD300CB871D</string>
+				<string>A252E59513C22265004F5344</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

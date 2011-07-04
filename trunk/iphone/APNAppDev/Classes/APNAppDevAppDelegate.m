@@ -17,6 +17,7 @@
 #import "MobileService.h"
 #import "StringUtil.h"
 #import "SubmitDeviceToken.h"
+#import "CloudService.h"
 
 @implementation APNAppDevAppDelegate
 
@@ -174,11 +175,9 @@
 {
 	@try 
 	{
-		Kernel *kernel = [Kernel getInstance];
-		[kernel startup];
+		CloudService *cloudService = [CloudService getInstance:viewController];
 		
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel startup:viewController];
+		[cloudService startup];
 	}
 	@catch (NSException * e) 
 	{
@@ -192,11 +191,8 @@
 {
 	@try
 	{
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel shutdown];
-		
-		Kernel *kernel = [Kernel getInstance];
-		[kernel shutdown];
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService shutdown];
 	}
 	@catch (NSException *e) 
 	{

@@ -8,6 +8,7 @@
 
 #import "CloudManagerAppDelegate.h"
 #import "AppService.h"
+#import "CloudService.h"
 
 @implementation CloudManagerAppDelegate
 
@@ -128,11 +129,9 @@
 {
 	@try 
 	{
-		Kernel *kernel = [Kernel getInstance];
-		[kernel startup];
+		CloudService *cloudService = [CloudService getInstance:mainView];
 		
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel startup:mainView];
+		[cloudService startup];
 	}
 	@catch (NSException * e) 
 	{
@@ -146,11 +145,8 @@
 {
 	@try
 	{
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel shutdown];
-	
-		Kernel *kernel = [Kernel getInstance];
-		[kernel shutdown];
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService shutdown];
 	}
 	@catch (NSException *e) 
 	{

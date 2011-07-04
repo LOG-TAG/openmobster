@@ -10,6 +10,8 @@
 		A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */; };
+		A252E4A113C20FBC004F5344 /* CloudService.h in Headers */ = {isa = PBXBuildFile; fileRef = A252E49F13C20FBC004F5344 /* CloudService.h */; };
+		A252E4A213C20FBC004F5344 /* CloudService.m in Sources */ = {isa = PBXBuildFile; fileRef = A252E4A013C20FBC004F5344 /* CloudService.m */; };
 		A25E9DAD1225CB9500A8AE19 /* ErrorHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A25E9DA91225CB9500A8AE19 /* ErrorHandler.h */; };
 		A25E9DAE1225CB9500A8AE19 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A25E9DAA1225CB9500A8AE19 /* ErrorHandler.m */; };
 		A25E9DAF1225CB9500A8AE19 /* SystemException.h in Headers */ = {isa = PBXBuildFile; fileRef = A25E9DAB1225CB9500A8AE19 /* SystemException.h */; };
@@ -333,6 +335,8 @@
 /* Begin PBXFileReference section */
 		A2502467130580EC006DC2C8 /* TestReadOnlyChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestReadOnlyChannel.h; sourceTree = "<group>"; };
 		A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReadOnlyChannel.m; sourceTree = "<group>"; };
+		A252E49F13C20FBC004F5344 /* CloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudService.h; sourceTree = "<group>"; };
+		A252E4A013C20FBC004F5344 /* CloudService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudService.m; sourceTree = "<group>"; };
 		A25E9DA91225CB9500A8AE19 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorHandler.h; path = ../../ErrorHandler.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E9DAA1225CB9500A8AE19 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorHandler.m; path = ../../ErrorHandler.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25E9DAB1225CB9500A8AE19 /* SystemException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemException.h; path = ../../SystemException.h; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -771,6 +775,15 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		A252E49E13C20F97004F5344 /* bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				A252E49F13C20FBC004F5344 /* CloudService.h */,
+				A252E4A013C20FBC004F5344 /* CloudService.m */,
+			);
+			name = bootstrap;
+			sourceTree = "<group>";
+		};
 		A25E9DA61225CB1F00A8AE19 /* errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +932,7 @@
 		A29D5B271290534E00DAE753 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				A252E49E13C20F97004F5344 /* bootstrap */,
 				A2E1C2211369C3E7003B2B18 /* push */,
 				A2E5562412F72192008B3FCE /* sync */,
 				A29630A612CB675100928950 /* ui */,
@@ -1461,6 +1475,7 @@
 				A2E1C2241369C43D003B2B18 /* SubmitDeviceToken.h in Headers */,
 				A263E565138DA976000145FA /* BootupKernel.h in Headers */,
 				A263E7E4139043ED000145FA /* ManagedObjectModelFactory.h in Headers */,
+				A252E4A113C20FBC004F5344 /* CloudService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1946,6 +1961,7 @@
 				A2E1C2251369C43D003B2B18 /* SubmitDeviceToken.m in Sources */,
 				A263E566138DA976000145FA /* BootupKernel.m in Sources */,
 				A263E7E5139043ED000145FA /* ManagedObjectModelFactory.m in Sources */,
+				A252E4A213C20FBC004F5344 /* CloudService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
