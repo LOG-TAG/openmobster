@@ -86,9 +86,25 @@ function invokeRPC()
 	Ti.API.info("***************************************");
 }
 
+function invokePushNotification()
+{
+	Ti.API.info("********Push Invocation***********");
+	
+	var response = rpc.invoke("/listen/push", "{}");
+	
+	//Process the json response
+	response = eval('(' + response + ')');
+	
+	Ti.API.info("***************************************");
+	Ti.API.info("Status: "+response.status);
+	Ti.API.info("Status Message: "+response.statusMsg);
+	
+	Ti.API.info("****************************************");
+}
+
 
 button.addEventListener('click',function(){
-    var oids = sync.readAll(channel);
+    /*var oids = sync.readAll(channel);
     oids = eval('('+oids+')');
     if(oids != null && oids.length > 0)
     {
@@ -125,7 +141,9 @@ button.addEventListener('click',function(){
     }
     
     //Testing RPC
-    invokeRPC();
+    invokeRPC();*/
+    
+    invokePushNotification();
 });
 
 
