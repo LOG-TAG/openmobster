@@ -36,7 +36,7 @@ public final class BusBinder extends Binder implements Serializable
 	throws RemoteException
 	{
 		try
-		{
+		{	
 			Map response = new HashMap();
 			Map invocation = data.readHashMap(Thread.currentThread().
 			getContextClassLoader());
@@ -69,12 +69,15 @@ public final class BusBinder extends Binder implements Serializable
 		}
 		catch(Throwable t)
 		{
+			t.printStackTrace(System.out);
+			
 			SystemException se = new SystemException(this.getClass().getName(),"handleInvocation",
 			new Object[]{
 				"Exception: "+t.toString(),
 				"Message: "+t.getMessage()
 			});
 			ErrorHandler.getInstance().handle(se);
+			
 			throw new RemoteException();
 		}
 	}
