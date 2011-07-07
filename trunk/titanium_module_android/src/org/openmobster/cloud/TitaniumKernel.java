@@ -44,7 +44,7 @@ public final class TitaniumKernel
 	
 	public void start(Context context, Activity activity)
 	{
-		CloudService.getInstance().start(context);
+		CloudService.getInstance().start(activity);
 		this.isRunning = true;
 	}
 	
