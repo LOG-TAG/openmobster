@@ -22,6 +22,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 
 /**
  * @author openmobster@gmail
@@ -49,7 +50,7 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 		}
 		catch(Exception e)
 		{
-			//e.printStackTrace(System.out);
+			e.printStackTrace(System.out);
 			
 			//if this fails...app should not fail...Life still goes on
 			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "receiveNotification", new Object[]{
@@ -112,7 +113,7 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 		//System.out.println("--------------------------------------------------------------");
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
-	private int findDrawableId(Activity activity, String variable)
+	/*private int findDrawableId(Activity activity, String variable)
 	{
 		try
 		{
@@ -125,6 +126,22 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 		catch(Exception e)
 		{
 			return -1;
+		}
+	}*/
+	
+	private int findDrawableId(Context context, String variable)
+	{
+		try
+		{
+			Resources resources = context.getResources();
+			int resourceId = resources.getIdentifier(variable, "drawable", context.getPackageName());
+			
+			return resourceId;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return 0;
 		}
 	}
 }
