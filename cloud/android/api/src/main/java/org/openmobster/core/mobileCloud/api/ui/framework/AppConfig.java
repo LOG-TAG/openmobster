@@ -75,6 +75,7 @@ public final class AppConfig
 				InputStream is = AppConfig.class.getResourceAsStream("/moblet-app/moblet-app.xml");
 				String xml = new String(IOUtil.read(is));
 				
+				
 				DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 				Document root = builder.parse(new ByteArrayInputStream(xml.getBytes()));
 				
@@ -205,7 +206,8 @@ public final class AppConfig
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			e.printStackTrace(System.out);
+			
 			SystemException syse = new SystemException(this.getClass().getName(), "init", new Object[]{
 				"Exception: "+e.toString(),
 				"Message: "+e.getMessage()
