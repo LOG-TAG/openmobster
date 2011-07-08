@@ -438,8 +438,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A252E60213C22700004F5344</string>
-				<string>A252E60313C22700004F5344</string>
+				<string>A2DCF34F13C6744500B8531D</string>
+				<string>A2DCF35013C6744500B8531D</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -478,6 +478,8 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D5B069F1CE1000CFCEE</string>
+		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/ActivationApp.xcodeproj</string>
 	</array>
@@ -696,7 +698,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A252E60413C22700004F5344</string>
+				<string>A2DCF35113C6744500B8531D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -818,13 +820,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A252E5B613C223C0004F5344</string>
+				<string>A2DCF35213C6744500B8531D</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A252E5B713C223C0004F5344</string>
-				<string>A252E5B813C223C0004F5344</string>
-				<string>A252E5B913C223C0004F5344</string>
-				<string>A252E5BA13C223C0004F5344</string>
-				<string>A252E5BB13C223C0004F5344</string>
+				<string>A2DCF35313C6744500B8531D</string>
+				<string>A2DCF35413C6744500B8531D</string>
+				<string>A2DCF35513C6744500B8531D</string>
+				<string>A2DCF35613C6744500B8531D</string>
+				<string>A2DCF35713C6744500B8531D</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -986,7 +988,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A252E5BC13C223C0004F5344</string>
+				<string>A2DCF35813C6744500B8531D</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
