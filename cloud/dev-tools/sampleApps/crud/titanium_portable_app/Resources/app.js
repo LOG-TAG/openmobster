@@ -13,6 +13,7 @@ function loadApp()
 	var window1Url = 'issue_list.js';
 	var window2Url;
 	var window3Url = 'push.js';
+	var window4Url = 'iphone_push.js';
 	
 	if (Titanium.Platform.name == 'iPhone OS')
 	{
@@ -55,14 +56,27 @@ function loadApp()
 	
 	var tab3 = Titanium.UI.createTab({
 		icon:'KS_nav_ui.png',
-	    title:'Push',
+	    title:'Android Push',
 	    window:window3
+	});
+	
+	//create the tab4 window
+	var window4 = Titanium.UI.createWindow({
+		url:window4Url,
+	    titleImage:'images/appcelerator_small.png'
+	});
+	
+	var tab4 = Titanium.UI.createTab({
+		icon:'KS_nav_ui.png',
+	    title:'iOS Push',
+	    window:window4
 	});
 	
 	//add the tabs
 	tabGroup.addTab(tab1);
 	tabGroup.addTab(tab2);
 	tabGroup.addTab(tab3);
+	tabGroup.addTab(tab4);
 	
 	//active tab
 	tabGroup.setActiveTab(0);

@@ -29,6 +29,7 @@ import org.hornetq.utils.SimpleString;
 import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.core.common.errors.SystemException;
 import org.openmobster.core.common.XMLUtilities;
+import org.openmobster.core.common.transaction.TransactionHelper;
 
 /**
  * @author openmobster@gmail.com
@@ -293,6 +294,7 @@ public final class Bus
 		public void run()
 		{
 			ClientConsumer messageConsumer = null;
+			boolean startedHere = TransactionHelper.startTx();
 			try
 			{				
 				session = sessionFactory.createSession();
@@ -320,9 +322,18 @@ public final class Bus
 			        	this.sendBusListenerEvent(busMessage);
 			        }
 				}while(true);
+				
+				if(startedHere)
+				{
+					TransactionHelper.commitTx();
+				}
 			}
 			catch(HornetQException hqe)
 			{
+				if(startedHere)
+				{
+					TransactionHelper.rollbackTx();
+				}
 				ErrorHandler.getInstance().handle(hqe);
 				throw new SystemException(hqe.getMessage(),hqe);
 			}
