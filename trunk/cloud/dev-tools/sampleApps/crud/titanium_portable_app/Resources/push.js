@@ -1,16 +1,19 @@
-
 // open a single window
-var window = Ti.UI.createWindow({
-	backgroundColor:'white'
-});
+var window = Titanium.UI.currentWindow;
 
 var cloudModule = require('org.openmobster.cloud');
 var sync = cloudModule.sync();
 var rpc = cloudModule.rpc();
 
-var button = Titanium.UI.createButton({title:'Run'});
-window.add(button);
-
+var commandBar = Titanium.UI.createButtonBar({
+    labels:['Initiate Push'],
+    backgroundColor:'#336699',
+    top:150,
+    style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
+    height:25,
+    width:200
+});
+window.add(commandBar);
 
 function invokePushNotification()
 {
@@ -25,13 +28,11 @@ function invokePushNotification()
 	Ti.API.info("Status: "+response.status);
 	Ti.API.info("Status Message: "+response.statusMsg);
 	
-	//rpc.showNotification();
-	
 	Ti.API.info("****************************************");
 }
 
 
-button.addEventListener('click',function(){
+commandBar.addEventListener('click',function(){
     invokePushNotification();
 });
 

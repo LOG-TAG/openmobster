@@ -137,7 +137,7 @@ public final class CometSession implements Serializable,BusListener
 	//-----Bus Listener implementation--------------------------------------------------------------------------------------------------------
 	public void messageIncoming(BusMessage busMessage) 
 	{
-		TransactionHelper.startTx();
+		boolean isStartedHere = TransactionHelper.startTx();
 		try
 		{
 			String command = (String)busMessage.getAttribute(Constants.command);
@@ -161,10 +161,20 @@ public final class CometSession implements Serializable,BusListener
 					this.sendiPhoneNotification(command, busMessage);
 				}
 			}
+			
+			if(isStartedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Throwable t)
 		{
-			TransactionHelper.commitTx();
+			if(isStartedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			
+			t.printStackTrace();
 		}
 	}
 	//----------------------------------------------------------------------------------------------------------
