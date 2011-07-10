@@ -264,22 +264,16 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 									<array>
 										<string>0867D691FE84028FC02AAC07</string>
-										<string>A29D5B271290534E00DAE753</string>
-										<string>A252E49E13C20F97004F5344</string>
-										<string>A2DF3C9E1225B4D0004C908F</string>
-										<string>A25E9DA61225CB1F00A8AE19</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>13</integer>
-											<integer>11</integer>
-											<integer>10</integer>
+											<integer>6</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 39}, {429, 333}}</string>
+									<string>{{0, 0}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -441,8 +435,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A252E61813C22760004F5344</string>
-				<string>A252E61913C22760004F5344</string>
+				<string>A2447F8613C8E37900219CB4</string>
+				<string>A2447F8713C8E37900219CB4</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -481,7 +475,6 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A252E66113C22F1D004F5344</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
 	</array>
@@ -700,7 +693,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A252E61A13C22760004F5344</string>
+				<string>A2447F8813C8E37900219CB4</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -860,7 +853,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string></string>
+										<string>&lt;No Editor&gt;</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -918,8 +911,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>A252E46C13BF9CF2004F5344</string>
-				<string>A252E46D13BF9CF2004F5344</string>
+				<string>A2447F5813C8E0FD00219CB4</string>
+				<string>A2447F5913C8E0FD00219CB4</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>

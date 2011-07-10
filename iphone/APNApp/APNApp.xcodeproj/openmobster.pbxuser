@@ -2,10 +2,10 @@
 {
 	1D3623250D0F684500981E51 /* APNAppAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 2522}}";
-			sepNavSelRange = "{5159, 0}";
-			sepNavVisRange = "{4337, 1470}";
-			sepNavWindowFrame = "{{1864, 180}, {750, 720}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 2548}}";
+			sepNavSelRange = "{2726, 0}";
+			sepNavVisRange = "{3528, 1767}";
+			sepNavWindowFrame = "{{492, 144}, {750, 720}}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* APNApp */ = {
@@ -17,7 +17,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = A2622C73134E0E3400B1BEB3 /* APNApp */;
-		activeSDKPreference = iphonesimulator4.2;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* APNApp */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* APNApp */,
@@ -27,8 +27,8 @@
 			A2622C73134E0E3400B1BEB3 /* APNApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 331491213;
-			PBXWorkspaceStateSaveDate = 331491213;
+			PBXPerProjectTemplateStateSaveDate = 332000483;
+			PBXWorkspaceStateSaveDate = 332000483;
 		};
 		sourceControlManager = A2622C86134E0E4400B1BEB3 /* Source Control */;
 		userBuildSettings = {

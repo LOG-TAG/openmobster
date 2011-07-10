@@ -69,7 +69,7 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-	AppService *appService = [AppService getInstance];
+	/*AppService *appService = [AppService getInstance];
 	[appService start];
 	
 	UIAlertView *dialog = [[UIAlertView alloc] 
@@ -78,7 +78,7 @@
 						   delegate:nil 
 						   cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	dialog = [dialog autorelease];
-	[dialog show];
+	[dialog show];*/
 }
 
 
