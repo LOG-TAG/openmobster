@@ -294,7 +294,6 @@ public final class Bus
 		public void run()
 		{
 			ClientConsumer messageConsumer = null;
-			boolean startedHere = TransactionHelper.startTx();
 			try
 			{				
 				session = sessionFactory.createSession();
@@ -311,29 +310,37 @@ public final class Bus
 			        
 			        if(message != null)
 			        {
-			        	//message.acknowledge(); //Not done here...let the BusListener process the message and decide if 
-			        	//this message is fully processed and can be safely removed from the queue
-			        	
-			        	SimpleString msg = (SimpleString)message.getProperty("message");
-			        	
-			        	BusMessage busMessage = (BusMessage)XMLUtilities.unmarshal(msg.toString());
-			        	busMessage.setAttribute("hornetq-message", message);
-			        	
-			        	this.sendBusListenerEvent(busMessage);
+			        	boolean isStartedHere = TransactionHelper.startTx();
+			        	try
+			        	{
+				        	//message.acknowledge(); //Not done here...let the BusListener process the message and decide if 
+				        	//this message is fully processed and can be safely removed from the queue
+				        	
+				        	SimpleString msg = (SimpleString)message.getProperty("message");
+				        	
+				        	BusMessage busMessage = (BusMessage)XMLUtilities.unmarshal(msg.toString());
+				        	busMessage.setAttribute("hornetq-message", message);
+				        	
+				        	this.sendBusListenerEvent(busMessage);
+				        	
+				        	if(isStartedHere)
+				        	{
+				        		TransactionHelper.commitTx();
+				        	}
+			        	}
+			        	catch(Exception e)
+			        	{
+			        		e.printStackTrace();
+			        		if(isStartedHere)
+			        		{
+			        			TransactionHelper.rollbackTx();
+			        		}
+			        	}
 			        }
 				}while(true);
-				
-				if(startedHere)
-				{
-					TransactionHelper.commitTx();
-				}
 			}
 			catch(HornetQException hqe)
 			{
-				if(startedHere)
-				{
-					TransactionHelper.rollbackTx();
-				}
 				ErrorHandler.getInstance().handle(hqe);
 				throw new SystemException(hqe.getMessage(),hqe);
 			}
