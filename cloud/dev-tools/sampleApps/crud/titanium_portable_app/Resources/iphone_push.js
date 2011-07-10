@@ -4,6 +4,7 @@ var window = Titanium.UI.currentWindow;
 var cloudModule = require('org.openmobster.cloud');
 var sync = cloudModule.sync();
 var rpc = cloudModule.rpc();
+var push = cloudModule.push();
 
 var commandBar = Titanium.UI.createButtonBar({
     labels:['Initiate Push'],
@@ -25,6 +26,9 @@ function invokePushNotification()
   ],
   success:function(e){
     var deviceToken = e.deviceToken;
+    
+    push.registerDeviceToken(deviceToken);
+    
     Ti.API.info('successfully registered for apple device token with '+e.deviceToken);
     var a = Ti.UI.createAlertDialog({
       title:'DeviceToken',
