@@ -2,7 +2,7 @@
 {
 	0867D690FE84028FC02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeSDKPreference = iphonesimulator4.2;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = D2AAC07D0554694100DB518D /* mobilecloudlib */;
 		addToTargets = (
 			D2AAC07D0554694100DB518D /* mobilecloudlib */,
@@ -57,8 +57,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 331491141;
-			PBXWorkspaceStateSaveDate = 331491141;
+			PBXPerProjectTemplateStateSaveDate = 332005512;
+			PBXWorkspaceStateSaveDate = 332005512;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -2218,9 +2218,9 @@
 	};
 	A2E1C2231369C43D003B2B18 /* SubmitDeviceToken.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {712, 832}}";
-			sepNavSelRange = "{663, 0}";
-			sepNavVisRange = "{204, 827}";
+			sepNavIntBoundsRect = "{{0, 0}, {1379, 767}}";
+			sepNavSelRange = "{1101, 20}";
+			sepNavVisRange = "{636, 829}";
 			sepNavWindowFrame = "{{483, 319}, {750, 558}}";
 		};
 	};
