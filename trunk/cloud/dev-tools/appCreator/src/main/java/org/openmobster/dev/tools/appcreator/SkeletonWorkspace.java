@@ -184,8 +184,8 @@ public final class SkeletonWorkspace
 		this.generateFile(new File(directory, "res/drawable-ldpi/icon.png"),
 		this.readTemplateBinaryResource("/skeleton/app-android/res/drawable-ldpi/icon.png"));
 		
-		this.generateFile(new File(directory, "res/drawable-ldpi/icon.png"),
-		this.readTemplateBinaryResource("/skeleton/app-android/res/drawable-mdpi/push.png"));
+		this.generateFile(new File(directory, "res/drawable-ldpi/push.png"),
+		this.readTemplateBinaryResource("/skeleton/app-android/res/drawable-ldpi/push.png"));
 		
 		this.generateFile(new File(directory, "res/drawable-mdpi/icon.png"),
 		this.readTemplateBinaryResource("/skeleton/app-android/res/drawable-mdpi/icon.png"));
