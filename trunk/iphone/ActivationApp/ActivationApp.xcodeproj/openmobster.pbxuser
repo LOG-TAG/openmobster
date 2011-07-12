@@ -2,9 +2,9 @@
 {
 	1D3623240D0F684500981E51 /* ActivationAppAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 592}}";
-			sepNavSelRange = "{622, 0}";
-			sepNavVisRange = "{0, 629}";
+			sepNavIntBoundsRect = "{{0, 0}, {593, 377}}";
+			sepNavSelRange = "{181, 0}";
+			sepNavVisRange = "{55, 227}";
 			sepNavWindowFrame = "{{15, 84}, {750, 789}}";
 		};
 	};
@@ -50,8 +50,8 @@
 			A21EC80A131C2E300030ECCE /* ActivationApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 331932898;
-			PBXWorkspaceStateSaveDate = 331932898;
+			PBXPerProjectTemplateStateSaveDate = 332185651;
+			PBXWorkspaceStateSaveDate = 332185651;
 		};
 		sourceControlManager = A21EC815131C2E460030ECCE /* Source Control */;
 		userBuildSettings = {
@@ -63,6 +63,11 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 366}";
 			sepNavWindowFrame = "{{15, 91}, {750, 787}}";
+		};
+	};
+	8D1107310486CEB800E47090 /* ActivationApp-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{464, 77}, {750, 801}}";
 		};
 	};
 	A21EC80A131C2E300030ECCE /* ActivationApp */ = {

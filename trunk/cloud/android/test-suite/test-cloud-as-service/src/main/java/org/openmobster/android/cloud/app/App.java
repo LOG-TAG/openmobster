@@ -10,21 +10,80 @@ package org.openmobster.android.cloud.app;
 
 import java.lang.reflect.Field;
 
+import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
+import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.BaseCloudActivity;
+import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.app.Activity;
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-public class App extends BaseCloudActivity
+public class App extends Activity
 {
 	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		try
+		{
+			super.onCreate(savedInstanceState);
+		} 
+		catch (Exception e)
+		{
+			e.printStackTrace(System.out);
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onCreate", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			}));
+			this.showDialog(0);
+		}
+	}
+	
+	@Override
+	protected void onStart()
+	{
+		try
+		{
+			super.onStart();
+			CloudService.getInstance().start(this);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(System.out);
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			}));
+			this.showDialog(0);
+		}
+	}
+
+	@Override
+	protected void onResume()
+	{
+		try
+		{
+			super.onResume();
+			this.displayMainScreen();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), 
+					"onResume", new Object[]{
+						"Message:"+e.getMessage(),
+						"Exception:"+e.toString()
+					}));
+		}
+	}
+	
 	public void displayMainScreen()
 	{
 		try

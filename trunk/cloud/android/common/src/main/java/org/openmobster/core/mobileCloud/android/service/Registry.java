@@ -9,19 +9,17 @@
 package org.openmobster.core.mobileCloud.android.service;
 
 import java.util.List;
-import java.util.Set;
 import java.util.ArrayList;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
-import org.openmobster.core.mobileCloud.android.storage.Database;
-import org.openmobster.core.mobileCloud.android.storage.Record;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.app.Activity;
 
 
 /**
@@ -49,9 +47,9 @@ public final class Registry
 	private List<Service> services;
 	private boolean isStarted;
 	private boolean isContainer = true;
-	private Context context;
+	private Activity context;
 	
-	private Registry(Context context)
+	private Registry(Activity context)
 	{
 		this.context = context;
 	}	
@@ -61,7 +59,7 @@ public final class Registry
 	 * 
 	 * @return the instance of the Service Registry in the system
 	 */
-	public static Registry getInstance(Context context)
+	public static Registry getInstance(Activity context)
 	{		
 		if(Registry.singleton == null)
 		{
@@ -105,12 +103,12 @@ public final class Registry
 		return this.isStarted;
 	}	
 	
-	public Context getContext()
+	public Activity getContext()
 	{
 		return this.context;
 	}
 	
-	public void setContext(Context context)
+	public void setContext(Activity context)
 	{
 		this.context = context;
 	}

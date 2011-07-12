@@ -11,6 +11,7 @@
 #import "AppConfig.h"
 #import "AppService.h"
 #import "AppSession.h"
+#import "CloudService.h"
 
 static BootupKernel *singleton = nil;
 
@@ -63,7 +64,7 @@ static BootupKernel *singleton = nil;
 		Configuration *conf = [Configuration getInstance];
 		if(![conf isActivated])
 		{
-			//TODO: Show a not activated dialog and exit the App
+			//Hopefully the UIKernel will force in-app activation
 		}
 	}
 }
