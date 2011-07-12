@@ -57,8 +57,14 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 332188108;
-			PBXWorkspaceStateSaveDate = 332188108;
+			PBXPerProjectTemplateStateSaveDate = 332192619;
+			PBXWorkspaceStateSaveDate = 332192619;
+		};
+		perUserProjectItems = {
+			A2CEBE5B13CCDC680014B161 /* PBXTextBookmark */ = A2CEBE5B13CCDC680014B161 /* PBXTextBookmark */;
+			A2CEBE5C13CCDC680014B161 /* PBXTextBookmark */ = A2CEBE5C13CCDC680014B161 /* PBXTextBookmark */;
+			A2CEBE5D13CCDC680014B161 /* PBXTextBookmark */ = A2CEBE5D13CCDC680014B161 /* PBXTextBookmark */;
+			A2CEBE5E13CCDC680014B161 /* PBXTextBookmark */ = A2CEBE5E13CCDC680014B161 /* PBXTextBookmark */;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -90,7 +96,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {810, 1651}}";
 			sepNavSelRange = "{1877, 0}";
-			sepNavVisRange = "{1406, 937}";
+			sepNavVisRange = "{1048, 1108}";
 			sepNavWindowFrame = "{{448, 158}, {750, 720}}";
 		};
 	};
@@ -1052,8 +1058,8 @@
 	A29D663E12A6FB2900DAE753 /* Kernel.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 1469}}";
-			sepNavSelRange = "{2396, 72}";
-			sepNavVisRange = "{0, 952}";
+			sepNavSelRange = "{513, 0}";
+			sepNavVisRange = "{1425, 1053}";
 			sepNavWindowFrame = "{{50, 320}, {750, 558}}";
 		};
 	};
@@ -1165,6 +1171,46 @@
 			sepNavVisRange = "{4573, 1758}";
 			sepNavWindowFrame = "{{516, 91}, {750, 787}}";
 		};
+	};
+	A2CEBE5B13CCDC680014B161 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A29D663E12A6FB2900DAE753 /* Kernel.m */;
+		name = "Kernel.m: 19";
+		rLen = 0;
+		rLoc = 513;
+		rType = 0;
+		vrLen = 1053;
+		vrLoc = 1425;
+	};
+	A2CEBE5C13CCDC680014B161 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A263E564138DA976000145FA /* BootupKernel.m */;
+		name = "BootupKernel.m: 67";
+		rLen = 0;
+		rLoc = 1368;
+		rType = 0;
+		vrLen = 1025;
+		vrLoc = 567;
+	};
+	A2CEBE5D13CCDC680014B161 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A252E4A013C20FBC004F5344 /* CloudService.m */;
+		name = "CloudService.m: 94";
+		rLen = 0;
+		rLoc = 1877;
+		rType = 0;
+		vrLen = 1162;
+		vrLoc = 994;
+	};
+	A2CEBE5E13CCDC680014B161 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A252E4A013C20FBC004F5344 /* CloudService.m */;
+		name = "CloudService.m: 94";
+		rLen = 0;
+		rLoc = 1877;
+		rType = 0;
+		vrLen = 1108;
+		vrLoc = 1048;
 	};
 	A2DF3C731225AEF3004C908F /* Source Control */ = {
 		isa = PBXSourceControlManager;
