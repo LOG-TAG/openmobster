@@ -337,10 +337,34 @@
 										<!-- iphone packaging -->
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/iPhone" overwrite="true">
 											<fileset dir="../../iphone">
+												<exclude name="**/build/**" />
 											</fileset>
 										</copy>
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/iPhone/showcase" overwrite="true">
 											<fileset dir="${basedir}/../dev-tools/sampleApps/showcase">
+												<exclude name="**/target/**" />
+											</fileset>
+										</copy>
+										
+										<!-- Titanium Packaging -->
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/titanium_module_android" overwrite="true">
+											<fileset dir="../../titanium_module_android">
+												<exclude name="**/build/**" />
+											</fileset>
+										</copy>
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/org.openmobster.cloud-android-0.1.zip" 
+										file="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/titanium_module_android/dist/org.openmobster.cloud-android-0.1.zip" overwrite="true">
+										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/titanium_module_ios" overwrite="true">
+											<fileset dir="../../titanium_module_ios">
+												<exclude name="**/build/**" />
+											</fileset>
+										</copy>  
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/org.openmobster.cloud-iphone-0.1.zip" 
+										overwrite="true" file="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/titanium_module_ios/org.openmobster.cloud-iphone-0.1.zip">
+										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/crud" overwrite="true">
+											<fileset dir="${basedir}/../dev-tools/sampleApps/crud">
 												<exclude name="**/target/**" />
 											</fileset>
 										</copy>
@@ -350,10 +374,12 @@
 										<delete dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps"/>
 										
 
-										<!-- zip and tar the artifact -->
+										<!-- zip and tar the artifact Not needed -->
+										<!--  
 										<tar destfile="target/openmobster-${project.version}.tar" basedir="target/openmobster-${project.version}" />
 										<gzip destfile="target/openmobster-${project.version}.tar.gz" src="target/openmobster-${project.version}.tar" />											
 										<delete file="target/openmobster-${project.version}.tar" />
+										-->
 										
 										<zip destfile="target/openmobster-${project.version}.zip" basedir="target/openmobster-${project.version}" />									
 									</tasks>
