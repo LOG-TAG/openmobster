@@ -2,7 +2,7 @@
 {
 	0867D690FE84028FC02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeSDKPreference = iphoneos4.2;
+		activeSDKPreference = iphonesimulator4.2;
 		activeTarget = D2AAC07D0554694100DB518D /* mobilecloudlib */;
 		addToTargets = (
 			D2AAC07D0554694100DB518D /* mobilecloudlib */,
@@ -57,8 +57,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 332005512;
-			PBXWorkspaceStateSaveDate = 332005512;
+			PBXPerProjectTemplateStateSaveDate = 332188108;
+			PBXWorkspaceStateSaveDate = 332188108;
 		};
 		sourceControlManager = A2DF3C731225AEF3004C908F /* Source Control */;
 		userBuildSettings = {
@@ -122,7 +122,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {789, 832}}";
 			sepNavSelRange = "{342, 0}";
-			sepNavVisRange = "{204, 1336}";
+			sepNavVisRange = "{169, 1371}";
 		};
 	};
 	A26227DF133234A700B1BEB3 /* DeviceManager.h */ = {
@@ -143,9 +143,9 @@
 	};
 	A262293713412CBE00B1BEB3 /* ModalActivateDevice.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1379, 3016}}";
-			sepNavSelRange = "{5401, 7}";
-			sepNavVisRange = "{4903, 820}";
+			sepNavIntBoundsRect = "{{0, 0}, {1379, 3133}}";
+			sepNavSelRange = "{3887, 275}";
+			sepNavVisRange = "{3719, 792}";
 			sepNavWindowFrame = "{{15, 86}, {750, 787}}";
 		};
 	};
@@ -166,10 +166,10 @@
 	};
 	A263E564138DA976000145FA /* BootupKernel.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 1144}}";
-			sepNavSelRange = "{330, 0}";
-			sepNavVisRange = "{545, 1021}";
-			sepNavWindowFrame = "{{1949, 180}, {750, 720}}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1157}}";
+			sepNavSelRange = "{1368, 0}";
+			sepNavVisRange = "{567, 1025}";
+			sepNavWindowFrame = "{{475, 61}, {750, 817}}";
 		};
 	};
 	A263E7E2139043ED000145FA /* ManagedObjectModelFactory.h */ = {
