@@ -93,7 +93,7 @@ public class AppCreator
 		openMobsterVersion = this.askUser("Version of the OpenMobster Platform", openMobsterVersion);
 		
 		//Decide if sample workspace or sketelon (hello world) workspace
-		String sampleCode = this.askUser("Generate Sample Code", "yes/no");
+		String sampleCode = this.askUser("Generate Sample Code", "yes/no [default:yes]");
 		if(!sampleCode.equals("yes/no") && !sampleCode.equals("yes"))
 		{
 			sampleApp = false;
@@ -646,8 +646,8 @@ public class AppCreator
 		this.generateFile(new File(directory, "res/drawable-ldpi/icon.png"),
 		this.readTemplateBinaryResource("/template/app-android/res/drawable-ldpi/icon.png"));
 		
-		this.generateFile(new File(directory, "res/drawable-ldpi/icon.png"),
-		this.readTemplateBinaryResource("/template/app-android/res/drawable-mdpi/push.png"));
+		this.generateFile(new File(directory, "res/drawable-ldpi/push.png"),
+		this.readTemplateBinaryResource("/template/app-android/res/drawable-ldpi/push.png"));
 		
 		this.generateFile(new File(directory, "res/drawable-mdpi/icon.png"),
 		this.readTemplateBinaryResource("/template/app-android/res/drawable-mdpi/icon.png"));
