@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
 
@@ -59,8 +60,9 @@ public final class ErrorHandler
 		try
 		{
 			//Collect some meta data
-			Context context = Registry.getActiveInstance().getContext();
-			boolean isCloud = Registry.getInstance(context).isContainer();
+			Registry registry = Registry.getActiveInstance();
+			Activity context = registry.getContext();
+			boolean isCloud = registry.isContainer();
 			Date date = new Date();
 			
 			//TODO: Collect some device related information

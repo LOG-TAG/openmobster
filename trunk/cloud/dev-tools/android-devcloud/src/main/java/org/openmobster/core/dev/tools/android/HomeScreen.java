@@ -23,6 +23,7 @@ import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -103,7 +104,7 @@ public class HomeScreen extends Screen
 					case 0:
 						try
 						{
-							HomeScreen.this.mockActivate();
+							HomeScreen.this.collectCloudIP();
 						}
 						catch(Exception e)
 						{
@@ -147,7 +148,7 @@ public class HomeScreen extends Screen
 				{
 					try
 					{
-						HomeScreen.this.mockActivate();
+						HomeScreen.this.collectCloudIP();
 						return true;
 					}
 					catch(Exception e)
@@ -204,6 +205,63 @@ public class HomeScreen extends Screen
 				}
 			});
 		}
+	}
+	
+	private void collectCloudIP() throws Exception
+	{
+		final Activity currentActivity = (Activity)Registry.getActiveInstance().
+		getContext();
+		final Configuration conf = Configuration.getInstance(currentActivity);
+		
+		String cloudIp = conf.getServerIp();
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
+		builder.setCancelable(false);
+		
+		builder.setTitle("Cloud IP Address");
+		
+		final EditText serverField = new EditText(currentActivity);
+		serverField.setText(cloudIp);
+		builder.setView(serverField);
+		
+		//Add the buttons
+		builder.setPositiveButton("Activate", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id)
+			{
+				try
+				{
+					String cloudIp = serverField.getText().toString();
+					
+					if(cloudIp != null && cloudIp.trim().length()>0)
+					{
+						conf.setServerIp(serverField.getText().toString());
+						conf.save(currentActivity);
+						dialog.dismiss();
+						HomeScreen.this.mockActivate();
+					}
+					else
+					{
+						ViewHelper.getOkModal(currentActivity, "Validation Error", "Cloud IP is required").
+						show();
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace(System.out);
+					throw new RuntimeException(e);
+				}
+			}
+		});
+		
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id)
+			{
+				dialog.dismiss();
+			}
+		});
+		
+		//show the dialog
+		builder.create().show();
 	}
 	
 	private void mockActivate() throws Exception

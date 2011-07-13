@@ -9,6 +9,7 @@
 package org.openmobster.core.dev.tools.android;
 
 import android.os.Bundle;
+import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
