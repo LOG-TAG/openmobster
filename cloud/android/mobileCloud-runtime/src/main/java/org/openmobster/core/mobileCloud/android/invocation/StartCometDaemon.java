@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.android.invocation;
 
 import android.content.Context;
+import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
@@ -59,7 +60,7 @@ public final class StartCometDaemon extends Service implements InvocationHandler
 	{
 		try
 		{
-			Context context = Registry.getActiveInstance().getContext();
+			Activity context = Registry.getActiveInstance().getContext();
 			DeviceContainer.getInstance(context).notifyDeviceActivated();
 			
 			return null;

@@ -31,6 +31,7 @@ import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
 import android.content.Context;
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -62,7 +63,7 @@ public class CloudService
 		return singleton;
 	}
 			
-	public void start(final Context context)
+	public void start(final Activity context)
 	{
 		//short-fast boostrapping of the kernel
 		if(!Moblet.getInstance(context).isContainerActive())
@@ -108,7 +109,7 @@ public class CloudService
 		
 	}
 	//---------------------------------------------------------------------------------------------------------------------
-	private void bootstrapContainer(final Context context)
+	private void bootstrapContainer(final Activity context)
 	{
 		//Initialize some of the higher level services
 		Services services = Services.getInstance();

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
@@ -37,9 +38,9 @@ public final class Moblet
 {
 	private static Moblet singleton;
 	
-	private Context context;
+	private Activity context;
 	
-	private Moblet(Context context)
+	private Moblet(Activity context)
 	{
 		this.context = context;
 	}
@@ -49,7 +50,7 @@ public final class Moblet
 	 * 
 	 * @return
 	 */
-	public static Moblet getInstance(Context context)
+	public static Moblet getInstance(Activity context)
 	{
 		if(Moblet.singleton == null)
 		{
@@ -145,7 +146,7 @@ public final class Moblet
 		return Registry.getActiveInstance().isStarted();
 	}
 	
-	public synchronized void propagateNewContext(Context context)
+	public synchronized void propagateNewContext(Activity context)
 	{
 		this.context = context;
 		Registry.getActiveInstance().setContext(context);
