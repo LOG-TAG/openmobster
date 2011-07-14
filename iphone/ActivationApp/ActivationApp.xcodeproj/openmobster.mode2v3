@@ -275,7 +275,7 @@
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 58}, {429, 333}}</string>
+									<string>{{0, 0}, {429, 333}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -437,8 +437,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A2CEBE0313CCC09D0014B161</string>
-				<string>A2CEBE0413CCC09D0014B161</string>
+				<string>A2CEBE6A13CF8F010014B161</string>
+				<string>A2CEBE6B13CF8F010014B161</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -477,6 +477,7 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D5B069F1CE1000CFCEE</string>
 		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/ActivationApp.xcodeproj</string>
@@ -696,7 +697,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A2CEBE0513CCC09D0014B161</string>
+				<string>A2CEBE6C13CF8F010014B161</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -818,13 +819,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A2CEBE0613CCC09D0014B161</string>
+				<string>A2CEBE6D13CF8F010014B161</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A2CEBE0713CCC09D0014B161</string>
-				<string>A2CEBE0813CCC09D0014B161</string>
-				<string>A2CEBE0913CCC09D0014B161</string>
-				<string>A2CEBE0A13CCC09D0014B161</string>
-				<string>A2CEBE0B13CCC09D0014B161</string>
+				<string>A2CEBE6E13CF8F010014B161</string>
+				<string>A2CEBE6F13CF8F010014B161</string>
+				<string>A2CEBE7013CF8F010014B161</string>
+				<string>A2CEBE7113CF8F010014B161</string>
+				<string>A2CEBE7213CF8F010014B161</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -986,7 +987,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A2D3239D13CB5F8D005691F7</string>
+				<string>A2CEBE7313CF8F010014B161</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

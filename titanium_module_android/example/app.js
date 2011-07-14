@@ -104,7 +104,7 @@ function invokePushNotification()
 
 
 button.addEventListener('click',function(){
-    /*var oids = sync.readAll(channel);
+    var oids = sync.readAll(channel);
     oids = eval('('+oids+')');
     if(oids != null && oids.length > 0)
     {
@@ -141,7 +141,7 @@ button.addEventListener('click',function(){
     }
     
     //Testing RPC
-    invokeRPC();*/
+    invokeRPC();
     
     invokePushNotification();
 });

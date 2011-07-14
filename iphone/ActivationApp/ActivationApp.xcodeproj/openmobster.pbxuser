@@ -50,8 +50,8 @@
 			A21EC80A131C2E300030ECCE /* ActivationApp */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 332185651;
-			PBXWorkspaceStateSaveDate = 332185651;
+			PBXPerProjectTemplateStateSaveDate = 332369655;
+			PBXWorkspaceStateSaveDate = 332369655;
 		};
 		sourceControlManager = A21EC815131C2E460030ECCE /* Source Control */;
 		userBuildSettings = {
