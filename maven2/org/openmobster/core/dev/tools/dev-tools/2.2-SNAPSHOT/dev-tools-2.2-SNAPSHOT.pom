@@ -20,6 +20,7 @@
 			<modules>
 				<module>appCreator</module>
 				<module>dev-cloudServer</module>
+				<module>android-devcloud</module>
 			</modules>
 		</profile>
 	</profiles>
