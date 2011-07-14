@@ -104,18 +104,18 @@ public class TestOneWayDeviceSyncMapping extends AbstractSyncMapping
 	}
 	
 	public void testConflict() throws Exception
-	{
+	{	
 		MobileObject deviceRecord = this.updateDeviceRecord("1-luid");
 		ServerRecord serverRecord = this.updateServerRecord("1");
 		
 		this.performOneWayDeviceSync();
 		
-		//Rule for OneWayDeviceSync: The device state wins over the server state
+		//Rule for OneWayDeviceSync:Server State overrides the device state
 		
 		//Assert Server State
 		this.assertServerPresence("1");
 		this.assertServerPresence("2");
-		this.assertServerMessage("1", deviceRecord.getValue("message"));
+		this.assertServerMessage("1", serverRecord.getMessage());
 		
 		//Assert Device State
 		this.assertDevicePresence("1-luid");

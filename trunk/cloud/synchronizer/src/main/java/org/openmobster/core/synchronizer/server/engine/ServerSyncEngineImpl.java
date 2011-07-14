@@ -132,7 +132,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 
 				// Create a Sync Add Command from this record data				
 				commands.add(this.getCommand(record, messageSize, 
-				ServerSyncEngine.OPERATION_ADD));				
+				ServerSyncEngine.OPERATION_ADD));
+				
+				//Start an optimistic lock for this record
+				this.conflictEngine.startOptimisticLock(record);
 			}
 			
 			//also get any records that are deleted on the server
