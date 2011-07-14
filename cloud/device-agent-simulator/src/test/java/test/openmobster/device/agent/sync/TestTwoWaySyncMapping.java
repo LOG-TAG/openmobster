@@ -101,17 +101,17 @@ public class TestTwoWaySyncMapping extends AbstractSyncMapping
 		
 		this.performTwoWaySync();
 		
-		//Rule for TwoWaySync: The device state wins over the server state
+		//Rule for TwoWaySync: Server State overrides the device state
 		
 		//Assert Server State
 		this.assertServerPresence("1");
 		this.assertServerPresence("2");
-		this.assertServerMessage("1", deviceRecord.getValue("message"));
+		this.assertServerMessage("1", serverRecord.getMessage());
 		
 		//Assert Device State
 		this.assertDevicePresence("1-luid");
 		this.assertDevicePresence("2-luid");
-		this.assertDeviceMessage("1-luid", deviceRecord.getValue("message"));
+		this.assertDeviceMessage("1-luid", serverRecord.getMessage());
 		
 		//Assert the State of the Server Side Map Engine
 		this.assertMapping();

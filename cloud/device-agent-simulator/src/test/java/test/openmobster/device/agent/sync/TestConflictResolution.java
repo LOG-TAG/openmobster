@@ -21,7 +21,7 @@ public class TestConflictResolution extends AbstractSync
 	{
 		//Make sure both nodes are prepared
 		this.deviceDatabase.deleteAll(this.service);
-		this.performBootSync();
+		this.performSlowSync();
 		
 		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
 		
@@ -56,7 +56,7 @@ public class TestConflictResolution extends AbstractSync
 	{
 		//Make sure both nodes are prepared
 		this.deviceDatabase.deleteAll(this.service);
-		this.performBootSync();
+		this.performSlowSync();
 		
 		
 		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
@@ -81,7 +81,7 @@ public class TestConflictResolution extends AbstractSync
 	{
 		//Make sure both nodes are prepared
 		this.deviceDatabase.deleteAll(this.service);
-		this.performBootSync();
+		this.performSlowSync();
 		
 		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
 		ServerRecord serverRecord = this.updateServerRecord("unique-1");
@@ -101,11 +101,11 @@ public class TestConflictResolution extends AbstractSync
 		this.assertDeviceMessage("unique-1", serverRecord.getMessage());
 	}
 	
-	/*public void testOneWayDeviceSyncConflict() throws Exception
+	public void testOneWayDeviceSyncConflict() throws Exception
 	{
 		//Make sure both nodes are prepared
 		this.deviceDatabase.deleteAll(this.service);
-		this.performBootSync();
+		this.performSlowSync();
 		
 		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
 		ServerRecord serverRecord = this.updateServerRecord("unique-1");
@@ -129,7 +129,7 @@ public class TestConflictResolution extends AbstractSync
 	{
 		//Make sure both nodes are prepared
 		this.deviceDatabase.deleteAll(this.service);
-		this.performBootSync();
+		this.performSlowSync();
 		
 		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
 		ServerRecord serverRecord = this.updateServerRecord("unique-1");
@@ -146,6 +146,6 @@ public class TestConflictResolution extends AbstractSync
 		//Assert Device State
 		this.assertDevicePresence("unique-1");
 		this.assertDevicePresence("unique-2");
-		this.assertDeviceMessage("unique-1", deviceRecord.getValue("message"));
-	}*/
+		this.assertDeviceMessage("unique-1", serverRecord.getMessage());
+	}
 }
