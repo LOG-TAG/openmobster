@@ -9,6 +9,8 @@ package org.openmobster.core.synchronizer.server.engine;
 
 import org.apache.log4j.Logger;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.openmobster.core.common.database.HibernateManager;
@@ -99,14 +101,14 @@ public class ConflictEngine
 			String serializedBean = this.serializer.serialize(cloudBean).trim();
 			String checkAgainst = bean.getState();
 			
-			log.debug("**********Check Lock*************************************");
-			log.debug("Serialized: "+serializedBean);
-			log.debug("********************************************************");
-			log.debug("Checkagainst: "+checkAgainst);
-			log.debug("***********************************************");
-			
 			if(!serializedBean.equals(checkAgainst))
 			{
+				log.debug("**********Check Lock*************************************");
+				log.debug("Serialized: "+serializedBean);
+				log.debug("********************************************************");
+				log.debug("Checkagainst: "+checkAgainst);
+				log.debug("***********************************************");
+				
 				String channel = Tools.getChannel();
 				
 				this.handleConflict(deviceId, channel, cloudBean);
@@ -120,6 +122,39 @@ public class ConflictEngine
 	private void handleConflict(String deviceId,String channel, MobileBean bean)
 	{
 		//TODO: report this to the Console so that admins can pull and see what happened
+	}
+	
+	public void clearAll()
+	{
+		Session session = null;
+		Transaction tx = null;
+		try
+		{
+			session = this.hibernateManager.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+
+			List all = session.createQuery("from ConflictEntry").list();
+			if(all != null && !all.isEmpty())
+			{
+				for(Object entry:all)
+				{
+					session.delete(entry);
+				}
+			}
+			
+			tx.commit();
+		}
+		catch(Exception e)
+		{
+			log.error(this, e);
+			
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+			
+			throw new SyncException(e);
+		}
 	}
 	//------Persistence related code--------------------------------------------------------------------------------------------
 	void saveLock(ConflictEntry conflictEntry)

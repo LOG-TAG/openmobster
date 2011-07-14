@@ -198,6 +198,7 @@ public class MockServer implements Processor
 		this.serverSyncEngine.deleteAnchor(this.deviceId+"/"+this.serviceWithMapping);
 		this.serverSyncEngine.deleteAnchor(this.deviceId+"/emailConnector");
 		this.serverSyncEngine.clearRecordMap();
+		this.serverSyncEngine.clearConflictEngine();
 		
 		EmailConnector.close();											
 	}

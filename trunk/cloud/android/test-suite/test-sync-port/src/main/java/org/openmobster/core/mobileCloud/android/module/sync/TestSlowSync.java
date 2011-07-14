@@ -56,13 +56,14 @@ public final class TestSlowSync extends AbstractSyncTest
 			this.tearDown();
 			
 			//Conflict test case
+			SyncService.getInstance().performSlowSync(service, service, false);
 			this.setUp("conflict");						
 			SyncService.getInstance().performSlowSync(service, service, false);
 			MobileObject conflictedRecord = this.getRecord("unique-1");			
 			//These records from the server should show up on the device
 			this.assertRecordPresence("unique-1", "/TestSlowSync/conflict");
 			this.assertRecordPresence("unique-2", "/TestSlowSync/conflict");
-			this.assertEquals(conflictedRecord.getValue("message"), "<tag apos='apos' quote=\"quote\" ampersand='&'>unique-1/Updated/Client</tag>", "/TestSlowSync/conflict/unique-1");
+			this.assertEquals(conflictedRecord.getValue("message"), "<tag apos='apos' quote=\"quote\" ampersand='&'>unique-1/Updated/Server</tag>", "/TestSlowSync/conflict/unique-1");
 			this.tearDown();
 		}
 		catch(Exception e)

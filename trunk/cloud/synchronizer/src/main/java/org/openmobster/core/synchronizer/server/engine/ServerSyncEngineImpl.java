@@ -462,7 +462,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	{
 		List<Add> commands = new ArrayList<Add>();			
 
-		//Getting all the records of the client since this is a SlowSync
+		//Getting selected records from the server since this is a boot sync
 		List<MobileBean> allRecords = this.gateway.bootup(service);
 		for (int i = 0; i < allRecords.size(); i++)
 		{
@@ -893,5 +893,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		sync = Utilities.generateUID();
 
 		return sync;
+	}
+	
+	public void clearConflictEngine()
+	{
+		this.conflictEngine.clearAll();
 	}
 }

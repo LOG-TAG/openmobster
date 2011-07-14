@@ -157,6 +157,7 @@ public class ServerRecord implements MobileBeanStreamable
 	{	
 		ServerRecord fullRecord = new ServerRecord();
 		
+		fullRecord.setUid(this.uid);
 		fullRecord.setObjectId(this.objectId);
 		fullRecord.setFrom(this.from);
 		fullRecord.setTo(this.to);
@@ -173,6 +174,7 @@ public class ServerRecord implements MobileBeanStreamable
 	{	
 		ServerRecord partialRecord = new ServerRecord();
 		
+		partialRecord.setUid(this.uid);
 		partialRecord.setObjectId(this.objectId);
 		partialRecord.setFrom(this.from);
 		partialRecord.setTo(this.to);
