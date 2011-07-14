@@ -5,15 +5,10 @@ var cloudModule = require('org.openmobster.cloud');
 var sync = cloudModule.sync();
 var rpc = cloudModule.rpc();
 
-var commandBar = Titanium.UI.createButtonBar({
-    labels:['Initiate Push'],
-    backgroundColor:'#336699',
-    top:150,
-    style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
-    height:25,
-    width:200
+var push = Titanium.UI.createButton({
+	title: 'Initiate Push'
 });
-window.add(commandBar);
+window.add(push);
 
 function invokePushNotification()
 {
@@ -32,9 +27,6 @@ function invokePushNotification()
 }
 
 
-commandBar.addEventListener('click',function(){
+push.addEventListener('click',function(){
     invokePushNotification();
 });
-
-
-window.open();
