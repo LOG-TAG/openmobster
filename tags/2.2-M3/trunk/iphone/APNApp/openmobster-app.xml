@@ -1,0 +1,7 @@
+<app-conf>
+	<channels>
+		<channel access="write">push_channel_1</channel>
+		<channel access="write">push_channel_2</channel>
+	</channels>
+</app-conf>
+
