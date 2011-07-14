@@ -7,7 +7,7 @@ var rpc = cloudModule.rpc();
 var push = cloudModule.push();
 
 var commandBar = Titanium.UI.createButtonBar({
-    labels:['Initiate Push'],
+    labels:['Register for Push'],
     backgroundColor:'#336699',
     top:150,
     style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
@@ -60,6 +60,3 @@ function invokePushNotification()
 commandBar.addEventListener('click',function(){
     invokePushNotification();
 });
-
-
-window.open();
