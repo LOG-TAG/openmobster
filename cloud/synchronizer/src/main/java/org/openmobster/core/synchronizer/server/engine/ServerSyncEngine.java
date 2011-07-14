@@ -71,4 +71,6 @@ public interface ServerSyncEngine
 	public void saveRecordMap(String source, String target, Map recordMap);	
 	
 	public void clearRecordMap();
+	
+	public void clearConflictEngine();
 }

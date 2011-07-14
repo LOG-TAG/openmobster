@@ -37,6 +37,11 @@ public final class ActivationUtil
 		String email = testSuite.getEmail();
 		String password = testSuite.getPassword();
 		
+		System.out.println("---------------------------------");
+		System.out.println("CloudServerIp: "+cloudServerIp);
+		System.out.println("Email: "+email);
+		System.out.println("---------------------------------");
+		
 		bootup(deviceIdentifier, cloudServerIp, null);
 		
 		

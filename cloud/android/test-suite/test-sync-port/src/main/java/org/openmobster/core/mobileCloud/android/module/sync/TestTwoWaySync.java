@@ -56,12 +56,14 @@ public final class TestTwoWaySync extends AbstractSyncTest
 			
 			//Conflict test case
 			this.setUp("conflict");
+			SyncService.getInstance().performBootSync(service, service, false);
+			this.setUp("conflict");
 			SyncService.getInstance().performTwoWaySync(service, service, false);
 			afterUnique1 = this.getRecord("unique-1");
 			afterUnique2 = this.getRecord("unique-2");			
 			this.assertRecordPresence("unique-1", "/TestTwoWaySync/conflict");
 			this.assertRecordPresence("unique-2", "/TestTwoWaySync/conflict");
-			this.assertEquals(afterUnique1.getValue("message"), "<tag apos='apos' quote=\"quote\" ampersand='&'>unique-1/Updated/Client</tag>", 
+			this.assertEquals(afterUnique1.getValue("message"), "<tag apos='apos' quote=\"quote\" ampersand='&'>unique-1/Updated/Server</tag>", 
 			"/TestTwoWaySync/conflict/updated/unique-1");
 			this.assertEquals(afterUnique2.getValue("message"), "<tag apos='apos' quote=\"quote\" ampersand='&'>unique-2/Message</tag>", 
 			"/TestTwoWaySync/conflict/updated/unique-2");
