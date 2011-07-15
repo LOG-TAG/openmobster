@@ -34,7 +34,7 @@ Updating the Source/License Header:
  
  Deploy artifacts to the Openmobster Maven Repository located at: http://openmobster.googlecode.com/svn/maven2
  --------------------------------------------------------------------------------------------------------------
- mvn deploy
+ mvn -DskipTests -Pdeploy-cloud deploy
  
  cd dev-tools
  mvn -Pdeploy-tools deploy
