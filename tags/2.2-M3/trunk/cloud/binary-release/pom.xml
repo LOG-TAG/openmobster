@@ -193,6 +193,7 @@
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/src/dev-tools" overwrite="true">
 											<fileset dir="${basedir}/../dev-tools">
 												<exclude name="**/target/**" />
+												<exclude name="**/build/**" />
 											</fileset>
 										</copy>
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/src/testdrive-server" overwrite="true">
@@ -229,6 +230,7 @@
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/AppCreator/sampleApps" overwrite="true">
 											<fileset dir="${basedir}/../dev-tools/sampleApps">
 												<exclude name="**/target/**" />
+												<exclude name="**/build/**" />
 											</fileset>
 										</copy>
 
@@ -364,6 +366,7 @@
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/crud" overwrite="true">
 											<fileset dir="${basedir}/../dev-tools/sampleApps/crud">
 												<exclude name="**/target/**" />
+												<exclude name="**/build/**" />
 											</fileset>
 										</copy>
 										
