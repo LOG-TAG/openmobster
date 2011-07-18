@@ -83,3 +83,7 @@ This App uses the OpenMobster Cloud Module to integrate with OpenMobster Cloud s
 Now that the module is installed, you can Run the App inside the Android Simulator or the iPhone Simulator from Titanium Studio.
 
 The App has to be run from the Titanium Studio as it compiles the javascript into native code and runs it into the selected device simulator.
+
+----
+
+*Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
