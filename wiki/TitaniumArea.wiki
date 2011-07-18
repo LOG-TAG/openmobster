@@ -4,6 +4,12 @@ This area contains documentation related to the OpenMobster/Titanium integration
 
 ==== Get Started ====
 
+----
+
 ==== Understanding the Sample App ====
 
+----
+
 ==== Javascript API ====
+
+----
