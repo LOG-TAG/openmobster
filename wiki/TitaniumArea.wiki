@@ -12,9 +12,9 @@ This [TitaniumGetStarted tutorial] covers how to get your OpenMobster/Titanium A
 
 ----
 
-==== Understanding the Sample App ====
+==== [TitaniumSampleApp Understanding the Sample App] ====
 
-This covers the application code that makes up the OpenMobster/Titanium App.
+This [TitaniumSampleApp tutorial] covers the application code that makes up the OpenMobster/Titanium App.
 
 ----
 
