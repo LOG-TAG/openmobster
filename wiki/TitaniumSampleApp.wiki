@@ -18,9 +18,8 @@ The App is located under *Titanium/crud/titanium_portable_app*.
 
 === issue_list.js ===
 
-This is shown in the first tab window. 
+*issue_list.js* is rendered in the first tab window. 
 
-Get the Sync component
 {{{
 //Cloud Module
 	var cloudModule = require('org.openmobster.cloud');
@@ -30,6 +29,11 @@ Get the Sync component
 		return;
 	}
 }}}
-The *require* command is used to load the OpenMobster Cloud Module. The *sync* method provides the sync component that handles all sync related requests.
+Gets the *sync* component. The *require* command is used to load the OpenMobster Cloud Module. The *sync* method provides the sync component that handles all sync related requests.
 
+{{{
+var channel = "crm_ticket_channel";
+var oids = sync.readAll(channel);
+}}}
+This block of code reads all the objects that are synchronized with the *crm_ticket_channel*.
 
