@@ -3,3 +3,37 @@
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
 
 ----
+
+=== System Requirements ===
+
+  * Java 6
+  * [http://developer.android.com/sdk/index.html Android SDK]
+  * XCode
+  * [http://www.appcelerator.com/products/download/ Titanium Studio]
+
+----
+
+=== Installing the Activation App ===
+
+For security reasons, before apps can use the OpenMobster Cloud, the device must be first registered with the cloud. This is done using an Activation App that comes with the OpenMobster distribution.
+
+==== Android Activation App ====
+
+You can install the Android Activation App (called the CloudManager) in one of two ways. 
+
+===== Direct Install =====
+
+You can locate this App in the distrution under Android/core-runtime/CloudManager.apk
+
+Installation Command:
+{{{
+adb install -r install CloudManager.apk
+}}}
+
+===== Over-the-Air Install =====
+
+You can download the App from the Android browser using the following address:
+{{{
+http://<cloudserverip>/o/android/cloudmanager
+}}}
+Once downloaded, Android takes care of installing it on the device
