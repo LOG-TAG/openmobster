@@ -98,4 +98,8 @@ The App has to be run from the Titanium Studio as it compiles the javascript int
 
 ----
 
+To understand the javascript/Titanium code please take a loot at: [TitaniumSampleApp Titanium Sample App]
+
+----
+
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
