@@ -18,9 +18,9 @@ This [TitaniumSampleApp tutorial] covers the application code that makes up the 
 
 ----
 
-==== Javascript API ====
+==== [TitaniumAPI Javascript API] ====
 
-This documents the OpenMobster Javascript API with usage examples.
+This [Titanium API documents] the OpenMobster Javascript API with usage examples.
 
 ----
 
