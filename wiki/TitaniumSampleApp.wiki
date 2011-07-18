@@ -35,5 +35,74 @@ Gets the *sync* component. The *require* command is used to load the OpenMobster
 var channel = "crm_ticket_channel";
 var oids = sync.readAll(channel);
 }}}
-This block of code reads all the objects that are synchronized with the *crm_ticket_channel*.
+This block of code reads oids of all the objects that are synchronized with the *crm_ticket_channel*. They are returned in JSon format.
 
+{{{
+oids = eval('('+oids+')');
+		
+		var data = new Array(oids.length);
+		for(var i=0; i<oids.length; i++)
+		{
+			var bean = sync.readById(channel,oids[i]);
+			var title = bean.getValue("title");
+			var rowData = {title:title, hasChild:false, oid:oids[i]};
+			data[i] = rowData;
+		}
+}}}
+
+Iterates through a list of synchronized objects. It populates UI objects with their respective field values
+
+----
+
+=== new_issue.js ===
+
+{{{
+var cloudModule = require('org.openmobster.cloud');
+var sync = cloudModule.sync();
+var rpc = cloudModule.rpc();
+var channel = "crm_ticket_channel";
+}}}
+
+Sets up all the components that will be used on this page
+
+{{{
+var response = rpc.invoke('/async/load/spinners','{}');
+response = eval('(' + response + ')');
+}}}
+
+Pulls down the options used to populate select boxes on this form.
+
+{{{
+ok.addEventListener('click',function(e){
+	var title = titleField.value;
+	var customer = customerPicker.getSelectedRow(0).title;
+	var specialist = specialistPicker.getSelectedRow(0).title;
+	var comment = comments.value;
+	
+	//Data Validation
+	if((title == null || title == '') || (comment == null || comment == ''))
+	{
+		var validationDialog = Titanium.UI.createAlertDialog({
+							title:"Error",
+							message:"All fields are required"
+		});
+		validationDialog.buttonNames = ['Close'];
+		validationDialog.show();
+		
+		return;
+	}
+	
+	//Save the New ticket into the channel
+	var newBean = sync.newBean(channel);
+	newBean.setValue("title",title);
+	newBean.setValue("customer", customer);
+	newBean.setValue("specialist", specialist);
+	newBean.setValue("comment", comment);
+	newBean.commit();
+	
+	var tabGroup = Ti.UI.currentWindow.tabGroup;
+	tabGroup.setActiveTab(0);
+});
+}}}
+
+Validates the input data. Once validation is successful, it creates a new bean on the *crm_ticket_channel*. This will then synchronized with the Cloud and a new object will be created on the remote database.
