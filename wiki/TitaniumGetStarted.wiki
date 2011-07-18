@@ -59,4 +59,4 @@ Before you can compile the Activation App you must make sure the *mobilecloudlib
 
   * Do a *Clean All Targets*
 
-  * Do a "Build and Run". This will launch the ActivationApp in the Simulator. You can now activate this with the cloud and you are ready to go.
+  * Do a *Build and Run*. This will launch the ActivationApp in the Simulator. You can now activate this with the cloud and you are ready to go.
