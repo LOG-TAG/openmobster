@@ -1,4 +1,5 @@
 #summary Titanium Tutorials
+#labels Featured
 
 *Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [AndroidArea Android Area], [DeveloperZone Advanced Tutorials]
 
