@@ -37,3 +37,26 @@ You can download the App from the Android browser using the following address:
 http://<cloudserverip>/o/android/cloudmanager
 }}}
 Once downloaded, Android takes care of installing it on the device
+
+----
+
+==== iPhone Activation App ====
+
+You can install the iPhone Activation App in two ways. By compiling it yourself or from the App Store (Still waiting approval as of this writing).
+
+===== Compile the Activation App =====
+
+The Activation App is located in the _iPhone_ folder of the distribution.
+Before you can compile the Activation App you must make sure the *mobilecloudlib* static library is available. The *mobilecloudlib* is also present in the iPhone folder. Here are the steps for compiling ActivationApp
+
+  * First Open *mobilecloudlib* in XCode
+
+  * Do a *Clean All Targets*
+
+  * Do a *Build*. In the first go it will come up with some errors. Just run the *Build* again and it will compile cleanly.
+
+  * Open the *ActivationApp* in XCode
+
+  * Do a *Clean All Targets*
+
+  * Do a "Build and Run". This will launch the ActivationApp in the Simulator. You can now activate this with the cloud and you are ready to go.
