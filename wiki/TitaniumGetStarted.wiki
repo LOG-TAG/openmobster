@@ -35,7 +35,7 @@ You can install the Android Activation App (called the CloudManager) in one of t
 
 ===== Direct Install =====
 
-You can locate this App in the distrution under Android/core-runtime/CloudManager.apk
+You can locate this App in the distrution under *Android/core-runtime/CloudManager.apk*
 
 Installation Command:
 {{{
