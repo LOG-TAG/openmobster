@@ -1,0 +1,3 @@
+#summary Titanium Tutorials
+
+This area contains documentation related to the OpenMobster/Titanium integration. [http://www.appcelerator.com Titanium] is a cross-platform open source framework for developing apps using javascript. The greatest advantage of this approach is that you can write you app once and then run it on many platforms. The platforms that we will be interested in will be iPhone and Android.
