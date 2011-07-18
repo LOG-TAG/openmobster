@@ -10,6 +10,7 @@
   * [http://developer.android.com/sdk/index.html Android SDK]
   * XCode
   * [http://www.appcelerator.com/products/download/ Titanium Studio]
+  * [http://code.google.com/p/openmobster/downloads/list OpenMobster-2.2-M3] 
 
 ----
 
