@@ -14,6 +14,17 @@
 
 ----
 
+=== Running the Cloud Server ===
+{{{
+cd Titanium/crud/cloud
+
+mvn -PrunCloud integration-test
+}}}
+
+This should make the OpenMobster Cloud Server up and running for the Titanium App.
+
+----
+
 === Installing the Activation App ===
 
 For security reasons, before apps can use the OpenMobster Cloud, the device must be first registered with the cloud. This is done using an Activation App that comes with the OpenMobster distribution.
@@ -84,17 +95,6 @@ This App uses the OpenMobster Cloud Module to integrate with OpenMobster Cloud s
 Now that the module is installed, you can Run the App inside the Android Simulator or the iPhone Simulator from Titanium Studio.
 
 The App has to be run from the Titanium Studio as it compiles the javascript into native code and runs it into the selected device simulator.
-
-----
-
-=== Running the Cloud Server ===
-{{{
-cd Titanium/crud/cloud
-
-mvn -PrunCloud integration-test
-}}}
-
-This should make the OpenMobster Cloud Server up and running for the Titanium App.
 
 ----
 
