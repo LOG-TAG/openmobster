@@ -8,13 +8,19 @@ This area contains documentation related to the OpenMobster/Titanium integration
 
 ==== Get Started ====
 
+This covers how to get your OpenMobster/Titanium App up and running.
+
 ----
 
 ==== Understanding the Sample App ====
 
+This covers the application code that makes up the OpenMobster/Titanium App.
+
 ----
 
 ==== Javascript API ====
+
+This documents the OpenMobster Javascript API with usage examples.
 
 ----
 
