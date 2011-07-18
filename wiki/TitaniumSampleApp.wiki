@@ -1,1 +1,35 @@
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
+
+----
+
+=== Introduction ===
+
+In this article we will dissect a Titanium/OpenMobster Cloud App. The focus will be more on the Titanium layer and not on the Cloud artifacts. Before you can start exploring the app make sure you import the app into [http://www.appcelerator.com/products/download/ Titanium Studio].
+
+The App is located under *Titanium/crud/titanium_portable_app*.
+
+----
+
+=== app.js ===
+
+*app.js* is the starting point for every Titanium App. In the sample app, this component loads a Tab Group and sets up its respective Tabs with their respective windows
+
+----
+
+=== issue_list.js ===
+
+This is shown in the first tab window. 
+
+Get the Sync component
+{{{
+//Cloud Module
+	var cloudModule = require('org.openmobster.cloud');
+	var sync = cloudModule.sync();
+	if(sync == null)
+	{
+		return;
+	}
+}}}
+The *require* command is used to load the OpenMobster Cloud Module. The *sync* method provides the sync component that handles all sync related requests.
+
+
