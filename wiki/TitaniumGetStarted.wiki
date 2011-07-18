@@ -53,10 +53,33 @@ Before you can compile the Activation App you must make sure the *mobilecloudlib
 
   * Do a *Clean All Targets*
 
-  * Do a *Build*. In the first go it will come up with some errors. Just run the *Build* again and it will compile cleanly.
+  * Do a *Build*. In the first go it may come up with some errors. Just run the *Build* again and it will compile cleanly.
 
   * Open the *ActivationApp* in XCode
 
   * Do a *Clean All Targets*
 
   * Do a *Build and Run*. This will launch the ActivationApp in the Simulator. You can now activate this with the cloud and you are ready to go.
+
+----
+
+=== Running the Titanium Sample App ===
+
+The Titanium Sample App runs on both Android and iPhone using the same javascript codebase. This app is located under *Titanium/crud/titanium_portable_app*. You must import this project into the Titanium Studio.
+
+This App uses the OpenMobster Cloud Module to integrate with OpenMobster Cloud services. There is a separate installation process for iPhone and Android.
+
+==== Android Installation ====
+
+  * Copy *Titanium/org.openmobster.cloud-android-0.1.zip* into the *Titanium/crud/titanium_portable_app* folder
+
+==== iPhone Installation ====
+
+  * Copy *Titanium/org.openmobster.cloud-iphone-0.1.zip* into the */Library/Application\ Support/Titanium*
+
+  * Then unzip it in that directory
+----
+
+Now that the module is installed, you can Run the App inside the Android Simulator or the iPhone Simulator from Titanium Studio.
+
+The App has to be run from the Titanium Studio as it compiles the javascript into native code and runs it into the selected device simulator.
