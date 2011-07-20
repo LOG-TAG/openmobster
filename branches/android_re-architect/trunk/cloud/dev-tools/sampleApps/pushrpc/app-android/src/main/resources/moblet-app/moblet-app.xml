@@ -1,0 +1,9 @@
+<moblet-app>
+    <bootstrap>
+    	<screen>com.pushrpc.android.app.HomeScreen</screen>
+    </bootstrap>
+    
+	<push-commands>
+		<command id="/cloud/push/demo">com.pushrpc.android.app.DemoPushCommand</command>
+	</push-commands>					
+</moblet-app>
