@@ -31,11 +31,11 @@ public final class Database
 	public static String provisioning_table = "tb_provisioning"; //stores device provisioning related information
 	public static String system_errors = "tb_errorlog"; //stores runtime errors genenerated by mobile cloud and all the moblets
 	
-	private CloudDB cloudb;
+	private CloudDBMetaData cloudbMetaData;
 	
 	private Database(Context context)
 	{
-		this.cloudb = CloudDB.getInstance(context);
+		this.cloudbMetaData = new CloudDBMetaData(context);
 	}
 	
 	public static Database getInstance(Context context) throws DBException
@@ -61,17 +61,17 @@ public final class Database
 	
 	public void connect() throws DBException
 	{
-		this.cloudb.connect();
+		this.cloudbMetaData.connect();
 	}
 	
 	public void disconnect() throws DBException
 	{
-		this.cloudb.disconnect();
+		this.cloudbMetaData.disconnect();
 	}
 	
 	public boolean isConnected() throws DBException
 	{
-		return this.cloudb.isConnected();
+		return this.cloudbMetaData.isConnected();
 	}
 	//-------Table related operations--------------------------------------------------------------------------------------------------
 	//Note: Used only by test environment
@@ -82,7 +82,7 @@ public final class Database
 			throw new DBException(this.getClass().getName(),"enumerateTables",null,DBException.ERROR_NOT_CONNECTED);
 		}
 		
-		return this.cloudb.listTables();
+		return this.cloudbMetaData.listTables();
 	}
 	
 	public void dropTable(String table) throws DBException
@@ -94,7 +94,7 @@ public final class Database
 		{			
 			throw new DBException(this.getClass().getName(), "dropTable", new Object[]{table}, DBException.ERROR_CONFIG_TABLE_DELETE_NOT_ALLOWED);
 		}
-		this.cloudb.dropTable(table);
+		this.cloudbMetaData.dropTable(table);
 	}
 	//Note: these are used by the core engine
 	public void createTable(String table) throws DBException
@@ -102,7 +102,7 @@ public final class Database
 		//Validate
 		this.validateConnection(table, "createTable");
 		
-		this.cloudb.createTable(table);
+		this.cloudbMetaData.createTable(table);
 	}
 	
 	public boolean doesTableExist(String table) throws DBException
@@ -110,7 +110,7 @@ public final class Database
 		//Validate
 		this.validateConnection(table, "doesTableExist");
 		
-		return this.cloudb.doesTableExist(table);
+		return this.cloudbMetaData.doesTableExist(table);
 	}
 	
 	public boolean isTableEmpty(String table) throws DBException
@@ -118,7 +118,7 @@ public final class Database
 		//Validate
 		this.validateConnection(table, "isTableEmpty");
 		
-		return this.cloudb.isTableEmpty(table);
+		return this.cloudbMetaData.isTableEmpty(table);
 	}
 	//-----Record insertion--------------------------------------------------------------------------------------------------------------------
 	public String insert(String into, Record record) throws DBException
@@ -126,7 +126,7 @@ public final class Database
 		//Validate
 		this.validateConnection(into, "insert");
 		
-		return this.cloudb.insert(into, record);
+		return this.cloudbMetaData.getCRUDProvider().insert(into, record);
 	}
 	
 	public Set<Record> selectAll(String from) throws DBException
@@ -134,7 +134,7 @@ public final class Database
 		//Validate
 		this.validateConnection(from, "selectAll");
 		
-		return this.cloudb.selectAll(from);
+		return this.cloudbMetaData.getCRUDProvider().selectAll(from);
 	}
 	
 	public long selectCount(String from) throws DBException
@@ -142,7 +142,7 @@ public final class Database
 		//Validate
 		this.validateConnection(from, "selectCount");
 		
-		return this.cloudb.selectCount(from);
+		return this.cloudbMetaData.getCRUDProvider().selectCount(from);
 	}
 	
 	public Record select(String from, String recordId) throws DBException
@@ -150,7 +150,7 @@ public final class Database
 		//Validate
 		this.validateConnection(from, "select");
 		
-		return this.cloudb.select(from, recordId);
+		return this.cloudbMetaData.getCRUDProvider().select(from, recordId);
 	}
 	
 	public void update(String into, Record record) throws DBException
@@ -162,13 +162,13 @@ public final class Database
 		//so this operation is thread-safe
 		
 		//Check Dirty Status (support for long transactions)
-		Record stored = this.cloudb.select(into, record.getRecordId());
+		Record stored = this.cloudbMetaData.getCRUDProvider().select(into, record.getRecordId());
 		if(!stored.getDirtyStatus().equals(record.getDirtyStatus()))
 		{
 			throw new DBException(this.getClass().getName(),"update",new Object[]{into},DBException.ERROR_RECORD_STALE);
 		}
 		
-		this.cloudb.update(into, record);
+		this.cloudbMetaData.getCRUDProvider().update(into, record);
 	}
 	
 	public void delete(String table, Record record) throws DBException
@@ -176,7 +176,7 @@ public final class Database
 		//Validate
 		this.validateConnection(table, "delete");
 		
-		this.cloudb.delete(table, record);
+		this.cloudbMetaData.getCRUDProvider().delete(table, record);
 	}
 	
 	public void deleteAll(String table) throws DBException
@@ -184,7 +184,7 @@ public final class Database
 		//Validate
 		this.validateConnection(table, "deleteAll");
 		
-		this.cloudb.deleteAll(table);
+		this.cloudbMetaData.getCRUDProvider().deleteAll(table);
 	}
 	//--------Validation methods-----------------------------------------------------------------------------------------
 	private void validateConnection(String table, String caller) throws DBException
