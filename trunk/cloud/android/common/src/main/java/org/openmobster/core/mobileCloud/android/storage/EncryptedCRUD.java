@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.openmobster.core.mobileCloud.android.crypto.Cryptographer;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 import android.database.Cursor;
@@ -40,6 +41,7 @@ public class EncryptedCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			Cryptographer crypto = Cryptographer.getInstance();
 			
 			//SetUp the RecordId
 			String recordId = record.getRecordId();
@@ -59,6 +61,10 @@ public class EncryptedCRUD implements CRUDProvider
 			for(String name: names)
 			{
 				String value = record.getValue(name);
+				
+				//Encrypt name/value
+				name = crypto.encrypt(name.getBytes());
+				value = crypto.encrypt(value.getBytes());
 				
 				//insert this row
 				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
@@ -80,6 +86,8 @@ public class EncryptedCRUD implements CRUDProvider
 		Cursor cursor = null;
 		try
 		{
+			Cryptographer crypto = Cryptographer.getInstance();
+			
 			Set<Record> all = null;
 			
 			Map<String, Record> localCache = new HashMap<String, Record>();
@@ -107,6 +115,11 @@ public class EncryptedCRUD implements CRUDProvider
 					}
 					
 					record.setRecordId(recordid);
+					
+					//Decrypt
+					name = crypto.decrypt(name);
+					value = crypto.decrypt(value);
+					
 					record.setValue(name, value);
 					
 					cursor.moveToNext();
@@ -114,6 +127,10 @@ public class EncryptedCRUD implements CRUDProvider
 			}
 			
 			return all;
+		}
+		catch(Throwable t)
+		{
+			throw new RuntimeException(t);
 		}
 		finally
 		{
@@ -140,6 +157,7 @@ public class EncryptedCRUD implements CRUDProvider
 		Cursor cursor = null;
 		try
 		{
+			Cryptographer crypto = Cryptographer.getInstance();
 			Record record = null;
 			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE recordid=?", new String[]{recordId});
 			
@@ -157,6 +175,11 @@ public class EncryptedCRUD implements CRUDProvider
 					String recordid = cursor.getString(recordidIndex);
 					
 					record.setRecordId(recordid);
+					
+					//Decrypt
+					name = crypto.decrypt(name);
+					value = crypto.decrypt(value);
+					
 					record.setValue(name, value);
 					
 					cursor.moveToNext();
@@ -164,6 +187,10 @@ public class EncryptedCRUD implements CRUDProvider
 			}
 			
 			return record;
+		}
+		catch(Throwable t)
+		{
+			throw new RuntimeException(t);
 		}
 		finally
 		{
@@ -179,6 +206,7 @@ public class EncryptedCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			Cryptographer crypto = Cryptographer.getInstance();
 			
 			Set<String> names = record.getNames();
 			String recordId = record.getRecordId();
@@ -198,6 +226,10 @@ public class EncryptedCRUD implements CRUDProvider
 			for(String name: names)
 			{
 				String value = record.getValue(name);
+				
+				//Encrypt name/value
+				name = crypto.encrypt(name.getBytes());
+				value = crypto.encrypt(value.getBytes());
 								
 				//insert this row
 				//insert this row

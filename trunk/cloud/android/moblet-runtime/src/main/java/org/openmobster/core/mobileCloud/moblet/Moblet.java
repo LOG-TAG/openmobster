@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.app.Activity;
 
+import org.openmobster.core.mobileCloud.android.crypto.Cryptographer;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
@@ -96,6 +97,9 @@ public final class Moblet
 			
 			//Moblet App State management service			
 			services.add(new AppStateManager());
+			
+			//Add the CryptoGrapher service
+			services.add(new Cryptographer());
 										
 			Registry.getActiveInstance().start(services);
 		}
