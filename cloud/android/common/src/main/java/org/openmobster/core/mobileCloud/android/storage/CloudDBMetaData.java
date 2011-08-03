@@ -58,6 +58,7 @@ final class CloudDBMetaData
 			
 			//Decide which CRUDProvider should be used
 			this.crudProvider = new EncryptedCRUD();
+			//this.crudProvider = new DefaultCRUD();
 			this.crudProvider.init(this.db);
 		}
 	}

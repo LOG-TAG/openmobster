@@ -33,6 +33,7 @@ public class DevCloudApp extends ListApp
 		} 
 		catch (Exception e)
 		{
+			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onCreate", new Object[]{
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
