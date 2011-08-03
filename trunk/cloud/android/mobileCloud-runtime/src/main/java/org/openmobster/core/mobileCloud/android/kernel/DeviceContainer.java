@@ -45,7 +45,7 @@ import org.openmobster.core.mobileCloud.android.invocation.CometStatusHandler;
 import org.openmobster.core.mobileCloud.android.invocation.CometConfigHandler;
 import org.openmobster.core.mobileCloud.android.invocation.SwitchSecurityMode;
 import org.openmobster.core.mobileCloud.android.invocation.StopCometDaemon;
-import org.openmobster.core.mobileCloud.android.crypto.Cryptographer;
+import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
 
 
 /**
@@ -94,6 +94,7 @@ public final class DeviceContainer
 	{
 		try
 		{
+			CryptoManager.getInstance().start();
 			Registry.getInstance(this.context);
 			Database.getInstance(this.context).connect();
 						
@@ -174,9 +175,6 @@ public final class DeviceContainer
 			
 			//Add the DeviceManager service
 			services.add(new DeviceManager());
-			
-			//Add the CryptoGrapher service
-			services.add(new Cryptographer());
 									
 			Registry.getActiveInstance().start(services);
 			
@@ -209,6 +207,7 @@ public final class DeviceContainer
 			
 			Registry.getActiveInstance().stop();
 			Database.getInstance(this.context).disconnect();
+			CryptoManager.getInstance().stop();
 		}
 		catch(Exception e)
 		{

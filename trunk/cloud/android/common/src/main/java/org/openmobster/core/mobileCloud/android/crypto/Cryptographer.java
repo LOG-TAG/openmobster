@@ -8,11 +8,8 @@
 package org.openmobster.core.mobileCloud.android.crypto;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.openmobster.core.mobileCloud.android.service.Service;
-import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.util.Base64;
 
@@ -20,47 +17,48 @@ import org.openmobster.core.mobileCloud.android.util.Base64;
  *
  * @author openmobster@gmail.com
  */
-public class Cryptographer extends Service
+public final class Cryptographer
 {
+	private static Cryptographer singleton;
+	
 	private byte[] secretKey;
 	
-	public Cryptographer()
+	private Cryptographer()
 	{
 		
-	}
-
-	@Override
-	public void start()
-	{	
-		try
-		{
-			KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-			keyGenerator.init(256);
-			this.secretKey = keyGenerator.generateKey().getEncoded();
-		}
-		catch(Throwable t)
-		{
-			SystemException sys = new SystemException(Cryptographer.class.getName(), "start", new String[]{
-				"Throwable: "+t.toString(),
-				"Message: "+t.getMessage()
-			});
-			throw sys;
-		}
-	}
-
-	@Override
-	public void stop()
-	{
-		this.secretKey = null;
 	}
 	
 	public static Cryptographer getInstance()
 	{
-		return (Cryptographer)Registry.getActiveInstance().lookup(Cryptographer.class);
+		if(Cryptographer.singleton == null)
+		{
+			synchronized(Cryptographer.class)
+			{
+				if(Cryptographer.singleton == null)
+				{
+					Cryptographer.singleton = new Cryptographer();
+				}
+			}
+		}
+		return Cryptographer.singleton;
+	}
+	
+	public static void stop()
+	{
+		Cryptographer.singleton = null;
+	}
+	
+	void setSecretKey(byte[] secretKey)
+	{
+		this.secretKey = secretKey;
 	}
 	//----------------------------------------------------------------------------------------
 	public String encrypt(byte[] data)
 	{
+		if(this.secretKey == null)
+		{
+			throw new IllegalStateException("Secret Key required for cryptography");
+		}
 		try
 		{
 			//AES encription
@@ -82,6 +80,10 @@ public class Cryptographer extends Service
 	
 	public String decrypt(String encoded)
 	{
+		if(this.secretKey == null)
+		{
+			throw new IllegalStateException("Secret Key required for cryptography");
+		}
 		try
 		{
 			Cipher c = Cipher.getInstance("AES");
