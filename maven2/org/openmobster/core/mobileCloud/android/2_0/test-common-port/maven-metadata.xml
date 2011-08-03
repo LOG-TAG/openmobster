@@ -2,7 +2,6 @@
 <metadata>
   <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
   <artifactId>test-common-port</artifactId>
-  <version>2.0-snapshot</version>
   <versioning>
     <versions>
       <version>2.0-snapshot</version>
@@ -10,6 +9,6 @@
       <version>2.0-Beta1</version>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20110323220951</lastUpdated>
+    <lastUpdated>20110803215608</lastUpdated>
   </versioning>
 </metadata>
