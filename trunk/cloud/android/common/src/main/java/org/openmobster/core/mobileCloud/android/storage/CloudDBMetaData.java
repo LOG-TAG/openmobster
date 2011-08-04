@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
@@ -57,8 +59,17 @@ final class CloudDBMetaData
 			this.db = this.manager.getWritableDatabase();
 			
 			//Decide which CRUDProvider should be used
-			this.crudProvider = new EncryptedCRUD();
-			//this.crudProvider = new DefaultCRUD();
+			boolean isEncryptionActivated = AppSystemConfig.getInstance().isEncryptionActivated();
+			
+			if(isEncryptionActivated)
+			{
+				this.crudProvider = new EncryptedCRUD();
+			}
+			else
+			{
+				this.crudProvider = new DefaultCRUD();
+			}
+			
 			this.crudProvider.init(this.db);
 		}
 	}

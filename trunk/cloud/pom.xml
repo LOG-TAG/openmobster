@@ -675,14 +675,14 @@
 		</repository>
 
 		<repository>
-			<id>apache</id>
+			<id>apache-snapshots</id>
 			<name>Apache Repository</name>
 			<url>https://repository.apache.org/content/groups/snapshots
 			</url>
 		</repository>
 
 		<repository>
-			<id>apache</id>
+			<id>apache-public</id>
 			<name>Apache Repository</name>
 			<url>https://repository.apache.org/content/groups/public
 			</url>
@@ -720,13 +720,13 @@
 			</url>
 		</pluginRepository>
 		<pluginRepository>
-			<id>apache</id>
+			<id>apache-snapshots</id>
 			<name>Apache Repository</name>
 			<url>https://repository.apache.org/content/groups/snapshots
 			</url>
 		</pluginRepository>
 		<pluginRepository>
-			<id>apache</id>
+			<id>apache-public</id>
 			<name>Apache Repository</name>
 			<url>https://repository.apache.org/content/groups/public
 			</url>
