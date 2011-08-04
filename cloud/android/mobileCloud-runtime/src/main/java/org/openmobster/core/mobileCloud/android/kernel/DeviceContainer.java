@@ -46,6 +46,7 @@ import org.openmobster.core.mobileCloud.android.invocation.CometConfigHandler;
 import org.openmobster.core.mobileCloud.android.invocation.SwitchSecurityMode;
 import org.openmobster.core.mobileCloud.android.invocation.StopCometDaemon;
 import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 
 
 /**
@@ -94,6 +95,7 @@ public final class DeviceContainer
 	{
 		try
 		{
+			AppSystemConfig.getInstance().start();
 			CryptoManager.getInstance().start();
 			Registry.getInstance(this.context);
 			Database.getInstance(this.context).connect();
@@ -185,7 +187,8 @@ public final class DeviceContainer
 			LoadProxyDaemon.getInstance().scheduleProxyTask();
 		}
 		catch(Exception e)
-		{						
+		{
+			e.printStackTrace(System.out);
 			throw new SystemException(this.getClass().getName(), "startup", new Object[]{
 				"Exception="+e.toString(),
 				"Message="+e.getMessage()
@@ -208,6 +211,7 @@ public final class DeviceContainer
 			Registry.getActiveInstance().stop();
 			Database.getInstance(this.context).disconnect();
 			CryptoManager.getInstance().stop();
+			AppSystemConfig.stop();
 		}
 		catch(Exception e)
 		{
