@@ -63,6 +63,14 @@ public class EncryptedCRUD implements CRUDProvider
 				String value = record.getValue(name);
 				
 				//Encrypt name/value
+				if(name == null)
+				{
+					name = "";
+				}
+				if(value == null)
+				{
+					value = "";
+				}
 				name = crypto.encrypt(name.getBytes());
 				value = crypto.encrypt(value.getBytes());
 				
@@ -228,6 +236,14 @@ public class EncryptedCRUD implements CRUDProvider
 				String value = record.getValue(name);
 				
 				//Encrypt name/value
+				if(name == null)
+				{
+					name = "";
+				}
+				if(value == null)
+				{
+					value = "";
+				}
 				name = crypto.encrypt(name.getBytes());
 				value = crypto.encrypt(value.getBytes());
 								

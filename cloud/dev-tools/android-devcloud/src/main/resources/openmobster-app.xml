@@ -1,3 +1,3 @@
 <app-conf>
-	<encryption>true</encryption>
+	<encryption>false</encryption>
 </app-conf>
