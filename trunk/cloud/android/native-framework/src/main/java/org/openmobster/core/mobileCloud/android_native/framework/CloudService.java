@@ -8,23 +8,15 @@
 
 package org.openmobster.core.mobileCloud.android_native.framework;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Vector;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
-import org.openmobster.core.mobileCloud.api.system.CometUtil;
-import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppPushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.moblet.Moblet;
@@ -65,43 +57,56 @@ public class CloudService
 			
 	public void start(final Activity context)
 	{
-		//short-fast boostrapping of the kernel
-		if(!Moblet.getInstance(context).isContainerActive())
+		try
 		{
-			this.bootstrapContainer(context);
-		}
-		
-		//longer background services to be executed in a background thread to not hold up the App launch
-		Thread t = new Thread(new Runnable()
-		{
-			public void run()
+			//short-fast boostrapping of the kernel
+			if(!Moblet.getInstance(context).isContainerActive())
 			{
-				try
+				this.bootstrapContainer(context);
+			}
+			
+			//longer background services to be executed in a background thread to not hold up the App launch
+			Thread t = new Thread(new Runnable()
+			{
+				public void run()
 				{
-					bootstrapApplication(context);
-				}
-				catch(Throwable e)
-				{
-					e.printStackTrace(System.out);
-					ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "start", new Object[]{
-						"Message:"+e.getMessage(),
-						"Exception:"+e.toString()
-					}));
-					
-					
-					//This is on a non-GUI thread with no handle on the current Activity
-					//AFAIK, showing a dialog box is not possible
-					/*ShowErrorLooper looper = new ShowErrorLooper();
-					looper.start();
-					
-					while(!looper.isReady());
-					
-					looper.handler.post(new ShowError());*/
+					try
+					{
+						bootstrapApplication(context);
+					}
+					catch(Throwable e)
+					{
+						e.printStackTrace(System.out);
+						ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "start", new Object[]{
+							"Message:"+e.getMessage(),
+							"Exception:"+e.toString()
+						}));
+						
+						
+						//Show a bootrstap error
+						ShowErrorLooper looper = new ShowErrorLooper();
+						looper.start();
+						
+						while(!looper.isReady());
+						
+						looper.handler.post(new ShowError());
+					}
 				}
 			}
+			);
+			t.start();
 		}
-		);
-		t.start();
+		catch(Throwable e)
+		{
+			e.printStackTrace(System.out);
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "start", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			}));
+			
+			ViewHelper.getOkModalWithCloseApp(context, "System Error", "CloudManager App is either not installed or not running")
+			.show();
+		}
 	}
 	
 	public void stop(final Context context)
@@ -191,6 +196,9 @@ public class CloudService
 	{
 		public void run()
 		{
+			Activity activity = Registry.getActiveInstance().getContext();
+			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running")
+			.show();
 		}
 	}
 }
