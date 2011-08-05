@@ -45,6 +45,11 @@
         <provider android:name="org.openmobster.core.mobileCloud.android.provider.SystemErrorsProvider"
           android:authorities="org.openmobster.core.mobileCloud.android.provider.mobile.system.errors" 
         />
+        
+        <!-- central provider for cryptography -->
+        <provider android:name="org.openmobster.core.mobileCloud.android.provider.CryptoSecretKeyProvider"
+          android:authorities="org.openmobster.core.mobileCloud.android.provider.crypto.secret.key" 
+        />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest> 

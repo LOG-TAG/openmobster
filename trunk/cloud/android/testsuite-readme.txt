@@ -26,8 +26,15 @@ mvn -Phot-deploy install
 * Server Needed: device-agent-simulator : 
 mvn -PrunTestCloud test
 
+------------------------------------------------------------------------------------------------------------
+Test Connection
+
+* mobileCloud/android/2_0/test-suite/test-connection-port: 
+mvn -Phot-deploy install
 
 
+* Server Needed: device-agent-simulator : 
+mvn -PrunTestCloud test
 
 ****************************************
 TestSuites Not Requiring an CloudServer*
