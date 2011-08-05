@@ -171,7 +171,7 @@
 							<configuration>
 								<tasks> 
 									<echo>Hot Deploying the Android App....</echo>
-									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
+									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
 										<arg line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" />
 									</exec>
 								</tasks>
