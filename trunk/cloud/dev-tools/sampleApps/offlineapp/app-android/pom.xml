@@ -295,12 +295,12 @@
 							<configuration>
 								<tasks> 
 									<echo>Hot Deploying the Android App....</echo>
-									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
+									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
 										<arg line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" />
 									</exec>
 									
 									<echo>Hot Deploying the Development Mode CloudManager....</echo>
-									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
+									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
 										<arg line="install -r ${settings.localRepository}/org/openmobster/core/dev/tools/android-devcloud/${openmobster.version}/android-devcloud-${openmobster.version}.apk" />
 									</exec>
 								</tasks>
@@ -352,7 +352,7 @@
 							<configuration>
 								<tasks> 
 									<echo>Hot Deploying the Android App....</echo>
-									<exec dir="." executable="${env.ANDROID_HOME}/tools/adb">
+									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
 										<arg line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" />
 									</exec>
 								</tasks>
