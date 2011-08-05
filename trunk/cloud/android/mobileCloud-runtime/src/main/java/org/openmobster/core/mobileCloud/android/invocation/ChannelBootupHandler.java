@@ -69,6 +69,12 @@ public final class ChannelBootupHandler extends Service implements InvocationHan
 			//Bootup any nonn-booted registered channels
 			this.bootupChannels();
 			
+			String pushRestart = invocation.getValue("push-restart-cancel");
+			if(pushRestart != null && pushRestart.trim().length()>0)
+			{
+				return null;
+			}
+			
 			//Recycle the Comet Daemon so the newly added channels will start receiving comet push
 			//Restart the NotificationListener
 			NotificationListener notify = NotificationListener.getInstance();
