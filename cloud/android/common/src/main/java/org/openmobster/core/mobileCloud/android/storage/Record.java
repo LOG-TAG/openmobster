@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
+
 /**
  * @author openmobster@gmail.com
  *
@@ -112,4 +114,40 @@ public final class Record
 		}
 		return this.state;
 	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		if(!(o instanceof Record))
+		{
+			return false;
+		}
+		
+		Record incoming = (Record)o;
+		String recordId = this.getRecordId();
+		String incomingRecordId = incoming.getRecordId();
+		
+		if(recordId == null || incomingRecordId == null)
+		{
+			return false;
+		}
+		
+		if(recordId.equals(incomingRecordId))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		String recordId = this.getRecordId();
+		if(recordId == null)
+		{
+			return GeneralTools.generateUniqueId().hashCode();
+		}
+		return recordId.hashCode();
+	}	
 }

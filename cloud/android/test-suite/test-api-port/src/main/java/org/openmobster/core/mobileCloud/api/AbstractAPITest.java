@@ -10,6 +10,8 @@ package org.openmobster.core.mobileCloud.api;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 import android.content.Context;
 
@@ -88,7 +90,7 @@ public abstract class AbstractAPITest extends Test
 		
 	protected void waitForBeans() throws Exception
 	{
-		List<MobileObject> all = new ArrayList<MobileObject>();
+		Set<MobileObject> all = new HashSet<MobileObject>();
 		int retries = 90;
 		do
 		{

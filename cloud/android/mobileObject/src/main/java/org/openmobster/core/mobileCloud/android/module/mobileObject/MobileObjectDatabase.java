@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -25,6 +26,7 @@ import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Record;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 
 /**
  * @author openmobster@gmail.com
@@ -54,11 +56,11 @@ public final class MobileObjectDatabase extends Service
 		return (MobileObjectDatabase)Registry.getActiveInstance().lookup(MobileObjectDatabase.class);
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------
-	public List<MobileObject> readAll(String channel)
+	public Set<MobileObject> readAll(String channel)
 	{	
 		try
 		{
-			List<MobileObject> objects = new ArrayList<MobileObject>();
+			Set<MobileObject> objects = new HashSet<MobileObject>();
 			Uri uri = Uri.
 			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+channel);
 			Context context = Registry.getActiveInstance().getContext();
@@ -100,7 +102,7 @@ public final class MobileObjectDatabase extends Service
 			null, 
 			null);
 						
-			List<MobileObject> all = this.parse(cursor);
+			Set<MobileObject> all = this.parse(cursor);
 			if(all != null)
 			{
 				for(MobileObject curr: all)
@@ -259,9 +261,64 @@ public final class MobileObjectDatabase extends Service
 		}		
 	}
 	//---Query Integration------------------------------------------------------------------------------------------------------------------------------------------
-	public List<MobileObject> query(String channel, GenericAttributeManager queryAttributes)
+	public Set<MobileObject> query(String channel, GenericAttributeManager queryAttributes)
 	{
-		List<MobileObject> result = this.readAll(channel);
+		if(AppSystemConfig.getInstance().isEncryptionActivated())
+		{
+			return this.queryEncryptedMode(channel, queryAttributes);
+		}
+		
+		Set<MobileObject> result = new HashSet<MobileObject>();
+		
+		int logicLink = LogicChain.AND; //assumed by default
+		if(queryAttributes.getAttribute("logicLink")!=null)
+		{
+			logicLink = ((Integer)queryAttributes.getAttribute("logicLink")).intValue();
+		}
+		
+		List<LogicExpression> expressions = (List<LogicExpression>)queryAttributes.
+		getAttribute("expressions");
+		if(expressions != null && !expressions.isEmpty())
+		{
+			LogicChain chain = null;
+			switch(logicLink)
+			{
+				case LogicChain.AND:
+					chain = LogicChain.createANDChain();					
+				break;
+				
+				case LogicChain.OR:
+					chain = LogicChain.createORChain();
+				break;
+				
+				default:
+				break;
+			}
+			if(chain != null)
+			{
+				for(LogicExpression courExpr:expressions)
+				{
+					chain.add(courExpr);
+					
+					//get beans that match this expression
+					Set<MobileObject> matchedBeans = this.logicExpressionBeans(channel,courExpr);
+					if(matchedBeans != null)
+					{
+						result.addAll(matchedBeans);
+					}
+				}
+				
+				Query query = Query.createInstance(chain);
+				result = query.executeQuery(result);
+			}
+		}
+		
+		return result;
+	}
+	
+	private Set<MobileObject> queryEncryptedMode(String channel, GenericAttributeManager queryAttributes)
+	{
+		Set<MobileObject> result = this.readAll(channel);
 		
 		int logicLink = LogicChain.AND; //assumed by default
 		if(queryAttributes.getAttribute("logicLink")!=null)
@@ -300,15 +357,45 @@ public final class MobileObjectDatabase extends Service
 		
 		return result;
 	}
+	
+	private Set<MobileObject> logicExpressionBeans(String channel,LogicExpression expression)
+	{
+		try
+		{
+			Set<MobileObject> objects = new HashSet<MobileObject>();
+			Uri uri = Uri.
+			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+channel);
+			Context context = Registry.getActiveInstance().getContext();
+			
+			ContentResolver resolver = context.getContentResolver();
+			Cursor cursor = resolver.query(uri, 
+			null, 
+			"query", 
+			new String[]{expression.getLhs()+"="+expression.getRhs()}, 
+			null);
+			
+			objects = this.parse(cursor);
+			
+			return objects;
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "readAll", new Object[]{
+				storageId,
+				"Exception="+e.toString(),
+				"Error="+e.getMessage()
+			});
+		}
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	public void syncWithServer(String storageId)
 	{
 		
 	}	
 	//-------------------------------------------------------------------------------------------
-	private List<MobileObject> parse(Cursor cursor)
+	private Set<MobileObject> parse(Cursor cursor)
 	{
-		List<MobileObject> mobileObjects = new ArrayList<MobileObject>();
+		Set<MobileObject> mobileObjects = new HashSet<MobileObject>();
 		
 		if(cursor != null && cursor.getCount()>0)
 		{			

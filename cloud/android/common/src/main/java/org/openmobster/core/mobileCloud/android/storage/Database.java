@@ -153,6 +153,22 @@ public final class Database
 		return this.cloudbMetaData.getCRUDProvider().select(from, recordId);
 	}
 	
+	public Set<Record> select(String from, String name, String value) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "selectWithWhereClause");
+		
+		return this.cloudbMetaData.getCRUDProvider().select(from, name, value);
+	}
+	
+	public Set<Record> selectByValue(String from,String value) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "selectByValue");
+		
+		return this.cloudbMetaData.getCRUDProvider().selectByValue(from,value);
+	}
+	
 	public void update(String into, Record record) throws DBException
 	{
 		//Validate

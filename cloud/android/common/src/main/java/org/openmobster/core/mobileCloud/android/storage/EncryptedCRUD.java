@@ -209,6 +209,18 @@ public class EncryptedCRUD implements CRUDProvider
 		}
 	}
 	
+	public Set<Record> select(String from, String name, String value) throws DBException
+	{
+		//Cannot be implemented as a WHERE clause cannot be used on an encrypted record
+		return null;
+	}
+	
+	public Set<Record> selectByValue(String from, String name) throws DBException
+	{
+		//Cannot be implemented as a WHERE clause cannot be used on an encrypted record
+		return null;
+	}
+	
 	public void update(String table, Record record) throws DBException
 	{
 		try

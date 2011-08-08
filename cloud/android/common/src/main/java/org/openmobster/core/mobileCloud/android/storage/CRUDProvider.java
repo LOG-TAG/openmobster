@@ -17,12 +17,24 @@ import android.database.sqlite.SQLiteDatabase;
 public interface CRUDProvider
 {
 	void init(SQLiteDatabase db);
+	
 	void cleanup();
+	
 	String insert(String table, Record record) throws DBException;
+	
 	Set<Record> selectAll(String from) throws DBException;
+	
 	long selectCount(String from) throws DBException;
+	
 	Record select(String from, String recordId) throws DBException;
+	
+	Set<Record> select(String from, String name, String value) throws DBException;
+	
+	Set<Record> selectByValue(String from, String value) throws DBException;
+	
 	void update(String table, Record record) throws DBException;
+	
 	void delete(String table, Record record) throws DBException;
+	
 	void deleteAll(String table) throws DBException;
 }

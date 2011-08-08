@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.HashSet;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -425,7 +426,7 @@ public final class MobileBean
 	public static boolean isBooted(String channel)
 	{
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		List<MobileObject> allObjects = deviceDB.readAll(channel);
+		Set<MobileObject> allObjects = deviceDB.readAll(channel);
 		
 		return (allObjects !=null && !allObjects.isEmpty());
 	}
@@ -440,17 +441,18 @@ public final class MobileBean
 		
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
 		
-		List<MobileObject> allObjects = deviceDB.readAll(service);
+		Set<MobileObject> allObjects = deviceDB.readAll(service);
 		if(allObjects != null && !allObjects.isEmpty())
 		{
 			//filter out the proxies
 			allObjects = MobileBean.filterProxies(allObjects);
 			int size = allObjects.size();
 			all = new MobileBean[size];
-			for(int i=0; i<size; i++)
+			int i=0;
+			for(MobileObject curr:allObjects)
 			{
-				MobileObject curr = allObjects.get(i);
 				all[i] = new MobileBean(curr);
+				i++;
 			}
 		}
 		
@@ -529,17 +531,18 @@ public final class MobileBean
 			createInstance(names[i], rhs, LogicExpression.OP_EQUALS));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -575,17 +578,18 @@ public final class MobileBean
 			expressions.add(LogicExpression.createInstance(names[i], rhs, LogicExpression.OP_EQUALS));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -621,17 +625,18 @@ public final class MobileBean
 			expressions.add(LogicExpression.createInstance(names[i], rhs, LogicExpression.OP_NOT_EQUALS));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -668,17 +673,18 @@ public final class MobileBean
 			LogicExpression.OP_NOT_EQUALS));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -714,17 +720,18 @@ public final class MobileBean
 			expressions.add(LogicExpression.createInstance(names[i], rhs, LogicExpression.OP_LIKE));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{	
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -760,17 +767,18 @@ public final class MobileBean
 			expressions.add(LogicExpression.createInstance(names[i], rhs, LogicExpression.OP_LIKE));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{	
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -806,17 +814,18 @@ public final class MobileBean
 			expressions.add(LogicExpression.createInstance(names[i], rhs, LogicExpression.OP_CONTAINS));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{	
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -852,17 +861,18 @@ public final class MobileBean
 			expressions.add(LogicExpression.createInstance(names[i], rhs, LogicExpression.OP_CONTAINS));
 		}
 		
-		List<MobileObject> result = MobileObjectDatabase.getInstance().
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
 		query(service, input);		
 		if(result != null && !result.isEmpty())
 		{		
 			result = filterProxies(result);
 			int resultSize = result.size();	
 			beans = new MobileBean[resultSize];
-			for(int i=0; i<resultSize; i++)
+			int i=0;
+			for(MobileObject cour:result)
 			{
-				MobileObject cour = result.get(i);
 				beans[i] = new MobileBean(cour);
+				i++;
 			}
 		}
 		
@@ -917,10 +927,10 @@ public final class MobileBean
 		}
 	}*/	
 	
-	private static List<MobileObject> filterProxies(List<MobileObject> 
+	private static Set<MobileObject> filterProxies(Set<MobileObject> 
 	mobileObjects)
 	{
-		List<MobileObject> filtered = new ArrayList<MobileObject>();
+		Set<MobileObject> filtered = new HashSet<MobileObject>();
 		if(mobileObjects != null)
 		{
 			for(MobileObject mo:mobileObjects)

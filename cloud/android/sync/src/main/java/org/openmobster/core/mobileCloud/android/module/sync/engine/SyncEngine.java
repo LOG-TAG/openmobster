@@ -11,6 +11,7 @@ package org.openmobster.core.mobileCloud.android.module.sync.engine;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 
 import org.openmobster.core.mobileCloud.android.module.mobileObject.DeviceSerializer;
@@ -68,7 +69,7 @@ public class SyncEngine
 			List<AbstractOperation> commands = new ArrayList<AbstractOperation>();
 
 			//Getting all the records of the client since this is a SlowSync
-			List<MobileObject> allRecords = MobileObjectDatabase.getInstance().
+			Set<MobileObject> allRecords = MobileObjectDatabase.getInstance().
 			readAll(storageId);
 			if(allRecords != null)
 			{
