@@ -11,6 +11,8 @@ package org.openmobster.core.mobileCloud.android.module.sync.daemon;
 import java.util.List;
 import java.util.TimerTask;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 import android.content.Context;
 
@@ -74,7 +76,7 @@ final class InitiateProxyTask extends TimerTask
 	private void loadProxies(String channel) throws SyncException
 	{
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		List<MobileObject> allObjects = deviceDB.readAll(channel);
+		Set<MobileObject> allObjects = deviceDB.readAll(channel);
 		
 		if(allObjects != null)
 		{

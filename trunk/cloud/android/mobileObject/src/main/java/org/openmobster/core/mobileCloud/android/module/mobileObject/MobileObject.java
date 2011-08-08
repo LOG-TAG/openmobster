@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.openmobster.core.mobileCloud.android.storage.Record;
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 
 /**
@@ -795,5 +796,41 @@ public final class MobileObject
 	    }
 			    
 		return match;
-	}					
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if(!(o instanceof MobileObject))
+		{
+			return false;
+		}
+		
+		MobileObject incoming = (MobileObject)o;
+		
+		String myRecordId = this.recordId;
+		String incomingRecordId = incoming.recordId;
+		
+		if(myRecordId == null || incomingRecordId == null)
+		{
+			return false;
+		}
+		
+		if(myRecordId.equals(incomingRecordId))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		if(this.recordId == null)
+		{
+			return GeneralTools.generateUniqueId().hashCode();
+		}
+		return this.recordId.hashCode();
+	}	
 }

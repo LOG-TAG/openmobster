@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.android.invocation;
 
 import java.util.List;
+import java.util.Set;
 
 import android.content.Context;
 
@@ -121,7 +122,7 @@ public final class ChannelBootupHandler extends Service implements InvocationHan
 	private boolean isBooted(String channel)
 	{
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		List<MobileObject> allObjects = deviceDB.readAll(channel);
+		Set<MobileObject> allObjects = deviceDB.readAll(channel);
 		
 		return (allObjects !=null && !allObjects.isEmpty());
 	}

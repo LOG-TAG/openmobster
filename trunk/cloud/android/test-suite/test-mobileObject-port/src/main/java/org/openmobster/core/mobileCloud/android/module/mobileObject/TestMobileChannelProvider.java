@@ -67,7 +67,7 @@ public class TestMobileChannelProvider extends Test
 	
 	private void testQueryAll()
 	{
-		List<MobileObject> all = MobileObjectDatabase.getInstance().readAll("email");		
+		Set<MobileObject> all = MobileObjectDatabase.getInstance().readAll("email");		
 		assertTrue(all!=null && !all.isEmpty(),"testQueryAll://objects_not_found");
 		assertEquals(""+all.size(),"5","testQueryAll://#_of_objects_mismatch");
 		
@@ -117,7 +117,7 @@ public class TestMobileChannelProvider extends Test
 		MobileObjectDatabase database = MobileObjectDatabase.getInstance();
 		database.deleteAll("email");
 		
-		List<MobileObject> all = database.readAll("email");	
+		Set<MobileObject> all = database.readAll("email");	
 		assertTrue(all == null || all.isEmpty(),"testDeleteAll://ChannelShouldBeEmpty");
 	}
 }

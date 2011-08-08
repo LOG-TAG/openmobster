@@ -174,6 +174,82 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
+	public Set<Record> select(String from, String name, String value) throws DBException
+	{
+		Cursor cursor = null;
+		try
+		{
+			Set<Record> records = null;
+			
+			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
+			
+			if(cursor.getCount() > 0)
+			{
+				records = new HashSet<Record>();
+				
+				int recordidIndex = cursor.getColumnIndex("recordid");
+				cursor.moveToFirst();
+				do
+				{
+					String recordid = cursor.getString(recordidIndex);
+					
+					Record record = this.select(from, recordid);
+				
+					records.add(record);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return records;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
+	}
+	
+	public Set<Record> selectByValue(String from, String value) throws DBException
+	{
+		Cursor cursor = null;
+		try
+		{
+			Set<Record> records = null;
+			
+			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE value=?", new String[]{value});
+			
+			if(cursor.getCount() > 0)
+			{
+				records = new HashSet<Record>();
+				
+				int recordidIndex = cursor.getColumnIndex("recordid");
+				cursor.moveToFirst();
+				do
+				{
+					String recordid = cursor.getString(recordidIndex);
+					
+					Record record = this.select(from, recordid);
+				
+					records.add(record);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return records;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
+	}
+	
 	public void update(String table, Record record) throws DBException
 	{
 		try

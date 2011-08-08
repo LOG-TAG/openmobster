@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.android.provider;
 
 import java.util.Set;
+import java.util.HashSet;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -66,7 +67,7 @@ public class MobileChannelProvider extends ContentProvider
 					this.prepareCursor(cursor, all);
 				}
 			}
-			else
+			else if(!selection.trim().equals("query"))
 			{
 				String recordId = selection.trim();
 				Record mobileObject = this.read(channel, recordId);
@@ -74,6 +75,30 @@ public class MobileChannelProvider extends ContentProvider
 				{
 					cursor = new MatrixCursor(new String[]{"recordId","name","value"});
 					this.prepareCursor(cursor, mobileObject);
+				}
+			}
+			else
+			{
+				//query using a where clause
+				if(selectionArgs != null && selectionArgs.length>0)
+				{
+					cursor = new MatrixCursor(new String[]{"recordId","name","value"});
+					Set<Record> recordsFound = new HashSet<Record>();
+					for(String arg:selectionArgs)
+					{	
+						int index = arg.indexOf('=');
+						String value = arg.substring(index+1).trim();
+						
+						Set<Record> records = Database.getInstance(context).selectByValue(channel, value);
+						if(records != null && !records.isEmpty())
+						{
+							recordsFound.addAll(records);
+						}
+					}
+					if(!recordsFound.isEmpty())
+					{
+						this.prepareCursor(cursor, recordsFound);
+					}
 				}
 			}
 			

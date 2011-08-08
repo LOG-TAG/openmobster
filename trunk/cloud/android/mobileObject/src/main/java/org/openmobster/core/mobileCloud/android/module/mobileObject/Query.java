@@ -8,8 +8,9 @@
 
 package org.openmobster.core.mobileCloud.android.module.mobileObject;
 
+import java.util.Set;
+import java.util.HashSet;
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * @author openmobster@gmail.com
@@ -34,9 +35,9 @@ final class Query
 		return new Query(logic);
 	}
 	//------------------------------------------------------------------------------------------------------------------------
-	List<MobileObject> executeQuery(List<MobileObject> mobileBeans)
+	Set<MobileObject> executeQuery(Set<MobileObject> mobileBeans)
 	{
-		List<MobileObject> result = new ArrayList<MobileObject>();
+		Set<MobileObject> result = new HashSet<MobileObject>();
 		
 		if(mobileBeans != null)
 		{
