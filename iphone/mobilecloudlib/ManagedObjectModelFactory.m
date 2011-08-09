@@ -260,6 +260,14 @@
     [fields setOptional:YES];
 	[properties addObject:fields];
 	[fields release];
+    
+    //Set nameValuePairs attribute
+	NSAttributeDescription *nameValuePairs = [[NSAttributeDescription alloc] init];
+    [nameValuePairs setName:@"nameValuePairs"];
+    [nameValuePairs setAttributeType:NSStringAttributeType];
+    [nameValuePairs setOptional:YES];
+	[properties addObject:nameValuePairs];
+	[nameValuePairs release];
 	
 	[entity setProperties:properties];
 	

@@ -31,6 +31,7 @@
 @property (nonatomic,retain) NSNumber *createdOnDevice;
 @property (nonatomic,retain) NSNumber *locked;
 @property (nonatomic,retain) NSString *dirtyStatus;
+@property (nonatomic,retain) NSString *nameValuePairs;
 
 +(PersistentMobileObject *) newInstance:(NSString *)channel;
 +(NSArray *) findByChannel:(NSString *) channel;

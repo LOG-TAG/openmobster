@@ -24,6 +24,7 @@
 @dynamic createdOnDevice;
 @dynamic locked;
 @dynamic dirtyStatus;
+@dynamic nameValuePairs;
 
 
 +(PersistentMobileObject *) newInstance:(NSString *)channel
@@ -211,6 +212,18 @@
 	[dictionary setValue:field.name forKey:@"name"];
 	[dictionary setValue:field.value forKey:@"value"];
 	[(NSMutableArray *)self.fields addObject:dictionary];
+    
+    NSString *nameValue = [NSString stringWithFormat:@"name=%@,value=%@",field.name,field.value];
+    
+    if(self.nameValuePairs == nil)
+    {
+        self.nameValuePairs = @"";
+    }
+    
+    NSMutableString *buffer = [NSMutableString stringWithString:self.nameValuePairs];
+    [buffer appendFormat:@"%@%@",nameValue,@"|"];
+    
+    self.nameValuePairs = [NSString stringWithString:buffer];
 }
 
 -(NSArray *)parseFields
@@ -227,7 +240,7 @@
 			
 			Field *field = [Field withInit:uri name:name value:value];
 			[local addObject:field];
-		}
+        }
 	}
 	
 	return [NSArray arrayWithArray:local];

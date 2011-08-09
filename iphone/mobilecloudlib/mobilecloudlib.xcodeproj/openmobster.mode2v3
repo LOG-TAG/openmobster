@@ -295,7 +295,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>0 453 446 419 0 0 1440 878 </string>
+								<string>1582 459 446 419 1440 180 1280 720 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -434,8 +434,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A23FBF2413D4A382006B48C6</string>
-				<string>A23FBF2513D4A382006B48C6</string>
+				<string>A23FBFFB13D8918A006B48C6</string>
+				<string>A23FBFFC13D8918A006B48C6</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -478,7 +478,7 @@
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/mobilecloudlib.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 453 446 419 0 0 1440 878 </string>
+	<string>1582 459 446 419 1440 180 1280 720 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -694,7 +694,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A23FBF2613D4A382006B48C6</string>
+				<string>A23FBFFD13D8918A006B48C6</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
