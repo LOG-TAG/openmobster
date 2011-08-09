@@ -10,6 +10,7 @@
 
 
 @implementation MobileObjectTests
+/*
 - (void) testFieldEquals 
 {
 	NSLog(@"Starting testFieldEquals............");
@@ -451,9 +452,72 @@
 	[database deleteAll:@"myChannel"];
 	NSArray *all = [database readAll:@"myChannel"];
 	STAssertTrue(all == nil || [all count] == 0,nil);
+}*/
+
+-(void) testNSPredicateBasedFetching
+{
+	NSLog(@"Starting NSPredicatedBasedFetching......");
+	
+    for(int i=0; i<5; i++)
+    {
+        PersistentMobileObject *pm = [PersistentMobileObject newInstance:@"channel"];
+        pm.oid = [NSString stringWithFormat:@"%d",i];
+	
+        for(int j=0; j<5; j++)
+        {
+            NSString *uri = [NSString stringWithFormat:@"/%d/%d/uri",i,j];
+            NSString *name = [NSString stringWithFormat:@"/%d/%d/name",i,j];
+            NSString *value = [NSString stringWithFormat:@"/%d/%d/value",i,j];
+            Field *field = [Field withInit:uri name:name value:value];
+            [pm addField:field];
+        }
+	
+        for(int k=0; k<5; k++)
+        {
+            NSString *arrayUri = [NSString stringWithFormat:@"%d/arrayUri",k];
+            NSString *arrayLength = [NSString stringWithFormat:@"%d/arrayLength",k];
+            NSString *arrayClass = [NSString stringWithFormat:@"%d/arrayClass",k];
+            ArrayMetaData *arrayMetaData = [ArrayMetaData withInit:arrayUri 
+                                                   arrayLength:arrayLength arrayClass:arrayClass];
+            [pm addArrayMetaData:arrayMetaData];
+        }
+	
+        [pm saveInstance];
+    }
+    
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Filter using a predicate
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"service == %@", @"channel"];
+    //[request setPredicate:predicate];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(nameValuePairs contains %@) AND (nameValuePairs contains %@)", @"name=/0/0/name",@"value=/0/0/value"];
+    [request setPredicate:predicate];
+    
+    NSArray *all = [managedContext executeFetchRequest:request error:NULL];
+    
+    //filter by predicate
+    if(all != nil)
+    {
+        NSLog(@"*******************************");
+        for(PersistentMobileObject *local in all)
+        {
+            NSLog(@"OID: %@",local.oid);
+            NSLog(@"NameValuePairs: %@",local.nameValuePairs);
+        }
+        NSLog(@"*******************************");
+    }
 }
+
 //-----------------------------------------------------------------------------------------
--(MobileObject *) createPOJOWithStrings:(NSString *)value
+/*-(MobileObject *) createPOJOWithStrings:(NSString *)value
 {
 	MobileObject *mobileObject = [MobileObject withInit];
 	mobileObject.recordId = @"recordId";
@@ -532,4 +596,5 @@
 		NSLog(@"Fields Not Found!!!");
 	}
 }
+*/
 @end
