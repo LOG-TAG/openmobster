@@ -16,19 +16,27 @@
 @implementation MobileBeanMetaData
 
 @synthesize service;
-@synthesize id;
+@synthesize oid;
 @synthesize deleted;
 
-+(MobileBeanMetaData *)withInit:(NSString *)service :(NSString *)id
++(MobileBeanMetaData *)withInit:(NSString *)service :(NSString *)oid
 {
 	MobileBeanMetaData *instance = [[MobileBeanMetaData alloc] init];
 	
 	instance = [instance autorelease];
 	
-	instance->service = service;
-	instance->id = id;
+	instance.service = service;
+	instance.oid = oid;
 	instance.deleted = NO;
 	
 	return instance;
+}
+
+-(void) dealloc
+{
+    [service release];
+    [oid release];
+    
+    [super dealloc];
 }
 @end

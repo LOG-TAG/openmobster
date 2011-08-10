@@ -7,6 +7,9 @@
  */
 
 #import "MobileObjectDatabase.h"
+#import "LogicChain.h"
+#import "LogicExpression.h"
+#import "Query.h"
 
 
 /**
@@ -101,9 +104,78 @@
 	[PersistentMobileObject deleteAll:channel];
 }
 
--(NSArray *)query:(NSString *)channel:(GenericAttributeManager *)queryAttributes
+-(NSSet *)query:(NSString *)channel:(GenericAttributeManager *)queryAttributes
 {
-	//TODO: implement me
-	return nil;
+    //Find the Logic Link
+    int logicLink = AND; //default value
+    NSNumber *logicLinkAttribute = [queryAttributes getAttribute:@"logicLink"];
+    if(logicLinkAttribute != nil)
+    {
+        logicLink = [logicLinkAttribute intValue];
+    }
+    
+    //Setup the expressions
+    NSArray *expressions = (NSArray *)[queryAttributes getAttribute:@"expressions"];
+    if(expressions == nil || [expressions count] == 0)
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Query structure is improper!!",nil];
+        SystemException *sys = [SystemException withContext:@"MobileObjectDatabase" method:@"query" parameters:params];
+        @throw sys;
+    }
+    
+    //Establish the LogicChain
+    LogicChain *chain = nil;
+    switch(logicLink)
+    {
+        case AND:
+            chain = [LogicChain createANDChain];					
+            break;
+            
+        case OR:
+            chain = [LogicChain createORChain];
+            break;
+            
+        default:
+            break;
+    }
+    if(chain == nil)
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Query structure is improper!!",nil];
+        SystemException *sys = [SystemException withContext:@"MobileObjectDatabase" method:@"query" parameters:params];
+        @throw sys;
+    }
+    
+    //Now get possible matches of records for each expression
+    NSMutableSet *result = [NSMutableSet set];
+    for(LogicExpression *courExpr in expressions)
+    {
+        [chain addExpression:courExpr];
+        
+        //get beans that match this expression
+        NSSet *matchedBeans = [self logicExpressionBeans:channel :courExpr];
+        if(matchedBeans != nil)
+        {
+            [result unionSet:matchedBeans];
+        }
+    }
+    
+    Query *query = [Query createInstance:chain];
+    NSSet *queryResults = [query executeQuery:result];
+    
+    return queryResults;
+}
+
+-(NSSet *)logicExpressionBeans:(NSString *) channel :(LogicExpression *) expression
+{
+    NSMutableSet *result = [NSMutableSet set];
+    
+    NSArray *all = [self readAll:channel];
+    
+    for(MobileObject *local in all)
+    {
+        [result addObject:local];
+    }
+    
+    return result;
 }
 @end

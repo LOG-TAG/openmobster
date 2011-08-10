@@ -16,14 +16,14 @@
 {
 	@private
 	NSString *service;
-	NSString *id;
+	NSString *oid;
 	BOOL deleted;
 }
 
-@property (nonatomic,assign,readonly) NSString *service;
-@property (nonatomic,assign,readonly) NSString *id;
+@property (nonatomic,retain) NSString *service;
+@property (nonatomic,retain) NSString *oid;
 @property (nonatomic,assign) BOOL deleted;
 
-+(MobileBeanMetaData *)withInit:(NSString *)service :(NSString *)id;
++(MobileBeanMetaData *)withInit:(NSString *)service :(NSString *)oid;
 
 @end

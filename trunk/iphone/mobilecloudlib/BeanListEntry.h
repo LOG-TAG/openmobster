@@ -22,7 +22,8 @@
 }
 
 @property (assign) int index;
-@property (assign) NSString *listProperty;
+@property (nonatomic,retain) NSString *listProperty;
+@property (nonatomic,retain) NSMutableDictionary *properties;
 
 +(BeanListEntry *)withInit:(int) index :(NSDictionary *) properties :(NSString *)listProperty;
 

@@ -7,6 +7,8 @@
 #import "Field.h"
 #import "ArrayMetaData.h"
 #import "MobileObjectDatabase.h"
+#import "LogicExpression.h"
+#import "LogicChain.h"
 
 
 @implementation MobileObjectTests
@@ -452,7 +454,7 @@
 	[database deleteAll:@"myChannel"];
 	NSArray *all = [database readAll:@"myChannel"];
 	STAssertTrue(all == nil || [all count] == 0,nil);
-}*/
+}
 
 -(void) testNSPredicateBasedFetching
 {
@@ -514,6 +516,68 @@
         }
         NSLog(@"*******************************");
     }
+}*/
+
+-(void) testQueryByEqualsAll
+{
+    NSLog(@"Starting testQueryByEqualsAll.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+	MobileObject *mobileObject = [MobileObject withInit];
+	mobileObject.service = @"myChannel";
+	NSString *oid = [database create:mobileObject];
+	NSLog(@"OID: %@",oid);
+	STAssertTrue(oid != nil,nil);
+	
+	//Read this mobileObject
+	mobileObject = [database read:@"myChannel":oid];
+	NSLog(@"OID: %@",mobileObject.recordId);
+	STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+	
+	//Update this mobileobject
+	NSLog(@"Before Update.................................");
+	NSLog(@"ServerRecordId: %@",mobileObject.serverRecordId);
+	NSLog(@"IsProxy: %d",(int)mobileObject.proxy);
+	NSLog(@"DirtyStatus: %@",mobileObject.dirtyStatus);
+	mobileObject.serverRecordId = @"serverRecordId";
+	mobileObject.proxy = YES;
+	mobileObject.createdOnDevice = YES;
+	mobileObject.locked = YES;
+	//mobileObject.dirtyStatus = @"true";
+	
+	for(int i=0; i<5; i++)
+	{
+		NSString *uri = [NSString stringWithFormat:@"%d/uri",i];
+		NSString *name = [NSString stringWithFormat:@"%d/name",i];
+		NSString *value = [NSString stringWithFormat:@"%d/value",i];
+		Field *field = [Field withInit:uri name:name value:value];
+		[mobileObject addField:field];
+	}
+	
+	[database update:mobileObject];
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"name" :@"0/name" :OP_EQUALS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"value" :@"0/value" :OP_EQUALS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    NSLog(@"%d number of objects found",[result count]);
 }
 
 //-----------------------------------------------------------------------------------------

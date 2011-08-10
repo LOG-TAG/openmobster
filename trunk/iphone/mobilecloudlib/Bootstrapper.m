@@ -47,8 +47,8 @@
 	[activationUtil activateDevice:suite];
 	
 	//Startup the UIKernel
-	UIKernel *uiKernel = [UIKernel getInstance];
-	[uiKernel startup:nil];
+	//UIKernel *uiKernel = [UIKernel getInstance];
+	//[uiKernel startup:nil];
 	
 	return suite;
 }

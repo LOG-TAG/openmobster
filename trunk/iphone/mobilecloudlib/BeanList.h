@@ -20,7 +20,8 @@
 	NSString *listProperty;
 }
 
-@property(nonatomic,assign,readonly)NSString *listProperty;
+@property(nonatomic,retain)NSString *listProperty;
+@property(nonatomic,retain)NSMutableArray *entries;
 
 +(id)withInit:(NSString *)listProperty;
 

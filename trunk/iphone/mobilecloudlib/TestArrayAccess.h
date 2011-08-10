@@ -23,4 +23,7 @@
 }
 
 +(id)withInit;
+
+-(void) accessArrays:(NSArray *)beans;
+-(void) accessArray:(BeanList *)emails;
 @end
