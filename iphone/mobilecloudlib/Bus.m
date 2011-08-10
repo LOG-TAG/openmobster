@@ -53,15 +53,16 @@
 	
 	
 	//Read the shared configuration payload from the pasteboard
-	NSString *confXml = (NSString *)[sharedConf valueForPasteboardType:@"public.utf8-plain-text"];
-	//NSLog(@"Bus:ConfXml:%@",confXml);
-	if([StringUtil isEmpty:confXml])
-	{
-		//NSLog(@"Bus:PostingMyConf to system");
+	NSData *xmlData = [sharedConf dataForPasteboardType:@"public.utf8-plain-text"];
+    if(xmlData == nil)
+    {
+        //NSLog(@"Bus:PostingMyConf to system");
 		//write your own conf to the pasteboard
 		[self postSharedConf:myConf];
-		return;
-	}
+		return; 
+    }
+    
+    NSString* confXml = [[NSString alloc] initWithData:xmlData encoding:NSUTF8StringEncoding];
 	
 	//A Configuration found on the pasteboard...this will be the latest, replace my own
 	//conf with this one...90% of times these are the same
@@ -369,7 +370,7 @@
 		if(![StringUtil isEmpty:string])
 		{
 			[dataBuffer appendString:string];
-		}		
+		}	
 	}
 }
 @end

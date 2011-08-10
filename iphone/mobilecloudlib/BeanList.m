@@ -16,17 +16,26 @@
 @implementation BeanList
 
 @synthesize listProperty;
+@synthesize entries;
 
 
 +(id)withInit:(NSString *)listProperty
 {
 	BeanList *instance = [[BeanList alloc] init];
 	
-	instance->listProperty = listProperty;
-	instance->entries = [NSMutableArray array];
+	instance.listProperty = listProperty;
+	instance.entries = [NSMutableArray array];
 	
 	instance = [instance autorelease];
 	return instance;
+}
+
+-(void) dealloc
+{
+    [listProperty release];
+    [entries release];
+    
+    [super dealloc];
 }
 
 -(int)size

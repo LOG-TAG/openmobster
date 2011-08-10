@@ -3,9 +3,9 @@
 @interface Service : NSObject 
 {
 	@private
-	NSString *id;
+	NSString *oid;
 }
 
-@property (assign) NSString *id;
+@property (nonatomic,retain) NSString *oid;
 
 @end

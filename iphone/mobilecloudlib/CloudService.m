@@ -45,13 +45,13 @@ static CloudService *singleton = nil;
 {
 	[super dealloc];
 	
-	[self.kernel release];
-	[self.bootupKernel release];
-	[self.uiKernel release];
+	[kernel release];
+	[bootupKernel release];
+	[uiKernel release];
 	
-	if(self.viewController != nil)
+	if(viewController != nil)
 	{
-		[self.viewController release];
+		[viewController release];
 	}
 }
 

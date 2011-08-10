@@ -32,8 +32,48 @@
 	[self assertRecordPresence:@"unique-3" :@"/TestSimpleAccess/add"];
 	[self assertRecordPresence:@"unique-4" :@"/TestSimpleAccess/add"];
 	
-	NSArray *beans = [MobileBean readAll:channel];
-	for(MobileBean *bean in beans)
+	NSArray *beans = nil;
+	BeanList *emails = nil;
+    
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    
+    NSLog(@"******************Inside the Pool*****************");
+    
+    beans = [MobileBean readAll:channel];
+    [beans retain];
+    
+    for(MobileBean *local in beans)
+    {
+        emails = [local readList:@"emails"];
+        
+        if([emails size] > 0)
+        {
+            break;
+        }
+    }
+    [emails retain];
+    
+	[self accessArray:emails];
+    
+    [pool drain];
+	
+    NSLog(@"******************Outside the Pool*****************");
+    
+    [self accessArrays:beans];
+    [self accessArray:emails];
+	
+	[self tearDown];
+}
+
+-(NSString *) getInfo
+{
+	NSString *info = [NSString stringWithFormat:@"%@%@",[[self class] description],@"TwoWaySync"];
+	return info;
+}
+
+-(void) accessArrays:(NSArray *)beans
+{
+    for(MobileBean *bean in beans)
 	{
 		NSString *beanChannel = [bean getChannel];
 		NSString *oid = [bean getId];
@@ -70,14 +110,24 @@
 		}
 		NSLog(@"****************************************************");
 	}	
-	
-	
-	[self tearDown];
 }
 
--(NSString *) getInfo
+-(void) accessArray:(BeanList *)emails
 {
-	NSString *info = [NSString stringWithFormat:@"%@%@",[[self class] description],@"TwoWaySync"];
-	return info;
+    int size = [emails size];
+    for(int i=0; i<size; i++)
+    {
+        BeanListEntry *local = [emails entryAt:i];
+        NSString *from = [local getProperty:@"from"];
+        NSString *to = [local getProperty:@"to"];
+        NSString *subject = [local getProperty:@"subject"];
+        NSString *message = [local getProperty:@"message"];
+        
+        NSLog(@"UID: %@",[local getProperty:@"uid"]);
+        NSLog(@"From: %@",from);
+        NSLog(@"To: %@",to);
+        NSLog(@"Subject: %@",subject);
+        NSLog(@"Message: %@",message);
+    }
 }
 @end

@@ -2,6 +2,12 @@
 
 @implementation Service
 
-@synthesize id;
+@synthesize oid;
+
+-(void) dealloc
+{
+    [oid release];
+    [super dealloc];
+}
 
 @end

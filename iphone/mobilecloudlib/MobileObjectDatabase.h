@@ -13,6 +13,7 @@
 #import "GenericAttributeManager.h"
 #import "PersistentMobileObject.h"
 #import "SystemException.h"
+#import "LogicExpression.h"
 
 /**
  * 
@@ -37,6 +38,10 @@
 
 -(void)deleteAll:(NSString *)channel;
 
--(NSArray *)query:(NSString *)channel:(GenericAttributeManager *)queryAttributes;
+-(NSSet *)query:(NSString *)channel:(GenericAttributeManager *)queryAttributes;
+
+
+//internally used
+-(NSSet *)logicExpressionBeans:(NSString *) channel :(LogicExpression *) expression;
 
 @end

@@ -17,6 +17,7 @@
 
 @synthesize index;
 @synthesize listProperty;
+@synthesize properties;
 
 
 +(BeanListEntry *)withInit:(int) index :(NSDictionary *)properties :(NSString *)listProperty
@@ -24,12 +25,19 @@
 	BeanListEntry *instance = [[BeanListEntry alloc] init];
 	
 	instance.index = index;
-	instance->properties = [NSMutableDictionary dictionaryWithDictionary:properties];
+	instance.properties = [NSMutableDictionary dictionaryWithDictionary:properties];
 	instance.listProperty = listProperty;
 	
 	instance = [instance autorelease];
 	
 	return instance;
+}
+
+-(void)dealloc
+{
+    [properties release];
+    [listProperty release];
+    [super dealloc];
 }
 
 -(NSString *) getProperty:(NSString *)propertyExpression
