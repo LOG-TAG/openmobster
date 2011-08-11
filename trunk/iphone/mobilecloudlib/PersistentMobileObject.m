@@ -53,24 +53,14 @@
 	//Get an instance if its already been provisioned
 	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
 	[request setEntity:entity];
+    
+    //find by channel
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@)",channel];
+    [request setPredicate:predicate];
 	
 	NSArray *all = [managedContext executeFetchRequest:request error:NULL];
 	
-	//filter by service
-	NSMutableArray *localArray = [NSMutableArray array];
-	if(all != nil)
-	{
-		for(PersistentMobileObject *local in all)
-		{
-			NSString *stored = local.service;
-			if([stored isEqualToString:channel])
-			{
-				[localArray addObject:local];
-			}
-		}
-	}
-	
-	return [NSArray arrayWithArray:localArray];
+	return [NSArray arrayWithArray:all];
 }
 
 +(PersistentMobileObject *) findByOID:(NSString *) oid
@@ -83,20 +73,17 @@
 	//Get an instance if its already been provisioned
 	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
 	[request setEntity:entity];
+    
+    //find by oid
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(oid == %@)",oid];
+    [request setPredicate:predicate];
 	
 	NSArray *all = [managedContext executeFetchRequest:request error:NULL];
 	
 	//filter by oid
-	if(all != nil)
+	if(all != nil && [all count] >0)
 	{
-		for(PersistentMobileObject *local in all)
-		{
-			NSString *stored = local.oid;
-			if([stored isEqualToString:oid])
-			{
-				return local;
-			}
-		}
+		return (PersistentMobileObject *)[all objectAtIndex:0];
 	}
 	
 	return nil;
@@ -142,7 +129,7 @@
 
 +(BOOL) deleteAll:(NSString *)channel
 {
-	NSArray *all = [PersistentMobileObject all];
+	NSArray *all = [PersistentMobileObject findByChannel:channel];
 	
 	if(all != nil)
 	{
@@ -150,11 +137,7 @@
 		
 		for(PersistentMobileObject *local in all)
 		{
-			NSString *storedChannel = local.service;
-			if([storedChannel isEqualToString:channel])
-			{
-				[managedContext deleteObject:local];
-			}
+			[managedContext deleteObject:local];
 		}
 	
 		NSError* error;

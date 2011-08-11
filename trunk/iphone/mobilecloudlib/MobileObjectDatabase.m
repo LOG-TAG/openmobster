@@ -169,13 +169,54 @@
 {
     NSMutableSet *result = [NSMutableSet set];
     
-    NSArray *all = [self readAll:channel];
+    NSString *lhs = expression.lhs;
+    NSString *rhs = expression.rhs;
     
-    for(MobileObject *local in all)
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    NSString *lhsExpression = [NSString stringWithFormat:@"name=%@",lhs];
+    NSString *rhsExpression = [NSString stringWithFormat:@"value=%@",rhs];
+    
+    NSArray *stored = nil;
+    if(expression.op == OP_EQUALS || expression.op == OP_NOT_EQUALS)
     {
-        [result addObject:local];
+        if(expression.op == OP_EQUALS)
+        {
+            //EqualToQuery
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@) AND (nameValuePairs contains %@) AND (nameValuePairs contains %@)",channel, lhsExpression, rhsExpression];
+            [request setPredicate:predicate];
+        }
+        else if(expression.op == OP_NOT_EQUALS)
+        {
+            //NotEqualToQuery
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@) AND (nameValuePairs contains %@) AND (NONE nameValuePairs contains %@)",channel, lhsExpression, rhsExpression];  
+            [request setPredicate:predicate];
+        }
+        
+        stored = [managedContext executeFetchRequest:request error:NULL];
+        
+        //filter by predicate
+        if(stored != nil)
+        {
+            for(PersistentMobileObject *local in stored)
+            {
+                [result addObject:[local parseMobileObject]];
+            }
+        }
     }
-    
+    else
+    {
+        //In case of LIKE and CONTAINS queries
+        result = [self readAll:channel];
+    }
+
     return result;
 }
 @end
