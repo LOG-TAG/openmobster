@@ -1,3 +1,6 @@
+The build system is now upgraded to Maven 3.0.3. You must use this so that the maven-android-plugin works fine
+
+
 Generate a Binary Release (includes documents, source code, and deployable binaries)
 ------------------------------------------------------------------------------------
 
