@@ -7,6 +7,7 @@
  */
 
 #import "MobileObject.h"
+#import "GeneralTools.h"
 
 
 /**
@@ -571,4 +572,41 @@
 	}
 	[self.arrayMetaData addObject:local];
 }
+//-----------------Equality related-------------------------------------------------------------------------------------------
+- (BOOL)isEqual:(id)o
+{
+    if(o == nil || ![o isKindOfClass:[self class]])
+    {
+        return NO;
+    }
+    
+    MobileObject *incoming = (MobileObject *)o;
+    
+    NSString *incomingRecordId = incoming.recordId;
+    NSString *myRecordId = self.recordId;
+    
+    if(incomingRecordId == nil || myRecordId == nil)
+    {
+        return NO;
+    }
+    
+    if([myRecordId isEqualToString:incomingRecordId])
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (NSUInteger)hash
+{
+    if(self.recordId == nil)
+    {
+        NSString *random = [GeneralTools generateUniqueId];
+        return [random hash];
+    }
+    
+    return [self.recordId hash];
+}
+
 @end

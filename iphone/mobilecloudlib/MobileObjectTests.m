@@ -12,7 +12,7 @@
 
 
 @implementation MobileObjectTests
-/*
+
 - (void) testFieldEquals 
 {
 	NSLog(@"Starting testFieldEquals............");
@@ -455,36 +455,436 @@
 	NSArray *all = [database readAll:@"myChannel"];
 	STAssertTrue(all == nil || [all count] == 0,nil);
 }
+ 
+-(void) testQueryByEqualsAND
+{
+    NSLog(@"Starting testQueryByEqualsAND.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+    for(int i=0; i<5; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+	
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+	
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+	
+        [database update:mobileObject];
+    }
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"from" :@"0/from/value" :OP_EQUALS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"to" :@"0/to/value" :OP_EQUALS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    //Query
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    //Assert
+    NSLog(@"%d number of objects found",[result count]);
+    STAssertTrue([result count]==1,nil);
+    
+    for(MobileObject *found in result)
+    {
+        NSString *from = [found getValue:@"from"];
+        NSString *to = [found getValue:@"to"];
+        
+        NSLog(@"From: %@",from);
+        NSLog(@"To: %@",to);
+        
+        STAssertTrue([from isEqualToString:@"0/from/value"],nil);
+        STAssertTrue([to isEqualToString:@"0/to/value"],nil);
+    }
+}
+-(void) testQueryByEqualsOR
+{
+    NSLog(@"Starting testQueryByOR.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+    for(int i=0; i<5; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+        
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+        
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+        
+        [database update:mobileObject];
+    }
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:OR]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"from" :@"0/from/value" :OP_EQUALS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"to" :@"1/to/value" :OP_EQUALS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    //Query
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    //Assert
+    NSLog(@"%d number of objects found",[result count]);
+    STAssertTrue([result count]==2,nil);
+    
+    for(MobileObject *found in result)
+    {
+        NSString *from = [found getValue:@"from"];
+        NSString *to = [found getValue:@"to"];
+        
+        NSLog(@"From: %@",from);
+        NSLog(@"To: %@",to);
+        
+        STAssertTrue([from isEqualToString:@"0/from/value"] || [from isEqualToString:@"1/from/value"],nil);
+        STAssertTrue([to isEqualToString:@"0/to/value"] || [to isEqualToString:@"1/to/value"],nil);
+    }
+}
+
+-(void) testQueryByNotEqualsAND
+{
+    NSLog(@"Starting testQueryByNotEqualsAND.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+    for(int i=0; i<5; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+        
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+        
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+        
+        [database update:mobileObject];
+    }
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"from" :@"0/from/value" :OP_NOT_EQUALS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"to" :@"1/to/value" :OP_NOT_EQUALS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    //Query
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    //Assert
+    NSLog(@"%d number of objects found",[result count]);
+    STAssertTrue([result count]==3,nil);
+    
+    for(MobileObject *found in result)
+    {
+        NSString *from = [found getValue:@"from"];
+        NSString *to = [found getValue:@"to"];
+        
+        NSLog(@"From: %@",from);
+        NSLog(@"To: %@",to);
+        
+        STAssertTrue(![from isEqualToString:@"0/from/value"] && ![from isEqualToString:@"1/from/value"],nil);
+        STAssertTrue(![to isEqualToString:@"0/to/value"] && ![to isEqualToString:@"1/to/value"],nil);
+    }
+}
+-(void) testQueryByNotEqualsOR
+{
+    NSLog(@"Starting testQueryByNotEqualsOR.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+    for(int i=0; i<5; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+        
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+        
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+        
+        [database update:mobileObject];
+    }
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:OR]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"from" :@"0/from/value" :OP_NOT_EQUALS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"to" :@"1/to/value" :OP_NOT_EQUALS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    //Query
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    //Assert
+    NSLog(@"%d number of objects found",[result count]);
+    STAssertTrue([result count]==5,nil);
+}
+-(void) testQueryByContainsAND
+{
+    NSLog(@"Starting testQueryByContainsAND.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+    for(int i=0; i<5; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+        
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+        
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+        
+        [database update:mobileObject];
+    }
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"from" :@"from/value" :OP_CONTAINS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"to" :@"to/value" :OP_CONTAINS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    //Query
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    //Assert
+    NSLog(@"%d number of objects found",[result count]);
+    STAssertTrue([result count]==5,nil);
+}
+
+-(void) testQueryByContainsOR
+{
+    NSLog(@"Starting testQueryByContainsOR.........");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+	
+	//Create and store mobileobjects
+    for(int i=0; i<5; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+        
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+        
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+        
+        [database update:mobileObject];
+    }
+    
+    //Setup the criteria
+    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+    
+    //Logic Link
+    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:OR]];
+    
+    //Create expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    LogicExpression *expression1 = [LogicExpression withInit:@"from" :@"from/value" :OP_CONTAINS];
+    LogicExpression *expression2 = [LogicExpression withInit:@"to" :@"blahblah" :OP_CONTAINS];
+    [expressions addObject:expression1];
+    [expressions addObject:expression2];
+    [criteria setAttribute:@"expressions" :expressions];
+    
+    //Query
+    NSSet *result = [database query:@"myChannel" :criteria];
+    
+    //Assert
+    NSLog(@"%d number of objects found",[result count]);
+    STAssertTrue([result count]==5,nil);
+}
 
 -(void) testNSPredicateBasedFetching
 {
 	NSLog(@"Starting NSPredicatedBasedFetching......");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
 	
+    //Create and store mobileobjects
     for(int i=0; i<5; i++)
     {
-        PersistentMobileObject *pm = [PersistentMobileObject newInstance:@"channel"];
-        pm.oid = [NSString stringWithFormat:@"%d",i];
-	
-        for(int j=0; j<5; j++)
-        {
-            NSString *uri = [NSString stringWithFormat:@"/%d/%d/uri",i,j];
-            NSString *name = [NSString stringWithFormat:@"/%d/%d/name",i,j];
-            NSString *value = [NSString stringWithFormat:@"/%d/%d/value",i,j];
-            Field *field = [Field withInit:uri name:name value:value];
-            [pm addField:field];
-        }
-	
-        for(int k=0; k<5; k++)
-        {
-            NSString *arrayUri = [NSString stringWithFormat:@"%d/arrayUri",k];
-            NSString *arrayLength = [NSString stringWithFormat:@"%d/arrayLength",k];
-            NSString *arrayClass = [NSString stringWithFormat:@"%d/arrayClass",k];
-            ArrayMetaData *arrayMetaData = [ArrayMetaData withInit:arrayUri 
-                                                   arrayLength:arrayLength arrayClass:arrayClass];
-            [pm addArrayMetaData:arrayMetaData];
-        }
-	
-        [pm saveInstance];
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+        
+        //Read this mobileObject
+        mobileObject = [database read:@"myChannel":oid];
+        NSLog(@"OID (Stored): %@",mobileObject.recordId);
+        STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
+        
+        NSString *uri = @"/from";
+        NSString *name = @"from";
+        NSString *value = [NSString stringWithFormat:@"%d/from/value",i];
+        Field *field = [Field withInit:uri name:name value:value];
+        [mobileObject addField:field];
+        
+        NSString *to = @"/to";
+        NSString *toName = @"to";
+        NSString *toValue = [NSString stringWithFormat:@"%d/to/value",i];
+        Field *toField = [Field withInit:to name:toName value:toValue];
+        [mobileObject addField:toField];
+        
+        [database update:mobileObject];
     }
     
     //Get the Storage Context
@@ -500,7 +900,7 @@
     //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"service == %@", @"channel"];
     //[request setPredicate:predicate];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(nameValuePairs contains %@) AND (nameValuePairs contains %@)", @"name=/0/0/name",@"value=/0/0/value"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@) AND (nameValuePairs contains %@) AND (nameValuePairs contains %@)",@"myChannel", @"name=from",@"value=0/from/value"];
     [request setPredicate:predicate];
     
     NSArray *all = [managedContext executeFetchRequest:request error:NULL];
@@ -516,72 +916,9 @@
         }
         NSLog(@"*******************************");
     }
-}*/
-
--(void) testQueryByEqualsAll
-{
-    NSLog(@"Starting testQueryByEqualsAll.........");
-    
-    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
-	[database autorelease];
-    
-    [database deleteAll:@"myChannel"];
-	
-	//Create and store mobileobjects
-	MobileObject *mobileObject = [MobileObject withInit];
-	mobileObject.service = @"myChannel";
-	NSString *oid = [database create:mobileObject];
-	NSLog(@"OID: %@",oid);
-	STAssertTrue(oid != nil,nil);
-	
-	//Read this mobileObject
-	mobileObject = [database read:@"myChannel":oid];
-	NSLog(@"OID: %@",mobileObject.recordId);
-	STAssertTrue([mobileObject.recordId isEqualToString:oid],nil);
-	
-	//Update this mobileobject
-	NSLog(@"Before Update.................................");
-	NSLog(@"ServerRecordId: %@",mobileObject.serverRecordId);
-	NSLog(@"IsProxy: %d",(int)mobileObject.proxy);
-	NSLog(@"DirtyStatus: %@",mobileObject.dirtyStatus);
-	mobileObject.serverRecordId = @"serverRecordId";
-	mobileObject.proxy = YES;
-	mobileObject.createdOnDevice = YES;
-	mobileObject.locked = YES;
-	//mobileObject.dirtyStatus = @"true";
-	
-	for(int i=0; i<5; i++)
-	{
-		NSString *uri = [NSString stringWithFormat:@"%d/uri",i];
-		NSString *name = [NSString stringWithFormat:@"%d/name",i];
-		NSString *value = [NSString stringWithFormat:@"%d/value",i];
-		Field *field = [Field withInit:uri name:name value:value];
-		[mobileObject addField:field];
-	}
-	
-	[database update:mobileObject];
-    
-    //Setup the criteria
-    GenericAttributeManager *criteria = [GenericAttributeManager withInit];
-    
-    //Logic Link
-    [criteria setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
-    
-    //Create expressions
-    NSMutableArray *expressions = [NSMutableArray array];
-    LogicExpression *expression1 = [LogicExpression withInit:@"name" :@"0/name" :OP_EQUALS];
-    LogicExpression *expression2 = [LogicExpression withInit:@"value" :@"0/value" :OP_EQUALS];
-    [expressions addObject:expression1];
-    [expressions addObject:expression2];
-    [criteria setAttribute:@"expressions" :expressions];
-    
-    NSSet *result = [database query:@"myChannel" :criteria];
-    
-    NSLog(@"%d number of objects found",[result count]);
 }
-
 //-----------------------------------------------------------------------------------------
-/*-(MobileObject *) createPOJOWithStrings:(NSString *)value
+-(MobileObject *) createPOJOWithStrings:(NSString *)value
 {
 	MobileObject *mobileObject = [MobileObject withInit];
 	mobileObject.recordId = @"recordId";
@@ -626,6 +963,7 @@
 	
 	return mobileObject;
 }
+
 -(void) print:(MobileObject *)mobileObject
 {
 	NSArray *fields = mobileObject.fields;
@@ -660,5 +998,4 @@
 		NSLog(@"Fields Not Found!!!");
 	}
 }
-*/
 @end

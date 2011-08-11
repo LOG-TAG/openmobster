@@ -126,7 +126,7 @@
         case OR:
             if(exprMatchCount > 0)
             {
-                return true;
+                return YES;
             }
             break;
             
