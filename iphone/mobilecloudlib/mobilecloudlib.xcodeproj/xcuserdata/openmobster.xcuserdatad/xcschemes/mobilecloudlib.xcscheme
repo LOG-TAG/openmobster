@@ -21,15 +21,29 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2DF3E011225C1EF004C908F"
+               BuildableName = "mobileObjectTests.octest"
+               BlueprintName = "mobileObjectTests"
+               ReferencedContainer = "container:mobilecloudlib.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2DF3E011225C1EF004C908F"
-               BuildableName = "mobileObjectTests.octest"
-               BlueprintName = "mobileObjectTests"
+               BlueprintIdentifier = "A29D5C281293412A00DAE753"
+               BuildableName = "apiTests.octest"
+               BlueprintName = "apiTests"
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,7 +76,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A29D5C281293412A00DAE753"
@@ -72,7 +86,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E011225C1EF004C908F"

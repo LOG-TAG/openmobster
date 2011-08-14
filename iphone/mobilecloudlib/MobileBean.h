@@ -60,6 +60,13 @@
 -(void)addBean:(NSString *)listProperty :(BeanListEntry *)bean;
 -(void)removeBean:(NSString *)listProperty :(int) elementAt;
 
++(NSArray *) queryByEqualsAll:(NSString *) channel :(GenericAttributeManager *) criteria;
++(NSArray *) queryByEqualsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria;
++(NSArray *) queryByNotEqualsAll:(NSString *) channel :(GenericAttributeManager *) criteria;
++(NSArray *) queryByNotEqualsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria;
++(NSArray *) queryByContainsAll:(NSString *) channel :(GenericAttributeManager *) criteria;
++(NSArray *) queryByContainsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria;
+
 -(void)clearAll;
 -(void)clearMetaData;
 -(void)delete;

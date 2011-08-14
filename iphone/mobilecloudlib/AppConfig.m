@@ -83,11 +83,12 @@
 	{
 		local = [[Channel alloc] init];
 	
-		NSString *access = [attributeDict objectForKey:@"access"];
+		/*NSString *access = [attributeDict objectForKey:@"access"];
 		if([access isEqualToString:@"write"])
 		{
 			local.writable = YES;
-		}
+		}*/
+        local.writable = YES; //make all channels writable
 	}
 }
 

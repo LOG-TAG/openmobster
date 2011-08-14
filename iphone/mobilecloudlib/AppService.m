@@ -65,13 +65,16 @@
 				
 			if(local.writable)
 			{
+                //Making all channels writable
 				//see if this can be made owner system-wide
-				BOOL ownership = [conf establishOwnership:local :NO];
+				/*BOOL ownership = [conf establishOwnership:local :NO];
 				if(ownership)
 				{
 					[writableChannels addObject:local];
 					broadcastConf = YES;
-				}
+				}*/
+                //Making all channels writable
+                [writableChannels addObject:local];
 			}
 			[allChannels addObject:local];
 		}
