@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A20AE40C13F8298F006FF636 /* MobileBeanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A20AE40B13F8298F006FF636 /* MobileBeanTest.m */; };
+		A20AE40E13F83B02006FF636 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20AE40D13F83B02006FF636 /* CoreGraphics.framework */; };
 		A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */; };
@@ -339,6 +341,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A20AE40A13F8298F006FF636 /* MobileBeanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanTest.h; sourceTree = "<group>"; };
+		A20AE40B13F8298F006FF636 /* MobileBeanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileBeanTest.m; sourceTree = "<group>"; };
+		A20AE40D13F83B02006FF636 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A2502467130580EC006DC2C8 /* TestReadOnlyChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestReadOnlyChannel.h; sourceTree = "<group>"; };
 		A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReadOnlyChannel.m; sourceTree = "<group>"; };
 		A252E49F13C20FBC004F5344 /* CloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudService.h; sourceTree = "<group>"; };
@@ -639,6 +644,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A20AE40E13F83B02006FF636 /* CoreGraphics.framework in Frameworks */,
 				A29D5C2E1293415500DAE753 /* libmobilecloudlib.a in Frameworks */,
 				A29D5C2F1293416400DAE753 /* CFNetwork.framework in Frameworks */,
 				A29D5C301293416400DAE753 /* CoreData.framework in Frameworks */,
@@ -725,6 +731,7 @@
 		0867D691FE84028FC02AAC07 /* mobilecloudlib */ = {
 			isa = PBXGroup;
 			children = (
+				A20AE40D13F83B02006FF636 /* CoreGraphics.framework */,
 				D2AAC07E0554694100DB518D /* libmobilecloudlib.a */,
 				A26227DD13317A4E00B1BEB3 /* dm */,
 				A2869F3A12F9F1AF00A4792E /* app-service */,
@@ -980,6 +987,8 @@
 			children = (
 				A29D5C36129341B400DAE753 /* MobileServiceTests.h */,
 				A29D5C37129341B400DAE753 /* MobileServiceTests.m */,
+				A20AE40A13F8298F006FF636 /* MobileBeanTest.h */,
+				A20AE40B13F8298F006FF636 /* MobileBeanTest.m */,
 			);
 			name = apiTests;
 			sourceTree = "<group>";
@@ -1815,6 +1824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A29D5C38129341B400DAE753 /* MobileServiceTests.m in Sources */,
+				A20AE40C13F8298F006FF636 /* MobileBeanTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
