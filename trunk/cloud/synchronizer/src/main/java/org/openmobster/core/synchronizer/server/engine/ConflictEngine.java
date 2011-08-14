@@ -114,6 +114,14 @@ public class ConflictEngine
 				this.handleConflict(deviceId, channel, cloudBean);
 				return false;
 			}
+			else
+			{
+				log.debug("**********Check Succeeded*************************************");
+				log.debug("Serialized: "+serializedBean);
+				log.debug("********************************************************");
+				log.debug("Checkagainst: "+checkAgainst);
+				log.debug("***********************************************");
+			}
 		}
 		return true;
 	}

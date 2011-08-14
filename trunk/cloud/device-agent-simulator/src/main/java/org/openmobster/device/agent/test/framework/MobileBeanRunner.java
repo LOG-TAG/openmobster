@@ -332,6 +332,11 @@ public class MobileBeanRunner
 		}
 	}
 	
+	public void swapConfiguration()
+	{
+		org.openmobster.device.agent.configuration.Configuration.getInstance().swapState(this.configuration);
+	}
+	
 	public void longBootup()
 	{
 		try

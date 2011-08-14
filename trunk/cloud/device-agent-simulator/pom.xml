@@ -93,6 +93,7 @@
 	          			    the unit test framework is not suitable for multi-device support. Port perf-framework to add this here  	          				          			          				          				          				          			
 	          			<include>**/TestMultiDeviceTwoWaySync.java</include>	          				          				          				          				          				          				          			
 						-->
+						<include>**/TestMultiDeviceConflictResolution.java</include>
 													          			                    		          				          			
 	          			<include>**/TestDatabase.java</include>	 
 	          			<include>**/TestSyncDataSource.java</include>	          			
