@@ -50,6 +50,19 @@ public final class Configuration
 	{
 		Configuration.singleton = null;
 	}
+	
+	public void swapState(org.openmobster.device.agent.test.framework.Configuration config)
+	{
+		this.deviceId = config.getDeviceId();
+		this.serverId = config.getServerId();
+		this.plainServerPort = config.getServerPort();
+		this.secureServerPort = config.getSecureServerPort();
+		this.isSSLActive = config.isSSLActivated();
+		this.maxPacketSize = config.getMaxPacketSize();
+		this.authenticationHash = config.getAuthenticationHash();
+		this.authenticationNonce = config.getAuthenticationNonce();
+		this.email = config.getEmail();
+	}
 	//--------------------------------------------------------------------------------------------------------------------------------------
 	public String getDeviceId()
 	{
