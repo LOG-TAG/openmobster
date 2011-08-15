@@ -169,6 +169,22 @@ public final class Database
 		return this.cloudbMetaData.getCRUDProvider().selectByValue(from,value);
 	}
 	
+	public Set<Record> selectByNotEquals(String from,String value) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "selectByNotEquals");
+		
+		return this.cloudbMetaData.getCRUDProvider().selectByNotEquals(from,value);
+	}
+	
+	public Set<Record> selectByContains(String from,String value) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "selectByContains");
+		
+		return this.cloudbMetaData.getCRUDProvider().selectByContains(from,value);
+	}
+	
 	public void update(String into, Record record) throws DBException
 	{
 		//Validate

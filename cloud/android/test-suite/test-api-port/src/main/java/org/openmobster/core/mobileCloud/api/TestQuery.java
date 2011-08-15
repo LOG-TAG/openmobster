@@ -10,6 +10,8 @@ package org.openmobster.core.mobileCloud.api;
 
 import org.openmobster.core.mobileCloud.api.model.MobileBean;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
+import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObject;
 
 /**
  * @author openmobster@gmail.com
@@ -21,33 +23,6 @@ public final class TestQuery extends AbstractAPITest
 	{		
 		try
 		{
-			this.startBootSync();
-			this.waitForBeans();
-									
-			MobileBean[] beans = MobileBean.readAll(this.service);
-			this.assertNotNull(beans, this.getInfo()+"/MustNotBeNull");
-			
-			if(beans == null)
-			{
-				return;
-			}
-			
-			//Download all data associated with the beans (takes care of proxy-lazy loaded beans)						
-			//Wait for proxy loading to load the rest
-			int attempts = 5;
-			while(beans.length < 2 && attempts > 0)
-			{
-				System.out.println("Waiting on background proxy loading.........");
-				Thread.currentThread().sleep(20000);
-				beans = MobileBean.readAll(this.service);
-				attempts--;
-			}
-			
-			if(beans.length < 2)
-			{
-				throw new IllegalStateException("Background State Management was not able to get the State ready in time...Try again");
-			}
-			
 			//AND Equals query testing
 			this.testEqualsANDQuery();
 			
@@ -59,12 +34,6 @@ public final class TestQuery extends AbstractAPITest
 			
 			//OR NotEquals query
 			this.testNotEqualsORQuery();
-			
-			//AND Like query testing
-			this.testLikeANDQuery();
-			
-			//OR Like query
-			this.testLikeORQuery();
 			
 			//AND Contains query testing
 			this.testContainsANDQuery();
@@ -81,176 +50,159 @@ public final class TestQuery extends AbstractAPITest
 	//--------------------------------------------------------------------------------------------------------------------------------
 	private void testEqualsANDQuery() throws Exception
 	{
-		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("from", "from@gmail.com");
-		criteria.setAttribute("subject", "This is the subject<html><body>unique-1</body></html>");
+		this.seedData();
 		
-		MobileBean[] beans = MobileBean.queryByEqualsAll(this.service, criteria);
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		criteria.setAttribute("from", "0/from/value");
+		criteria.setAttribute("to", "0/to/value");
+		
+		MobileBean[] beans = MobileBean.queryByEqualsAll("myChannel", criteria);
+		
+		//Assert
 		this.assertNotNull(beans, getInfo()+"://testEqualsANDQuery/MustNotBeNull");
 		this.assertTrue(beans.length==1, getInfo()+"://testEqualsANDQuery/MustHaveOneBean");
 		
-		int length = beans.length;
 		System.out.println("testEqualsANDQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
-		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
+		for(MobileBean bean:beans)
+		{				
+			String from = bean.getValue("from");
+			String to = bean.getValue("to");
+			
+			System.out.println("From="+from);
+			System.out.println("To="+to);
 			System.out.println("-----------------------------------------");
-			assertEquals(bean.getId(),"unique-1",getInfo()+"://testEqualsANDQuery/beanId/DoesNotMatch");
+			assertEquals(from,"0/from/value",getInfo()+"://testEqualsANDQuery/From/DoesNotMatch");
+			assertEquals(to,"0/to/value",getInfo()+"://testEqualsANDQuery/To/DoesNotMatch");
 		}
 	}
 	
 	private void testEqualsORQuery() throws Exception
 	{
-		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("from", "from@gmail.com");
-		criteria.setAttribute("subject", "This is the subject<html><body>unique-1</body></html>");
+		this.seedData();
 		
-		MobileBean[] beans = MobileBean.queryByEqualsAtleastOne(this.service, criteria);
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		criteria.setAttribute("from", "0/from/value");
+		criteria.setAttribute("to", "1/to/value");
+		
+		MobileBean[] beans = MobileBean.queryByEqualsAtleastOne("myChannel", criteria);
+		
+		//Assert
 		this.assertNotNull(beans, getInfo()+"://testEqualsORQuery/MustNotBeNull");
 		this.assertTrue(beans.length==2, getInfo()+"://testEqualsORQuery/MustHaveTwoBeans");
 		
-		int length = beans.length;
 		System.out.println("testEqualsORQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
+		for(MobileBean bean:beans)
 		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
-			System.out.println("-----------------------------------------");			
+			String from = bean.getValue("from");
+			String to = bean.getValue("to");
+			
+			System.out.println("From="+from);
+			System.out.println("To="+to);
+			System.out.println("-----------------------------------------");	
+			
+			this.assertTrue(from.equals("0/from/value") || from.equals("1/from/value"), 
+			getInfo()+"://testEqualsORQuery/FromCheckFailure");
+			
+			this.assertTrue(to.equals("0/to/value") || to.equals("1/to/value"), 
+					getInfo()+"://testEqualsORQuery/ToCheckFailure");
 		}
 	}
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	private void testNotEqualsANDQuery() throws Exception
 	{
-		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("from", "from@gmail.com");
-		criteria.setAttribute("subject", "This is the subject<html><body>unique-2</body></html>");
+		this.seedData();
 		
-		MobileBean[] beans = MobileBean.queryByNotEqualsAll(this.service, criteria);
-		this.assertTrue(beans==null || beans.length==0, getInfo()+"://testNotEqualsANDQuery/MustBeNull");		
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		criteria.setAttribute("from", "0/from/value");
+		criteria.setAttribute("to", "1/to/value");
+		
+		MobileBean[] beans = MobileBean.queryByNotEqualsAll("myChannel", criteria);
+		
+		//Assert
+		this.assertNotNull(beans, this.getInfo()+"://testNotEqualsANDQuery/MustNotBeNull");
+		this.assertTrue(beans.length == 3, getInfo()+"://testNotEqualsANDQuery/MustHaveThreeBeans");
+		
+		for(MobileBean bean:beans)
+		{
+			String from = bean.getValue("from");
+			String to = bean.getValue("to");
+			
+			System.out.println("From="+from);
+			System.out.println("To="+to);
+			System.out.println("-----------------------------------------");	
+			
+			this.assertTrue(!from.equals("0/from/value") && !from.equals("1/from/value"), 
+			getInfo()+"://testNotEqualsANDQuery/FromCheckFailure");
+			
+			this.assertTrue(!to.equals("0/to/value") && !to.equals("1/to/value"), 
+					getInfo()+"://testNotEqualsANDQuery/ToCheckFailure");
+		}
 	}
 	
 	private void testNotEqualsORQuery() throws Exception
 	{
-		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("from", "from@gmail.com");
-		criteria.setAttribute("subject", "This is the subject<html><body>unique-1</body></html>");
+		this.seedData();
 		
-		MobileBean[] beans = MobileBean.queryByNotEqualsAtleastOne(this.service, criteria);
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		criteria.setAttribute("from", "0/from/value");
+		criteria.setAttribute("to", "1/to/value");
+		
+		MobileBean[] beans = MobileBean.queryByNotEqualsAtleastOne("myChannel", criteria);
+		
+		//Assert
 		this.assertNotNull(beans, getInfo()+"://testNotEqualsORQuery/MustNotBeNull");
-		this.assertTrue(beans.length==1, getInfo()+"://testNotEqualsORQuery/MustHaveTwoBeans");
-		
-		int length = beans.length;
-		System.out.println("testNotEqualsORQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
-		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
-			System.out.println("-----------------------------------------");
-			assertEquals(bean.getId(),"unique-2",getInfo()+"://testNotEqualsANDQuery/beanId/DoesNotMatch");
-		}
-	}
-	//-----------------------------------------------------------------------------------------------------------------------------------
-	private void testLikeANDQuery() throws Exception
-	{
-		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("from", "from");
-		criteria.setAttribute("subject", "This is the subject<html><body>unique-1");
-		
-		MobileBean[] beans = MobileBean.queryByLikeAll(this.service, criteria);
-		this.assertNotNull(beans, getInfo()+"://testLikeANDQuery/MustNotBeNull");
-		this.assertTrue(beans.length==1, getInfo()+"://testLikeANDQuery/MustHaveOneBean");
-		
-		int length = beans.length;
-		System.out.println("testLikeANDQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
-		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
-			System.out.println("-----------------------------------------");	
-			assertEquals(bean.getId(),"unique-1",getInfo()+"://testEqualsANDQuery/beanId/DoesNotMatch");
-		}
-	}
-	
-	private void testLikeORQuery() throws Exception
-	{
-		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("from", "from");
-		criteria.setAttribute("subject", "This is the subject<html><body>unique-1");
-		
-		MobileBean[] beans = MobileBean.queryByLikeAtleastOne(this.service, criteria);
-		this.assertNotNull(beans, getInfo()+"://testLikeORQuery/MustNotBeNull");
-		this.assertTrue(beans.length==2, getInfo()+"://testLikeORQuery/MustHaveTwoBeans");
-		
-		int length = beans.length;
-		System.out.println("testLikeORQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
-		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
-			System.out.println("-----------------------------------------");			
-		}
+		this.assertTrue(beans.length==5, getInfo()+"://testNotEqualsORQuery/MustHaveFiveBeans");
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------
 	private void testContainsANDQuery() throws Exception
 	{
+		this.seedData();
+		
 		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("subject", "unique-1");
-		criteria.setAttribute("message", "unique-1");
+		criteria.setAttribute("from", "from/value");
+		criteria.setAttribute("to", "to/value");
 		
-		MobileBean[] beans = MobileBean.queryByContainsAll(this.service, criteria);
+		MobileBean[] beans = MobileBean.queryByContainsAll("myChannel", criteria);
+		
+		//Assert
 		this.assertNotNull(beans, getInfo()+"://testContainsANDQuery/MustNotBeNull");
-		this.assertTrue(beans.length==1, getInfo()+"://testContainsANDQuery/MustHaveOneBean");
-		
-		int length = beans.length;
-		System.out.println("testContainsANDQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
-		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
-			System.out.println("-----------------------------------------");	
-			assertEquals(bean.getId(),"unique-1",getInfo()+"://testContainsANDQuery/beanId/DoesNotMatch");
-		}
+		this.assertTrue(beans.length==5, getInfo()+"://testContainsANDQuery/MustHave5Beans");
 	}
 	
 	private void testContainsORQuery() throws Exception
 	{
+		this.seedData();
+		
 		GenericAttributeManager criteria = new GenericAttributeManager();
-		criteria.setAttribute("subject", "unique-1");
-		criteria.setAttribute("message", "unique-2");
+		criteria.setAttribute("from", "from/value");
+		criteria.setAttribute("to", "blahblah");
 		
-		MobileBean[] beans = MobileBean.queryByContainsAtleastOne(this.service, criteria);
+		MobileBean[] beans = MobileBean.queryByContainsAtleastOne("myChannel", criteria);
+		
+		//Assert
 		this.assertNotNull(beans, getInfo()+"://testContainsORQuery/MustNotBeNull");
-		this.assertTrue(beans.length==2, getInfo()+"://testContainsORQuery/MustHaveTwoBeans");
+		this.assertTrue(beans.length==5, getInfo()+"://testContainsORQuery/MustHave5Beans");
+	}
+	//--------------------------------------------------------------------------------------------------------
+	private void seedData()
+	{
+		MobileObjectDatabase database = MobileObjectDatabase.getInstance();
+		database.deleteAll("myChannel");
 		
-		int length = beans.length;
-		System.out.println("testContainsORQuery-----------------------------------------");
-		for(int i=0; i<length; i++)
+		//Create and Store Mobile Objects
+		for(int i=0; i<5; i++)
 		{
-			MobileBean bean = beans[i];
-						
-			System.out.println("OID="+bean.getId());
-			System.out.println("From="+bean.getValue("from"));
-			System.out.println("Subject="+bean.getValue("subject"));
-			System.out.println("-----------------------------------------");			
+			MobileObject mobileObject = new MobileObject();
+			mobileObject.setStorageId("myChannel");
+			String oid = database.create(mobileObject);
+			
+			mobileObject = database.read("myChannel", oid);
+			
+			mobileObject.setValue("from", i+"/from/value");
+			
+			mobileObject.setValue("to", i+"/to/value");
+			
+			database.update(mobileObject);
 		}
 	}
 }

@@ -67,7 +67,7 @@ public class MobileChannelProvider extends ContentProvider
 					this.prepareCursor(cursor, all);
 				}
 			}
-			else if(!selection.trim().equals("query"))
+			else if(!selection.trim().startsWith("query"))
 			{
 				String recordId = selection.trim();
 				Record mobileObject = this.read(channel, recordId);
@@ -89,7 +89,19 @@ public class MobileChannelProvider extends ContentProvider
 						int index = arg.indexOf('=');
 						String value = arg.substring(index+1).trim();
 						
-						Set<Record> records = Database.getInstance(context).selectByValue(channel, value);
+						Set<Record> records = null;
+						if(selection.equals("query://equals"))
+						{
+							records = Database.getInstance(context).selectByValue(channel, value);
+						}
+						else if(selection.equals("query://notequals"))
+						{
+							records = Database.getInstance(context).selectByNotEquals(channel, value);
+						}
+						else if(selection.equals("query://contains"))
+						{
+							records = Database.getInstance(context).selectByContains(channel, value);
+						}
 						if(records != null && !records.isEmpty())
 						{
 							recordsFound.addAll(records);

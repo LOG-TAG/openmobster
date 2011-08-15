@@ -367,10 +367,30 @@ public final class MobileObjectDatabase extends Service
 			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+channel);
 			Context context = Registry.getActiveInstance().getContext();
 			
+			String query = null;
+			switch(expression.getOp())
+			{
+				case LogicExpression.OP_EQUALS:
+					query = "query://equals";
+				break;
+				
+				case LogicExpression.OP_NOT_EQUALS:
+					query = "query://notequals";
+				break;
+				
+				case LogicExpression.OP_CONTAINS:
+					query = "query://contains";
+				break;
+				
+				default:
+					query = "query://equals";
+				break;
+			}
+			
 			ContentResolver resolver = context.getContentResolver();
 			Cursor cursor = resolver.query(uri, 
 			null, 
-			"query", 
+			query, 
 			new String[]{expression.getLhs()+"="+expression.getRhs()}, 
 			null);
 			

@@ -32,6 +32,10 @@ public interface CRUDProvider
 	
 	Set<Record> selectByValue(String from, String value) throws DBException;
 	
+	Set<Record> selectByNotEquals(String from, String value) throws DBException;
+	
+	Set<Record> selectByContains(String from, String value) throws DBException;
+	
 	void update(String table, Record record) throws DBException;
 	
 	void delete(String table, Record record) throws DBException;

@@ -691,7 +691,7 @@ public final class MobileBean
 		return beans;
 	}
 	
-	public static MobileBean[] queryByLikeAll(String service,
+	/*public static MobileBean[] queryByLikeAll(String service,
 	GenericAttributeManager criteria)
 	{
 		if(service == null)
@@ -783,7 +783,7 @@ public final class MobileBean
 		}
 		
 		return beans;
-	}
+	}*/
 	
 	public static MobileBean[] queryByContainsAll(String service,
 	GenericAttributeManager criteria)
