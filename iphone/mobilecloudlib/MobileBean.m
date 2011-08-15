@@ -555,4 +555,284 @@
     
     return [NSArray arrayWithArray:result];
 }
+
++(NSArray *) queryByEqualsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria
+{
+    if([StringUtil isEmpty:channel])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByEqualsAtleastOne" parameters:params];
+        @throw syse;
+    }
+    if(criteria == nil || [criteria isEmpty])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Criteria is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByEqualsAtleastOne" parameters:params];
+        @throw syse;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    GenericAttributeManager *input = [GenericAttributeManager withInit];
+    
+    //setup the Logic Link
+    [input setAttribute:@"logicLink" :[NSNumber numberWithInt:OR]];
+    
+    //setup the Expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    NSArray *names = [criteria getNames];
+    for(NSString *name in names)
+    {
+        NSString *value = [criteria getAttribute:name];
+        LogicExpression *expression = [LogicExpression withInit:name :value :OP_EQUALS];
+        [expressions addObject:expression];
+    }
+    [input setAttribute:@"expressions" :expressions];
+    
+    MobileObjectDatabase *database = [MobileObjectDatabase getInstance];
+    NSSet *queryResult = [database query:channel :input];
+    
+    //Process the query result
+    if(queryResult != nil && [queryResult count]>0)
+    {
+        NSMutableArray *mobileObjects = [NSMutableArray array];
+        for(MobileObject *local in queryResult)
+        {
+            [mobileObjects addObject:local];
+        }
+        
+        NSArray *filtered = [self filterProxies:mobileObjects];
+        for(MobileObject *local in filtered)
+        {
+            MobileBean *bean = [MobileBean withInit:local];
+            [result addObject:bean];
+        }
+    }
+    
+    return [NSArray arrayWithArray:result];
+}
+
++(NSArray *) queryByNotEqualsAll:(NSString *) channel :(GenericAttributeManager *) criteria
+{
+    if([StringUtil isEmpty:channel])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByNotEqualsAll" parameters:params];
+        @throw syse;
+    }
+    if(criteria == nil || [criteria isEmpty])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Criteria is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByNotEqualsAll" parameters:params];
+        @throw syse;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    GenericAttributeManager *input = [GenericAttributeManager withInit];
+    
+    //setup the Logic Link
+    [input setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
+    
+    //setup the Expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    NSArray *names = [criteria getNames];
+    for(NSString *name in names)
+    {
+        NSString *value = [criteria getAttribute:name];
+        LogicExpression *expression = [LogicExpression withInit:name :value :OP_NOT_EQUALS];
+        [expressions addObject:expression];
+    }
+    [input setAttribute:@"expressions" :expressions];
+    
+    MobileObjectDatabase *database = [MobileObjectDatabase getInstance];
+    NSSet *queryResult = [database query:channel :input];
+    
+    //Process the query result
+    if(queryResult != nil && [queryResult count]>0)
+    {
+        NSMutableArray *mobileObjects = [NSMutableArray array];
+        for(MobileObject *local in queryResult)
+        {
+            [mobileObjects addObject:local];
+        }
+        
+        NSArray *filtered = [self filterProxies:mobileObjects];
+        for(MobileObject *local in filtered)
+        {
+            MobileBean *bean = [MobileBean withInit:local];
+            [result addObject:bean];
+        }
+    }
+    
+    return [NSArray arrayWithArray:result];
+}
+
++(NSArray *) queryByNotEqualsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria
+{
+    if([StringUtil isEmpty:channel])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByNotEqualsAtleastOne" parameters:params];
+        @throw syse;
+    }
+    if(criteria == nil || [criteria isEmpty])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Criteria is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByNotEqualsAtleastOne" parameters:params];
+        @throw syse;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    GenericAttributeManager *input = [GenericAttributeManager withInit];
+    
+    //setup the Logic Link
+    [input setAttribute:@"logicLink" :[NSNumber numberWithInt:OR]];
+    
+    //setup the Expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    NSArray *names = [criteria getNames];
+    for(NSString *name in names)
+    {
+        NSString *value = [criteria getAttribute:name];
+        LogicExpression *expression = [LogicExpression withInit:name :value :OP_NOT_EQUALS];
+        [expressions addObject:expression];
+    }
+    [input setAttribute:@"expressions" :expressions];
+    
+    MobileObjectDatabase *database = [MobileObjectDatabase getInstance];
+    NSSet *queryResult = [database query:channel :input];
+    
+    //Process the query result
+    if(queryResult != nil && [queryResult count]>0)
+    {
+        NSMutableArray *mobileObjects = [NSMutableArray array];
+        for(MobileObject *local in queryResult)
+        {
+            [mobileObjects addObject:local];
+        }
+        
+        NSArray *filtered = [self filterProxies:mobileObjects];
+        for(MobileObject *local in filtered)
+        {
+            MobileBean *bean = [MobileBean withInit:local];
+            [result addObject:bean];
+        }
+    }
+    
+    return [NSArray arrayWithArray:result];
+}
+
++(NSArray *) queryByContainsAll:(NSString *) channel :(GenericAttributeManager *) criteria
+{
+    if([StringUtil isEmpty:channel])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByContainsAll" parameters:params];
+        @throw syse;
+    }
+    if(criteria == nil || [criteria isEmpty])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Criteria is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByContainsAll" parameters:params];
+        @throw syse;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    GenericAttributeManager *input = [GenericAttributeManager withInit];
+    
+    //setup the Logic Link
+    [input setAttribute:@"logicLink" :[NSNumber numberWithInt:AND]];
+    
+    //setup the Expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    NSArray *names = [criteria getNames];
+    for(NSString *name in names)
+    {
+        NSString *value = [criteria getAttribute:name];
+        LogicExpression *expression = [LogicExpression withInit:name :value :OP_CONTAINS];
+        [expressions addObject:expression];
+    }
+    [input setAttribute:@"expressions" :expressions];
+    
+    MobileObjectDatabase *database = [MobileObjectDatabase getInstance];
+    NSSet *queryResult = [database query:channel :input];
+    
+    //Process the query result
+    if(queryResult != nil && [queryResult count]>0)
+    {
+        NSMutableArray *mobileObjects = [NSMutableArray array];
+        for(MobileObject *local in queryResult)
+        {
+            [mobileObjects addObject:local];
+        }
+        
+        NSArray *filtered = [self filterProxies:mobileObjects];
+        for(MobileObject *local in filtered)
+        {
+            MobileBean *bean = [MobileBean withInit:local];
+            [result addObject:bean];
+        }
+    }
+    
+    return [NSArray arrayWithArray:result]; 
+}
+
++(NSArray *) queryByContainsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria
+{
+    if([StringUtil isEmpty:channel])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Channel is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByContainsAtleastOne" parameters:params];
+        @throw syse;
+    }
+    if(criteria == nil || [criteria isEmpty])
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Criteria is required!!", nil];
+        SystemException *syse = [SystemException withContext:@"MobileBean" method:@"queryByContainsAtleastOne" parameters:params];
+        @throw syse;
+    }
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    GenericAttributeManager *input = [GenericAttributeManager withInit];
+    
+    //setup the Logic Link
+    [input setAttribute:@"logicLink" :[NSNumber numberWithInt:OR]];
+    
+    //setup the Expressions
+    NSMutableArray *expressions = [NSMutableArray array];
+    NSArray *names = [criteria getNames];
+    for(NSString *name in names)
+    {
+        NSString *value = [criteria getAttribute:name];
+        LogicExpression *expression = [LogicExpression withInit:name :value :OP_CONTAINS];
+        [expressions addObject:expression];
+    }
+    [input setAttribute:@"expressions" :expressions];
+    
+    MobileObjectDatabase *database = [MobileObjectDatabase getInstance];
+    NSSet *queryResult = [database query:channel :input];
+    
+    //Process the query result
+    if(queryResult != nil && [queryResult count]>0)
+    {
+        NSMutableArray *mobileObjects = [NSMutableArray array];
+        for(MobileObject *local in queryResult)
+        {
+            [mobileObjects addObject:local];
+        }
+        
+        NSArray *filtered = [self filterProxies:mobileObjects];
+        for(MobileObject *local in filtered)
+        {
+            MobileBean *bean = [MobileBean withInit:local];
+            [result addObject:bean];
+        }
+    }
+    
+    return [NSArray arrayWithArray:result]; 
+}
 @end
