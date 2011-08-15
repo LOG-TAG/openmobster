@@ -221,6 +221,18 @@ public class EncryptedCRUD implements CRUDProvider
 		return null;
 	}
 	
+	public Set<Record> selectByNotEquals(String from, String value) throws DBException
+	{
+		//Cannot be implemented as a WHERE clause cannot be used on an encrypted record
+		return null;
+	}
+	
+	public Set<Record> selectByContains(String from, String value) throws DBException
+	{
+		//Cannot be implemented as a WHERE clause cannot be used on an encrypted record
+		return null;
+	}
+	
 	public void update(String table, Record record) throws DBException
 	{
 		try
