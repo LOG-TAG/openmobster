@@ -9,7 +9,7 @@
 package org.openmobster.core.mobileCloud.api.ui.framework.command;
 
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
-import org.openmobster.core.mobileCloud.push.MobilePush;
+import org.openmobster.core.mobileCloud.api.ui.framework.push.MobilePush;
 
 /**
  * @author openmobster@gmail.com

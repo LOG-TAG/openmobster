@@ -27,7 +27,7 @@ import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.push.PushCommand;
+import org.openmobster.core.mobileCloud.api.ui.framework.push.PushCommand;
 
 /**
  * @author openmobster@gmail.com

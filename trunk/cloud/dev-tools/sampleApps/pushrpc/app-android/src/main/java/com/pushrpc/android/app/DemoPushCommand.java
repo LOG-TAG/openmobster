@@ -10,9 +10,9 @@ package com.pushrpc.android.app;
 import java.lang.reflect.Field;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.push.MobilePush;
-import org.openmobster.core.mobileCloud.push.PushCommand;
-import org.openmobster.core.mobileCloud.push.PushCommandContext;
+import org.openmobster.core.mobileCloud.api.ui.framework.push.MobilePush;
+import org.openmobster.core.mobileCloud.api.ui.framework.push.PushCommand;
+import org.openmobster.core.mobileCloud.api.ui.framework.push.PushCommandContext;
 
 import android.app.Activity;
 import android.app.Notification;
