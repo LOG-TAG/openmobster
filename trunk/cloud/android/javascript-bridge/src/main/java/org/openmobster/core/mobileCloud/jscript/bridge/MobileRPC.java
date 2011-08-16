@@ -12,9 +12,9 @@ import java.util.Iterator;
 
 import org.json.JSONObject;
 
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
 
 /**
  * A Javascript bridge that exposes the OpenMobster MobileBean service to the HTML5/Javascript layer of the App.

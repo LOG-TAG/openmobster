@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.android.util.Base64;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.storage.Database;
@@ -21,9 +24,6 @@ import org.openmobster.core.mobileCloud.android.storage.DBException;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
 
 import android.content.Context;
 

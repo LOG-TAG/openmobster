@@ -8,9 +8,9 @@
 
 package org.openmobster.core.mobileCloud.api;
 
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
 
 /**
  * @author openmobster@gmail.com

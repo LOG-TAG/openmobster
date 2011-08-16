@@ -13,6 +13,9 @@ import java.text.MessageFormat;
 import android.app.Activity;
 import android.content.Context;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.manager.gui.LocaleKeys;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -28,9 +31,6 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
 import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 
 
