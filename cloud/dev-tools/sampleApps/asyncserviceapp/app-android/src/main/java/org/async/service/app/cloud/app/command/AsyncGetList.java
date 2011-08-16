@@ -12,6 +12,9 @@ import java.util.Vector;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 
@@ -25,9 +28,6 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
 
 import android.app.Activity;
 import android.app.ListActivity;

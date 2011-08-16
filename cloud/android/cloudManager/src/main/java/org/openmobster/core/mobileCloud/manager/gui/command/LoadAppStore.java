@@ -10,6 +10,10 @@ package org.openmobster.core.mobileCloud.manager.gui.command;
 
 import java.util.Vector;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
+import org.openmobster.android.api.rpc.ServiceInvocationException;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -22,10 +26,6 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
-import org.openmobster.core.mobileCloud.api.rpc.ServiceInvocationException;
 
 import android.app.Activity;
 

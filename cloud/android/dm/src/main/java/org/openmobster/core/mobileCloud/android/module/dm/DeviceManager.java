@@ -9,14 +9,14 @@ package org.openmobster.core.mobileCloud.android.module.dm;
 
 import android.os.Build;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Request;
 
 /**
  * 

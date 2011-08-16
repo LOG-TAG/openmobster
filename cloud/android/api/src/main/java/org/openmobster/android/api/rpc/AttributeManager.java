@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.api.rpc;
+package org.openmobster.android.api.rpc;
 
 import java.util.Collection;
 import java.util.Map;

@@ -10,6 +10,8 @@ package org.openmobster.core.mobileCloud.push;
 
 import java.util.Map;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
@@ -22,8 +24,6 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.rpc.MobileService;
-import org.openmobster.core.mobileCloud.api.rpc.Response;
 
 import android.os.Handler;
 import android.os.Looper;
