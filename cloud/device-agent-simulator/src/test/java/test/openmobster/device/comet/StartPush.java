@@ -10,14 +10,14 @@ package test.openmobster.device.comet;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.ExecutionContext;
+import org.openmobster.cloud.api.ExecutionContext;
+import org.openmobster.cloud.api.push.PushService;
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
-import org.openmobster.server.api.service.ServiceInfo;
 
-import org.openmobster.server.api.push.PushService;
 
 /**
  * Service Bean that will be invoked from the device. It returns the "Email" selected for viewing by the user

@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
-import org.openmobster.server.api.service.ServiceInfo;
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 
 /**
  * This component is invoked asynchronously by the ticket creation and ticket update forms on the device side

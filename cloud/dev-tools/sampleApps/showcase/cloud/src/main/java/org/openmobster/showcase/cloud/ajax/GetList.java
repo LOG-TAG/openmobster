@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
-import org.openmobster.server.api.service.ServiceInfo;
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 
 /**
  * Service Bean that will be invoked from the device. It returns a "List" of Email "Subject" values.

@@ -11,8 +11,8 @@ package org.openmobster.core.synchronizer.server.engine;
 import java.util.List;
 import java.util.Map;
 
-import org.openmobster.server.api.model.MobileBean;
 
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.core.synchronizer.model.SyncCommand;
 import org.openmobster.core.synchronizer.model.Add;
 

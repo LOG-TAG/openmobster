@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.server.api.service;
+package org.openmobster.cloud.api.service;
 
 /**
  * Represents a service side Mobile Service Bean component.

@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 
-import org.openmobster.server.api.ExecutionContext;
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
 
+import org.openmobster.cloud.api.ExecutionContext;
+import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.core.synchronizer.server.SyncContext;
 

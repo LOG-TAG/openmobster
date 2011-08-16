@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.server.api.camera;
+package org.openmobster.cloud.api.camera;
 
 /**
  * 

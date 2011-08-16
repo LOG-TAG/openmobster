@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 
 import junit.framework.TestCase;
 
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.common.bus.Bus;
@@ -22,8 +24,6 @@ import org.openmobster.core.dataService.Constants;
 
 import org.openmobster.core.dataService.comet.*;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
 
 import org.openmobster.core.security.identity.IdentityController;
 import org.openmobster.core.security.identity.Identity;

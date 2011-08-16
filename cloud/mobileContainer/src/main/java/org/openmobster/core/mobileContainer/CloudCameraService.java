@@ -13,15 +13,15 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
-import org.openmobster.server.api.service.ServiceInfo;
+import org.openmobster.cloud.api.camera.CameraCommandContext;
+import org.openmobster.cloud.api.camera.CameraCommandResponse;
+import org.openmobster.cloud.api.camera.CloudCameraCommand;
+import org.openmobster.cloud.api.camera.CloudCameraURI;
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 
-import org.openmobster.server.api.camera.CloudCameraCommand;
-import org.openmobster.server.api.camera.CloudCameraURI;
-import org.openmobster.server.api.camera.CameraCommandContext;
-import org.openmobster.server.api.camera.CameraCommandResponse;
 
 /**
  * @author openmobster@gmail.com

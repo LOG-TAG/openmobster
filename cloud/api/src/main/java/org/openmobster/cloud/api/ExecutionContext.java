@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.server.api;
+package org.openmobster.cloud.api;
 
 import java.util.Map;
 import java.util.Set;

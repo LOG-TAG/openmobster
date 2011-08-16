@@ -12,12 +12,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ByteArrayOutputStream;
 
+import org.openmobster.cloud.api.push.PushService;
 import org.openmobster.core.security.device.Device;
 
 import org.openmobster.core.security.device.PushApp;
 import org.openmobster.core.security.device.PushAppController;
 
-import org.openmobster.server.api.push.PushService;
 
 /**
  * Usecase being tested:

@@ -9,6 +9,11 @@ package test.openmobster.core.agent.provisioning;
 
 import junit.framework.TestCase;
 
+import org.openmobster.cloud.api.ExecutionContext;
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 import org.openmobster.core.agent.provisioning.IPhonePushCallback;
 import org.openmobster.core.common.ServiceManager;
 
@@ -19,11 +24,6 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.ExecutionContext;
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
-import org.openmobster.server.api.service.ServiceInfo;
 
 import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.core.common.errors.SystemException;

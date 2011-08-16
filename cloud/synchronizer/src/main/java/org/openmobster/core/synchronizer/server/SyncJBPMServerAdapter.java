@@ -11,11 +11,11 @@ package org.openmobster.core.synchronizer.server;
 import java.io.InputStream;
 
 import org.apache.log4j.Logger;
+import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.core.synchronizer.SyncException;
 import org.openmobster.core.synchronizer.model.*;
 import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
 import org.openmobster.core.synchronizer.server.workflow.WorkflowConstants;
-import org.openmobster.server.api.ExecutionContext;
 
 import org.jbpm.graph.def.ProcessDefinition;
 import org.jbpm.graph.exe.ProcessInstance; 

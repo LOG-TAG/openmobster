@@ -11,9 +11,9 @@ package test.openmobster.device.agent.sync.server;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.MobileBeanId;
-import org.openmobster.server.api.model.MobileBeanStreamable;
+import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.model.MobileBeanStreamable;
 
 /**
  * @author openmobster@gmail.com

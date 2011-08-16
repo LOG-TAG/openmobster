@@ -12,10 +12,10 @@ import java.util.Date;
 import java.util.List;
 
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
 
+import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.core.security.device.Device;
 
 /**

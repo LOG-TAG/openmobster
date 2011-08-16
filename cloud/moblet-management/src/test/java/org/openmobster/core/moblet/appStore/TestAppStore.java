@@ -12,9 +12,9 @@ import java.util.List;
 import junit.framework.TestCase;
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
 
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.moblet.Tool;
 

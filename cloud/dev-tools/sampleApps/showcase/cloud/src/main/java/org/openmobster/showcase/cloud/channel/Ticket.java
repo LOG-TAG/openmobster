@@ -10,8 +10,8 @@ package org.openmobster.showcase.cloud.channel;
 
 import java.io.Serializable;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.MobileBeanId;
+import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBeanId;
 
 /**
  * A 'Ticket' instance represents tickets entered into the CRM db managed by the 'TicketDS' datasource

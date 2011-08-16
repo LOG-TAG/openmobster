@@ -12,10 +12,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
-import org.openmobster.server.api.model.MobileBean;
 
 /**
  * 'TicketChannel' is a channel that mobilizes the tickets stored in a CRM system. It integrates with

@@ -598,15 +598,15 @@
 					<aggregate>true</aggregate>
 					<groups>
 						<group>
-							<title>Public API for App Developers - Cloud SDK (Server-Side Components)</title>
+							<title>Public API for App Developers - Cloud SDK (Cloud-Side Components)</title>
 							<packages>
-								org.openmobster.server.api.*
+								org.openmobster.cloud.api.*
 							</packages>
 						</group>
 						<group>
 							<title>Public API for App Developers - Device SDK (Device-Side Components)</title>
 							<packages>
-								org.openmobster.core.mobileCloud.api.*
+								org.openmobster.android.api.*
 							</packages>
 						</group>
 					</groups>
@@ -632,15 +632,15 @@
 					<aggregate>true</aggregate>
 					<groups>
 						<group>
-							<title>Public API for App Developers - Cloud SDK (Server-Side Components)</title>
+							<title>Public API for App Developers - Cloud SDK (Cloud-Side Components)</title>
 							<packages>
-								org.openmobster.server.api.*
+								org.openmobster.cloud.api.*
 							</packages>
 						</group>
 						<group>
 							<title>Public API for App Developers - Device SDK (Device-Side Components)</title>
 							<packages>
-								org.openmobster.core.mobileCloud.api.*
+								org.openmobster.android.api.*
 							</packages>
 						</group>
 					</groups>

@@ -15,12 +15,12 @@ import org.apache.log4j.Logger;
 
 import junit.framework.TestCase;
 
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.mobileContainer.MobileContainer;
 import org.openmobster.core.mobileContainer.Invocation;
 import org.openmobster.core.mobileContainer.InvocationResponse;
 import org.openmobster.core.mobileObject.xml.MobileObjectSerializer;
-import org.openmobster.server.api.model.MobileBean;
 import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
 import org.openmobster.device.agent.frameworks.mobileObject.DeviceSerializer;
 import org.openmobster.device.agent.frameworks.mobileObject.BeanList;

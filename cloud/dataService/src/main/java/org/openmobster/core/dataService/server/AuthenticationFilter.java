@@ -15,6 +15,7 @@ import org.apache.mina.common.IoSession;
 
 import java.security.MessageDigest;
 
+import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.dataService.model.AuthCredential;
 
@@ -24,7 +25,6 @@ import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.services.CometService;
 import org.openmobster.core.services.subscription.SubscriptionManager;
 import org.openmobster.core.services.subscription.Subscription;
-import org.openmobster.server.api.ExecutionContext;
 
 /**
  * @author openmobster@gmail.com

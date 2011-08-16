@@ -8,8 +8,8 @@
 
 package test.openmobster.device.comet;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.MobileBeanId;
+import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBeanId;
 
 /**
  * @author openmobster@gmail.com

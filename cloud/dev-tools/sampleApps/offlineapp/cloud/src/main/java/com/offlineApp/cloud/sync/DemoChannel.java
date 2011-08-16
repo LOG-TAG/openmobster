@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
 
 /**
  * This Sync Channel that provides the 'Demo Beans' to be synchronized with the device
