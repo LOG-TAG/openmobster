@@ -14,8 +14,8 @@ import org.apache.log4j.Logger;
 
 import junit.framework.TestCase;
 
-import org.openmobster.cloud.api.service.Request;
-import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.rpc.Request;
+import org.openmobster.cloud.api.rpc.Response;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.common.bus.Bus;

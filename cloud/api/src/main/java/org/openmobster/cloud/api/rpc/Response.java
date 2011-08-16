@@ -6,39 +6,30 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.cloud.api.service;
+package org.openmobster.cloud.api.rpc;
 
-import java.util.List;
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * Represents a service request that will be sent to the server side Mobile Service Bean component
+ * Represents a Response sent back by an invocation of the server side Mobile Service Bean component
  * 
  * @author openmobster@gmail.com
  */
-public class Request implements Serializable 
+public class Response implements Serializable
 {
 	private AttributeManager attributeManager;
-	private String service;
 	
 	/**
-	 * Creates a service request
-	 * 
-	 * @param service - the unique identifier of the server side Mobile Service Bean component
+	 * Creates an instance of the Response
 	 */
-	public Request(String service)
+	public Response()
 	{
-		if(service == null || service.trim().length() == 0)
-		{
-			throw new IllegalArgumentException("Service cannot be empty!!");
-		}
-		
-		this.service = service;
 		this.attributeManager = new AttributeManager();
 	}
 	
 	/**
-	 * Sets arbitrary attributes representing the contextual data associated with this particular service request
+	 * Sets arbitrary attributes representing the contextual data associated with this particular service response
 	 * 
 	 * @param name
 	 * @param value
@@ -49,7 +40,7 @@ public class Request implements Serializable
 	}
 	
 	/**
-	 * Gets an arbitrary attribute value from the service request
+	 * Gets an arbitrary attribute value from the service response
 	 * 
 	 * @param name
 	 * @return
@@ -84,7 +75,7 @@ public class Request implements Serializable
 	}
 	
 	/**
-	 * Gets all the names that identify values of attributes in the service request
+	 * Gets all the names that identify values of attributes in the service response
 	 * 
 	 * @return
 	 */
@@ -94,7 +85,7 @@ public class Request implements Serializable
 	}
 	
 	/**
-	 * Gets all the values of attributes in the service request
+	 * Gets all the values of attributes in the service response
 	 * 
 	 * @return
 	 */
@@ -104,7 +95,7 @@ public class Request implements Serializable
 	}
 	
 	/**
-	 * Removes an attribute associated with the service request
+	 * Removes an attribute associated with the service response
 	 * 
 	 * @param name
 	 */
@@ -112,14 +103,24 @@ public class Request implements Serializable
 	{
 		this.attributeManager.removeAttribute(name);
 	}
-	
-	/**
-	 * Gets the the unique identifier of the server side Mobile Service Bean component
-	 * 
-	 * @return
-	 */
-	public String getService()
+	//----------------------------------------------------------------------------------------------------------		
+	public void setStatusCode(String statusCode)
 	{
-		return this.service;
-	}			
+		this.attributeManager.setAttribute("status", statusCode);
+	}
+	
+	public String getStatusCode()
+	{
+		return this.attributeManager.getAttribute("status");
+	}
+	
+	public void setStatusMsg(String statusMsg)
+	{
+		this.attributeManager.setAttribute("statusMsg", statusMsg);
+	}
+	
+	public String getStatusMsg()
+	{
+		return this.attributeManager.getAttribute("statusMsg");
+	}		
 }

@@ -10,7 +10,7 @@ package org.openmobster.core.dataService.push;
 import java.util.Map;
 import java.util.HashMap;
 
-import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.rpc.Request;
 import org.openmobster.core.push.notification.Notification;
 import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.security.device.Device;
