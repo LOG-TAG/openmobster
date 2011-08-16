@@ -254,7 +254,7 @@ public final class CommandProcessor extends Service
 				//System.out.println("PushRPC Started......"+Registry.getActiveInstance().getContext().getPackageName());
 				
 				PushRPCInvocation invocation = new PushRPCInvocation(
-					"org.openmobster.core.mobileCloud.api.push.PushRPCInvocationHandler",payload);
+					"org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler",payload);
 				Bus.getInstance().broadcast(invocation);
 			}
 			catch(Exception e)
