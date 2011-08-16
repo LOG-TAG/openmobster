@@ -17,10 +17,10 @@ import org.openmobster.cloud.api.camera.CameraCommandContext;
 import org.openmobster.cloud.api.camera.CameraCommandResponse;
 import org.openmobster.cloud.api.camera.CloudCameraCommand;
 import org.openmobster.cloud.api.camera.CloudCameraURI;
-import org.openmobster.cloud.api.service.MobileServiceBean;
-import org.openmobster.cloud.api.service.Request;
-import org.openmobster.cloud.api.service.Response;
-import org.openmobster.cloud.api.service.ServiceInfo;
+import org.openmobster.cloud.api.rpc.MobileServiceBean;
+import org.openmobster.cloud.api.rpc.Request;
+import org.openmobster.cloud.api.rpc.Response;
+import org.openmobster.cloud.api.rpc.ServiceInfo;
 
 
 /**

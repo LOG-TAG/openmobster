@@ -10,10 +10,10 @@ package test.openmobster.device.agent;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.cloud.api.service.MobileServiceBean;
-import org.openmobster.cloud.api.service.Request;
-import org.openmobster.cloud.api.service.Response;
-import org.openmobster.cloud.api.service.ServiceInfo;
+import org.openmobster.cloud.api.rpc.MobileServiceBean;
+import org.openmobster.cloud.api.rpc.Request;
+import org.openmobster.cloud.api.rpc.Response;
+import org.openmobster.cloud.api.rpc.ServiceInfo;
 import org.openmobster.core.dataService.push.PushRPC;
 import org.openmobster.core.dataService.push.PushCommandContext;
 

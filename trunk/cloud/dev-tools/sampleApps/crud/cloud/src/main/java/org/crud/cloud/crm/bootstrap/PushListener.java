@@ -15,10 +15,10 @@ import org.apache.log4j.Logger;
 import org.crud.cloud.crm.Ticket;
 import org.crud.cloud.crm.hibernate.TicketDS;
 
-import org.openmobster.cloud.api.service.MobileServiceBean;
-import org.openmobster.cloud.api.service.Request;
-import org.openmobster.cloud.api.service.Response;
-import org.openmobster.cloud.api.service.ServiceInfo;
+import org.openmobster.cloud.api.rpc.MobileServiceBean;
+import org.openmobster.cloud.api.rpc.Request;
+import org.openmobster.cloud.api.rpc.Response;
+import org.openmobster.cloud.api.rpc.ServiceInfo;
 
 /**
  * This component is used to demonstrate real time push on the device. This is invoked to simulate a backend push usecase

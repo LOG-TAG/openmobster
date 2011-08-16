@@ -12,10 +12,10 @@ import org.apache.log4j.Logger;
 
 import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.cloud.api.push.PushService;
-import org.openmobster.cloud.api.service.MobileServiceBean;
-import org.openmobster.cloud.api.service.Request;
-import org.openmobster.cloud.api.service.Response;
-import org.openmobster.cloud.api.service.ServiceInfo;
+import org.openmobster.cloud.api.rpc.MobileServiceBean;
+import org.openmobster.cloud.api.rpc.Request;
+import org.openmobster.cloud.api.rpc.Response;
+import org.openmobster.cloud.api.rpc.ServiceInfo;
 import org.openmobster.core.security.device.Device;
 
 

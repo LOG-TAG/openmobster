@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.cloud.api.service;
+package org.openmobster.cloud.api.rpc;
 
 import java.io.Serializable;
 import java.util.Collection;

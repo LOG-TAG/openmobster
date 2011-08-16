@@ -14,8 +14,8 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.cloud.api.service.MobileServiceBean;
-import org.openmobster.cloud.api.service.ServiceInfo;
+import org.openmobster.cloud.api.rpc.MobileServiceBean;
+import org.openmobster.cloud.api.rpc.ServiceInfo;
 
 /**
  * MobileServiceMonitor provides management services for the Mobile Service Beans
