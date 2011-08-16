@@ -18,8 +18,9 @@ import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.api.system.CometUtil;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
+
+import system.CometUtil;
 
 /**
  *

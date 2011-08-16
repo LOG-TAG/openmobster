@@ -26,7 +26,6 @@ import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.Daemon;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
 import org.openmobster.core.mobileCloud.android.module.sync.engine.SyncDataSource;
-import org.openmobster.core.mobileCloud.api.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
 import org.openmobster.core.mobileCloud.android.module.connection.NotificationListener;
@@ -47,6 +46,7 @@ import org.openmobster.core.mobileCloud.android.invocation.SwitchSecurityMode;
 import org.openmobster.core.mobileCloud.android.invocation.StopCometDaemon;
 import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
+import org.openmobster.core.mobileCloud.android_native.push.PushRPCInvocationHandler;
 
 
 /**

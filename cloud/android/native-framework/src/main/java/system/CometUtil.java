@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.api.system;
+package system;
 
 import java.util.List;
 import java.util.Vector;

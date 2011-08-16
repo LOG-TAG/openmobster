@@ -22,9 +22,9 @@ import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
-import org.openmobster.core.mobileCloud.api.push.MobilePush;
+import org.openmobster.core.mobileCloud.android_native.push.MobilePush;
+import org.openmobster.core.mobileCloud.android_native.push.PushListener;
 import org.openmobster.core.mobileCloud.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.api.system.CometUtil;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppPushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
@@ -33,7 +33,8 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
-import org.openmobster.core.mobileCloud.api.push.PushListener;
+
+import system.CometUtil;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
