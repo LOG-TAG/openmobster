@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.android_native.push;
+package org.openmobster.core.mobileCloud.push;
 
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 

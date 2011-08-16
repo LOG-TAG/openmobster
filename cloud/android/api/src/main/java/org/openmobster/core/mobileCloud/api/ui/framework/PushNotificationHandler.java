@@ -8,7 +8,7 @@
 
 package org.openmobster.core.mobileCloud.api.ui.framework;
 
-import org.openmobster.core.mobileCloud.android_native.push.MobilePush;
+import org.openmobster.core.mobileCloud.push.MobilePush;
 
 /**
  * @author openmobster@gmail
