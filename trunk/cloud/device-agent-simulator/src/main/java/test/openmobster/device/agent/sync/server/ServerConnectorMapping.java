@@ -8,8 +8,8 @@
 
 package test.openmobster.device.agent.sync.server;
 
-import org.openmobster.cloud.api.model.ChannelInfo;
-import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.sync.ChannelInfo;
+import org.openmobster.cloud.api.sync.MobileBean;
 
 /**
  * @author openmobster@gmail.com

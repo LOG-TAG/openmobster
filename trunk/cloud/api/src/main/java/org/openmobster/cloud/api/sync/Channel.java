@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.cloud.api.model;
+package org.openmobster.cloud.api.sync;
 
 import java.util.List;
 import java.util.Date;

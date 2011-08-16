@@ -12,9 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.openmobster.cloud.api.model.Channel;
-import org.openmobster.cloud.api.model.ChannelInfo;
-import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.sync.Channel;
+import org.openmobster.cloud.api.sync.ChannelInfo;
+import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.core.security.device.Device;
 
 import org.crud.cloud.crm.hibernate.TicketDS;

@@ -8,8 +8,8 @@
 
 package org.openmobster.core.services;
 
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 
 /**
  * @author openmobster@gmail.com

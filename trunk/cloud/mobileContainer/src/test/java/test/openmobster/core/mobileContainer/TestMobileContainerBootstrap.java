@@ -14,7 +14,7 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.mobileContainer.MobileContainer;
 import org.openmobster.core.mobileContainer.Invocation;

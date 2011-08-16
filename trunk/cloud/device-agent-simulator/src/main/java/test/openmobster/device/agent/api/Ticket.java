@@ -11,8 +11,8 @@ package test.openmobster.device.agent.api;
 import java.io.Serializable;
 import java.util.List;
 
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 
 /**
  * @author openmobster@gmail.com

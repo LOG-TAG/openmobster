@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 
 /**
  * A 'Ticket' instance represents tickets entered into the CRM db managed by the 'TicketDS' datasource

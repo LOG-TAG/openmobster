@@ -19,8 +19,8 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.synchronizer.SyncException;
 import org.openmobster.core.mobileContainer.Invocation;

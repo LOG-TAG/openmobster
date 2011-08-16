@@ -11,9 +11,9 @@ package com.pushrpc.cloud.app;
 import java.util.Date;
 import java.util.List;
 
-import org.openmobster.cloud.api.model.Channel;
-import org.openmobster.cloud.api.model.ChannelInfo;
-import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.sync.Channel;
+import org.openmobster.cloud.api.sync.ChannelInfo;
+import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.core.common.Utilities;
 import org.openmobster.core.dataService.push.PushCommandContext;
 import org.openmobster.core.dataService.push.PushRPC;

@@ -8,7 +8,7 @@
 
 package org.openmobster.core.services.channel;
 
-import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.sync.Channel;
 
 /**
  * @author openmobster@gmail
