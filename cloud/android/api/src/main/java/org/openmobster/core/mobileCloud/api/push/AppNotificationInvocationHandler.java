@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBeanMetaData;
+import org.openmobster.core.mobileCloud.api.sync.MobileBeanMetaData;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;

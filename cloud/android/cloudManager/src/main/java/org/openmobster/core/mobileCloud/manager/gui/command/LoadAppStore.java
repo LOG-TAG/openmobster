@@ -22,10 +22,10 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.Response;
-import org.openmobster.core.mobileCloud.api.service.MobileService;
-import org.openmobster.core.mobileCloud.api.service.ServiceInvocationException;
+import org.openmobster.core.mobileCloud.api.rpc.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.Request;
+import org.openmobster.core.mobileCloud.api.rpc.Response;
+import org.openmobster.core.mobileCloud.api.rpc.ServiceInvocationException;
 
 import android.app.Activity;
 

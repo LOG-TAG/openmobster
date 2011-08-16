@@ -15,8 +15,8 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.Request;
 
 /**
  * 

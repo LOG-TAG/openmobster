@@ -8,7 +8,7 @@
 
 package org.openmobster.core.mobileCloud.api;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
+import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 
 /**
  * @author openmobster@gmail.com
