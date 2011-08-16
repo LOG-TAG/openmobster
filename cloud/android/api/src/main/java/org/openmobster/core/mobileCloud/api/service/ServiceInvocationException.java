@@ -20,9 +20,9 @@ public final class ServiceInvocationException extends BaseException
 {
 	/**
 	 * 
-	 * @param className
-	 * @param methodName
-	 * @param parameters
+	 * @param className className where the exception occurred
+	 * @param methodName the method name where the exception occurred
+	 * @param parameters Arbitrary data associated to carry more detailed information
 	 */
 	public ServiceInvocationException(String className, String methodName, Object[] parameters)
 	{

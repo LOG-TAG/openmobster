@@ -34,8 +34,8 @@ public final class Response
 	/**
 	 * Gets an arbitrary attribute value from the service response
 	 * 
-	 * @param name
-	 * @return
+	 * @param name name of the attribute
+	 * @return value of the attribute
 	 */
 	public String getAttribute(String name)
 	{
@@ -45,7 +45,7 @@ public final class Response
 	/**
 	 * Gets all the names that identify values of attributes in the service response
 	 * 
-	 * @return
+	 * @return all the attribute names of the response
 	 */
 	public String[] getNames()
 	{
@@ -55,7 +55,7 @@ public final class Response
 	/**
 	 * Gets all the values of attributes in the service response
 	 * 
-	 * @return
+	 * @return all the values of attributes
 	 */
 	public String[] getValues()
 	{
@@ -65,8 +65,8 @@ public final class Response
 	/**
 	 * Sets arbitrary attributes representing the contextual data associated with this particular service response
 	 * 
-	 * @param name
-	 * @param value
+	 * @param name name of the attribute
+	 * @param value value of the attribute
 	 */
 	void setAttribute(String name, String value)
 	{
@@ -76,7 +76,7 @@ public final class Response
 	/**
 	 * Removes an attribute associated with the service response
 	 * 
-	 * @param name
+	 * @param name name of the attribute to be removed
 	 */
 	void removeAttribute(String name)
 	{
@@ -87,8 +87,8 @@ public final class Response
 	 * Sets related "list" of data representing the contextual data associated 
 	 * with this particular service request
 	 * 
-	 * @param name
-	 * @param list
+	 * @param name name of the attribute
+	 * @param list list to be set as value
 	 */
 	public void setListAttribute(String name, Vector list)
 	{
@@ -105,8 +105,8 @@ public final class Response
 	 * Gets a related "list" of data representing the contextual data associated 
 	 * with this particular service request
 	 * 
-	 * @param name
-	 * @return
+	 * @param name name of the list attribute
+	 * @return the list associated with this attribute
 	 */
 	public Vector getListAttribute(String name)
 	{
@@ -123,22 +123,42 @@ public final class Response
 		
 		return attribute;
 	}
-	//----------------------------------------------------------------------------------------------------------		
+	//----------------------------------------------------------------------------------------------------------	
+	/**
+	 * Sets the status code of the response
+	 * 
+	 * @param statusCode the status code
+	 */
 	public void setStatusCode(String statusCode)
 	{
 		this.attributeManager.setAttribute("status", statusCode);
 	}
 	
+	/**
+	 * Gets the status code of the response
+	 * 
+	 * @return the status code
+	 */
 	public String getStatusCode()
 	{
 		return this.attributeManager.getAttribute("status");
 	}
 	
+	/**
+	 * Sets the status message of the response
+	 * 
+	 * @param statusMsg the status message
+	 */
 	public void setStatusMsg(String statusMsg)
 	{
 		this.attributeManager.setAttribute("statusMsg", statusMsg);
 	}
 	
+	/**
+	 * Get the status message set on the response
+	 * 
+	 * @return the status message
+	 */
 	public String getStatusMsg()
 	{
 		return this.attributeManager.getAttribute("statusMsg");

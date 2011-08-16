@@ -36,10 +36,10 @@ import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnect
 public final class MobileService 
 {
 	/**
-	 * Invokes the remote Mobile Service
+	 * Invokes the remote Mobile Service component
 	 * 
-	 * @param request
-	 * @return
+	 * @param request invocation request
+	 * @return invocation response
 	 * @throws ServiceInvocationException
 	 */
 	public static Response invoke(Request request) throws ServiceInvocationException
