@@ -26,14 +26,14 @@ import org.openmobster.core.mobileCloud.android.module.mobileObject.LogicExpress
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
 /**
- * MobileBean is a managed Mobile Component which is an extension of its corresponding Mobile Component on the Server
+ * MobileBean is a managed Mobile Component which is an extension of its corresponding Mobile Component in the Cloud.
  * 
- * MobileBean provides seamless access to service data to be used by the Mobile application in various contexts like showing reports, GUI for the 
+ * MobileBean provides seamless access to the synchronized data. This data is used in a  Mobile application in various contexts like showing reports, GUI for the 
  * service etc
  * 
- * It shields the Mobile Developer from low-level services like Offline Access, Receiving Notifications related to data changes on the server,
- * Synchronizing modified beans back with the server etc. This helps the developer to focus on business logic for their applications better on the
- * Mobile Application
+ * It is designed to shield the Mobile Developer from low-level services like Offline Access, Receiving Notifications related to data changes on the server,
+ * synchronizing modified beans back with the server, etc. This helps the developer to focus on the business logic for their applications without having to
+ * worry about low level synchronization details
  * 
  * @author openmobster@gmail.com
  */
@@ -55,9 +55,9 @@ public final class MobileBean
 	}
 	//-------------Data operations-----------------------------------------------------------------------------------------------------------------
 	/**
-	 * Gets Mobile Service related to this bean
+	 * Gets the name of the mobile channel associated with this bean
 	 * 
-	 * @return the Mobile Service related to this bean
+	 * @return the Mobile channel related to this bean
 	 */
 	public String getService()
 	{
@@ -71,7 +71,7 @@ public final class MobileBean
 	/**
 	 * Gets the unique identifier of the bean
 	 * 
-	 * @return the unique identifier for this Mobile Bean
+	 * @return the unique identifier of this Mobile Bean
 	 */
 	public String getId()
 	{
@@ -89,9 +89,9 @@ public final class MobileBean
 	}
 	
 	/**
-	 * Gets the unique identifier of this bean on the Server Side
+	 * Gets the unique identifier of this bean on the Cloud Side. 99% of the times this is same as the one on the Device Side.
 	 * 
-	 * @return the unique identifier for this bean on the server side
+	 * @return the unique identifier for this bean on the cloud side
 	 */
 	public String getServerId()
 	{
@@ -111,7 +111,7 @@ public final class MobileBean
 	/**
 	 * Checks if the bean instance is properly initialized
 	 * 
-	 * @return
+	 * @return true if it is initialized
 	 */
 	public boolean isInitialized()
 	{
@@ -121,7 +121,7 @@ public final class MobileBean
 	/**
 	 * Checks if this bean was originally created on the device
 	 * 
-	 * @return
+	 * @return true if the bean is originated on the device
 	 */
 	public boolean isCreateOnDevice()
 	{
@@ -129,9 +129,9 @@ public final class MobileBean
 	}
 	
 	/**
-	 * Checks if the particular instance if in proxy state or state is fully downloaded from the server
+	 * Checks if the particular instance is in proxy state or its state is fully downloaded from the server
 	 * 
-	 * @return
+	 * @return true if it is not fully loaded from the Cloud
 	 */
 	public boolean isProxy()
 	{
@@ -145,8 +145,8 @@ public final class MobileBean
 	/**
 	 * Gets the Value of a Field of the bean
 	 * 
-	 * @param fieldUri the Field
-	 * @return the Value 
+	 * @param fieldUri expression identifying the field on the bean
+	 * @return the Value value of the field on the bean
 	 */
 	public String getValue(String fieldUri)
 	{
@@ -163,8 +163,9 @@ public final class MobileBean
 	
 	/**
 	 * Sets the Value of a Field of the bean
-	 * @param fieldUri
-	 * @param value
+	 * 
+	 * @param fieldUri expression identifying the field on the bean
+	 * @param value value to be set
 	 */
 	public void setValue(String fieldUri, String value)
 	{
@@ -183,8 +184,8 @@ public final class MobileBean
 	/**
 	 * Reads a List of Beans under the Mobile Bean "parent" Object
 	 * 
-	 * @param listProperty - expression to specify the List
-	 * @return
+	 * @param listProperty expression to specify the List
+	 * @return the listProperty
 	 */
 	public BeanList readList(String listProperty)
 	{		
@@ -216,7 +217,7 @@ public final class MobileBean
 	 * Saves the List of Beans under the Mobile Bean "parent" Object
 	 * If the list is null, a new list is created. If the list exists, then this list replaces the old list
 	 * 
-	 * @param list
+	 * @param list expression of the list property of the bean
 	 */
 	public void saveList(BeanList list)
 	{
@@ -245,7 +246,7 @@ public final class MobileBean
 	/**
 	 * Clears the List of Beans under the Mobile Bean "parent" Object
 	 * 
-	 * @param listProperty
+	 * @param listProperty expression of the list property to be cleared
 	 */
 	public void clearList(String listProperty)
 	{
@@ -266,8 +267,8 @@ public final class MobileBean
 	/**
 	 * Add a Bean to the List of Beans under the Mobile Bean "parent" Object
 	 * 
-	 * @param listProperty
-	 * @param bean
+	 * @param expression of the list property in question
+	 * @param bean a BeanListEntry instance to be added to the list property
 	 */
 	public void addBean(String listProperty, BeanListEntry bean)
 	{
@@ -288,8 +289,8 @@ public final class MobileBean
 	/**
 	 * Remove the Bean present at the specified index from the List of Beans under the Mobile Bean "parent" Object
 	 * 
-	 * @param listProperty
-	 * @param elementAt
+	 * @param listProperty expression representing the list property
+	 * @param elementAt index of the element to be removed from the list property
 	 */
 	public void removeBean(String listProperty, int elementAt)
 	{
@@ -308,7 +309,7 @@ public final class MobileBean
 	}
 	//----------Persistence operations-----------------------------------------------------------------------------------------------------------
 	/**
-	 * Persists the state of the Mobile Bean. This also makes sure the consistent bean state is reflected on the Server Side as well
+	 * Persists the state of the Mobile Bean. This also makes sure the consistent bean state is reflected on the Cloud Side as well
 	 * 
 	 */
 	public synchronized void save()
@@ -368,7 +369,7 @@ public final class MobileBean
 	}
 	
 	/**
-	 * Deletes the bean from the service. This also makes sure this action is reflected on the Server Side as well
+	 * Deletes the bean from the channel. This also makes sure this action is reflected on the Cloud Side as well
 	 */
 	public synchronized void delete()
 	{
@@ -422,6 +423,8 @@ public final class MobileBean
 	//--------static operations-------------------------------------------------------------------------------------------------------------------
 	/**
 	 * Checks if the Channel has been booted up on the device with initial data or not
+	 * 
+	 * @return true if the channel has been booted up
 	 */
 	public static boolean isBooted(String channel)
 	{
@@ -431,9 +434,10 @@ public final class MobileBean
 		return (allObjects !=null && !allObjects.isEmpty());
 	}
 	/**
-	 * Provides all the instances of Mobile Beans for the specified service
+	 * Provides all the instances of Mobile Beans for the specified channel
 	 * 
-	 * @param service Mobile Service associated with the beans
+	 * @param the channel to read the beans from
+	 * @return all the beans stored in the channel
 	 */
 	public static MobileBean[] readAll(String service)
 	{
@@ -462,9 +466,9 @@ public final class MobileBean
 	/**
 	 * Provides an instance of a Mobile Bean
 	 * 
-	 * @param service service of the bean
+	 * @param channel channel of the bean
 	 * @param id id of the bean
-	 * @return
+	 * @return an instance of the MobileBean from the channel
 	 */
 	public static MobileBean readById(String service, String id)
 	{
@@ -484,8 +488,8 @@ public final class MobileBean
 	 * to persist it on the device and have it reflect on the server. In this case, when the bean is persisted
 	 * the Id will be generated by the device since its not explicitly specified
 	 * 
-	 * @param service service of the bean
-	 * @return
+	 * @param channel channel of the bean
+	 * @return an instance of the MobileBean originated from the device (does not have a Cloud counterpart yet, until synchronized)
 	 */
 	public static MobileBean newInstance(String service)
 	{
@@ -501,7 +505,14 @@ public final class MobileBean
 		return newInstance;
 	}
 	//---Query functionality--------------------------------------------------------------------------------------------------------------
-	//TODO: This should be made more flexible once the Query Language is designed and implemented
+	/**
+	 * Query the Channel such that the criteria provided is separated by AND in the WHERE clause.
+	 * The criteria consists of name/value pairs of the data to be matched
+	 * 
+	 * @param channel Channel being queried
+	 * @param criteria name/value pairs of the data to be matched
+	 * @return an array of beans that match the specified query
+	 */
 	public static MobileBean[] queryByEqualsAll(String service,GenericAttributeManager criteria)
 	{
 		if(service == null)
@@ -549,6 +560,14 @@ public final class MobileBean
 		return beans;
 	}
 	
+	/**
+	 * Query the Channel such that the criteria provided is separated by an OR in the WHERE clause.
+	 * The criteria consists of name/value pairs of the data to be matched
+	 * 
+	 * @param channel Channel being queried
+	 * @param criteria name/value pairs of the data to be matched
+	 * @return an array of beans that match the specified query
+	 */
 	public static MobileBean[] queryByEqualsAtleastOne(String service, 
 	GenericAttributeManager criteria)	
 	{
@@ -596,6 +615,15 @@ public final class MobileBean
 		return beans;
 	}
 	
+	/**
+	 * Query the Channel such that the criteria provided is separated by a AND in the WHERE clause.
+	 * The criteria consists of name/value pairs of the data to be matched. In this case, it returns rows that
+	 * "do not" match the specified criteria
+	 * 
+	 * @param channel Channel being queried
+	 * @param criteria name/value pairs of the data to be matched
+	 * @return an array of beans that "do not" match the specified query
+	 */
 	public static MobileBean[] queryByNotEqualsAll(String service, 
 	GenericAttributeManager criteria)
 	{
@@ -643,6 +671,15 @@ public final class MobileBean
 		return beans;
 	}
 	
+	/**
+	 * Query the Channel such that the criteria provided is separated by a OR in the WHERE clause.
+	 * The criteria consists of name/value pairs of the data to be matched. In this case, it returns rows that
+	 * "do not" match the specified criteria
+	 * 
+	 * @param channel Channel being queried
+	 * @param criteria name/value pairs of the data to be matched
+	 * @return an array of beans that "do not" match the specified query
+	 */
 	public static MobileBean[] queryByNotEqualsAtleastOne(String service, 
 	GenericAttributeManager criteria)	
 	{
@@ -785,6 +822,15 @@ public final class MobileBean
 		return beans;
 	}*/
 	
+	/**
+	 * Query the Channel such that the criteria provided is separated by an AND in the WHERE clause.
+	 * The criteria consists of name/value pairs of the data to be matched. The matching is done using the
+	 * LIKE clause to check if the specified criteria is contained within the data
+	 * 
+	 * @param channel Channel being queried
+	 * @param criteria name/value pairs of the data to be matched
+	 * @return an array of beans that match the specified query
+	 */
 	public static MobileBean[] queryByContainsAll(String service,
 	GenericAttributeManager criteria)
 	{
@@ -832,6 +878,15 @@ public final class MobileBean
 		return beans;
 	}
 	
+	/**
+	 * Query the Channel such that the criteria provided is separated by an OR in the WHERE clause.
+	 * The criteria consists of name/value pairs of the data to be matched. The matching is done using the
+	 * LIKE clause to check if the specified criteria is contained within the data
+	 * 
+	 * @param channel Channel being queried
+	 * @param criteria name/value pairs of the data to be matched
+	 * @return an array of beans that match the specified query
+	 */
 	public static MobileBean[] queryByContainsAtleastOne(String service, 
 	GenericAttributeManager criteria)	
 	{

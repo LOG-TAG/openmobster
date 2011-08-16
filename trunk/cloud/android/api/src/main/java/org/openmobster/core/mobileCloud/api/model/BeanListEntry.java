@@ -13,6 +13,8 @@ import java.util.Hashtable;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 
 /**
+ * BeanEntry represents members of a BeanList
+ * 
  * @author openmobster@gmail.com
  *
  */
@@ -40,23 +42,44 @@ public class BeanListEntry
 		this.listProperty = listProperty;
 	}
 	//Public API-----------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Reads a property value on this object using a property expression
+	 * 
+	 * @return the value of the specified property
+	 */
 	public String getProperty(String propertyExpression)
 	{
 		String propertyUri = this.calculatePropertyUri(propertyExpression);		
 		return this.properties.get(propertyUri);
 	}
 	
+	/**
+	 * Set the property value on this object using a property expression
+	 * 
+	 * @param propertyExpression expression to signify the property to be set
+	 * @param value value to be set
+	 */
 	public void setProperty(String propertyExpression, String value)
 	{
 		String propertyUri = this.calculatePropertyUri(propertyExpression);
 		this.properties.put(propertyUri, value);
 	}
 	
+	/**
+	 * All the properties of this object
+	 * 
+	 * @return all the properties of this object
+	 */
 	public Hashtable<String,String> getProperties()
 	{		
 		return this.properties;
 	}
 	
+	/**
+	 * If this object carries a single property, read it using getValue
+	 * 
+	 * @return the value of this object
+	 */
 	public String getValue()
 	{
 		if(this.properties.size() == 1)
@@ -71,6 +94,11 @@ public class BeanListEntry
 		return null;
 	}
 	
+	/**
+	 * Sets the single property of this object
+	 * 
+	 * @param value value to set
+	 */
 	public void setValue(String value)
 	{
 		this.properties.put("", value);
