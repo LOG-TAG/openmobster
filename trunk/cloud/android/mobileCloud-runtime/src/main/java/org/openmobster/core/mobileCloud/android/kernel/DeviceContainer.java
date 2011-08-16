@@ -46,7 +46,7 @@ import org.openmobster.core.mobileCloud.android.invocation.SwitchSecurityMode;
 import org.openmobster.core.mobileCloud.android.invocation.StopCometDaemon;
 import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
-import org.openmobster.core.mobileCloud.android_native.push.PushRPCInvocationHandler;
+import org.openmobster.core.mobileCloud.push.PushRPCInvocationHandler;
 
 
 /**

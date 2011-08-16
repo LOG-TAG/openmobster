@@ -8,8 +8,8 @@
 
 package org.openmobster.core.mobileCloud.android.module.dm;
 
-import org.openmobster.core.mobileCloud.android_native.push.PushCommand;
-import org.openmobster.core.mobileCloud.android_native.push.PushCommandContext;
+import org.openmobster.core.mobileCloud.push.PushCommand;
+import org.openmobster.core.mobileCloud.push.PushCommandContext;
 
 
 

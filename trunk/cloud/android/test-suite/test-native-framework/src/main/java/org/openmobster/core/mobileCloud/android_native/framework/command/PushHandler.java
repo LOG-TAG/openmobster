@@ -9,10 +9,10 @@
 package org.openmobster.core.mobileCloud.android_native.framework.command;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.push.MobilePush;
 import org.openmobster.core.mobileCloud.api.sync.MobileBeanMetaData;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.PushCommand;
+import org.openmobster.core.mobileCloud.push.MobilePush;
 
 import android.content.Context;
 import android.widget.Toast;

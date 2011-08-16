@@ -8,10 +8,10 @@
 
 package org.openmobster.core.mobileCloud.api.ui.framework;
 
-import org.openmobster.core.mobileCloud.android_native.push.PushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
+import org.openmobster.core.mobileCloud.push.PushListener;
 
 
 /**

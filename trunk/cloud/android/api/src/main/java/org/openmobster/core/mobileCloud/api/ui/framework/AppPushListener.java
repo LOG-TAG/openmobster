@@ -11,9 +11,9 @@ package org.openmobster.core.mobileCloud.api.ui.framework;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.openmobster.core.mobileCloud.android_native.push.MobilePush;
-import org.openmobster.core.mobileCloud.android_native.push.PushListener;
 import org.openmobster.core.mobileCloud.api.sync.MobileBeanMetaData;
+import org.openmobster.core.mobileCloud.push.MobilePush;
+import org.openmobster.core.mobileCloud.push.PushListener;
 
 /**
  * @author openmobster@gmail

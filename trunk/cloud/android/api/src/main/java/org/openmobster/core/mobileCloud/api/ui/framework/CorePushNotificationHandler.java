@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.push.MobilePush;
+import org.openmobster.core.mobileCloud.push.MobilePush;
 
 import android.app.Activity;
 import android.app.Notification;
