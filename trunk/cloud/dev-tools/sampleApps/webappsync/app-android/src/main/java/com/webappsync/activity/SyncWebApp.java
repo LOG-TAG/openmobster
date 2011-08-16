@@ -22,7 +22,7 @@ import org.openmobster.core.mobileCloud.android_native.framework.BaseCloudActivi
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.javascript.MobileBeanBridge;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
+import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 

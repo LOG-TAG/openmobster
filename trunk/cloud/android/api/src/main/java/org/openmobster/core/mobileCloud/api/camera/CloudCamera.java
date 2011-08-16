@@ -21,9 +21,9 @@ import org.openmobster.core.mobileCloud.android.storage.DBException;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.Response;
-import org.openmobster.core.mobileCloud.api.service.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.Request;
+import org.openmobster.core.mobileCloud.api.rpc.Response;
 
 import android.content.Context;
 

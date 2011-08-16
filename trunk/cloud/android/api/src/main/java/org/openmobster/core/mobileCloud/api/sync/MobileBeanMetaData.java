@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.api.model;
+package org.openmobster.core.mobileCloud.api.sync;
 
 import java.io.Serializable;
 

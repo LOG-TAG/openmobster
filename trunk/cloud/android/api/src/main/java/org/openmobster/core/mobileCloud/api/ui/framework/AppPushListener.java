@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.ArrayList;
 import org.openmobster.core.mobileCloud.api.push.MobilePush;
 import org.openmobster.core.mobileCloud.api.push.PushListener;
-import org.openmobster.core.mobileCloud.api.model.MobileBeanMetaData;
+import org.openmobster.core.mobileCloud.api.sync.MobileBeanMetaData;
 
 /**
  * @author openmobster@gmail

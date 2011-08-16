@@ -11,8 +11,8 @@ package org.openmobster.core.mobileCloud.jscript.bridge;
 import org.json.JSONObject;
 import org.json.JSONException;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
-import org.openmobster.core.mobileCloud.api.model.BeanList;
+import org.openmobster.core.mobileCloud.api.sync.BeanList;
+import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 
 /**
  * A Javascript bridge that exposes the OpenMobster MobileBean service to the HTML5/Javascript layer of the App.

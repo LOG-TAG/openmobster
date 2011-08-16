@@ -21,7 +21,7 @@ import android.webkit.WebView;
 import org.openmobster.core.mobileCloud.android_native.framework.BaseCloudActivity;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
+import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.jscript.bridge.MobileBeanBridge;

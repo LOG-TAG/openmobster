@@ -18,9 +18,9 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.Response;
-import org.openmobster.core.mobileCloud.api.service.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.MobileService;
+import org.openmobster.core.mobileCloud.api.rpc.Request;
+import org.openmobster.core.mobileCloud.api.rpc.Response;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
