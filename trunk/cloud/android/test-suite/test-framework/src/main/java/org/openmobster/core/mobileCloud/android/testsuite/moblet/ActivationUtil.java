@@ -14,13 +14,14 @@ import org.openmobster.core.mobileCloud.api.rpc.MobileService;
 import org.openmobster.core.mobileCloud.api.rpc.Request;
 import org.openmobster.core.mobileCloud.api.rpc.Response;
 import org.openmobster.core.mobileCloud.api.rpc.ServiceInvocationException;
-import org.openmobster.core.mobileCloud.api.system.CometUtil;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 
 import org.openmobster.core.mobileCloud.android.testsuite.TestSuite;
+
+import system.CometUtil;
 
 
 /**

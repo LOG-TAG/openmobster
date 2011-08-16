@@ -24,9 +24,9 @@ import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
-import org.openmobster.core.mobileCloud.api.push.AppNotificationInvocationHandler;
-import org.openmobster.core.mobileCloud.api.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
+import org.openmobster.core.mobileCloud.android_native.push.AppNotificationInvocationHandler;
+import org.openmobster.core.mobileCloud.android_native.push.PushRPCInvocationHandler;
 
 /**
  * Application Container. There is one instance of an Application Container deployed per Application. Application Container provides
