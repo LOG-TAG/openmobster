@@ -10,7 +10,7 @@ package com.offlineApp.android.app.command;
 
 import java.lang.StringBuffer;
 
-import org.openmobster.core.mobileCloud.api.sync.MobileBean;
+import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
 import org.openmobster.core.mobileCloud.android.service.Registry;

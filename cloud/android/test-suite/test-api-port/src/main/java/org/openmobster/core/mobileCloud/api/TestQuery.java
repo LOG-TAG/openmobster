@@ -8,7 +8,7 @@
 
 package org.openmobster.core.mobileCloud.api;
 
-import org.openmobster.core.mobileCloud.api.sync.MobileBean;
+import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObject;
