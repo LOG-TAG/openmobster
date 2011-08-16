@@ -7,8 +7,8 @@
  */
 package org.openmobster.pushmail.cloud.channel;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.MobileBeanId;
+import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBeanId;
 
 /**
  * 'Mail' models the Domain data for an Email object

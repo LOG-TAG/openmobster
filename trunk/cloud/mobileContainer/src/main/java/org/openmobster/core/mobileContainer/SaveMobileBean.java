@@ -17,14 +17,14 @@ import org.w3c.dom.Element;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
+import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBeanId;
 import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.mobileObject.xml.MobileObjectSerializer;
 import org.openmobster.core.services.MobileObjectMonitor;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
-import org.openmobster.server.api.model.MobileBeanId;
 
 
 /**

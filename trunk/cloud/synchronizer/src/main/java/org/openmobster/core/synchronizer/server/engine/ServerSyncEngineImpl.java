@@ -15,6 +15,8 @@ import java.util.HashMap;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBeanStreamable;
 import org.openmobster.core.synchronizer.SyncException;
 import org.openmobster.core.synchronizer.model.AbstractOperation;
 import org.openmobster.core.synchronizer.model.Add;
@@ -34,8 +36,6 @@ import org.openmobster.core.common.Utilities;
 import org.openmobster.core.common.database.HibernateManager;
 import org.openmobster.core.common.errors.ErrorHandler;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.MobileBeanStreamable;
 
 
 /**

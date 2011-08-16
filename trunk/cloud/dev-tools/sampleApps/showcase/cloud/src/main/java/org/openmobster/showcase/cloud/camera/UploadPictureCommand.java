@@ -9,10 +9,10 @@ package org.openmobster.showcase.cloud.camera;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.server.api.camera.CloudCameraCommand;
-import org.openmobster.server.api.camera.CameraCommandContext;
-import org.openmobster.server.api.camera.CameraCommandResponse;
-import org.openmobster.server.api.camera.CloudCameraURI;
+import org.openmobster.cloud.api.camera.CameraCommandContext;
+import org.openmobster.cloud.api.camera.CameraCommandResponse;
+import org.openmobster.cloud.api.camera.CloudCameraCommand;
+import org.openmobster.cloud.api.camera.CloudCameraURI;
 
 /**
  * 

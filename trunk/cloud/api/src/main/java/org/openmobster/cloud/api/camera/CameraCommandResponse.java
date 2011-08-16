@@ -5,36 +5,25 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.server.api.camera;
-
-import java.util.List;
-import java.io.IOException;
+package org.openmobster.cloud.api.camera;
 
 import org.openmobster.core.common.AttributeManager;
-import org.openmobster.core.common.Utilities;
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-public class CameraCommandContext
+public class CameraCommandResponse
 {
 	private AttributeManager attributeManager;
-	private String command;
 	
 	/**
 	 * Creates a command request
 	 * 
 	 * @param service - the unique identifier of the camera command to be invoked
 	 */
-	public CameraCommandContext(String command)
+	public CameraCommandResponse()
 	{
-		if(command == null || command.trim().length() == 0)
-		{
-			throw new IllegalArgumentException("Command cannot be empty!!");
-		}
-		
-		this.command = command;
 		this.attributeManager = new AttributeManager();
 	}
 	
@@ -88,32 +77,5 @@ public class CameraCommandContext
 	public void removeAttribute(String name)
 	{
 		this.attributeManager.removeAttribute(name);
-	}
-	
-	/**
-	 * Gets the the unique identifier of the camera command
-	 * 
-	 * @return
-	 */
-	public String getCommand()
-	{
-		return this.command;
-	}	
-	
-	public String getFullName()
-	{
-		return this.attributeManager.getAttribute("fullname");
-	}
-	
-	public String getMimeType()
-	{
-		return this.attributeManager.getAttribute("mime");
-	}
-	
-	public byte[] getPhoto() throws IOException
-	{
-		String photo = this.attributeManager.getAttribute("photo");
-		byte[] pic = Utilities.decodeBinaryData(photo);
-		return pic;
 	}
 }

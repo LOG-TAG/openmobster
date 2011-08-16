@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.server.api.model;
+package org.openmobster.cloud.api.model;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

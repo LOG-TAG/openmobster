@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.HashMap;
 import java.io.Serializable;
 
-import org.openmobster.server.api.service.Request;
+import org.openmobster.cloud.api.service.Request;
 
 
 /**

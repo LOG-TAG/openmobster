@@ -6,25 +6,17 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.server.api.service;
+package org.openmobster.cloud.api.model;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.annotation.ElementType;
+import java.io.Serializable;
 
 /**
+ * This is only a marker interface to treat domain/entity POJOs as Mobile Beans when processed inside
+ * the synchronizer engine
  * 
  * @author openmobster@gmail.com
+ *
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface ServiceInfo 
-{
-	/**
-	 * a unique identifier for the server side Mobile Service Bean component
-	 * 
-	 * @return
-	 */
-	String uri();
+public interface MobileBean extends Serializable
+{		
 }

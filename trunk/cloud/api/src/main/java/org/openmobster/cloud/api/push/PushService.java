@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.server.api.push;
+package org.openmobster.cloud.api.push;
 
 import java.util.Map;
 import java.util.HashMap;

@@ -10,7 +10,7 @@ package org.openmobster.core.mobileContainer;
 
 import java.util.List;
 
-import org.openmobster.server.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBean;
 
 /**
  * @author openmobster@gmail.com

@@ -6,25 +6,22 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.server.api.camera;
+package org.openmobster.cloud.api.model;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.annotation.ElementType;
 
 /**
+ * Annotation which indicates a particular field of an Object contains data which uniquely identifies
+ * this Object in the system
  * 
  * @author openmobster@gmail.com
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface CloudCameraURI 
+@Target(ElementType.FIELD)
+public @interface MobileBeanId 
 {
-	/**
-	 * a unique identifier for the server side Mobile Service Bean component
-	 * 
-	 * @return
-	 */
-	String uri();
+
 }

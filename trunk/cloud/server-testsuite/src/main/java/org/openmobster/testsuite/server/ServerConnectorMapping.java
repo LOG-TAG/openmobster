@@ -8,8 +8,8 @@
 
 package org.openmobster.testsuite.server;
 
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBean;
 
 /**
  * @author openmobster@gmail.com

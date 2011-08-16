@@ -10,11 +10,11 @@ package org.openmobster.core.mobileContainer;
 
 import org.apache.log4j.Logger;
 
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
 import org.openmobster.core.services.MobileServiceMonitor;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
 
 
 /**

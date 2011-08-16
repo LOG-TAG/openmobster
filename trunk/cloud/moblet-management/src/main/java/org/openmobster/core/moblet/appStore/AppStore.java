@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.MobileServiceBean;
-import org.openmobster.server.api.service.ServiceInfo;
 
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.core.common.errors.SystemException;
 import org.openmobster.core.common.IOUtilities;

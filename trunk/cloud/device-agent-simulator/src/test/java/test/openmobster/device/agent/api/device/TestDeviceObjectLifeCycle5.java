@@ -10,7 +10,7 @@ package test.openmobster.device.agent.api.device;
 
 import java.util.List;
 
-import org.openmobster.server.api.model.MobileBean;
+import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
 
 /**

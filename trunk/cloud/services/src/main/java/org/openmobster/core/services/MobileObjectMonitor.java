@@ -19,14 +19,14 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
+import org.openmobster.cloud.api.model.Channel;
+import org.openmobster.cloud.api.model.ChannelInfo;
+import org.openmobster.cloud.api.model.MobileBeanId;
 import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.common.database.HibernateManager;
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusListener;
 import org.openmobster.core.common.bus.BusMessage;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
-import org.openmobster.server.api.model.MobileBeanId;
 import org.openmobster.core.services.channel.ChannelManager;
 import org.openmobster.core.services.channel.ChannelRegistration;
 import org.openmobster.core.services.channel.ChannelBeanMetaData;

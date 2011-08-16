@@ -14,14 +14,14 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
 import org.openmobster.core.common.XMLUtilities;
 
 import org.openmobster.core.mobileContainer.MobileContainer;
 import org.openmobster.core.mobileContainer.Invocation;
 import org.openmobster.core.mobileContainer.InvocationResponse;
 
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
 
 /**
  * 

@@ -11,13 +11,13 @@ package org.openmobster.core.console.server;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.openmobster.cloud.api.service.MobileServiceBean;
+import org.openmobster.cloud.api.service.Request;
+import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.service.ServiceInfo;
 import org.openmobster.core.security.IDMException;
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.security.identity.Identity;
-import org.openmobster.server.api.service.Request;
-import org.openmobster.server.api.service.Response;
-import org.openmobster.server.api.service.ServiceInfo;
-import org.openmobster.server.api.service.MobileServiceBean;
 
 /**
  * @author openmobster@gmail.com
