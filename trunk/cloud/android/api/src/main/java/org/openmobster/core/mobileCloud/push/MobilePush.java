@@ -10,7 +10,7 @@ package org.openmobster.core.mobileCloud.push;
 
 import java.io.Serializable;
 
-import org.openmobster.core.mobileCloud.api.sync.MobileBeanMetaData;
+import org.openmobster.android.api.sync.MobileBeanMetaData;
 
 /**
  * A MobilePush represents a server notification containing meta information about the set of MobileBeans whose state is out-of-sync with that 

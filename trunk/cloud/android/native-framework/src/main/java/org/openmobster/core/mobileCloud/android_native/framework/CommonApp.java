@@ -14,6 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
+import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
@@ -22,7 +23,6 @@ import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
-import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppPushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;

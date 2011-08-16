@@ -18,11 +18,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android_native.framework.BaseCloudActivity;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.javascript.MobileBeanBridge;
 
-import org.openmobster.core.mobileCloud.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 

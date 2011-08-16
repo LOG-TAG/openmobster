@@ -11,7 +11,7 @@ package org.openmobster.core.mobileCloud.api.ui.framework;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.openmobster.core.mobileCloud.api.sync.MobileBeanMetaData;
+import org.openmobster.android.api.sync.MobileBeanMetaData;
 import org.openmobster.core.mobileCloud.push.MobilePush;
 import org.openmobster.core.mobileCloud.push.PushListener;
 

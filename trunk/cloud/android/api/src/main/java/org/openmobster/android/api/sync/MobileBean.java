@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.api.sync;
+package org.openmobster.android.api.sync;
 
 import java.util.Map;
 import java.util.Set;

@@ -8,9 +8,9 @@
 
 package org.openmobster.core.mobileCloud.api;
 
-import org.openmobster.core.mobileCloud.api.sync.BeanList;
-import org.openmobster.core.mobileCloud.api.sync.BeanListEntry;
-import org.openmobster.core.mobileCloud.api.sync.MobileBean;
+import org.openmobster.android.api.sync.BeanList;
+import org.openmobster.android.api.sync.BeanListEntry;
+import org.openmobster.android.api.sync.MobileBean;
 
 /**
  * @author openmobster@gmail.com

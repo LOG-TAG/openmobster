@@ -8,7 +8,7 @@
 
 package org.crud.android.command;
 
-import org.openmobster.core.mobileCloud.api.sync.MobileBean;
+import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
