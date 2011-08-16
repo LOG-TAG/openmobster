@@ -11,8 +11,8 @@ package test.openmobster.core.mobileContainer;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 
 /**
  * @author openmobster@gmail.com

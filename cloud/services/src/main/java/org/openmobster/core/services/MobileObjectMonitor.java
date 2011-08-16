@@ -19,9 +19,9 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.cloud.api.model.Channel;
-import org.openmobster.cloud.api.model.ChannelInfo;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.Channel;
+import org.openmobster.cloud.api.sync.ChannelInfo;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.common.database.HibernateManager;
 import org.openmobster.core.common.bus.Bus;

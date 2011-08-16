@@ -10,8 +10,8 @@ package org.openmobster.core.mobileContainer;
 
 import org.apache.log4j.Logger;
 
-import org.openmobster.cloud.api.model.Channel;
-import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.sync.Channel;
+import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.core.services.MobileObjectMonitor;
 
 

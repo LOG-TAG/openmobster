@@ -15,8 +15,8 @@ import java.util.List;
 
 import java.io.Serializable;
 
-import org.openmobster.cloud.api.model.MobileBean;
 import org.openmobster.cloud.api.service.Response;
+import org.openmobster.cloud.api.sync.MobileBean;
 
 
 /**

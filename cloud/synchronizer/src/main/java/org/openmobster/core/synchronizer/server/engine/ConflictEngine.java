@@ -13,7 +13,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.openmobster.cloud.api.model.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.core.common.database.HibernateManager;
 import org.openmobster.core.mobileObject.xml.MobileObjectSerializer;
 import org.openmobster.core.synchronizer.SyncException;

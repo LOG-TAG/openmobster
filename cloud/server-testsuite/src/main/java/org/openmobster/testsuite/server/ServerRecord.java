@@ -8,9 +8,9 @@
 
 package org.openmobster.testsuite.server;
 
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
-import org.openmobster.cloud.api.model.MobileBeanStreamable;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBeanStreamable;
 
 /**
  * @author openmobster@gmail.com

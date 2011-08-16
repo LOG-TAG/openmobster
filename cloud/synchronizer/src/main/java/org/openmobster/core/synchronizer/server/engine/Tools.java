@@ -11,8 +11,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.openmobster.cloud.api.model.MobileBean;
-import org.openmobster.cloud.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 import org.openmobster.core.synchronizer.server.SyncContext;
 
 /**
