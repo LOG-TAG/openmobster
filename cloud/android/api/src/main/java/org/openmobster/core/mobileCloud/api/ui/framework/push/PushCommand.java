@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.openmobster.core.mobileCloud.push;
+package org.openmobster.core.mobileCloud.api.ui.framework.push;
 
 /**
  * @author openmobster@gmail.com
