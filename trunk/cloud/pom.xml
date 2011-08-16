@@ -604,7 +604,7 @@
 							</packages>
 						</group>
 						<group>
-							<title>Public API for App Developers - Device SDK (Device-Side Components)</title>
+							<title>Public API for App Developers - Android SDK (Device-Side Components)</title>
 							<packages>
 								org.openmobster.android.api.*
 							</packages>
@@ -638,7 +638,7 @@
 							</packages>
 						</group>
 						<group>
-							<title>Public API for App Developers - Device SDK (Device-Side Components)</title>
+							<title>Public API for App Developers - Android SDK (Device-Side Components)</title>
 							<packages>
 								org.openmobster.android.api.*
 							</packages>
