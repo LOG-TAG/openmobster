@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 
 /**
- * Represents a service request that will be sent to the server side Mobile Service Bean component
+ * Represents a service request that will be sent to the cloud side Mobile Service Bean component
  * 
  * @author openmobster@gmail.com
  */
@@ -26,7 +26,7 @@ public final class Request
 	/**
 	 * Creates a service request
 	 * 
-	 * @param service - the unique identifier of the server side Mobile Service Bean component
+	 * @param service - the unique identifier of the cloud side Mobile Service Bean component
 	 */
 	public Request(String service)
 	{
@@ -41,8 +41,8 @@ public final class Request
 	/**
 	 * Sets arbitrary attributes representing the contextual data associated with this particular service request
 	 * 
-	 * @param name
-	 * @param value
+	 * @param name name of the attribute
+	 * @param value value of the attribute
 	 */
 	public void setAttribute(String name, String value)
 	{
@@ -52,8 +52,8 @@ public final class Request
 	/**
 	 * Gets an arbitrary attribute value from the service request
 	 * 
-	 * @param name
-	 * @return
+	 * @param name name of the attribute
+	 * @return value of the attribute
 	 */
 	public String getAttribute(String name)
 	{
@@ -63,7 +63,7 @@ public final class Request
 	/**
 	 * Gets all the names that identify values of attributes in the service request
 	 * 
-	 * @return
+	 * @return all the attribute names
 	 */
 	public String[] getNames()
 	{
@@ -73,7 +73,7 @@ public final class Request
 	/**
 	 * Gets all the values of attributes in the service request
 	 * 
-	 * @return
+	 * @return all the attribute values
 	 */
 	public String[] getValues()
 	{
@@ -83,7 +83,7 @@ public final class Request
 	/**
 	 * Removes an attribute associated with the service request
 	 * 
-	 * @param name
+	 * @param name attribute to be removed from the object
 	 */
 	public void removeAttribute(String name)
 	{
@@ -93,7 +93,7 @@ public final class Request
 	/**
 	 * Gets the the unique identifier of the server side Mobile Service Bean component
 	 * 
-	 * @return
+	 * @return this is the remote service id that will receive the invocation
 	 */
 	public String getService()
 	{
@@ -104,8 +104,8 @@ public final class Request
 	 * Sets related "list" of data representing the contextual data associated 
 	 * with this particular service request
 	 * 
-	 * @param name
-	 * @param list
+	 * @param name name of this attribute
+	 * @param list the list to be set
 	 */
 	public void setListAttribute(String name, Vector list)
 	{
@@ -123,8 +123,8 @@ public final class Request
 	 * Gets a related "list" of data representing the contextual data associated 
 	 * with this particular service request
 	 * 
-	 * @param name
-	 * @return
+	 * @param name name of the attribute
+	 * @return the list associated with this attribute
 	 */
 	public Vector getListAttribute(String name)
 	{
