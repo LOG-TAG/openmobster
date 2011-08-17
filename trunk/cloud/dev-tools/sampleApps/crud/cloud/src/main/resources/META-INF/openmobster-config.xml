@@ -13,7 +13,9 @@
    </bean>
    
    <!-- Storage services based on Hibernate -->
-   <bean name="/crm/HibernateManager" class="org.openmobster.core.common.database.HibernateManager"/>
+   <bean name="/crm/HibernateManager" class="org.openmobster.core.common.database.HibernateManager">
+   		<property name="config">crud.cfg.xml</property>
+   </bean>
    <bean name="/crm/TicketDS" class="org.crud.cloud.crm.hibernate.TicketDS">
    	  <property name="hibernateManager">
    	  	<inject bean="/crm/HibernateManager"/>
