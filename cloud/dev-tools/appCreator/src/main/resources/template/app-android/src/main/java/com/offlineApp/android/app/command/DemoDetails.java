@@ -10,9 +10,9 @@ package com.offlineApp.android.app.command;
 
 import java.lang.StringBuffer;
 
+import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
@@ -21,19 +21,30 @@ import android.app.Activity;
 
 
 /**
+ * Invoked from the 'HomeScreen' to show the details associated with a locally stored/synchronized bean
+ * 
+ * This is a 'LocalCommand' as it executes very fast, since it works with locally stored data.
+ * 
  * @author openmobster@gmail.com
  *
  */
 public final class DemoDetails implements LocalCommand
 {
+	/**
+	 * pre-action UI thread call. Nothing to do here
+	 */
 	public void doViewBefore(CommandContext commandContext)
 	{		
 	}
 
+	/**
+	 * Finds the appropriate bean and sets it into the CommandContext for display
+	 */
 	public void doAction(CommandContext commandContext) 
 	{
 		try
 		{
+			//Find the selected bean from the HomeScreen
 			String channel = "offlineapp_demochannel";
 			String selectedBean = (String)commandContext.getAttribute("selectedBean");
 			
@@ -43,19 +54,18 @@ public final class DemoDetails implements LocalCommand
 			
 			String details = null;
 			
-			//Lookup by state..in this case, that of demoString
+			//Lookup by state..in this case, that of 'demoString' field of the bean
 			GenericAttributeManager criteria = new GenericAttributeManager();
 			criteria.setAttribute("demoString", selectedBean);
-			
 			MobileBean[] beans = MobileBean.queryByEqualsAll(channel, criteria);
 			MobileBean unique = beans[0];
-			
-			//MobileBean unique = MobileBean.readById(channel, selectedBean);
-			
+		
+			//Sets up the String that will be displayed
 			StringBuffer buffer = new StringBuffer();
 			buffer.append("DemoString: "+unique.getValue("demoString"));
 			details = buffer.toString();
 			
+			//Sets up the state of the CommandContext
 			commandContext.setAttribute("details", details);
 		}
 		catch(Exception e)
@@ -65,14 +75,23 @@ public final class DemoDetails implements LocalCommand
 		}
 	}	
 	
+	/**
+	 * Invoked post-action on the UI thread.
+	 * 
+	 * Displays the "Details" in a Modal Dialog
+	 */
 	public void doViewAfter(CommandContext commandContext)
 	{
 		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		
 		ViewHelper.getOkModal(currentActivity, "Details", 
 		(String)commandContext.getAttribute("details")).
 		show();
 	}
 	
+	/**
+	 * Invoked on the UI thread if an error occured
+	 */
 	public void doViewError(CommandContext commandContext)
 	{
 		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();

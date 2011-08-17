@@ -94,7 +94,11 @@ public class AppCreator
 		
 		//Decide if sample workspace or sketelon (hello world) workspace
 		String sampleCode = this.askUser("Generate Sample Code", "yes/no [default:yes]");
-		if(!sampleCode.equals("yes/no") && !sampleCode.equals("yes"))
+		if(sampleCode.trim().length() == 0 || sampleCode.contains("yes"))
+		{
+			sampleApp = true;
+		}
+		else
 		{
 			sampleApp = false;
 		}

@@ -10,8 +10,6 @@ Each generated project has the following 4 maven modules:
 
 * app-android - Contains the App for the Android OS
 
-* app-rimos - Contains the App for the Blackberry OS - version 4.3.0 and higher
-
 * cloud - Contains the "OpenMobster Cloud Server" based artifacts which will be deployed on the server side
 
 * moblet - Represents a "OpenMobster Moblet" which combines both the device side and server side artifacts into one single
@@ -52,15 +50,6 @@ Once the Cloud Manager app is deployed, only the Android App needs to be deploye
 To hot deploy just your Android App, use the following command:
 cd app-android
 mvn -Papp-hot-deploy install
-
-
-
-BlackBerry Development:
-
-To improve development productivity "mvn package or mvn install" command installs the required "OpenMobster MobileCloud" 
-into the specified Blackeberry Simulator. 
-
-The location of the simulator is specified in the "RIM_JDE_HOME" environment variable.
 
 
 **********************************************									
