@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.openmobster.cloud.api.sync.Channel;
+import org.openmobster.cloud.api.sync.ChannelInfo;
+import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.Channel;
-import org.openmobster.server.api.model.ChannelInfo;
 
 /**
+ * This Sync Channel that provides the 'Demo Beans' to be synchronized with the device
+ * 
  * @author openmobster@gmail.com
  */
 @ChannelInfo(uri="offlineapp_demochannel", 
@@ -72,7 +74,7 @@ public class DemoChannel implements Channel
 	{		
 		List<MobileBean> list = new ArrayList<MobileBean>();
 		
-		//Just get only the top 5 beans to bootup the service on device side
+		//Get all the beans
 		Set<String> beanIds = this.demoRepository.getData().keySet();
 		for(String beanId: beanIds)
 		{
@@ -80,17 +82,6 @@ public class DemoChannel implements Channel
 		}
 		
 		return list;
-		
-		/*List<MobileBean> list = new ArrayList<MobileBean>();
-		
-		//Just get only the top 5 beans to bootup the service on device side
-		for(int i=0; i<1; i++)
-		{
-			DemoBean bean = this.demoRepository.getData().get(""+i);
-			list.add(bean);
-		}
-		
-		return list;*/
 	}
 	
 	public MobileBean read(String id) 
@@ -124,7 +115,7 @@ public class DemoChannel implements Channel
 		DemoBean deletedBean = (DemoBean)mobileBean;
 		this.demoRepository.getData().remove(deletedBean.getBeanId());
 	}
-	//---Comet Lifecycle related callbacks-----------------------------------------------------------------------------------------------
+	//---Push Lifecycle related callbacks-----------------------------------------------------------------------------------------------
 	public String[] scanForNew(Device device, Date lastScanTimestamp) 
 	{
 		
@@ -137,6 +128,8 @@ public class DemoChannel implements Channel
 			//This is used to demonstrate that 'Realtime Push' is delivered even when the device is in standby mode
 			//try{Thread.currentThread().sleep(60000);}catch(Exception e){}
 			
+			//Creating stub data...In a real App setup, this information would be extracted by querying
+			//the backend for the arrival of any new data on this channel
 			List<String> newIds = new ArrayList<String>();
 			for(DemoBean newBean:newBeans)
 			{
