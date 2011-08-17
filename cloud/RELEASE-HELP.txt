@@ -16,8 +16,12 @@ Step 2:
 -----------------
 Build the Console Project
 
-
 Step 3:
+-------------------
+Prepare the encryption activated Android Cloud Manager App, use -Pandroid-release
+
+
+Step 4:
 ----------------
 mvn -DskipTests -Pandroid-release javadoc:aggregate install
 
