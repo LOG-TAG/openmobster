@@ -10,7 +10,7 @@
 	
 	<properties>
 	<openmobster.version>2.2-SNAPSHOT</openmobster.version>
-	<version.android.api>8</version.android.api>
+	<version.android.api>12</version.android.api>
 </properties>
 
 	<packaging>pom</packaging>
