@@ -109,7 +109,7 @@
 							<tasks>
 								<echo>Installing Android App
 								</echo>
-								<copy todir="${settings.localRepository}/org/webapp/android/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								<copy todir="${settings.localRepository}/org/openmobster/showcase/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 								</copy>
 							</tasks>
 						</configuration>
@@ -245,7 +245,7 @@
 									<tasks>
 										<echo>Installing Android App
 								</echo>
-										<copy todir="${settings.localRepository}/org/webapp/android/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+										<copy todir="${settings.localRepository}/org/openmobster/showcase/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 										</copy>
 									</tasks>
 								</configuration>
