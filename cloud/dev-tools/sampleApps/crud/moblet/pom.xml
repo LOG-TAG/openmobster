@@ -14,44 +14,20 @@
 	<artifactId>crud</artifactId>
 	<packaging>jar</packaging>
 	
-	
-	<profiles>
-		<profile>
-			<id>android</id>
-			<dependencies>
-				<dependency>
-	      			<groupId>org.crud.cloud.app</groupId>
-	      			<artifactId>crud-cloud</artifactId>
-	      			<version>${project.version}</version>
-	    		</dependency>
+	<dependencies>
+		<dependency>
+   			<groupId>org.crud.cloud.app</groupId>
+   			<artifactId>crud-cloud</artifactId>
+   			<version>${project.version}</version>
+ 		</dependency>
 
-				<dependency>
-			      <groupId>org.crud.android.app</groupId>
-			      <artifactId>crud</artifactId>
-			      <version>${project.version}</version>
-			      <classifier>bin</classifier>
-			    </dependency>
-			</dependencies>
-		</profile>
-		
-		<profile>
-			<id>android-release</id>
-			<dependencies>
-				<dependency>
-	      			<groupId>org.crud.cloud.app</groupId>
-	      			<artifactId>crud-cloud</artifactId>
-	      			<version>${project.version}</version>
-	    		</dependency>
-
-				<dependency>
-			      <groupId>org.crud.android.app</groupId>
-			      <artifactId>crud</artifactId>
-			      <version>${project.version}</version>
-			      <classifier>bin</classifier>
-			    </dependency>
-			</dependencies>
-		</profile>
-	</profiles>
+		<dependency>
+     		<groupId>org.crud.android.app</groupId>
+     		<artifactId>crud</artifactId>
+     		<version>${project.version}</version>
+     		<classifier>bin</classifier>
+   		</dependency>
+	</dependencies>
     
     <!--
 			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  
