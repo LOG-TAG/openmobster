@@ -14,6 +14,11 @@
 	<artifactId>crud</artifactId>
 	<packaging>jar</packaging>
 	
+	<!-- Customize Me -->
+	<properties>
+		<jboss.home>/Users/openmobster/runtime/jboss-5.1.0.GA</jboss.home>
+	</properties>
+	
 	<dependencies>
 		<dependency>
    			<groupId>org.crud.cloud.app</groupId>
@@ -28,6 +33,36 @@
      		<classifier>bin</classifier>
    		</dependency>
 	</dependencies>
+	
+	<profiles>
+		<profile>
+		    <id>jboss-install</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>install</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Installing into a JBoss AS instance</echo>
+										<copy todir="${jboss.home}/server/openmobster/deploy" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-moblet.jar">
+										</copy>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
     
     <!--
 			DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform  

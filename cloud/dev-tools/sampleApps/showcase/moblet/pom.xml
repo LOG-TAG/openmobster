@@ -30,6 +30,7 @@
 	      <groupId>org.openmobster.showcase.app</groupId>
 	      <artifactId>showcase-app</artifactId>
 	      <version>${project.version}</version>
+	      <classifier>bin</classifier>
 	    </dependency>
 	</dependencies>
 	

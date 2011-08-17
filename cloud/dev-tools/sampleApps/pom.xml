@@ -18,6 +18,7 @@
 		<module>showcase</module>
 		<module>webappsync</module>
 		<module>pushmail</module>
+		<module>pushrpc</module>
 	</modules>
 	
 	<build>

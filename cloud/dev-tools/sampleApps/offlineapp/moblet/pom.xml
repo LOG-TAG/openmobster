@@ -13,78 +13,54 @@
 	<name>offlineApp</name>
 	<artifactId>offlineapp</artifactId>
 	<packaging>jar</packaging>
+	
+	<!-- Customize Me -->
+	<properties>
+		<jboss.home>/Users/openmobster/runtime/jboss-5.1.0.GA</jboss.home>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.offlineApp.cloud</groupId>
+			<artifactId>offlineapp.cloud</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
+		<dependency>
+			<groupId>com.offlineApp.android.app</groupId>
+			<artifactId>offlineapp</artifactId>
+			<version>${project.version}</version>
+			<classifier>bin</classifier>
+		</dependency>
+	</dependencies>
+	
 	<profiles>
 		<profile>
-			<id>android</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.offlineApp.cloud</groupId>
-					<artifactId>offlineapp.cloud</artifactId>
-					<version>${project.version}</version>
-				</dependency>
-
-				<dependency>
-					<groupId>com.offlineApp.android.app</groupId>
-					<artifactId>offlineapp</artifactId>
-					<version>${project.version}</version>
-					<classifier>bin</classifier>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>rimos</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.offlineApp.cloud</groupId>
-					<artifactId>offlineapp.cloud</artifactId>
-					<version>${project.version}</version>
-				</dependency>
-
-				<dependency>
-					<groupId>com.offlineApp.rimos.app</groupId>
-					<artifactId>offlineapp</artifactId>
-					<version>${project.version}</version>
-					<classifier>bin</classifier>
-				</dependency>
-			</dependencies>
-		</profile>
-		
-		<!-- profiles used only during the release process..Not needed for core AppCreator module -->
-		<profile>
-			<id>android-release</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.offlineApp.cloud</groupId>
-					<artifactId>offlineapp.cloud</artifactId>
-					<version>${project.version}</version>
-				</dependency>
-
-				<dependency>
-					<groupId>com.offlineApp.android.app</groupId>
-					<artifactId>offlineapp</artifactId>
-					<version>${project.version}</version>
-					<classifier>bin</classifier>
-				</dependency>
-			</dependencies>
-		</profile>
-		
-		<profile>
-			<id>start-bb-release</id>
-			<dependencies>
-				<dependency>
-					<groupId>com.offlineApp.cloud</groupId>
-					<artifactId>offlineapp.cloud</artifactId>
-					<version>${project.version}</version>
-				</dependency>
-
-				<dependency>
-					<groupId>com.offlineApp.rimos.app</groupId>
-					<artifactId>offlineapp</artifactId>
-					<version>${project.version}</version>
-					<classifier>bin</classifier>
-				</dependency>
-			</dependencies>
+		    <id>jboss-install</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>install</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Installing into a JBoss AS instance</echo>
+										<copy todir="${jboss.home}/server/openmobster/deploy" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-moblet.jar">
+										</copy>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 

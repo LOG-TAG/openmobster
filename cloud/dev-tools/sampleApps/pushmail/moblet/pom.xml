@@ -14,42 +14,53 @@
 	<artifactId>pushmail-all</artifactId>
 	<packaging>jar</packaging>
 	
+	<!-- Customize Me -->
+	<properties>
+		<jboss.home>/Users/openmobster/runtime/jboss-5.1.0.GA</jboss.home>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+	    	<groupId>org.openmobster.pushmail.cloud</groupId>
+	      	<artifactId>pushmail-cloud</artifactId>
+	      	<version>${project.version}</version>
+	    </dependency>
+
+		<dependency>
+			<groupId>org.openmobster.pushmail.app</groupId>
+			<artifactId>pushmail-app</artifactId>
+			<version>${project.version}</version>
+			<classifier>bin</classifier>
+		</dependency>
+	</dependencies>
 	
 	<profiles>
 		<profile>
-			<id>android</id>
-			<dependencies>
-				<dependency>
-	      			<groupId>org.crud.cloud.app</groupId>
-	      			<artifactId>crud-cloud</artifactId>
-	      			<version>${project.version}</version>
-	    		</dependency>
-
-				<dependency>
-			      <groupId>org.crud.android.app</groupId>
-			      <artifactId>crud</artifactId>
-			      <version>${project.version}</version>
-			      <classifier>bin</classifier>
-			    </dependency>
-			</dependencies>
-		</profile>
-		
-		<profile>
-			<id>android-release</id>
-			<dependencies>
-				<dependency>
-	      			<groupId>org.crud.cloud.app</groupId>
-	      			<artifactId>crud-cloud</artifactId>
-	      			<version>${project.version}</version>
-	    		</dependency>
-
-				<dependency>
-			      <groupId>org.crud.android.app</groupId>
-			      <artifactId>crud</artifactId>
-			      <version>${project.version}</version>
-			      <classifier>bin</classifier>
-			    </dependency>
-			</dependencies>
+		    <id>jboss-install</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>install</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<echo>Installing into a JBoss AS instance</echo>
+										<copy todir="${jboss.home}/server/openmobster/deploy" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-moblet.jar">
+										</copy>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
     
