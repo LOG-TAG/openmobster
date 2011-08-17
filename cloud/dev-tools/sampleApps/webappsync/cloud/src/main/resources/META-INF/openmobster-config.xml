@@ -10,7 +10,9 @@
    </bean>
    
    <!-- Storage services based on Hibernate -->
-   <bean name="/webappsync/HibernateManager" class="org.openmobster.core.common.database.HibernateManager"/>
+   <bean name="/webappsync/HibernateManager" class="org.openmobster.core.common.database.HibernateManager">
+   		<property name="config">webappsync.cfg.xml</property>
+   </bean>
    <bean name="/webappsync/TicketDS" class="com.webappsync.cloud.TicketDS">
    	  <property name="hibernateManager">
    	  	<inject bean="/webappsync/HibernateManager"/>

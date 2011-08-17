@@ -2,25 +2,27 @@
 
 <deployment xmlns="urn:jboss:bean-deployer:2.0">
    <!--  Register the MobileChannel -->
-   <bean name="webappsync_ticket_channel" class="org.openmobster.showcase.cloud.channel.TicketChannel">
+   <bean name="showcase_ticket_channel" class="org.openmobster.showcase.cloud.channel.TicketChannel">
    		<property name="ds">
-   	  		<inject bean="/webappsync/TicketDS"/>
+   	  		<inject bean="/showcase/TicketDS"/>
    		</property>
-   		<depends>/webappsync/bootstrap/data</depends>
+   		<depends>/showcase/bootstrap/data</depends>
    </bean>
    
    <!-- Storage services based on Hibernate -->
-   <bean name="/webappsync/HibernateManager" class="org.openmobster.core.common.database.HibernateManager"/>
-   <bean name="/webappsync/TicketDS" class="org.openmobster.showcase.cloud.channel.TicketDS">
+   <bean name="/showcase/HibernateManager" class="org.openmobster.core.common.database.HibernateManager">
+   		<property name="config">showcase.cfg.xml</property>
+   </bean>
+   <bean name="/showcase/TicketDS" class="org.openmobster.showcase.cloud.channel.TicketDS">
    	  <property name="hibernateManager">
-   	  	<inject bean="/webappsync/HibernateManager"/>
+   	  	<inject bean="/showcase/HibernateManager"/>
    	  </property>
    </bean>
    
    <!-- Some Cloud Side bootstrappers used to load up test data, and listen for updates to demo "Cloud Push" -->
-   <bean name="/webappsync/bootstrap/data" class="org.openmobster.showcase.cloud.channel.BootstrapData">
+   <bean name="/showcase/bootstrap/data" class="org.openmobster.showcase.cloud.channel.BootstrapData">
    		<property name="ds">
-   	  		<inject bean="/webappsync/TicketDS"/>
+   	  		<inject bean="/showcase/TicketDS"/>
    		</property>
    </bean>
    
