@@ -297,7 +297,7 @@
 									<real>43</real>
 								</array>
 								<key>RubberWindowFrame</key>
-								<string>14 454 446 419 0 0 1440 878 </string>
+								<string>9 455 446 419 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -436,8 +436,8 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A23FBED913D49924006B48C6</string>
-				<string>A23FBEDA13D49924006B48C6</string>
+				<string>A23FBFD213D88E90006B48C6</string>
+				<string>A23FBFD313D88E90006B48C6</string>
 				<string>1C9437FD063B20B00039CFAC</string>
 				<string>1C9437FE063B20B00039CFAC</string>
 				<string>1C9437FF063B20B00039CFAC</string>
@@ -476,12 +476,15 @@
 	<integer>0</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>A23FBFDB13D88E90006B48C6</string>
+		<string>A23FBFDC13D88E90006B48C6</string>
+		<string>1C530D5B069F1CE1000CFCEE</string>
 		<string>1C530D54069F1CE1000CFCEE</string>
 		<string>1C530D52069F1CE1000CFCEE</string>
 		<string>/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/ActivationApp/ActivationApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>14 454 446 419 0 0 1440 878 </string>
+	<string>9 455 446 419 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -646,9 +649,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {500, 0}}</string>
+								<string>{{0, 0}, {1440, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>71 415 500 440 0 0 1440 878 </string>
+								<string>0 139 1440 739 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -656,6 +659,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -670,18 +675,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 5}, {500, 394}}</string>
+								<string>{{0, 5}, {1440, 693}}</string>
 								<key>RubberWindowFrame</key>
-								<string>71 415 500 440 0 0 1440 878 </string>
+								<string>0 139 1440 739 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>394pt</string>
+							<string>693pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>399pt</string>
+					<string>698pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -695,7 +700,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D52069F1CE1000CFCEE</string>
-				<string>A23FBEDB13D49924006B48C6</string>
+				<string>A23FBFB013D88D27006B48C6</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -704,7 +709,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>71 415 500 440 0 0 1440 878 </string>
+			<string>0 139 1440 739 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C530D52069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
@@ -817,13 +822,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D54069F1CE1000CFCEE</string>
-				<string>A23FBEDC13D49924006B48C6</string>
+				<string>A23FBFD413D88E90006B48C6</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A23FBEDD13D49924006B48C6</string>
-				<string>A23FBEDE13D49924006B48C6</string>
-				<string>A23FBEDF13D49924006B48C6</string>
-				<string>A23FBEE013D49924006B48C6</string>
-				<string>A23FBEE113D49924006B48C6</string>
+				<string>A23FBFD513D88E90006B48C6</string>
+				<string>A23FBFD613D88E90006B48C6</string>
+				<string>A23FBFD713D88E90006B48C6</string>
+				<string>A23FBFD813D88E90006B48C6</string>
+				<string>A23FBFD913D88E90006B48C6</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -985,7 +990,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D5B069F1CE1000CFCEE</string>
-				<string>A2CEBE7313CF8F010014B161</string>
+				<string>A23FBFDA13D88E90006B48C6</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -486,18 +486,21 @@
 
 -(void)refresh
 {
-	if(isNew)
-	{
-		NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Instance is transient",nil];
-		SystemException *ex = [SystemException withContext:@"MobileBean" method:@"refresh" parameters:params];
-		@throw ex;
-	}
+    @synchronized([MobileBean class])
+    {
+        if(isNew)
+        {
+            NSMutableArray *params = [NSMutableArray arrayWithObjects:@"Instance is transient",nil];
+            SystemException *ex = [SystemException withContext:@"MobileBean" method:@"refresh" parameters:params];
+            @throw ex;
+        }
 	
-	MobileObjectDatabase *deviceDB = [MobileObjectDatabase getInstance];
+        MobileObjectDatabase *deviceDB = [MobileObjectDatabase getInstance];
 	
-	self.data = [deviceDB read:[self getChannel] :[self getId]];
+        self.data = [deviceDB read:[self getChannel] :[self getId]];
 	
-	[self clearMetaData];
+        [self clearMetaData];
+    }
 }
 
 +(NSArray *) queryByEqualsAll:(NSString *) channel :(GenericAttributeManager *) criteria
