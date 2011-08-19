@@ -6,17 +6,17 @@
     <servlet-class>org.openmobster.core.cloud.console.server.PingServiceImpl</servlet-class>
   </servlet>
   
-  <!-- End-to-End -->   
+  <!-- End-to-End -->  
+  <!--   
   <servlet>
     <servlet-name>AdminAccountServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.AccountServiceImpl</servlet-class>
   </servlet>
-  <!--  
+  -->  
   <servlet>
     <servlet-name>AdminAccountServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.AccountServiceStubImpl</servlet-class>
   </servlet>
-  -->
    
   <servlet>
     <servlet-name>DeviceServlet</servlet-name>
@@ -33,7 +33,7 @@
     <servlet-name>PushAppServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceImpl</servlet-class>
   </servlet>
-  <!--       
+  <!--         
   <servlet>
     <servlet-name>PushAppServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceStubImpl</servlet-class>
