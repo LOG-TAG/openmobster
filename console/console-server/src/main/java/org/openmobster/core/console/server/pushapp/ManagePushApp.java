@@ -16,7 +16,7 @@ import org.openmobster.core.security.device.PushAppController;
 import org.openmobster.core.security.device.PushApp;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
-import org.openmobster.server.api.push.PushService;
+import org.openmobster.cloud.api.push.PushService;
 
 /**
  * 
@@ -45,7 +45,7 @@ public final class ManagePushApp
 					//FIXME: Development time code only...comment me out when shipping
 					//this is because PushApp instaces can only be created via
 					//iphone registration
-					/*TransactionHelper.startTx();
+					boolean startedHere = TransactionHelper.startTx();
 					try
 					{
 						PushAppController controller = PushAppController.getInstance();
@@ -60,11 +60,20 @@ public final class ManagePushApp
 								controller.create(local);
 							}
 						}
+						
+						if(startedHere)
+						{
+							TransactionHelper.commitTx();
+						}
 					}
-					finally
+					catch(Exception e)
 					{
-						TransactionHelper.commitTx();
-					}*/
+						if(startedHere)
+						{
+							TransactionHelper.rollbackTx();
+						}
+						e.printStackTrace();
+					}
 				}
 			}
 		}
@@ -73,7 +82,7 @@ public final class ManagePushApp
 	
 	public List<PushAppUI> readAll() throws ManagePushAppException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			PushAppController controller = PushAppController.getInstance();
@@ -98,18 +107,27 @@ public final class ManagePushApp
 				}
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return ui;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManagePushAppException(e);
 		}
 	}
 	
 	public void uploadCertificate(String appId, String certificateName, byte[] certificate, String password) 
 		throws ManagePushAppException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			PushAppController controller = PushAppController.getInstance();
@@ -125,16 +143,25 @@ public final class ManagePushApp
 					controller.update(pushApp);
 				}
 			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManagePushAppException(e);
 		}
 	}
 	
 	public Certificate downloadCertificate(String appId) throws ManagePushAppException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			PushAppController controller = PushAppController.getInstance();
@@ -149,17 +176,26 @@ public final class ManagePushApp
 				return cert;
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return null;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManagePushAppException(e);
 		}
 	}
 	
 	public void testPush(String deviceId, String appId) throws ManagePushAppException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			//TODO: implement me
@@ -175,10 +211,51 @@ public final class ManagePushApp
 				PushService pushService = PushService.getInstance();
 				pushService.push(device.getIdentity().getPrincipal(), appId, "Test Push", "Test Push", "Test Push");
 			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManagePushAppException(e);
+		}
+	}
+	
+	public void stopPush(String appId) 
+	throws ManagePushAppException
+	{	
+		boolean startedHere = TransactionHelper.startTx();
+		try
+		{
+			PushAppController controller = PushAppController.getInstance();
+			
+			PushApp pushApp = controller.readPushApp(appId);
+			if(pushApp != null)
+			{
+				pushApp.setCertificate(null);
+				pushApp.setCertificatePassword(null);
+				pushApp.setCertificateName(null);
+				controller.update(pushApp);
+			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManagePushAppException(e);
 		}
 	}
 }

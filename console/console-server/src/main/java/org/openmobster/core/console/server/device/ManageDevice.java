@@ -50,7 +50,7 @@ public final class ManageDevice
 	
 	public List<DeviceUI> getRegisteredDevices() throws ManageDeviceException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			List<DeviceUI> registeredDevices = new ArrayList<DeviceUI>();
@@ -92,17 +92,26 @@ public final class ManageDevice
 				}
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return registeredDevices;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManageDeviceException(e);
 		}
 	}
 	
 	public void activate(String deviceId) throws ManageDeviceException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			DeviceController deviceController = DeviceController.getInstance();
@@ -114,16 +123,25 @@ public final class ManageDevice
 				String deviceOwner = device.getIdentity().getPrincipal();
 				provisioner.activate(deviceOwner);
 			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManageDeviceException(e);
 		}
 	}
 	
 	public void deactivate(String deviceId) throws ManageDeviceException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			DeviceController deviceController = DeviceController.getInstance();
@@ -135,16 +153,25 @@ public final class ManageDevice
 				String deviceOwner = device.getIdentity().getPrincipal();
 				provisioner.deactivate(deviceOwner);
 			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManageDeviceException(e);
 		}
 	}
 	
 	public void reassign(String deviceId) throws ManageDeviceException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			DeviceController deviceController = DeviceController.getInstance();
@@ -153,10 +180,19 @@ public final class ManageDevice
 			{
 				deviceController.delete(device);
 			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManageDeviceException(e);
 		}
 	}
 }
