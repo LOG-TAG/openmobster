@@ -52,7 +52,7 @@ public final class BeanList
 	/**
 	 * Provides an enumeration of entries in this list
 	 * 
-	 * @return entries of this list
+	 * @return entries of this list (BeanListEntry instances)
 	 */
 	public Enumeration<BeanListEntry> entries()
 	{
