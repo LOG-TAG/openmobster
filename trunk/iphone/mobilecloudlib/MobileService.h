@@ -18,7 +18,8 @@
 #import "ErrorHandler.h"
 
 /**
- * 
+ * Mobile Service facilitates making invocations from the device to the server side Mobile Service Bean components
+ *
  * @author openmobster@gmail.com
  */
 @interface MobileService : NSObject<NSXMLParserDelegate> 
@@ -35,12 +36,29 @@
 
 +(id)withInit;
 
-/** throws SystemException */
+/**
+ * Invokes the remote Mobile Service component
+ * 
+ * @param request invocation request
+ * @return invocation response
+ * @throws SystemException
+ */
 -(Response *)invoke:(Request *)request;
 
 //Used internally
+/**
+ * This is for internal use only
+ */
 -(NSString *)sendRequest:(NSString *)beanRequest;
+
+/**
+ * This is for internal use only
+ */
 -(NSString *)serialize:(Request *)request;
+
+/**
+ * This is for internal use only
+ */
 -(Response *)parse:(NSString *)response;
 
 @end

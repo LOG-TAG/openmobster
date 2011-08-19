@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BeanListEntry.h"
 
-/**
- * 
- * @author openmobster@gmail.com
+/*!
+    BeanList is the representation an indexed property such as an array, list, etc
+ @author openmobster@gmail.com
  */
 @interface BeanList : NSObject 
 {
@@ -25,9 +25,32 @@
 
 +(id)withInit:(NSString *)listProperty;
 
+/**
+ * Provides the size of the List represented by this property
+ * 
+ * @return the size of this list property
+ */
 -(int)size;
--(NSArray *)entries;
--(BeanListEntry *)entryAt:(int) index;
--(void)addEntry:(BeanListEntry *)entry;
 
+/**
+ * Provides an enumeration of entries in this list
+ * 
+ * @return entries of this list (BeanListEntry instances)
+ */
+-(NSArray *)entries;
+
+/**
+ * Provides the entry located at the specified index
+ * 
+ * @param index index of the entry
+ * @return the entry
+ */
+-(BeanListEntry *)entryAt:(int) index;
+
+/**
+ * Add an entry to the list
+ * 
+ * @param entry the entry to be added
+ */
+-(void)addEntry:(BeanListEntry *)entry;
 @end

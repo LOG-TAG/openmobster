@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "StringUtil.h"
 
-/**
- * 
- * @author openmobster@gmail.com
+/*!
+ BeanListEntry represent members of a BeanList
+ @author openmobster@gmail.com
  */
 @interface BeanListEntry : NSObject 
 {
@@ -27,12 +27,45 @@
 
 +(BeanListEntry *)withInit:(int) index :(NSDictionary *) properties :(NSString *)listProperty;
 
+/**
+ * Reads a property value on this object using a property expression
+ * 
+ * @return the value of the specified property
+ */
 -(NSString *) getProperty:(NSString *)propertyExpression;
+
+/**
+ * Set the property value on this object using a property expression
+ * 
+ * @param propertyExpression expression to signify the property to be set
+ * @param value value to be set
+ */
 -(void)setProperty:(NSString *)propertyExpression :(NSString *)value;
+
+/**
+ * If this object carries a single property, read it using getValue
+ * 
+ * @return the value of this object
+ */
 -(NSString *)getValue;
+
+/**
+ * Sets the single property of this object
+ * 
+ * @param value value to set
+ */
 -(void)setValue:(NSString *)value;
+
+/**
+ * All the properties of this object
+ * 
+ * @return all the properties of this object
+ */
 -(NSDictionary *)getProperties;
 
 //internal methods
+/**
+ * This method is for internal use only
+ */
 -(NSString *)calculatePropertyUri:(NSString *)propertyExpression;
 @end
