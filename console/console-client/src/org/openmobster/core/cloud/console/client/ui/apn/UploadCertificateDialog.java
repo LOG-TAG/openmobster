@@ -30,8 +30,6 @@ import org.openmobster.core.cloud.console.client.common.Constants;
 import org.openmobster.core.cloud.console.client.flow.FlowServiceRegistry;
 
 import com.smartgwt.client.widgets.form.fields.UploadItem; 
-import com.smartgwt.client.widgets.form.fields.events.ChangedEvent;
-import com.smartgwt.client.widgets.form.fields.events.ChangedHandler; 
 import com.google.gwt.user.client.ui.NamedFrame; 
 
 /**

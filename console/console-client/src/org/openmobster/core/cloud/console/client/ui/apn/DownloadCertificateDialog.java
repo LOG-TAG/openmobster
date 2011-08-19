@@ -13,10 +13,13 @@ import com.google.gwt.core.client.GWT;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Window;
 import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.StaticTextItem;
+import com.smartgwt.client.widgets.form.fields.UploadItem;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Encoding;
 import com.smartgwt.client.types.VerticalAlignment;
+import com.smartgwt.client.util.BooleanCallback;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -26,10 +29,11 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 
 import org.openmobster.core.cloud.console.client.rpc.DeviceService;
 import org.openmobster.core.cloud.console.client.rpc.DeviceServiceAsync;
+import org.openmobster.core.cloud.console.client.rpc.PushAppService;
+import org.openmobster.core.cloud.console.client.rpc.PushAppServiceAsync;
 import org.openmobster.core.cloud.console.client.state.ContextRegistry;
 import org.openmobster.core.cloud.console.client.ui.Screen;
 import org.openmobster.core.cloud.console.client.ui.TabController;
-import org.openmobster.core.cloud.console.client.ui.accounts.AccountsScreen;
 import org.openmobster.core.cloud.console.client.common.Constants;
 import org.openmobster.core.cloud.console.client.common.Payload;
 import org.openmobster.core.cloud.console.client.flow.FlowServiceRegistry;
@@ -49,6 +53,8 @@ public class DownloadCertificateDialog implements Screen
 	private StaticTextItem appIdText;
 	private DynamicForm form;
 	private PushAppRecord record;
+	private UploadItem fileItem;
+	private PasswordItem password;
 	
 	public DownloadCertificateDialog(PushAppRecord record)
 	{
@@ -62,6 +68,8 @@ public class DownloadCertificateDialog implements Screen
 	
 	public Canvas render()
 	{
+		this.initComplete(this);
+		
 		Window winModal = new Window();
 		
 		winModal.setWidth(360);
@@ -89,8 +97,15 @@ public class DownloadCertificateDialog implements Screen
         this.appIdText.setTitle("App Id");
         this.appIdText.setValue(record.getAppId());
         
+        this.fileItem = new UploadItem("certificate");
+        this.fileItem.setTitle("Replace Cert");
+        this.fileItem.setWidth(300);
         
-        Button downloadButton = new Button("Download");
+        this.password = new PasswordItem("password");
+        this.password.setTitle("Password");
+        
+        
+        Button downloadButton = new Button("Download Cert");
         downloadButton.addClickHandler(new ClickHandler(){
         	public void onClick(ClickEvent e) 
         	{
@@ -100,11 +115,38 @@ public class DownloadCertificateDialog implements Screen
         	}
         });
         
+        Button replaceButton = new Button("Replace Cert");
+        replaceButton.addClickHandler(new ClickHandler(){
+        	public void onClick(ClickEvent e) 
+        	{
+        		Object obj = fileItem.getDisplayValue();
+            	Object passwordVal = password.getValue();
+            	if (obj != null && passwordVal != null) 
+            	{
+            		SC.showPrompt("Upload Certificate", "Upload in Progress");
+            		form.submitForm();
+            	} 
+            	else
+            	{
+            		SC.say("All fields are required");
+            	}
+        	}
+        });
+        
         Button pushButton = new Button("Send Test Push");
         pushButton.addClickHandler(new ClickHandler(){
         	public void onClick(ClickEvent e) 
         	{
         		DownloadCertificateDialog.this.startTestPush();
+        	}
+        });
+        
+
+        Button stopPushButton = new Button("Stop Push");
+        stopPushButton.addClickHandler(new ClickHandler(){
+        	public void onClick(ClickEvent e) 
+        	{
+        		DownloadCertificateDialog.this.stopPush();
         	}
         });
         
@@ -119,15 +161,23 @@ public class DownloadCertificateDialog implements Screen
             }
         });
           
-        form.setFields(this.appIdText);
+        form.setFields(this.appIdText, this.fileItem, this.password);
         formLayout.addChild(form);
         
         //Button bar
         HLayout toolbar = new HLayout();
         toolbar.setAlign(Alignment.CENTER);
         toolbar.addMember(downloadButton);
+        toolbar.addMember(replaceButton);
         toolbar.addMember(pushButton);
-        toolbar.addMember(close);
+        
+        
+        //Second Button Bar
+        HLayout toolbar2 = new HLayout();
+        toolbar2.setAlign(Alignment.CENTER);
+        toolbar2.addMember(stopPushButton);
+        toolbar2.addMember(close);
+        
         
         NamedFrame frame = new NamedFrame(this.title());
         frame.setWidth("1px");
@@ -138,6 +188,7 @@ public class DownloadCertificateDialog implements Screen
         
         winModal.addItem(formLayout);
         winModal.addItem(toolbar);
+        winModal.addItem(toolbar2);
         
 		return winModal;
 	}
@@ -176,4 +227,67 @@ public class DownloadCertificateDialog implements Screen
 			}
 		});
 	}
+	
+	private void stopPush()
+	{
+		SC.showPrompt("Stopping Push....");
+
+		final PushAppServiceAsync service = GWT.create(PushAppService.class);
+		String payload = Payload.encode(new String[]{"stopPush",DownloadCertificateDialog.this.record.getAppId()});
+
+		service.invoke(payload,new AsyncCallback<String>(){
+			public void onFailure(Throwable caught) 
+			{
+				SC.clearPrompt();
+				SC.say("System Error", "Unexpected Network Error. Please try again.",null);
+			}
+			
+			public void onSuccess(String result)
+			{
+				SC.clearPrompt();
+				if(result.trim().equals("500"))
+				{
+					//validation error
+					SC.say("System Error", "Internal Server Error. Please try again.",null);
+				}
+				else
+				{
+					//Just confirmation
+					SC.say("Push Notifications for this App are successfully stopped", new BooleanCallback(){
+						@Override
+						public void execute(Boolean value) 
+						{	
+							FlowServiceRegistry.getTransitionService().closeActiveWindow();
+					    	TabController.getInstance().closeTab(Constants.push_app);
+					    	PushAppLoader.load(Constants.push_app);
+						}
+					});
+				}
+			}
+		});
+	}
+	
+	private native void initComplete(DownloadCertificateDialog upload) /*-{
+	//$wnd.alert(upload);
+	$wnd.uploadComplete = function (fileName) {
+	upload.@org.openmobster.core.cloud.console.client.ui.apn.DownloadCertificateDialog::uploadComplete(Ljava/lang/String;)(fileName);
+	};
+	}-*/;
+	
+	public void uploadComplete(String fileName) 
+	{
+		SC.clearPrompt();
+		SC.say("Certificate is stored successfully", new BooleanCallback(){
+			@Override
+			public void execute(Boolean value) 
+			{	
+				FlowServiceRegistry.getTransitionService().closeActiveWindow();
+		    	TabController.getInstance().closeTab(Constants.push_app);
+		    	PushAppLoader.load(Constants.push_app);
+			}
+		});
+		
+		this.fileItem.setValue("");
+		this.password.setValue("");
+	} 
 }
