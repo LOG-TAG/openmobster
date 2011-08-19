@@ -10,6 +10,7 @@ package org.openmobster.core.console.server;
 import java.util.List;
 
 import org.openmobster.core.common.transaction.TransactionHelper;
+import org.openmobster.core.console.server.admin.AdminAccountException;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 
@@ -21,7 +22,7 @@ public class PingDelegate
 {
 	public String invoke(String input)
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			DeviceController deviceController = DeviceController.getInstance();
@@ -37,11 +38,20 @@ public class PingDelegate
 				}
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return "ping://updated/devices"+input;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new RuntimeException(e);
 		}
 	}
 }

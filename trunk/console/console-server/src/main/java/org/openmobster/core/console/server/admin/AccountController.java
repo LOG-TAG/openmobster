@@ -43,7 +43,7 @@ public class AccountController
 	
 	public boolean createAccount(AdminAccount adminAccount) throws AdminAccountException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			boolean allowLogin = false;
@@ -82,18 +82,26 @@ public class AccountController
 				AccountDS.getInstance().create(adminAccount);
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 			
 			return allowLogin;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new AdminAccountException(e);
 		}
 	}
 	
 	public boolean login(String username, String password) throws AdminAccountException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			AdminAccount account = AccountDS.getInstance().read(username);
@@ -113,31 +121,50 @@ public class AccountController
 				}
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return false;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new AdminAccountException(e);
 		}
 	}
 	
 	public List<AdminAccount> all() throws AdminAccountException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			List<AdminAccount> all = AccountDS.getInstance().readAll();
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return all;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new AdminAccountException(e);
 		}
 	}
 	
 	public List<AdminAccount> inactive() throws AdminAccountException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			List<AdminAccount> all = AccountDS.getInstance().readAll();
@@ -154,17 +181,26 @@ public class AccountController
 				}
 			}
 			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+			
 			return inactive;
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new AdminAccountException(e);
 		}
 	}
 	
 	public void deactivate(String username) throws AdminAccountException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			List<AdminAccount> activeAccts = this.activeAccts();
@@ -176,25 +212,43 @@ public class AccountController
 			AdminAccount account = AccountDS.getInstance().read(username);
 			account.deactivate();
 			AccountDS.getInstance().update(account);
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new AdminAccountException(e);
 		}
 	}
 	
 	public void activate(String username) throws AdminAccountException
 	{
-		TransactionHelper.startTx();
+		boolean startedHere = TransactionHelper.startTx();
 		try
 		{
 			AdminAccount account = AccountDS.getInstance().read(username);
 			account.activate();
 			AccountDS.getInstance().update(account);
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
 		}
-		finally
+		catch(Exception e)
 		{
-			TransactionHelper.commitTx();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new AdminAccountException(e);
 		}
 	}
 	//----------------------------------------------------------------------------------------------------------------------------
