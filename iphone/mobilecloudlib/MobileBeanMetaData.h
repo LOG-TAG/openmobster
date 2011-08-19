@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- * 
- * @author openmobster@gmail.com
+/*!
+    MobileBeanMetaData contains meta information related to a particular MobileBean
+ 
+ @author openmobster@gmail.com
  */
 @interface MobileBeanMetaData : NSObject 
 {
