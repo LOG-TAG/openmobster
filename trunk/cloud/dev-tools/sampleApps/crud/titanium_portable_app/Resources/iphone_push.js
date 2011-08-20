@@ -58,5 +58,18 @@ function invokePushNotification()
 
 
 commandBar.addEventListener('click',function(){
-    invokePushNotification();
+	
+	if(Titanium.Platform.model == 'Simulator')
+	{
+		push.registerDeviceToken("blahblah");
+		var a = Ti.UI.createAlertDialog({
+      	title:'Simulator Token',
+      	message:"Simulator Token: blahblah was successfully registered"
+    	});
+    	a.show();
+	}
+	else
+	{
+    	invokePushNotification();
+    }
 });
