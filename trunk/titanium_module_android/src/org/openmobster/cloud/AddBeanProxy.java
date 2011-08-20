@@ -12,7 +12,7 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiContext;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
+import org.openmobster.android.api.sync.MobileBean;
 
 /**
  *

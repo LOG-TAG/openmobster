@@ -9,7 +9,7 @@ package org.openmobster.cloud;
 
 import org.json.JSONArray;
 
-import org.openmobster.core.mobileCloud.api.model.MobileBean;
+import org.openmobster.android.api.sync.MobileBean;
 
 import org.appcelerator.kroll.KrollInvocation;
 import org.appcelerator.kroll.KrollProxy;
