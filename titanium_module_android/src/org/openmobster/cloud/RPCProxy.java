@@ -20,9 +20,9 @@ import org.appcelerator.titanium.TiContext;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-import org.openmobster.core.mobileCloud.api.service.MobileService;
-import org.openmobster.core.mobileCloud.api.service.Request;
-import org.openmobster.core.mobileCloud.api.service.Response;
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.android.api.rpc.Response;
 
 /**
  *
