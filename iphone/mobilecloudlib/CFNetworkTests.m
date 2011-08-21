@@ -2,8 +2,13 @@
 #import "NetSession.h"
 #import "NetworkConnector.h"
 
+/**
+ * These tests should run on the 'testdrive-server' module on the cloud side
+ */
+
 
 @implementation CFNetworkTests
+
 - (void) testSimpleHttpGet 
 {
     NSLog(@"Starting testSimpleHttpGet......");  
@@ -74,7 +79,7 @@
 {
 	NSLog(@"Starting testSocketStream......");
 	
-	NSString *host = @"192.168.1.101";
+	NSString *host = @"192.168.1.103";
 	
 	CFReadStreamRef readStream = NULL;
 	CFWriteStreamRef writeStream = NULL;
@@ -119,7 +124,7 @@
 {
 	NSLog(@"Starting testSecureSocketStream......");
 	
-	NSString *host = @"192.168.1.101";
+	NSString *host = @"192.168.1.103";
 	
 	CFReadStreamRef readStream = NULL;
 	CFWriteStreamRef writeStream = NULL;
@@ -170,8 +175,7 @@
 	CFRelease(writeStream);
 	writeStream = NULL;
 }
-//FIXME: This test fails
-/*
+
 -(void) testNetSession
 {
 	NSLog(@"Starting testNetSession.....");
@@ -186,10 +190,7 @@
 	
 	[self runNetSessionTest:payload3 :payload4];
 }
-*/
 
-//FIXME: this test fails
-/*
 -(void) testNetConnector
 {
 	NSLog(@"Starting testNetConnector.....");
@@ -199,7 +200,7 @@
 	{
 		configuration.serverId = @"http://openmobster.googlecode.com";
 		configuration.deviceId = @"IMEI:8675309";
-		configuration.serverIp = @"192.168.1.102";
+		configuration.serverIp = @"192.168.1.103";
 		configuration.secureServerPort = @"1500";
 		configuration.plainServerPort = @"1502";
 		configuration.sslActive = [NSNumber numberWithBool:YES];
@@ -211,11 +212,10 @@
 	[self runNetworkConnectorTest:NO :payload1 :payload2];
 	[self runNetworkConnectorTest:YES :payload1 :payload2];
 }
-*/
 //----------------------------------------------------------------------------------------------
 -(void) runNetSessionTest:(NSString *)handshake :(NSString *)payload
 {
-	NetSession *session = [NetSession withInit:NO :@"192.168.1.101" :1502];
+	NetSession *session = [NetSession withInit:NO :@"192.168.1.103" :1502];
 		
 	NSString *response = [session performHandshake:handshake];
 	NSLog(@"%@",response);

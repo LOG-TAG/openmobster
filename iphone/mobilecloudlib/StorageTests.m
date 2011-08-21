@@ -65,6 +65,8 @@
 	
 	//Initialize the Storage service
 	[CloudDBManager getInstance];
+    
+    [PersistentMobileObject deleteAll:@"channel"];
 	
 	PersistentMobileObject *pm = [PersistentMobileObject newInstance:@"channel"];
 	
