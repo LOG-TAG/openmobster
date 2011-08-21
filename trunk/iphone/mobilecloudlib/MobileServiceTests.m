@@ -19,7 +19,7 @@
 	{
 		configuration.serverId = @"http://openmobster.googlecode.com";
 		configuration.deviceId = @"IMEI:8675309";
-		configuration.serverIp = @"192.168.1.101";
+		configuration.serverIp = @"192.168.1.103";
 		configuration.secureServerPort = @"1500";
 		configuration.plainServerPort = @"1502";
 		configuration.sslActive = [NSNumber numberWithBool:NO];
