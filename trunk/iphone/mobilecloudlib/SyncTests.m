@@ -11,11 +11,10 @@
 
 @implementation SyncTests
 
-/*
 -(void)testAllSyncTypes 
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.107"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.103"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;
@@ -27,13 +26,37 @@
  [suite addTest:[TestTwoWaySync withInit]];
  [suite addTest:[TestOneWayServerSync withInit]];
  [suite addTest:[TestOneWayClientSync withInit]];
- [suite addTest:[TestObjectStreaming withInit]];
+ 
+ //TODO: Write this test...not a show stopper
+ //[suite addTest:[TestObjectStreaming withInit]];
  
  
  //Start test execution
  [suite execute];
 }
-*/
+
+-(void)testSyncScheduler
+{
+	NSLog(@"Executing testSyncScheduler.....");
+    
+	Kernel *kernel = [Kernel getInstance];
+	[kernel startup];
+	
+	SyncScheduler *syncScheduler = [SyncScheduler getInstance];
+	ProxyLoader *proxyLoader = [ProxyLoader getInstance];
+	
+	for(int i=0; i<10; i++)
+	{
+		[syncScheduler startBackgroundSync];
+		[proxyLoader startProxySync:@"testServerBean"];
+	}
+	
+	//sleep for 5 seconds before exiting
+	[NSThread sleepForTimeInterval:5];
+	
+	
+	[kernel shutdown];
+}
 
 /*
 -(void)testBootSync 
@@ -129,7 +152,7 @@
 -(void)testStreamSync 
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.107"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.103"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;
@@ -141,30 +164,6 @@
  
  //Start test execution
  [suite execute];
-}
-*/
-/*
--(void)testSyncScheduler
-{
-	NSLog(@"Executing testSyncScheduler.....");
-
-	Kernel *kernel = [Kernel getInstance];
-	[kernel startup];
-	
-	SyncScheduler *syncScheduler = [SyncScheduler getInstance];
-	ProxyLoader *proxyLoader = [ProxyLoader getInstance];
-	
-	for(int i=0; i<10; i++)
-	{
-		[syncScheduler startBackgroundSync];
-		[proxyLoader startProxySync];
-	}
-	
-	//sleep for 5 seconds before exiting
-	[NSThread sleepForTimeInterval:5];
-	
-	
-	[kernel shutdown];
 }
 */
 @end

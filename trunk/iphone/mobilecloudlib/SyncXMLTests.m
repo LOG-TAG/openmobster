@@ -11,12 +11,12 @@
 #import "SyncObjectGenerator.h"
 
 @implementation SyncXMLTests
-/*
+
 -(void) testGenerateAnchorXml
 {
 	NSLog(@"Starting testGeneratorAnchorXML....");
 	
-	Anchor *anchor = [Anchor getInstance];
+	Anchor *anchor = [Anchor getInstance:@"testServerBean"];
 	
 	anchor.lastSync = @"mockLastSync";
 	anchor.nextSync = @"mockNextSync";
@@ -370,5 +370,4 @@
 	NSLog(@"SyncCommand meta: %@",parsedCommand.meta);
 	NSLog(@"SyncCommand numberOfChanges: %@",parsedCommand.numberOfChanges);
 }
-*/
 @end
