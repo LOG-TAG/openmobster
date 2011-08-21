@@ -3,7 +3,6 @@
 
 @implementation SyncBootstrapTests
 
-/*
 -(void) testSyncBootstrap
 {
 	NSLog(@"Testing TestSyncBootstrap......");
@@ -13,6 +12,5 @@
 	
 	SyncAdapterResponse *response = [adapter service:request];
 }
-*/
 
 @end

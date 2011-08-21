@@ -15,7 +15,7 @@
 
 
 @implementation SyncEngineTests
-/*
+
 -(void) testChangeLogEntry
 {
 	NSLog(@"Starting testChangeLogEntry........");
@@ -27,9 +27,7 @@
 	NSLog(@"Equals: %d",equals);
 	STAssertTrue(equals,nil);
 }
-*/
 
-/*
 -(void) testSyncError
 {
 	NSLog(@"Starting testSyncError........");
@@ -41,8 +39,7 @@
 	NSLog(@"Equals: %d",equals);
 	STAssertTrue(equals,nil);
 }
-*/
-/*
+
 -(void) testAnchorSupport
 {
 	NSLog(@"Starting testAnchorSupport.......");
@@ -90,8 +87,7 @@
 		}
 	}
 }
-*/
-/*
+
 -(void) testErrorSupport
 {
 	NSLog(@"Starting testErrorSupport.......");
@@ -125,9 +121,7 @@
 	STAssertTrue(![all containsObject:error1],nil);
 	STAssertTrue([all containsObject:error2],nil);
 }
-*/
 
-/*
 -(void) testChangeLogSupport
 {
 	NSLog(@"Starting testChangeLogSupport..........");
@@ -179,9 +173,7 @@
 	[self dumpChangeLog:changelog];
 	STAssertTrue(changelog == nil || [changelog count] == 0,nil);
 }
-*/
 
-/*
 -(void) testGetCommands
 {
 	NSLog(@"Starting testGetCommands............");
@@ -263,9 +255,7 @@
 		}
 	}
 }
-*/
 
-/*
 -(void) testProcessSlowSyncCommands
 {
 	NSLog(@"Starting testProcessSlowSyncCommands.........");
@@ -291,6 +281,7 @@
 	{
 		MobileObject *addObject = [self createArrayPOJO:@"testSlowSync" :5];
 		addObject.service = @"channel";
+        addObject.recordId = nil;
 		NSString *xml = [serializer serialize:addObject];
 		Item *item = [Item withInit];
 		item.data = xml;
@@ -328,9 +319,7 @@
 	all = [db readAll:@"channel"];
 	STAssertTrue([all count]==3,nil);
 }
-*/
 
-/*
 -(void) testSyncAddCommands
 {
 	NSLog(@"Starting testSyncAddCommands.........");
@@ -356,6 +345,7 @@
 	{
 		MobileObject *addObject = [self createArrayPOJO:@"testSyncAddCommand" :5];
 		addObject.service = @"channel";
+        addObject.recordId = nil;
 		NSString *xml = [serializer serialize:addObject];
 		Item *item = [Item withInit];
 		item.data = xml;
@@ -378,9 +368,7 @@
 	NSArray *all = [db readAll:@"channel"];
 	STAssertTrue([all count]==18,nil);
 }
-*/
 
-/*
 -(void) testSyncReplaceCommands
 {
 	NSLog(@"Starting testSyncReplaceCommands.........");
@@ -435,9 +423,7 @@
 		STAssertTrue([value isEqualToString:@"updated"],nil);
 	}
 }
-*/
 
-/*
 -(void) testSyncDeleteCommands
 {
 	NSLog(@"Starting testSyncDeleteCommands.........");
@@ -484,9 +470,7 @@
 	all = [db readAll:@"channel"];
 	STAssertTrue(all == nil || [all count]==0,nil);
 }
-*/
 
-/*
 -(void) testStartBootSync
 {
 	NSLog(@"Starting testSyncDeleteCommands.........");
@@ -516,7 +500,6 @@
 	STAssertTrue(all == nil || [all count] == 0,nil);
 	STAssertTrue(changelog == nil || [changelog count] == 0,nil);
 }
-*/
 //------------------------------------------------------------------------------------
 -(void) dumpChangeLog:(NSArray *)changelog
 {
@@ -547,6 +530,7 @@
 	{
 		NSString *value = [NSString stringWithFormat:@"pojo/%d",i];
 		MobileObject *local = [self createArrayPOJO:value :5];
+        local.recordId = nil;
 		local.service = @"channel";
 		NSString *oid = [db create:local];
 		
@@ -564,6 +548,7 @@
 		NSString *value = [NSString stringWithFormat:@"pojo/%d",i];
 		MobileObject *local = [self createArrayPOJO:value :5];
 		local.service = @"channel";
+        local.recordId = nil;
 		NSString *oid = [db create:local];
 		
 		GenericAttributeManager *instance = [GenericAttributeManager withInit];
@@ -580,6 +565,7 @@
 		NSString *value = [NSString stringWithFormat:@"pojo/%d",i];
 		MobileObject *local = [self createArrayPOJO:value :5];
 		local.service = @"channel";
+        local.recordId = nil;
 		NSString *oid = [db create:local];
 		
 		GenericAttributeManager *instance = [GenericAttributeManager withInit];

@@ -7,7 +7,6 @@
 
 @implementation WorkflowTests
 
-/*
 - (void) testSimpleWorkflow 
 {
     NSLog(@"Starting testSimpleWorkflow..........");
@@ -49,7 +48,8 @@
 	[actionHandler autorelease];
 	[decisionHandler autorelease];
 }
-*/
+
+//This test has a compilation error. DecideSyncScenario and PerformNormalSync are missing!!!
 /*
 -(void) testSimpleSyncWorkflow
 {
