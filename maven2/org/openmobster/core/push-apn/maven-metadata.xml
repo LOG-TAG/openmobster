@@ -2,11 +2,10 @@
 <metadata>
   <groupId>org.openmobster.core</groupId>
   <artifactId>push-apn</artifactId>
-  <version>2.2-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20110714224533</lastUpdated>
+    <lastUpdated>20110823032902</lastUpdated>
   </versioning>
 </metadata>
