@@ -14,7 +14,7 @@
 	</bean>
 	
 	<bean name="console://VersionLoader" class="org.openmobster.core.console.cmdline.shell.ConsoleVersionLoader">
-		<property name="version">2.2-SNAPSHOT</property>
+		<property name="version">2.2-M4</property>
 	</bean>
 	
 	<bean name="console://Branding" class="org.openmobster.core.console.cmdline.shell.ConsoleBranding">
