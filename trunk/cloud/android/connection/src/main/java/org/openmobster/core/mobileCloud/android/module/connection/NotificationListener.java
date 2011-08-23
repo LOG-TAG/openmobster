@@ -107,7 +107,7 @@ public final class NotificationListener extends Service
 				if(Configuration.getInstance(context).isInPushMode())
 				{
 					//System.out.println("Waiting to kill the push daemon");
-					try{this.pushThread.join();}catch(Exception e){}
+					//try{this.pushThread.join();}catch(Exception e){}
 					//System.out.println("Push Daemon killed");
 				}
 				else

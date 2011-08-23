@@ -409,6 +409,10 @@ public class HomeScreen extends Screen
 				{
 					textField.setText(value);
 				}
+				else
+				{
+					textField.setText("1502"); //default port
+				}
 			}
 			else if(label.equalsIgnoreCase("email"))
 			{
