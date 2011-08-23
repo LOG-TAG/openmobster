@@ -9,16 +9,16 @@ Step 1:
 Prepare the encryption activated Android Cloud Manager App, use -Pandroid-release
 
 Step 2:
+-----------------
+Build the Console Project
+
+Step 3:
 ---------------
 Skip Tests:
 mvn -DskipTests -Pbuild-all install
 
 With Tests:
 mvn -Pbuild-all install
-
-Step 3:
------------------
-Build the Console Project
 
 
 Step 4:
