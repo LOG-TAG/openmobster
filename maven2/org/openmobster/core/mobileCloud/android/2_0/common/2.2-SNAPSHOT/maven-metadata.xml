@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata>
+<metadata modelVersion="1.1.0">
   <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
   <artifactId>common</artifactId>
   <version>2.2-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <buildNumber>6</buildNumber>
+      <timestamp>20110823.034753</timestamp>
+      <buildNumber>7</buildNumber>
     </snapshot>
-    <lastUpdated>20110714230114</lastUpdated>
+    <lastUpdated>20110823034753</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>2.2-20110823.034753-7</value>
+        <updated>20110823034753</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>2.2-20110823.034753-7</value>
+        <updated>20110823034753</updated>
+      </snapshotVersion>
+    </snapshotVersions>
   </versioning>
 </metadata>
