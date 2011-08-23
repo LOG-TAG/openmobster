@@ -5,6 +5,10 @@ Generate a Binary Release (includes documents, source code, and deployable binar
 ------------------------------------------------------------------------------------
 
 Step 1:
+-------------------
+Prepare the encryption activated Android Cloud Manager App, use -Pandroid-release
+
+Step 2:
 ---------------
 Skip Tests:
 mvn -DskipTests -Pbuild-all install
@@ -12,13 +16,9 @@ mvn -DskipTests -Pbuild-all install
 With Tests:
 mvn -Pbuild-all install
 
-Step 2:
+Step 3:
 -----------------
 Build the Console Project
-
-Step 3:
--------------------
-Prepare the encryption activated Android Cloud Manager App, use -Pandroid-release
 
 
 Step 4:
