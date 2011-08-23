@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata>
+<metadata modelVersion="1.1.0">
   <groupId>org.openmobster.core.dev.tools</groupId>
   <artifactId>dev-cloudServer</artifactId>
   <version>2.2-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <buildNumber>6</buildNumber>
+      <timestamp>20110823.134421</timestamp>
+      <buildNumber>7</buildNumber>
     </snapshot>
-    <lastUpdated>20110714231645</lastUpdated>
+    <lastUpdated>20110823134421</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>2.2-20110823.134421-7</value>
+        <updated>20110823134421</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>2.2-20110823.134421-7</value>
+        <updated>20110823134421</updated>
+      </snapshotVersion>
+    </snapshotVersions>
   </versioning>
 </metadata>
