@@ -7,16 +7,16 @@
   </servlet>
   
   <!-- End-to-End -->  
-  <!--   
   <servlet>
     <servlet-name>AdminAccountServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.AccountServiceImpl</servlet-class>
-  </servlet>
-  -->  
+  </servlet>  
+  <!--
   <servlet>
     <servlet-name>AdminAccountServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.AccountServiceStubImpl</servlet-class>
   </servlet>
+  -->
    
   <servlet>
     <servlet-name>DeviceServlet</servlet-name>
