@@ -47191,7 +47191,7 @@
 		<string>IDEWindowToolbarIsVisible</string>
 		<string>IDEActiveWorkspaceTabController</string>
 		<string>IDEWorkspaceTabController_1BF4E0A4-222C-496E-9058-49F206F7C42C</string>
-		<string>{{0, 69}, {1440, 809}}</string>
+		<string>{{0, 71}, {1440, 807}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -47730,7 +47730,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>335715734.75409102</real>
+		<real>335810033.57021999</real>
 		<string>{0, 1362}</string>
 		<string>{160, 0}</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
@@ -47766,7 +47766,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {996, 733}}</string>
+		<string>{{0, 0}, {996, 731}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -49461,7 +49461,7 @@
 			</array>
 		</dict>
 		<string></string>
-		<real>509</real>
+		<real>507</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -50080,7 +50080,7 @@
 		<string>IDERecentDocumentFilteringEnabled</string>
 		<string>IDESCMStatusFilteringEnabled</string>
 		<string>IDEExpandedItemsSet</string>
-		<string>{{0, 0}, {443, 689}}</string>
+		<string>{{0, 0}, {443, 687}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -113083,7 +113083,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>335715734.75323701</real>
+		<real>335810033.56955099</real>
 		<string>{0, 1362}</string>
 		<string>{160, 0}</string>
 		<dict>
@@ -115446,7 +115446,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Yesterday at 1:49 PM</string>
+		<string>8/21/11 at 1:49 PM</string>
 		<integer>106</integer>
 		<string>mobilecloudlib</string>
 		<dict>
@@ -115456,12 +115456,7 @@
 				<integer>184</integer>
 			</dict>
 			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>27</integer>
-				</dict>
-			</array>
+			<array/>
 		</dict>
 		<dict>
 			<key>$class</key>
