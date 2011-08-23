@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata>
+<metadata modelVersion="1.1.0">
   <groupId>org.openmobster.core.dev.tools</groupId>
   <artifactId>dev-tools</artifactId>
   <version>2.2-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <buildNumber>5</buildNumber>
+      <timestamp>20110823.134207</timestamp>
+      <buildNumber>6</buildNumber>
     </snapshot>
-    <lastUpdated>20110714231514</lastUpdated>
+    <lastUpdated>20110823134207</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>2.2-20110823.134207-6</value>
+        <updated>20110823134207</updated>
+      </snapshotVersion>
+    </snapshotVersions>
   </versioning>
 </metadata>
