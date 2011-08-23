@@ -13,6 +13,9 @@ Step 2:
 Build the Console Project
 
 Step 3:
+Build the Android Titanium Module
+
+Step 4:
 ---------------
 Skip Tests:
 mvn -DskipTests -Pbuild-all install
@@ -21,7 +24,7 @@ With Tests:
 mvn -Pbuild-all install
 
 
-Step 4:
+Step 5:
 ----------------
 mvn -DskipTests -Pandroid-release javadoc:aggregate install
 
