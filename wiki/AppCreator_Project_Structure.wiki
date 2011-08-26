@@ -30,3 +30,11 @@ To hot deploy your Android App and Cloud Manager app, use the following command
 cd app-android
 mvn -Phot-deploy install
 }}}
+
+Once the Cloud Manager app is deployed, only the Android App needs to be deployed as development progresses.
+
+To hot deploy just your Android App, use the following command
+{{{
+cd app-android
+mvn -Papp-hot-deploy install
+}}}
