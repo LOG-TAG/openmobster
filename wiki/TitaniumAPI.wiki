@@ -4,9 +4,19 @@
 
 ----
 
-= Introduction =
+=== Task ===
+Initialize the OpenMobster Cloud Module.
 
-Under Construction
+=== Code ===
+{{{
+var cloudModule = require('org.openmobster.cloud');
+}}}
+
+----
+
+=== Task ===
+
+=== Code ===
 
 ----
 
