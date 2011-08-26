@@ -19,3 +19,13 @@ You can now install the encrypted version using:
 {{{
 adb install -r CloudManager-Encryption.apk
 }}}
+
+=== Step 2: Activate Encryption in your apps ===
+Inorder to activate encryption in your app, you need to provide a _openmobster-app.xml_ file. File should be at the top-level. The file should look like this:
+{{{
+<app-conf>
+	<encryption>true</encryption>
+</app-conf>
+}}}
+
+Thats it. In two easy steps you can now get full encryption support for OpenMobster apps
