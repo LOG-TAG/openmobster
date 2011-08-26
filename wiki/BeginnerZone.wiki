@@ -21,6 +21,12 @@ A [DevSetup tutorial] for setting up the development enviroment to start develop
 
 ----
 
+==== Encryption Support ====
+
+A document describing the newly added [Encryption Encryption Support] (version 2.2-M4+). It describes how to produce encryption enabled apps.
+
+----
+
 ==== Channel Development ====
 
 A basic [BeginSync tutorial] which covers developing a Sync Channel. 
