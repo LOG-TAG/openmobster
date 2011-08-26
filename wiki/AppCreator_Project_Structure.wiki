@@ -38,3 +38,17 @@ To hot deploy just your Android App, use the following command
 cd app-android
 mvn -Papp-hot-deploy install
 }}}
+
+=== Standalone Cloud Server ===
+On the Cloud-side of things, there is a fully functional Standalone Cloud Server provided that you can run right from inside your Maven environment.
+
+Command to run the Standalone Cloud Server
+{{{
+mvn -PrunCloud integration-test
+}}}
+
+
+Command to run the Standalone Cloud Server in *debug mode*
+{{{
+mvn -PdebugCloud integration-test
+}}}
