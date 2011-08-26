@@ -44,5 +44,16 @@ var push = cloudModule.push();
 
 ----
 
+==== Task ====
+Read the oids of all the beans stored in a sync channel
+
+==== Code ====
+{{{
+    //Read the Oids. Returns an array in JSON format
+    var oids = sync.readAll(channel);
+
+    //process to get an array of oids
+    oids = eval('('+oids+')');
+}}}
 
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
