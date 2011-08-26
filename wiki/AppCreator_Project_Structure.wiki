@@ -7,8 +7,8 @@ AppCreator is a maven based project skeleton generator. It generates a complete 
 === Project Layout ===
 Each generated project has the following 3 maven modules:
 
-  * app-android - Contains the App for the Android OS
+  * *app-android* - Contains the App for the Android OS
 
-  * cloud - Contains the *OpenMobster Cloud Server* based artifacts which will be deployed on the cloud side
+  * *cloud* - Contains the *OpenMobster Cloud Server* based artifacts which will be deployed on the cloud side
 
-  * moblet - Represents a *OpenMobster Moblet* which combines both the device side and cloud side artifacts into one single artifact. The moblet is deployed as a simple jar file into the *OpenMobster Cloud Server*. When the moblet is deployed into the Cloud server it is registered with the built-in App store. Once registered with the App Store, this moblet can be easily downloaded, installed, and managed on the actual device via the _App Store_ functionality under the _Cloud Manager_ app 
+  * *moblet* - Represents a *OpenMobster Moblet* which combines both the device side and cloud side artifacts into one single artifact. The moblet is deployed as a simple jar file into the *OpenMobster Cloud Server*. When the moblet is deployed into the Cloud server it is registered with the built-in App store. Once registered with the App Store, this moblet can be easily downloaded, installed, and managed on the actual device via the _App Store_ functionality under the _Cloud Manager_ app 
