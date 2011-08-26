@@ -125,4 +125,42 @@ Delete a bean from the channel
 var deletedOid = sync.deleteBean(channel,oid);
 }}}
 
+----
+
+==== Task ====
+Make a Remote Procedure Call Invocation
+
+==== Code ====
+{{{
+
+//Prepare a JSON payload for the request
+var payload = "{'name':'John', 'lastname':'Doe', 'customers':['Apple','Google','Microsoft','Oracle']}";
+
+//Invoke a service named '/titanium/module/tester' with this payload
+var response = rpc.invoke("/titanium/module/tester", payload);
+
+//Process the json response
+response = eval('(' + response + ')');
+
+//Do some more reading of the response that was sent back	
+Ti.API.info("***************************************");
+Ti.API.info("Status: "+response.status);
+Ti.API.info("Status Message: "+response.statusMsg);
+Ti.API.info("Name: "+response.name);
+Ti.API.info("Last Name:" +response.lastname);
+Ti.API.info("Customer Count: "+response.customers.length);
+Ti.API.info("Specialists Count: "+response.specialists.length);
+	
+var customerLength = response.customers.length;
+for(var i=0; i<customerLength; i++)
+{
+    var local = response.customers[i];
+    Ti.API.info("Customer: "+local);
+}
+	
+Ti.API.info("***************************************");
+}}}
+
+----
+
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
