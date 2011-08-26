@@ -12,3 +12,21 @@ Each generated project has the following 3 maven modules:
   * *cloud* - Contains the *OpenMobster Cloud Server* based artifacts which will be deployed on the cloud side
 
   * *moblet* - Represents a *OpenMobster Moblet* which combines both the device side and cloud side artifacts into one single artifact. The moblet is deployed as a simple jar file into the *OpenMobster Cloud Server*. When the moblet is deployed into the Cloud server it is registered with the built-in App store. Once registered with the App Store, this moblet can be easily downloaded, installed, and managed on the actual device via the _App Store_ functionality under the _Cloud Manager_ app 
+
+=== Build Command ===
+{{{
+  mvn install
+}}}
+
+This command builds all the artifacts including running tests
+
+=== Development Mode Cloud Manager App ===
+This Development Mode Cloud Manager app improves developer productivity by automating the manual provisioning/security processes by automatically provisioning a Cloud account under the name: "blah2@gmail.com".
+
+*Note:* This is a strict development stage only optimization and should not be used in a real world setting. 
+
+To hot deploy your Android App and Cloud Manager app, use the following command
+{{{
+cd app-android
+mvn -Phot-deploy install
+}}}
