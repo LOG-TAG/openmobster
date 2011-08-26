@@ -10,10 +10,10 @@ By default, for performance and ease of use reasons, the system operates in non-
 === Step 1: Install an Encryption Activated Cloud Manager App===
 You will find this app under, *Android/core-runtime/CloudManager-Encryption.apk*
 
-If there is an earlier non-encryption version found on the phone, make sure you fully remove it along with all its data. You can do that via _Settings > Applications > Manage applications > Mobile Cloud > Uninstall_
+If there is an earlier non-encryption version found on the phone, make sure you fully remove it along with all its data. You can do that via : {{{
+Settings > Applications > Manage applications > Mobile Cloud > Uninstall}}}
 
 You can now install the encrypted version using: 
 {{{
 adb install -r CloudManager-Encryption.apk
 }}}
-
