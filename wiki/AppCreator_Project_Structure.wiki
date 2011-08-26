@@ -52,3 +52,16 @@ Command to run the Standalone Cloud Server in *debug mode*
 {{{
 mvn -PdebugCloud integration-test
 }}}
+
+=== JBoss AS Deployment ===
+Once the App and its corresponding Cloud artifacts are developed and tested end-to-end, you can aggregate all these artifacts into a single moblet jar ready for deployment into a JBoss AS based Cloud Server.
+
+This single artifact when deployed into the JBoss AS based Cloud Server performs all necessary registrations with the system and is ready for deploying the app onto a real phone via the Internet.
+
+Commands:
+
+  * Generate the app and deploy into the JBoss AS instance:
+    {{{
+       cd moblet
+       mvn -Pjboss-install install
+    }}}
