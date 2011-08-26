@@ -69,6 +69,60 @@ var bean = sync.readById(channel,oid);
 ----
 
 ==== Task ====
+Reading the property values associated with a bean
 
+==== Code ====
+{{{
+var title = bean.getValue("title");
+var comment = bean.getValue("comment");
+var customer = bean.getValue("customer");
+var specialist = bean.getValue("specialist");
+}}}
+
+----
+
+==== Task ====
+Updating the property values of a bean
+
+==== Code ====
+{{{
+updateBean.setValue("title", "updated://title");
+updateBean.setValue("customer", "updated://customer");
+updateBean.setValue("specialist","updated://specialist");
+updateBean.setValue("comment", "updated://comment");
+
+//this is important
+updateBean.commit();
+}}}
+
+The *commit* call is important. It persists the local changes into the database where the beans are stored
+
+----
+
+==== Task ====
+Create a new bean into the channel
+
+==== Code ====
+{{{
+var newBean = sync.newBean(channel);
+newBean.setValue("title", "new://title");
+newBean.setValue("comment", "new://comment");
+newBean.setValue("customer", "new://customer");
+newBean.setValue("specialist", "new://specialist");
+
+//this is important
+var newBeanId = newBean.commit();
+}}}
+The *commit* call is important. It persists the local changes into the database where the beans are stored
+
+----
+
+==== Task ====
+Delete a bean from the channel
+
+==== Code ====
+{{{
+var deletedOid = sync.deleteBean(channel,oid);
+}}}
 
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
