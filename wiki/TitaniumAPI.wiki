@@ -56,4 +56,19 @@ Read the oids of all the beans stored in a sync channel
     oids = eval('('+oids+')');
 }}}
 
+----
+
+==== Task ====
+Read a bean from the sync channel using its oid
+
+==== Code ====
+{{{
+var bean = sync.readById(channel,oid);
+}}}
+
+----
+
+==== Task ====
+
+
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
