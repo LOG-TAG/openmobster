@@ -4,20 +4,45 @@
 
 ----
 
-=== Task ===
+==== Task ====
 Initialize the OpenMobster Cloud Module.
 
-=== Code ===
+==== Code ====
 {{{
 var cloudModule = require('org.openmobster.cloud');
 }}}
 
 ----
 
-=== Task ===
+==== Task ====
+Initialize the *Sync* module
 
-=== Code ===
+==== Code ====
+{{{
+var sync = cloudModule.sync();
+}}}
 
 ----
+
+==== Task ====
+Initialize the *RPC* module
+
+==== Code ====
+{{{
+var rpc = cloudModule.rpc();
+}}}
+
+----
+
+==== Task ====
+Initialize the *Push* module
+
+==== Code ====
+{{{
+var push = cloudModule.push();
+}}}
+
+----
+
 
 *Related Links:* [TitaniumArea Titanium Area], [GetStarted Get Started], [BeginnerZone Beginner]
