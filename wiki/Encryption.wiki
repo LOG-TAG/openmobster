@@ -1,5 +1,7 @@
 #summary Encryption Support
 
+*Related:* [BeginnerZone Beginner Area], [GetStarted GetStarted]
+----
 === Introduction ===
 With the release of 2.2-M4, a very critical feature has been added to the OpenMobster platform. This is the end-to-end encryption of locally stored data. Users can now easily mobilize their Enterprise data without worrying that it may fall into wrong hands.
 
@@ -29,3 +31,7 @@ Inorder to activate encryption in your app, you need to provide a _openmobster-a
 }}}
 
 Thats it. In two easy steps you can now get full encryption support for OpenMobster apps
+
+----
+
+*Related:* [BeginnerZone Beginner Area], [GetStarted GetStarted]
