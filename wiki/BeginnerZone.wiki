@@ -21,6 +21,12 @@ A [DevSetup tutorial] for setting up the development enviroment to start develop
 
 ----
 
+==== AppCreator Project Structure ====
+
+Describes the [AppCreator_Project_Structure Maven layout] of an OpenMobster project
+
+----
+
 ==== Encryption Support ====
 
 A document describing the newly added [Encryption Encryption Support] (version 2.2-M4+). It describes how to produce encryption enabled apps.
