@@ -65,3 +65,19 @@ Commands:
        cd moblet
        mvn -Pjboss-install install
     }}}
+
+=== Some tips ===
+
+  * OpenMobster codebase is upgraded to use Maven 3.0.3. Make sure you are using this version of maven.
+
+  * Property *openmobster.version* is specified in the top-level pom.xml. This tells the system which version of OpenMobster system you want to use. The default value is: 2.2-SNAPSHOT
+
+  * Property *version.android.api* is specified in the top-level pom.xml. This tells the system which version of the Android API to use. The default value is : 12
+
+  * ANDROID_HOME should be set as an environment variable. This should point to the directory where your local Android SDK is installed
+
+  * In app-android/pom.xml, you must specify the right location for your signing key under the *android.keystore.location* property
+
+  * In the *jar-signer* plugin you must specify the appropriate values for *storepass*, *keypass*, and *alias* depending on your signing certificate
+
+  * In the *moblet/pom.xml* file specify the right location where your JBoss-5.1.0.GA is installed. This is specified in the *jboss.home* property 
