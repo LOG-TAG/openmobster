@@ -1,5 +1,9 @@
 #summary AppCreator Project Structure Explained
 
+*Related:* [BeginnerZone Beginner Area], [GetStarted GetStarted]
+
+----
+
 === Introduction ===
 
 AppCreator is a maven based project skeleton generator. It generates a complete OpenMobster project. The project is complete with proper dependency management so that the user does not have to manually perform these steps. This tutorial covers different aspects of AppCreator.
@@ -81,3 +85,7 @@ Commands:
   * In the *jar-signer* plugin you must specify the appropriate values for *storepass*, *keypass*, and *alias* depending on your signing certificate
 
   * In the *moblet/pom.xml* file specify the right location where your JBoss-5.1.0.GA is installed. This is specified in the *jboss.home* property 
+
+----
+
+*Related:* [BeginnerZone Beginner Area], [GetStarted GetStarted]
