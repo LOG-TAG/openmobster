@@ -16,9 +16,18 @@ Here are step by step instructions on finding the current location.
 
 ==== LocationListener ====
 
+==== Full Source Code ====
+
 === Finding Your Address ===
 
 You can use your raw latitude and longitude data and convert it into useful things like addresses, names of places, etc. This process is called Geocoding. On Android, you do not need any special permissions to use the Geocoding hardware. On the emulator you must use an AVD with API level 6 with Google APIs. I have observed the Geocoder is missing in API levels 7, and 8.
 
 Here are step by step instructions to finding your address from raw location data
 
+==== Step 1: Get the Geocoder service ====
+
+==== Step 2: Find the Address or a list of addresses ====
+
+==== Step 3: Processing the Addresses ====
+
+==== Full Source Code ====
