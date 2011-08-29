@@ -1,5 +1,9 @@
 #summary Tutorial: Android Location Service
 
+*Related:* [AndroidArea Android Area], [BeginnerZone Beginner Area]
+
+----
+
 === Introduction ====
 
 Location Aware programming adds a new dimension to mobile programming. Location hardware such as GPS unit, etc are pretty standard on the devices. Taking advantage of this helps create much more feature rich and robust mobile apps. In this tutorial we will learn how to get raw location data from the hardware, and then translate it into something meaningful like an address to a place.
@@ -48,3 +52,7 @@ Here are step by step instructions to finding your address from raw location dat
 ==== Step 3: Processing the Addresses ====
 
 ==== Full Source Code ====
+
+----
+
+*Related:* [AndroidArea Android Area], [BeginnerZone Beginner Area]
