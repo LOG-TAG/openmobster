@@ -1,0 +1,24 @@
+#summary Tutorial: Android Location Service
+
+=== Introduction ====
+
+Location Aware programming adds a new dimension to mobile programming. Location hardware such as GPS unit, etc are pretty standard on the devices. Taking advantage of this helps create much more feature rich and robust mobile apps. In this tutorial we will learn how to get raw location data from the hardware, and then translate it into something meaningful like an address to a place.
+
+=== Finding Your Location ===
+
+Here are step by step instructions on finding the current location.
+
+==== Step 1: Get an instance of the LocationManager ====
+
+==== Step 2: Register your LocationListener to receive updates ====
+
+==== Step 3: Create a listening window and then cleanup ====
+
+==== LocationListener ====
+
+=== Finding Your Address ===
+
+You can use your raw latitude and longitude data and convert it into useful things like addresses, names of places, etc. This process is called Geocoding. On Android, you do not need any special permissions to use the Geocoding hardware. On the emulator you must use an AVD with API level 6 with Google APIs. I have observed the Geocoder is missing in API levels 7, and 8.
+
+Here are step by step instructions to finding your address from raw location data
+
