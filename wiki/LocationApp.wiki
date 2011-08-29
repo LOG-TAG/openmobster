@@ -6,12 +6,14 @@ Location Aware programming adds a new dimension to mobile programming. Location 
 
 === Download this tutorial ===
 
-  * [http://openmobster.googlecode.com/svn/samples/locationapp.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/locationapp
+[http://openmobster.googlecode.com/svn/samples/locationapp.zip Download] or svn co http://openmobster.googlecode.com/svn/samples/locationapp
+
+Go to the App's Directory
 {{{
 cd app-android
 }}}
 
-Compile and Deploy into the Emulator
+Compile and Deploy into the Emulator or Connected Device
 {{{
 mvn -Papp-hot-deploy install
 }}}
