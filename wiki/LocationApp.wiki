@@ -23,11 +23,13 @@ mvn -Papp-hot-deploy install
 
 Here are step by step instructions on finding the current location.
 
-==== Step 1: Get an instance of the LocationManager ====
+==== Step 1: AndroidManifest.xml, get permission
 
-==== Step 2: Register your LocationListener to receive updates ====
+==== Step 2: Get an instance of the LocationManager ====
 
-==== Step 3: Create a listening window and then cleanup ====
+==== Step 3: Register your LocationListener to receive updates ====
+
+==== Step 4: Create a listening window and then cleanup ====
 
 ==== LocationListener ====
 
