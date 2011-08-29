@@ -50,4 +50,9 @@ A [NFC tutorial] that explores the Near Field Communication capabilities of the 
 
 ----
 
+==== Location Based Programming ====
+A [LocationApp tutorial] that provides a Step-by-Step introduction to Location Based Programming in Android
+
+----
+
 *Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
