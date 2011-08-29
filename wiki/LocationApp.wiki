@@ -273,7 +273,7 @@ List<Address> addr=geocoder.getFromLocation(location.getLatitude(),location.getL
 
 ==== Step 3: Processing the Addresses ====
 {{{
-if(addr != null)
+                        if(addr != null)
 			{
 				for(Address address:addr)
 				{
