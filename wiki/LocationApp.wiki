@@ -27,7 +27,7 @@ mvn -Papp-hot-deploy install
 
 Here are step by step instructions on finding the current location.
 
-==== Step 1: AndroidManifest.xml, get permission
+==== Step 1: AndroidManifest.xml, get permission ====
 {{{
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 }}}
