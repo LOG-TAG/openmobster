@@ -8,8 +8,17 @@
 
 package org.openmobster.core.mobileCloud.android.module.bus.rpc;
 
+import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
+
+import android.app.Activity;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.IBinder;
 
 /**
@@ -31,6 +40,8 @@ public class BusService extends Service
 	public void onCreate()
 	{
 		super.onCreate();
+		this.startForegroundRegistration();
+		
 		/*try
 		{
 			super.onCreate();		
@@ -48,9 +59,8 @@ public class BusService extends Service
 			throw new RuntimeException(e);
 		}*/
 	}
-
-
-
+	
+	
 	@Override
 	public void onDestroy()
 	{
@@ -108,4 +118,46 @@ public class BusService extends Service
 		
 		return deviceContainer;
 	}*/
+	
+	
+	private void startForegroundRegistration()
+	{
+		Activity activity = Registry.getActiveInstance().getContext();
+		Context context = Registry.getActiveInstance().getContext();
+		PackageManager pm = context.getPackageManager();
+		CharSequence appName = pm.getApplicationLabel(context.getApplicationInfo());
+		
+		//Setup the Notification instance
+		int icon = this.findDrawableId(this, "icon");
+		long when = System.currentTimeMillis();
+		Notification notification = new Notification(icon, appName, when);
+		
+		Intent notificationIntent = new Intent(this, activity.getClass());
+		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+		notification.setLatestEventInfo(this, appName, "OpenMobster Cloud Manager", contentIntent);
+		
+		notification.flags|=Notification.FLAG_NO_CLEAR;
+		
+		int id = GeneralTools.generateUniqueId().hashCode();
+		
+		this.startForeground(id, notification);
+	}
+	
+	private int findDrawableId(Context context, String variable)
+	{
+		try
+		{
+			Resources resources = context.getResources();
+			int resourceId = resources.getIdentifier(variable, "drawable", context.getPackageName());
+			
+			return resourceId;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			return 0;
+		}
+	}
 }

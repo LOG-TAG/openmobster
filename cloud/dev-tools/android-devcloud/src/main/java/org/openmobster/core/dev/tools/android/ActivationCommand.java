@@ -47,7 +47,7 @@ public class ActivationCommand implements RemoteCommand
 		boolean isReactivation = false;
 		try
 		{
-			deviceIdentifier = GeneralTools.getDeviceIdentifier();			
+			deviceIdentifier = GeneralTools.getDeviceIdentifier(context);			
 			server = (String)commandContext.getAttribute("server");
 			email = (String)commandContext.getAttribute("email");
 			String password = (String)commandContext.getAttribute("password");

@@ -33,7 +33,7 @@ public final class BootupConfiguration
 		
 		conf.deActivateSSL();
 		
-		String deviceIdentifier = GeneralTools.getDeviceIdentifier();
+		String deviceIdentifier = GeneralTools.getDeviceIdentifier(context);
 		conf.setDeviceId(deviceIdentifier);
 		conf.setServerIp(serverIp);
 		if(port != null && port.trim().length()>0)
