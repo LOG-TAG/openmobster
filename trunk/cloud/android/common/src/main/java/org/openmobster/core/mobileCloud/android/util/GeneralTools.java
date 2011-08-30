@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import android.provider.Settings.Secure;
 import android.os.Build;
+import android.content.Context;
 
 /**
  * @author openmobster@gmail.com
@@ -23,11 +24,11 @@ public class GeneralTools
 		return UUID.randomUUID().toString();
 	}
 	
-	public static String getDeviceIdentifier()
-	{
+	public static String getDeviceIdentifier(Context context)
+	{	
 		String deviceIdentifier = "IMEI:";
 		
-		String androidId = Secure.ANDROID_ID;
+		String androidId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
 		String manufacturer = Build.MANUFACTURER;
 		String model = Build.MODEL;
 		String product = Build.PRODUCT;

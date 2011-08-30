@@ -8,6 +8,7 @@
 
 package org.crud.cloud.crm.bootstrap;
 
+import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -58,6 +59,9 @@ public class PushListener implements MobileServiceBean
 		log.info("--------------------------------------------------------------------------");
 		log.info("/listen/push: was successfully started....");
 		log.info("--------------------------------------------------------------------------");
+		
+		Thread t = new Thread(new AutoTicketGenerator());
+		t.start();
 	}
 	
 	public Response invoke(Request request) 
@@ -83,12 +87,40 @@ public class PushListener implements MobileServiceBean
 	
 	public synchronized String[] checkUpdates()
 	{
-		if(this.newTickets != null)
+		if(this.newTickets != null && !this.newTickets.isEmpty())
 		{
 			String[] local = this.newTickets.toArray(new String[0]);
 			this.newTickets.clear();
 			return local;
 		}
 		return null;
+	}
+	
+	private class AutoTicketGenerator implements Runnable
+	{
+		public void run()
+		{
+			try
+			{
+				log.info("******************************************");
+				log.info("AutoTicketGenerator started...............");
+				log.info("******************************************");
+				while(true)
+				{
+					File file = new File("/Users/openmobster/experiments/push/crud.sync");
+					if(file.exists())
+					{
+						file.delete();
+						PushListener.this.invoke(null);
+					}
+					
+					Thread.sleep(60000);
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 }

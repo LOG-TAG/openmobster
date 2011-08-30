@@ -95,7 +95,7 @@ public class CommandController
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	private long computeKeepAliveInterval(String platform, String device)
 	{
-		long keepAliveInterval = 90000; //waits 90 seconds...through experimentation this has very little impact on the device battery
+		long keepAliveInterval = 9*60*1000; //waits 90 seconds...through experimentation this has very little impact on the device battery
 		
 		//This customization is needed because due to a TCP stack issue shipped with
 		//the 833x blackberry devices, the default READ_WRITE timeout of 2 minutes does
