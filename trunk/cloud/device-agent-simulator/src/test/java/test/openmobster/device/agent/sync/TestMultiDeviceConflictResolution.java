@@ -30,10 +30,12 @@ public class TestMultiDeviceConflictResolution extends AbstractSync
 		
 		//Setup the device '12345'
 		this.device1 = (MobileBeanRunner)ServiceManager.locate("12345");
+		this.device1.setApp("testApp");
 		this.device1.activateDevice();
 		
 		//Setup the device '6789'
 		this.device2 = (MobileBeanRunner)ServiceManager.locate("6789");
+		this.device2.setApp("testApp");
 		this.device2.activateDevice();
 	}
 	

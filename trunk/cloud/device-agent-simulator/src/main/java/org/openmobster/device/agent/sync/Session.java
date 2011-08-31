@@ -26,6 +26,7 @@ public final class Session
 	private String sessionId; //required
 	private String target; //required
 	private String source; //required
+	private String app;//required
 	
 	private SyncPackage clientInitPackage;
 	private SyncPackage serverInitPackage;
@@ -123,6 +124,16 @@ public final class Session
 	public void setSessionId(String sessionId)
 	{
 		this.sessionId = sessionId;
+	}
+	
+	public String getApp()
+	{
+		return app;
+	}
+
+	public void setApp(String app)
+	{
+		this.app = app;
 	}
 
 	/**

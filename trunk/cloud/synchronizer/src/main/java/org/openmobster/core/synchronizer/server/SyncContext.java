@@ -108,4 +108,13 @@ public class SyncContext
 	{
 		return this.session.getDeviceId();
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getApp()
+	{
+		return this.session.getApp();
+	}
 }

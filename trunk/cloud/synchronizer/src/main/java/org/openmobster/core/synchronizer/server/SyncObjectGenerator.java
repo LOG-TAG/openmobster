@@ -203,6 +203,7 @@ public class SyncObjectGenerator
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			throw new SyncException(e);
 		}
 	}
@@ -243,7 +244,11 @@ public class SyncObjectGenerator
 		
 		Element source = (Element)syncHeader.getElementsByTagName(SyncXMLTags.Source).item(0);
 		loc = (Element)source.getElementsByTagName(SyncXMLTags.LocURI).item(0);
-		session.setSource(loc.getFirstChild().getNodeValue());				
+		session.setSource(loc.getFirstChild().getNodeValue());
+		
+		Element app = (Element)syncHeader.getElementsByTagName(SyncXMLTags.App).item(0);
+		String appValue = app.getFirstChild().getNodeValue();
+		session.setApp(appValue);
 	}
 	
 	/**

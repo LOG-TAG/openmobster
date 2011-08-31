@@ -16,6 +16,7 @@ import org.openmobster.device.agent.frameworks.mobileObject.MobileObjectDatabase
 import org.openmobster.device.agent.sync.SyncAdapter;
 import org.openmobster.device.agent.sync.SyncAdapterRequest;
 import org.openmobster.device.agent.sync.SyncAdapterResponse;
+import org.openmobster.device.agent.sync.SyncXMLTags;
 import org.openmobster.device.agent.sync.engine.SyncEngine;
 
 import org.openmobster.core.synchronizer.server.SyncServer;
@@ -134,6 +135,7 @@ public abstract class AbstractSyncMapping extends AbstractSync
 		initRequest.setAttribute(SyncServer.DATA_SOURCE, service);
 		initRequest.setAttribute(SyncServer.DATA_TARGET, service);
 		initRequest.setAttribute(SyncServer.SYNC_TYPE, SyncAdapter.TWO_WAY);
+		initRequest.setAttribute(SyncXMLTags.App, this.app);
 		
 		this.executeSyncProtocol(initRequest, serverSyncAdapter, deviceSyncAdapter);
 	}

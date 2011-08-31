@@ -140,7 +140,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			
 			//also get any records that are deleted on the server
 			List deletedEntries = this.getChangeLog(SyncContext.getInstance().getDeviceId(),
-			pluginId, 
+			pluginId, SyncContext.getInstance().getApp(),
 			ServerSyncEngine.OPERATION_DELETE);
 			
 			if(deletedEntries != null)
@@ -174,7 +174,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 
 			List changeLog = this
 					.getChangeLog(SyncContext.getInstance().getDeviceId(),
-					pluginId, ServerSyncEngine.OPERATION_ADD);
+					pluginId, SyncContext.getInstance().getApp(), ServerSyncEngine.OPERATION_ADD);
 			
 			for (int i = 0; i < changeLog.size(); i++)
 			{
@@ -207,6 +207,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 
 			List changeLog = this.getChangeLog(SyncContext.getInstance().getDeviceId(),
 					pluginId,
+					SyncContext.getInstance().getApp(),
 					ServerSyncEngine.OPERATION_UPDATE);
 			
 			for (int i = 0; i < changeLog.size(); i++)
@@ -240,6 +241,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 
 			List changeLog = this.getChangeLog(SyncContext.getInstance().getDeviceId(),
 					pluginId,
+					SyncContext.getInstance().getApp(),
 					ServerSyncEngine.OPERATION_DELETE);
 			
 			for (int i = 0; i < changeLog.size(); i++)
@@ -307,7 +309,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				boolean saveRecord = true;
 				
 				List deletedEntries = this.getChangeLog(SyncContext.getInstance().getDeviceId(),
-				pluginId, ServerSyncEngine.OPERATION_DELETE);
+				pluginId, SyncContext.getInstance().getApp(), ServerSyncEngine.OPERATION_DELETE);
 				
 				if(deletedEntries != null)
 				{
@@ -481,7 +483,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		return commands;
 	}
 	// ----------ChangeLog related services-----------------------------------------------------------------------------------------------------------------	
-	public void addChangeLogEntries(String target, List entries)
+	public void addChangeLogEntries(String target, String app, List entries)
 	{
 		if (entries != null && !entries.isEmpty())
 		{
@@ -494,6 +496,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				{
 					ChangeLogEntry entry = (ChangeLogEntry) entries.get(i);
 					entry.setTarget(target);
+					entry.setApp(app);
 					session.saveOrUpdate(entry);
 				}
 				tx.commit();
@@ -510,17 +513,17 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}
 	}
 	
-	public List getChangeLog(String target, String nodeId, String operation)
+	public List getChangeLog(String target, String nodeId, String app, String operation)
 	{
 		Session session = this.hibernateManager.getSessionFactory()
 				.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		try
 		{
-			String query = "from ChangeLogEntry entry where entry.target=? AND entry.nodeId=? AND entry.operation=?";
+			String query = "from ChangeLogEntry entry where entry.target=? AND entry.nodeId=? AND entry.operation=? AND entry.app=?";
 
 			List changeLog = session.createQuery(query).setString(0, target).setString(1, nodeId)
-					.setString(2, operation).list();
+					.setString(2, operation).setString(3, app).list();
 
 			tx.commit();
 			
@@ -542,7 +545,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}		
 	}
 	
-	public void clearChangeLogEntry(String target, ChangeLogEntry logEntry)
+	public void clearChangeLogEntry(String target, String app, ChangeLogEntry logEntry)
 	{					
 		String recordId = this.gateway.parseId(logEntry.getItem().getData());
 		
@@ -554,11 +557,12 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		try
 		{
 			String query = "delete ChangeLogEntry entry where entry.target=? AND entry.nodeId=? " +
-		    "AND entry.recordId=? AND entry.operation=?";
+		    "AND entry.recordId=? AND entry.operation=? AND entry.app=?";
 
 			session.createQuery(query).setString(0, target).
 			setString(1, logEntry.getNodeId())
 			.setString(2, logEntry.getRecordId()).setString(3, logEntry.getOperation()).
+			setString(4, app).
 			executeUpdate();
 									
 
@@ -575,16 +579,16 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}		
 	}
 		
-	public void clearChangeLog(String target, String service)
+	public void clearChangeLog(String target, String service, String app)
 	{				
 		Session session = this.hibernateManager.getSessionFactory()
 				.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		try
 		{
-			String query = "delete ChangeLogEntry entry where entry.target=? AND entry.nodeId=?";
+			String query = "delete ChangeLogEntry entry where entry.target=? AND entry.nodeId=? AND entry.app=?";
 
-			session.createQuery(query).setString(0, target).setString(1, service).executeUpdate();
+			session.createQuery(query).setString(0, target).setString(1, service).setString(2, app).executeUpdate();
 						
 			tx.commit();
 		}
@@ -606,7 +610,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	 *            Unique Id that identifies the device/client involved in the
 	 *            sync session
 	 */
-	public Anchor getAnchor(String target)
+	public Anchor getAnchor(String target,String app)
 	{
 		Session session = this.hibernateManager.getSessionFactory()
 				.getCurrentSession();
@@ -614,8 +618,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		try
 		{
 			Anchor anchor = (Anchor) session.createQuery(
-					"from Anchor anchor where anchor.target=?").setString(0,
-					target).uniqueResult();
+					"from Anchor anchor where anchor.target=? AND anchor.app=?").setString(0,
+					target).setString(1, app).uniqueResult();
 
 			tx.commit();
 			
@@ -646,8 +650,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		try
 		{
 			Anchor currentAnchor = (Anchor) session.createQuery(
-					"from Anchor anchor where anchor.target=?").setString(0,
-					anchor.getTarget()).uniqueResult();
+					"from Anchor anchor where anchor.target=? AND anchor.app=?").setString(0,
+					anchor.getTarget()).setString(1, anchor.getApp()).uniqueResult();
 
 			if (currentAnchor != null)
 			{
@@ -675,7 +679,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}		
 	}
 	
-	public void deleteAnchor(String target)
+	public void deleteAnchor(String target,String app)
 	{
 		Session session = this.hibernateManager.getSessionFactory()
 				.getCurrentSession();
@@ -683,8 +687,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		try
 		{
 			Anchor currentAnchor = (Anchor) session.createQuery(
-					"from Anchor anchor where anchor.target=?").setString(0,
-					target).uniqueResult();
+					"from Anchor anchor where anchor.target=? AND anchor.app=?").setString(0,
+					target).setString(1, app).uniqueResult();
 
 			if (currentAnchor != null)
 			{

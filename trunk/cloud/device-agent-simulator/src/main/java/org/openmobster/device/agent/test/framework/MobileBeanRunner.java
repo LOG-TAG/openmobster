@@ -23,6 +23,7 @@ import org.openmobster.device.agent.frameworks.mobileObject.MobileObjectDatabase
 import org.openmobster.device.agent.sync.SyncAdapter;
 import org.openmobster.device.agent.sync.SyncAdapterRequest;
 import org.openmobster.device.agent.sync.SyncAdapterResponse;
+import org.openmobster.device.agent.sync.SyncXMLTags;
 import org.openmobster.device.agent.sync.engine.SyncEngine;
 import org.openmobster.device.agent.sync.SyncService;
 import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
@@ -40,6 +41,7 @@ public class MobileBeanRunner
 	private String user;
 	private String credential;
 	private String serverIp;
+	private String app;
 	
 	private SyncEngine  deviceSyncEngine;
 	private SyncService syncService;
@@ -174,6 +176,16 @@ public class MobileBeanRunner
 	public void setServerIp(String serverIp)
 	{
 		this.serverIp = serverIp;
+	}
+	
+	public String getApp()
+	{
+		return app;
+	}
+
+	public void setApp(String app)
+	{
+		this.app = app;
 	}
 
 	public void start()
@@ -495,6 +507,7 @@ public class MobileBeanRunner
 		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_SOURCE, service);
 		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_TARGET, service);
 		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.SYNC_TYPE, syncType);
+		initRequest.setAttribute(SyncXMLTags.App, this.app);
 		this.executeSyncProtocol(initRequest);		
 	}
 	
@@ -510,6 +523,7 @@ public class MobileBeanRunner
 		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.DATA_TARGET, service);
 		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.SYNC_TYPE, syncType);
 		initRequest.setAttribute(org.openmobster.core.synchronizer.server.SyncServer.STREAM_RECORD_ID, oid);
+		initRequest.setAttribute(SyncXMLTags.App, this.app);
 		this.executeSyncProtocol(initRequest);		
 	}
 	

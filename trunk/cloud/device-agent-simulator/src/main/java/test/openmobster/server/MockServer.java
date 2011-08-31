@@ -57,6 +57,7 @@ public class MockServer implements Processor
 	private String deviceId = "IMEI:8675309";	
 	private String service = "testServerBean";
 	private String serviceWithMapping = "testServerBean.testMapping";
+	private String app = "testApp";
 	
 	private byte[] attachment = "blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah".getBytes();
 	
@@ -193,10 +194,10 @@ public class MockServer implements Processor
 	{
 		SyncProcessor syncProcessor = (SyncProcessor)ServiceManager.locate("sync");			
 		syncProcessor.setSyncAdapter(this.originalAdapter);
-		this.serverSyncEngine.clearChangeLog(this.deviceId, this.service);
-		this.serverSyncEngine.deleteAnchor(this.deviceId+"/"+this.service);
-		this.serverSyncEngine.deleteAnchor(this.deviceId+"/"+this.serviceWithMapping);
-		this.serverSyncEngine.deleteAnchor(this.deviceId+"/emailConnector");
+		this.serverSyncEngine.clearChangeLog(this.deviceId, this.service, this.app);
+		this.serverSyncEngine.deleteAnchor(this.deviceId+"/"+this.service,this.app);
+		this.serverSyncEngine.deleteAnchor(this.deviceId+"/"+this.serviceWithMapping,this.app);
+		this.serverSyncEngine.deleteAnchor(this.deviceId+"/emailConnector",this.app);
 		this.serverSyncEngine.clearRecordMap();
 		this.serverSyncEngine.clearConflictEngine();
 		
@@ -262,7 +263,7 @@ public class MockServer implements Processor
 					serverEntry.setRecordId("unique-"+String.valueOf(i));
 					serverChangeLog.add(serverEntry);
 				}
-				this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+				this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			}
 			else if(operation.equals("conflict"))
 			{
@@ -281,7 +282,7 @@ public class MockServer implements Processor
 					serverEntry.setRecordId(recordId);
 					serverChangeLog.add(serverEntry);
 				}
-				this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+				this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			}
 			else if(operation.equals("multirecord"))
 			{				
@@ -322,7 +323,7 @@ public class MockServer implements Processor
 					serverEntry.setRecordId("unique-"+String.valueOf(i));
 					serverChangeLog.add(serverEntry);
 				}
-				this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+				this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			}
 			else if(operation.equals("replace") || operation.equals("conflict"))
 			{
@@ -341,7 +342,7 @@ public class MockServer implements Processor
 					serverEntry.setRecordId(recordId);
 					serverChangeLog.add(serverEntry);
 				}
-				this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+				this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			}
 			else if(operation.equals("delete"))
 			{
@@ -359,7 +360,7 @@ public class MockServer implements Processor
 					serverEntry.setRecordId(recordId);
 					serverChangeLog.add(serverEntry);
 				}
-				this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+				this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			}
 			else if(operation.equals("multirecord"))
 			{
@@ -408,14 +409,14 @@ public class MockServer implements Processor
 					serverEntry.setRecordId(recordId);
 					serverChangeLog.add(serverEntry);
 				}				
-				this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+				this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			}
 		}				
 	}	
 	
 	private void setUpErrorHarness(String info)
 	{				
-		this.serverSyncEngine.clearChangeLog(this.deviceId, this.service);				
+		this.serverSyncEngine.clearChangeLog(this.deviceId, this.service, this.app);				
 		String serverNodeId = this.service;		
 		if(info.contains(this.serviceWithMapping))
 		{
@@ -445,7 +446,7 @@ public class MockServer implements Processor
 				serverEntry.setRecordId("unique-"+String.valueOf(i));
 				serverChangeLog.add(serverEntry);
 			}
-			this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			
 			//swap serverSyncAdapter with the one that simulates errors
 			SyncServer serverSyncAdapter = new SyncServerAdapterWithMapErrorSimulation(this.serverSyncEngine);
@@ -477,7 +478,7 @@ public class MockServer implements Processor
 				serverEntry.setRecordId("unique-"+String.valueOf(i));
 				serverChangeLog.add(serverEntry);
 			}
-			this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			
 			//swap serverSyncAdapter with the one that simulates errors
 			SyncServer serverSyncAdapter = new SyncServerAdapterWithMapErrorSimulation(this.serverSyncEngine);
@@ -511,7 +512,7 @@ public class MockServer implements Processor
 				serverEntry.setRecordId("unique-"+String.valueOf(i));
 				serverChangeLog.add(serverEntry);
 			}
-			this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			
 			SyncProcessor syncProcessor = (SyncProcessor)ServiceManager.locate("sync");			
 			syncProcessor.setSyncAdapter(this.originalAdapter);
@@ -528,7 +529,7 @@ public class MockServer implements Processor
 				serverEntry.setRecordId("unique-"+String.valueOf(i));
 				serverChangeLog.add(serverEntry);
 			}
-			this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 			
 			SyncProcessor syncProcessor = (SyncProcessor)ServiceManager.locate("sync");			
 			syncProcessor.setSyncAdapter(this.adapterWithErrors);
@@ -545,7 +546,7 @@ public class MockServer implements Processor
 				serverEntry.setRecordId("unique-"+String.valueOf(i));
 				serverChangeLog.add(serverEntry);
 			}
-			this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 		}
 	}
 	

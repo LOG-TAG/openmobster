@@ -83,10 +83,11 @@ public class EnterInitialize implements ActionHandler
 			//Process Anchor
 			Item item = (Item)alert.getItems().get(0);
 			String anchorTarget = session.getSource()+"/"+item.getSource();
-			currentAnchor = syncEngine.getAnchor(anchorTarget);
+			currentAnchor = syncEngine.getAnchor(anchorTarget,session.getApp());
 			String anchorXml = XMLUtilities.removeCData(item.getMeta());
 			Anchor clientAnchor = syncObjectGenerator.parseAnchor(anchorXml);
 			clientAnchor.setTarget(session.getSource()+"/"+item.getSource());
+			clientAnchor.setApp(session.getApp());
 			
 			log.debug("**************************************************");
 			log.debug("Incoming Target: "+clientAnchor.getTarget());
@@ -162,7 +163,7 @@ public class EnterInitialize implements ActionHandler
 			//Anchors don't match. 
 			//In that case, clear the anchor and issue a boot sync from the client
 			//that will initialize the state of the service on the device			
-			syncEngine.deleteAnchor(currentAnchor.getTarget());
+			syncEngine.deleteAnchor(currentAnchor.getTarget(),session.getApp());
 			
 			Alert serverAlert = new Alert();
 			

@@ -132,9 +132,9 @@ public final class ChangeLogEntry
 		{
 			ChangeLogEntry cour = (ChangeLogEntry)input;
 			
-			if(cour.getNodeId().equals(this.nodeId) &&
-			   cour.getOperation().equals(this.operation) &&
-			   cour.getRecordId().equals(this.recordId)
+			if(cour.getNodeId() != null && cour.getNodeId().equals(this.nodeId) &&
+			   cour.getOperation()!= null && cour.getOperation().equals(this.operation) &&
+			   cour.getRecordId() != null && cour.getRecordId().equals(this.recordId)
 			)
 			{
 				equals = true;				

@@ -51,6 +51,7 @@ public class Session implements Serializable
 	private String sessionId = null; //required
 	private String target = null; //required
 	private String source = null; //required
+	private String app = null; //required
 	
 	private SyncPackage clientInitPackage = null;
 	private SyncPackage serverInitPackage = null;
@@ -110,6 +111,24 @@ public class Session implements Serializable
 		this.serverClosePackage = new SyncPackage();
 		
 		this.phaseCode = SyncServer.PHASE_INIT;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getApp()
+	{
+		return app;
+	}
+
+	/**
+	 * 
+	 * @param app
+	 */
+	public void setApp(String app)
+	{
+		this.app = app;
 	}
 
 	/**

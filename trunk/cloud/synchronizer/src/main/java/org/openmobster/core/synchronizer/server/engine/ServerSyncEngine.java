@@ -52,21 +52,21 @@ public interface ServerSyncEngine
 	public List<Add> processBootSync(org.openmobster.core.synchronizer.server.Session session,
 			String pluginId);
 	
-	public void addChangeLogEntries(String target, List entries);
+	public void addChangeLogEntries(String target, String app, List entries);
 	
-	public List getChangeLog(String target, String nodeId, String operation);
+	public List getChangeLog(String target, String nodeId, String app, String operation);
 	
-	public void clearChangeLogEntry(String target, ChangeLogEntry logEntry);
+	public void clearChangeLogEntry(String target, String app, ChangeLogEntry logEntry);
 	
-	public void clearChangeLog(String target, String service);
+	public void clearChangeLog(String target, String service, String app);
 		
 	public String marshal(MobileBean record);	
 	
-	public Anchor getAnchor(String target);
+	public Anchor getAnchor(String target,String app);
 	
 	public void updateAnchor(Anchor anchor);
 	
-	public void deleteAnchor(String target);
+	public void deleteAnchor(String target,String app);
 	
 	public void saveRecordMap(String source, String target, Map recordMap);	
 	
