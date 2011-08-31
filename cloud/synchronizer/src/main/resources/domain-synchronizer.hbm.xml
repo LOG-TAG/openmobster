@@ -46,6 +46,8 @@
             <generator class="native"/>
         </id>
         <property name="deviceId" type="string" column="deviceId" not-null="true"/>
+        <property name="channel" type="string" column="channel" not-null="true"/>
+        <property name="app" type="string" column="app" not-null="true"/>
         <property name="oid" type="string" column="oid" not-null="true"/>
         <property name="state" type="string" column="state" not-null="true"/>       
     </class>                  
