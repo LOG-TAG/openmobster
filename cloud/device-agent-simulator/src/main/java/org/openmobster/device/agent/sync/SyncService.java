@@ -195,6 +195,7 @@ public class SyncService
 		request.setAttribute(SyncAdapter.CLIENT_INITIATED, "true");		
 		request.setAttribute(SyncAdapter.SYNC_TYPE, syncType);
 		request.setAttribute("authHash", authenticationHash);
+		request.setAttribute(SyncXMLTags.App, "testApp");
 		
 		//Start the synchronization session
 		SyncAdapterResponse response = clientSyncAdapter.start(request);

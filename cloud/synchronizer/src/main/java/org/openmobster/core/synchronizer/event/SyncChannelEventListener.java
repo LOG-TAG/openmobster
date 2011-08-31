@@ -98,7 +98,8 @@ public class SyncChannelEventListener implements ChannelEventListener
 	
 	private void updateChangeLog(String deviceId, List changelogEntries)
 	{
-		boolean started = TransactionHelper.startTx();
+		//FIXTHIS
+		/*boolean started = TransactionHelper.startTx();
 		try
 		{
 			this.syncEngine.addChangeLogEntries(deviceId, changelogEntries);
@@ -116,7 +117,7 @@ public class SyncChannelEventListener implements ChannelEventListener
 				TransactionHelper.rollbackTx();
 			}
 			ErrorHandler.getInstance().handle(e);
-		}		
+		}*/		
 	}
 	
 	private List findChangeLog(Map<String, List> changeLogMap,String deviceId)

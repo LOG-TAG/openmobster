@@ -37,7 +37,7 @@ public class TestMultiDeviceTwoWaySync extends AbstractSync
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_ADD);
 		serverEntry.setRecordId(this.newServerRecordId);
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.otherDeviceId, serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.otherDeviceId, this.app, serverChangeLog);
 	}
 	
 	public void test() throws Exception

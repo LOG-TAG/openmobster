@@ -47,6 +47,7 @@ public abstract class AbstractTestEnv extends TestCase
 		ServiceManager.bootstrap();
 		
 		this.runner = (MobileBeanRunner)ServiceManager.locate("testMobileBeanSpec://mobileBeanRunner");
+		this.runner.setApp("testApp");
 		this.ticketConnector = (TicketConnector)ServiceManager.locate("testMobileBeanSpec://TicketConnector");
 		this.serverSyncEngine = (ServerSyncEngine)ServiceManager.
 		locate("synchronizer://ServerSyncEngine");
@@ -364,7 +365,7 @@ public abstract class AbstractTestEnv extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_ADD);
 		serverEntry.setRecordId(ticket.getTicketId());
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.runner.getDeviceId(), serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.runner.getDeviceId(), this.runner.getApp(), serverChangeLog);
 		
 		return ticket.getTicketId();
 	}
@@ -382,7 +383,7 @@ public abstract class AbstractTestEnv extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_UPDATE);
 		serverEntry.setRecordId(ticketId);
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.runner.getDeviceId(), serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.runner.getDeviceId(), this.runner.getApp(), serverChangeLog);
 	}
 	
 	protected void deleteServerObject(String ticketId) throws Exception
@@ -399,7 +400,7 @@ public abstract class AbstractTestEnv extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_DELETE);
 		serverEntry.setRecordId(ticketId);
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.runner.getDeviceId(), serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.runner.getDeviceId(), this.runner.getApp(), serverChangeLog);
 	}
 	
 	protected String createNewDeviceObject() throws Exception

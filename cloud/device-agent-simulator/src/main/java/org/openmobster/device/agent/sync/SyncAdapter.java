@@ -191,6 +191,7 @@ public class SyncAdapter
 		String dataTarget = (String) request
 				.getAttribute(SyncAdapter.DATA_TARGET);
 		String syncType = (String) request.getAttribute(SyncAdapter.SYNC_TYPE);
+		String app = (String)request.getAttribute(SyncXMLTags.App);
 
 		this.activeSession = new Session();
 		this.activeSession.setSessionId(this.syncEngine.generateSync());
@@ -200,6 +201,7 @@ public class SyncAdapter
 		{
 			this.activeSession.setAttribute(STREAM_RECORD_ID, request.getAttribute(STREAM_RECORD_ID));
 		}
+		this.activeSession.setApp(app);
 
 		SyncMessage syncMessage = new SyncMessage();
 		syncMessage.setMessageId("1");

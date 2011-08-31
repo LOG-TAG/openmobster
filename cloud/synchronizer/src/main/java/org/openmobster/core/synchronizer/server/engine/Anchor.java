@@ -28,6 +28,7 @@ public class Anchor implements Serializable
 	private String target = null;
 	private String lastSync = null;
 	private String nextSync = null;
+	private String app = null;
 	
 	/**
 	 * 
@@ -80,5 +81,17 @@ public class Anchor implements Serializable
 	public void setTarget(String target)
 	{
 		this.target = target;
+	}
+
+
+	public String getApp()
+	{
+		return app;
+	}
+
+
+	public void setApp(String app)
+	{
+		this.app = app;
 	}
 }

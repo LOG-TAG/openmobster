@@ -183,10 +183,11 @@ public class SyncServerAdapter implements SyncServer
 			
 			//Process Anchor
 			Item item = (Item)alert.getItems().get(0);			
-			Anchor currentAnchor = this.syncEngine.getAnchor(session.getSource()+"/"+item.getSource());
+			Anchor currentAnchor = this.syncEngine.getAnchor(session.getSource()+"/"+item.getSource(),session.getApp());
 			String anchorXml = XMLUtilities.removeCData(item.getMeta());
 			Anchor clientAnchor = this.syncObjectGenerator.parseAnchor(anchorXml);
 			clientAnchor.setTarget(session.getSource()+"/"+item.getSource());
+			clientAnchor.setApp(session.getApp());
 			if(currentAnchor != null)
 			{				
 				//Make sure the anchors match
@@ -1015,7 +1016,7 @@ public class SyncServerAdapter implements SyncServer
 		)
 		{
 			this.syncEngine.clearChangeLog(SyncContext.getInstance().getDeviceId(),
-			SyncContext.getInstance().getServerSource());
+			SyncContext.getInstance().getServerSource(), SyncContext.getInstance().getApp());
 			return;
 		}
 		
@@ -1045,6 +1046,7 @@ public class SyncServerAdapter implements SyncServer
 							session.clearChunkBackup();
 						}
 						this.syncEngine.clearChangeLogEntry(SyncContext.getInstance().getDeviceId(),
+								SyncContext.getInstance().getApp(),
 						changeLogEntry);
 					}
 				}
@@ -1180,7 +1182,7 @@ public class SyncServerAdapter implements SyncServer
 		String payload = null;
 		
 		//Clear the serverside anchor
-		this.syncEngine.deleteAnchor(currentAnchor.getTarget());
+		this.syncEngine.deleteAnchor(currentAnchor.getTarget(),session.getApp());
 		
 		//Perform server specific processing
 		SyncMessage currentMessage = session.getCurrentMessage();

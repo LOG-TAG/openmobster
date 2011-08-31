@@ -36,7 +36,8 @@ public final class SyncXMLGenerator
 		buffer.append("<"+SyncXMLTags.SyncHdr+">\n");
 		buffer.append("<"+SyncXMLTags.VerDTD+">"+"1.1"+"</"+SyncXMLTags.VerDTD+">\n");
 		buffer.append("<"+SyncXMLTags.VerProto+">"+"SyncML/1.1"+"</"+SyncXMLTags.VerProto+">\n");
-		buffer.append("<"+SyncXMLTags.SessionID+">"+XMLUtilities.cleanupXML(session.getSessionId())+"</"+SyncXMLTags.SessionID+">\n");		
+		buffer.append("<"+SyncXMLTags.SessionID+">"+XMLUtilities.cleanupXML(session.getSessionId())+"</"+SyncXMLTags.SessionID+">\n");
+		buffer.append("<"+SyncXMLTags.App+">"+XMLUtilities.cleanupXML(session.getApp())+"</"+SyncXMLTags.App+">\n");
 		buffer.append("<"+SyncXMLTags.Source+">\n");
 		buffer.append("<"+SyncXMLTags.LocURI+">"+XMLUtilities.cleanupXML(session.getSource()));
 		buffer.append("</"+SyncXMLTags.LocURI+">\n");
@@ -108,7 +109,8 @@ public final class SyncXMLGenerator
 		buffer.append("<"+SyncXMLTags.SyncHdr+">\n");
 		buffer.append("<"+SyncXMLTags.VerDTD+">"+"1.1"+"</"+SyncXMLTags.VerDTD+">\n");
 		buffer.append("<"+SyncXMLTags.VerProto+">"+"SyncML/1.1"+"</"+SyncXMLTags.VerProto+">\n");
-		buffer.append("<"+SyncXMLTags.SessionID+">"+XMLUtilities.cleanupXML(session.getSessionId())+"</"+SyncXMLTags.SessionID+">\n");		
+		buffer.append("<"+SyncXMLTags.SessionID+">"+XMLUtilities.cleanupXML(session.getSessionId())+"</"+SyncXMLTags.SessionID+">\n");	
+		buffer.append("<"+SyncXMLTags.App+">"+XMLUtilities.cleanupXML(session.getApp())+"</"+SyncXMLTags.App+">\n");
 		buffer.append("<"+SyncXMLTags.Source+">\n");
 		buffer.append("<"+SyncXMLTags.LocURI+">"+XMLUtilities.cleanupXML(session.getSource()));
 		buffer.append("</"+SyncXMLTags.LocURI+">\n");

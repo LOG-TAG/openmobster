@@ -37,6 +37,8 @@ public class ChangeLogEntry implements Serializable
 
 	private String recordId = null;
 	
+	private String app = null; //indicates the app to which this sync channel belongs
+	
 	//not persisted in the database
 	private Item item = null;
 
@@ -139,5 +141,15 @@ public class ChangeLogEntry implements Serializable
 	public void setTarget(String target)
 	{
 		this.target = target;
+	}
+
+	public String getApp()
+	{
+		return app;
+	}
+
+	public void setApp(String app)
+	{
+		this.app = app;
 	}
 }

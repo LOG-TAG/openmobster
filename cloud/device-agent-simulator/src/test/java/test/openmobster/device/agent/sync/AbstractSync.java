@@ -25,6 +25,7 @@ import org.openmobster.device.agent.frameworks.mobileObject.MobileObjectDatabase
 import org.openmobster.device.agent.sync.SyncAdapter;
 import org.openmobster.device.agent.sync.SyncAdapterRequest;
 import org.openmobster.device.agent.sync.SyncAdapterResponse;
+import org.openmobster.device.agent.sync.SyncXMLTags;
 import org.openmobster.device.agent.sync.engine.SyncEngine;
 
 import org.openmobster.core.security.device.Device;
@@ -51,6 +52,7 @@ public abstract class AbstractSync extends TestCase
 	private static Logger log = Logger.getLogger(AbstractSync.class);
 	
 	protected String service = "testServerBean";
+	protected String app = "testApp";
 	
 	//device stack
 	protected String deviceId = "IMEI:4930051";
@@ -228,7 +230,7 @@ public abstract class AbstractSync extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_ADD);
 		serverEntry.setRecordId(serverRecord.getObjectId());
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 		
 		return serverRecord;
 	}
@@ -252,7 +254,7 @@ public abstract class AbstractSync extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_ADD);
 		serverEntry.setRecordId(serverRecord.getObjectId());
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 		
 		return serverRecord;
 	}
@@ -272,7 +274,7 @@ public abstract class AbstractSync extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_UPDATE);
 		serverEntry.setRecordId(recordId);
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 		
 		return serverRecord;
 	}
@@ -289,7 +291,7 @@ public abstract class AbstractSync extends TestCase
 		serverEntry.setOperation(ServerSyncEngine.OPERATION_DELETE);
 		serverEntry.setRecordId(recordId);
 		serverChangeLog.add(serverEntry);
-		this.serverSyncEngine.addChangeLogEntries(this.deviceId, serverChangeLog);
+		this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
 		
 		return recordId;
 	}
@@ -470,7 +472,7 @@ public abstract class AbstractSync extends TestCase
 	protected void assertServerChangeLogPresence(String deviceId, String objectId)
 	{
 		List changelog = this.serverSyncEngine.getChangeLog(deviceId, this.service, 
-		ServerSyncEngine.OPERATION_ADD);
+		this.app, ServerSyncEngine.OPERATION_ADD);
 		
 		boolean found = false;
 		if(changelog != null)
@@ -491,7 +493,7 @@ public abstract class AbstractSync extends TestCase
 	protected void assertServerChangeLogAbsence(String deviceId, String objectId)
 	{
 		List changelog = this.serverSyncEngine.getChangeLog(deviceId, this.service, 
-		ServerSyncEngine.OPERATION_ADD);
+		this.app,ServerSyncEngine.OPERATION_ADD);
 		
 		boolean found = false;
 		if(changelog != null)
@@ -582,6 +584,8 @@ public abstract class AbstractSync extends TestCase
 		initRequest.setAttribute(SyncServer.DATA_SOURCE, service);
 		initRequest.setAttribute(SyncServer.DATA_TARGET, service);
 		initRequest.setAttribute(SyncServer.SYNC_TYPE, syncType);
+		initRequest.setAttribute(SyncXMLTags.App, this.app);
+		
 		this.executeSyncProtocol(initRequest);		
 	}
 	
@@ -597,6 +601,8 @@ public abstract class AbstractSync extends TestCase
 		initRequest.setAttribute(SyncServer.DATA_TARGET, service);
 		initRequest.setAttribute(SyncServer.SYNC_TYPE, syncType);
 		initRequest.setAttribute(SyncServer.STREAM_RECORD_ID, oid);
+		initRequest.setAttribute(SyncXMLTags.App, this.app);
+		
 		this.executeSyncProtocol(initRequest);		
 	}
 	

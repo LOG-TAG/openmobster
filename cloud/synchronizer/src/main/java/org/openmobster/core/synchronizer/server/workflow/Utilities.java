@@ -66,7 +66,7 @@ public class Utilities
 		getTransientVariable("syncEngine");
 		
 		//Clear the serverside anchor
-		syncEngine.deleteAnchor(currentAnchor.getTarget());
+		syncEngine.deleteAnchor(currentAnchor.getTarget(), session.getApp());
 		
 		//Perform server specific processing
 		SyncMessage currentMessage = session.getCurrentMessage();
@@ -194,7 +194,7 @@ public class Utilities
 			try
 			{
 				syncEngine.clearChangeLog(SyncContext.getInstance().getDeviceId(),
-					SyncContext.getInstance().getServerSource());
+					SyncContext.getInstance().getServerSource(), SyncContext.getInstance().getApp());
 			}
 			catch(Exception e)
 			{
@@ -232,7 +232,9 @@ public class Utilities
 								changeLogEntry.getItem().setData(session.reassembleChunks());
 								session.clearChunkBackup();
 							}
-							syncEngine.clearChangeLogEntry(SyncContext.getInstance().getDeviceId(),changeLogEntry);
+							syncEngine.clearChangeLogEntry(SyncContext.getInstance().getDeviceId(),
+									SyncContext.getInstance().getApp(),
+							changeLogEntry);
 						}
 					}
 				}
