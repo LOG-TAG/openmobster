@@ -40,6 +40,15 @@
 	        <key column="identityId"/>
 	        <many-to-many class="org.openmobster.core.security.identity.Group" column="groupId"/>
     	</set>
+    	
+    	<!-- one-many relationship between Identity-Device -->       
+    	<set name="devices" table="openmobster_identity_device" 
+    	cascade="all-delete-orphan"
+    	lazy="false"
+    	>
+	        <key column="identityId" not-null="true"/>
+	        <many-to-many class="org.openmobster.core.security.device.Device" unique="true"/>
+    	</set>
     </class>
     <class name="org.openmobster.core.security.identity.IdentityAttribute" table="openmobster_identity_attribute">
         <id name="id" column="attributeId">
@@ -108,7 +117,7 @@
 	        <many-to-many class="org.openmobster.core.security.device.DeviceAttribute" unique="true"/>
     	</set>
     	
-    	<!-- one-to-one unidirectional relationship between Device and Identity, unique=true makes this one-to-one -->
+    	<!-- one-to-many bi-directional relationship between Device and Identity -->
     	<many-to-one name="identity" 
     	column="identityId"
     	not-null="true"    	
