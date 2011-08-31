@@ -12,6 +12,8 @@ import java.io.Serializable;
 import java.util.Set;
 import java.util.HashSet;
 
+import org.openmobster.core.security.device.Device;
+
 /**
  * Represents a User registered with the system
  * 
@@ -45,6 +47,11 @@ public class Identity implements Serializable
 	 * Groups that this User belongs to
 	 */
 	private Set<Group> groups;
+	
+	/**
+	 * Devices registered by this user
+	 */
+	private Set<Device> devices;
 	
 	
 	public Identity()
@@ -134,6 +141,25 @@ public class Identity implements Serializable
 	public void setGroups(Set<Group> groups) 
 	{
 		this.groups = groups;
+	}
+	
+	public Set<Device> getDevices()
+	{
+		if(this.devices == null)
+		{
+			this.devices = new HashSet<Device>();
+		}
+		return this.devices;
+	}
+	
+	public void setDevices(Set<Device> devices)
+	{
+		this.devices = devices;
+	}
+	
+	public void addDevice(Device device)
+	{
+		this.getDevices().add(device);
 	}
 	//------------------------------------------------------------------------------------------------------	
 	public boolean isActive()
@@ -295,4 +321,6 @@ public class Identity implements Serializable
 		
 		return cour;
 	}
+	//-------------------------------------------------------------------------------------------------
+	
 }
