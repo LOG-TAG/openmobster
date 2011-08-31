@@ -20,6 +20,8 @@ public class ConflictEntry implements Serializable
 	private String deviceId;
 	private String oid;
 	private String state;
+	private String channel;
+	private String app;
 	
 	public ConflictEntry()
 	{
@@ -64,5 +66,25 @@ public class ConflictEntry implements Serializable
 	public void setState(String state)
 	{
 		this.state = state;
+	}
+
+	public String getChannel()
+	{
+		return channel;
+	}
+
+	public void setChannel(String channel)
+	{
+		this.channel = channel;
+	}
+
+	public String getApp()
+	{
+		return app;
+	}
+
+	public void setApp(String app)
+	{
+		this.app = app;
 	}
 }

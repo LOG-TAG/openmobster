@@ -122,7 +122,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	{
 		try
 		{
-			List commands = new ArrayList();			
+			List commands = new ArrayList();
+			String app = SyncContext.getInstance().getApp();
 
 			//Getting all the records of the client since this is a SlowSync
 			List<MobileBean> allRecords = this.gateway.readAllRecords(pluginId);
@@ -135,7 +136,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				ServerSyncEngine.OPERATION_ADD));
 				
 				//Start an optimistic lock for this record
-				this.conflictEngine.startOptimisticLock(record);
+				this.conflictEngine.startOptimisticLock(app, pluginId,record);
 			}
 			
 			//also get any records that are deleted on the server
@@ -171,6 +172,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		try
 		{
 			List commands = new ArrayList();
+			String app = SyncContext.getInstance().getApp();
 
 			List changeLog = this
 					.getChangeLog(SyncContext.getInstance().getDeviceId(),
@@ -187,7 +189,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 							ServerSyncEngine.OPERATION_ADD));
 					
 					//Start an optimistic lock for this record
-					this.conflictEngine.startOptimisticLock(record);
+					this.conflictEngine.startOptimisticLock(app, pluginId,record);
 				}
 			}
 
@@ -203,6 +205,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	{
 		try
 		{
+			String app = SyncContext.getInstance().getApp();
+			
 			List commands = new ArrayList();
 
 			List changeLog = this.getChangeLog(SyncContext.getInstance().getDeviceId(),
@@ -221,7 +225,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 							ServerSyncEngine.OPERATION_UPDATE));
 					
 					//Start an optimistic lock for this record
-					this.conflictEngine.startOptimisticLock(record);
+					this.conflictEngine.startOptimisticLock(app, pluginId, record);
 				}
 			}
 
@@ -465,7 +469,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	
 	public List<Add> processBootSync(org.openmobster.core.synchronizer.server.Session session,String service)
 	{
-		List<Add> commands = new ArrayList<Add>();			
+		List<Add> commands = new ArrayList<Add>();	
+		String app = SyncContext.getInstance().getApp();
 
 		//Getting selected records from the server since this is a boot sync
 		List<MobileBean> allRecords = this.gateway.bootup(service);
@@ -477,7 +482,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			commands.add((Add)this.getCommand(record, session.getMaxClientSize(), 
 			ServerSyncEngine.OPERATION_ADD));
 			
-			this.conflictEngine.startOptimisticLock(record);
+			this.conflictEngine.startOptimisticLock(app, service, record);
 		}
 		
 		return commands;
@@ -727,13 +732,14 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	protected void saveRecord(String pluginId, String xml)
 	{	
 		String beforeRecordId = this.gateway.parseId(xml);
-		String recordId = this.gateway.mapIdFromLocalToServer(beforeRecordId);		
+		String recordId = this.gateway.mapIdFromLocalToServer(beforeRecordId);	
+		String app = SyncContext.getInstance().getApp();
 				
 		MobileBean cour = this.gateway.readRecord(pluginId, recordId);		
 		if(cour != null)
 		{
 			//Check against Optimistic Lock Error
-			boolean safe = this.conflictEngine.checkOptimisticLock(cour);
+			boolean safe = this.conflictEngine.checkOptimisticLock(app, pluginId,cour);
 			
 			//Update this record
 			if(safe)
@@ -742,7 +748,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				
 				//update the optimistic lock state
 				MobileBean updatedBean = this.gateway.readRecord(pluginId, recordId);
-				this.conflictEngine.startOptimisticLock(updatedBean);
+				this.conflictEngine.startOptimisticLock(app, pluginId, updatedBean);
 			}
 			else
 			{

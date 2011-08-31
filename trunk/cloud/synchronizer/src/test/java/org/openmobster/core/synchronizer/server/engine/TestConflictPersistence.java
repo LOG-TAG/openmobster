@@ -42,16 +42,18 @@ public class TestConflictPersistence extends TestCase
 		entry.setDeviceId("deviceId");
 		entry.setOid("oid");
 		entry.setState("blahblah");
+		entry.setApp("testApp");
+		entry.setChannel("testChannel");
 		this.conflictEngine.saveLock(entry);
 		
 		//ReadLock
-		ConflictEntry stored = this.conflictEngine.readLock("deviceId", "oid");
+		ConflictEntry stored = this.conflictEngine.readLock("deviceId", "oid", "testApp", "testChannel");
 		assertEquals(stored.getState(), "blahblah");
 		assertTrue(stored.getId()>0);
 		stored.setState("blahblah2");
 		this.conflictEngine.saveLock(stored);
 		
-		stored = this.conflictEngine.readLock("deviceId", "oid");
+		stored = this.conflictEngine.readLock("deviceId", "oid", "testApp", "testChannel");
 		assertEquals(stored.getState(), "blahblah2");
 	}
 }

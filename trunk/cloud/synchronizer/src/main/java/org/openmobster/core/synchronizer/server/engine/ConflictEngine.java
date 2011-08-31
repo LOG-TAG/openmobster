@@ -65,7 +65,7 @@ public class ConflictEngine
 		this.hibernateManager = hibernateManager;
 	}
 	//-------------------------------------------------------------------------------------------------------------------
-	public void startOptimisticLock(MobileBean cloudBean) throws SyncException
+	public void startOptimisticLock(String app, String channel,MobileBean cloudBean) throws SyncException
 	{
 		String deviceId = Tools.getDeviceId();
 		String serializedBean = this.serializer.serialize(cloudBean).trim();
@@ -77,7 +77,7 @@ public class ConflictEngine
 			return;
 		}
 		
-		ConflictEntry bean = this.readLock(deviceId, oid);
+		ConflictEntry bean = this.readLock(deviceId, oid, app, channel);
 		
 		log.debug("******StartLock*****************************************");
 		log.debug("Serialized: "+serializedBean);
@@ -88,12 +88,12 @@ public class ConflictEngine
 		this.saveLock(bean);
 	}
 	
-	public boolean checkOptimisticLock(MobileBean cloudBean) throws SyncException
+	public boolean checkOptimisticLock(String app, String channel,MobileBean cloudBean) throws SyncException
 	{
 		String deviceId = Tools.getDeviceId();
 		String oid = Tools.getOid(cloudBean);
 		
-		ConflictEntry bean = this.readLock(deviceId, oid);
+		ConflictEntry bean = this.readLock(deviceId, oid, app, channel);
 		
 		String state = bean.getState();
 		if(state != null && state.trim().length()>0)
@@ -109,9 +109,7 @@ public class ConflictEngine
 				log.debug("Checkagainst: "+checkAgainst);
 				log.debug("***********************************************");
 				
-				String channel = Tools.getChannel();
-				
-				this.handleConflict(deviceId, channel, cloudBean);
+				this.handleConflict(deviceId, app, channel, cloudBean);
 				return false;
 			}
 			else
@@ -127,7 +125,7 @@ public class ConflictEngine
 	}
 	
 	
-	private void handleConflict(String deviceId,String channel, MobileBean bean)
+	private void handleConflict(String deviceId, String app ,String channel, MobileBean bean)
 	{
 		//TODO: report this to the Console so that admins can pull and see what happened
 	}
@@ -198,7 +196,7 @@ public class ConflictEngine
 		}
 	}
 	
-	ConflictEntry readLock(String deviceId, String oid)
+	ConflictEntry readLock(String deviceId, String oid, String app, String channel)
 	{
 		Session session = null;
 		Transaction tx = null;
@@ -209,9 +207,12 @@ public class ConflictEngine
 			session = this.hibernateManager.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 			
-			String query = "from ConflictEntry where deviceId=? AND oid=?";
+			String query = "from ConflictEntry where deviceId=? AND oid=? AND app=? AND channel=?";
 			
-			local = (ConflictEntry)session.createQuery(query).setParameter(0, deviceId).setParameter(1,oid).uniqueResult();
+			local = (ConflictEntry)session.createQuery(query).setParameter(0, deviceId).
+			setParameter(1,oid).
+			setParameter(2,app).
+			setParameter(3,channel).uniqueResult();
 						
 			tx.commit();
 			
@@ -220,6 +221,8 @@ public class ConflictEngine
 				local = new ConflictEntry();
 				local.setDeviceId(deviceId);
 				local.setOid(oid);
+				local.setApp(app);
+				local.setChannel(channel);
 			}
 			
 			return local;
