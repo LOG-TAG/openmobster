@@ -274,6 +274,7 @@ public final class SyncService extends Service
 		request.setAttribute(SyncAdapter.SYNC_TYPE, SyncAdapter.STREAM);
 		request.setAttribute(SyncAdapter.STREAM_RECORD_ID, streamRecordId);
 		request.setAttribute("isBackgroundSync", String.valueOf(isBackground));
+		request.setAttribute(SyncXMLTags.App, context.getPackageName());
 		
 		//Start the synchronization session
 		SyncAdapterResponse response = syncAdapter.start(request);
@@ -327,6 +328,7 @@ public final class SyncService extends Service
 		request.setAttribute(SyncAdapter.DATA_TARGET, serverService);
 		request.setAttribute(SyncAdapter.SYNC_TYPE, syncType);
 		request.setAttribute("isBackgroundSync", String.valueOf(isBackground));
+		request.setAttribute(SyncXMLTags.App, context.getPackageName());
 		
 		//Start the synchronization session
 		SyncAdapterResponse response = syncAdapter.start(request);

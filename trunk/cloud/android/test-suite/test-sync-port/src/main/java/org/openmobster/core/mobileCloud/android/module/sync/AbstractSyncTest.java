@@ -178,6 +178,8 @@ public abstract class AbstractSyncTest extends Test
 		finally
 		{
 			//reset the server side sync adapter
+			this.resetServerAdapter("setUp="+this.getClass().getName()+"/App/"+Registry.getActiveInstance().
+			getContext().getPackageName()+"\n");
 			this.resetServerAdapter("setUp="+this.getClass().getName()+"/"+operation+"\n");
 		}
 	}

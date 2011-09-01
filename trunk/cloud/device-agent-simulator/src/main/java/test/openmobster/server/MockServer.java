@@ -239,6 +239,12 @@ public class MockServer implements Processor
 			return;
 		}
 		
+		if(info.contains("/App/"))
+		{
+			int lastIndexOf = info.lastIndexOf('/');
+			this.app = info.substring(lastIndexOf+1).trim();
+		}
+		
 		String serverNodeId = this.service;		
 		if(info.contains(this.serviceWithMapping))
 		{

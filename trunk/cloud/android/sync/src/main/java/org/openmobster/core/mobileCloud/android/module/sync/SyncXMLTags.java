@@ -58,6 +58,7 @@ public interface SyncXMLTags
 	public String NumberOfChanges = "NumberOfChanges";
 	public String Map = "Map";
 	public String MapItem = "MapItem";
+	public String App = "App";
 	
 	//some codes
 	public String TWO_NODE_FAST_SYNC = "200";

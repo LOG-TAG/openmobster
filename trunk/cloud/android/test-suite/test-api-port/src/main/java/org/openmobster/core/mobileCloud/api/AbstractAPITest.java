@@ -38,7 +38,8 @@ public abstract class AbstractAPITest extends Test
 	
 	public void setUp() 
 	{		 
-		MobileObjectDatabase.getInstance().deleteAll(service);						
+		MobileObjectDatabase.getInstance().deleteAll(service);
+		this.resetServerAdapter("setUp="+this.getClass().getName()+"/App/org.openmobster.core.mobileCloud\n");
 		this.resetServerAdapter("setUp="+this.getClass().getName()+"/SetUpAPITestSuite\n");
 	}
 	

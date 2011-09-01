@@ -193,11 +193,13 @@ public class SyncAdapter
 				.getAttribute(SyncAdapter.DATA_TARGET);
 		String syncType = (String) request.getAttribute(SyncAdapter.SYNC_TYPE);
 		String isBackground = (String)request.getAttribute("isBackgroundSync");
+		String app = (String)request.getAttribute(SyncXMLTags.App);
 
 		this.activeSession = new Session();
 		this.activeSession.setSessionId(this.syncEngine.generateSync());
 		this.activeSession.setSource(source);
 		this.activeSession.setTarget(target);
+		this.activeSession.setApp(app);
 		if(request.getAttribute(STREAM_RECORD_ID)!=null)
 		{
 			this.activeSession.setAttribute(STREAM_RECORD_ID, request.getAttribute(STREAM_RECORD_ID));
