@@ -170,6 +170,10 @@
 	}
 	@finally 
 	{
+        NSString *appPayload = [NSString 
+                                stringWithFormat:@"setUp=%@/App/com.yourcompany.integration-tests\n",[self getInfo]];
+        [self resetServerAdapter:appPayload];
+        
 		NSString *payload = [NSString 
 							 stringWithFormat:@"setUp=%@/%@\n",[self getInfo],operation];
 		[self resetServerAdapter:payload];

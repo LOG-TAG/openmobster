@@ -33,7 +33,7 @@
 	instance.isNew = NO;
 	instance.isDirty = NO;
 	
-	AppService *service = [AppService getInstance];
+	/*AppService *service = [AppService getInstance];
 	NSString *channel = data.service;
 	if(![service isWritable:channel])
 	{
@@ -42,7 +42,8 @@
 	else 
 	{
 		instance.readonly = NO;
-	}
+	}*/
+    instance.readonly = NO;
 
 	
 	return instance;
@@ -56,7 +57,7 @@
 	data.createdOnDevice = YES;
 	data.service = channel;
 	
-	AppService *service = [AppService getInstance];
+	/*AppService *service = [AppService getInstance];
 	if(![service isWritable:channel])
 	{
 		instance.readonly = YES;
@@ -64,7 +65,8 @@
 	else 
 	{
 		instance.readonly = NO;
-	}
+	}*/
+    instance.readonly = NO;
 	
 	instance.data = data;
 	instance.isNew = YES;

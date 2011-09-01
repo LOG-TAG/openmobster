@@ -22,6 +22,7 @@
 	NSString *source = [XMLUtil cleanupXML:session.source];
 	NSString *target = [XMLUtil cleanupXML:session.target];
 	NSString *sessionId = [XMLUtil cleanupXML:session.sessionId];
+    NSString *app = [XMLUtil cleanupXML:session.app];
 	
 	NSString *messageId = [XMLUtil cleanupXML:message.messageId];
 	Credential *credential = message.credential;
@@ -37,6 +38,7 @@
 	[xml appendFormat:@"<%@>1.1</%@>\n",_VerDTD,_VerDTD];
 	[xml appendFormat:@"<%@>SyncML/1.1</%@>\n",_VerProto,_VerProto];
 	[xml appendFormat:@"<%@>%@</%@>\n",_SessionID,sessionId,_SessionID];
+    [xml appendFormat:@"<%@>%@</%@>\n",_App,app,_App];
 	
 	[xml appendFormat:@"<%@>\n",_Source];
 	[xml appendFormat:@"<%@>%@</%@>\n",_LocURI,source,_LocURI];
@@ -104,6 +106,7 @@
 	NSString *source = [XMLUtil cleanupXML:session.source];
 	NSString *target = [XMLUtil cleanupXML:session.target];
 	NSString *sessionId = [XMLUtil cleanupXML:session.sessionId];
+    NSString *app = [XMLUtil cleanupXML:session.app];
 	
 	NSString *messageId = [XMLUtil cleanupXML:message.messageId];
 	Credential *credential = message.credential;
@@ -120,6 +123,7 @@
 	[xml appendFormat:@"<%@>1.1</%@>\n",_VerDTD,_VerDTD];
 	[xml appendFormat:@"<%@>SyncML/1.1</%@>\n",_VerProto,_VerProto];
 	[xml appendFormat:@"<%@>%@</%@>\n",_SessionID,sessionId,_SessionID];
+    [xml appendFormat:@"<%@>%@</%@>\n",_App,app,_App];
 	
 	[xml appendFormat:@"<%@>\n",_Source];
 	[xml appendFormat:@"<%@>%@</%@>\n",_LocURI,source,_LocURI];

@@ -51,6 +51,7 @@ NSString *const _SftDel = @"SftDel";
 NSString *const _NumberOfChanges = @"NumberOfChanges";
 NSString *const _Map = @"Map";
 NSString *const _MapItem = @"MapItem";
+NSString *const _App = @"App";
 
 @implementation SyncXMLTags
 @end

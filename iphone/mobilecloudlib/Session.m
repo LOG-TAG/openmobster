@@ -7,6 +7,7 @@
 @synthesize target;
 @synthesize source;
 @synthesize anchor;
+@synthesize app;
 
 @synthesize clientInitPackage;
 @synthesize serverInitPackage;

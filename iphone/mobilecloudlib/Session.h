@@ -17,6 +17,7 @@
 	NSString *sessionId; //required
 	NSString *target; //required
 	NSString *source; //required
+    NSString *app;//required
 	
 	Anchor *anchor; 
 	
@@ -54,6 +55,7 @@
 @property (assign) NSString *target;
 @property (assign) NSString *source;
 @property (assign) Anchor *anchor;
+@property (assign) NSString *app;
 
 @property (assign) SyncPackage *clientInitPackage;
 @property (assign) SyncPackage *serverInitPackage;

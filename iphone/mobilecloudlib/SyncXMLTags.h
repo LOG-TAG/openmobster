@@ -44,6 +44,7 @@ extern NSString *const _SftDel;
 extern NSString *const _NumberOfChanges;
 extern NSString *const _Map;
 extern NSString *const _MapItem;
+extern NSString *const _App;
 
 @interface SyncXMLTags : NSObject 
 @end

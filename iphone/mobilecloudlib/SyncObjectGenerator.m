@@ -32,6 +32,7 @@
 	gen->deleteSoftDeletePath = [NSString stringWithFormat:@"/%@/%@/%@",_Sync,_Delete,_SftDel];
 	
 	gen->sessionIdPath = [NSString stringWithFormat:@"/%@/%@/%@",_SyncML,_SyncHdr,_SessionID];
+    gen->appPath = [NSString stringWithFormat:@"/%@/%@/%@",_SyncML,_SyncHdr,_App];
 	gen->sourceUriPath = [NSString stringWithFormat:@"/%@/%@/%@/%@",_SyncML,_SyncHdr,_Source,_LocURI];
 	gen->targetUriPath = [NSString stringWithFormat:@"/%@/%@/%@/%@",_SyncML,_SyncHdr,_Target,_LocURI];
 	gen->msgIdPath = [NSString stringWithFormat:@"/%@/%@/%@",_SyncML,_SyncHdr,_MsgID];
@@ -183,6 +184,10 @@
 	{
 		session.sessionId = dataBuffer;
 	}
+    else if([fullPath isEqualToString:appPath])
+    {
+        session.app = dataBuffer;
+    }
 	else if([fullPath isEqualToString:sourceUriPath])
 	{
 		session.source = dataBuffer;
