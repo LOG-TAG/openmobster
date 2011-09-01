@@ -245,6 +245,11 @@ public final class SyncObjectGenerator extends Service
 			{
 				this.session.setTarget(this.dataBuffer.toString());
 			}
+			else if(this.fullPath.toString().equals(
+			"/"+SyncXMLTags.SyncML+"/"+SyncXMLTags.SyncHdr+"/"+SyncXMLTags.App))
+			{
+				this.session.setApp(this.dataBuffer.toString());
+			}
 			
 			//Processing SyncMessage related data
 			else if(this.fullPath.toString().equals(

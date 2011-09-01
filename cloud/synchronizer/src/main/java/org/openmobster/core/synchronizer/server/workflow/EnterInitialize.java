@@ -27,6 +27,7 @@ import org.openmobster.core.synchronizer.server.SyncXMLGenerator;
 import org.openmobster.core.synchronizer.server.SyncObjectGenerator;
 import org.openmobster.core.synchronizer.server.engine.Anchor;
 import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
+import org.openmobster.core.synchronizer.server.engine.AppToChannelAssociation;
 
 
 
@@ -59,6 +60,13 @@ public class EnterInitialize implements ActionHandler
 		boolean anchorError = false;
 		
 		String deviceId = session.getDeviceId();
+		String app = session.getApp();
+		String channel = session.getDataSource(false);
+		
+		//Create the device-app-channel association
+		AppToChannelAssociation.associate(new AppToChannelAssociation(deviceId,app,channel));
+		
+		
 		DeviceController deviceController = (DeviceController)ServiceManager.locate("security://DeviceController");
 		Device device = deviceController.read(deviceId);
 		String storedNonce = device.readAttribute("nonce").getValue();
