@@ -36,6 +36,7 @@
 	NSString *syncType = (NSString *)[request getAttribute:_SYNC_TYPE];
 	NSNumber *isBackgroundSync = (NSNumber *)[request getAttribute:@"isBackgroundSync"];
 	NSString *streamRecordId = (NSString *)[request getAttribute:_STREAM_RECORD_ID];
+    NSString *app = (NSString *)[request getAttribute:_App];
 	
 	//Setup the active session
 	Session *activeSession = [manager activeSession];
@@ -47,6 +48,7 @@
 	{
 		[activeSession setAttribute:_STREAM_RECORD_ID :streamRecordId];
 	}
+    activeSession.app = app;
 	
 	//Setup the SyncMessage
 	SyncMessage *message = [SyncMessage withInit];

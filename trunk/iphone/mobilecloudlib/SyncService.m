@@ -135,6 +135,10 @@
 	{
 		[request setAttribute:_STREAM_RECORD_ID :oid];
 	}
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *appId = [bundle bundleIdentifier];
+    [request setAttribute:_App :appId];
 	
 	//Start the Sync Session
 	SyncAdapterResponse *response = [syncAdapter service:request];

@@ -49,15 +49,29 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2DF3E531225C60E004C908F"
+               BuildableName = "syncTests.octest"
+               BlueprintName = "syncTests"
+               ReferencedContainer = "container:mobilecloudlib.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2DF3E531225C60E004C908F"
-               BuildableName = "syncTests.octest"
-               BlueprintName = "syncTests"
+               BlueprintIdentifier = "A2E557A412F769FB008B3FCE"
+               BuildableName = "integration-tests.octest"
+               BlueprintName = "integration-tests"
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -80,7 +94,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2E557A412F769FB008B3FCE"

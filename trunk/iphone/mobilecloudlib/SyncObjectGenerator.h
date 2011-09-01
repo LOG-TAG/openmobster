@@ -57,6 +57,7 @@
 	NSString *targetUriPath;
 	NSString *msgIdPath;
 	NSString *maxMsgSizePath;
+    NSString *appPath;
 }
 
 +(id) withInit;
