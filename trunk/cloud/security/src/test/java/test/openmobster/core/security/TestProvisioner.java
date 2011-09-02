@@ -11,6 +11,8 @@ package test.openmobster.core.security;
 import org.apache.log4j.Logger;
 import junit.framework.TestCase;
 
+import java.util.Set;
+
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.security.IDMException;
@@ -86,12 +88,13 @@ public class TestProvisioner extends TestCase
 		//Reactivate with same username and credential but a different device id
 		this.provisioner.registerDevice("blah@gmail.com", "blahblah", "IMEI:4930051");
 		
-		Device oldDevice = this.deviceController.read("IMEI:567890");
-		assertNull("For security purpose, old device should not exist in the system", oldDevice);
-		
-		activeDevice = this.deviceController.readByIdentity("blah@gmail.com");
-		assertNotNull("New Device must be active and registered", activeDevice);
-		assertEquals("IMEI:4930051",activeDevice.getIdentifier());
+		Set<Device> activeDevices = this.deviceController.readByIdentity("blah@gmail.com");
+		assertTrue(activeDevices != null && !activeDevices.isEmpty());
+		for(Device device:activeDevices)
+		{
+			String id = device.getIdentifier();
+			assertTrue(id.equals("IMEI:567890") || id.equals("IMEI:4930051"));	
+		}
 	}
 	//------------------------------------------------------------------------------------------------------------------------------
 	private void activateDevice(String email, String credential, String deviceId)

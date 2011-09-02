@@ -64,7 +64,8 @@ public final class PushRPC
 
 	public void push(Identity identity, PushCommandContext context)
 	{
-		Device device = this.deviceController.readByIdentity(identity.getPrincipal());
+		//PushRPC the whole concept is garbage
+		/*Device device = this.deviceController.readByIdentity(identity.getPrincipal());
 		String command = context.getCommand();
 		
 		Notification notification = Notification.createPushRPCNotification(device, command);
@@ -83,7 +84,7 @@ public final class PushRPC
 		
 		notification.setMetaData("rpc-request", payload);
 		
-		this.notifier.process(notification);
+		this.notifier.process(notification);*/
 	}
 	
 	public static void startPush(String identity, PushCommandContext context)

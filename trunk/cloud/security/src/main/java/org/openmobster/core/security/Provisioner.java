@@ -207,7 +207,8 @@ public class Provisioner
 					throw new IDMException(IDMException.ACTIVATION_CREDENTIAL_MISMATCH);
 				}
 				
-				Device activeDevice = this.deviceController.readByIdentity(registeredIdentity.getPrincipal());
+				//Commented to allow multiple devices per user
+				/*Device activeDevice = this.deviceController.readByIdentity(registeredIdentity.getPrincipal());
 				if(activeDevice != null)
 				{
 					//Current user already has a device registered. An override is manually required
@@ -220,7 +221,7 @@ public class Provisioner
 					//considering how often users switch devices...especially in a B2C/non-corporate setup
 					//maybe this behavior can be customized in a later release
 					this.deviceController.delete(activeDevice);
-				}
+				}*/
 				
 				//Prepare the Device to be registered
 				Device device = new Device(deviceIdentifier, registeredIdentity);
