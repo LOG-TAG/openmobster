@@ -72,4 +72,11 @@
    			<inject bean="synchronizer://HibernateManager"/>
    		</property>
    </bean> 
+   
+   <!-- App-To-Channel Persistence -->
+   <bean name="AppToChannelPersistence" class="org.openmobster.core.synchronizer.server.engine.AppToChannelPersistence">   		  		  	
+   		<property name="hibernateManager">
+   			<inject bean="synchronizer://HibernateManager"/>
+   		</property>
+   </bean> 
 </deployment>

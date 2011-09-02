@@ -50,5 +50,17 @@
         <property name="app" type="string" column="app" not-null="true"/>
         <property name="oid" type="string" column="oid" not-null="true"/>
         <property name="state" type="string" column="state" not-null="true"/>       
-    </class>                  
+    </class>   
+    
+    <!-- AppToChannelAssociation -->
+    <class name="org.openmobster.core.synchronizer.server.engine.AppToChannelAssociation" table="sync_engine_app_to_channel">
+        <id name="oid" column="oid">
+            <generator class="native"/>
+        </id>
+        <properties name="unique_constraint" unique="true">
+        	<property name="deviceId" type="string" column="deviceId" not-null="true"/>
+        	<property name="app" type="string" column="app" not-null="true"/>
+        	<property name="channel" type="string" column="channel" not-null="true"/>
+        </properties>  
+    </class>               
 </hibernate-mapping>

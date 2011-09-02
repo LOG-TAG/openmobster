@@ -78,19 +78,11 @@ public class AppToChannelAssociation
 	//----------------------------------------------------------------------------------------------------
 	public static void associate(AppToChannelAssociation association)
 	{
-		System.out.println("************Associate********************");
-		System.out.println("DeviceId: "+association.deviceId);
-		System.out.println("App: "+association.app);
-		System.out.println("Channel: "+association.channel);
-		System.out.println("******************************************");
+		AppToChannelPersistence.getInstance().storeAssociation(association);
 	}
 	
 	public static Set<String> getApps(String deviceId, String channel)
 	{
-		System.out.println("************Apps**************************");
-		System.out.println("DeviceId: "+deviceId);
-		System.out.println("Channel: "+channel);
-		System.out.println("******************************************");
-		return null;
+		return AppToChannelPersistence.getInstance().readApps(deviceId, channel);
 	}
 }
