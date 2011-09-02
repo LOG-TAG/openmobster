@@ -9,7 +9,7 @@
 	Group -> GroupAttribute = one-to-many (unidirectional/non-lazy)
 	Group <-> Identity = many-to-many (bidirectional/lazy/non-cascading)
 	Device -> DeviceAttribute = one-to-many	(unidirectional/non-lazy)
-	Device -> Identity = one-to-one	(unidirectional/non-lazy/non-cascading)
+	Device -> Identity = one-to-many (bi-directional/non-lazy/non-cascading)
 -->        
 <hibernate-mapping>	
 	<class name="org.openmobster.core.security.identity.Identity" table="openmobster_identity">
@@ -121,7 +121,6 @@
     	<many-to-one name="identity" 
     	column="identityId"
     	not-null="true"    	
-    	unique="true"
     	lazy="false"
     	/>    	
     </class>

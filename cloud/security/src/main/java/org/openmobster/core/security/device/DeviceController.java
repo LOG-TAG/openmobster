@@ -10,6 +10,8 @@ package org.openmobster.core.security.device;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 
@@ -184,13 +186,13 @@ public class DeviceController
 		}		
 	}
 	
-	public Device readByIdentity(String principal) throws DeviceSecurityException
+	public Set<Device> readByIdentity(String principal) throws DeviceSecurityException
 	{
 		Session session = null;
 		Transaction tx = null;
 		try
 		{
-			Device device = null;
+			Set<Device> devices = new HashSet<Device>();
 			
 			session = this.hibernateManager.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
@@ -198,15 +200,19 @@ public class DeviceController
 			String query = "from Device device, Identity identity " +
 			"where device.identity.id=identity.id and identity.principal=?";
 			
-			Object[] objects = (Object[])session.createQuery(query).setString(0, principal).uniqueResult();
-			if(objects != null)
+			List objects = session.createQuery(query).setString(0, principal).list();
+			if(objects != null && !objects.isEmpty())
 			{
-				device = (Device)objects[0];
+				for(Object local:objects)
+				{
+					Object[] row = (Object[])local;
+					devices.add((Device)row[0]);
+				}
 			}
 								
 			tx.commit();
 			
-			return device;
+			return devices;
 		}
 		catch(Exception e)
 		{

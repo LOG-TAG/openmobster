@@ -75,12 +75,13 @@ public class ErrorLogCommand implements MobileServiceBean
 	
 	private void processUserInfo(Request request)
 	{
-		String userId = request.getAttribute("user.id");
+		//This is useless for now
+		/*String userId = request.getAttribute("user.id");
 		
 		if(userId != null && userId.trim().length()>0)
 		{
 			Device device = this.provisioner.getDeviceController().readByIdentity(userId);
 			request.setAttribute("device.id", device.getIdentifier());
-		}
+		}*/
 	}
 }

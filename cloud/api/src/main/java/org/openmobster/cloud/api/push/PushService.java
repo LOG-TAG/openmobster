@@ -9,6 +9,7 @@ package org.openmobster.cloud.api.push;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.openmobster.core.push.notification.Notification;
 import org.openmobster.core.push.notification.Notifier;
@@ -68,28 +69,35 @@ public final class PushService
 		
 		//Detect the device that will receive the push
 		DeviceController deviceController = DeviceController.getInstance();
-		Device device = deviceController.readByIdentity(identity);
-		
-		//Prepare the extras
-		Map<String,String> extras = new HashMap<String,String>();
-		if(appId != null && appId.trim().length()>0)
+		Set<Device> devices = deviceController.readByIdentity(identity);
+		if(devices == null || devices.isEmpty())
 		{
-			extras.put("app-id", appId);
-		}
-		if(title != null && title.trim().length()>0)
-		{
-			extras.put("title", title);
-		}
-		if(details != null && details.trim().length()>0)
-		{
-			extras.put("detail", details);
+			return;
 		}
 		
-		//Prepare the Notification
-		Notification notification = Notification.createPushNotification(device, message, extras);
-		
-		//Send the notification
-		Notifier notifier = Notifier.getInstance();
-		notifier.process(notification);
+		for(Device device:devices)
+		{	
+			//Prepare the extras
+			Map<String,String> extras = new HashMap<String,String>();
+			if(appId != null && appId.trim().length()>0)
+			{
+				extras.put("app-id", appId);
+			}
+			if(title != null && title.trim().length()>0)
+			{
+				extras.put("title", title);
+			}
+			if(details != null && details.trim().length()>0)
+			{
+				extras.put("detail", details);
+			}
+			
+			//Prepare the Notification
+			Notification notification = Notification.createPushNotification(device, message, extras);
+			
+			//Send the notification
+			Notifier notifier = Notifier.getInstance();
+			notifier.process(notification);
+		}
 	}
 }
