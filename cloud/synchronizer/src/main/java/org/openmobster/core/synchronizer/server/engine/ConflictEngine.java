@@ -80,6 +80,9 @@ public class ConflictEngine
 		ConflictEntry bean = this.readLock(deviceId, oid, app, channel);
 		
 		log.debug("******StartLock*****************************************");
+		log.debug("Device: "+deviceId);
+		log.debug("App: "+app);
+		log.debug("Channel: "+channel);
 		log.debug("Serialized: "+serializedBean);
 		log.debug("***********************************************");
 		
@@ -104,6 +107,10 @@ public class ConflictEngine
 			if(!serializedBean.equals(checkAgainst))
 			{
 				log.debug("**********Check Lock*************************************");
+				log.debug("Device: "+deviceId);
+				log.debug("App: "+app);
+				log.debug("Channel: "+channel);
+				log.debug("********************************************************");
 				log.debug("Serialized: "+serializedBean);
 				log.debug("********************************************************");
 				log.debug("Checkagainst: "+checkAgainst);
@@ -115,6 +122,10 @@ public class ConflictEngine
 			else
 			{
 				log.debug("**********Check Succeeded*************************************");
+				log.debug("Device: "+deviceId);
+				log.debug("App: "+app);
+				log.debug("Channel: "+channel);
+				log.debug("********************************************************");
 				log.debug("Serialized: "+serializedBean);
 				log.debug("********************************************************");
 				log.debug("Checkagainst: "+checkAgainst);
