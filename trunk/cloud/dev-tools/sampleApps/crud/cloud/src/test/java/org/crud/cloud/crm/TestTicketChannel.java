@@ -35,6 +35,7 @@ public class TestTicketChannel extends TestCase
 		
 		//Bootstrap the runner
 		this.runner = (MobileBeanRunner)ServiceManager.locate("mobileBeanRunner");
+		this.runner.setApp("testApp");
 		this.runner.activateDevice();
 		this.runner.bootService();
 	}

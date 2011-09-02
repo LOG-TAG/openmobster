@@ -32,6 +32,7 @@ public class TestDemoChannel extends TestCase
 	{
 		ServiceManager.bootstrap();
 		this.runner = (MobileBeanRunner)ServiceManager.locate("mobileBeanRunner");
+		this.runner.setApp("testApp");
 		this.runner.activateDevice();
 		this.runner.bootService();
 	}

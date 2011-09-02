@@ -58,6 +58,7 @@ public class SyncXMLGeneratorTest extends TestCase
 		session.setSessionId(Utilities.generateUID());
 		session.setTarget("http://www.openmobster.org/sync-server");
 		session.setSource(this.deviceId);
+		session.setApp("testApp");
 		
 		//Add a Message to the package
 		SyncMessage message = (SyncMessage)ServiceManager.locate("InitSyncMessage");				
@@ -159,6 +160,7 @@ public class SyncXMLGeneratorTest extends TestCase
 		session.setSessionId(Utilities.generateUID());
 		session.setSource("http://www.openmobster.org/sync-server");
 		session.setTarget(this.deviceId);
+		session.setApp("testApp");
 		
 		//Add a Message to the package
 		SyncMessage message = (SyncMessage)ServiceManager.locate("SyncMessage");				
