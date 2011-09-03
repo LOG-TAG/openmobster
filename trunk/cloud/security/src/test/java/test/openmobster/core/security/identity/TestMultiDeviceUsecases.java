@@ -71,13 +71,6 @@ public class TestMultiDeviceUsecases extends TestCase
 		attributes.add(new IdentityAttribute("email", "blah@gmail.com"));
 		identity.setAttributes(attributes);
 		
-		//Add Devices
-		for(int i=0; i<5; i++)
-		{
-			Device device = new Device("imei:"+i,identity);
-			identity.addDevice(device);
-		}
-		
 		//Add this identity to the database
 		this.identityController.create(identity);
 		
@@ -94,30 +87,38 @@ public class TestMultiDeviceUsecases extends TestCase
 		assertEquals("Email Attribute Not Found", "email", storedAttribute.getName());
 		assertEquals("Email Value does not match", "blah@gmail.com", storedAttribute.getValue());
 		assertTrue("Improper ID assigned", storedAttribute.getId()>0);
+	}
+	
+	public void testDeviceLifecycle() throws Exception
+	{
+		Identity identity = new Identity();
+		identity.setPrincipal("admin");
+		identity.setCredential("adminPassword");
+		this.identityController.create(identity);
 		
-		//Assert device from identity side
-		Set<Device> devices = stored.getDevices();
-		assertTrue(devices != null && devices.size()==5);
-		for(Device device:devices)
-		{
-			String identifier = device.getIdentifier();
-			Identity owner = device.getIdentity();
-			
-			assertTrue(identifier.contains("imei:"));
-			assertNotNull(owner);
-			assertEquals("admin", owner.getPrincipal());
-		}
+		Device device = new Device("imei:8675309",identity);
+		this.deviceController.create(device);
 		
-		//Assert identity from device side
-		for(int i=0; i<5; i++)
-		{
-			Device device = this.deviceController.read("imei:"+i);
-			Identity owner = device.getIdentity();
-			String identifier = device.getIdentifier();
-			
-			assertTrue(identifier.contains("imei:"));
-			assertNotNull(owner);
-			assertEquals("admin", owner.getPrincipal());
-		}
-	}	
+		//An identity must be created
+		Identity storedIdentity = this.identityController.read("admin");
+		assertNotNull(storedIdentity);
+		assertEquals("admin", storedIdentity.getPrincipal());
+		assertEquals("adminPassword", storedIdentity.getCredential());
+		
+		//A device must be created
+		Device storedDevice = this.deviceController.read("imei:8675309");
+		assertNotNull(storedDevice);
+		assertEquals("imei:8675309",storedDevice.getIdentifier());
+		
+		//Delete the device
+		this.deviceController.delete(storedDevice);
+		
+		storedDevice = this.deviceController.read("imei:8675309");
+		assertNull(storedDevice);
+		
+		storedIdentity = this.identityController.read("admin");
+		assertNotNull(storedIdentity);
+		assertEquals("admin", storedIdentity.getPrincipal());
+		assertEquals("adminPassword", storedIdentity.getCredential());
+	}
 }

@@ -20,7 +20,9 @@ import org.hibernate.Transaction;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.common.database.HibernateManager;
 
+import org.openmobster.core.security.DeviceSecurityException;
 import org.openmobster.core.security.IDMException;
+import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceController;
 
 /**
