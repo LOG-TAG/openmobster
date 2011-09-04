@@ -53,6 +53,13 @@ public class TestCometSessionManager extends TestCase
 		
 		List<CometSession> cometSessions = sessionManager.getCometSessions();
 		
+		log.info("******************************************");
+		for(CometSession cometSession:cometSessions)
+		{	
+			log.info("Comet Session Id: "+cometSession.getUri());
+		}
+		log.info("*****************************************");
+		
 		assertTrue("Should not be empty!!", cometSessions != null && !cometSessions.isEmpty());
 		assertEquals("Must have two sessions", 2, cometSessions.size());
 	}

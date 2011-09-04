@@ -23,6 +23,7 @@
    		<property name="id">/bean/save</property>
    		<property name="monitor"><inject bean="services://MobileObjectMonitor"/></property>
    		<property name="serializer"><inject bean="mobileObject://MobileObjectSerializer"/></property>
+   		<property name="eventManager"><inject bean="common://EventManager"/></property>
    		<depends>mobileContainer://MobileContainer</depends>
    </bean>  
    

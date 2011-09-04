@@ -17,6 +17,8 @@ import org.w3c.dom.Element;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
+import org.openmobster.core.common.event.EventManager;
+import org.openmobster.core.common.event.Event;
 import org.openmobster.cloud.api.sync.Channel;
 import org.openmobster.cloud.api.sync.ChannelInfo;
 import org.openmobster.cloud.api.sync.MobileBean;
@@ -24,7 +26,6 @@ import org.openmobster.cloud.api.sync.MobileBeanId;
 import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.mobileObject.xml.MobileObjectSerializer;
 import org.openmobster.core.services.MobileObjectMonitor;
-
 
 
 /**
@@ -37,6 +38,7 @@ public class SaveMobileBean implements ContainerService
 	private String id;
 	private MobileObjectMonitor monitor;
 	private MobileObjectSerializer serializer;
+	private EventManager eventManager;
 	
 	public SaveMobileBean()
 	{
@@ -45,7 +47,6 @@ public class SaveMobileBean implements ContainerService
 	
 	public void start()
 	{
-		
 	}
 	
 	public void stop()
@@ -81,6 +82,17 @@ public class SaveMobileBean implements ContainerService
 	public void setSerializer(MobileObjectSerializer serializer) 
 	{
 		this.serializer = serializer;
+	}
+	
+	
+	public EventManager getEventManager()
+	{
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager)
+	{
+		this.eventManager = eventManager;
 	}
 	//---------------------------------------------------------------------------------------------------
 	public InvocationResponse execute(Invocation invocation) throws InvocationException
@@ -160,12 +172,28 @@ public class SaveMobileBean implements ContainerService
 			if(connector.read(objectId) != null)
 			{
 				connector.update(object);
+				
+				//Send an update event
+				MobileBean updatedRecord = connector.read(objectId);
+				Event event = new Event();
+				event.setAttribute("mobile-bean", updatedRecord);
+				event.setAttribute("action", "update");
+				this.eventManager.fire(event);
+				
 				return objectId;
 			}
 		}
 		
 		//If I get here, new instance of this object needs to be created in storage
-		String newId = connector.create(object);		
+		String newId = connector.create(object);
+		
+		//Send a CreateEvent
+		MobileBean createdRecord = connector.read(newId);
+		Event event = new Event();
+		event.setAttribute("mobile-bean", createdRecord);
+		event.setAttribute("action", "create");
+		this.eventManager.fire(event);
+		
 		return newId;
 	}
 	
@@ -204,11 +232,25 @@ public class SaveMobileBean implements ContainerService
 			//Update
 			id = recordId;
 			connector.update(record);
+			
+			//Updated Record
+			MobileBean updatedRecord = connector.read(recordId);
+			Event event = new Event();
+			event.setAttribute("mobile-bean", updatedRecord);
+			event.setAttribute("action", "update");
+			this.eventManager.fire(event);
 		}
 		else
 		{
 			//Create
 			id = connector.create(record);
+			
+			//Created Record
+			MobileBean createdRecord = connector.read(id);
+			Event event = new Event();
+			event.setAttribute("mobile-bean", createdRecord);
+			event.setAttribute("action", "create");
+			this.eventManager.fire(event);
 		}
 				
 		return id;

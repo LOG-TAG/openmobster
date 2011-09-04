@@ -1028,4 +1028,9 @@ public class Session implements Serializable
 	{
 		return this.getSource();
 	}
+	
+	public String getChannel()
+	{
+		return this.getDataSource(false);
+	}
 }
