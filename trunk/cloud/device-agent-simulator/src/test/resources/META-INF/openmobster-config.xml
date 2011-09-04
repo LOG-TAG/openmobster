@@ -177,4 +177,37 @@
    <bean name="/6789/configuration" 
    class="org.openmobster.device.agent.test.framework.Configuration">
    </bean>
+   
+   <!--  SyncEvent Propagation -->
+   <bean name="IMEI:0" class="org.openmobster.device.agent.test.framework.MobileBeanRunner">
+   		<property name="deviceId">IMEI:0</property>
+   		<property name="serverId">http://www.openmobster.org/sync-server</property>
+   		<property name="service">testServerBean</property>
+   		<property name="user">blah2@gmail.com</property>
+   		<property name="credential">blahblah2</property>
+   		<property name="deviceSyncEngine">
+   			<inject bean="simulator://SyncEngine"/>
+   		</property>
+   		<property name="provisioner">
+   			<inject bean="security://Provisioner"/>
+   		</property>
+   		<property name="deviceDatabase">
+   			<inject bean="mobileObject://MobileObjectDatabase"/>
+   		</property>
+   		<property name="cometDaemon">
+   			<inject bean="/IMEI:0/cometDaemon"/>
+   		</property>  
+   		<property name="configuration">
+   			<inject bean="/IMEI:0/configuration"/>
+   		</property> 		
+   </bean>
+   <bean name="/IMEI:0/cometDaemon" 
+   class="org.openmobster.device.agent.test.framework.CometDaemon">
+   		<property name="configuration">
+   			<inject bean="/IMEI:0/configuration"/>
+   		</property>
+   </bean>
+   <bean name="/IMEI:0/configuration" 
+   class="org.openmobster.device.agent.test.framework.Configuration">
+   </bean>
 </deployment>

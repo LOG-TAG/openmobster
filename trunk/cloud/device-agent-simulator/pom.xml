@@ -94,6 +94,7 @@
 	          			<include>**/TestMultiDeviceTwoWaySync.java</include>	          				          				          				          				          				          				          			
 						-->
 						<include>**/TestMultiDeviceConflictResolution.java</include>
+						<include>**/TestSyncEventPropagation</include>
 													          			                    		          				          			
 	          			<include>**/TestDatabase.java</include>	 
 	          			<include>**/TestSyncDataSource.java</include>	          			

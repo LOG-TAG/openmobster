@@ -216,7 +216,10 @@ public final class CometSessionManager implements EventListener
 	public void onEvent(Event event)
 	{
 		Device device = (Device)event.getAttribute("new-device");
-		this.newDeviceNotification(device);
+		if(device != null)
+		{
+			this.newDeviceNotification(device);
+		}
 	}
 	//---------------------------------------------------------------------------------------------------------
 	@Deprecated

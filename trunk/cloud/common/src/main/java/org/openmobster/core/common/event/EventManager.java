@@ -37,6 +37,14 @@ public final class EventManager
 	//------------------------------------------------------------------------------------
 	public void addListener(EventListener listener)
 	{
+		String listenerClass = listener.getClass().getName();
+		for(EventListener local:this.listeners)
+		{
+			if(local.getClass().getName().equals(listenerClass))
+			{
+				return;
+			}
+		}
 		this.listeners.add(listener);
 	}
 	

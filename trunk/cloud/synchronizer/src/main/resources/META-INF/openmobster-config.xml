@@ -23,6 +23,8 @@
    		<property name="mobileContainer">
    			<inject bean="mobileContainer://MobileContainer"/>
    		</property>
+   		<property name="eventManager"><inject bean="common://EventManager"/></property>
+   		<incallback method="notify"/>
    </bean>      
       
    <!-- Server Side Sync Engine/Adapter setup -->
@@ -52,12 +54,27 @@
    			<inject bean="synchronizer://SessionManager"/>
    		</property>
    </bean>
-      
+    
+   <!-- Event Listeners -->  
    <bean name="synchronizer://SyncChannelEventListener" 
    class="org.openmobster.core.synchronizer.event.SyncChannelEventListener"> 
    		<property name="syncEngine">
    			<inject bean="synchronizer://ServerSyncEngine"/>
    		</property>      
+   </bean>
+   <bean name="synchronizer://UpdateBeanEventListener" 
+   class="org.openmobster.core.synchronizer.event.UpdateBeanEventListener"> 
+   		<property name="syncEngine">
+   			<inject bean="synchronizer://ServerSyncEngine"/>
+   		</property>     
+   		<depends>synchronizer://MobileObjectGateway</depends> 
+   </bean>
+   <bean name="synchronizer://CreateBeanEventListener" 
+   class="org.openmobster.core.synchronizer.event.CreateBeanEventListener"> 
+   		<property name="syncEngine">
+   			<inject bean="synchronizer://ServerSyncEngine"/>
+   		</property>
+   		<depends>synchronizer://MobileObjectGateway</depends>      
    </bean>
    
    <!-- Conflict Detection Engine -->

@@ -33,6 +33,7 @@ import org.openmobster.core.security.device.DeviceAttribute;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.identity.Identity;
 import org.openmobster.core.security.identity.IdentityController;
+import org.openmobster.core.security.Provisioner;
 
 import org.openmobster.core.synchronizer.server.SyncServer;
 import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
@@ -67,6 +68,7 @@ public abstract class AbstractSync extends TestCase
 	//security stack
 	protected IdentityController identityController;
 	protected DeviceController deviceController;
+	protected Provisioner provisioner;
 		
 	//some data
 	protected byte[] attachment = "blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah".getBytes();
@@ -95,6 +97,8 @@ public abstract class AbstractSync extends TestCase
 		
 		this.deviceController = (DeviceController)
 		ServiceManager.locate("security://DeviceController");
+		
+		this.provisioner = (Provisioner)ServiceManager.locate("security://Provisioner");
 				
 		//SetUp State of the system		
 		this.setUpSecurity();

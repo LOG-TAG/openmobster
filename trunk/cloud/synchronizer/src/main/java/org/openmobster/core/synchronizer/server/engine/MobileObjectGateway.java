@@ -22,11 +22,13 @@ import org.w3c.dom.Element;
 import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.cloud.api.sync.MobileBeanId;
 import org.openmobster.core.common.XMLUtilities;
+import org.openmobster.core.common.event.EventManager;
 import org.openmobster.core.synchronizer.SyncException;
 import org.openmobster.core.mobileContainer.Invocation;
 import org.openmobster.core.mobileContainer.InvocationResponse;
 import org.openmobster.core.mobileContainer.MobileContainer;
 import org.openmobster.core.mobileObject.xml.MobileObjectSerializer;
+import org.openmobster.core.common.event.EventListener;
 
 
 /**
@@ -39,6 +41,7 @@ public class MobileObjectGateway
 	private MapEngine mapEngine;
 	private MobileObjectSerializer serializer;
 	private MobileContainer mobileContainer;
+	private EventManager eventManager;
 		
 	public MobileObjectGateway()
 	{
@@ -46,12 +49,17 @@ public class MobileObjectGateway
 	}
 		
 	public void start()
-	{		
+	{
 	}
 		
 	public void stop()
 	{
 		
+	}
+	
+	public void notify(EventListener eventListener)
+	{
+		this.eventManager.addListener(eventListener);
 	}
 			
 	public MapEngine getMapEngine()
@@ -82,6 +90,17 @@ public class MobileObjectGateway
 	public void setMobileContainer(MobileContainer mobileContainer) 
 	{
 		this.mobileContainer = mobileContainer;
+	}
+	
+	
+	public EventManager getEventManager()
+	{
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager)
+	{
+		this.eventManager = eventManager;
 	}
 	//----------------------------------------------------------------------------------------------	
 	public String parseId(String xml) throws SyncException
