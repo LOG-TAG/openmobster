@@ -80,6 +80,8 @@ public class DeleteMobileBean implements ContainerService
 		{
 			connector.delete(bean);
 			response.setBeanId(beanId);
+			
+			//Send a bean deleted event
 		}
 		
 		

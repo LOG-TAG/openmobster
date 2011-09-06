@@ -10,6 +10,8 @@ package org.openmobster.core.synchronizer.server.engine;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -237,6 +239,47 @@ public class ConflictEngine
 			}
 			
 			return local;
+		}
+		catch(Exception e)
+		{
+			log.error(this, e);
+			
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+			throw new SyncException(e);
+		}
+	}
+	
+	public Set<String> findLiveApps(String deviceId, String channel)
+	{
+		Session session = null;
+		Transaction tx = null;
+		try
+		{
+			Set<String> apps = new HashSet<String>();
+			
+			session = this.hibernateManager.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			String query = "from ConflictEntry where deviceId=? AND channel=?";
+			
+			List entries = session.createQuery(query).setParameter(0, deviceId).
+			setParameter(1,channel).list();
+			
+			if(entries != null && !entries.isEmpty())
+			{
+				for(Object local:entries)
+				{
+					ConflictEntry entry = (ConflictEntry)local;
+					apps.add(entry.getApp());
+				}
+			}
+						
+			tx.commit();
+			
+			return apps;
 		}
 		catch(Exception e)
 		{

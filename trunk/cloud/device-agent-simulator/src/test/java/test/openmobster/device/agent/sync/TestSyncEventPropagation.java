@@ -8,13 +8,12 @@
 
 package test.openmobster.device.agent.sync;
 
+import java.text.MessageFormat;
 import java.util.List;
 import org.apache.log4j.Logger;
 
 import org.openmobster.core.common.ServiceManager;
-import org.openmobster.core.security.device.Device;
-import org.openmobster.core.security.device.DeviceAttribute;
-import org.openmobster.core.security.device.DeviceController;
+import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
 import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
 import org.openmobster.device.agent.test.framework.MobileBeanRunner;
 
@@ -25,43 +24,72 @@ public class TestSyncEventPropagation extends AbstractSync
 {
 	private static Logger log = Logger.getLogger(TestSyncEventPropagation.class);
 	
-	MobileBeanRunner device;
+	MobileBeanRunner imei0;
+	MobileBeanRunner imei1;
+	MobileBeanRunner imei2;
 	
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		
-		//Setup the device '12345'
-		this.device = (MobileBeanRunner)ServiceManager.locate("IMEI:0");
-		this.device.setApp("testApp");
-		this.device.activateDevice();
+		//Setup the device 'IMEI:0'
+		this.imei0 = (MobileBeanRunner)ServiceManager.locate("IMEI:0");
+		this.imei0.setApp("testApp");
+		this.imei0.activateDevice();
 		
-		//Setup other devices for this user
-		for(int i=1; i<5; i++)
-		{
-			Device device = new Device("IMEI:"+i, identityController.read("blah2@gmail.com"));
-			device.addAttribute(new DeviceAttribute("nonce", "blahblah"));
-			this.deviceController.create(device);
-		}
+		//Setup the device 'IMEI:1'
+		this.imei1 = (MobileBeanRunner)ServiceManager.locate("IMEI:1");
+		this.imei1.setApp("testApp");
+		this.imei1.activateDevice();
+		
+		//Setup the device 'IMEI:2'
+		this.imei2 = (MobileBeanRunner)ServiceManager.locate("IMEI:2");
+		this.imei2.setApp("testApp");
+		this.imei2.activateDevice();
 	}
 	
-	public void testSyncEventTwoWaySync() throws Exception
+	public void testSyncEventAdd() throws Exception
 	{
-		log.info("Starting testSyncEventTwoWaySync.............");
+		log.info("Starting testSyncEventAdd.............");
 		
-		this.device.bootService();
-		this.print(this.device.readAll());
+		this.imei0.bootService();
+		this.print(this.imei0.readAll());
 		
-		//Update from device1
-		MobileObject unique1 = this.device.read("unique-1");
-		unique1.setValue("from", "updated by device 1");
-		this.device.update(unique1);
-		this.device.syncService();
+		this.imei1.swapConfiguration();
+		this.imei1.bootService();
+		this.print(this.imei1.readAll());
 		
-		//Assert
-		MobileObject deviceObject = this.device.read("unique-1");
-		String deviceFrom = deviceObject.getValue("from");
-		this.assertEquals("updated by device 1", deviceFrom);
+		this.imei2.swapConfiguration();
+		this.imei2.bootService();
+		this.print(this.imei2.readAll());
+		
+		//Add a bean
+		this.imei0.swapConfiguration();
+		MobileObject mo = new MobileObject();
+		mo.setRecordId("unique-10");
+		mo.setStorageId(this.service);
+		mo.setValue("from","from@gmail.com");
+		mo.setValue("to","to@gmail.com");
+		mo.setValue("subject", MessageFormat.format(this.subject,new Object[]{mo.getRecordId()}));
+		mo.setValue("message", MessageFormat.format(this.message,new Object[]{mo.getRecordId()}));
+		this.imei0.create(mo);
+		
+		this.imei0.syncService();
+		
+		//Assert imei1's changelog
+		List imei1ChangeLog = this.serverSyncEngine.getChangeLog("IMEI:1", "testServerBean", "testApp", 
+		ServerSyncEngine.OPERATION_ADD);
+		this.assertTrue(imei1ChangeLog != null && !imei1ChangeLog.isEmpty());
+		
+		//Assert imei2's changelog
+		List imei2ChangeLog = this.serverSyncEngine.getChangeLog("IMEI:2", "testServerBean", "testApp", 
+		ServerSyncEngine.OPERATION_ADD);
+		this.assertTrue(imei2ChangeLog != null && !imei2ChangeLog.isEmpty());
+		
+		//Assert imei0's changelog
+		List imei0ChangeLog = this.serverSyncEngine.getChangeLog("IMEI:0", "testServerBean", "testApp", 
+		ServerSyncEngine.OPERATION_ADD);
+		this.assertTrue(imei0ChangeLog == null || imei0ChangeLog.isEmpty());
 	}
 	
 	public void print(List<MobileObject> mobileObjects)

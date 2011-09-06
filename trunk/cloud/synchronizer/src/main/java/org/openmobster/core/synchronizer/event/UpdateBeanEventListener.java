@@ -62,47 +62,50 @@ public class UpdateBeanEventListener implements EventListener
 	{	
 		MobileBean mobileBean = (MobileBean)event.getAttribute("mobile-bean");
 		
-		if(mobileBean != null)
+		if(mobileBean == null)
 		{
-			String action = (String)event.getAttribute("action");
-			if(action.equalsIgnoreCase("update"))
+			return;
+		}
+		
+		String action = (String)event.getAttribute("action");
+		if(!action.equalsIgnoreCase("update"))
+		{
+			return;
+		}
+		
+		SyncContext context = (SyncContext)ExecutionContext.getInstance().getSyncContext();
+		Session session = context.getSession();
+		DeviceController deviceController = DeviceController.getInstance();
+		IdentityController identityController = IdentityController.getInstance();
+		
+		String deviceId = session.getDeviceId();
+		String channel = session.getChannel();
+		String operation = ServerSyncEngine.OPERATION_UPDATE;
+		String oid = Tools.getOid(mobileBean);
+		String app = session.getApp();
+		
+		log.info("*************************************");
+		log.info("Bean Updated: "+oid);
+		log.info("DeviceId : "+deviceId);
+		log.info("Channel: "+channel);
+		log.info("Operation: "+operation);
+		log.info("App: "+app);
+		
+		Device device = deviceController.read(deviceId);
+		if(device != null)
+		{
+			Identity registeredUser = device.getIdentity();
+			log.info("User: "+registeredUser.getPrincipal());
+			
+			Set<Device> allDevices = deviceController.readByIdentity(registeredUser.getPrincipal());
+			if(allDevices != null && !allDevices.isEmpty())
 			{
-				SyncContext context = (SyncContext)ExecutionContext.getInstance().getSyncContext();
-				Session session = context.getSession();
-				DeviceController deviceController = DeviceController.getInstance();
-				IdentityController identityController = IdentityController.getInstance();
-				
-				String deviceId = session.getDeviceId();
-				String channel = session.getChannel();
-				String operation = ServerSyncEngine.OPERATION_UPDATE;
-				String oid = Tools.getOid(mobileBean);
-				String app = session.getApp();
-				
-				log.info("*************************************");
-				log.info("Bean Updated: "+oid);
-				log.info("DeviceId : "+deviceId);
-				log.info("Channel: "+channel);
-				log.info("Operation: "+operation);
-				log.info("App: "+app);
-				
-				
-				Device device = deviceController.read(deviceId);
-				if(device != null)
+				for(Device local:allDevices)
 				{
-					Identity registeredUser = device.getIdentity();
-					log.info("User: "+registeredUser.getPrincipal());
-					
-					Set<Device> allDevices = deviceController.readByIdentity(registeredUser.getPrincipal());
-					if(allDevices != null && !allDevices.isEmpty())
-					{
-						for(Device local:allDevices)
-						{
-							log.info("DeviceId: "+local.getIdentifier());
-						}
-					}
+					log.info("DeviceId: "+local.getIdentifier());
 				}
-				log.info("*************************************");
 			}
 		}
+		log.info("*************************************");
 	}
 }
