@@ -59,6 +59,8 @@ public interface ServerSyncEngine
 	public void clearChangeLogEntry(String target, String app, ChangeLogEntry logEntry);
 	
 	public void clearChangeLog(String target, String service, String app);
+	
+	public boolean changeLogEntryExists(ChangeLogEntry entry);
 		
 	public String marshal(MobileBean record);	
 	

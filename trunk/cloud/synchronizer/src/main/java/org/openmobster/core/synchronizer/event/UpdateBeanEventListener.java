@@ -7,22 +7,27 @@
  */
 package org.openmobster.core.synchronizer.event;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import org.openmobster.core.common.event.Event;
 import org.openmobster.core.common.event.EventListener;
+import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
+import org.openmobster.core.synchronizer.server.engine.ChangeLogEntry;
+import org.openmobster.core.synchronizer.server.engine.ConflictEngine;
+import org.openmobster.core.synchronizer.server.engine.ConflictEntry;
 import org.openmobster.core.synchronizer.server.engine.Tools;
 import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.core.synchronizer.server.SyncContext;
 import org.openmobster.core.synchronizer.server.Session;
 import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
-import org.openmobster.core.security.device.Device;
-import org.openmobster.core.security.device.DeviceController;
-import org.openmobster.core.security.identity.Identity;
-import org.openmobster.core.security.identity.IdentityController;
 
 /**
  *
@@ -33,7 +38,8 @@ public class UpdateBeanEventListener implements EventListener
 	private static Logger log = Logger.getLogger(UpdateBeanEventListener.class);
 	
 	private ServerSyncEngine syncEngine = null;
-	
+	private ConflictEngine conflictEngine = null;
+	private Notifier notifier = null;
 	
 	
 	public ServerSyncEngine getSyncEngine()
@@ -47,6 +53,36 @@ public class UpdateBeanEventListener implements EventListener
 	{
 		this.syncEngine = syncEngine;
 	}
+	
+	
+
+	public ConflictEngine getConflictEngine()
+	{
+		return conflictEngine;
+	}
+
+
+
+	public void setConflictEngine(ConflictEngine conflictEngine)
+	{
+		this.conflictEngine = conflictEngine;
+	}
+
+
+
+	public Notifier getNotifier()
+	{
+		return notifier;
+	}
+
+
+
+	public void setNotifier(Notifier notifier)
+	{
+		this.notifier = notifier;
+	}
+
+
 
 	public void start()
 	{
@@ -60,6 +96,7 @@ public class UpdateBeanEventListener implements EventListener
 	
 	public void onEvent(Event event)
 	{	
+		//Get the Bean that has been updated by a user
 		MobileBean mobileBean = (MobileBean)event.getAttribute("mobile-bean");
 		
 		if(mobileBean == null)
@@ -67,16 +104,16 @@ public class UpdateBeanEventListener implements EventListener
 			return;
 		}
 		
+		//Make sure this is an 'Update' operation
 		String action = (String)event.getAttribute("action");
 		if(!action.equalsIgnoreCase("update"))
 		{
 			return;
 		}
 		
+		//Get data from the environment
 		SyncContext context = (SyncContext)ExecutionContext.getInstance().getSyncContext();
 		Session session = context.getSession();
-		DeviceController deviceController = DeviceController.getInstance();
-		IdentityController identityController = IdentityController.getInstance();
 		
 		String deviceId = session.getDeviceId();
 		String channel = session.getChannel();
@@ -84,28 +121,76 @@ public class UpdateBeanEventListener implements EventListener
 		String oid = Tools.getOid(mobileBean);
 		String app = session.getApp();
 		
-		log.info("*************************************");
-		log.info("Bean Updated: "+oid);
-		log.info("DeviceId : "+deviceId);
-		log.info("Channel: "+channel);
-		log.info("Operation: "+operation);
-		log.info("App: "+app);
+		log.debug("*************************************");
+		log.debug("Bean Updated: "+oid);
+		log.debug("DeviceId : "+deviceId);
+		log.debug("Channel: "+channel);
+		log.debug("Operation: "+operation);
+		log.debug("App: "+app);
 		
-		Device device = deviceController.read(deviceId);
-		if(device != null)
+		//Get a List of Entries which represent an instance of this bean, but on other devices
+		List<ConflictEntry> liveEntries = this.conflictEngine.findLiveEntries(channel, oid);
+		if(liveEntries == null || liveEntries.isEmpty())
 		{
-			Identity registeredUser = device.getIdentity();
-			log.info("User: "+registeredUser.getPrincipal());
-			
-			Set<Device> allDevices = deviceController.readByIdentity(registeredUser.getPrincipal());
-			if(allDevices != null && !allDevices.isEmpty())
-			{
-				for(Device local:allDevices)
-				{
-					log.info("DeviceId: "+local.getIdentifier());
-				}
-			}
+			return;
 		}
-		log.info("*************************************");
+		
+		Map<String, Notification> pushNotifications = new HashMap<String, Notification>();
+		for(ConflictEntry entry:liveEntries)
+		{
+			if(entry.getDeviceId().equals(deviceId) &&
+			   entry.getApp().equals(app) &&
+			   entry.getChannel().equals(channel) &&
+			   entry.getOid().equals(oid)
+			)
+			{
+				//This is the originally updated bean (ignore)
+				continue;
+			}
+			
+			//Update the ChangeLog of this device so that the 'Updated' bean
+			//is pushed to the device
+			ChangeLogEntry changelogEntry = new ChangeLogEntry();
+			changelogEntry.setTarget(entry.getDeviceId());
+			changelogEntry.setNodeId(entry.getChannel());
+			changelogEntry.setApp(entry.getApp());
+			changelogEntry.setOperation(operation);
+			changelogEntry.setRecordId(entry.getOid());
+			
+			//Check and make sure this ChangeLogEntry does not already exist
+			boolean exists = this.syncEngine.changeLogEntryExists(changelogEntry);
+			if(exists)
+			{
+				continue;
+			}
+			
+			List entries = new ArrayList();
+			entries.add(changelogEntry);
+			this.syncEngine.addChangeLogEntries(entry.getDeviceId(), entry.getApp(), entries);
+			
+			//Prepare a Sync Push Notification for this device and channel
+			Notification notification = Notification.createSyncNotification(entry.getDeviceId(), channel);
+			pushNotifications.put(entry.getDeviceId(), notification);
+		}
+		
+		//Send Push Notifications
+		if(pushNotifications.isEmpty())
+		{
+			return;
+		}
+		
+		Set<String> deviceIds = pushNotifications.keySet();
+		for(String id:deviceIds)
+		{
+			Notification notification = pushNotifications.get(id);
+			
+			log.debug("Notification----------------------------------------------");
+			log.debug("Device: "+notification.getMetaDataAsString("device")+", Channel: "+
+			notification.getMetaDataAsString("service"));
+			log.debug("----------------------------------------------");
+			
+			this.notifier.process(notification);
+		}
+		log.debug("*************************************");
 	}
 }

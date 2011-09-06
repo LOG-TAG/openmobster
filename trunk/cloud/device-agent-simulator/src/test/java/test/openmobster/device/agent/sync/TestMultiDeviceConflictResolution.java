@@ -73,7 +73,7 @@ public class TestMultiDeviceConflictResolution extends AbstractSync
 		//Assert
 		MobileObject device2Object = this.device2.read("unique-1");
 		String device2From = device2Object.getValue("from");
-		this.assertEquals("updated by device 2", device2From);
+		this.assertEquals("updated by device 1", device2From);
 		
 		//Boot both devices
 		this.device1.swapConfiguration();

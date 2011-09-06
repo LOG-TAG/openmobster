@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -280,6 +281,47 @@ public class ConflictEngine
 			tx.commit();
 			
 			return apps;
+		}
+		catch(Exception e)
+		{
+			log.error(this, e);
+			
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+			throw new SyncException(e);
+		}
+	}
+	
+	public List<ConflictEntry> findLiveEntries(String channel, String oid)
+	{
+		Session session = null;
+		Transaction tx = null;
+		try
+		{
+			List<ConflictEntry> liveEntries = new ArrayList<ConflictEntry>();
+			
+			session = this.hibernateManager.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			String query = "from ConflictEntry where oid=? AND channel=?";
+			
+			List entries = session.createQuery(query).setParameter(0, oid).
+			setParameter(1,channel).list();
+			
+			if(entries != null && !entries.isEmpty())
+			{
+				for(Object local:entries)
+				{
+					ConflictEntry entry = (ConflictEntry)local;
+					liveEntries.add(entry);
+				}
+			}
+						
+			tx.commit();
+			
+			return liveEntries;
 		}
 		catch(Exception e)
 		{

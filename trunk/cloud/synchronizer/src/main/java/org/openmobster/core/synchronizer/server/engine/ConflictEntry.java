@@ -18,10 +18,10 @@ public class ConflictEntry implements Serializable
 	private long id; //instance oid
 	
 	private String deviceId;
+	private String app;
+	private String channel;
 	private String oid;
 	private String state;
-	private String channel;
-	private String app;
 	
 	public ConflictEntry()
 	{
