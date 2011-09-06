@@ -11,6 +11,8 @@ package org.openmobster.core.mobileContainer;
 import org.apache.log4j.Logger;
 import org.openmobster.cloud.api.sync.Channel;
 import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.core.common.event.Event;
+import org.openmobster.core.common.event.EventManager;
 import org.openmobster.core.services.MobileObjectMonitor;
 
 
@@ -23,6 +25,7 @@ public class DeleteMobileBean implements ContainerService
 	
 	private String id;
 	private MobileObjectMonitor monitor;
+	private EventManager eventManager;
 	
 	public DeleteMobileBean()
 	{
@@ -58,6 +61,16 @@ public class DeleteMobileBean implements ContainerService
 	{
 		this.monitor = monitor;
 	}
+	
+	public EventManager getEventManager()
+	{
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager)
+	{
+		this.eventManager = eventManager;
+	}
 	//---------------------------------------------------------------------------------------------------
 	public InvocationResponse execute(Invocation invocation) throws InvocationException
 	{
@@ -82,6 +95,10 @@ public class DeleteMobileBean implements ContainerService
 			response.setBeanId(beanId);
 			
 			//Send a bean deleted event
+			Event event = new Event();
+			event.setAttribute("mobile-bean",bean);
+			event.setAttribute("action", "delete");
+			this.eventManager.fire(event);
 		}
 		
 		

@@ -247,8 +247,8 @@
    		<property name="deviceId">IMEI:2</property>
    		<property name="serverId">http://www.openmobster.org/sync-server</property>
    		<property name="service">testServerBean</property>
-   		<property name="user">blah2@gmail.com</property>
-   		<property name="credential">blahblah2</property>
+   		<property name="user">blah3@gmail.com</property>
+   		<property name="credential">blahblah3</property>
    		<property name="deviceSyncEngine">
    			<inject bean="simulator://SyncEngine"/>
    		</property>

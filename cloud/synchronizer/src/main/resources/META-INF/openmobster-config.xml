@@ -66,7 +66,11 @@
    class="org.openmobster.core.synchronizer.event.UpdateBeanEventListener"> 
    		<property name="syncEngine">
    			<inject bean="synchronizer://ServerSyncEngine"/>
-   		</property>     
+   		</property>  
+   		<property name="conflictEngine">
+   			<inject bean="ConflictEngine"/>
+   		</property>
+   		<property name="notifier"><inject bean="org.openmobster.core.push.notification.Notifier"/></property>   
    		<depends>synchronizer://MobileObjectGateway</depends> 
    </bean>
    <bean name="synchronizer://CreateBeanEventListener" 
@@ -79,6 +83,17 @@
    		</property>
    		<property name="notifier"><inject bean="org.openmobster.core.push.notification.Notifier"/></property>
    		<depends>synchronizer://MobileObjectGateway</depends>      
+   </bean>
+   <bean name="synchronizer://DeleteBeanEventListener" 
+   class="org.openmobster.core.synchronizer.event.DeleteBeanEventListener"> 
+   		<property name="syncEngine">
+   			<inject bean="synchronizer://ServerSyncEngine"/>
+   		</property>  
+   		<property name="conflictEngine">
+   			<inject bean="ConflictEngine"/>
+   		</property>
+   		<property name="notifier"><inject bean="org.openmobster.core.push.notification.Notifier"/></property>   
+   		<depends>synchronizer://MobileObjectGateway</depends> 
    </bean>
    
    <!-- Conflict Detection Engine -->

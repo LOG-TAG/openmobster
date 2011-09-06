@@ -7,42 +7,39 @@
  */
 package org.openmobster.core.synchronizer.event;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
 import org.openmobster.core.common.event.Event;
 import org.openmobster.core.common.event.EventListener;
-import org.openmobster.core.security.device.Device;
-import org.openmobster.core.security.device.DeviceController;
-import org.openmobster.core.security.identity.Identity;
-import org.openmobster.core.synchronizer.server.Session;
-import org.openmobster.core.synchronizer.server.SyncContext;
-import org.openmobster.core.synchronizer.server.engine.Tools;
-import org.openmobster.cloud.api.ExecutionContext;
-import org.openmobster.cloud.api.sync.MobileBean;
-import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
-import org.openmobster.core.synchronizer.server.engine.ConflictEngine;
-import org.openmobster.core.synchronizer.server.engine.ChangeLogEntry;
-import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
+import org.openmobster.core.synchronizer.server.engine.ChangeLogEntry;
+import org.openmobster.core.synchronizer.server.engine.ConflictEngine;
+import org.openmobster.core.synchronizer.server.engine.ConflictEntry;
+import org.openmobster.core.synchronizer.server.engine.Tools;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.ExecutionContext;
+import org.openmobster.core.synchronizer.server.SyncContext;
+import org.openmobster.core.synchronizer.server.Session;
+import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
 
 /**
  *
  * @author openmobster@gmail.com
  */
-public class CreateBeanEventListener implements EventListener
+public class DeleteBeanEventListener implements EventListener
 {
-	private static Logger log = Logger.getLogger(CreateBeanEventListener.class);
+	private static Logger log = Logger.getLogger(DeleteBeanEventListener.class);
 	
 	private ServerSyncEngine syncEngine = null;
 	private ConflictEngine conflictEngine = null;
 	private Notifier notifier = null;
-	
 	
 	
 	public ServerSyncEngine getSyncEngine()
@@ -70,7 +67,8 @@ public class CreateBeanEventListener implements EventListener
 	{
 		this.conflictEngine = conflictEngine;
 	}
-	
+
+
 
 	public Notifier getNotifier()
 	{
@@ -95,10 +93,10 @@ public class CreateBeanEventListener implements EventListener
 	{
 		
 	}
-
+	
 	public void onEvent(Event event)
 	{	
-		//Get the Bean that has been added by a user
+		//Get the Bean that has been deleted by a user
 		MobileBean mobileBean = (MobileBean)event.getAttribute("mobile-bean");
 		
 		if(mobileBean == null)
@@ -106,9 +104,9 @@ public class CreateBeanEventListener implements EventListener
 			return;
 		}
 		
-		//Make sure this is an 'Add' operation
+		//Make sure this is a 'Delete' operation
 		String action = (String)event.getAttribute("action");
-		if(!action.equalsIgnoreCase("create"))
+		if(!action.equalsIgnoreCase("delete"))
 		{
 			return;
 		}
@@ -116,83 +114,63 @@ public class CreateBeanEventListener implements EventListener
 		//Get data from the environment
 		SyncContext context = (SyncContext)ExecutionContext.getInstance().getSyncContext();
 		Session session = context.getSession();
-		DeviceController deviceController = DeviceController.getInstance();
 		
 		String deviceId = session.getDeviceId();
 		String channel = session.getChannel();
-		String operation = ServerSyncEngine.OPERATION_ADD;
+		String operation = ServerSyncEngine.OPERATION_DELETE;
 		String oid = Tools.getOid(mobileBean);
 		String app = session.getApp();
 		
 		log.debug("*************************************");
-		log.debug("Bean Added: "+oid);
+		log.debug("Bean Deleted: "+oid);
 		log.debug("DeviceId : "+deviceId);
 		log.debug("Channel: "+channel);
 		log.debug("Operation: "+operation);
 		log.debug("App: "+app);
 		
-		Device device = deviceController.read(deviceId);
-		if(device == null)
-		{
-			return;
-		}
-		
-		Identity registeredUser = device.getIdentity();
-		log.debug("User: "+registeredUser.getPrincipal());
-		
-		//Find all the devices that are registered by this user adding the bean
-		Set<Device> allDevices = deviceController.readByIdentity(registeredUser.getPrincipal());
-		if(allDevices == null || allDevices.isEmpty())
+		//Get a List of Entries which represent an instance of this bean, but on other devices
+		List<ConflictEntry> liveEntries = this.conflictEngine.findLiveEntries(channel, oid);
+		if(liveEntries == null || liveEntries.isEmpty())
 		{
 			return;
 		}
 		
 		Map<String, Notification> pushNotifications = new HashMap<String, Notification>();
-		for(Device local:allDevices)
+		for(ConflictEntry entry:liveEntries)
 		{
-			String myDeviceId = local.getIdentifier();
+			if(entry.getDeviceId().equals(deviceId) &&
+			   entry.getApp().equals(app) &&
+			   entry.getChannel().equals(channel) &&
+			   entry.getOid().equals(oid)
+			)
+			{
+				//This is the originally updated bean (ignore)
+				continue;
+			}
 			
-			log.debug("DeviceId: "+myDeviceId);
+			//Update the ChangeLog of this device so that the 'Updated' bean
+			//is pushed to the device
+			ChangeLogEntry changelogEntry = new ChangeLogEntry();
+			changelogEntry.setTarget(entry.getDeviceId());
+			changelogEntry.setNodeId(entry.getChannel());
+			changelogEntry.setApp(entry.getApp());
+			changelogEntry.setOperation(operation);
+			changelogEntry.setRecordId(entry.getOid());
 			
-			if(myDeviceId.equals(deviceId))
+			//Check and make sure this ChangeLogEntry does not already exist
+			boolean exists = this.syncEngine.changeLogEntryExists(changelogEntry);
+			if(exists)
 			{
 				continue;
 			}
 			
-			//Get a list of apps installed on this device, and are 
-			//subscribed to the channel in question
-			Set<String> apps = this.conflictEngine.findLiveApps(myDeviceId, channel);
-			if(apps == null || apps.isEmpty())
-			{
-				continue;
-			}
+			List entries = new ArrayList();
+			entries.add(changelogEntry);
+			this.syncEngine.addChangeLogEntries(entry.getDeviceId(), entry.getApp(), entries);
 			
-			for(String subscribedApp:apps)
-			{
-				//Update the ChangeLog of this device so that the Added bean
-				//is added to the device during the Push
-				ChangeLogEntry changelogEntry = new ChangeLogEntry();
-				changelogEntry.setTarget(myDeviceId);
-				changelogEntry.setNodeId(channel);
-				changelogEntry.setApp(subscribedApp);
-				changelogEntry.setOperation(operation);
-				changelogEntry.setRecordId(oid);
-				
-				//Check and make sure this ChangeLogEntry does not already exist
-				boolean exists = this.syncEngine.changeLogEntryExists(changelogEntry);
-				if(exists)
-				{
-					continue;
-				}
-				
-				List entries = new ArrayList();
-				entries.add(changelogEntry);
-				this.syncEngine.addChangeLogEntries(myDeviceId, subscribedApp, entries);
-				
-				//Prepare a Sync Push Notification for this device and channel
-				Notification notification = Notification.createSyncNotification(myDeviceId, channel);
-				pushNotifications.put(myDeviceId, notification);
-			}
+			//Prepare a Sync Push Notification for this device and channel
+			Notification notification = Notification.createSyncNotification(entry.getDeviceId(), channel);
+			pushNotifications.put(entry.getDeviceId(), notification);
 		}
 		
 		//Send Push Notifications

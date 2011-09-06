@@ -550,6 +550,41 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}		
 	}
 	
+	public boolean changeLogEntryExists(ChangeLogEntry entry)
+	{
+		Session session = this.hibernateManager.getSessionFactory()
+		.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		try
+		{
+			String query = "from ChangeLogEntry entry where entry.target=? AND entry.nodeId=? AND entry.operation=? AND entry.app=? AND entry.recordId=?";
+		
+			List changeLog = session.createQuery(query).setString(0, entry.getTarget()).
+			setString(1, entry.getNodeId()).
+			setString(2, entry.getOperation()).
+			setString(3, entry.getApp()).setString(4, entry.getRecordId()).list();
+			
+			boolean exists = false;
+			if(changeLog != null && !changeLog.isEmpty())
+			{
+				exists = true;
+			}
+		
+			tx.commit();
+			
+			return exists;
+		}
+		catch (Exception e)
+		{
+			logger.error(this, e);
+			if (tx != null)
+			{
+				tx.rollback();
+			}
+			throw new SyncException(e);
+		}		
+	}
+	
 	public void clearChangeLogEntry(String target, String app, ChangeLogEntry logEntry)
 	{					
 		String recordId = this.gateway.parseId(logEntry.getItem().getData());
