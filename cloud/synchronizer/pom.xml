@@ -35,7 +35,11 @@
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>api</artifactId>				
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>push-apn</artifactId>				
+		</dependency>			
 		
 		<dependency>
 			<groupId>commons-beanutils</groupId>
