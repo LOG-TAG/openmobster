@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -60,9 +59,9 @@ public final class DeviceContainer
 {
 	private static DeviceContainer singleton;
 	
-	private Activity context;
+	private Context context;
 	
-	private DeviceContainer(Activity context)
+	private DeviceContainer(Context context)
 	{
 		this.context = context;
 	}
@@ -72,7 +71,7 @@ public final class DeviceContainer
 	 * 
 	 * @return
 	 */
-	public static DeviceContainer getInstance(Activity activity)
+	public static DeviceContainer getInstance(Context context)
 	{
 		if(DeviceContainer.singleton == null)
 		{
@@ -80,8 +79,8 @@ public final class DeviceContainer
 			{
 				if(DeviceContainer.singleton == null)
 				{
-					Registry.getInstance(activity).setContainer(true);
-					DeviceContainer.singleton = new DeviceContainer(activity);
+					Registry.getInstance(context).setContainer(true);
+					DeviceContainer.singleton = new DeviceContainer(context);
 				}
 			}
 		}
@@ -255,7 +254,7 @@ public final class DeviceContainer
 		return Registry.getActiveInstance().isStarted();
 	}	
 	
-	public synchronized void propagateNewContext(Activity context)
+	public synchronized void propagateNewContext(Context context)
 	{
 		this.context = context;
 		Registry.getActiveInstance().setContext(context);

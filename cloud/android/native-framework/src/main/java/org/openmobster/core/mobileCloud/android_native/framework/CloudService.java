@@ -60,7 +60,7 @@ public class CloudService
 		try
 		{
 			//short-fast boostrapping of the kernel
-			if(!Moblet.getInstance(context).isContainerActive())
+			if(!Moblet.getInstance(context.getApplicationContext()).isContainerActive())
 			{
 				this.bootstrapContainer(context);
 			}
@@ -89,7 +89,7 @@ public class CloudService
 						
 						while(!looper.isReady());
 						
-						looper.handler.post(new ShowError());
+						looper.handler.post(new ShowError(context));
 					}
 				}
 			}
@@ -127,8 +127,8 @@ public class CloudService
 		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
 		
 		//Initialize the kernel
-		Moblet.getInstance(context).propagateNewContext(context);
-    	Moblet.getInstance(context).startup(); 
+		Moblet.getInstance(context.getApplicationContext()).propagateNewContext(context);
+    	Moblet.getInstance(context.getApplicationContext()).startup(); 
     	
     	((AppPushListener)Services.getInstance().getPushListener()).start();
 	}
@@ -194,10 +194,15 @@ public class CloudService
 	
 	private class ShowError implements Runnable
 	{
+		private Activity currentActvity;
+		public ShowError(Activity currentActivity)
+		{
+			this.currentActvity = currentActivity;
+		}
+		
 		public void run()
 		{
-			Activity activity = Registry.getActiveInstance().getContext();
-			ViewHelper.getOkModalWithCloseApp(activity, "System Error", "CloudManager App is either not installed or not running")
+			ViewHelper.getOkModalWithCloseApp(this.currentActvity, "System Error", "CloudManager App is either not installed or not running")
 			.show();
 		}
 	}

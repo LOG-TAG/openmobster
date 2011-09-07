@@ -19,7 +19,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.app.Activity;
 
 
 /**
@@ -47,9 +46,9 @@ public final class Registry
 	private List<Service> services;
 	private boolean isStarted;
 	private boolean isContainer = true;
-	private Activity context;
+	private Context context;
 	
-	private Registry(Activity context)
+	private Registry(Context context)
 	{
 		this.context = context;
 	}	
@@ -59,7 +58,7 @@ public final class Registry
 	 * 
 	 * @return the instance of the Service Registry in the system
 	 */
-	public static Registry getInstance(Activity context)
+	public static Registry getInstance(Context context)
 	{		
 		if(Registry.singleton == null)
 		{
@@ -103,12 +102,12 @@ public final class Registry
 		return this.isStarted;
 	}	
 	
-	public Activity getContext()
+	public Context getContext()
 	{
 		return this.context;
 	}
 	
-	public void setContext(Activity context)
+	public void setContext(Context context)
 	{
 		this.context = context;
 	}

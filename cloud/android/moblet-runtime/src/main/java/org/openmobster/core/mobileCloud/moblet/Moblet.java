@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -40,9 +39,9 @@ public final class Moblet
 {
 	private static Moblet singleton;
 	
-	private Activity context;
+	private Context context;
 	
-	private Moblet(Activity context)
+	private Moblet(Context context)
 	{
 		this.context = context;
 	}
@@ -52,7 +51,7 @@ public final class Moblet
 	 * 
 	 * @return
 	 */
-	public static Moblet getInstance(Activity context)
+	public static Moblet getInstance(Context context)
 	{
 		if(Moblet.singleton == null)
 		{
@@ -153,7 +152,7 @@ public final class Moblet
 		return Registry.getActiveInstance().isStarted();
 	}
 	
-	public synchronized void propagateNewContext(Activity context)
+	public synchronized void propagateNewContext(Context context)
 	{
 		this.context = context;
 		Registry.getActiveInstance().setContext(context);
