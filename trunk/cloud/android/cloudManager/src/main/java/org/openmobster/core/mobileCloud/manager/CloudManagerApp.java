@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.manager;
 
 import android.os.Bundle;
+import android.content.Intent;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -39,12 +40,24 @@ public class CloudManagerApp extends ListApp
 			this.showError();
 		}
 	}
-	
+
+
 	@Override
 	protected void bootstrapContainer() throws Exception
 	{
-		//Initialize the kernel
-		DeviceContainer.getInstance(this.getApplicationContext()).propagateNewContext(this);
-    	DeviceContainer.getInstance(this.getApplicationContext()).startup(); 
+		DeviceContainer container = DeviceContainer.getInstance(this.getApplicationContext());
+		boolean isActive = container.isContainerActive();
+		
+		//start the kernel
+		container.propagateNewContext(this);
+    	container.startup(); 
+    	
+    	//Start the Keep Alive service
+    	if(!isActive)
+    	{
+    		Intent start = new Intent("org.openmobster.core.mobileCloud.manager.KeepAliveService");
+    		start.putExtra("activityClassName", this.getClass().getName());
+    		this.startService(start);
+    	}
 	}
 }
