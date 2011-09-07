@@ -173,8 +173,8 @@ public final class CommonApp
 	static void bootstrapContainer(final Activity activity)
 	{
 		//Initialize the kernel
-		Moblet.getInstance(activity).propagateNewContext(activity);
-    	Moblet.getInstance(activity).startup(); 
+		Moblet.getInstance(activity.getApplicationContext()).propagateNewContext(activity);
+    	Moblet.getInstance(activity.getApplicationContext()).startup(); 
     	
     	((AppPushListener)Services.getInstance().getPushListener()).start();
 	}

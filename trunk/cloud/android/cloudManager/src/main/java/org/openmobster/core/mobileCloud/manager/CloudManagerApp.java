@@ -44,7 +44,7 @@ public class CloudManagerApp extends ListApp
 	protected void bootstrapContainer() throws Exception
 	{
 		//Initialize the kernel
-		DeviceContainer.getInstance(this).propagateNewContext(this);
-    	DeviceContainer.getInstance(this).startup(); 
+		DeviceContainer.getInstance(this.getApplicationContext()).propagateNewContext(this);
+    	DeviceContainer.getInstance(this.getApplicationContext()).startup(); 
 	}
 }

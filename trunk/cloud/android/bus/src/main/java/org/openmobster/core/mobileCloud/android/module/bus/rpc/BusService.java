@@ -40,7 +40,7 @@ public class BusService extends Service
 	public void onCreate()
 	{
 		super.onCreate();
-		this.startForegroundRegistration();
+		//this.startForegroundRegistration();
 		
 		/*try
 		{
@@ -120,7 +120,7 @@ public class BusService extends Service
 	}*/
 	
 	
-	private void startForegroundRegistration()
+	/*private void startForegroundRegistration()
 	{
 		Activity activity = Registry.getActiveInstance().getContext();
 		Context context = Registry.getActiveInstance().getContext();
@@ -159,5 +159,5 @@ public class BusService extends Service
 			e.printStackTrace(System.out);
 			return 0;
 		}
-	}
+	}*/
 }
