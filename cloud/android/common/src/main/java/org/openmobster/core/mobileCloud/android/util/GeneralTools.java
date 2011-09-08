@@ -41,6 +41,7 @@ public class GeneralTools
 		inputBuffer.append(manufacturer);
 		inputBuffer.append(model);
 		inputBuffer.append(product);
+		inputBuffer.append(GeneralTools.generateUniqueId());
 		
 		String knownInput = inputBuffer.toString();
 		

@@ -41,4 +41,5 @@ public interface Constants
 	public final String message = "message";
 	public final String extras = "extras";
 	public final String push = "push";
+	public final String silent = "silent";
 }

@@ -60,7 +60,7 @@ public final class CommandProcessor extends Service
 	
 	
 	public void process(String command)
-	{
+	{	
 		//Process the Command on a separate thread, not on the Notification Listening Thread		
 		String[] tokens = StringUtil.tokenize(command, Constants.separator);
 		Map<String,String> input = new HashMap<String,String>();
@@ -204,6 +204,7 @@ public final class CommandProcessor extends Service
 			try
 			{
 				String service = input.get(Constants.service);
+				String silent = input.get(Constants.silent);
 				
 				if(service == null)
 				{
@@ -216,8 +217,17 @@ public final class CommandProcessor extends Service
 				}
 								
 				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-				SyncInvocation.oneWayServerOnly, service);
-				syncInvocation.activateBackgroundSync();
+				SyncInvocation.twoWay, service);
+				
+				if(silent == null || silent.equals("false"))
+				{
+					syncInvocation.activateBackgroundSync();
+				}
+				else
+				{
+					syncInvocation.deactivateBackgroundSync();
+				}
+				
 				Bus.getInstance().invokeService(syncInvocation);
 			}
 			catch(Exception e)

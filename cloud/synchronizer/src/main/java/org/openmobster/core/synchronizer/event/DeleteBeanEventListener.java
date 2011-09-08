@@ -169,7 +169,7 @@ public class DeleteBeanEventListener implements EventListener
 			this.syncEngine.addChangeLogEntries(entry.getDeviceId(), entry.getApp(), entries);
 			
 			//Prepare a Sync Push Notification for this device and channel
-			Notification notification = Notification.createSyncNotification(entry.getDeviceId(), channel);
+			Notification notification = Notification.createSilentSyncNotification(entry.getDeviceId(), channel);
 			pushNotifications.put(entry.getDeviceId(), notification);
 		}
 		

@@ -190,7 +190,7 @@ public class CreateBeanEventListener implements EventListener
 				this.syncEngine.addChangeLogEntries(myDeviceId, subscribedApp, entries);
 				
 				//Prepare a Sync Push Notification for this device and channel
-				Notification notification = Notification.createSyncNotification(myDeviceId, channel);
+				Notification notification = Notification.createSilentSyncNotification(myDeviceId, channel);
 				pushNotifications.put(myDeviceId, notification);
 			}
 		}
