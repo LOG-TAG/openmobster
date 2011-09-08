@@ -41,8 +41,7 @@ public class RemoteScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "remote";

@@ -49,9 +49,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
-			Configuration conf = Configuration.getInstance(currentActivity);
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String home = "home";
@@ -80,8 +78,7 @@ public class HomeScreen extends Screen
 	@Override
 	public void postRender()
 	{
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
 		listApp.setTitle("Development Cloud");
 		
@@ -134,8 +131,7 @@ public class HomeScreen extends Screen
 	
 	private void setupMenu()
 	{
-		final ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		final ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		Menu menu = (Menu)NavigationContext.getInstance().
 		getAttribute("options-menu");
 		
@@ -209,9 +205,9 @@ public class HomeScreen extends Screen
 	
 	private void collectCloudIP() throws Exception
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
-		final Configuration conf = Configuration.getInstance(currentActivity);
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
+		final Context context = Registry.getActiveInstance().getContext();
+		final Configuration conf = Configuration.getInstance(context);
 		
 		String cloudIp = conf.getServerIp();
 		
@@ -235,7 +231,7 @@ public class HomeScreen extends Screen
 					if(cloudIp != null && cloudIp.trim().length()>0)
 					{
 						conf.setServerIp(serverField.getText().toString());
-						conf.save(currentActivity);
+						conf.save(context);
 						dialog.dismiss();
 						HomeScreen.this.mockActivate();
 					}
@@ -266,13 +262,12 @@ public class HomeScreen extends Screen
 	
 	private void mockActivate() throws Exception
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
-		Configuration conf = Configuration.getInstance(currentActivity);
+		final Context context = Registry.getActiveInstance().getContext();
+		Configuration conf = Configuration.getInstance(context);
 		
 		String cloudIp = conf.getServerIp();
 		
-		this.startup(currentActivity);
+		this.startup(context);
 		
 		//Initialize the activation properties
 		Properties properties = new Properties();
@@ -293,7 +288,7 @@ public class HomeScreen extends Screen
 		conf.setEmail(email);
 		conf.setAuthenticationHash(password);
 		conf.setAuthenticationNonce(password);
-		conf.save(currentActivity);
+		conf.save(context);
 		
 		this.activateDevice(conf.getServerIp(), "1502", email, password);
 	}
@@ -302,6 +297,7 @@ public class HomeScreen extends Screen
 	{
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		if(conf.isActive())
 		{
@@ -309,16 +305,15 @@ public class HomeScreen extends Screen
 		}
 		else
 		{
-			Toast.makeText(context, "Device needs to be activated with the Cloud!!", 
+			Toast.makeText(currentActivity, "Device needs to be activated with the Cloud!!", 
 			Toast.LENGTH_SHORT).show();
 		}
 	}
 	
 	private void changeCloudServer() throws Exception
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
-		Context context = Registry.getActiveInstance().getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
+		final Context context = Registry.getActiveInstance().getContext();
 		final Configuration conf = Configuration.getInstance(context);
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
@@ -335,7 +330,7 @@ public class HomeScreen extends Screen
 			public void onClick(DialogInterface dialog, int id)
 			{
 				conf.setServerIp(serverField.getText().toString());
-				conf.save(currentActivity);
+				conf.save(context);
 				dialog.dismiss();
 				Toast.makeText(currentActivity, "Cloud Server IP Address now set to: "+conf.getServerIp(), 
 						Toast.LENGTH_SHORT).show();
@@ -355,14 +350,14 @@ public class HomeScreen extends Screen
 		builder.create().show();
 	}
 	
-	private void startup(final Activity activity) throws Exception
+	private void startup(final Context context) throws Exception
     {
-		Database database = Database.getInstance(activity);
+		Database database = Database.getInstance(context);
 		if(database.doesTableExist(Database.provisioning_table))
 		{
 	    	//Make a local copy of registered channels
 	    	//System.out.println("Copying the channels...........");
-	    	Configuration configuration = Configuration.getInstance(activity);
+	    	Configuration configuration = Configuration.getInstance(context);
 	    	List<String> myChannels = configuration.getMyChannels();
 	    	
 	    	//drop the configuration so new one will be generated
@@ -375,18 +370,18 @@ public class HomeScreen extends Screen
 	    	
 	    	//restart the configuration
 	    	//System.out.println("Restarting the configuration.......");
-	    	configuration.start(activity);
+	    	configuration.start(context);
 	    	
 	    	//Now reload the registered channels if any were found
 	    	//System.out.println("Reloading the channels.......");
 	    	if(myChannels != null && myChannels.size()>0)
 	    	{
-		    	configuration = Configuration.getInstance(activity);
+		    	configuration = Configuration.getInstance(context);
 		    	for(String channel:myChannels)
 		    	{
 		    		configuration.addMyChannel(channel);
 		    	}
-		    	configuration.save(activity);
+		    	configuration.save(context);
 	    	}
 	    	//System.out.println("Startup successfull.............");
 		}

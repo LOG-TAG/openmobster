@@ -70,8 +70,8 @@ public class ManualSync implements RemoteCommand
 	public void doViewAfter(CommandContext commandContext) 
 	{				
 		AppResources resources = Services.getInstance().getResources();
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "Sync is done!!", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "Sync is done!!", 
 		Toast.LENGTH_SHORT).show();
 		
 		NavigationContext navigationContext = Services.getInstance().getNavigationContext();
@@ -83,7 +83,7 @@ public class ManualSync implements RemoteCommand
 		AppResources resources = Services.getInstance().getResources();
 		AppException appException = commandContext.getAppException();
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		resources.localize(appException.getMessageKey(), appException.getMessageKey())).
 		show();

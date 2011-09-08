@@ -11,6 +11,7 @@ package org.openmobster.core.mobileCloud.android_native.framework;
 import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
 import org.openmobster.core.mobileCloud.spi.ui.framework.NavigationContextSPI;
 
@@ -41,8 +42,7 @@ final class NativeNavigationContextSPI implements NavigationContextSPI
 	
 	public void refresh()
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		currentActivity.getWindow().getDecorView().invalidate();
 	}
@@ -53,8 +53,7 @@ final class NativeNavigationContextSPI implements NavigationContextSPI
 		
 		if(screenId != null)
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();			
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();	
 			currentActivity.setContentView(screenId);						
 		}
 		screen.postRender();

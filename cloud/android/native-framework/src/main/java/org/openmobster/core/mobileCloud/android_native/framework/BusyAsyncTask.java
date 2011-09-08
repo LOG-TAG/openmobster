@@ -35,8 +35,8 @@ final class BusyAsyncTask extends AsyncTask<CommandContext,Integer,CommandContex
 	
 	BusyAsyncTask()
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		
 		this.progressDialog = new ProgressDialog(currentActivity);
 		this.progressDialog.setTitle("");
 		this.progressDialog.setMessage("Processing....");
@@ -141,8 +141,7 @@ final class BusyAsyncTask extends AsyncTask<CommandContext,Integer,CommandContex
 		else
 		{
 			//show command expiry dialog
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			AlertDialog timeoutDialog = ViewHelper.getOkModal(currentActivity, 
 			"Command Timed Out", 

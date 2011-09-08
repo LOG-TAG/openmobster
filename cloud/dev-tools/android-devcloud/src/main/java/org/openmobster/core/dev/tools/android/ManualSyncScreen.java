@@ -51,8 +51,7 @@ public class ManualSyncScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "home";
@@ -79,8 +78,8 @@ public class ManualSyncScreen extends Screen
 	public void postRender()
 	{		
 		//render the list		
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
+		
 		final Configuration conf = Configuration.getInstance(listApp);
 		AppResources appResources = Services.getInstance().getResources();	
 		
@@ -149,12 +148,12 @@ public class ManualSyncScreen extends Screen
 	
 	private void startChannelSelect(String channel)
 	{
-		Context context = Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		AppResources resources = Services.getInstance().getResources();
 		
 		ChannelSyncListener listener = new ChannelSyncListener(channel);
 		
-		AlertDialog dialog = new AlertDialog.Builder(context).
+		AlertDialog dialog = new AlertDialog.Builder(currentActivity).
 		setItems(new String[]{"Reset Channel",
 		"Sync Channel",
 		resources.localize(SystemLocaleKeys.cancel, SystemLocaleKeys.cancel)}, listener).
