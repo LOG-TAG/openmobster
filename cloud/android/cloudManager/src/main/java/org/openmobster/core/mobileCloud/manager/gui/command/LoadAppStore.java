@@ -83,7 +83,7 @@ public class LoadAppStore implements RemoteCommand
 		AppResources resources = Services.getInstance().getResources();
 		AppException appException = commandContext.getAppException();
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		resources.localize(appException.getMessageKey(), appException.getMessageKey())).
 		show();

@@ -66,15 +66,15 @@ public class UploadErrorLog implements RemoteCommand
 
 	public void doViewBefore(CommandContext commandContext) 
 	{
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "ErrorLog Transfer in progress....", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "ErrorLog Transfer in progress....", 
 		Toast.LENGTH_SHORT).show();
 	}
 	
 	public void doViewAfter(CommandContext commandContext) 
 	{					
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "ErrorLog Transfer finished....", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "ErrorLog Transfer finished....", 
 		Toast.LENGTH_SHORT).show();
 		
 		NavigationContext navigationContext = Services.getInstance().getNavigationContext();
@@ -83,7 +83,7 @@ public class UploadErrorLog implements RemoteCommand
 
 	public void doViewError(CommandContext commandContext) 
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		"ErrorLog Transfer Failed!!!").
 		show();

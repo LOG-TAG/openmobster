@@ -38,8 +38,8 @@ public class CometConfig implements RemoteCommand
 	public void doViewBefore(CommandContext commandContext) 
 	{
 		AppResources resources = Services.getInstance().getResources();
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, resources.localize(LocaleKeys.push_restart, LocaleKeys.push_restart), 
+		Activity activity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(activity, resources.localize(LocaleKeys.push_restart, LocaleKeys.push_restart), 
 		Toast.LENGTH_SHORT).show();
 	}
 	
@@ -73,8 +73,8 @@ public class CometConfig implements RemoteCommand
 	public void doViewAfter(CommandContext commandContext) 
 	{				
 		AppResources resources = Services.getInstance().getResources();
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, resources.localize(LocaleKeys.push_restarted, LocaleKeys.push_restarted), 
+		Activity activity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(activity, resources.localize(LocaleKeys.push_restarted, LocaleKeys.push_restarted), 
 		Toast.LENGTH_SHORT).show();
 		
 		String status = (String)commandContext.getAttribute("status");
@@ -89,8 +89,8 @@ public class CometConfig implements RemoteCommand
 		AppResources resources = Services.getInstance().getResources();
 		AppException appException = commandContext.getAppException();
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
-		ViewHelper.getOkModal(currentActivity, "", 
+		Activity activity = Services.getInstance().getCurrentActivity();
+		ViewHelper.getOkModal(activity, "", 
 		resources.localize(appException.getMessageKey(), appException.getMessageKey())).
 		show();				
 	}					

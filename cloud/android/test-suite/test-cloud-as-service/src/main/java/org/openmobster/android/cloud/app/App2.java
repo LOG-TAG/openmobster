@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.app.Activity;
+import android.content.Context;
 
 /**
  * 
@@ -103,9 +104,15 @@ public class App2 extends Activity
 						public void onClick(View clicked)
 						{
 							Activity main = (Activity)Registry.getActiveInstance().getContext();
-							//main.finish();
 							
-							ViewHelper.getOkModal(main, "Test", "Activity is finished!!").show();
+							Context context = main.getApplicationContext();
+							
+							main.finish();
+							
+							System.out.println("Context: "+context);
+							System.out.println("ApplicationInfo: "+context.getApplicationInfo().packageName);
+							
+							ViewHelper.getOkModal(App2.this, "Test", "Activity is finished!!").show();
 						}
 					}
 			);

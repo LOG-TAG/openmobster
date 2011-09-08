@@ -45,8 +45,7 @@ public class SecurityScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "main";
@@ -73,8 +72,7 @@ public class SecurityScreen extends Screen
 	public void postRender()
 	{		
 		//render the list		
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		Configuration conf = Configuration.getInstance(listApp);
 		
 		boolean isSSLActive = conf.isSSLActivated();

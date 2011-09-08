@@ -59,8 +59,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "main";
@@ -87,8 +86,7 @@ public class HomeScreen extends Screen
 	public void postRender()
 	{
 		//render the list		
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
 		//Set the title
 		listApp.setTitle("Control Panel");
@@ -148,8 +146,7 @@ public class HomeScreen extends Screen
 	
 	private void setupMenu()
 	{
-		final ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		final ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		Menu menu = (Menu)NavigationContext.getInstance().
 		getAttribute("options-menu");
 		
@@ -217,6 +214,7 @@ public class HomeScreen extends Screen
 	//-----------------------------------------------------------------------------------------------------------------------------
 	private void startActivationWizard()
 	{
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		Context context = Registry.getActiveInstance().
 		getContext();
 		Configuration conf = Configuration.getInstance(context);
@@ -224,7 +222,7 @@ public class HomeScreen extends Screen
 		if(!conf.isActive())
 		{
 			//First time activation ever.....
-			EditText serverField = new EditText(context);
+			EditText serverField = new EditText(currentActivity);
 			serverField.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
 			
 			GenericAttributeManager wizardState = new GenericAttributeManager();
@@ -240,7 +238,7 @@ public class HomeScreen extends Screen
 		else
 		{
 			//A re-activation
-			EditText emailField = new EditText(context);
+			EditText emailField = new EditText(currentActivity);
 			emailField.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 			emailField.setText(conf.getEmail());
 			
@@ -286,6 +284,7 @@ public class HomeScreen extends Screen
 		AppResources resources = Services.getInstance().getResources();
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		if(conf.isActive())
 		{
 			CommandContext commandContext = new CommandContext();
@@ -294,7 +293,7 @@ public class HomeScreen extends Screen
 		}
 		else
 		{
-			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.makeText(currentActivity, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
 			Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -304,6 +303,7 @@ public class HomeScreen extends Screen
 		AppResources resources = Services.getInstance().getResources();
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		if(conf.isActive())
 		{
@@ -311,7 +311,7 @@ public class HomeScreen extends Screen
 		}
 		else
 		{
-			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.makeText(currentActivity, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
 			Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -321,6 +321,7 @@ public class HomeScreen extends Screen
 		AppResources resources = Services.getInstance().getResources();
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		if(conf.isActive())
 		{
@@ -328,7 +329,7 @@ public class HomeScreen extends Screen
 		}
 		else
 		{
-			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.makeText(currentActivity, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
 			Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -338,6 +339,7 @@ public class HomeScreen extends Screen
 		AppResources resources = Services.getInstance().getResources();
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		if(conf.isActive())
 		{
@@ -347,13 +349,14 @@ public class HomeScreen extends Screen
 		}
 		else
 		{
-			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.makeText(currentActivity, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
 			Toast.LENGTH_SHORT).show();
 		}
 	}
 	
 	private void checkCloudStatus()
 	{
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		AppResources resources = Services.getInstance().getResources();
 		Context context = Registry.getActiveInstance().getContext();
 		Configuration conf = Configuration.getInstance(context);
@@ -365,7 +368,7 @@ public class HomeScreen extends Screen
 		}
 		else
 		{
-			Toast.makeText(context, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
+			Toast.makeText(currentActivity, resources.localize(LocaleKeys.device_inactive, LocaleKeys.device_inactive), 
 			Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -379,10 +382,11 @@ public class HomeScreen extends Screen
 		{
 			Context context = Registry.getActiveInstance().
 			getContext();
+			Activity currentActivity = Services.getInstance().getCurrentActivity();
 			this.wizardState = wizardState;
 			Configuration conf = Configuration.getInstance(context);
 			
-			this.wizard = new AlertDialog.Builder(context).
+			this.wizard = new AlertDialog.Builder(currentActivity).
 	    	setCancelable(false).
 	    	create();
 			this.wizard.setButton(DialogInterface.BUTTON_POSITIVE, "OK", this);			
@@ -431,8 +435,7 @@ public class HomeScreen extends Screen
 		
 		public void onClick(DialogInterface dialog, int status)
 		{
-			Context context = Registry.getActiveInstance().
-			getContext();
+			Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			if(status == DialogInterface.BUTTON_NEGATIVE)
 			{
@@ -449,7 +452,7 @@ public class HomeScreen extends Screen
 				
 				if(currentLabel.equalsIgnoreCase("server"))
 				{					
-					EditText portField = new EditText(context);
+					EditText portField = new EditText(currentActivity);
 					portField.setInputType(InputType.TYPE_CLASS_NUMBER);	
 					
 					this.wizardState.setAttribute("currentLabel", "Port");
@@ -460,7 +463,7 @@ public class HomeScreen extends Screen
 				}
 				else if(currentLabel.equalsIgnoreCase("port"))
 				{
-					EditText emailField = new EditText(context);
+					EditText emailField = new EditText(currentActivity);
 					emailField.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);	
 					
 					this.wizardState.setAttribute("currentLabel", "Email");
@@ -471,7 +474,7 @@ public class HomeScreen extends Screen
 				}
 				else if(currentLabel.equalsIgnoreCase("email"))
 				{
-					EditText passwordField = new EditText(context);
+					EditText passwordField = new EditText(currentActivity);
 					passwordField.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 					
 					this.wizardState.setAttribute("currentLabel", "Password");
