@@ -6,16 +6,11 @@
 	<TextView 	android:id="@+id/text_view"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" 
-				android:text="Cloud-As-Service App" />
+				android:text="Test Activity LifeCycle" />
 				
-	<Button android:id="@+id/bootstrap_status"
+	<Button android:id="@+id/test_activity_life_cycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Check Bootstrap" />   
-     
-     <Button android:id="@+id/start_app_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start App2" />                                                                            
+            android:text="TestActivityLifeCycle" />                                                                             
 </LinearLayout>
 
