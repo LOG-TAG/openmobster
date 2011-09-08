@@ -49,7 +49,7 @@ public class CloudManagerApp extends ListApp
 		boolean isActive = container.isContainerActive();
 		
 		//start the kernel
-		container.propagateNewContext(this);
+		container.propagateNewContext(this.getApplicationContext());
     	container.startup(); 
     	
     	//Start the Keep Alive service

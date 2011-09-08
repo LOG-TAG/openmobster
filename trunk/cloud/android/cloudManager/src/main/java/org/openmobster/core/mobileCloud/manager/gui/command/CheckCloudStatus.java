@@ -153,7 +153,7 @@ public class CheckCloudStatus implements RemoteCommand
 				configuration.isSSLActivated()?configuration.getSecureServerPort():configuration.getPlainServerPort()
 		});
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		statusOk).
 		show();
@@ -176,7 +176,7 @@ public class CheckCloudStatus implements RemoteCommand
 		}
 		
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		message).
 		show();

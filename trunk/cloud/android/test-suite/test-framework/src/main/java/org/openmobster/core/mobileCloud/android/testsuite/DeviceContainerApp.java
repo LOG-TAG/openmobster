@@ -45,7 +45,7 @@ public class DeviceContainerApp extends App
 	protected void bootstrapContainer() throws Exception
 	{
 		//Initialize the kernel
-		DeviceContainer.getInstance(this.getApplicationContext()).propagateNewContext(this);
+		DeviceContainer.getInstance(this.getApplicationContext()).propagateNewContext(this.getApplicationContext());
     	DeviceContainer.getInstance(this.getApplicationContext()).startup(); 
 	}
 }

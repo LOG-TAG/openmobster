@@ -54,8 +54,7 @@ public class AppStoreScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "main";
@@ -82,8 +81,7 @@ public class AppStoreScreen extends Screen
 	public void postRender()
 	{		
 		//render the list		
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		final Configuration conf = Configuration.getInstance(listApp);
 		AppResources appResources = Services.getInstance().getResources();	
 		
@@ -146,11 +144,11 @@ public class AppStoreScreen extends Screen
 				}
 				
 				//Handle App selection
-				Context context = Registry.getActiveInstance().getContext();
+				Activity currentActivity = Services.getInstance().getCurrentActivity();
 				int choice = clickEvent.getPosition();
 				AppMetaData selectedApp = AppStoreScreen.this.appMetaData.get(choice);
 				
-				AlertDialog appDialog = new AlertDialog.Builder(context).
+				AlertDialog appDialog = new AlertDialog.Builder(currentActivity).
 				setItems(new String[]{"Download/Install","Cancel"}, new AppDetailListener(selectedApp)).
 		    	setCancelable(false).
 		    	create();
@@ -206,8 +204,9 @@ public class AppStoreScreen extends Screen
 			{
 				case 0:
 					//Download/Install the App via the official browser download mechanism
-					Activity activity = (Activity)Registry.getActiveInstance().getContext();
-					Configuration conf = Configuration.getInstance(activity);
+					Context context = Registry.getActiveInstance().getContext();
+					Activity activity = Services.getInstance().getCurrentActivity();
+					Configuration conf = Configuration.getInstance(context);
 					
 					String appUrl = "http://"+conf.getServerIp()+":"+conf.getHttpPort()+"/o/android"+selectedApp.downloadUrl;
 					activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(appUrl)));

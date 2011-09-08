@@ -121,13 +121,14 @@ public class CloudService
 		//Load API Services
 		services.setResources(new NativeAppResources());
 		services.setCommandService(new NativeCommandService());
+		services.setCurrentActivity(context);
 		
 		//Load SPI Services
 		SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
 		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
 		
 		//Initialize the kernel
-		Moblet.getInstance(context.getApplicationContext()).propagateNewContext(context);
+		Moblet.getInstance(context.getApplicationContext()).propagateNewContext(context.getApplicationContext());
     	Moblet.getInstance(context.getApplicationContext()).startup(); 
     	
     	((AppPushListener)Services.getInstance().getPushListener()).start();

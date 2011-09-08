@@ -8,6 +8,8 @@
 
 package org.openmobster.core.mobileCloud.api.ui.framework;
 
+import android.app.Activity;
+
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushListener;
@@ -26,6 +28,7 @@ public final class Services
 	private NavigationContext navigationContext;
 	private CommandService commandService;
 	private PushListener pushListener;
+	private Activity currentActivity;
 	
 	private Services()
 	{
@@ -95,5 +98,15 @@ public final class Services
 	public PushListener getPushListener()
 	{
 		return this.pushListener;
+	}
+
+	public Activity getCurrentActivity()
+	{
+		return currentActivity;
+	}
+
+	public void setCurrentActivity(Activity currentActivity)
+	{
+		this.currentActivity = currentActivity;
 	}
 }

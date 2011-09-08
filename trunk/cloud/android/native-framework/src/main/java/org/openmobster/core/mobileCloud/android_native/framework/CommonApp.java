@@ -61,6 +61,7 @@ public final class CommonApp
     	//Load API Services
 		services.setResources(new NativeAppResources());
 		services.setCommandService(new NativeCommandService());
+		services.setCurrentActivity(activity);
 		
 		//Load SPI Services
 		SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
@@ -173,7 +174,7 @@ public final class CommonApp
 	static void bootstrapContainer(final Activity activity)
 	{
 		//Initialize the kernel
-		Moblet.getInstance(activity.getApplicationContext()).propagateNewContext(activity);
+		Moblet.getInstance(activity.getApplicationContext()).propagateNewContext(activity.getApplicationContext());
     	Moblet.getInstance(activity.getApplicationContext()).startup(); 
     	
     	((AppPushListener)Services.getInstance().getPushListener()).start();

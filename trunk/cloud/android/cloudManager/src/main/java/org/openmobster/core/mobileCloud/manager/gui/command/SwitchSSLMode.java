@@ -52,19 +52,19 @@ public class SwitchSSLMode implements RemoteCommand
 
 	public void doViewBefore(CommandContext commandContext) 
 	{								
-		Context context = Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		AppResources resources = Services.getInstance().getResources();
 		
-		Toast.makeText(context, resources.localize(LocaleKeys.ssl_mod_in_progress, LocaleKeys.ssl_mod_in_progress), 
+		Toast.makeText(currentActivity, resources.localize(LocaleKeys.ssl_mod_in_progress, LocaleKeys.ssl_mod_in_progress), 
 				Toast.LENGTH_SHORT).show();		
 	}
 	
 	public void doViewAfter(CommandContext commandContext) 
 	{
-		Context context = Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		AppResources resources = Services.getInstance().getResources();
 		
-		Toast.makeText(context, resources.localize(LocaleKeys.ssl_mod_success, LocaleKeys.ssl_mod_success), 
+		Toast.makeText(currentActivity, resources.localize(LocaleKeys.ssl_mod_success, LocaleKeys.ssl_mod_success), 
 				Toast.LENGTH_SHORT).show();		
 		
 		NavigationContext navigationContext = Services.getInstance().getNavigationContext();
@@ -76,7 +76,7 @@ public class SwitchSSLMode implements RemoteCommand
 		AppResources resources = Services.getInstance().getResources();
 		AppException appException = commandContext.getAppException();
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		resources.localize(appException.getMessageKey(), appException.getMessageKey())).
 		show();

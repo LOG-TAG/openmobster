@@ -143,8 +143,8 @@ public class ActivationCommand implements RemoteCommand
 	{
 		AppResources resources = Services.getInstance().getResources();
 		
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, resources.localize(LocaleKeys.activation_start, LocaleKeys.activation_start), 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, resources.localize(LocaleKeys.activation_start, LocaleKeys.activation_start), 
 		Toast.LENGTH_SHORT).show();
 	}
 	
@@ -152,8 +152,8 @@ public class ActivationCommand implements RemoteCommand
 	{				
 		AppResources resources = Services.getInstance().getResources();
 		
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, resources.localize(LocaleKeys.activation_success, LocaleKeys.activation_success), 
+		Activity activity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(activity, resources.localize(LocaleKeys.activation_success, LocaleKeys.activation_success), 
 		Toast.LENGTH_SHORT).show();
 		
 		NavigationContext navigationContext = Services.getInstance().getNavigationContext();
@@ -165,7 +165,7 @@ public class ActivationCommand implements RemoteCommand
 		AppResources resources = Services.getInstance().getResources();
 		AppException appException = commandContext.getAppException();
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", 
 		resources.localize(appException.getMessageKey(), appException.getMessageKey())).
 		show();

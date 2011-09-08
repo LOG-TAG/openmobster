@@ -60,8 +60,7 @@ public class CometConfigScreen extends Screen
 	public void postRender()
 	{						
 		// render the list
-		ListActivity listApp = (ListActivity) Registry.getActiveInstance()
-				.getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
 		NavigationContext navigationContext = NavigationContext.getInstance();
 		AppResources appResources = Services.getInstance().getResources();
@@ -124,11 +123,11 @@ public class CometConfigScreen extends Screen
 	//---------------user interactions----------------------------------------------------------------------------------------------------------------------
 	private void startPushConfig()
 	{
-		Context context = Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		PushConfigListener listener = new PushConfigListener();
 		
-		AlertDialog pushDialog = new AlertDialog.Builder(context).
+		AlertDialog pushDialog = new AlertDialog.Builder(currentActivity).
 		setItems(new String[]{"Start","Stop","Cancel"}, listener).
     	setCancelable(false).
     	create();
@@ -140,11 +139,11 @@ public class CometConfigScreen extends Screen
 	
 	private void startPollConfig()
 	{
-		Context context = Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		PollConfigListener listener = new PollConfigListener();
 		
-		AlertDialog pollDialog = new AlertDialog.Builder(context).
+		AlertDialog pollDialog = new AlertDialog.Builder(currentActivity).
 		setItems(new String[]{"Start","Stop","Cancel"}, listener).
     	setCancelable(false).
     	create();
@@ -183,14 +182,14 @@ public class CometConfigScreen extends Screen
 	{
 		public void onClick(DialogInterface dialog, int status)
 		{
-			Context context = Registry.getActiveInstance().getContext();			
+			Activity currentActivity = Services.getInstance().getCurrentActivity();			
 			dialog.cancel();			
 			switch(status)
 			{
 				case 0:
 					//Start
 					final String[] choices = new String[]{"5","10","15","20","25","30", "Cancel"};
-					AlertDialog intervalDialog = new AlertDialog.Builder(context).
+					AlertDialog intervalDialog = new AlertDialog.Builder(currentActivity).
 			    	setCancelable(false).
 			    	setItems(choices,
 			    			new DialogInterface.OnClickListener() 
