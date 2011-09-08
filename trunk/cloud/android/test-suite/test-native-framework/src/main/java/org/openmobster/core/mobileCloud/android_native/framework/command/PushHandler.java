@@ -10,10 +10,12 @@ package org.openmobster.core.mobileCloud.android_native.framework.command;
 
 import org.openmobster.android.api.sync.MobileBeanMetaData;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.PushCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.MobilePush;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -54,15 +56,15 @@ public final class PushHandler implements PushCommand
 	public void doViewAfter(CommandContext commandContext)
 	{
 		MobilePush push = commandContext.getPush();
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, push.getNumberOfUpdates()+" Updates successfully received!!", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, push.getNumberOfUpdates()+" Updates successfully received!!", 
 		Toast.LENGTH_SHORT).show();
 	}
 	
 	public void doViewError(CommandContext commandContext)
 	{
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, this.getClass().getName()+" had an error!!", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, this.getClass().getName()+" had an error!!", 
 		Toast.LENGTH_SHORT).show();
 	}
 }

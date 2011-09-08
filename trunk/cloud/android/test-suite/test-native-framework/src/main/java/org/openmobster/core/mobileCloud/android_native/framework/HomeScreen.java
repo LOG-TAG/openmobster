@@ -45,8 +45,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "main";
@@ -72,8 +71,7 @@ public class HomeScreen extends Screen
 	
 	public void postRender()
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		//Add the event handlers
 		//Find the run_button

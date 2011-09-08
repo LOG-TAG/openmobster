@@ -15,6 +15,7 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 
 import android.os.Bundle;
 import android.view.View;
@@ -103,11 +104,11 @@ public class App2 extends Activity
 					{
 						public void onClick(View clicked)
 						{
-							Activity main = (Activity)Registry.getActiveInstance().getContext();
+							Activity currentActivity = Services.getInstance().getCurrentActivity();
 							
-							Context context = main.getApplicationContext();
+							Context context = currentActivity.getApplicationContext();
 							
-							main.finish();
+							currentActivity.finish();
 							
 							System.out.println("Context: "+context);
 							System.out.println("ApplicationInfo: "+context.getApplicationInfo().packageName);

@@ -11,9 +11,11 @@ package org.openmobster.core.mobileCloud.android_native.framework.command;
 import org.openmobster.android.api.rpc.MobileService;
 import org.openmobster.android.api.rpc.Request;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -43,15 +45,15 @@ public final class PushTrigger implements RemoteCommand
 	
 	public void doViewAfter(CommandContext commandContext)
 	{
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "Push successfully triggered!!", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "Push successfully triggered!!", 
 		Toast.LENGTH_SHORT).show();
 	}
 	
 	public void doViewError(CommandContext commandContext)
 	{
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, this.getClass().getName()+" had an error!!", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, this.getClass().getName()+" had an error!!", 
 		Toast.LENGTH_SHORT).show();
 	}
 }

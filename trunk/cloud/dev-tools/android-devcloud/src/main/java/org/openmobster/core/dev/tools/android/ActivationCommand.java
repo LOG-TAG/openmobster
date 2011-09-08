@@ -28,6 +28,7 @@ import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
@@ -135,21 +136,21 @@ public class ActivationCommand implements RemoteCommand
 
 	public void doViewBefore(CommandContext commandContext) 
 	{
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "Starting Development Cloud Activation....", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "Starting Development Cloud Activation....", 
 		Toast.LENGTH_SHORT).show();
 	}
 	
 	public void doViewAfter(CommandContext commandContext) 
 	{				
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "Development Cloud successfully activated....", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "Development Cloud successfully activated....", 
 		Toast.LENGTH_SHORT).show();
 	}
 
 	public void doViewError(CommandContext commandContext) 
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "", "Development Cloud Activation Failed. You may have to change the Cloud Server Ip from the 'Menu'").
 		show();
 	}
