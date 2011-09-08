@@ -21,13 +21,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.app.Activity;
-import android.content.Intent;
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-public class App extends Activity
+public class App2 extends Activity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -53,7 +52,6 @@ public class App extends Activity
 		try
 		{
 			super.onStart();
-			CloudService.getInstance().start(this);
 		}
 		catch (Exception e)
 		{
@@ -91,40 +89,23 @@ public class App extends Activity
 		{
 			//render the main screen
 			String layoutClass = this.getPackageName()+".R$layout";
-			String main = "main";
+			String main = "app2";
 			Class clazz = Class.forName(layoutClass);
 			Field field = clazz.getField(main);
 			int screenId = field.getInt(clazz);
 			this.setContentView(screenId);
 			
 			//setup the button
-			Button checkCloudStatus = (Button)ViewHelper.findViewById(this,"bootstrap_status");
-			checkCloudStatus.setOnClickListener(
+			Button testActivityLifeCycle = (Button)ViewHelper.findViewById(this,"test_activity_life_cycle");
+			testActivityLifeCycle.setOnClickListener(
 					new OnClickListener()
 					{
 						public void onClick(View clicked)
 						{
-							//Show Bootstrap status
-							if(Registry.isActive())
-							{
-								Registry registry = Registry.getActiveInstance();
-								System.out.println("App-------------------------------------");
-								System.out.println("Registry : "+registry);
-								System.out.println("Registry isMoblet: "+!(registry.isContainer()));
-								System.out.println("-------------------------------------");
-							}
-						}
-					}
-			);
-			
-			Button startApp2 = (Button)ViewHelper.findViewById(this,"start_app_2");
-			startApp2.setOnClickListener(
-					new OnClickListener()
-					{
-						public void onClick(View clicked)
-						{
-							Intent intent = new Intent(App.this, App2.class);
-							App.this.startActivity(intent);
+							Activity main = (Activity)Registry.getActiveInstance().getContext();
+							//main.finish();
+							
+							ViewHelper.getOkModal(main, "Test", "Activity is finished!!").show();
 						}
 					}
 			);
