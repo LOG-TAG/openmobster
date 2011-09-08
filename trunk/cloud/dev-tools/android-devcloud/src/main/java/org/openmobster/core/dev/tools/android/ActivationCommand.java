@@ -46,8 +46,7 @@ public class ActivationCommand implements RemoteCommand
 		String deviceIdentifier = null;
 		boolean isReactivation = false;
 		try
-		{
-			deviceIdentifier = GeneralTools.getDeviceIdentifier(context);			
+		{			
 			server = (String)commandContext.getAttribute("server");
 			email = (String)commandContext.getAttribute("email");
 			String password = (String)commandContext.getAttribute("password");
@@ -62,6 +61,7 @@ public class ActivationCommand implements RemoteCommand
 			
 			BootupConfiguration.bootup(server, port);
 			
+			deviceIdentifier = conf.getDeviceId();
 			
 			//Go ahead and activate the device now
 			Request request = new Request("provisioning");

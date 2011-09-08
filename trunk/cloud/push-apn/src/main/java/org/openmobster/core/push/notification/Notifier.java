@@ -75,7 +75,12 @@ public class Notifier
 			
 			StringBuilder commandBuilder = new StringBuilder();
 			commandBuilder.append(Constants.command+"="+Constants.sync+Constants.separator);
-			commandBuilder.append(Constants.service+"="+notification.getMetaDataAsString(Constants.service));			
+			commandBuilder.append(Constants.service+"="+notification.getMetaDataAsString(Constants.service));
+			Boolean isSilent = (Boolean)notification.getMetaData(Constants.silent);
+			if(isSilent != null && isSilent)
+			{
+				commandBuilder.append(Constants.separator+Constants.silent+"=true");
+			}
 			
 			command = commandBuilder.toString()+Constants.endOfCommand;
 			deviceToNotify = notification.getMetaDataAsString(Constants.device);

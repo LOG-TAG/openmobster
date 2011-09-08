@@ -86,6 +86,17 @@ public class Notification implements Serializable
 		return syncNotification;
 	}
 	
+	public static Notification createSilentSyncNotification(String deviceIdentifier, String service)
+	{
+		Notification syncNotification = new Notification(NotificationType.SYNC);
+		
+		syncNotification.setMetaData(Constants.device, deviceIdentifier);
+		syncNotification.setMetaData(Constants.service, service);
+		syncNotification.setMetaData(Constants.silent, new Boolean(true));
+		
+		return syncNotification;
+	}
+	
 	public static Notification createPushRPCNotification(Device device, String service)
 	{
 		Notification notification = new Notification(NotificationType.RPC);
