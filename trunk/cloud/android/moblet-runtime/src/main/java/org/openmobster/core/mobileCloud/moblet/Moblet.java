@@ -74,15 +74,15 @@ public final class Moblet
 	{
 		try
 		{
-			AppSystemConfig.getInstance().start();
-			CryptoManager.getInstance().start();
-			
-			Database.getInstance(this.context).connect();
-			
 			if(this.isContainerActive())
 			{
 				return;
 			}
+			
+			AppSystemConfig.getInstance().start();
+			CryptoManager.getInstance().start();
+			
+			Database.getInstance(this.context).connect();
 									
 			List<Service> services = new ArrayList<Service>();
 						

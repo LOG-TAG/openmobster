@@ -24,16 +24,16 @@ import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 public class DeviceContainerApp extends App
 {
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	protected void onStart()
 	{
 		try
-		{
-			this.bootstrapContainer();
-			super.onCreate(savedInstanceState);									
+		{									
+			this.bootstrapContainer();      
+			super.onStart();
 		} 
 		catch (Exception e)
 		{
-			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onCreate", new Object[]{
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
@@ -41,8 +41,7 @@ public class DeviceContainerApp extends App
 		}
 	}
 	
-	@Override
-	protected void bootstrapContainer() throws Exception
+	private void bootstrapContainer() throws Exception
 	{
 		//Initialize the kernel
 		DeviceContainer.getInstance(this.getApplicationContext()).propagateNewContext(this.getApplicationContext());

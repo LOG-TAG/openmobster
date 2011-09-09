@@ -14,7 +14,6 @@ import java.io.IOException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 
@@ -29,43 +28,6 @@ import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
  */
 public class App extends Activity
 {
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		try
-		{
-			super.onCreate(savedInstanceState);
-									
-			CommonApp.onCreate(this,savedInstanceState);       	
-		} 
-		catch (Exception e)
-		{
-			//e.printStackTrace(System.out);
-			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onCreate", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
-			}));
-			this.showDialog(0);
-		}
-	}
-	
-	@Override
-	protected void onDestroy()
-	{								
-    	try
-    	{    		    		    		    		    		    		
-    		super.onDestroy();
-    	}
-    	catch(Exception e)
-    	{
-    		ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onDestroy", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
-			}));
-    	}
-	}
-	
-	
 	@Override
 	protected void onStart()
 	{
@@ -113,12 +75,6 @@ public class App extends Activity
 		super.onPrepareOptionsMenu(menu);
 		
 	    return CommonApp.onPrepareOptionsMenu(this, menu);
-	}
-	
-	protected void bootstrapContainer() throws Exception
-	{
-		//Initialize the kernel
-		CommonApp.bootstrapContainer(this);
 	}
 	
 	protected void showError()

@@ -94,15 +94,15 @@ public final class DeviceContainer
 	{
 		try
 		{
-			AppSystemConfig.getInstance().start();
-			CryptoManager.getInstance().start();
-			Registry.getInstance(this.context);
-			Database.getInstance(this.context).connect();
-						
 			if(this.isContainerActive())
 			{
 				return;
 			}
+			
+			AppSystemConfig.getInstance().start();
+			CryptoManager.getInstance().start();
+			Registry.getInstance(this.context);
+			Database.getInstance(this.context).connect();
 									
 			List<Service> services = new ArrayList<Service>();						
 			

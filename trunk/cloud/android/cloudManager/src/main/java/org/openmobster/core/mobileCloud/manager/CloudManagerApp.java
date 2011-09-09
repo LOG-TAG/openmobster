@@ -24,16 +24,16 @@ import org.openmobster.core.mobileCloud.android_native.framework.ListApp;
 public class CloudManagerApp extends ListApp
 {
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	protected void onStart()
 	{
 		try
 		{									
 			this.bootstrapContainer();      
-			super.onCreate(savedInstanceState);
+			super.onStart();
 		} 
 		catch (Exception e)
 		{
-			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onCreate", new Object[]{
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
@@ -42,8 +42,7 @@ public class CloudManagerApp extends ListApp
 	}
 
 
-	@Override
-	protected void bootstrapContainer() throws Exception
+	private void bootstrapContainer() throws Exception
 	{
 		DeviceContainer container = DeviceContainer.getInstance(this.getApplicationContext());
 		boolean isActive = container.isContainerActive();
