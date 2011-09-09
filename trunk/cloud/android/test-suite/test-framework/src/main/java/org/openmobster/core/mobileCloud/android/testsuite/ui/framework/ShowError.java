@@ -27,8 +27,7 @@ final class ShowError
 {
 	public static void showGenericError(final CommandContext commandContext)
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 				
 		AppResources appResources = Services.getInstance().getResources();
 		

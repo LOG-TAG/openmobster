@@ -14,6 +14,7 @@ import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
@@ -50,8 +51,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String main = "tests";
@@ -79,8 +79,7 @@ public class HomeScreen extends Screen
 	
 	public void postRender()
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		//Add the event handlers
 		//Find the run_button
@@ -132,9 +131,8 @@ public class HomeScreen extends Screen
 	
 	private void changeCloudServer() throws Exception
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
-		Context context = Registry.getActiveInstance().getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
+		final Context context = Registry.getActiveInstance().getContext();
 		final Configuration conf = Configuration.getInstance(context);
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
@@ -151,7 +149,7 @@ public class HomeScreen extends Screen
 			public void onClick(DialogInterface dialog, int id)
 			{
 				conf.setServerIp(serverField.getText().toString());
-				conf.save(currentActivity);
+				conf.save(context);
 				dialog.dismiss();
 				Toast.makeText(currentActivity, "Cloud Server IP Address now set to: "+conf.getServerIp(), 
 						Toast.LENGTH_SHORT).show();

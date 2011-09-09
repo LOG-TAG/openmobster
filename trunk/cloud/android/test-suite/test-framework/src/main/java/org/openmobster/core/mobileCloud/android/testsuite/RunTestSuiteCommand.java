@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.android.testsuite;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.android.testsuite.TestContext;
@@ -53,7 +54,7 @@ public class RunTestSuiteCommand implements RemoteCommand
 
 	public void doViewAfter(CommandContext commandContext)
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "Test Suite", (String)commandContext.getAttribute("status")).
 		show();
 	}
@@ -61,7 +62,7 @@ public class RunTestSuiteCommand implements RemoteCommand
 	public void doViewError(CommandContext commandContext)
 	{
 		//Shows an Error Dialog
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "App Error", 
 		commandContext.getAppException().getMessage()).
 		show();
