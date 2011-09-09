@@ -9,6 +9,7 @@
 package org.openmobster.showcase.app.crud;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
@@ -59,7 +60,7 @@ public final class DeleteTicket implements AsyncCommand
 	
 	public void doViewError(CommandContext commandContext)
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "App Error", 
 		this.getClass().getName()+" had an error!!\n\n"+commandContext.getAppException().getMessage()).
 		show();

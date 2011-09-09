@@ -14,6 +14,7 @@ import android.widget.Toast;
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
@@ -56,7 +57,7 @@ public class ChannelBootupHelper implements RemoteCommand
 	public void doViewAfter(CommandContext commandContext)
 	{
 		HomeScreen delegate = (HomeScreen)commandContext.getAttribute("delegate");
-		delegate.setupScreen((Activity)Registry.getActiveInstance().getContext());
+		delegate.setupScreen(Services.getInstance().getCurrentActivity());
 	}
 
 	public void doViewError(CommandContext commandContext)

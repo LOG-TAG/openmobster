@@ -60,8 +60,7 @@ public class CameraMainScreen extends Screen
 		try
 		{
 			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String home = "camera";
@@ -90,7 +89,7 @@ public class CameraMainScreen extends Screen
 	@Override
 	public void postRender()
 	{
-		Activity app = (Activity)Registry.getActiveInstance().getContext();
+		Activity app = Services.getInstance().getCurrentActivity();
 		
 		this.show(app);
 	}

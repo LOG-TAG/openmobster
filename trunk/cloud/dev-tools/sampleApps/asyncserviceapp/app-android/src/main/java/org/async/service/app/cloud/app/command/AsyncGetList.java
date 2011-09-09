@@ -50,8 +50,8 @@ public final class AsyncGetList implements AsyncCommand
 	public void doViewBefore(CommandContext commandContext)
 	{	
 		//Show a Loading Status
-		Context context = Registry.getActiveInstance().getContext();
-		Toast.makeText(context, "Loading Emails.....", 
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		Toast.makeText(currentActivity, "Loading Emails.....", 
 		Toast.LENGTH_SHORT).show();
 	}
 
@@ -108,8 +108,7 @@ public final class AsyncGetList implements AsyncCommand
 	public void doViewAfter(CommandContext commandContext)
 	{
 		//Get an instance of the currently active Activity
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
 		//Get the list of emails from the CommandContext
 		List<EmailBean> emails = (List<EmailBean>)commandContext.getAttribute("emails");
@@ -135,7 +134,7 @@ public final class AsyncGetList implements AsyncCommand
 	public void doViewError(CommandContext commandContext)
 	{
 		//Shows an Error Dialog
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "App Error", 
 		commandContext.getAppException().getMessage()).
 		show();

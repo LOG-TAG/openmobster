@@ -10,6 +10,7 @@ package com.pushrpc.android.app;
 import java.lang.reflect.Field;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.MobilePush;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushCommandContext;
@@ -49,7 +50,8 @@ public class DemoPushCommand implements PushCommand
 	
 	private void handleSystemNotification(final String pushMessage) throws Exception
 	{
-		Activity activity = (Activity)Registry.getActiveInstance().getContext();
+		//FIXTHIS
+		Activity activity = Services.getInstance().getCurrentActivity();
 		String appPackage = activity.getPackageName();
 		PackageManager pm = activity.getPackageManager();
 		CharSequence appName = pm.getApplicationLabel(activity.getApplicationInfo());

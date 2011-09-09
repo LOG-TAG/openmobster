@@ -15,6 +15,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
@@ -51,7 +52,7 @@ public class ResetChannel implements RemoteCommand
 
 	public void doViewAfter(CommandContext commandContext) 
 	{				
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "Reset Channel", 
 				"Channel is succesfully reset!!").
 		show();
@@ -61,7 +62,7 @@ public class ResetChannel implements RemoteCommand
 
 	public void doViewError(CommandContext commandContext) 
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "App Error", 
 		this.getClass().getName()+" had an error!!").
 		show();

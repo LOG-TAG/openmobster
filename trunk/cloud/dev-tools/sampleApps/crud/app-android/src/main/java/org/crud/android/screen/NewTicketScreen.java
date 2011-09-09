@@ -47,8 +47,7 @@ public class NewTicketScreen extends Screen
 		try
 		{
 			//lays out the UI specified in res/layout/new_ticket.xml
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			Class clazz = Class.forName(layoutClass);
@@ -78,8 +77,7 @@ public class NewTicketScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Load the spinners asynchronously...ajaxian usecase
 			CommandContext commandContext = new CommandContext();
@@ -115,8 +113,7 @@ public class NewTicketScreen extends Screen
 	//--------------------------------------------------------------------------------------------------------------------------------------
 	private void save()
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		//Creates a new ticket instance on the device. Once 'saved', it will be seamlessly synchronized with the Cloud
 		MobileBean ticket = MobileBean.newInstance("crm_ticket_channel");

@@ -34,8 +34,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Layout the Home Screen. The layout is specified in 'res/layout/home.xml'
 			String layoutClass = currentActivity.getPackageName()+".R$layout";

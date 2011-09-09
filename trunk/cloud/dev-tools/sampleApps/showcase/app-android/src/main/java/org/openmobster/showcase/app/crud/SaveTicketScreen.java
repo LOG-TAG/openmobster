@@ -49,8 +49,7 @@ public class SaveTicketScreen extends Screen
 		try
 		{
 			//lays out the UI specified in res/layout/new_ticket.xml
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			Class clazz = Class.forName(layoutClass);
@@ -81,8 +80,7 @@ public class SaveTicketScreen extends Screen
 		NavigationContext navContext = NavigationContext.getInstance();
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Populate the screen with existing ticket instance state
 			final MobileBean activeBean = (MobileBean)navContext.getAttribute(this.getId(),"active-bean");
@@ -138,8 +136,7 @@ public class SaveTicketScreen extends Screen
 	}
 	private void add()
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		//Creates a new ticket instance on the device. Once 'saved', it will be seamlessly synchronized with the Cloud
 		MobileBean activeBean = MobileBean.newInstance(AppConstants.webappsync);
@@ -160,8 +157,7 @@ public class SaveTicketScreen extends Screen
 	
 	private void update(MobileBean activeBean)
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		EditText title = (EditText)ViewHelper.findViewById(currentActivity, "title");
 		activeBean.setValue("title", title.getText().toString());

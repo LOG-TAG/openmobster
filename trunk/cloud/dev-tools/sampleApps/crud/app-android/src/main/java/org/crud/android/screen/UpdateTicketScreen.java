@@ -47,8 +47,7 @@ public class UpdateTicketScreen extends Screen
 		try
 		{
 			//lays out the UI specified in res/layout/update_ticket.xml
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			Class clazz = Class.forName(layoutClass);
@@ -80,8 +79,7 @@ public class UpdateTicketScreen extends Screen
 		NavigationContext navContext = NavigationContext.getInstance();
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Load the spinners asynchronously
 			CommandContext commandContext = new CommandContext();
@@ -124,8 +122,7 @@ public class UpdateTicketScreen extends Screen
 	//--------------------------------------------------------------------------------------------------------------------------------------
 	private void save()
 	{
-		final Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		//Get the ticket being modified
 		MobileBean ticket = (MobileBean)NavigationContext.getInstance().getAttribute(this.getId(),"ticket");

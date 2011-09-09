@@ -11,6 +11,7 @@ package com.offlineApp.android.app.command;
 import java.lang.StringBuffer;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -82,7 +83,7 @@ public final class DemoDetails implements LocalCommand
 	 */
 	public void doViewAfter(CommandContext commandContext)
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		ViewHelper.getOkModal(currentActivity, "Details", 
 		(String)commandContext.getAttribute("details")).
@@ -94,7 +95,8 @@ public final class DemoDetails implements LocalCommand
 	 */
 	public void doViewError(CommandContext commandContext)
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
+		
 		ViewHelper.getOkModal(currentActivity, "App Error", 
 		this.getClass().getName()+" had an error!!").
 		show();
