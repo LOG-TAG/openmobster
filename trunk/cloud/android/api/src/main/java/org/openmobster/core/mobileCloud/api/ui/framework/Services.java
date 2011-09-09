@@ -109,4 +109,13 @@ public final class Services
 	{
 		this.currentActivity = currentActivity;
 	}
+	
+	public Class getCurrentActivityClass()
+	{
+		if(this.currentActivity != null)
+		{
+			return this.currentActivity.getClass();
+		}
+		return null;
+	}
 }
