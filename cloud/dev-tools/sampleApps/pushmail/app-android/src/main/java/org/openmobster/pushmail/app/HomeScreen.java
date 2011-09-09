@@ -49,8 +49,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Layout the Home Screen. The layout is specified in 'res/layout/home.xml'
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
@@ -80,7 +79,7 @@ public class HomeScreen extends Screen
 	@Override
 	public void postRender()
 	{
-		Activity app = (Activity)Registry.getActiveInstance().getContext();
+		Activity app = Services.getInstance().getCurrentActivity();
 		
 		//App Title
 		app.setTitle("Push Mail");
@@ -151,7 +150,7 @@ public class HomeScreen extends Screen
 				buffer.append("Subject: "+subject+"\n\n\n");
 				buffer.append(message);
 				
-				Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+				Activity currentActivity = Services.getInstance().getCurrentActivity();
 				AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
 				builder.setMessage(buffer.toString())
 				       .setCancelable(false).setTitle("Email")

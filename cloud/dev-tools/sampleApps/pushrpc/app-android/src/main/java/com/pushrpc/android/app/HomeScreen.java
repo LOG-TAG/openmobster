@@ -40,8 +40,7 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String home = "home";
@@ -71,8 +70,7 @@ public class HomeScreen extends Screen
 	public void postRender()
 	{
 		//Bootstrapping.........
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
 		if(pushMessages == null)
 		{

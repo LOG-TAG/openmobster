@@ -14,6 +14,7 @@ import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
@@ -76,7 +77,7 @@ public final class DemoMobileRPC implements AsyncCommand
 		buffer.append("Param1: "+param1+"\n\n\n");
 		buffer.append("Param2: "+param2);
 		
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		ViewHelper.getOkModal(currentActivity, "RPC Invocation", 
 		buffer.toString()).
 		show();
@@ -87,7 +88,7 @@ public final class DemoMobileRPC implements AsyncCommand
 	 */
 	public void doViewError(CommandContext commandContext)
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		ViewHelper.getOkModal(currentActivity, "App Error", 
 		commandContext.getAppException().getMessage()).

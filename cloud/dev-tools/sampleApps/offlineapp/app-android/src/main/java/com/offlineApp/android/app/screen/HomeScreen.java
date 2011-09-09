@@ -49,8 +49,7 @@ public class HomeScreen extends Screen
 		try
 		{
 			//Gets the currently active 'Activity' instance
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Gets the layout for this screen
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
@@ -89,8 +88,7 @@ public class HomeScreen extends Screen
 	public void postRender()
 	{
 		//Gets the currently active 'Activity' instance
-		ListActivity listApp = (ListActivity)Registry.getActiveInstance().
-		getContext();
+		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
 		//Gets the 'Cloud' configuration
 		AppResources res = Services.getInstance().getResources();

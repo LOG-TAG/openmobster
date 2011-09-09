@@ -56,8 +56,7 @@ public class HomeScreen extends Screen
 		try
 		{
 			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			String layoutClass = currentActivity.getPackageName()+".R$layout";
 			String home = "home";
@@ -86,8 +85,7 @@ public class HomeScreen extends Screen
 	@Override
 	public void postRender()
 	{
-		Activity app = (Activity)Registry.getActiveInstance().
-		getContext();
+		Activity app = Services.getInstance().getCurrentActivity();
 		
 		//Bootstrapping the App...These 3 checks should be sucked into the framework.instead of spilled into the App
 		AppResources res = Services.getInstance().getResources();
@@ -225,8 +223,7 @@ public class HomeScreen extends Screen
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id)
 		{
-			final Activity currentActivity = (Activity)Registry.getActiveInstance().
-			getContext();
+			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Get the ticket bean selected by the user
 			int selectedIndex = position;
