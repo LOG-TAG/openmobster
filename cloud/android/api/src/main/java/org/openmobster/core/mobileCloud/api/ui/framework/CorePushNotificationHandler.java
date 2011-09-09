@@ -67,7 +67,8 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 	
 	private void handleSystemNotification(final MobilePush newPushInstance) throws Exception
 	{
-		Activity activity = (Activity)Registry.getActiveInstance().getContext();
+		//FIXTHIS...it may not have a handle on the service
+		Activity activity = Services.getInstance().getCurrentActivity();
 		String appPackage = activity.getPackageName();
 		PackageManager pm = activity.getPackageManager();
 		CharSequence appName = pm.getApplicationLabel(activity.getApplicationInfo());

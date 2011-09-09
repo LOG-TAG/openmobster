@@ -32,8 +32,7 @@ public final class BusyAsyncTask extends AsyncTask<CommandContext,Integer,Comman
 	
 	BusyAsyncTask()
 	{
-		Activity currentActivity = (Activity)Registry.getActiveInstance().
-		getContext();
+		Activity currentActivity = Services.getInstance().getCurrentActivity();
 		this.progressDialog = new ProgressDialog(currentActivity);
 		this.progressDialog.setTitle("Executing TestSuite");
 		this.progressDialog.setMessage("Initializing the TestSuite.....");
