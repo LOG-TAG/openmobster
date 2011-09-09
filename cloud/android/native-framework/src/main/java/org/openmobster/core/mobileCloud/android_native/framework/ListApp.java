@@ -44,7 +44,7 @@ public class ListApp extends ListActivity
 		}
 		catch (Exception e)
 		{
-			//e.printStackTrace(System.out);
+			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
@@ -65,6 +65,7 @@ public class ListApp extends ListActivity
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), 
 			"onResume", new Object[]{
 				"Message:"+e.getMessage(),

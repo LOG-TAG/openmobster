@@ -42,12 +42,20 @@ public final class CommonApp
 {	
 	static void onStart(final Activity activity)
 	{
+		//Bootstrap the container
+		if(!Registry.isActive())
+		{
+			Registry registry = Registry.getInstance(activity.getApplicationContext());
+			registry.setContainer(false); //This is an App not a Management Service
+		}
+		
 		Services services = Services.getInstance();
 		
 		//Initialize the UI Framework
 		if(AppConfig.getInstance() == null || !AppConfig.getInstance().isFrameworkActive())
 		{
 			activity.showDialog(1);
+			return;
 		}
 		
     	//Load API Services
@@ -59,7 +67,6 @@ public final class CommonApp
 		SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
 		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
 		
-		//Bootstrap the container
 		Registry registry = Registry.getActiveInstance();
 		if(!registry.isContainer())
 		{

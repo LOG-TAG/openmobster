@@ -8,14 +8,11 @@
 
 package org.openmobster.core.mobileCloud.api.ui.framework;
 
-import java.lang.reflect.Field;
-
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.MobilePush;
 
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -67,31 +64,36 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 	
 	private void handleSystemNotification(final MobilePush newPushInstance) throws Exception
 	{
-		//FIXTHIS...it may not have a handle on the service
-		Activity activity = Services.getInstance().getCurrentActivity();
-		String appPackage = activity.getPackageName();
-		PackageManager pm = activity.getPackageManager();
-		CharSequence appName = pm.getApplicationLabel(activity.getApplicationInfo());
+		Class activityClass = Services.getInstance().getCurrentActivityClass();
+		if(activityClass == null)
+		{
+			return;
+		}
+		
+		Context context = Registry.getActiveInstance().getContext();
+		String appPackage = context.getPackageName();
+		PackageManager pm = context.getPackageManager();
+		CharSequence appName = pm.getApplicationLabel(context.getApplicationInfo());
 		
 		//Get the NotificationManager service
 		String ns = Context.NOTIFICATION_SERVICE;
-		NotificationManager notificationManager = (NotificationManager)activity.getSystemService(ns);
+		NotificationManager notificationManager = (NotificationManager)context.getSystemService(ns);
 		
 		//Setup the Notification instance
-		int icon = this.findDrawableId((Activity)activity, "push");
+		int icon = this.findDrawableId(context, "push");
 		long when = System.currentTimeMillis();
 		Notification notification = new Notification(icon, appName, when);
 		
 		//Setup the intent for this notification
 		CharSequence contentText = ""+ newPushInstance.getNumberOfUpdates()+" Updates";
 		
-		Intent notificationIntent = new Intent(activity, activity.getClass());
+		Intent notificationIntent = new Intent(context, activityClass);
 		notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		notificationIntent.setAction(Intent.ACTION_VIEW);
 		notificationIntent.putExtra("push", Boolean.TRUE);
 		
-		PendingIntent contentIntent = PendingIntent.getActivity(activity, 0, notificationIntent, 0);
-		notification.setLatestEventInfo(activity, appName, contentText, contentIntent);
+		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+		notification.setLatestEventInfo(context, appName, contentText, contentIntent);
 		
 		//Notification Flags
 		notification.flags = Notification.FLAG_AUTO_CANCEL;
@@ -141,7 +143,7 @@ public final class CorePushNotificationHandler implements PushNotificationHandle
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			return 0;
 		}
 	}

@@ -50,7 +50,6 @@ public class DemoPushCommand implements PushCommand
 	
 	private void handleSystemNotification(final String pushMessage) throws Exception
 	{
-		//FIXTHIS
 		Activity activity = Services.getInstance().getCurrentActivity();
 		String appPackage = activity.getPackageName();
 		PackageManager pm = activity.getPackageManager();
