@@ -8,18 +8,12 @@
 
 package org.openmobster.core.mobileCloud.android_native.framework;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Vector;
 
-import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
@@ -34,8 +28,6 @@ import org.openmobster.core.mobileCloud.api.ui.framework.push.PushListener;
 import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
-import system.CometUtil;
-
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -47,8 +39,8 @@ import android.content.Intent;
  *
  */
 public final class CommonApp
-{
-	static void onCreate(final Activity activity, final Bundle savedInstanceState)
+{	
+	static void onStart(final Activity activity)
 	{
 		Services services = Services.getInstance();
 		
@@ -68,26 +60,11 @@ public final class CommonApp
 		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
 		
 		//Bootstrap the container
-		if(Registry.isActive() && Registry.getActiveInstance().isContainer())
-		{
-			return;
-		}
-		
-		//This is a Moblet...go on and bootstrap it
-		bootstrapContainer(activity);   
-	}
-	
-	static void onStart(final Activity activity)
-	{
-		//Initialize the UI Framework
-		if(AppConfig.getInstance() == null || !AppConfig.getInstance().isFrameworkActive())
-		{
-			activity.showDialog(1);
-		}
-		
 		Registry registry = Registry.getActiveInstance();
 		if(!registry.isContainer())
 		{
+			bootstrapContainer(activity);
+			
 			registry.validateCloud();
 			
 			Thread t = new Thread(new Runnable()

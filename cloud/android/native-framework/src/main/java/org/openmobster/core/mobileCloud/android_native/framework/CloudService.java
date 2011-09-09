@@ -59,6 +59,13 @@ public class CloudService
 	{
 		try
 		{
+			//Check and make sure this is an App and not the Management Service
+			Registry registry = Registry.getActiveInstance();
+			if(registry.isContainer())
+			{
+				return;
+			}
+			
 			//short-fast boostrapping of the kernel
 			if(!Moblet.getInstance(context.getApplicationContext()).isContainerActive())
 			{
@@ -138,35 +145,37 @@ public class CloudService
 	{
 		Registry registry = Registry.getActiveInstance();
 		
-		if(!registry.isContainer())
+		if(registry.isContainer())
 		{
-			registry.validateCloud();
-			
-			//Wait till connected to cloud
-			int waitBeforeAbort = 10;
-			IBinderManager bm = IBinderManager.getInstance();
-			while(!bm.isConnectedToCloud())
-			{
-				if(waitBeforeAbort-- > 0)
-				{
-					Thread.currentThread().sleep(1000);
-				}
-				else
-				{
-					throw new RuntimeException("Cloud Not Found!!");
-				}
-			}
-			
-			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder");
-			invocation.setValue("packageName", Bus.getInstance().getBusId());
-			Bus.getInstance().invokeService(invocation);
-			
-	    	//Handle auto sync checking upon App launch, only if channels are not
-	    	//being initialized
-	    	Timer timer = new Timer();
-			timer.schedule(new BackgroundSync(), 
-			5000);
+			return;
 		}
+		
+		registry.validateCloud();
+		
+		//Wait till connected to cloud
+		int waitBeforeAbort = 10;
+		IBinderManager bm = IBinderManager.getInstance();
+		while(!bm.isConnectedToCloud())
+		{
+			if(waitBeforeAbort-- > 0)
+			{
+				Thread.currentThread().sleep(1000);
+			}
+			else
+			{
+				throw new RuntimeException("Cloud Not Found!!");
+			}
+		}
+		
+		Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder");
+		invocation.setValue("packageName", Bus.getInstance().getBusId());
+		Bus.getInstance().invokeService(invocation);
+		
+    	//Handle auto sync checking upon App launch, only if channels are not
+    	//being initialized
+    	Timer timer = new Timer();
+		timer.schedule(new BackgroundSync(), 
+		5000);
 	}
 	
 	private class ShowErrorLooper extends Thread
