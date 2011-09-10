@@ -502,7 +502,12 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 					ChangeLogEntry entry = (ChangeLogEntry) entries.get(i);
 					entry.setTarget(target);
 					entry.setApp(app);
-					session.saveOrUpdate(entry);
+					
+					ChangeLogEntry stored = this.getChangeLogEntry(entry);
+					if(stored == null)
+					{
+						session.save(entry);
+					}
 				}
 				tx.commit();
 			}
@@ -516,6 +521,28 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				throw new SyncException(e);
 			}			
 		}
+	}
+	
+	private ChangeLogEntry getChangeLogEntry(ChangeLogEntry entry)
+	{
+		Session session = this.hibernateManager.getSessionFactory()
+		.getCurrentSession();
+		try
+		{
+			String query = "from ChangeLogEntry entry where entry.target=? AND entry.nodeId=? AND entry.operation=? AND entry.app=? AND entry.recordId=?";
+		
+			ChangeLogEntry stored = (ChangeLogEntry)session.createQuery(query).setString(0, entry.getTarget()).
+			setString(1, entry.getNodeId()).
+			setString(2, entry.getOperation()).
+			setString(3, entry.getApp()).setString(4, entry.getRecordId()).uniqueResult();
+			
+			return stored;
+		}
+		catch (Exception e)
+		{
+			logger.error(this, e);
+			throw new SyncException(e);
+		}		
 	}
 	
 	public List getChangeLog(String target, String nodeId, String app, String operation)
