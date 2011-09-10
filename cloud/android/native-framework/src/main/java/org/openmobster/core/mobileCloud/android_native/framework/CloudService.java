@@ -59,13 +59,6 @@ public class CloudService
 	{
 		try
 		{
-			//Check and make sure this is an App and not the Management Service
-			Registry registry = Registry.getActiveInstance();
-			if(registry.isContainer())
-			{
-				return;
-			}
-			
 			//short-fast boostrapping of the kernel
 			if(!Moblet.getInstance(context.getApplicationContext()).isContainerActive())
 			{
