@@ -26,6 +26,7 @@ import org.openmobster.core.mobileCloud.api.ui.framework.push.AppNotificationInv
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
+import org.openmobster.core.mobileCloud.api.ui.framework.push.PushInvocationHandler;
 
 /**
  * Application Container. There is one instance of an Application Container deployed per Application. Application Container provides
@@ -93,6 +94,7 @@ public final class Moblet
 			services.add(new AppNotificationInvocationHandler());
 			
 			services.add(new PushRPCInvocationHandler());
+			services.add(new PushInvocationHandler());
 			
 			services.add(new NetworkConnector());
 			

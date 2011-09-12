@@ -20,6 +20,12 @@
    		<property name="deviceController"><inject bean="security://DeviceController"/></property>  
    		<property name="pushAppController"><inject bean="security://PushAppController"/></property>   		
    </bean>
+   <bean name="android_push_callback" class="org.openmobster.core.agent.provisioning.AndroidPushCallback">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>  
+   		<property name="deviceController"><inject bean="security://DeviceController"/></property>  
+   		<property name="pushAppController"><inject bean="security://AndroidPushAppController"/></property>   		
+   </bean>
    <bean name="/status/mobilebeanservice" class="org.openmobster.core.agent.provisioning.status.StatusMobileBeanService"/>     
    <bean name="syncstatuschannel" class="org.openmobster.core.agent.provisioning.status.SyncStatusChannel"/>             
 </deployment>

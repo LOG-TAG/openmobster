@@ -166,4 +166,13 @@
         	<element type="string" column="deviceId" not-null="true"/>
         </set>          
      </class>
+     <class name="org.openmobster.core.security.device.AndroidPushApp" table="openmobster_android_push_apps">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="appId" type="string" column="appId"
+        not-null="true"
+        unique="true"
+        />      
+     </class>
 </hibernate-mapping>
