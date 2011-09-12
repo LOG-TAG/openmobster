@@ -8,15 +8,8 @@
 
 package org.openmobster.core.mobileCloud.android.module.connection;
 
-import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.HashMap;
-
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -26,9 +19,9 @@ import org.openmobster.core.mobileCloud.android.util.Base64;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 import org.openmobster.core.mobileCloud.android.util.XMLUtil;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
+import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.PushRPCInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
-import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 /**
  * 
@@ -131,6 +124,12 @@ public final class CommandProcessor extends Service
 				
 				String title = extrasData.get("title");
 				String details = extrasData.get("detail");
+				String appId = extrasData.get("app-id");
+				if(appId == null || appId.trim().length() == 0)
+				{
+					//App Id must be specified. Thats the only way to know which App handles the notification
+					return;
+				}
 				
 				if(title == null || title.trim().length()==0)
 				{
@@ -142,27 +141,12 @@ public final class CommandProcessor extends Service
 					details = "";
 				}
 				
-				//Get the Notification Service
-				Context context = Registry.getActiveInstance().getContext();
-				NotificationManager notifier = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-				
-				//Get the icon for the notification
-				int icon = this.findDrawableId(context, "icon");
-				Notification notification = new Notification(icon,message,System.currentTimeMillis());
-				
-				//Setup the Intent to open this Activity when clicked
-				Intent toLaunch = null;
-				PendingIntent contentIntent = PendingIntent.getActivity(context, 0, toLaunch, 0);
-				
-				//Set the Notification Info
-				notification.setLatestEventInfo(context, title, details, contentIntent);
-				
-				//Setting Notification Flags
-				notification.flags |= Notification.FLAG_AUTO_CANCEL;
-				notification.flags |= Notification.DEFAULT_SOUND;
-				
-				//Send the notification
-				notifier.notify(GeneralTools.generateUniqueId().hashCode(), notification);
+				Invocation pushInvocation = new Invocation("org.openmobster.core.mobileCloud.api.ui.framework.push.PushInvocationHandler");
+				pushInvocation.setDestinationBus(appId);
+				pushInvocation.setValue("message", message);
+				pushInvocation.setValue("detail", details);
+				pushInvocation.setValue("title", title);
+				Bus.getInstance().invokeService(pushInvocation);
 			}
 			catch(Exception e)
 			{
@@ -172,21 +156,6 @@ public final class CommandProcessor extends Service
 							"Message="+e.getMessage()
 						});
 				ErrorHandler.getInstance().handle(se);
-			}
-		}
-		
-		private int findDrawableId(Context context, String variable)
-		{
-			try
-			{
-				String idClass = context.getPackageName() + ".R$drawable";
-				Class clazz = Class.forName(idClass);
-				Field field = clazz.getField(variable);
-
-				return field.getInt(clazz);
-			} catch (Exception e)
-			{
-				return -1;
 			}
 		}
 	}

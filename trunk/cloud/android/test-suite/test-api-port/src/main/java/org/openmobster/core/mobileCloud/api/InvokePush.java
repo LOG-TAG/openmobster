@@ -46,6 +46,7 @@ public final class InvokePush implements RemoteCommand
 			//Populate the Cloud Request
 			Request request = new Request("/test/start/push");	
 			request.setAttribute("message", "Hello Push");
+			request.setAttribute("app-id", Registry.getActiveInstance().getContext().getPackageName());
 			
 			Response response = new MobileService().invoke(request);
 		}

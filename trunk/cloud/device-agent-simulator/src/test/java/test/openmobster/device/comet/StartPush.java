@@ -47,7 +47,10 @@ public class StartPush implements MobileServiceBean
 		
 		Device device = ExecutionContext.getInstance().getDevice();
 		PushService pushService = PushService.getInstance();
-		pushService.push(device.getIdentity().getPrincipal(), null, "Hello From Push", "Title", "Details");
+		
+		String appId = request.getAttribute("app-id");
+		
+		pushService.push(device.getIdentity().getPrincipal(), appId, "Hello From Push", "Title", "Details");
 		
 		return response;
 	}
