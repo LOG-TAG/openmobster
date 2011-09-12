@@ -94,7 +94,6 @@ public final class Moblet
 			services.add(new AppNotificationInvocationHandler());
 			
 			services.add(new PushRPCInvocationHandler());
-			services.add(new PushInvocationHandler());
 			
 			services.add(new NetworkConnector());
 			
@@ -102,6 +101,8 @@ public final class Moblet
 			
 			//Moblet App State management service			
 			services.add(new AppStateManager());
+			
+			services.add(new PushInvocationHandler());
 										
 			Registry.getActiveInstance().start(services);
 		}
