@@ -34,6 +34,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 
 /**
@@ -80,6 +81,14 @@ public class HomeScreen extends Screen
 	public void postRender()
 	{
 		final Activity currentActivity = Services.getInstance().getCurrentActivity();
+		
+		//Read the detail from push notification
+		Intent activityIntent = currentActivity.getIntent();
+		String detail = activityIntent.getStringExtra("detail");
+		
+		System.out.println("**************************************");
+		System.out.println("Push Detail: "+detail);
+		System.out.println("**************************************");
 		
 		//Add the event handlers
 		//Find the run_button
@@ -132,6 +141,20 @@ public class HomeScreen extends Screen
 						
 						//Making the invocation
 						Services.getInstance().getCommandService().execute(commandContext);
+					}
+				}
+		);
+		
+		//Send a broadcast
+		Button sendBroadcast = (Button)ViewHelper.findViewById(currentActivity, 
+		"sendBroadcast");
+		sendBroadcast.setOnClickListener(
+				new OnClickListener()
+				{
+					public void onClick(View clicked)
+					{
+						Intent intent = new Intent("org.openmobster.core.mobileCloud.api");
+						currentActivity.sendBroadcast(intent);
 					}
 				}
 		);

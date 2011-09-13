@@ -45,12 +45,23 @@ public class StartPush implements MobileServiceBean
 	{	
 		Response response = new Response();
 		
-		Device device = ExecutionContext.getInstance().getDevice();
-		PushService pushService = PushService.getInstance();
+		final Device device = ExecutionContext.getInstance().getDevice();
 		
-		String appId = request.getAttribute("app-id");
+		final String appId = request.getAttribute("app-id");
 		
-		pushService.push(device.getIdentity().getPrincipal(), appId, "Hello From Push", "Title", "Details");
+		Thread t = new Thread(new Runnable(){
+			public void run()
+			{
+				PushService pushService = PushService.getInstance(); 
+				
+				try{Thread.sleep(20000);}catch(Exception e){}
+				
+				log.info("Starting the Push..............");
+				
+				pushService.push(device.getIdentity().getPrincipal(), appId, "Hello From Push", "Title", "Details");
+			}
+		});
+		t.start();
 		
 		return response;
 	}

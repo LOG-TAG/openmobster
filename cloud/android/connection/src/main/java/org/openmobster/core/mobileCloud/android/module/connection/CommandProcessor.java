@@ -19,9 +19,11 @@ import org.openmobster.core.mobileCloud.android.util.Base64;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 import org.openmobster.core.mobileCloud.android.util.XMLUtil;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.PushRPCInvocation;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
+
+import android.content.Intent;
+import android.content.Context;
 
 /**
  * 
@@ -141,12 +143,15 @@ public final class CommandProcessor extends Service
 					details = "";
 				}
 				
-				Invocation pushInvocation = new Invocation("org.openmobster.core.mobileCloud.api.ui.framework.push.PushInvocationHandler");
-				pushInvocation.setDestinationBus(appId);
-				pushInvocation.setValue("message", message);
-				pushInvocation.setValue("detail", details);
-				pushInvocation.setValue("title", title);
-				Bus.getInstance().invokeService(pushInvocation);
+				Context context = Registry.getActiveInstance().getContext();
+				Intent pushIntent = new Intent(appId);
+				
+				pushIntent.putExtra("message", message);
+				pushIntent.putExtra("title", title);
+				pushIntent.putExtra("detail", details);
+				pushIntent.putExtra("app-id", appId);
+				
+				context.sendBroadcast(pushIntent);
 			}
 			catch(Exception e)
 			{
