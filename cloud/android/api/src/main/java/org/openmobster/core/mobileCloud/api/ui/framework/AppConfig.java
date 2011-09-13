@@ -39,6 +39,8 @@ public final class AppConfig
 	
 	private GenericAttributeManager attrMgr;
 	
+	private boolean isActive;
+	
 	private AppConfig()
 	{		
 	}
@@ -61,6 +63,11 @@ public final class AppConfig
 	public static void stopSingleton()
 	{
 		AppConfig.singleton = null;
+	}
+	
+	public boolean isActive()
+	{
+		return this.isActive;
 	}
 	
 	public synchronized void init()
@@ -203,6 +210,8 @@ public final class AppConfig
 					this.attrMgr.setAttribute("push-commands", configMap);
 				}
 			}
+			
+			this.isActive = true;
 		}
 		catch(Exception e)
 		{

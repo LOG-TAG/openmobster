@@ -33,7 +33,10 @@ public class PushBroadcastReceiver extends BroadcastReceiver
 		try
 		{
 			//Some Bootstrapping
-			AppSystemConfig.getInstance().start();
+			if(!AppSystemConfig.getInstance().isActive())
+			{
+				AppSystemConfig.getInstance().start();
+			}
 			
 			String message = intent.getStringExtra("message");
 			String title = intent.getStringExtra("title");

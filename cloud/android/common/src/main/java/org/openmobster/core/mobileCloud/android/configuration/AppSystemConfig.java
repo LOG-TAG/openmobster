@@ -30,6 +30,7 @@ public final class AppSystemConfig
 	private static AppSystemConfig singleton;
 	
 	private GenericAttributeManager attrMgr;
+	private boolean isActive;
 	
 	private AppSystemConfig()
 	{
@@ -54,6 +55,11 @@ public final class AppSystemConfig
 	public static void stop()
 	{
 		AppSystemConfig.singleton = null;
+	}
+	
+	public boolean isActive()
+	{
+		return this.isActive;
 	}
 	
 	public synchronized void start()
@@ -108,6 +114,8 @@ public final class AppSystemConfig
 				this.attrMgr.setAttribute("launch-activity-class",pushActivityClass);
 				this.attrMgr.setAttribute("push-icon-name", pushIconName);
 			}
+			
+			this.isActive = true;
 		}
 		catch(Throwable e)
 		{
