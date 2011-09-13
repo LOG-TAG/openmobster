@@ -13,7 +13,10 @@ import java.util.ArrayList;
 
 import android.content.Context;
 
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
 import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
+import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
@@ -26,7 +29,6 @@ import org.openmobster.core.mobileCloud.api.ui.framework.push.AppNotificationInv
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
-import org.openmobster.core.mobileCloud.api.ui.framework.push.PushInvocationHandler;
 
 /**
  * Application Container. There is one instance of an Application Container deployed per Application. Application Container provides
@@ -102,9 +104,10 @@ public final class Moblet
 			//Moblet App State management service			
 			services.add(new AppStateManager());
 			
-			services.add(new PushInvocationHandler());
 										
 			Registry.getActiveInstance().start(services);
+			
+			this.registerPush();
 		}
 		catch(Exception e)
 		{
@@ -159,5 +162,24 @@ public final class Moblet
 	{
 		this.context = context;
 		Registry.getActiveInstance().setContext(context);
+	}
+	
+	private void registerPush()
+	{
+		try
+		{
+			//Populate the Cloud Request
+			Request request = new Request("android_push_callback");	
+			request.setAttribute("app-id", Registry.getActiveInstance().getContext().getPackageName());
+			
+			new MobileService().invoke(request);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			
+			//Record this error in the Cloud Error Log
+			ErrorHandler.getInstance().handle(e);
+		}
 	}
 }
