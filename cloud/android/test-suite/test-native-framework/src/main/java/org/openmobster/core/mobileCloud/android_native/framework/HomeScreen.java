@@ -90,6 +90,24 @@ public class HomeScreen extends Screen
 					}
 				}
 		);
+		
+		//Wire the Test Push button
+		Button push = (Button)ViewHelper.findViewById(currentActivity, 
+		"push");
+		push.setOnClickListener(
+				new OnClickListener()
+				{
+					public void onClick(View clicked)
+					{
+						CommandContext commandContext = new CommandContext();
+						
+						commandContext.setTarget("/test/start/push");
+						
+						//Making the invocation
+						Services.getInstance().getCommandService().execute(commandContext);
+					}
+				}
+		);
 														
 		//setup menu
 		try

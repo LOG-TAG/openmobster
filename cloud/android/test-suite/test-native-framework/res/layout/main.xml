@@ -11,6 +11,11 @@
 	<Button android:id="@+id/runtestsuite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Run TestSuite" />                                                                               
+            android:text="Run TestSuite" /> 
+            
+    <Button android:id="@+id/push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Push" />                                                                               
 </LinearLayout>
 
