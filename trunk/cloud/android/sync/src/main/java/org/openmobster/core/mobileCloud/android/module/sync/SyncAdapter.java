@@ -14,6 +14,8 @@ import java.util.Set;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.content.Intent;
 
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -342,6 +344,28 @@ public class SyncAdapter
 		return payload;
 	}
 	
+	private void syncPush(MobilePushInvocation invocation)
+	{
+		Map<String, Object> shared = invocation.getShared();
+		
+		//Prepare the bundle
+		Bundle bundle = new Bundle();
+		Set<String> keys = shared.keySet();
+		for(String key:keys)
+		{
+			String value = shared.get(key).toString();
+			bundle.putString(key, value);
+		}
+		
+		//Prepare the intent
+		Intent intent = new Intent("org.openmobster.sync.push");
+		intent.putExtra("bundle", bundle);
+		
+		//Send the broadcast
+		Context context = Registry.getActiveInstance().getContext();
+		context.sendBroadcast(intent);
+	}
+	
 	/**
 	 * 
 	 */
@@ -358,12 +382,13 @@ public class SyncAdapter
 			try
 			{
 				//Go ahead and send the respective broadcast
-				Bus.getInstance().broadcast(invocation);
+				this.syncPush(invocation);
 			}
-			catch(BusException bse)
+			catch(Exception e)
 			{
 				//Log the error, but still let the sync complete successfully
-				ErrorHandler.getInstance().handle(bse);				
+				e.printStackTrace(System.out);
+				ErrorHandler.getInstance().handle(e);				
 			}
 		}
 		
