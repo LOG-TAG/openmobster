@@ -18,6 +18,7 @@
 		<command id="/demo/remote/timeout">org.openmobster.core.mobileCloud.android_native.framework.command.DemoRemoteCommandTimeout</command>
 		<command id="/demo/asyncCommand">org.openmobster.core.mobileCloud.android_native.framework.command.DemoAsyncCommand</command>
 		<command id="pushTrigger">org.openmobster.core.mobileCloud.android_native.framework.command.PushTrigger</command>
+		<command id="/test/start/push">org.openmobster.core.mobileCloud.android_native.framework.command.InvokePush</command>
 	</commands>
 	
 	<screens>
