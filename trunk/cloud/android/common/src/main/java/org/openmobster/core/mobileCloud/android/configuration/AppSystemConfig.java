@@ -88,6 +88,26 @@ public final class AppSystemConfig
 					this.attrMgr.setAttribute("encryption", encryption);
 				}
 			}
+			
+			/**
+			 * Parse the <push>
+			 * 				<launch-activity-class></launch-activity-class>
+			 * 				<icon-name></icon-name>
+			 * 			 </push>
+			 */
+			NodeList push = root.getElementsByTagName("push");
+			if(push != null && push.getLength()>0)
+			{
+				Element pushElement = (Element)push.item(0);
+				Element launchActivityClass = (Element)pushElement.getElementsByTagName("launch-activity-class").item(0);
+				Element iconName = (Element)pushElement.getElementsByTagName("icon-name").item(0);
+				
+				String pushActivityClass = launchActivityClass.getFirstChild().getNodeValue().trim();
+				String pushIconName = iconName.getFirstChild().getNodeValue().trim();
+				
+				this.attrMgr.setAttribute("launch-activity-class",pushActivityClass);
+				this.attrMgr.setAttribute("push-icon-name", pushIconName);
+			}
 		}
 		catch(Throwable e)
 		{
@@ -120,5 +140,15 @@ public final class AppSystemConfig
 		}
 		
 		return false;
+	}
+	
+	public String getPushLaunchActivityClassName()
+	{
+		return (String)this.attrMgr.getAttribute("launch-activity-class");
+	}
+	
+	public String getPushIconName()
+	{
+		return (String)this.attrMgr.getAttribute("push-icon-name");
 	}
 }
