@@ -17,7 +17,6 @@ import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
-import org.openmobster.core.mobileCloud.api.ui.framework.AppPushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
@@ -130,8 +129,6 @@ public class CloudService
 		//Initialize the kernel
 		Moblet.getInstance(context.getApplicationContext()).propagateNewContext(context.getApplicationContext());
     	Moblet.getInstance(context.getApplicationContext()).startup(); 
-    	
-    	((AppPushListener)Services.getInstance().getPushListener()).start();
 	}
 	
 	private void bootstrapApplication(final Context context) throws Exception

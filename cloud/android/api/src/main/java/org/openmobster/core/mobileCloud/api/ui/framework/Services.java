@@ -12,7 +12,6 @@ import android.app.Activity;
 
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.push.PushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 
 
@@ -27,7 +26,6 @@ public final class Services
 	private AppResources resources;	
 	private NavigationContext navigationContext;
 	private CommandService commandService;
-	private PushListener pushListener;
 	private Activity currentActivity;
 	
 	private Services()
@@ -47,13 +45,6 @@ public final class Services
 					AppConfig.getInstance().init();
 					
 					Services.singleton.navigationContext = NavigationContext.getInstance();
-					
-					//Start the PushListener
-					Services.singleton.pushListener = AppPushListener.getInstance();
-					
-					//in a later release make this pluggable so the push 
-					//notification behavior can be configured by the App Developer
-					((AppPushListener)Services.singleton.pushListener).setHandler(new CorePushNotificationHandler());
 				}
 			}
 		}
@@ -93,11 +84,6 @@ public final class Services
 	public boolean isFrameworkActive()
 	{
 		return AppConfig.getInstance().isFrameworkActive();
-	}
-	
-	public PushListener getPushListener()
-	{
-		return this.pushListener;
 	}
 
 	public Activity getCurrentActivity()
