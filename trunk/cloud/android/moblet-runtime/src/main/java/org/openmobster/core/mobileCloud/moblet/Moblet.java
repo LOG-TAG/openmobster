@@ -25,7 +25,6 @@ import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObject
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Database;
-import org.openmobster.core.mobileCloud.api.ui.framework.push.AppNotificationInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
@@ -91,11 +90,6 @@ public final class Moblet
 						
 			services.add(new Bus());
 			services.add(new IBinderManager());
-												
-			//add this for handling Push notifications
-			services.add(new AppNotificationInvocationHandler());
-			
-			services.add(new PushRPCInvocationHandler());
 			
 			services.add(new NetworkConnector());
 			
@@ -103,7 +97,6 @@ public final class Moblet
 			
 			//Moblet App State management service			
 			services.add(new AppStateManager());
-			
 										
 			Registry.getActiveInstance().start(services);
 			

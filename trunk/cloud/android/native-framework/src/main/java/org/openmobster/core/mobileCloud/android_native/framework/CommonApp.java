@@ -18,13 +18,10 @@ import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
-import org.openmobster.core.mobileCloud.api.ui.framework.AppPushListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.push.MobilePush;
-import org.openmobster.core.mobileCloud.api.ui.framework.push.PushListener;
 import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
@@ -100,38 +97,9 @@ public final class CommonApp
 	
 	static void onResume(final Activity activity)
 	{
-		Intent pushIntent = activity.getIntent();
 		NavigationContext navigationContext = NavigationContext.getInstance();
 		navigationContext.setHome("home");
 		navigationContext.home();
-		
-		if(pushIntent.getBooleanExtra("push", Boolean.FALSE))
-		{
-			PushListener pushListener = Services.getInstance().getPushListener();
-			MobilePush push = pushListener.getPush();
-			Services.getInstance().getPushListener().clearNotification();
-			
-			//Deliver this Push as a call back to the App layer
-			if(push != null)
-			{
-				try
-				{
-					CommandService service = Services.getInstance().getCommandService();
-					CommandContext commandContext = new CommandContext();
-					commandContext.setTarget("push");
-					commandContext.setPush(push);
-					service.execute(commandContext);
-				}
-				catch(Exception e)
-				{
-					//if this fails...app should not fail...Life still goes on
-					ErrorHandler.getInstance().handle(new SystemException(CommonApp.class.getName(), "onResume", new Object[]{
-						"Message:"+e.getMessage(),
-						"Exception:"+e.toString()
-					}));
-				}
-			}
-		}
 	}
 	
 	static boolean onPrepareOptionsMenu(final Activity activity, final Menu menu)
@@ -160,8 +128,6 @@ public final class CommonApp
 		//Initialize the kernel
 		Moblet.getInstance(activity.getApplicationContext()).propagateNewContext(activity.getApplicationContext());
     	Moblet.getInstance(activity.getApplicationContext()).startup(); 
-    	
-    	((AppPushListener)Services.getInstance().getPushListener()).start();
 	}
 	
 	static void bootstrapActivity(final Activity activity)
