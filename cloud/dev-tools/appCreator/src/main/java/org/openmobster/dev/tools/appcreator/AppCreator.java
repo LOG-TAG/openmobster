@@ -485,7 +485,6 @@ public class AppCreator
 		File mobletAppsFile = new File(directory, "src/main/resources/META-INF/moblet-apps.xml");
 		this.generateFile(mobletAppsFile, mobletApps);
 		
-		
 		//src/assemble/moblet.xml
 		this.generateFile(new File(directory, "src/assemble/moblet.xml"), 
 				this.readTemplateResource("/template/moblet/src/assemble/moblet.xml"));
@@ -677,6 +676,9 @@ public class AppCreator
 		
 		this.generateFile(new File(directory, "src/main/resources/moblet-app/moblet-app.xml"),
 		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/moblet-app.xml"));
+		
+		this.generateFile(new File(directory, "src/main/resources/openmobster-app.xml"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/resources/openmobster-app.xml"));
 		
 		//src/main/java
 		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/DemoDetails.java"),
