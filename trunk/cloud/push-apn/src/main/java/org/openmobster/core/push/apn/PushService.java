@@ -26,6 +26,7 @@ import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.PushApp;
 import org.openmobster.core.security.device.PushAppController;
+import org.openmobster.core.push.notification.Constants;
 
 /**
  * 
@@ -132,6 +133,14 @@ public final class PushService
 			if(notificationType.equals("channel"))
 			{
 				String channel = busMessage.getSenderUri();
+				String command = (String)busMessage.getAttribute(Constants.command);
+				
+				//Make sure this not a silent event, in which do not notify
+				if(command != null && command.contains(Constants.silent))
+				{
+					return;
+				}
+				
 				this.sendSyncNotification(deviceId, channel);
 			}
 			else if(notificationType.equals("push"))
