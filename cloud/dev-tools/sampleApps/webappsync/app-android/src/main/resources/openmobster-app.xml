@@ -1,0 +1,8 @@
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>com.webappsync.activity.SyncWebApp</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+</app-conf>
