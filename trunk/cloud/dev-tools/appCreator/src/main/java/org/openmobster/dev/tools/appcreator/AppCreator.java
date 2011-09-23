@@ -695,6 +695,9 @@ public class AppCreator
 		
 		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/screen/HomeScreen.java"),
 		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/screen/HomeScreen.java"));
+		
+		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/ChannelBootupHelper.java"),
+		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/ChannelBootupHelper.java"));
 	}
 	
 	private void generateCloudApp(File directory, Map<String, String> userValues) throws Exception
