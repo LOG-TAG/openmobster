@@ -151,7 +151,10 @@ public class HomeScreen extends Screen
 					commandContext.setTarget("/channel/bootup/helper");
 					Services.getInstance().getCommandService().execute(commandContext);
 				}
-				NavigationContext.getInstance().navigate("/crud");
+				else
+				{
+					NavigationContext.getInstance().navigate("/crud");
+				}
 			}
 			else if(selectedIndex == 1)
 			{

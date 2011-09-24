@@ -16,6 +16,7 @@ import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
+import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 
 /**
  * Checks to make sure that the data is loaded in the sync channel used by the App
@@ -53,7 +54,8 @@ public class ChannelBootupHelper implements RemoteCommand
 	}
 
 	public void doViewAfter(CommandContext commandContext)
-	{		
+	{	
+		NavigationContext.getInstance().navigate("/crud");
 	}
 
 	public void doViewError(CommandContext commandContext)
