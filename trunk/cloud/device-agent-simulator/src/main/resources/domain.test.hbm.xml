@@ -15,5 +15,13 @@
         <property name="subject" type="string" column="subject"/>
         <property name="message" type="string" column="message"/>
         <property name="attachment" type="binary" column="attachment"/>
-    </class>    
+    </class>  
+    
+    <class name="test.openmobster.device.agent.sync.server.TXBean" table="tx_bean">
+        <id name="uid" column="uid">
+            <generator class="native"/>
+        </id>        
+        <property name="oid" type="string" column="oid" unique="true" not-null="true"/>
+        <property name="name" type="string" column="name"/>
+    </class>  
 </hibernate-mapping>

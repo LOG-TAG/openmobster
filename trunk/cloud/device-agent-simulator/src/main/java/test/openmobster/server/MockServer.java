@@ -39,6 +39,9 @@ import test.openmobster.device.agent.api.TicketConnector;
 
 import org.openmobster.core.common.transaction.TransactionHelper;
 
+import test.openmobster.device.agent.sync.server.TXCheckDAO;
+import test.openmobster.device.agent.sync.server.TXBean;
+
 
 /**
  * @author openmobster@gmail.com
@@ -65,7 +68,21 @@ public class MockServer implements Processor
 	private IdentityController identityController;
 	private Provisioner provisioner;
 	
+	private TXCheckDAO txCheckDao;
 	
+	
+	public TXCheckDAO getTxCheckDao()
+	{
+		return txCheckDao;
+	}
+
+
+	public void setTxCheckDao(TXCheckDAO txCheckDao)
+	{
+		this.txCheckDao = txCheckDao;
+	}
+
+
 	public ServerSyncEngine getServerSyncEngine()
 	{
 		return serverSyncEngine;
@@ -236,6 +253,18 @@ public class MockServer implements Processor
 		if(info.contains("SetUpAPITestSuite"))
 		{
 			this.setUpAPITestSuite();
+			return;
+		}
+		
+		if(info.contains("setupTXCheck"))
+		{
+			this.setupTXCheck();
+			return;
+		}
+		
+		if(info.contains("dumpTXCheck"))
+		{
+			this.dumpTXCheck();
 			return;
 		}
 		
@@ -608,6 +637,66 @@ public class MockServer implements Processor
 		serverData.setMessage(MessageFormat.format(message,new Object[]{serverData.getObjectId()}));
 		serverData.setAttachment(this.attachment);
 		controller.create(serverData);
+	}
+	
+	private void setupTXCheck()
+	{
+		boolean startedHere = TransactionHelper.startTx();
+		try
+		{
+			this.txCheckDao.deleteAll();
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+		}
+	}
+	
+	private void dumpTXCheck()
+	{
+		boolean startedHere = TransactionHelper.startTx();
+		try
+		{
+			List all = this.txCheckDao.readAll();
+			if(all == null || all.isEmpty())
+			{
+				System.out.println("*************TXCheckDAO*********************");
+				System.out.println("No records found....");
+				System.out.println("********************************************");
+				return;
+			}
+			
+			for(Object local:all)
+			{
+				TXBean bean = (TXBean)local;
+				
+				System.out.println("***********************************************");
+				System.out.println("OID: "+bean.getOid());
+				System.out.println("Name: "+bean.getName());
+			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+		}
 	}
 	//------Processor implementation---------------------------------------------------------------------------------------------------------------------------------
 	public String getId()

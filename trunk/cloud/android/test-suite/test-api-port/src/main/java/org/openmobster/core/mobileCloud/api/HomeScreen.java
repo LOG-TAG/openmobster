@@ -110,16 +110,16 @@ public class HomeScreen extends Screen
 		);
 		
 		//Wire up the TestPushRPC button
-		Button pushrpc = (Button)ViewHelper.findViewById(currentActivity, 
-		"pushrpc");
-		pushrpc.setOnClickListener(
+		Button checktx = (Button)ViewHelper.findViewById(currentActivity, 
+		"checktx");
+		checktx.setOnClickListener(
 				new OnClickListener()
 				{
 					public void onClick(View clicked)
 					{
 						CommandContext commandContext = new CommandContext();
 						
-						commandContext.setTarget("/test/start/pushrpc");
+						commandContext.setTarget("/check/transactions");
 						
 						//Making the invocation
 						Services.getInstance().getCommandService().execute(commandContext);
