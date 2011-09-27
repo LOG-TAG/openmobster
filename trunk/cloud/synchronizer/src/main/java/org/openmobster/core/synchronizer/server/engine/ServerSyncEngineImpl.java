@@ -273,6 +273,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	{
 		try
 		{
+			String app = SyncContext.getInstance().getApp();
+			
 			Add stream = null;
 			String streamRecordId = ((Add)syncCommand.getAddCommands().get(0)).getMeta();
 			streamRecordId = this.gateway.mapIdFromLocalToServer(streamRecordId);
@@ -281,7 +283,9 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			if (record != null)
 			{
 				stream = (Add)this.getStreamCommand(record, session.getMaxClientSize(), 
-						ServerSyncEngine.OPERATION_ADD);								
+						ServerSyncEngine.OPERATION_ADD);	
+				
+				this.conflictEngine.startOptimisticLock(app, pluginId, record);
 			}
 			
 			return stream;
@@ -851,6 +855,9 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				recordMap.put(newRecordId, recordId);
 				mapEngine.saveRecordMap(recordMap);
 			}
+			
+			MobileBean newBean = this.gateway.readRecord(pluginId, newRecordId);
+			this.conflictEngine.startOptimisticLock(app, pluginId, newBean);
 		}		
 	}
 		
