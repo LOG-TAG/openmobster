@@ -46,11 +46,17 @@ public class TransactionFilter extends IoFilterAdapter
 		}
 		catch(Throwable t)
 		{
-			if(isStartedHere)
+			try
 			{
-				TransactionHelper.rollbackTx();
+				if(isStartedHere)
+				{
+					TransactionHelper.rollbackTx();
+				}
 			}
-			throw new RuntimeException(t);
+			catch(Throwable ti)
+			{
+				//nothing...we tried to rollback
+			}
 		}
 	}	
 }

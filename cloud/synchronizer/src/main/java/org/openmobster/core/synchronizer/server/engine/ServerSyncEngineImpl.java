@@ -363,11 +363,18 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	String pluginId, SyncCommand syncCommand)
 	{
 		List status = new ArrayList();
+		boolean errorOccured = false;
 
 		// process Add commands
 		for (int i = 0; i < syncCommand.getAddCommands().size(); i++)
 		{
-			Add add = (Add) syncCommand.getAddCommands().get(i);			
+			Add add = (Add) syncCommand.getAddCommands().get(i);
+			
+			if(errorOccured)
+			{
+				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, add));
+				continue;
+			}
 			
 			//Make sure this is not chunked
 			if(add.isChunked())
@@ -393,7 +400,9 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				}
 				else
 				{
+					errorOccured = true;
 					status.add(this.getStatus(SyncServer.COMMAND_FAILURE, add));
+					this.updateBulkErrorStatus(status);
 				}
 			}
 		}
@@ -403,6 +412,11 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		{
 			Replace replace = (Replace) syncCommand.getReplaceCommands().get(i);
 			
+			if(errorOccured)
+			{
+				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, replace));
+				continue;
+			}
 			
 			//Make sure this is not chunked
 			if(replace.isChunked())
@@ -416,7 +430,6 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				
 				//With this strategy, in case of a conflict, the change on the client
 				//wins over the change on the server
-				//TODO: Apply smarter conflict resolution here
 				this.saveRecord(pluginId, item.getData());
 				
 				status.add(this.getStatus(SyncServer.SUCCESS, replace));
@@ -432,7 +445,9 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				}
 				else
 				{
+					errorOccured = true;
 					status.add(this.getStatus(SyncServer.COMMAND_FAILURE, replace));
+					this.updateBulkErrorStatus(status);
 				}
 			}
 		}
@@ -440,7 +455,13 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		// process Delete commands
 		for (int i = 0; i < syncCommand.getDeleteCommands().size(); i++)
 		{
-			Delete delete = (Delete) syncCommand.getDeleteCommands().get(i);			
+			Delete delete = (Delete) syncCommand.getDeleteCommands().get(i);
+			
+			if(errorOccured)
+			{
+				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, delete));
+				continue;
+			}
 			
 			//Make sure this is not chunked
 			if(delete.isChunked())
@@ -458,9 +479,11 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			}
 			catch (Exception e)
 			{
+				errorOccured = true;
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
 				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, delete));
+				this.updateBulkErrorStatus(status);
 			}
 		}
 
@@ -959,6 +982,20 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}
 
 		return status;
+	}
+	
+	private void updateBulkErrorStatus(List statuses)
+	{
+		if(statuses == null || statuses.isEmpty())
+		{
+			return;
+		}
+		
+		for(Object local:statuses)
+		{
+			Status status = (Status)local;
+			status.setData(SyncServer.COMMAND_FAILURE);
+		}
 	}
 	
 	private String generateSync()

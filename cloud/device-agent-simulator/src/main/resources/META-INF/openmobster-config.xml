@@ -103,6 +103,9 @@
    		<property name="provisioner">
    			<inject bean="security://Provisioner"/>
    		</property>
+   		<property name="txCheckDao">
+   			<inject bean="TXCheckDAO"/>
+   		</property>
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
@@ -132,6 +135,19 @@
    	<property name="ticketds">
    			<inject bean="testMobileBeanSpec://TicketDS"/>
    	</property>
+   </bean>
+   
+   <bean name="TXCheckChannel" class="test.openmobster.device.agent.sync.server.TXCheckChannel">
+        <property name="dao">
+   			<inject bean="TXCheckDAO"/>
+   		</property>
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+   <bean name="TXCheckDAO" class="test.openmobster.device.agent.sync.server.TXCheckDAO">
+   	  <property name="hibernateManager">
+   	  	<inject bean="test://HibernateManager"/>
+   	  </property>
    </bean>
    
    
