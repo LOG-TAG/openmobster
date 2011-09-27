@@ -126,9 +126,9 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/pushmail/app-android/src/main/java" />
 	
-	<classpathentry kind="src" path="dev-tools/sampleApps/pushrpc/cloud/src/main/java" />
-	<classpathentry kind="src" path="dev-tools/sampleApps/pushrpc/cloud/src/test/java" />
-	<classpathentry kind="src" path="dev-tools/sampleApps/pushrpc/app-android/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/cloud/src/test/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/app-android/src/main/java" />
 	
 	<!-- Javascript bridge -->
 	<classpathentry kind="src" path="android/javascript-bridge/src/main/java"/>
