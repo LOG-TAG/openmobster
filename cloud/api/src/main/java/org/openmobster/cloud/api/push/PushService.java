@@ -66,6 +66,14 @@ public final class PushService
 		{
 			throw new IllegalArgumentException("Message is Required!!");
 		}
+		if(appId == null || appId.trim().length()==0)
+		{
+			throw new IllegalArgumentException("App Id is Required!!");
+		}
+		if(identity == null || identity.trim().length() == 0)
+		{
+			throw new IllegalArgumentException("Identity is Required!!");
+		}
 		
 		//Detect the device that will receive the push
 		DeviceController deviceController = DeviceController.getInstance();
