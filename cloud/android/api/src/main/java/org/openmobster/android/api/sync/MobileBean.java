@@ -312,7 +312,7 @@ public final class MobileBean
 	 * Persists the state of the Mobile Bean. This also makes sure the consistent bean state is reflected on the Cloud Side as well
 	 * 
 	 */
-	public synchronized void save()
+	public synchronized void save() throws CommitException
 	{
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
 		
@@ -339,6 +339,7 @@ public final class MobileBean
 					"Message="+e.getMessage()
 				});
 				ErrorHandler.getInstance().handle(sys);
+				throw new CommitException(sys);
 			}			
 			
 			return;
@@ -347,12 +348,12 @@ public final class MobileBean
 		//If Bean Updated on Device
 		if(this.isDirty)
 		{
-			deviceDB.update(this.data);
-			this.clearMetaData();
-			
-			//Integration with the SyncService
 			try
 			{
+				deviceDB.update(this.data);
+				this.clearMetaData();
+			
+				//Integration with the SyncService
 				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 				SyncInvocation.updateChangeLog, this.getService(), this.getId(), SyncInvocation.OPERATION_UPDATE);		
 				Bus.getInstance().invokeService(syncInvocation);
@@ -364,6 +365,7 @@ public final class MobileBean
 					"Message="+e.getMessage()
 				});
 				ErrorHandler.getInstance().handle(sys);
+				throw new CommitException(sys);
 			}
 		}
 	}
@@ -371,24 +373,24 @@ public final class MobileBean
 	/**
 	 * Deletes the bean from the channel. This also makes sure this action is reflected on the Cloud Side as well
 	 */
-	public synchronized void delete()
+	public synchronized void delete() throws CommitException
 	{
 		if(this.isNew)
 		{
 			throw new IllegalStateException("Instance is created on the device and not saved. Hence it cannot be deleted");
 		}
 		
-		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		String service = this.getService();
-		String id = this.getId();
-		
-		deviceDB.delete(this.data);
-		
-		this.clearAll();
-		
-		//Integration with the SyncService
 		try
 		{
+			MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
+			String service = this.getService();
+			String id = this.getId();
+			
+			deviceDB.delete(this.data);
+			
+			this.clearAll();
+			
+			//Integration with the SyncService
 			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 			SyncInvocation.updateChangeLog, service, id, SyncInvocation.OPERATION_DELETE);		
 			Bus.getInstance().invokeService(syncInvocation);
@@ -400,6 +402,7 @@ public final class MobileBean
 				"Message="+e.getMessage()
 			});
 			ErrorHandler.getInstance().handle(sys);
+			throw new CommitException(sys);
 		}
 	}
 	

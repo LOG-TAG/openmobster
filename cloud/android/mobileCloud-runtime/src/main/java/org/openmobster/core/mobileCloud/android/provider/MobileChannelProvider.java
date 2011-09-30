@@ -207,6 +207,7 @@ public class MobileChannelProvider extends ContentProvider
 		catch(Exception e)
 		{
 			//Error Handler
+			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(
 					this.getClass().getName(),"update", new Object[]{
 						"Exception: "+e.toString(),
