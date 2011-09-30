@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
@@ -208,7 +209,15 @@ public class HomeScreen extends Screen
 							MobileBean newBean = MobileBean.newInstance("cloud_channel");
 							newBean.setValue("name", name);
 							newBean.setValue("value", value);
-							newBean.save();
+							try
+							{
+								newBean.save();
+							}
+							catch(CommitException se)
+							{
+								ViewHelper.getOkModal(app, "Error", se.getMessage());
+								return;
+							}
 							
 							NavigationContext.getInstance().refresh();
 						}
@@ -248,6 +257,7 @@ public class HomeScreen extends Screen
 			//Get the ticket bean selected by the user
 			int selectedIndex = position;
 			final MobileBean selectedBean = activeBeans[selectedIndex];
+			
 			String name = selectedBean.getValue("name");
 			String value = selectedBean.getValue("value");
 			
@@ -289,7 +299,25 @@ public class HomeScreen extends Screen
 					
 					selectedBean.setValue("name", name);
 					selectedBean.setValue("value", value);
-					selectedBean.save();
+					try
+					{
+						selectedBean.save();
+					}
+					catch(CommitException se)
+					{
+						try
+						{
+							selectedBean.refresh();
+							selectedBean.setValue("name", name);
+							selectedBean.setValue("value", value);
+							selectedBean.save();
+						}
+						catch(Exception e)
+						{
+							//we tried, put up an error message
+							ViewHelper.getOkModal(currentActivity, "Error", se.getMessage());
+						}
+					}
 					
 					NavigationContext.getInstance().refresh();
 				}
@@ -298,7 +326,15 @@ public class HomeScreen extends Screen
 			builder.setNegativeButton("Delete", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int id)
 				{
-					selectedBean.delete();
+					try
+					{
+						selectedBean.delete();
+					}
+					catch(CommitException se)
+					{
+						ViewHelper.getOkModal(currentActivity, "Error", se.getMessage());
+						return;
+					}
 					NavigationContext.getInstance().refresh();
 				}
 			});
