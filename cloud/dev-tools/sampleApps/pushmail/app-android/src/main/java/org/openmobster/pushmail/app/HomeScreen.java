@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -150,7 +151,7 @@ public class HomeScreen extends Screen
 				buffer.append("Subject: "+subject+"\n\n\n");
 				buffer.append(message);
 				
-				Activity currentActivity = Services.getInstance().getCurrentActivity();
+				final Activity currentActivity = Services.getInstance().getCurrentActivity();
 				AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
 				builder.setMessage(buffer.toString())
 				       .setCancelable(false).setTitle("Email")
@@ -162,7 +163,16 @@ public class HomeScreen extends Screen
 				        	   
 				        	   //Delete this Email instance. This CRUD operation is then seamlessly
 				        	   //synchronized back with the Cloud
-				        	   activeBean.delete();
+				        	   try
+				        	   {
+				        		   activeBean.delete();
+				        	   }
+				        	   catch(CommitException cme)
+				        	   {
+				        		   ViewHelper.getOkModal(currentActivity, "Error", "CommitException: Delete operation failed").
+				        		   show();
+				        	   }
+				        	   
 				        	   NavigationContext.getInstance().home();
 				           }
 				       })
