@@ -14,6 +14,7 @@ import org.appcelerator.titanium.TiContext;
 
 import org.openmobster.android.api.sync.BeanList;
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 
 /**
  *
@@ -72,7 +73,14 @@ public final class UpdateBeanProxy extends KrollProxy
 			return;
 		}
 		
-		this.update.save();
+		try
+		{
+			this.update.save();
+		}
+		catch(CommitException cme)
+		{
+			throw new RuntimeException(cme);
+		}
 	}
 	
 	@Kroll.method
