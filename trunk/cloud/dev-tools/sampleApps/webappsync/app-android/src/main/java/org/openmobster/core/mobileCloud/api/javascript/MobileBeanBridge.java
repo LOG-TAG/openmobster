@@ -10,6 +10,7 @@ package org.openmobster.core.mobileCloud.api.javascript;
 
 import org.openmobster.android.api.sync.BeanList;
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 
 /**
  * A Javascript bridge that exposes the OpenMobster MobileBean service to the HTML5/Javascript layer of the App.
@@ -95,7 +96,14 @@ public final class MobileBeanBridge
     	MobileBean bean = MobileBean.readById(channel, oid);
     	String deletedBeanId = bean.getId();
     	
-    	bean.delete();
+    	try
+    	{
+    		bean.delete();
+    	}
+    	catch(CommitException cme)
+    	{
+    		throw new RuntimeException(cme);
+    	}
     	
     	return deletedBeanId;
     }
@@ -111,13 +119,39 @@ public final class MobileBeanBridge
     public String setValue(String channel,String oid,String fieldUri,String value)
     {
     	MobileBean bean = MobileBean.readById(channel, oid);
+    	boolean isAdd = false;
     	if(bean == null)
     	{
     		bean = MobileBean.newInstance(channel);
+    		isAdd = true;
     	}
     	
     	bean.setValue(fieldUri, value);
-    	bean.save();
+    	try
+    	{
+    		bean.save();
+    	}
+    	catch(CommitException cme)
+    	{
+    		if(isAdd)
+    		{
+    			throw new RuntimeException(cme);
+    		}
+    		else
+    		{
+    			try
+    			{
+    				bean.refresh();
+    				bean.setValue(fieldUri, value);
+    				bean.save();
+    			}
+    			catch(CommitException cme2)
+    			{
+    				//do not commit, we tried twice
+    				throw new RuntimeException(cme2);
+    			}
+    		}
+    	}
     	
     	return bean.getId();
     }
