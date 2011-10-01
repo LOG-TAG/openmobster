@@ -10,6 +10,7 @@ package org.openmobster.cloud;
 import org.json.JSONArray;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 
 import org.appcelerator.kroll.KrollInvocation;
 import org.appcelerator.kroll.KrollProxy;
@@ -108,7 +109,14 @@ public final class SyncProxy extends KrollProxy
 		
 		String beanId = bean.getId();
 		
-		bean.delete();
+		try
+		{
+			bean.delete();
+		}
+		catch(CommitException cme)
+		{
+			throw new RuntimeException(cme);
+		}
 		
 		return beanId;
 	}

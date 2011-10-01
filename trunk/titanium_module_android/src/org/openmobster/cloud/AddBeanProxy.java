@@ -13,6 +13,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiContext;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 
 /**
  *
@@ -89,7 +90,14 @@ public final class AddBeanProxy extends KrollProxy
 			return null;
 		}
 		
-		this.bean.save();
+		try
+		{
+			this.bean.save();
+		}
+		catch(CommitException cme)
+		{
+			throw new RuntimeException(cme);
+		}
 		
 		String oid = this.bean.getId();
 		
