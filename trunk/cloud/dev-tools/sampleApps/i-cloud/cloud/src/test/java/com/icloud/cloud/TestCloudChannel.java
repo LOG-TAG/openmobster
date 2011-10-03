@@ -56,8 +56,8 @@ public class TestCloudChannel extends TestCase
 			log.info("Name: "+name);
 			log.info("Value: "+value);
 			
-			this.assertEquals("Titanium", name);
-			this.assertEquals("Rocks!!!",value);
+			this.assertTrue(name.equals("Titanium") || name.equals("OpenMobster"));
+			this.assertTrue(value.equals("Rocks!!!") || value.equals("Just Works!!"));
 			
 			//Two Way Sync
 			MobileObject newObject = new MobileObject();

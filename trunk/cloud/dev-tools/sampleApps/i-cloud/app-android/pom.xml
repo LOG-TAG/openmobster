@@ -25,6 +25,12 @@
 		i-cloud
 	</artifactId>
 	<packaging>apk</packaging>
+	
+	<properties>
+		<android.keystore.location>
+			/Users/openmobster/projects/openmobster/openmobster-release-key.keystore
+		</android.keystore.location>
+	</properties>
 
 	<dependencies>
 		<!--
@@ -160,9 +166,9 @@
 									</includes>
 									<keystore>${android.keystore.location}
 									</keystore>
-									<storepass>${your.keystore.pass}</storepass>
-									<keypass>${your.cert.pass}</keypass>
-									<alias>${your.cert.alias}</alias>
+									<storepass>password</storepass>
+									<keypass>password</keypass>
+									<alias>openmobster</alias>
 								</configuration>
 							</execution>
 						</executions>

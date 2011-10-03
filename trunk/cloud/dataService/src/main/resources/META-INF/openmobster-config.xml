@@ -81,7 +81,8 @@
    <bean name="dataService://CommandController" class="org.openmobster.core.dataService.server.CommandController">    		
    		<property name="cometSessionManager">
    			<inject bean="dataService://CometSessionManager"/>
-   		</property>  		
+   		</property>
+   		<property name="pulseInterval">9</property>  		
    </bean>
    
    <!-- ProcessorController -->
