@@ -41,7 +41,9 @@ public class GeneralTools
 		inputBuffer.append(manufacturer);
 		inputBuffer.append(model);
 		inputBuffer.append(product);
-		inputBuffer.append(GeneralTools.generateUniqueId());
+		
+		//DO this only when demonstrating the iCloud app on multiple emulators
+		//inputBuffer.append(GeneralTools.generateUniqueId());
 		
 		String knownInput = inputBuffer.toString();
 		
