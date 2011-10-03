@@ -291,6 +291,8 @@
 		A2E557B512F76AE0008B3FCE /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
 		A2E557D412F76CC5008B3FCE /* AbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E557D312F76CC5008B3FCE /* AbstractIntegrationTest.m */; };
 		A2E557D812F76CEC008B3FCE /* MobileBeanTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E557D712F76CEC008B3FCE /* MobileBeanTestSuite.m */; };
+		A2FA7F7614379B710054223D /* CommitException.h in Headers */ = {isa = PBXBuildFile; fileRef = A2FA7F7414379B710054223D /* CommitException.h */; };
+		A2FA7F7714379B710054223D /* CommitException.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FA7F7514379B710054223D /* CommitException.m */; };
 		AA747D9F0F9514B9006C5449 /* mobilecloudlib_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* mobilecloudlib_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -634,6 +636,8 @@
 		A2E557D312F76CC5008B3FCE /* AbstractIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractIntegrationTest.m; sourceTree = "<group>"; };
 		A2E557D612F76CEC008B3FCE /* MobileBeanTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanTestSuite.h; sourceTree = "<group>"; };
 		A2E557D712F76CEC008B3FCE /* MobileBeanTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileBeanTestSuite.m; sourceTree = "<group>"; };
+		A2FA7F7414379B710054223D /* CommitException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitException.h; sourceTree = "<group>"; };
+		A2FA7F7514379B710054223D /* CommitException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitException.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* mobilecloudlib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mobilecloudlib_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libmobilecloudlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmobilecloudlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1362,6 +1366,8 @@
 				A2E5568512F750C8008B3FCE /* MobileBean.m */,
 				A286964912F7CC0300A4792E /* BeanList.h */,
 				A286964A12F7CC0300A4792E /* BeanList.m */,
+				A2FA7F7414379B710054223D /* CommitException.h */,
+				A2FA7F7514379B710054223D /* CommitException.m */,
 			);
 			name = sync;
 			sourceTree = "<group>";
@@ -1506,6 +1512,7 @@
 				A2C5DA3313F0976E002F62BB /* LogicExpression.h in Headers */,
 				A2C5DA3713F195B0002F62BB /* LogicChain.h in Headers */,
 				A2C5DA3B13F1A831002F62BB /* Query.h in Headers */,
+				A2FA7F7614379B710054223D /* CommitException.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1996,6 +2003,7 @@
 				A2C5DA3413F0976E002F62BB /* LogicExpression.m in Sources */,
 				A2C5DA3813F195B0002F62BB /* LogicChain.m in Sources */,
 				A2C5DA3C13F1A831002F62BB /* Query.m in Sources */,
+				A2FA7F7714379B710054223D /* CommitException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

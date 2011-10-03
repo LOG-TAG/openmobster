@@ -12,6 +12,7 @@
 #import "SystemException.h"
 #import "LogicChain.h"
 #import "LogicExpression.h"
+#import "CommitException.h"
 
 
 /**
@@ -407,23 +408,25 @@
 			@throw ex;
 		}
 	
-		MobileObjectDatabase *mdb = [MobileObjectDatabase getInstance];
-		NSString *channel = [self getChannel];
-		NSString *oid = [self getId];
+        @try
+        {
+            MobileObjectDatabase *mdb = [MobileObjectDatabase getInstance];
+            NSString *channel = [self getChannel];
+            NSString *oid = [self getId];
 	
-		[mdb delete:data];
+            [mdb delete:data];
 	
-		[self clearAll];
+            [self clearAll];
 		
-		//Sync integration
-		@try 
-		{
+            //Sync integration
 			SyncService *sync = [SyncService getInstance];
 			[sync updateChangeLog:channel :_Delete :oid];
 		}
 		@catch (NSException * e) 
 		{
-			[ErrorHandler handleException:e];	
+			[ErrorHandler handleException:e];
+            CommitException *commitException = [CommitException withException:e];
+            @throw commitException;
 		}
 	}
 }
@@ -444,23 +447,25 @@
 		//bean created on the device
 		if(isNew)
 		{
-			NSString *newOid = [deviceDB create:data];
-			NSString *channel = data.service;
-			self.data = [deviceDB read:channel : newOid];
+            @try 
+            {
+                NSString *newOid = [deviceDB create:data];
+                NSString *channel = data.service;
+                self.data = [deviceDB read:channel : newOid];
 			
-			isNew = NO;
+                isNew = NO;
 			
-			[self refresh];
+                [self refresh];
 			
-			//Sync integration
-			@try 
-			{
+                //Sync integration
 				SyncService *sync = [SyncService getInstance];
 				[sync updateChangeLog:channel :_Add :[self getId]];
 			}
 			@catch (NSException * e) 
 			{
-				[ErrorHandler handleException:e];	
+				[ErrorHandler handleException:e];
+                CommitException *commitException = [CommitException withException:e];
+                @throw commitException;
 			}
 			
 			return;
@@ -469,18 +474,20 @@
 		//bean modified on the device
 		if(isDirty)
 		{
-			[deviceDB update:data];
-			[self clearMetaData];
+            @try
+            {
+                [deviceDB update:data];
+                [self clearMetaData];
 			
-			//Sync integration
-			@try 
-			{
+                //Sync integration
 				SyncService *sync = [SyncService getInstance];
 				[sync updateChangeLog:[self getChannel] :_Replace :[self getId]];
 			}
 			@catch (NSException * e) 
 			{
-				[ErrorHandler handleException:e];	
+				[ErrorHandler handleException:e];
+                CommitException *commitException = [CommitException withException:e];
+                @throw commitException;
 			}
 		}
 	}
