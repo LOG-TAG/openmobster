@@ -24,6 +24,7 @@ import org.openmobster.core.services.subscription.SubscriptionManager;
 public class CommandController 
 {
 	private CometSessionManager cometSessionManager;
+	private int pulseInterval;
 	
 	public CommandController()
 	{
@@ -49,6 +50,17 @@ public class CommandController
 	{
 		this.cometSessionManager = cometSessionManager;
 	}	
+	
+	
+	public int getPulseInterval()
+	{
+		return pulseInterval;
+	}
+
+	public void setPulseInterval(int pulseInterval)
+	{
+		this.pulseInterval = pulseInterval;
+	}
 	//---------------------------------------------------------------------------------------------------------------------
 	public void execute(IoSession session, String payload, ConnectionRequest request) throws Exception
 	{						
@@ -95,7 +107,7 @@ public class CommandController
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	private long computeKeepAliveInterval(String platform, String device)
 	{
-		long keepAliveInterval = 9*60*1000; //waits 90 seconds...through experimentation this has very little impact on the device battery
+		long keepAliveInterval = (this.pulseInterval)*60*1000; 
 		
 		//This customization is needed because due to a TCP stack issue shipped with
 		//the 833x blackberry devices, the default READ_WRITE timeout of 2 minutes does
