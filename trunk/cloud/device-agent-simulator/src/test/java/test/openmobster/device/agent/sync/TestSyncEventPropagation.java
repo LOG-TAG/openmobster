@@ -169,6 +169,37 @@ public class TestSyncEventPropagation extends AbstractSync
 		this.assertTrue(imei0ChangeLog == null || imei0ChangeLog.isEmpty());
 	}
 	
+	public void testSyncEventNotBooted() throws Exception
+	{
+		log.info("Starting testSyncEventNotBooted.............");
+		
+		this.imei0.bootService();
+		this.print(this.imei0.readAll());
+		
+		//Updating a bean
+		this.imei0.swapConfiguration();
+		MobileObject unique1 = this.imei0.read("unique-1");
+		unique1.setValue("from", "updated by device 1");
+		this.imei0.update(unique1);
+		
+		this.imei0.syncService();
+		
+		//Assert imei1's changelog
+		List imei1ChangeLog = this.serverSyncEngine.getChangeLog("IMEI:1", "testServerBean", "testApp", 
+		ServerSyncEngine.OPERATION_UPDATE);
+		this.assertTrue(imei1ChangeLog == null || imei1ChangeLog.isEmpty());
+		
+		//Assert imei2's changelog
+		List imei2ChangeLog = this.serverSyncEngine.getChangeLog("IMEI:2", "testServerBean", "testApp", 
+		ServerSyncEngine.OPERATION_UPDATE);
+		this.assertTrue(imei2ChangeLog == null || imei2ChangeLog.isEmpty());
+		
+		//Assert imei0's changelog
+		List imei0ChangeLog = this.serverSyncEngine.getChangeLog("IMEI:0", "testServerBean", "testApp", 
+		ServerSyncEngine.OPERATION_UPDATE);
+		this.assertTrue(imei0ChangeLog == null || imei0ChangeLog.isEmpty());
+	}
+	
 	public void print(List<MobileObject> mobileObjects)
 	{
 		log.info("***********************************");
