@@ -43,7 +43,7 @@ public class GeneralTools
 		inputBuffer.append(product);
 		
 		//DO this only when demonstrating the iCloud app on multiple emulators
-		//inputBuffer.append(GeneralTools.generateUniqueId());
+		inputBuffer.append(GeneralTools.generateUniqueId());
 		
 		String knownInput = inputBuffer.toString();
 		
