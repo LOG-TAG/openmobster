@@ -248,5 +248,7 @@ public final class CometSession implements Serializable,BusListener
 		{
 			PushService.getInstance().push(busMessage);
 		}
+		
+		busMessage.acknowledge();
 	}
 }
