@@ -8,9 +8,6 @@
 
 package org.openmobster.core.mobileCloud.jscript.bridge;
 
-import org.json.JSONObject;
-import org.json.JSONException;
-
 import org.openmobster.android.api.sync.BeanList;
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.android.api.sync.CommitException;
@@ -23,6 +20,8 @@ import org.openmobster.android.api.sync.CommitException;
  */
 public final class MobileBeanBridge 
 {
+	private MobileBean activeBean;
+	
     /**
      * Access the value of a field of a domain object deployed in the Cloud
      * 
@@ -117,44 +116,46 @@ public final class MobileBeanBridge
      * @param value
      * @return
      */
-    public String setValue(String channel,String oid,String fieldUri,String value)
+    public void updateBean(String channel,String oid,String fieldUri,String value)
     {
-    	MobileBean bean = MobileBean.readById(channel, oid);
-    	boolean isAdd = false;
-    	if(bean == null)
+    	if(this.activeBean == null)
+		{
+    		this.activeBean = MobileBean.readById(channel, oid);
+		}
+		this.activeBean.setValue(fieldUri, value);
+    }
+    
+    public void addBean(String channel,String fieldUri, String value)
+    {
+    	if(this.activeBean == null)
     	{
-    		bean = MobileBean.newInstance(channel);
-    		isAdd = true;
+    		this.activeBean = MobileBean.newInstance(channel);
     	}
-    	
-    	bean.setValue(fieldUri, value);
-    	
+    	this.activeBean.setValue(fieldUri, value);
+    }
+    
+    public String commit()
+	{
     	try
     	{
-    		bean.save();
+	    	if(this.activeBean == null)
+	    	{
+	    		return null;
+	    	}
+	    
+	    	try
+	    	{
+	    		this.activeBean.save();
+	    		return this.activeBean.getId();
+	    	}
+	    	catch(CommitException cme)
+	    	{
+	    		throw new RuntimeException(cme);
+	    	}
     	}
-    	catch(CommitException cme)
+    	finally
     	{
-    		if(isAdd)
-    		{
-    			throw new RuntimeException(cme);
-    		}
-    		else
-    		{
-    			try
-    			{
-    				bean.refresh();
-    				bean.setValue(fieldUri, value);
-    				bean.save();
-    			}
-    			catch(CommitException cme2)
-    			{
-    				//do not commit, we tried twice
-    				throw new RuntimeException(cme2);
-    			}
-    		}
+    		this.activeBean = null;
     	}
-    	
-    	return bean.getId();
-    }
+	}
 }

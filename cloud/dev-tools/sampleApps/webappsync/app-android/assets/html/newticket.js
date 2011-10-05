@@ -35,8 +35,9 @@ function newTicket()
     		return;
     	}
     
-    	var beanId = mobileBean.setValue(channel,"","title",inputTitle);
-    	beanId = mobileBean.setValue(channel,beanId,"comment",inputComment);
+    	mobileBean.addBean(channel,"title",inputTitle);
+    	mobileBean.addBean(channel,"comment",inputComment);
+    	mobileBean.commit();
     	
     	alert("jo-refresh");
      }
