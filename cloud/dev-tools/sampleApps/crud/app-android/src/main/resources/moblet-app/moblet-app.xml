@@ -11,7 +11,8 @@
 		<command id="/channel/bootup/helper">org.crud.android.command.ChannelBootupHelper</command>		
 		<command id="/async/load/spinners">org.crud.android.command.AsyncLoadSpinners</command>
 		<command id="/reset/channel">org.crud.android.command.ResetChannel</command>
-		<command id="/demo/push">org.crud.android.command.DemoPush</command>	
+		<command id="/demo/push">org.crud.android.command.DemoPush</command>
+		<command id="/plain/push">org.crud.android.command.PlainPush</command>	
 	</commands>
 	
 	<screens>

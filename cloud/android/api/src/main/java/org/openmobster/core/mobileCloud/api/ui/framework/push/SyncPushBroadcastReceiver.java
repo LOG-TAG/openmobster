@@ -106,7 +106,7 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 		String pushIcon =  AppSystemConfig.getInstance().getPushIconName();
 		
 		Class activityClass = null;
-		if(launchActivity != null && launchActivity.trim().length()==0)
+		if(launchActivity != null && launchActivity.trim().length() > 0)
 		{
 			try
 			{
