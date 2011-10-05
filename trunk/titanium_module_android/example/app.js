@@ -102,6 +102,22 @@ function invokePushNotification()
 	Ti.API.info("****************************************");
 }
 
+function invokePlainPushNotification()
+{
+	Ti.API.info("********Plain Push Invocation***********");
+	
+	var response = rpc.invoke("/start/push", "{'app-id':'org.openmobster.cloud'}");
+	
+	//Process the json response
+	response = eval('(' + response + ')');
+	
+	Ti.API.info("***************************************");
+	Ti.API.info("Status: "+response.status);
+	Ti.API.info("Status Message: "+response.statusMsg);
+	
+	Ti.API.info("****************************************");
+}
+
 
 button.addEventListener('click',function(){
     var oids = sync.readAll(channel);
@@ -144,6 +160,8 @@ button.addEventListener('click',function(){
     invokeRPC();
     
     invokePushNotification();
+    
+    invokePlainPushNotification();
 });
 
 
