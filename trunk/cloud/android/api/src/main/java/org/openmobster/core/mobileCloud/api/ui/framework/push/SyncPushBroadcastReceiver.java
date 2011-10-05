@@ -101,8 +101,28 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 	
 	private void notify(Context context,List<MobileBeanMetaData> beanMetaData) throws Exception
 	{
-		//This should be part of configuring the Push Service, in openmobster-app.xml
-		Class activityClass = Class.forName(AppSystemConfig.getInstance().getPushLaunchActivityClassName());
+		//This should be part of configuring the Push Service, in openmobster-app.xml 
+		String launchActivity = AppSystemConfig.getInstance().getPushLaunchActivityClassName();
+		String pushIcon =  AppSystemConfig.getInstance().getPushIconName();
+		
+		Class activityClass = null;
+		if(launchActivity != null && launchActivity.trim().length()==0)
+		{
+			try
+			{
+				activityClass = Class.forName(launchActivity);
+			}
+			catch(Exception e)
+			{
+				activityClass = null;
+			}
+		}
+		
+		if(pushIcon == null || pushIcon.trim().length() == 0)
+		{
+			pushIcon = "appicon";
+		}
+	
 		
 		PackageManager pm = context.getPackageManager();
 		CharSequence appName = pm.getApplicationLabel(context.getApplicationInfo());
@@ -112,16 +132,20 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 		NotificationManager notificationManager = (NotificationManager)context.getSystemService(ns);
 		
 		//Setup the Notification instance
-		int icon = this.findDrawableId(context, AppSystemConfig.getInstance().getPushIconName());
+		int icon = this.findDrawableId(context, pushIcon);
 		long when = System.currentTimeMillis();
 		Notification notification = new Notification(icon, appName, when);
 		
 		//Setup the intent for this notification
 		CharSequence contentText = ""+ beanMetaData.size()+" Updates";
 		
-		Intent notificationIntent = new Intent(context, activityClass);
-		notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		notificationIntent.setAction(Intent.ACTION_VIEW);
+		Intent notificationIntent = null;
+		if(activityClass != null)
+		{
+			notificationIntent = new Intent(context, activityClass);
+			notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			notificationIntent.setAction(Intent.ACTION_VIEW);
+		}
 		
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 		notification.setLatestEventInfo(context, appName, contentText, contentIntent);
