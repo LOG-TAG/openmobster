@@ -70,8 +70,9 @@ function testMobileBeanUpdate()
 	var oid = beans[0];
 	
 	//Update the Title and the Comment properties
-	mobileBean.setValue(channel,oid,"title", "title://updated");
-	mobileBean.setValue(channel,oid,"comment", "comment://updated");
+	mobileBean.updateBean(channel,oid,"title", "title://updated");
+	mobileBean.updateBean(channel,oid,"comment", "comment://updated");
+	mobileBean.commit();
 		
 	//Read the 'title' property of the bean
 	var title = mobileBean.getValue(channel,oid,"title");
@@ -103,8 +104,9 @@ function testMobileBeanDelete()
 function testMobileBeanAdd()
 {
 	//Add a new bean
-	var oid = mobileBean.setValue(channel,null,"title","new://title");
-	mobileBean.setValue(channel,oid,"comment", "new://comment");
+	mobileBean.addBean(channel,"title","new://title");
+	mobileBean.addBean(channel,"comment", "new://comment");
+	var oid = mobileBean.commit();
 	
 	//Check the addition
 	var title = mobileBean.getValue(channel,oid,"title");

@@ -37,8 +37,9 @@ function updateTicket(oid)
     		return;
     	}
     
-    	mobileBean.setValue(channel,oid,"title",inputTitle);
-    	mobileBean.setValue(channel,oid,"comment",inputComment);
+    	mobileBean.updateBean(channel,oid,"title",inputTitle);
+    	mobileBean.updateBean(channel,oid,"comment",inputComment);
+    	mobileBean.commit();
     	
     	alert("jo-refresh");
      }
