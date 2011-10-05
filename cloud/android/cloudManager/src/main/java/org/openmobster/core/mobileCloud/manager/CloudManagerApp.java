@@ -8,7 +8,6 @@
 
 package org.openmobster.core.mobileCloud.manager;
 
-import android.os.Bundle;
 import android.content.Intent;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -23,6 +22,30 @@ import org.openmobster.core.mobileCloud.android_native.framework.ListApp;
  */
 public class CloudManagerApp extends ListApp
 {
+	//private NetworkBroadcastReceiver networkReceiver;
+	
+	/*@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		//Start the NetworkBroadcast Receiver
+		if(this.networkReceiver == null)
+		{
+			this.networkReceiver  = new NetworkBroadcastReceiver();
+			this.registerReceiver(networkReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+		}
+    	
+    	super.onCreate(savedInstanceState);
+	}*/
+
+	
+	/*@Override
+	protected void onDestroy()
+	{
+		this.unregisterReceiver(networkReceiver);
+		super.onDestroy();
+	}*/
+
+	
 	@Override
 	protected void onStart()
 	{
@@ -40,8 +63,7 @@ public class CloudManagerApp extends ListApp
 			this.showError();
 		}
 	}
-
-
+	
 	private void bootstrapContainer() throws Exception
 	{
 		DeviceContainer container = DeviceContainer.getInstance(this.getApplicationContext());
