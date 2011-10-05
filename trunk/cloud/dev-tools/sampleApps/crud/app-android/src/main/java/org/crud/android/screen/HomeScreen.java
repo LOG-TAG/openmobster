@@ -165,6 +165,18 @@ public class HomeScreen extends Screen
 					return true;
 				}
 			});
+			
+			MenuItem plainPush = menu.add(Menu.NONE, Menu.NONE, 3, "Plain Push");
+			plainPush.setOnMenuItemClickListener(new OnMenuItemClickListener()
+			{
+				public boolean onMenuItemClick(MenuItem clickedItem)
+				{
+					CommandContext commandContext = new CommandContext();
+					commandContext.setTarget("/plain/push");
+					Services.getInstance().getCommandService().execute(commandContext);
+					return true;
+				}
+			});
 		}
 	}
 	
