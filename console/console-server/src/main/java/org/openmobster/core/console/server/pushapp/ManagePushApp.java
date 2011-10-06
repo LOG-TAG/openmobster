@@ -45,7 +45,7 @@ public final class ManagePushApp
 					//FIXME: Development time code only...comment me out when shipping
 					//this is because PushApp instaces can only be created via
 					//iphone registration
-					boolean startedHere = TransactionHelper.startTx();
+					/*boolean startedHere = TransactionHelper.startTx();
 					try
 					{
 						PushAppController controller = PushAppController.getInstance();
@@ -73,7 +73,7 @@ public final class ManagePushApp
 							TransactionHelper.rollbackTx();
 						}
 						e.printStackTrace();
-					}
+					}*/
 				}
 			}
 		}
