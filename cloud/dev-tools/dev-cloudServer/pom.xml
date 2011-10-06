@@ -3,7 +3,7 @@
 		<groupId>org.openmobster.core.dev.tools
 		</groupId>
 		<artifactId>dev-tools</artifactId>
-		<version>2.2-SNAPSHOT</version>
+		<version>2.2-M5</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
