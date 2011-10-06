@@ -111,12 +111,20 @@ public class AccountController
 				//Make sure the account is activated
 				if(!account.isActive())
 				{
+					if(startedHere)
+					{
+						TransactionHelper.commitTx();
+					}
 					throw new AdminAccountException(AdminAccountException.ACCOUNT_INACTIVE);
 				}
 				
 				String storedPassword = account.getPassword();
 				if(storedPassword.equals(password))
 				{
+					if(startedHere)
+					{
+						TransactionHelper.commitTx();
+					}
 					return true;
 				}
 			}
