@@ -1,0 +1,113 @@
+// !$*UTF8*$!
+{
+	1D3623250D0F684500981E51 /* APNAppDevAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1552, 2691}}";
+			sepNavSelRange = "{5976, 0}";
+			sepNavVisRange = "{5177, 1093}";
+			sepNavWindowFrame = "{{1882, 180}, {750, 720}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* APNAppDev */ = {
+		activeExec = 0;
+		executables = (
+			A2E1BFED13608A1F003B2B18 /* APNAppDev */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = A2E1BFED13608A1F003B2B18 /* APNAppDev */;
+		activeSDKPreference = iphonesimulator4.2;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* APNAppDev */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* APNAppDev */,
+		);
+		codeSenseManager = A2E1BFF413608A3D003B2B18 /* Code sense */;
+		executables = (
+			A2E1BFED13608A1F003B2B18 /* APNAppDev */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 332185738;
+			PBXWorkspaceStateSaveDate = 332185738;
+		};
+		perUserProjectItems = {
+			A252E5EB13C226D3004F5344 /* PBXTextBookmark */ = A252E5EB13C226D3004F5344 /* PBXTextBookmark */;
+			A2CEBE0113CCC0970014B161 /* PBXTextBookmark */ = A2CEBE0113CCC0970014B161 /* PBXTextBookmark */;
+		};
+		sourceControlManager = A2E1BFF313608A3D003B2B18 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	A252E5EB13C226D3004F5344 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* APNAppDevAppDelegate.m */;
+		name = "APNAppDevAppDelegate.m: 180";
+		rLen = 0;
+		rLoc = 5976;
+		rType = 0;
+		vrLen = 1093;
+		vrLoc = 5177;
+	};
+	A2CEBE0113CCC0970014B161 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* APNAppDevAppDelegate.m */;
+		name = "APNAppDevAppDelegate.m: 180";
+		rLen = 0;
+		rLoc = 5976;
+		rType = 0;
+		vrLen = 1093;
+		vrLoc = 5177;
+	};
+	A2E1BFED13608A1F003B2B18 /* APNAppDev */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = APNAppDev;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	A2E1BFF313608A3D003B2B18 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	A2E1BFF413608A3D003B2B18 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	A2E1C04913608F80003B2B18 /* openmobster-app.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 661}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 151}";
+			sepNavWindowFrame = "{{498, 89}, {750, 789}}";
+		};
+	};
+}
