@@ -1,5 +1,9 @@
 #summary Android Push Framework
 
+*Related:* [BeginnerZone Beginner Area], [GetStarted GetStarted]
+
+----
+
 === Sending a Push Notification ===
 You can send a push notification from the cloud using the Push API. This API is located on the *org.openmobster.cloud.api.push.PushService* object.
 
@@ -16,6 +20,8 @@ On this object you use the following method
 	 */
 	public void push(String identity, String appId, String message, String title, String details)
 }}}
+
+----
 
 === Setup Push Notification in your App ===
 
@@ -48,4 +54,8 @@ Next, you will setup sync initiated push notifications. There is no extra config
 }}}
 Here, *launch-activity-class* indicates the activity that must be launched when the user clicks on the notification from the notification bar
 
-*icon-name* points to a drawable image that should be displayed as an icon with the notification
+*icon-name* points to a drawable image that should be displayed as an icon with the notification.
+
+----
+
+*Related:* [BeginnerZone Beginner Area], [GetStarted GetStarted]
