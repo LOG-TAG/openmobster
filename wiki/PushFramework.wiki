@@ -16,3 +16,11 @@ On this object you use the following method
 	 */
 	public void push(String identity, String appId, String message, String title, String details)
 }}}
+
+=== Setup Push Notification in your App ===
+
+You can setup *Push Notification* support in your app via two configuration files
+
+==== AndroidManifest.xml ====
+
+==== openmobster-app.xml ====
