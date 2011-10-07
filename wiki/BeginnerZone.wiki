@@ -33,6 +33,11 @@ A document describing the newly added [Encryption Encryption Support] (version 2
 
 ----
 
+==== Push Notification Setup ====
+This document describes the [PushFramework Push Framework] setup and configuration
+
+----
+
 ==== Channel Development ====
 
 A basic [BeginSync tutorial] which covers developing a Sync Channel. 
