@@ -11,7 +11,7 @@ consistent server-side API/frameworks to expose Cloud services, and consistent d
 
 === What services are provided by the platform? ===
 
-==== Seamless App State/Data Synchronization ====
+==== Sync Platform ====
 
 Cloud data is made available inside an App's _local storage_. This allows the App
 to function seamlessly in both _online_ as well as _offline_ modes. The data is automatically synchronized with the Cloud service based on local state changes. These state changes are auto detected and does not require any device-side sync-related programming on the part of the developer.
@@ -62,7 +62,7 @@ Please see [Concepts Programming Concepts] for more details.
 
 === What mobile platforms are supported? ===
 
-The project is evolving at a rapid pace. At the time of the current release (2.2-M1), the supported mobile platforms are *Android version 2.0 and above*, and *iPhone/iOS version 3.0 and above*.
+The project is evolving at a rapid pace. The platform supports Android (version 2.0 and above), and iPhone. 
 More details can be found on our [roadmap project roadmap].
 
 ----
