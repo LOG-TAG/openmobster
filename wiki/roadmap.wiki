@@ -83,7 +83,7 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 ----
 
 === Release 2.4 ===
-  * Support for Palm webOS, Windows Phone, etc
+  * Support for the evolving HTML5 standard
   * ?????
 
 ----
