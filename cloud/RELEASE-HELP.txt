@@ -17,6 +17,14 @@ Build the Android Titanium Module
 
 Step 4:
 ---------------
+Zip titanium_ios_module and commit the zip file
+
+Step 5:
+------------------
+Once tagged, unzip the titanium_ios_module
+
+Step 6:
+---------------
 Skip Tests:
 mvn -DskipTests -Pbuild-all install
 
@@ -24,7 +32,7 @@ With Tests:
 mvn -Pbuild-all install
 
 
-Step 5:
+Step 7:
 ----------------
 mvn -DskipTests -Pandroid-release javadoc:aggregate install
 
