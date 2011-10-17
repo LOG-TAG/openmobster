@@ -14,7 +14,7 @@ After you download OpenMobster, there are two ways you can go.
 Before you decide to take the software for a spin, make sure your machine is setup properly. You can find those instructions [DevSetup here].
 
 === Step 1: Prepare the JBoss AS server ===
-Download JBoss 5.1.0 server from [http://www.jboss.org/jbossas/downloads here]. Extract the zip file
+Download *JBoss 5.1.0 server* from [http://www.jboss.org/jbossas/downloads here]. Extract the zip file
 
 Now install the OpenMobster Cloud Server into the JBoss AS. You can do that by copying cloudServer/hsqldb/openmobster to the JBOSS_HOME/server directory
 {{{
