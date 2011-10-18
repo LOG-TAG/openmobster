@@ -65,7 +65,7 @@ You can launch the Cloud Manager App. There you can choose "Activate" and follow
 
 *Server:* the IP or FQDN address where the Cloud Server is running
 
-*Port:* Port where the Cloud Server is running. The default value is 1502
+*Port:* Port where the Cloud Server is running. The default value is *1502*
 
 *Email:* A valid email address
 
