@@ -381,7 +381,7 @@ public class MobileChannelProvider extends ContentProvider
 				cursor.addRow(new String[]
 				{recordId,"arrayMetaData["+index+"].arrayLength",record.getValue("arrayMetaData["+index+"].arrayLength")});
 				cursor.addRow(new String[]
-				{recordId,"arrayMetaData["+index+"].arrayUri",record.getValue("arrayMetaData["+index+"].arrayUri")});
+				{recordId,"arrayMetaData["+index+"].arrayClass",record.getValue("arrayMetaData["+index+"].arrayClass")});
 				
 			}
 		}

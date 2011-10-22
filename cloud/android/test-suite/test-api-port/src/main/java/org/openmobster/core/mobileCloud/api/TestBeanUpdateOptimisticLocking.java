@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.api;
 
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.CommitException;
 
 /**
  * @author openmobster@gmail.com
@@ -37,7 +38,7 @@ public final class TestBeanUpdateOptimisticLocking extends AbstractAPITest
 			{
 				instance2.save(); //This should throw an exception
 			}
-			catch(RuntimeException e)
+			catch(CommitException e)
 			{				
 				exceptionOccured = true;
 			}

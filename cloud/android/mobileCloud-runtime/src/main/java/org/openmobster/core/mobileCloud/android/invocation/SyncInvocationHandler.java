@@ -96,8 +96,8 @@ public class SyncInvocationHandler extends Service implements InvocationHandler
 				
 				case SyncInvocation.updateChangeLog:
 					//Schedule device initiated sync session
-					Daemon.getInstance().scheduleSyncInitiation();
 					SyncService.getInstance().updateChangeLog(service, invocation.getValue("operation"), recordId);
+					Daemon.getInstance().scheduleSyncInitiation();
 				break;
 				
 				case SyncInvocation.proxySync:
