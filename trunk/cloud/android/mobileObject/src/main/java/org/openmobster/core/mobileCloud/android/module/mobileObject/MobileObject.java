@@ -98,7 +98,7 @@ public final class MobileObject
 				
 				local.setArrayUri(record.getValue("arrayMetaData["+index+"].arrayUri"));
 				local.setArrayLength(record.getValue("arrayMetaData["+index+"].arrayLength"));
-				local.setArrayUri(record.getValue("arrayMetaData["+index+"].arrayUri"));
+				local.setArrayClass(record.getValue("arrayMetaData["+index+"].arrayClass"));
 				
 				this.arrayMetaData.add(local);
 			}

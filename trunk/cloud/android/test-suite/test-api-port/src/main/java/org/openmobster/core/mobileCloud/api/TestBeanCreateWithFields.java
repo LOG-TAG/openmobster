@@ -8,7 +8,12 @@
 
 package org.openmobster.core.mobileCloud.api;
 
+import java.util.Set;
+
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.android.api.sync.BeanListEntry;
+import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
+import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObject;
 
 /**
  * @author openmobster@gmail.com
@@ -29,7 +34,28 @@ public final class TestBeanCreateWithFields extends AbstractAPITest
 			
 			newBean.setValue("from", "newBean/From");
 			
+			//Shows how to setup and array of Strings named fruits
+			for(int i=0; i<3; i++)
+			{
+				BeanListEntry fruit = new BeanListEntry();
+				fruit.setValue(i+"://fruit");
+				newBean.addBean("fruits", fruit);
+			}
+			
+			//Shows how to setup an array of the Email object named emails
+			for(int i=0; i<3; i++)
+			{
+				BeanListEntry email = new BeanListEntry();
+				email.setProperty("from", "from("+i+")@gmail.com");
+				email.setProperty("to", "to("+i+")@gmail.com");
+				email.setProperty("subject", "subject"+i);
+				email.setProperty("message", "message"+i);
+				newBean.addBean("emails", email);
+			}
+			
 			newBean.save();
+			
+			
 			String id = newBean.getId();
 			
 			assertTrue(newBean.isCreateOnDevice(), this.getInfo()+"://NewBean_should_be_created_ondevice");
