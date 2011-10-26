@@ -73,6 +73,8 @@
 	<classpathentry kind="src" path="perf-framework/src/test/java"/>
 	<classpathentry kind="src" path="push-apn/src/main/java"/>
 	<classpathentry kind="src" path="push-apn/src/test/java"/>
+	<classpathentry kind="src" path="location/src/main/java"/>
+	<classpathentry kind="src" path="location/src/test/java"/>
 	
 	<classpathentry kind="src" path="android/api/src/main/java"/>
 	<classpathentry kind="src" path="android/native-framework/src/main/java"/>
@@ -193,6 +195,9 @@
     
     <!-- Performance framework related dependencies -->
     <classpathentry kind="var" path="M2_REPO/junitperf/junitperf/1.8/junitperf-1.8.jar"/>
+    
+    <!-- Location related dependencies -->
+    <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.1.2/httpclient-4.1.2.jar"/>
     
     <!-- Android Dependencies -->
     <classpathentry kind="var" path="ANDROID_HOME/platforms/android-5/android.jar"/>
