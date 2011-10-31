@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">        
+   <bean name="GeoCoder" 
+   class="org.openmobster.core.location.yahoo.YahooProvider">
+   		<!-- Change this your own Yahoo App Id, this one is OpenMobster's Yahoo App Id -->
+   		<property name="appId">91XdMe7k</property>   	  
+   		<property name="deserializer"><inject bean="org.openmobster.core.location.yahoo.Deserializer"/></property> 
+   </bean> 
+   
+   <bean name="org.openmobster.core.location.yahoo.Deserializer" 
+   class="org.openmobster.core.location.yahoo.Deserializer">
+   </bean>                                    
+</deployment>
