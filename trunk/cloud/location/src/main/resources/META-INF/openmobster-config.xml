@@ -10,5 +10,16 @@
    
    <bean name="org.openmobster.core.location.yahoo.Deserializer" 
    class="org.openmobster.core.location.yahoo.Deserializer">
-   </bean>                                    
+   </bean> 
+   
+   <bean name="Places" 
+   class="org.openmobster.core.location.google.GooglePlaceProvider">
+   		<!-- Change this your own Google API Key, this one is OpenMobster's API Key -->
+   		<property name="apiKey">AIzaSyAntv38LTmUTBSlSLHzX-XbfNFcl4F5zrA</property>   	  
+   		<property name="deserializer"><inject bean="org.openmobster.core.location.google.Deserializer"/></property> 
+   </bean> 
+   
+   <bean name="org.openmobster.core.location.google.Deserializer" 
+   class="org.openmobster.core.location.google.Deserializer">
+   </bean>                                   
 </deployment>
