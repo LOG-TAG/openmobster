@@ -443,7 +443,9 @@ public final class MobileObjectDatabase extends Service
 				}
 				
 				cursor.moveToNext();
-			}while(!cursor.isAfterLast());		
+			}while(!cursor.isAfterLast());
+			
+			cursor.close();
 			
 			Set<String> recordIds = records.keySet();
 			for(String recordId:recordIds)

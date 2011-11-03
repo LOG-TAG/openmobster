@@ -70,7 +70,7 @@ public class MobileChannelProvider extends ContentProvider
 			else if(!selection.trim().startsWith("query"))
 			{
 				String recordId = selection.trim();
-				Record mobileObject = this.read(channel, recordId);
+				Record mobileObject = Database.getInstance(context).select(channel, recordId);
 				if(mobileObject != null)
 				{
 					cursor = new MatrixCursor(new String[]{"recordId","name","value"});
@@ -241,7 +241,7 @@ public class MobileChannelProvider extends ContentProvider
 				//delete record in question
 				String recordId = selection.trim();
 				
-				Record recordToBeDeleted = this.read(channel, recordId);				
+				Record recordToBeDeleted = Database.getInstance(context).select(channel, recordId);				
 				database.delete(channel, recordToBeDeleted);
 				
 				deleteCount = 1;
@@ -269,24 +269,6 @@ public class MobileChannelProvider extends ContentProvider
 		{
 			Database.getInstance(context).createTable(storageId);
 		}
-	}
-	
-	private Record read(String channel,String recordId) throws DBException
-	{				
-		Set<Record> all = Database.getInstance(this.getContext()).
-		selectAll(channel);
-		if(all != null)
-		{
-			for(Record curr: all)
-			{	
-				if(curr.getRecordId().equals(recordId))
-				{
-					return curr;
-				}
-			}
-		}
-	
-		return null;
 	}
 	
 	private String parseChannel(Uri uri)

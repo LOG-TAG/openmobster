@@ -28,5 +28,6 @@
 		<module>test-real-device</module>
 		<module>testapp</module>
 		<module>test-dm</module>
+		<module>test-performance</module>
 	</modules>
 </project>
