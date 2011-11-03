@@ -24,8 +24,9 @@ public class TestSerialization extends Test
 	{
 		try
 		{
-			//this.testSimpleSerialization();
+			this.testSimpleSerialization();
 			this.testComplexSerialization();
+			this.testArraySetup();
 		}
 		catch(Exception e)
 		{
@@ -81,6 +82,20 @@ public class TestSerialization extends Test
 			this.assertEquals(attachmentName, "attachment://"+i, this.getInfo()+"/testComplexSerialization/ArrayMatchFailed");
 			this.assertEquals(attachmentSize, i+"K", this.getInfo()+"/testComplexSerialization/ArrayMatchFailed");
 		}
+	}
+	
+	private void testArraySetup() throws Exception
+	{
+		MobileObject mobileObject = new MobileObject();
+		
+		for(int i=0; i<5; i++)
+		{
+			mobileObject.setValue("fruits["+i+"]", "fruit://"+i);
+		}
+		
+		String xml = DeviceSerializer.getInstance().serialize(mobileObject);
+		
+		System.out.println(xml);
 	}
 	//-----------------------------------------------------------------------------------------------------------------------
 	private MobileObject createPOJOWithStrings(String name)
