@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
@@ -24,15 +26,18 @@ import android.database.sqlite.SQLiteDatabase;
 public class DefaultCRUD implements CRUDProvider
 {
 	private SQLiteDatabase db;
+	private Map<String,Record> cache;
 	
 	public void init(SQLiteDatabase db)
 	{
 		this.db = db;
+		this.cache = new HashMap<String,Record>();
 	}
 	
 	public void cleanup()
 	{
 		this.db = null;
+		this.cache = null;
 	}
 	
 	public String insert(String table, Record record) throws DBException
@@ -75,6 +80,17 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
+	public long selectCount(String from) throws DBException
+	{
+		Set<Record> all = this.selectAll(from);
+		if(all != null)
+		{
+			return all.size();
+		}
+		
+		return 0;
+	}
+	
 	public Set<Record> selectAll(String from) throws DBException
 	{
 		Cursor cursor = null;
@@ -104,6 +120,9 @@ public class DefaultCRUD implements CRUDProvider
 						record = new Record();
 						localCache.put(recordid, record);
 						all.add(record);
+						
+						//place object into a cache
+						this.cache.put(from+":"+recordid, record);
 					}
 					
 					record.setRecordId(recordid);
@@ -124,23 +143,18 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
-	public long selectCount(String from) throws DBException
-	{
-		Set<Record> all = this.selectAll(from);
-		if(all != null)
-		{
-			return all.size();
-		}
-		
-		return 0;
-	}
-	
 	public Record select(String from, String recordId) throws DBException
 	{
 		Cursor cursor = null;
 		try
 		{
-			Record record = null;
+			//Read this from cache
+			Record record = this.cache.get(from+":"+recordId);
+			if(record != null)
+			{
+				return record;
+			}
+			
 			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE recordid=?", new String[]{recordId});
 			
 			if(cursor.getCount() > 0)
@@ -161,6 +175,9 @@ public class DefaultCRUD implements CRUDProvider
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
+				
+				//place the object into a cache
+				this.cache.put(from+":"+record.getRecordId(), record);
 			}
 			
 			return record;
@@ -189,13 +206,20 @@ public class DefaultCRUD implements CRUDProvider
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
 				cursor.moveToFirst();
+				List<String> addedIds = new ArrayList<String>();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
+					if(addedIds.contains(recordid))
+					{
+						cursor.moveToNext();
+						continue;
+					}
+					
 					Record record = this.select(from, recordid);
-				
 					records.add(record);
+					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -226,14 +250,21 @@ public class DefaultCRUD implements CRUDProvider
 				records = new HashSet<Record>();
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
+				List<String> addedIds = new ArrayList<String>();
 				cursor.moveToFirst();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
+					if(addedIds.contains(recordid))
+					{
+						cursor.moveToNext();
+						continue;
+					}
+					
 					Record record = this.select(from, recordid);
-				
 					records.add(record);
+					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -257,21 +288,28 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			Set<Record> records = null;
 			
-			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE value != ?", new String[]{value});
+			cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE value != ? AND name LIKE ?", new String[]{value,"%field%"});
 			
 			if(cursor.getCount() > 0)
 			{
 				records = new HashSet<Record>();
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
+				Set<String> addedIds = new HashSet<String>();
 				cursor.moveToFirst();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
+					if(addedIds.contains(recordid))
+					{
+						cursor.moveToNext();
+						continue;
+					}
+					
 					Record record = this.select(from, recordid);
-				
 					records.add(record);
+					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -303,13 +341,20 @@ public class DefaultCRUD implements CRUDProvider
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
 				cursor.moveToFirst();
+				List<String> addedIds = new ArrayList<String>();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
+					if(addedIds.contains(recordid))
+					{
+						cursor.moveToNext();
+						continue;
+					}
+					
 					Record record = this.select(from, recordid);
-				
 					records.add(record);
+					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -332,10 +377,14 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			this.db.beginTransaction();
 			
-			Set<String> names = record.getNames();
 			String recordId = record.getRecordId();
-			record.setDirtyStatus(GeneralTools.generateUniqueId());
 			
+			//invalidate the cacched copy if present
+			this.cache.remove(table+":"+recordId);
+			
+			Set<String> names = record.getNames();
+			
+			record.setDirtyStatus(GeneralTools.generateUniqueId());
 			
 			/*for(String name: names)
 			{
@@ -371,6 +420,9 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			this.db.beginTransaction();
 			
+			//invalidate the cached object 
+			this.cache.remove(table+":"+record.getRecordId());
+			
 			//delete this record
 			String delete = "DELETE FROM "+table+" WHERE recordid='"+record.getRecordId()+"'";
 			this.db.execSQL(delete);
@@ -388,6 +440,9 @@ public class DefaultCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			
+			//clear the entire cache
+			this.cache.clear();
 			
 			//delete this record
 			String delete = "DELETE FROM "+table;

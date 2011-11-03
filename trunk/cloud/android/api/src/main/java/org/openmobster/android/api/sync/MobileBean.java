@@ -1020,4 +1020,16 @@ public final class MobileBean
 		
 		return port;
 	}
+	//---------------------------------Only For Performance Testing------------------------------------------------
+	/**
+	 * This method is needed during performance testing of this component
+	 * It should not be used in your App development
+	 * 
+	 * @throws CommitException
+	 */
+	public synchronized void perfSave() throws CommitException
+	{
+		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
+		deviceDB.create(this.data);
+	}
 }

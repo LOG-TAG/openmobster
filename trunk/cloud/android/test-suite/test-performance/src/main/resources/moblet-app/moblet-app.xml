@@ -1,0 +1,9 @@
+<moblet-app>
+	<bootstrap>
+		<screen>org.openmobster.core.mobileCloud.test.performance.HomeScreen</screen>
+	</bootstrap>
+		    	
+	<commands>
+		<command id="runtestsuite">org.openmobster.core.mobileCloud.test.performance.TestMobileBean</command>
+	</commands>
+</moblet-app>
