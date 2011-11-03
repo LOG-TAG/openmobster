@@ -68,23 +68,19 @@ public final class Deserializer
 			place.setVicinity(vicinity);
 			
 			//rating
-			NodeList ratingNodes = resultElement.getElementsByTagName("rating");
-			if(ratingNodes != null && ratingNodes.getLength()>0)
-			{
-				String rating = ratingNodes.item(0).getTextContent();
-				place.setRating(rating);
-			}
+			String rating = this.getValue(resultElement, "rating");
+			place.setRating(rating);
 			
 			//icon
-			String icon = resultElement.getElementsByTagName("icon").item(0).getTextContent();
+			String icon = this.getValue(resultElement, "icon");
 			place.setIcon(icon);
 			
 			//reference
-			String reference = resultElement.getElementsByTagName("reference").item(0).getTextContent();
+			String reference = this.getValue(resultElement, "reference");
 			place.setReference(reference);
 			
 			//id
-			String id = resultElement.getElementsByTagName("id").item(0).getTextContent();
+			String id = this.getValue(resultElement, "id");
 			place.setId(id);
 			
 			//types
@@ -100,23 +96,23 @@ public final class Deserializer
 				}
 			}
 			
-			Element geometryElement = (Element)resultElement.getElementsByTagName("geometry").item(0);
+			NodeList geometryNodes = resultElement.getElementsByTagName("geometry");
+			if(geometryNodes != null && geometryNodes.getLength()>0)
+			{
+				Element geometryElement = (Element)geometryNodes.item(0);
+				
+				//latitude
+				String latitude = this.getValue(geometryElement, "lat");
+				place.setLatitude(latitude);
 			
-			//latitude
-			String latitude = geometryElement.getElementsByTagName("lat").item(0).getTextContent();
-			place.setLatitude(latitude);
-			
-			//longitude
-			String longitude = geometryElement.getElementsByTagName("lng").item(0).getTextContent();
-			place.setLongitude(longitude);
+				//longitude
+				String longitude = this.getValue(geometryElement, "lng");
+				place.setLongitude(longitude);
+			}
 			
 			//html attribtion
-			NodeList htmlAttributionNodes = resultElement.getElementsByTagName("html_attribution");
-			if(htmlAttributionNodes != null && htmlAttributionNodes.getLength()>0)
-			{
-				String htmlAttribution = htmlAttributionNodes.item(0).getTextContent();
-				place.setHtmlAttribution(htmlAttribution);
-			}
+			String htmlAttribution = this.getValue(resultElement, "html_attribution");
+			place.setHtmlAttribution(htmlAttribution);
 			
 			places.add(place);
 		}
@@ -152,31 +148,27 @@ public final class Deserializer
 		Element resultElement = (Element)resultNodes.item(0);
 		
 		//name
-		String name = resultElement.getElementsByTagName("name").item(0).getTextContent();
+		String name = this.getValue(resultElement, "name");
 		place.setName(name);
 		
 		//vicinity
-		String vicinity = resultElement.getElementsByTagName("vicinity").item(0).getTextContent();
+		String vicinity = this.getValue(resultElement, "vicinity");
 		place.setVicinity(vicinity);
 		
 		//rating
-		NodeList ratingNodes = resultElement.getElementsByTagName("rating");
-		if(ratingNodes != null && ratingNodes.getLength()>0)
-		{
-			String rating = ratingNodes.item(0).getTextContent();
-			place.setRating(rating);
-		}
+		String rating = this.getValue(resultElement, "rating");
+		place.setRating(rating);
 		
 		//icon
-		String icon = resultElement.getElementsByTagName("icon").item(0).getTextContent();
+		String icon = this.getValue(resultElement, "icon");
 		place.setIcon(icon);
 		
 		//reference
-		String reference = resultElement.getElementsByTagName("reference").item(0).getTextContent();
+		String reference = this.getValue(resultElement, "reference");
 		place.setReference(reference);
 		
 		//id
-		String id = resultElement.getElementsByTagName("id").item(0).getTextContent();
+		String id = this.getValue(resultElement, "id");;
 		place.setId(id);
 		
 		//types
@@ -192,34 +184,34 @@ public final class Deserializer
 			}
 		}
 		
-		Element geometryElement = (Element)resultElement.getElementsByTagName("geometry").item(0);
+		NodeList geometryNodes = resultElement.getElementsByTagName("geometry");
+		if(geometryNodes != null && geometryNodes.getLength()>0)
+		{
+			Element geometryElement = (Element)geometryNodes.item(0);
+			
+			//latitude
+			String latitude = this.getValue(geometryElement, "lat");
+			place.setLatitude(latitude);
 		
-		//latitude
-		String latitude = geometryElement.getElementsByTagName("lat").item(0).getTextContent();
-		place.setLatitude(latitude);
-		
-		//longitude
-		String longitude = geometryElement.getElementsByTagName("lng").item(0).getTextContent();
-		place.setLongitude(longitude);
+			//longitude
+			String longitude = this.getValue(geometryElement, "lng");
+			place.setLongitude(longitude);
+		}
 		
 		//formatted_address
-		String formatted_address = resultElement.getElementsByTagName("formatted_address").item(0).getTextContent();
+		String formatted_address = this.getValue(resultElement, "formatted_address");
 		place.setAddress(formatted_address);
 		
 		//formatted_phone_number
-		NodeList phoneNodes = resultElement.getElementsByTagName("formatted_phone_number");
-		if(phoneNodes != null && phoneNodes.getLength()>0)
-		{
-			String formatted_phone_number = phoneNodes.item(0).getTextContent();
-			place.setPhone(formatted_phone_number);
-		}
+		String formatted_phone_number = this.getValue(resultElement, "formatted_phone_number");
+		place.setPhone(formatted_phone_number);
 		
 		//international_phone_number
 		String international_phone_number = this.getValue(resultElement, "international_phone_number");
 		place.setInternationalPhoneNumber(international_phone_number);
 		
 		//url
-		String url = resultElement.getElementsByTagName("url").item(0).getTextContent();
+		String url = this.getValue(resultElement, "url");
 		place.setUrl(url);
 		
 		//website
@@ -229,9 +221,9 @@ public final class Deserializer
 		return place;
 	}
 	
-	private String getValue(Element resultElement, String nodeName)
+	private String getValue(Element element, String nodeName)
 	{
-		NodeList nodes = resultElement.getElementsByTagName(nodeName);
+		NodeList nodes = element.getElementsByTagName(nodeName);
 		if(nodes != null && nodes.getLength()>0)
 		{
 			String value = nodes.item(0).getTextContent();

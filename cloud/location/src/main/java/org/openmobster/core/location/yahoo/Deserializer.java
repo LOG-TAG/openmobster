@@ -57,67 +57,67 @@ public final class Deserializer
 				YahooAddress address = new YahooAddress();
 				
 				//latitude
-				String latitude = resultElement.getElementsByTagName("latitude").item(0).getTextContent();
+				String latitude = this.getValue(resultElement, "latitude");
 				result.setLatitude(latitude);
 				
 				//longitude
-				String longitude = resultElement.getElementsByTagName("longitude").item(0).getTextContent();
+				String longitude = this.getValue(resultElement, "longitude");
 				result.setLongitude(longitude);
 				
 				//radius
-				String radius = resultElement.getElementsByTagName("radius").item(0).getTextContent();
+				String radius = this.getValue(resultElement, "radius");
 				result.setRadius(radius);
 				
 				//woeid
-				String woeid = resultElement.getElementsByTagName("woeid").item(0).getTextContent();
+				String woeid = this.getValue(resultElement, "woeid");
 				result.setWoeid(woeid);
 				
 				//woetype
-				String woetype = resultElement.getElementsByTagName("woetype").item(0).getTextContent();
+				String woetype = this.getValue(resultElement, "woetype");
 				result.setWoetype(woetype);
 				
 				//quality
-				String quality = resultElement.getElementsByTagName("quality").item(0).getTextContent();
+				String quality = this.getValue(resultElement, "quality");
 				address.setQuality(Integer.parseInt(quality));
 				
 				//line1
-				String line1 = resultElement.getElementsByTagName("line1").item(0).getTextContent();
+				String line1 = this.getValue(resultElement, "line1");
 				address.setLine1(line1);
 				
 				//line2
-				String line2 = resultElement.getElementsByTagName("line2").item(0).getTextContent();
+				String line2 = this.getValue(resultElement, "line2");
 				address.setLine2(line2);
 				
 				//line3
-				String line3 = resultElement.getElementsByTagName("line3").item(0).getTextContent();
+				String line3 = this.getValue(resultElement, "line3");
 				address.setLine3(line3);
 				
 				//line4
-				String line4 = resultElement.getElementsByTagName("line4").item(0).getTextContent();
+				String line4 = this.getValue(resultElement, "line4");
 				address.setLine4(line4);
 				
 				//city
-				String city = resultElement.getElementsByTagName("city").item(0).getTextContent();
+				String city = this.getValue(resultElement, "city");
 				address.setCity(city);
 				
 				//county
-				String county = resultElement.getElementsByTagName("county").item(0).getTextContent();
+				String county = this.getValue(resultElement, "county");
 				address.setCounty(county);
 				
 				//state
-				String state = resultElement.getElementsByTagName("state").item(0).getTextContent();
+				String state = this.getValue(resultElement, "state");
 				address.setState(state);
 				
 				//country
-				String country = resultElement.getElementsByTagName("country").item(0).getTextContent();
+				String country = this.getValue(resultElement, "country");
 				address.setCountry(country);
 				
 				//zipcode
-				String zip = resultElement.getElementsByTagName("uzip").item(0).getTextContent();
+				String zip = this.getValue(resultElement, "uzip");
 				address.setZipCode(zip);
 				
 				//postal
-				String postal = resultElement.getElementsByTagName("postal").item(0).getTextContent();
+				String postal = this.getValue(resultElement, "postal");
 				address.setPostal(postal);
 				
 				result.setAddress(address);
@@ -128,5 +128,16 @@ public final class Deserializer
 		}
 		
 		return resultSet;
+	}
+	
+	private String getValue(Element element, String nodeName)
+	{
+		NodeList nodes = element.getElementsByTagName(nodeName);
+		if(nodes != null && nodes.getLength()>0)
+		{
+			String value = nodes.item(0).getTextContent();
+			return value;
+		}
+		return null;
 	}
 }
