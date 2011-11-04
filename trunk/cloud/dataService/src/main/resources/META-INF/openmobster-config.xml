@@ -122,5 +122,11 @@
    class="org.openmobster.core.dataService.push.PushRPC">	
    		<property name="notifier"><inject bean="org.openmobster.core.push.notification.Notifier"/></property>
    		<property name="deviceController"><inject bean="security://DeviceController"/></property>	 	   		
+   </bean>
+   
+   <!-- LocationProcessor -->
+   <bean name="org.openmobster.core.dataService.processor.LocationProcessor" 
+   class="org.openmobster.core.dataService.processor.LocationProcessor">    				
+   		<property name="id">org.openmobster.core.dataService.processor.LocationProcessor</property>   		
    </bean>                          
 </deployment>

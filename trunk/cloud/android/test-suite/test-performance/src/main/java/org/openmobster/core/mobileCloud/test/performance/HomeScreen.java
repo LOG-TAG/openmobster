@@ -101,5 +101,22 @@ public class HomeScreen extends Screen
 					}
 				}
 		);
+		
+		Button jsonpoc = (Button)ViewHelper.findViewById(currentActivity, 
+		"jsonpoc");
+		jsonpoc.setOnClickListener(
+				new OnClickListener()
+				{
+					public void onClick(View clicked)
+					{
+						//Execute TestSuite
+						CommandContext commandContext = new CommandContext();
+						commandContext.setTarget("jsonpoc");
+						
+						CommandService service = Services.getInstance().getCommandService();
+						service.execute(commandContext);
+					}
+				}
+		);
 	}
 }

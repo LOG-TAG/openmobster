@@ -9,5 +9,3 @@ Supported MobileBean specification
 * Supports indexed properties like Arrays and Lists for MobileBeans originating from the server side
 
 * mapped properties are not currently supported on both device and server
-
-* Indexed Properties are not currently supported for beans originating on the device
