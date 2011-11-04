@@ -5,5 +5,6 @@
 		    	
 	<commands>
 		<command id="runtestsuite">org.openmobster.core.mobileCloud.test.performance.TestMobileBean</command>
+		<command id="jsonpoc">org.openmobster.core.mobileCloud.test.performance.JSONPOC</command>
 	</commands>
 </moblet-app>
