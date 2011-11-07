@@ -1,3 +1,11 @@
 #summary iOS: Beginner's Guide
 
-= Introduction =
+*Related:* [AndroidArea Android Area], [BeginnerZone Beginner Area]
+
+==== Introduction ====
+This guide is designed to help you write your first iOS application. At the end of the guide you will get a idea of how the different parts of an iOS application come together to form an App.
+
+==== XCode ====
+Before you can write any code, you need to install the development ide called XCode and the SDKs that let you develop iOS apps. You can download the IDE+SDKs from http://developer.apple.com for free.
+
+The version of XCode I am using is 4.0.2 with iOS SDK 4.3
