@@ -31,3 +31,45 @@ When you start Interface Builder you will see the following four items:
   * *Window*: The window of the App. You will add UI components to this window
 
 In this App you add two Labels and two Buttons to the window. Towards the top of the window there will be a Label and a Button. This widget will flip through mobile operating systems in the market. Towards the bottom of the window we will add another Label and a Button. This widget flips through the desktop operating systems in the market.
+
+==== Adding a Label ====
+From the Object Library, select a Label and drag it on to the window. You can adjust the size of the Label as well.
+
+==== Adding a Button ====
+From the Object Library, select a Button and drag it on to the window. You can adjust the size of the Button. First button make the value, *Next Mobile OS*, Second button make the value, *Next Desktop OS*.
+
+==== Prepare the App Delegate (Controller) ====
+You can connect the above components to the App Delegate. In order to connect the components you have to expose them to Interface Builder. You App Delegate should have the following code:
+{{{
+#import <UIKit/UIKit.h>
+
+@interface HelloWorldAppDelegate : NSObject <UIApplicationDelegate> 
+{
+    @private
+    
+    //The view objects
+    UILabel *mobileos;
+    UILabel *desktopos;
+    
+    //The model objects
+    NSMutableArray *mobile;
+    NSMutableArray *desktop;
+    int mobilePtr;
+    int desktopPtr;
+}
+
+//The Labels are wired up to instances in the controller here
+@property (nonatomic,retain) IBOutlet UIWindow *window;
+@property (nonatomic,retain) IBOutlet UILabel *mobileos;
+@property (nonatomic,retain) IBOutlet UILabel *desktopos;
+
+//These hold the data to be used in the App
+@property (nonatomic,retain) NSMutableArray *mobile;
+@property (nonatomic,retain) NSMutableArray *desktop;
+
+//Buttons are wired to these methods
+-(IBAction)nextMobileOs:(id)sender;
+-(IBAction)nextDesktopOs:(id)sender;
+
+@end
+}}}
