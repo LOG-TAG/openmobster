@@ -73,3 +73,12 @@ You can connect the above components to the App Delegate. In order to connect th
 
 @end
 }}}
+
+In this you expose the UILabels using the construct called *IBOutlet*. Besides the Labels it also provides methods that should be invoked when the respective buttons are pressed. This is done using the construct called *IBAction*.
+
+==== Connecting the components ====
+Once the Outlets are exposed you should be able to connect the two together. In Inteface Builder, select the App Delegate. In your component Inspector go to Connections. Under Connections you should see your UILabel outlets. You can drag the outlet to the UILabel component. This completes the connection. In the same way you will also see the *IBAction* components that need to be connected to their respective buttons.
+
+Once these connections are made your Interface Builder tasks are finished
+
+==== Implementing the App Delegate ====
