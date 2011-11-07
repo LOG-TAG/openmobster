@@ -283,3 +283,7 @@ Now that Interface Builder is done, the only task that remains is implementing t
 }
 @end
 }}}
+
+==== Download ====
+
+You can download this project [http://openmobster.googlecode.com/svn/samples/HelloWorld.zip here].
