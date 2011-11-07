@@ -29,3 +29,5 @@ When you start Interface Builder you will see the following four items:
   * *Your App's Delegate*: The Controller for this GUI. You will write your code within this component
 
   * *Window*: The window of the App. You will add UI components to this window
+
+In this App you add two Labels and two Buttons to the window. Towards the top of the window there will be a Label and a Button. This widget will flip through mobile operating systems in the market. Towards the bottom of the window we will add another Label and a Button. This widget flips through the desktop operating systems in the market.
