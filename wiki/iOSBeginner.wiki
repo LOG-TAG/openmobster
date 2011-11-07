@@ -22,10 +22,10 @@ In this App we will layout the UI components using Interface Builder. Interface 
 
 When you start Interface Builder you will see the following four items:
 
-  * File's Owner: An instance of UIApplication. The event queue for your App is managed by this object
+  * *File's Owner*: An instance of UIApplication. The event queue for your App is managed by this object
 
-  * First Responder: No idea. Never used it. 
+  * *First Responder*: No idea. Never used it. 
 
-  * Your App's Delegate: The Controller for this GUI. You will write your code within this component
+  * *Your App's Delegate*: The Controller for this GUI. You will write your code within this component
 
-  * Window: The window of the App. You will add UI components to this window
+  * *Window*: The window of the App. You will add UI components to this window
