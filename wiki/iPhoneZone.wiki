@@ -8,6 +8,11 @@
 This zone consists of various interesting iPhone/iOS development tips and tutorials
 ----
 
+==== iOS: Beginner's Guide ====
+
+This [iOSBeginner guide] introduces the developers to a HelloWorld Scenario. It can be used as a stepping stone to get started with iOS programming
+----
+
 ==== iPhone UITableView Tutorial ====
 
 This [iPhoneUITableView tutorial] covers the iPhone UITableView component including some sample code
