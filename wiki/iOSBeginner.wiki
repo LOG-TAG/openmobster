@@ -11,3 +11,21 @@ Before you can write any code, you need to install the development ide called XC
 The version of XCode I am using is 4.0.2 with iOS SDK 4.3.
 
 ==== Getting Started ====
+Before getting into the coding, it is important to understand the task at a high level. If we were to dissect an iOS App, it really boils down to two main tasks
+
+  * Developing/Laying out the UI components using a tool called Interface Builder
+
+  * Connecting these UI components to Controllers so that you can respond to user interaction
+
+==== Interface Builder ====
+In this App we will layout the UI components using Interface Builder. Interface Builder is a GUI development tool that lets you build out your GUI visually.
+
+When you start Interface Builder you will see the following four items:
+
+  * File's Owner: An instance of UIApplication. The event queue for your App is managed by this object
+
+  * First Responder: No idea. Never used it. 
+
+  * Your App's Delegate: The Controller for this GUI. You will write your code within this component
+
+  * Window: The window of the App. You will add UI components to this window
