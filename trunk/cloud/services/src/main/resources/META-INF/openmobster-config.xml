@@ -20,6 +20,10 @@
    	  <incallback method="notify"/>   	  
    </bean> 
    
+   <bean name="org.openmobster.core.services.LocationServiceMonitor" class="org.openmobster.core.services.LocationServiceMonitor">
+   	  <incallback method="notify"/>   	  
+   </bean>
+   
    <!--  Comet service for server generated events -->
    <bean name="services://CometService" class="org.openmobster.core.services.CometService">
    		<incallback method="notifyChannelEventListener"/>

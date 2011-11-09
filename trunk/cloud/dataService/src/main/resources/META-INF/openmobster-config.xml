@@ -127,6 +127,9 @@
    <!-- LocationProcessor -->
    <bean name="org.openmobster.core.dataService.processor.LocationProcessor" 
    class="org.openmobster.core.dataService.processor.LocationProcessor">    				
-   		<property name="id">org.openmobster.core.dataService.processor.LocationProcessor</property>   		
+   		<property name="id">org.openmobster.core.dataService.processor.LocationProcessor</property>
+   		<property name="mobileContainer">
+			<inject bean="mobileContainer://MobileContainer"/>
+		</property>   		
    </bean>                          
 </deployment>

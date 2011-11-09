@@ -131,4 +131,14 @@ public class Invocation implements Serializable
 	{
 		this.setAttribute("serviceRequest", serviceRequest);
 	}
+	
+	public org.openmobster.cloud.api.location.Request getLocationRequest()
+	{
+		return (org.openmobster.cloud.api.location.Request)this.getAttribute("locationRequest");
+	}
+	
+	public void setLocationRequest(org.openmobster.cloud.api.location.Request locationRequest)
+	{
+		this.setAttribute("locationRequest", locationRequest);
+	}
 }

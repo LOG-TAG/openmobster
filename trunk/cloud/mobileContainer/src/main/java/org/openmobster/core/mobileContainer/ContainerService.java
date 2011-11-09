@@ -8,10 +8,6 @@
 
 package org.openmobster.core.mobileContainer;
 
-import java.util.List;
-
-import org.openmobster.cloud.api.sync.MobileBean;
-
 /**
  * @author openmobster@gmail.com
  */

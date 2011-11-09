@@ -137,4 +137,14 @@ public class InvocationResponse implements Serializable
 	{
 		this.setAttribute("serviceResponse", serviceResponse);
 	}
+	
+	public org.openmobster.cloud.api.location.Response getLocationResponse()
+	{
+		return (org.openmobster.cloud.api.location.Response)this.getAttribute("locationResponse");
+	}
+	
+	public void setLocationResponse(org.openmobster.cloud.api.location.Response locationResponse)
+	{
+		this.setAttribute("locationResponse", locationResponse);
+	}
 }
