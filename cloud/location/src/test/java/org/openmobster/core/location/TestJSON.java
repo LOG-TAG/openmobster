@@ -112,7 +112,7 @@ public class TestJSON extends TestCase
         System.out.println(json);
 	}*/
 	
-	public void testPlaceSerialization() throws Exception
+	/*public void testPlaceSerialization() throws Exception
 	{
 		PlaceSPI place = new PlaceSPI();
 		place.setAddress("2046 Dogwood Gardens Dr");
@@ -150,6 +150,33 @@ public class TestJSON extends TestCase
 		for(Object key:keys)
 		{
 			System.out.println("Key: "+key);
+		}
+	}*/
+	
+	public void testMapSerialization() throws Exception
+	{
+		//Encode
+		JSONObject encoder = new JSONObject();
+		encoder.put("name", "openmobster");
+		encoder.put("email", "openmobster@gmail.com");
+		Map<String,String> coupons = new HashMap<String,String>();
+		coupons.put("key1", "coupon1");
+		coupons.put("key2", "coupon2");
+		encoder.put("coupons", coupons);
+		
+		System.out.println(encoder.toJSONString());
+		
+		String parseMe = "{\"coupons\":{\"key2\":\"coupon2\",\"key1\":\"coupon1\"},\"email\":\"openmobster@gmail.com\",\"name\":\"openmobster\"}";
+		
+		JSONParser parser = new JSONParser();
+		JSONObject parsed = (JSONObject)parser.parse(parseMe);
+		JSONObject parsedCoupons = (JSONObject)parsed.get("coupons");
+		Set<String> keys = parsedCoupons.keySet();
+		for(String key:keys)
+		{
+			String value = (String)parsedCoupons.get(key);
+			
+			System.out.println(key+":"+value);
 		}
 	}
 }

@@ -52,7 +52,7 @@ public class MobileContainer
 		if(service != null)
 		{
 			response = service.execute(invocation);
-			if(response.getStatus() == null)
+			if(response != null && response.getStatus() == null)
 			{
 				response.setStatus(InvocationResponse.STATUS_SUCCESS);
 			}

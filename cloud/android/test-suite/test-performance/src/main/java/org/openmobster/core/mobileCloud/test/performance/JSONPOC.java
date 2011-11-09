@@ -8,6 +8,8 @@
 
 package org.openmobster.core.mobileCloud.test.performance;
 
+import java.util.Iterator;
+
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.android.api.sync.BeanList;
 import org.openmobster.android.api.sync.BeanListEntry;
@@ -49,7 +51,7 @@ public final class JSONPOC implements RemoteCommand
 		{
 			//String json = "{\"org.openmobster.core.location.AddressSPI\":{\"street\":\"2046 Dogwood Gardens Dr\",\"city\":\"Germantown\"}}";
 			//String json = "{\"street\":\"2046 Dogwood Gardens Dr\",\"city\":\"Germantown\"}";
-			String json = "{\"address\":\"2046 Dogwood Gardens Dr\",\"name\":\"My Home\",\"types\":[\"home\",\"house\"]}";
+			String json = "{\"address\":\"2046 Dogwood Gardens Dr\",\"name\":\"My Home\",\"types\":[\"home\",\"house\"],\"coupons\":{\"reference2\":\"coupon2\",\"reference1\":\"coupon1\"}}";
 			
 			JSONObject object = new JSONObject(json);
 			
@@ -65,14 +67,30 @@ public final class JSONPOC implements RemoteCommand
 				System.out.println("Type: "+local);
 			}
 			
+			//Coupons
+			JSONObject coupons = object.getJSONObject("coupons");
+			Iterator keys = coupons.keys();
+			while(keys.hasNext())
+			{
+				String key = (String)keys.next();
+				String value = coupons.getString(key);
+				
+				System.out.println(key+":"+value);
+			}
+			
 			//Encode a Place
 			JSONObject place = new JSONObject();
 			place.put("address", "2046 Dogwood Gardens Dr");
 			place.put("name", "My Home");
+			
+			//Array
 			JSONArray encodeTypes = new JSONArray();
 			encodeTypes.put("home");
 			encodeTypes.put("house");
 			place.put("types", encodeTypes);
+			
+			//Map
+			place.put("coupons", coupons);
 			
 			System.out.println(json);
 			System.out.println(place.toString());

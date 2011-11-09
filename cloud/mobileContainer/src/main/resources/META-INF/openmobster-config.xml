@@ -45,5 +45,12 @@
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    		<depends>mobileContainer://InvokeMobileService</depends>
-   </bean>                   
+   </bean>
+   
+   <bean name="org.openmobster.core.mobileContainer.LocationInvocationService" 
+   class="org.openmobster.core.mobileContainer.LocationInvocationService">     		
+   		<property name="id">/service/location/invoke</property>
+   		<property name="locationServiceMonitor"><inject bean="org.openmobster.core.services.LocationServiceMonitor"/></property>
+   		<depends>mobileContainer://MobileContainer</depends>
+   </bean>                    
 </deployment>
