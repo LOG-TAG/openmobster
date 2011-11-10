@@ -155,6 +155,14 @@ public final class PayloadHandler
 			locationJSON.put("places", placesJSON);
 		}
 		
+		//Place Details
+		Place placeDetails = locationContext.getPlaceDetails();
+		if(placeDetails != null)
+		{
+			JSONObject placeDetailsJSON = this.serializePlace(placeDetails);
+			locationJSON.put("placeDetails", placeDetailsJSON);
+		}
+		
 		//Address
 		Address address = locationContext.getAddress();
 		if(address != null)

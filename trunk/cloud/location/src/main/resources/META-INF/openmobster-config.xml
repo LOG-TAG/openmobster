@@ -21,5 +21,9 @@
    
    <bean name="org.openmobster.core.location.google.Deserializer" 
    class="org.openmobster.core.location.google.Deserializer">
-   </bean>                                   
+   </bean>   
+   
+   <bean name="org.openmobster.core.location.PayloadHandler" 
+   class="org.openmobster.core.location.PayloadHandler">
+   </bean>                                
 </deployment>

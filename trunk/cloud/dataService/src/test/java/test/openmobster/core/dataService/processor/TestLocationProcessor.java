@@ -12,13 +12,19 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
 import junit.framework.TestCase;
 
+import org.json.simple.JSONObject;
 import org.openmobster.core.common.IOUtilities;
 import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
@@ -88,7 +94,9 @@ public class TestLocationProcessor extends TestCase
 			
 			if(data.indexOf("status=200")!=-1)
 			{
-				IOUtilities.writePayLoad("boomerang", os);
+				String xml = this.generateRequest();
+				log.info(xml);
+				IOUtilities.writePayLoad(xml, os);
 				
 				String response = IOUtilities.readServerResponse(is);
 				
@@ -122,5 +130,49 @@ public class TestLocationProcessor extends TestCase
 		socket = new Socket(localhost, 1502);
 		
 		return socket;
-	}					
+	}	
+	
+	private String generateRequest()
+	{
+		//Request payload
+		JSONObject requestPayload = new JSONObject();
+		for(int i=0; i<5; i++)
+		{
+			requestPayload.put("param"+i, "value"+i);
+		}
+		
+		//list
+		List<String> list = new ArrayList<String>();
+		for(int i=0; i<5; i++)
+		{
+			list.add("listAttribute:"+i);
+		}
+		requestPayload.put("list", list);
+		
+		//map
+		Map<String,String> map = new HashMap<String,String>();
+		for(int i=0; i<5; i++)
+		{
+			map.put("key"+i, "value"+i);
+		}
+		requestPayload.put("map", map);
+		
+		String requestPayloadStr = requestPayload.toJSONString();
+		
+		//Location payload
+		JSONObject locationPayload = new JSONObject();
+		locationPayload.put("latitude", "37.787082");
+		locationPayload.put("longitude", "-122.400929");
+		String locationPayloadStr = locationPayload.toJSONString();
+		
+		StringBuilder buffer = new StringBuilder();
+		buffer.append("<location-request>\n");
+		buffer.append("<service>coupons</service>\n");
+		buffer.append("<request-payload>"+XMLUtilities.addCData(requestPayloadStr)+"</request-payload>\n");
+		buffer.append("<location-payload>"+XMLUtilities.addCData(locationPayloadStr)+"</location-payload>\n");
+		buffer.append("</location-request>\n");
+		String xml = buffer.toString();
+		
+		return xml;
+	}
 }

@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.HashMap;
 
 import org.openmobster.core.security.device.Device;
+import org.openmobster.cloud.api.location.LocationContext;
 
 
 /**
@@ -139,5 +140,15 @@ public class ExecutionContext
 	public void setDevice(Device device)
 	{
 		this.setAttribute("device", device);
+	}
+	
+	public LocationContext getLocationContext()
+	{
+		return (LocationContext)this.getAttribute("location-context");
+	}
+	
+	public void setLocationContext(LocationContext locationContext)
+	{
+		this.setAttribute("location-context", locationContext);
 	}
 }
