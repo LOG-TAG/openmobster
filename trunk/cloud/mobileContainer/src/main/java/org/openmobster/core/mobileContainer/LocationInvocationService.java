@@ -144,6 +144,21 @@ public class LocationInvocationService implements ContainerService
 				System.out.println("Street: "+address.getStreet());
 			}
 			
+			//Find Places
+			List<PlaceSPI> places = this.placeProvider.fetchNearbyPlaces(latitude, longitude, null);
+			for(PlaceSPI place:places)
+			{
+				System.out.println("**************************");
+				System.out.println("Reference: "+place.getReference());
+			}
+			
+			//Place Reference
+			String placeReference = locationContext.getPlaceReference();
+			System.out.println("Place Reference: "+placeReference);
+			PlaceSPI placeDetails = this.placeProvider.fetchPlace(placeReference);
+			System.out.println("*****************************");
+			System.out.println("Address: "+placeDetails.getAddress());
+			
 			InvocationResponse response = InvocationResponse.getInstance();
 			Response locationResponse = new Response();
 			response.setLocationResponse(locationResponse);

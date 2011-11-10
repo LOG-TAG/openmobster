@@ -163,6 +163,16 @@ public class TestLocationProcessor extends TestCase
 		JSONObject locationPayload = new JSONObject();
 		locationPayload.put("latitude", "37.787082");
 		locationPayload.put("longitude", "-122.400929");
+		
+		//PlaceTypes
+		List<String> placeTypes = new ArrayList<String>();
+		placeTypes.add("restaurant");
+		placeTypes.add("airport");
+		locationPayload.put("placeTypes", placeTypes);
+		
+		String placeReference = "CnRpAAAAynVKUt5Z5MHk4jb1MII3WW5tkVg6kgP_n1UcziRMHRR2iG3IGiv0KI1MX_qDbk2GQRrs6QJbiYC7A_qJbX2UMj7M87Eu0wpwODWCut1IPz5dlovH08DA28wbROyOISsSPFSvj4MssqCiERkbst_eIxIQLP0YzjmNHdmLawGBo9o8GRoUbRrEe-hOGOMCNPVRBnZshh0c-FM";
+		locationPayload.put("placeReference", placeReference);
+		
 		String locationPayloadStr = locationPayload.toJSONString();
 		
 		StringBuilder buffer = new StringBuilder();

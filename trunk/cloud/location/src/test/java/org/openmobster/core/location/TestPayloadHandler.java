@@ -66,8 +66,17 @@ public class TestPayloadHandler extends TestCase
 		
 		//Location payload
 		JSONObject locationPayload = new JSONObject();
+		
+		//Latitude, Longitude
 		locationPayload.put("latitude", "-100");
 		locationPayload.put("longitude", "-200");
+		
+		//PlaceTypes
+		List<String> placeTypes = new ArrayList<String>();
+		placeTypes.add("restaurant");
+		placeTypes.add("airport");
+		locationPayload.put("placeTypes", placeTypes);
+		
 		String locationPayloadStr = locationPayload.toJSONString();
 		
 		StringBuilder buffer = new StringBuilder();
@@ -124,6 +133,10 @@ public class TestPayloadHandler extends TestCase
 			assertTrue(key.startsWith("key"));
 			assertTrue(value.startsWith("value"));
 		}
+		
+		//Place Types
+		List<String> placeTypesList = locationContext.getPlaceTypes();
+		assertTrue(placeTypesList != null && !placeTypesList.isEmpty());
 	}
 	
 	public void testSerializeResponse() throws Exception
@@ -150,6 +163,12 @@ public class TestPayloadHandler extends TestCase
 		
 		//Longitude
 		locationContext.setLongitude("-200");
+		
+		//PlaceTypes
+		List<String> placeTypes = new ArrayList<String>();
+		placeTypes.add("restaurant");
+		placeTypes.add("airport");
+		locationContext.setPlaceTypes(placeTypes);
 		
 		//rest of the context
 		for(int i=0; i<5;i++)

@@ -110,8 +110,39 @@ public final class PayloadHandler
 			//Assemble the LocationContext
 			LocationContext locationContext = LocationContext.getInstance();
 			parsedRequest = (JSONObject)parser.parse(locationPayload);
-			locationContext.setLatitude((String)parsedRequest.get("latitude"));
-			locationContext.setLongitude((String)parsedRequest.get("longitude"));
+			
+			//Latitude Longitude data
+			String latitude = (String)parsedRequest.get("latitude");
+			String longitude = (String)parsedRequest.get("longitude");
+			if(latitude != null)
+			{
+				locationContext.setLatitude(latitude);
+			}
+			if(longitude != null)
+			{
+				locationContext.setLongitude(longitude);
+			}
+			
+			//Place Types
+			JSONArray placeTypes = (JSONArray)parsedRequest.get("placeTypes");
+			if(placeTypes != null)
+			{
+				List<String> list = new ArrayList<String>();
+				int length = placeTypes.size();
+				for(int i=0; i<length; i++)
+				{
+					String placeType = (String)placeTypes.get(i);
+					list.add(placeType);
+				}
+				locationContext.setPlaceTypes(list);
+			}
+			
+			//Place Reference
+			String placeReference = (String)parsedRequest.get("placeReference");
+			if(placeReference != null)
+			{
+				locationContext.setPlaceReference(placeReference);
+			}
 			
 			locationContext.setAttribute("request", request);
 			
@@ -161,6 +192,18 @@ public final class PayloadHandler
 		{
 			JSONObject placeDetailsJSON = this.serializePlace(placeDetails);
 			locationJSON.put("placeDetails", placeDetailsJSON);
+		}
+		
+		//PlaceTypes
+		List<String> placeTypes = locationContext.getPlaceTypes();
+		if(placeTypes != null && !placeTypes.isEmpty())
+		{
+			JSONArray placeTypesJSON = new JSONArray();
+			for(String placeType:placeTypes)
+			{
+				placeTypesJSON.add(placeType);
+			}
+			locationJSON.put("placeTypes", placeTypesJSON);
 		}
 		
 		//Address
