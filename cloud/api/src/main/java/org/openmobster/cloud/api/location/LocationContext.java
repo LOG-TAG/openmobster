@@ -193,4 +193,42 @@ public final class LocationContext implements Serializable
 	{
 		this.attributeManager.setAttribute("placeDetails", placeDetails);
 	}
+	
+	/**
+	 * Set the type of places to search for
+	 * 
+	 * @return
+	 */
+	public List<String> getPlaceTypes()
+	{
+		return (List<String>)this.attributeManager.getAttribute("placeTypes");
+	}
+	
+	/**
+	 * Get the type of places to be searched for
+	 * 
+	 * @param placeTypes
+	 */
+	public void setPlaceTypes(List<String> placeTypes)
+	{
+		this.attributeManager.setAttribute("placeTypes", placeTypes);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getPlaceReference()
+	{
+		return (String)this.attributeManager.getAttribute("placeReference");
+	}
+	
+	/**
+	 * 
+	 * @param placeReference
+	 */
+	public void setPlaceReference(String placeReference)
+	{
+		this.attributeManager.setAttribute("placeReference", placeReference);
+	}
 }
