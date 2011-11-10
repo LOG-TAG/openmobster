@@ -64,7 +64,15 @@ public class Request implements Serializable
 	 */
 	public String getAttribute(String name)
 	{
-		return (String)this.attributeManager.getAttribute(name);
+		Object value = this.attributeManager.getAttribute(name);
+		if(value instanceof String)
+		{
+			return (String)value;
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	/**
@@ -133,6 +141,17 @@ public class Request implements Serializable
 	public void removeAttribute(String name)
 	{
 		this.attributeManager.removeAttribute(name);
+	}
+	
+	/**
+	 * Gets an arbitrary attribute value from the service response
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public Object get(String name)
+	{
+		return this.attributeManager.getAttribute(name);
 	}
 	
 	/**

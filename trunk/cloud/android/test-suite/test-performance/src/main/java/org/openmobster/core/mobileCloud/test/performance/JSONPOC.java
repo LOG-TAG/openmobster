@@ -94,6 +94,20 @@ public final class JSONPOC implements RemoteCommand
 			
 			System.out.println(json);
 			System.out.println(place.toString());
+			
+			String placejson = "{\"places\":[{\"address\":\"2046 Dogwood Gardens Dr/0\"},{\"address\":\"2046 Dogwood Gardens Dr/1\"},{\"address\":\"2046 Dogwood Gardens Dr/2\"},{\"address\":\"2046 Dogwood Gardens Dr/3\"},{\"address\":\"2046 Dogwood Gardens Dr/4\"}]}";
+			
+			JSONObject placeObject = new JSONObject(placejson);
+			
+			JSONArray places = placeObject.getJSONArray("places");
+			int size = places.length();
+			for(int i=0; i<size; i++)
+			{
+				JSONObject localPlace = places.getJSONObject(i);
+				String address = localPlace.getString("address");
+				
+				System.out.println(address);
+			}
 		}
 		catch(Exception e)
 		{

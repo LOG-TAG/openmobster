@@ -27,5 +27,9 @@
   		<groupId>org.openmobster.core</groupId>
   		<artifactId>common</artifactId>
 	</dependency>
+	<dependency>
+  		<groupId>org.openmobster.core</groupId>
+  		<artifactId>api</artifactId>
+	</dependency>
   </dependencies>
 </project>
