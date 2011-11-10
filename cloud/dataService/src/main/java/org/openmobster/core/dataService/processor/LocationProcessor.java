@@ -13,8 +13,12 @@ import org.openmobster.core.mobileContainer.Invocation;
 import org.openmobster.core.mobileContainer.InvocationResponse;
 import org.openmobster.core.mobileContainer.MobileContainer;
 
+import org.openmobster.cloud.api.location.LocationContext;
 import org.openmobster.cloud.api.location.Response;
 import org.openmobster.cloud.api.location.Request;
+import org.openmobster.cloud.api.ExecutionContext;
+
+import org.openmobster.core.location.PayloadHandler;
 
 /**
  *
@@ -26,6 +30,7 @@ public class LocationProcessor implements Processor
 	
 	private String id;
 	private MobileContainer mobileContainer;
+	private PayloadHandler payloadHandler;
 	
 	public LocationProcessor()
 	{
@@ -57,6 +62,17 @@ public class LocationProcessor implements Processor
 	{
 		this.mobileContainer = mobileContainer;
 	}
+	
+	
+	public PayloadHandler getPayloadHandler()
+	{
+		return payloadHandler;
+	}
+
+	public void setPayloadHandler(PayloadHandler payloadHandler)
+	{
+		this.payloadHandler = payloadHandler;
+	}
 	//----------------------------------------------------------------------------------------------------------
 	@Override
 	public String getId()
@@ -81,13 +97,13 @@ public class LocationProcessor implements Processor
 			{
 				throw new ProcessorException("LocationServiceBean Invocation Failure");
 			}
-			
-			Response locationResponse = response.getLocationResponse();
 			if(!response.getStatus().trim().equals(InvocationResponse.STATUS_SUCCESS))
 			{
 				throw new ProcessorException("LocationServiceBean Invocation Status="+response.getStatus());
 			}
 			
+			//JSON-ify the response
+			Response locationResponse = response.getLocationResponse();
 			String jsonResponse = this.prepareResponse(locationResponse);
 			
 			return jsonResponse;
@@ -101,12 +117,25 @@ public class LocationProcessor implements Processor
 	
 	private Request parseRequest(String payload)
 	{
-		return null;
+		LocationContext locationContext = payloadHandler.deserializeRequest(payload);
+		Request request = (Request)locationContext.getAttribute("request");
+		
+		//Start the LocationContext for this request
+		ExecutionContext exe = ExecutionContext.getInstance();
+		exe.setLocationContext(locationContext);
+		
+		return request;
 	}
 	
 	private String prepareResponse(Response response)
 	{
-		return null;
+		LocationContext locationContext = ExecutionContext.getInstance().getLocationContext();
+		locationContext.setAttribute("response", response);
+		
+		//serialize
+		String xml = this.payloadHandler.serializeResponse(locationContext);
+		
+		return xml;
 	}
 	//----------------------------------------------------------------------------------------------
 }

@@ -9,6 +9,11 @@
 package org.openmobster.core.mobileCloud.test.performance;
 
 import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
 
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.android.api.sync.BeanList;
@@ -107,6 +112,60 @@ public final class JSONPOC implements RemoteCommand
 				String address = localPlace.getString("address");
 				
 				System.out.println(address);
+			}
+			
+			//Parsing the 
+			String responseJson = "{\"list2\":[\"listAttribute:0\",\"listAttribute:1\",\"listAttribute:2\",\"listAttribute:3\",\"listAttribute:4\"],\"param0\":\"value0\",\"param1\":\"value1\",\"param2\":\"value2\",\"status\":\"200\",\"list1\":[\"listAttribute:0\",\"listAttribute:1\",\"listAttribute:2\",\"listAttribute:3\",\"listAttribute:4\"],\"param3\":\"value3\",\"param4\":\"value4\",\"map2\":{\"key4\":\"value4\",\"key3\":\"value3\",\"key0\":\"value0\",\"key2\":\"value2\",\"key1\":\"value1\"},\"map1\":{\"key4\":\"value4\",\"key3\":\"value3\",\"key0\":\"value0\",\"key2\":\"value2\",\"key1\":\"value1\"},\"statusMsg\":\"OK\"}";
+			JSONObject responseObject = new JSONObject(responseJson);
+			
+			Iterator responseKeys = responseObject.keys();
+			while(responseKeys.hasNext())
+			{
+				String key = (String)responseKeys.next();
+				Object value = responseObject.get(key);
+				
+				if(value instanceof JSONArray)
+				{
+					List<String> list = new ArrayList<String>();
+					JSONArray array = (JSONArray)value;
+					length = array.length();
+					for(int i=0; i<length; i++)
+					{
+						String listEntry = array.getString(i);
+						list.add(listEntry);
+					}
+					
+					System.out.println("*****************************");
+					for(String local:list)
+					{
+						System.out.println(local);
+					}
+				}
+				else if(value instanceof JSONObject)
+				{
+					Map<String,String> map = new HashMap<String,String>();
+					JSONObject mapObject = (JSONObject)value;
+					Iterator mapKeys = mapObject.keys();
+					while(mapKeys.hasNext())
+					{
+						String mapKey = (String)mapKeys.next();
+						String mapValue = mapObject.getString(mapKey);
+						map.put(mapKey, mapValue);
+					}
+					
+					System.out.println("*******************************");
+					Set<String> names = map.keySet();
+					for(String name:names)
+					{
+						String mapValue = map.get(name);
+						System.out.println(name+":"+mapValue);
+					}
+				}
+				else if(value instanceof String)
+				{
+					System.out.println("***************************");
+					System.out.println(value);
+				}
 			}
 		}
 		catch(Exception e)

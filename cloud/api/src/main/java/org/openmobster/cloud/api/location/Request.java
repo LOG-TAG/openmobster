@@ -15,7 +15,7 @@ import java.io.Serializable;
 import org.openmobster.core.common.InVMAttributeManager;
 
 /**
- * Represents a service request that will be sent to the server side Mobile Service Bean component
+ * Represents a service request that will be sent to the server side Location Bean component
  * 
  * @author openmobster@gmail.com
  */

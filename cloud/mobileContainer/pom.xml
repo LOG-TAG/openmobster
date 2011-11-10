@@ -27,7 +27,11 @@
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>mobileObject</artifactId>			
-		</dependency>																					
+		</dependency>	
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>location</artifactId>			
+		</dependency>																				
 		
 		<!-- test dependency -->
 		<dependency>

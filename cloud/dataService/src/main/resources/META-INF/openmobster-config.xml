@@ -130,6 +130,9 @@
    		<property name="id">org.openmobster.core.dataService.processor.LocationProcessor</property>
    		<property name="mobileContainer">
 			<inject bean="mobileContainer://MobileContainer"/>
-		</property>   		
+		</property> 
+		<property name="payloadHandler">
+			<inject bean="org.openmobster.core.location.PayloadHandler"/>
+		</property>  		
    </bean>                          
 </deployment>

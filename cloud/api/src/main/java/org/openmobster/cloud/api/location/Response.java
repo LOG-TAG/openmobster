@@ -15,7 +15,7 @@ import java.util.Map;
 import org.openmobster.core.common.InVMAttributeManager;
 
 /**
- * Represents a Response sent back by an invocation of the server side Mobile Service Bean component
+ * Represents a Response sent back by an invocation of the server side Location Bean component
  * 
  * @author openmobster@gmail.com
  */

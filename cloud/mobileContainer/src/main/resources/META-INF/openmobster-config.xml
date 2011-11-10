@@ -51,6 +51,8 @@
    class="org.openmobster.core.mobileContainer.LocationInvocationService">     		
    		<property name="id">/service/location/invoke</property>
    		<property name="locationServiceMonitor"><inject bean="org.openmobster.core.services.LocationServiceMonitor"/></property>
+   		<property name="geocoder"><inject bean="GeoCoder"/></property>
+   		<property name="placeProvider"><inject bean="Places"/></property>
    		<depends>mobileContainer://MobileContainer</depends>
    </bean>                    
 </deployment>
