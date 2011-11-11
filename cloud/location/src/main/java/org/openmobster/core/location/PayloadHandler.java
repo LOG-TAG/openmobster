@@ -250,6 +250,62 @@ public final class PayloadHandler
 		{
 			json.put("address", place.getAddress());
 		}
+		if(place.getPhone() != null && place.getPhone().trim().length()>0)
+		{
+			json.put("phone", place.getPhone());
+		}
+		if(place.getInternationalPhoneNumber() != null && place.getInternationalPhoneNumber().trim().length()>0)
+		{
+			json.put("international_phone_number", place.getInternationalPhoneNumber());
+		}
+		if(place.getUrl() != null && place.getUrl().trim().length()>0)
+		{
+			json.put("url", place.getUrl());
+		}
+		if(place.getWebsite() != null && place.getWebsite().trim().length()>0)
+		{
+			json.put("website", place.getWebsite());
+		}
+		if(place.getIcon() != null && place.getIcon().trim().length()>0)
+		{
+			json.put("icon", place.getIcon());
+		}
+		if(place.getName() != null && place.getName().trim().length()>0)
+		{
+			json.put("name", place.getName());
+		}
+		if(place.getLatitude() != null && place.getLatitude().trim().length()>0)
+		{
+			json.put("latitude", place.getLatitude());
+		}
+		if(place.getLongitude() != null && place.getLongitude().trim().length()>0)
+		{
+			json.put("longitude", place.getLongitude());
+		}
+		if(place.getId() != null && place.getId().trim().length()>0)
+		{
+			json.put("id", place.getId());
+		}
+		if(place.getReference() != null && place.getReference().trim().length()>0)
+		{
+			json.put("reference", place.getReference());
+		}
+		if(place.getRating() != null && place.getRating().trim().length()>0)
+		{
+			json.put("rating", place.getRating());
+		}
+		if(place.getVicinity() != null && place.getVicinity().trim().length()>0)
+		{
+			json.put("vicinity", place.getVicinity());
+		}
+		if(place.getHtmlAttribution() != null && place.getHtmlAttribution().trim().length()>0)
+		{
+			json.put("html_attribution", place.getHtmlAttribution());
+		}
+		if(place.getTypes() != null && !place.getTypes().isEmpty())
+		{
+			json.put("types", place.getTypes());
+		}
 		
 		return json;
 	}
@@ -262,7 +318,50 @@ public final class PayloadHandler
 		{
 			json.put("street", address.getStreet());
 		}
-		
+		if(address.getCity() != null && address.getCity().trim().length()>0)
+		{
+			json.put("city", address.getCity());
+		}
+		if(address.getState() != null && address.getState().trim().length()>0)
+		{
+			json.put("state", address.getState());
+		}
+		if(address.getCountry() != null && address.getCountry().trim().length()>0)
+		{
+			json.put("country", address.getCountry());
+		}
+		if(address.getZipCode() != null && address.getZipCode().trim().length()>0)
+		{
+			json.put("zipcode", address.getZipCode());
+		}
+		if(address.getCounty() != null && address.getCounty().trim().length()>0)
+		{
+			json.put("county", address.getCounty());
+		}
+		if(address.getPostal() != null && address.getPostal().trim().length()>0)
+		{
+			json.put("postal", address.getPostal());
+		}
+		if(address.getLatitude() != null && address.getLatitude().trim().length()>0)
+		{
+			json.put("latitude", address.getLatitude());
+		}
+		if(address.getLongitude() != null && address.getLongitude().trim().length()>0)
+		{
+			json.put("longitude", address.getLongitude());
+		}
+		if(address.getRadius() != null && address.getRadius().trim().length()>0)
+		{
+			json.put("radius", address.getRadius());
+		}
+		if(address.getWoeid() != null && address.getWoeid().trim().length()>0)
+		{
+			json.put("woeid", address.getWoeid());
+		}
+		if(address.getWoetype() != null && address.getWoetype().trim().length()>0)
+		{
+			json.put("woetype", address.getWoetype());
+		}
 		return json;
 	}
 }

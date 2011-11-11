@@ -149,6 +149,8 @@ public class TestPayloadHandler extends TestCase
 		{
 			Place place = new Place();
 			place.setAddress("2046 Dogwood Gardens Dr/"+i);
+			place.setPhone("867-5309");
+			place.setReference("Reference:"+i);
 			places.add(place);
 		}
 		locationContext.setNearbyPlaces(places);

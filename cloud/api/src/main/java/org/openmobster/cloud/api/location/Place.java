@@ -176,6 +176,11 @@ public final class Place
 	{
 		this.types.add(type);
 	}
+	
+	public void setTypes(List<String> types)
+	{
+		this.types = types;
+	}
 
 	public String getVicinity()
 	{

@@ -8,14 +8,15 @@
 package org.openmobster.core.mobileContainer;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
 
 import org.openmobster.core.services.LocationServiceMonitor;
 
 import org.openmobster.cloud.api.location.LocationContext;
 import org.openmobster.cloud.api.location.Response;
 import org.openmobster.cloud.api.location.Request;
+import org.openmobster.cloud.api.location.Place;
+import org.openmobster.cloud.api.location.Address;
 import org.openmobster.cloud.api.ExecutionContext;
 
 import org.openmobster.core.location.GeoCodeProvider;
@@ -98,68 +99,16 @@ public class LocationInvocationService implements ContainerService
 	{
 		try
 		{
+			InvocationResponse response = InvocationResponse.getInstance();
+			
 			LocationContext locationContext = ExecutionContext.getInstance().getLocationContext();
 			Request request = invocation.getLocationRequest();
 			
-			System.out.println("**********************************");
-			System.out.println("Service: "+request.getService());
-			System.out.println("Latitude: "+locationContext.getLatitude());
-			System.out.println("Longitude: "+locationContext.getLongitude());
-			System.out.println("**********************************");
+			//setup the LocationContext with data
+			this.setupLocationContext(locationContext);
 			
-			String[] names = request.getNames();
-			for(String name:names)
-			{
-				if(name.equals("list") || name.equals("map"))
-				{
-					continue;
-				}
-				
-				String value = request.getAttribute(name);
-				System.out.println(name+":"+value);
-			}
+			//TODO:make the service invocation
 			
-			List<String> myList = request.getListAttribute("list");
-			for(String cour:myList)
-			{
-				System.out.println(cour);
-			}
-			
-			Map<String,String> myMap = request.getMapAttribute("map");
-			Set<String> keys = myMap.keySet();
-			for(String key:keys)
-			{
-				String value = myMap.get(key);
-				
-				System.out.println(key+":"+value);
-			}
-			
-			//Geocode
-			String latitude = locationContext.getLatitude();
-			String longitude = locationContext.getLongitude();
-			List<AddressSPI> addresses = this.geocoder.reverseGeoCode(latitude, longitude);
-			for(AddressSPI address:addresses)
-			{
-				System.out.println("**************************");
-				System.out.println("Street: "+address.getStreet());
-			}
-			
-			//Find Places
-			List<PlaceSPI> places = this.placeProvider.fetchNearbyPlaces(latitude, longitude, null);
-			for(PlaceSPI place:places)
-			{
-				System.out.println("**************************");
-				System.out.println("Reference: "+place.getReference());
-			}
-			
-			//Place Reference
-			String placeReference = locationContext.getPlaceReference();
-			System.out.println("Place Reference: "+placeReference);
-			PlaceSPI placeDetails = this.placeProvider.fetchPlace(placeReference);
-			System.out.println("*****************************");
-			System.out.println("Address: "+placeDetails.getAddress());
-			
-			InvocationResponse response = InvocationResponse.getInstance();
 			Response locationResponse = new Response();
 			response.setLocationResponse(locationResponse);
 			
@@ -169,6 +118,119 @@ public class LocationInvocationService implements ContainerService
 		{
 			InvocationException ine = new InvocationException(e.getMessage());
 			throw ine;
+		}
+	}
+	//------------------------------------------------------------------------------------------------------
+	private Place parsePlace(PlaceSPI placeSPI)
+	{
+		Place place = new Place();
+		
+		place.setAddress(placeSPI.getAddress());
+		place.setPhone(placeSPI.getPhone());
+		place.setInternationalPhoneNumber(placeSPI.getInternationalPhoneNumber());
+		place.setUrl(placeSPI.getUrl());
+		place.setWebsite(placeSPI.getWebsite());
+		place.setIcon(placeSPI.getIcon());
+		place.setName(placeSPI.getName());
+		place.setLatitude(placeSPI.getLatitude());
+		place.setLongitude(placeSPI.getLongitude());
+		place.setId(placeSPI.getId());
+		place.setReference(placeSPI.getReference());
+		place.setRating(placeSPI.getRating());
+		place.setTypes(placeSPI.getTypes());
+		place.setVicinity(placeSPI.getVicinity());
+		place.setHtmlAttribution(placeSPI.getHtmlAttribution());
+		
+		return place;
+	}
+	
+	private Address parseAddress(AddressSPI addressSPI)
+	{
+		Address address = new Address();
+		
+		address.setStreet(addressSPI.getStreet());
+		address.setCity(addressSPI.getCity());
+		address.setState(addressSPI.getState());
+		address.setZipCode(addressSPI.getZipCode());
+		address.setCountry(addressSPI.getCountry());
+		address.setCounty(addressSPI.getCounty());
+		address.setPostal(addressSPI.getPostal());
+		
+		address.setLatitude(addressSPI.getLatitude());
+		address.setLongitude(addressSPI.getLongitude());
+		address.setRadius(addressSPI.getRadius());
+		address.setWoeid(address.getWoeid());
+		address.setWoetype(addressSPI.getWoetype());
+		
+		return address;
+	}
+	
+	private Address decideAddress(List<AddressSPI> addresses)
+	{
+		Address address = null;
+		
+		if(addresses == null || addresses.isEmpty())
+		{
+			return null;
+		}
+		
+		AddressSPI selectedAddress = null;
+		for(AddressSPI local:addresses)
+		{
+			String street = local.getStreet();
+			if(street != null && street.trim().length()>0)
+			{
+				selectedAddress = local;
+				break;
+			}
+		}
+		
+		if(selectedAddress == null)
+		{
+			selectedAddress = addresses.get(0);
+		}
+		
+		address = this.parseAddress(selectedAddress);
+		
+		return address;
+	}
+	
+	private void setupLocationContext(LocationContext locationContext) throws Exception
+	{
+		String latitude = locationContext.getLatitude();
+		String longitude = locationContext.getLongitude();
+		
+		//Find the address of this location
+		List<AddressSPI> addresses = this.geocoder.reverseGeoCode(latitude, longitude);
+		Address address = this.decideAddress(addresses);
+		if(address != null)
+		{
+			locationContext.setAddress(address);
+		}
+		
+		//Find nearby places to this location
+		List<String> placeTypes = locationContext.getPlaceTypes();
+		List<PlaceSPI> nearbyPlaces = this.placeProvider.fetchNearbyPlaces(latitude, longitude, placeTypes);
+		if(nearbyPlaces != null && !nearbyPlaces.isEmpty())
+		{
+			List<Place> places = new ArrayList<Place>();
+			for(PlaceSPI local:nearbyPlaces)
+			{
+				places.add(this.parsePlace(local));
+			}
+			locationContext.setNearbyPlaces(places);
+		}
+		
+		//Find any requested place details
+		String placeReference = locationContext.getPlaceReference();
+		if(placeReference != null && placeReference.trim().length()>0)
+		{
+			PlaceSPI place = this.placeProvider.fetchPlace(placeReference);
+			if(place != null)
+			{
+				Place details = this.parsePlace(place);
+				locationContext.setPlaceDetails(details);
+			}
 		}
 	}
 }
