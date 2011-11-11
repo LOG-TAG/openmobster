@@ -17,6 +17,7 @@ import org.openmobster.cloud.api.location.Response;
 import org.openmobster.cloud.api.location.Request;
 import org.openmobster.cloud.api.location.Place;
 import org.openmobster.cloud.api.location.Address;
+import org.openmobster.cloud.api.location.LocationServiceBean;
 import org.openmobster.cloud.api.ExecutionContext;
 
 import org.openmobster.core.location.GeoCodeProvider;
@@ -107,11 +108,41 @@ public class LocationInvocationService implements ContainerService
 			//setup the LocationContext with data
 			this.setupLocationContext(locationContext);
 			
-			//TODO:make the service invocation
+			//make the service invocation
+			String service = request.getService();
+			LocationServiceBean bean = this.locationServiceMonitor.lookup(service);
+			if(bean == null)
+			{
+				throw new RuntimeException("InvocationException: "+service+" LocationServiceBean Not Found!!");
+			}
 			
-			Response locationResponse = new Response();
-			response.setLocationResponse(locationResponse);
-			
+			Response locationResponse = null;
+			try
+			{
+				locationResponse = bean.invoke(locationContext, request);
+				if(locationResponse == null)
+				{
+					locationResponse = new Response();
+					locationResponse.setStatusCode("204");
+					locationResponse.setStatusMsg("No Content");
+				}
+				else
+				{
+					locationResponse.setStatusCode("200");
+					locationResponse.setStatusMsg("OK");
+				}
+				response.setLocationResponse(locationResponse);
+			}
+			catch(Throwable t)
+			{
+				locationResponse = new Response();
+				
+				locationResponse.setStatusCode("500");
+				locationResponse.setStatusMsg("Internal Server Error: "+t.getMessage());
+				
+				response.setLocationResponse(locationResponse);
+			}
+		
 			return response;
 		}
 		catch(Exception e)
