@@ -21,6 +21,7 @@
 				<include>org.openmobster.core.mobileCloud.android.2_0:moblet-runtime</include>
 				<include>org.openmobster.core.mobileCloud.android.2_0:native-framework</include>
 				<include>org.openmobster.core.mobileCloud.android.2_0:javascript-bridge</include>
+				<include>org.openmobster.core.mobileCloud.android.2_0:location</include>
 				
 			    <include>org.openmobster.core.mobileCloud.android.2_0:mobileCloud-runtime</include>
 			    <include>org.openmobster.core.mobileCloud.android.2_0:sync</include>

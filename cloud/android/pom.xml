@@ -45,7 +45,7 @@
 		<module>native-framework</module>
 		<module>javascript-bridge</module>
 		<module>dm</module>
-		
+		<module>location</module>
 		
 		<module>device-sdk</module>
 		<module>mobileCloud</module>
