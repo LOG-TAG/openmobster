@@ -29,5 +29,6 @@
 		<module>testapp</module>
 		<module>test-dm</module>
 		<module>test-performance</module>
+		<module>test-location</module>
 	</modules>
 </project>
