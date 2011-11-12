@@ -54,5 +54,10 @@
         	<artifactId>dm</artifactId>
         	<version>${project.version}</version>
     	</dependency>
+    	<dependency>
+	      <groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
+	      <artifactId>location</artifactId>
+	      <version>${project.version}</version>
+	    </dependency>
     </dependencies>
 </project>

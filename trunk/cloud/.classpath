@@ -87,6 +87,7 @@
 	<classpathentry kind="src" path="android/mobileCloud-runtime/src/main/java"/>
 	<classpathentry kind="src" path="android/moblet-runtime/src/main/java"/>
 	<classpathentry kind="src" path="android/dm/src/main/java"/>
+	<classpathentry kind="src" path="android/location/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-framework/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-api-port/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-common-port/src/main/java"/>
