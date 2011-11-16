@@ -76,6 +76,10 @@ public class TestPayloadHandler extends TestCase
 		placeTypes.add("restaurant");
 		placeTypes.add("airport");
 		locationPayload.put("placeTypes", placeTypes);
+		for(int i=0; i<5; i++)
+		{
+			locationPayload.put("name"+i, "value"+i);
+		}
 		
 		String locationPayloadStr = locationPayload.toJSONString();
 		
@@ -137,6 +141,17 @@ public class TestPayloadHandler extends TestCase
 		//Place Types
 		List<String> placeTypesList = locationContext.getPlaceTypes();
 		assertTrue(placeTypesList != null && !placeTypesList.isEmpty());
+		
+		//Rest of the LocationContext
+		names = locationContext.getNames();
+		for(String name:names)
+		{
+			Object value = locationContext.getAttribute(name);
+			if(value instanceof String)
+			{
+				log.info(name+":"+value);
+			}
+		}
 	}
 	
 	public void testSerializeResponse() throws Exception
