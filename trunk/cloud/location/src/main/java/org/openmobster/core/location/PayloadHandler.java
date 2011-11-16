@@ -146,6 +146,20 @@ public final class PayloadHandler
 			
 			locationContext.setAttribute("request", request);
 			
+			//Rest of the Context
+			Set<String> keys = parsedRequest.keySet();
+			if(keys != null && !keys.isEmpty())
+			{
+				for(String key:keys)
+				{
+					Object value = parsedRequest.get(key);
+					if(value instanceof String)
+					{
+						locationContext.setAttribute(key, (String)value);
+					}
+				}
+			}
+			
 			return locationContext;
 		}
 		catch(Exception e)
