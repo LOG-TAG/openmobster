@@ -274,4 +274,11 @@
    <bean name="/IMEI:2/configuration" 
    class="org.openmobster.device.agent.test.framework.Configuration">
    </bean>
+   
+   <bean name="friends" 
+   class="org.openmobster.device.agent.location.FriendBean">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   		<depends>org.openmobster.core.services.LocationServiceMonitor</depends>
+   </bean>
 </deployment>

@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+import org.openmobster.android.api.location.Request;
+import org.openmobster.android.api.location.Response;
 
 /**
  * Represents the context and its data associated with an active Location Bean request
@@ -231,5 +233,45 @@ public final class LocationContext implements Serializable
 	public void setPlaceReference(String placeReference)
 	{
 		this.attributeManager.setAttribute("placeReference", placeReference);
+	}
+	
+	/**
+	 * Set the active request to be sent with a cloud invocation
+	 * 
+	 * @param request
+	 */
+	public void setRequest(Request request)
+	{
+		this.attributeManager.setAttribute("request", request);
+	}
+	
+	/**
+	 * Get the active request that will be sent with a cloud invocation
+	 * 
+	 * @return the request
+	 */
+	public Request getRequest()
+	{
+		return (Request)this.attributeManager.getAttribute("request");
+	}
+	
+	/**
+	 * Set the active response received as a result of cloud invocation
+	 * 
+	 * @param response
+	 */
+	public void setResponse(Response response)
+	{
+		this.attributeManager.setAttribute("response", response);
+	}
+	
+	/**
+	 * Get the active response received as a result of cloud invocation
+	 * 
+	 * @return the response
+	 */
+	public Response getResponse()
+	{
+		return (Response)this.attributeManager.getAttribute("response");
 	}
 }

@@ -19,6 +19,7 @@ import org.openmobster.android.api.location.Request;
 import org.openmobster.android.api.location.Response;
 import org.openmobster.android.api.location.Place;
 import org.openmobster.android.api.location.Address;
+import org.openmobster.api.service.location.PayloadHandler;
 
 /**
  *

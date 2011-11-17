@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.core.mobileCloud.android.location;
+package org.openmobster.api.service.location;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
@@ -315,7 +315,6 @@ public final class PayloadHandler
 		}
 	}
 	//-----------------------------------------------------------------------------------------
-	//TODO: Implement these fully
 	private Place deserializePlace(JSONObject parsedPlace) throws Exception
 	{
 		Place place = new Place();
@@ -326,6 +325,139 @@ public final class PayloadHandler
 			if(phone != null && phone.trim().length()>0)
 			{
 				place.setPhone(phone);
+			}
+		}
+		
+		if(parsedPlace.has("address"))
+		{
+			String value = parsedPlace.getString("address");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setAddress(value);
+			}
+		}
+		
+		if(parsedPlace.has("international_phone_number"))
+		{
+			String value = parsedPlace.getString("international_phone_number");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setInternationalPhoneNumber(value);
+			}
+		}
+		
+		if(parsedPlace.has("url"))
+		{
+			String value = parsedPlace.getString("url");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setUrl(value);
+			}
+		}
+		
+		if(parsedPlace.has("website"))
+		{
+			String value = parsedPlace.getString("website");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setWebsite(value);
+			}
+		}
+		
+		if(parsedPlace.has("icon"))
+		{
+			String value = parsedPlace.getString("icon");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setIcon(value);
+			}
+		}
+		
+		if(parsedPlace.has("name"))
+		{
+			String value = parsedPlace.getString("name");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setName(value);
+			}
+		}
+		
+		if(parsedPlace.has("latitude"))
+		{
+			String value = parsedPlace.getString("latitude");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setLatitude(value);
+			}
+		}
+		
+		if(parsedPlace.has("longitude"))
+		{
+			String value = parsedPlace.getString("longitude");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setLongitude(value);
+			}
+		}
+		
+		if(parsedPlace.has("id"))
+		{
+			String value = parsedPlace.getString("id");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setId(value);
+			}
+		}
+		
+		if(parsedPlace.has("reference"))
+		{
+			String value = parsedPlace.getString("reference");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setReference(value);
+			}
+		}
+		
+		if(parsedPlace.has("rating"))
+		{
+			String value = parsedPlace.getString("rating");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setRating(value);
+			}
+		}
+		
+		if(parsedPlace.has("vicinity"))
+		{
+			String value = parsedPlace.getString("vicinity");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setVicinity(value);
+			}
+		}
+		
+		if(parsedPlace.has("html_attribution"))
+		{
+			String value = parsedPlace.getString("html_attribution");
+			if(value != null && value.trim().length()>0)
+			{
+				place.setHtmlAttribution(value);
+			}
+		}
+		
+		if(parsedPlace.has("types"))
+		{
+			JSONArray value = parsedPlace.getJSONArray("types");
+			if(value != null && value.length()>0)
+			{
+				int length = value.length();
+				List<String> types = new ArrayList<String>();
+				for(int i=0; i<length; i++)
+				{
+					String type = value.getString(i);
+					types.add(type);
+				}
+				place.setTypes(types);
 			}
 		}
 		
@@ -342,6 +474,105 @@ public final class PayloadHandler
 			if(street != null && street.trim().length()>0)
 			{
 				address.setStreet(street);
+			}
+		}
+		
+		if(parsedAddress.has("city"))
+		{
+			String value = parsedAddress.getString("city");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setCity(value);
+			}
+		}
+		
+		if(parsedAddress.has("state"))
+		{
+			String value = parsedAddress.getString("state");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setState(value);
+			}
+		}
+		
+		if(parsedAddress.has("country"))
+		{
+			String value = parsedAddress.getString("country");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setCounty(value);
+			}
+		}
+		
+		if(parsedAddress.has("zipcode"))
+		{
+			String value = parsedAddress.getString("zipcode");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setZipCode(value);
+			}
+		}
+		
+		if(parsedAddress.has("county"))
+		{
+			String value = parsedAddress.getString("county");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setCounty(value);
+			}
+		}
+		
+		if(parsedAddress.has("postal"))
+		{
+			String value = parsedAddress.getString("postal");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setPostal(value);
+			}
+		}
+		
+		if(parsedAddress.has("latitude"))
+		{
+			String value = parsedAddress.getString("latitude");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setLatitude(value);
+			}
+		}
+		
+		if(parsedAddress.has("longitude"))
+		{
+			String value = parsedAddress.getString("longitude");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setLongitude(value);
+			}
+		}
+		
+		if(parsedAddress.has("radius"))
+		{
+			String value = parsedAddress.getString("radius");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setRadius(value);
+			}
+		}
+		
+		if(parsedAddress.has("woetype"))
+		{
+			String value = parsedAddress.getString("woetype");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setWoetype(value);
+			}
+		}
+		
+		if(parsedAddress.has("woeid"))
+		{
+			String value = parsedAddress.getString("woeid");
+			if(value != null && value.trim().length()>0)
+			{
+				address.setWoeid(value);
 			}
 		}
 		
