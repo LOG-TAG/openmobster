@@ -32,5 +32,6 @@
 //internal use only
 -(Place *) deserializePlace:(NSDictionary *)placeObj;
 -(Address *) deserializeAddress:(NSDictionary *)addressObj;
+-(NSDictionary *)serializeAddress:(Address *) address;
 
 @end
