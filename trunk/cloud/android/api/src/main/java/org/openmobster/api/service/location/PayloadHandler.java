@@ -135,6 +135,13 @@ public final class PayloadHandler
 				locationContextJSON.put("placeTypes", local);
 			}
 			
+			Address address = locationContext.getAddress();
+			if(address != null)
+			{
+				JSONObject addressJson = this.serializeAddress(address);
+				locationContextJSON.put("address", addressJson);
+			}
+			
 			//rest of the context
 			names = locationContext.getNames();
 			if(names != null && names.length>0)
@@ -577,5 +584,84 @@ public final class PayloadHandler
 		}
 		
 		return address;
+	}
+	
+	private JSONObject serializeAddress(Address address) throws Exception
+	{
+		JSONObject json = new JSONObject();
+		
+		String value = address.getStreet();
+		if(value != null)
+		{
+			json.put("street", value);
+		}
+		
+		value = address.getCity();
+		if(value != null)
+		{
+			json.put("city", value);
+		}
+		
+		value = address.getState();
+		if(value != null)
+		{
+			json.put("state", value);
+		}
+		
+		value = address.getCountry();
+		if(value != null)
+		{
+			json.put("country", value);
+		}
+		
+		value = address.getZipCode();
+		if(value != null)
+		{
+			json.put("zipcode", value);
+		}
+		
+		value = address.getCounty();
+		if(value != null)
+		{
+			json.put("county", value);
+		}
+		
+		value = address.getPostal();
+		if(value != null)
+		{
+			json.put("postal", value);
+		}
+		
+		value = address.getLatitude();
+		if(value != null)
+		{
+			json.put("latitude", value);
+		}
+		
+		value = address.getLongitude();
+		if(value != null)
+		{
+			json.put("longitude", value);
+		}
+		
+		value = address.getRadius();
+		if(value != null)
+		{
+			json.put("radius", value);
+		}
+		
+		value = address.getWoetype();
+		if(value != null)
+		{
+			json.put("woetype", value);
+		}
+		
+		value = address.getWoeid();
+		if(value != null)
+		{
+			json.put("woeid", value);
+		}
+		
+		return json;
 	}
 }

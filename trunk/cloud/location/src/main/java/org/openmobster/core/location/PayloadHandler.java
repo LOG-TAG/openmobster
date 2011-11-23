@@ -146,6 +146,14 @@ public final class PayloadHandler
 			
 			locationContext.setAttribute("request", request);
 			
+			//Address
+			JSONObject address = (JSONObject)parsedRequest.get("address");
+			if(address != null)
+			{
+				Address incomingAddress = this.deserializeAddress(address);
+				locationContext.setAddress(incomingAddress);
+			}
+			
 			//Rest of the Context
 			Set<String> keys = parsedRequest.keySet();
 			if(keys != null && !keys.isEmpty())
@@ -377,5 +385,48 @@ public final class PayloadHandler
 			json.put("woetype", address.getWoetype());
 		}
 		return json;
+	}
+	
+	private Address deserializeAddress(JSONObject object)
+	{
+		Address address = new Address();
+		
+		String street = (String)object.get("street");
+		address.setStreet(street);
+		
+		String city = (String)object.get("city");
+		address.setCity(city);
+		
+		String value = (String)object.get("state");
+		address.setState(value);
+		
+		value = (String)object.get("country");
+		address.setCountry(value);
+		
+		value = (String)object.get("zipcode");
+		address.setZipCode(value);
+		
+		value = (String)object.get("county");
+		address.setCounty(value);
+		
+		value = (String)object.get("postal");
+		address.setPostal(value);
+		
+		value = (String)object.get("latitude");
+		address.setLatitude(value);
+		
+		value = (String)object.get("longitude");
+		address.setLongitude(value);
+		
+		value = (String)object.get("radius");
+		address.setRadius(value);
+		
+		value = (String)object.get("woetype");
+		address.setWoetype(value);
+		
+		value = (String)object.get("woeid");
+		address.setWoeid(value);
+		
+		return address;
 	}
 }

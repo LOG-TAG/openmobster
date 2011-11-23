@@ -16,4 +16,7 @@ import java.util.List;
 public interface GeoCodeProvider
 {
 	public List<AddressSPI> reverseGeoCode(String latitude, String longitude) throws LocationSPIException;
+	
+	public List<AddressSPI> geoCode(String street,String city, String state, String country, String zipcode) 
+	throws LocationSPIException;
 }
