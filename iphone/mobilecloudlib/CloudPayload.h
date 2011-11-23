@@ -16,6 +16,8 @@
 extern NSString *const _SERVICE_PAYLOAD_ACTIVE;
 extern NSString *const _SERVICE_PAYLOAD_INACTIVE;
 extern NSString *const _SYNC_PAYLOAD;
+extern NSString *const _LOCATION_PAYLOAD_ACTIVE;
+extern NSString *const _LOCATION_PAYLOAD_INACTIVE;
 
 @interface CloudPayload : NSObject 
 {

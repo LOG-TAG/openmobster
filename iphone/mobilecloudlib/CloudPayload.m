@@ -12,6 +12,8 @@ NSString *const _SERVICE_PAYLOAD_ACTIVE = @"<request><header><name>device-id</na
 NSString *const _SERVICE_PAYLOAD_INACTIVE = @"<request><header><name>processor</name><value>mobileservice</value></header></request>";
 NSString *const _SYNC_PAYLOAD = @"<request><header><name>device-id</name><value><![CDATA[%@]]></value></header><header><name>nonce</name><value><![CDATA[%@]]></value></header><header><name>processor</name><value>sync</value></header></request>";
 
+NSString *const _LOCATION_PAYLOAD_ACTIVE = @"<request><header><name>device-id</name><value><![CDATA[%@]]></value></header><header><name>nonce</name><value><![CDATA[%@]]></value></header><header><name>processor</name><value>org.openmobster.core.dataService.processor.LocationProcessor</value></header></request>";
+NSString *const _LOCATION_PAYLOAD_INACTIVE = @"<request><header><name>processor</name><value>org.openmobster.core.dataService.processor.LocationProcessor</value></header></request>";
 
 /**
  * 
