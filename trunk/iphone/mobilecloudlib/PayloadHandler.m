@@ -82,6 +82,13 @@
         [locationObject setValue:placeTypes forKey:@"placeTypes"];
     }
     
+    Address *address = [locationContext getAddress];
+    if(address != nil)
+    {
+        NSDictionary *object = [self serializeAddress:address];
+        [locationObject setValue:object forKey:@"address"];
+    }
+    
     //rest of the location context
     names = [locationContext getNames];
     if(names != nil && [names count]>0)
@@ -385,6 +392,26 @@
     }
     
     return address;
+}
+
+-(NSDictionary *)serializeAddress:(Address *) address
+{
+    NSMutableDictionary *object = [NSMutableDictionary dictionary];
+    
+    [object setValue:address.street forKey:@"street"];
+    [object setValue:address.city forKey:@"city"];
+    [object setValue:address.state forKey:@"state"];
+    [object setValue:address.country forKey:@"country"];
+    [object setValue:address.zipCode forKey:@"zipcode"];
+    [object setValue:address.county forKey:@"county"];
+    [object setValue:address.postal forKey:@"postal"];
+    [object setValue:address.latitude forKey:@"latitude"];
+    [object setValue:address.longitude forKey:@"longitude"];
+    [object setValue:address.radius forKey:@"radius"];
+    [object setValue:address.woetype forKey:@"woetype"];
+    [object setValue:address.woeid forKey:@"woeid"];
+    
+    return [NSDictionary dictionaryWithDictionary:object];
 }
 
 -(void)parserDidStartDocument:(NSXMLParser *)parser
