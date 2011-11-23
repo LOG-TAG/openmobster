@@ -157,4 +157,50 @@ public class TestPlaceFinderTestDrive extends TestCase
 		System.out.println("woetype: "+address.getWoetype());
 		assertEquals("11",address.getWoetype());
 	}
+	
+	public void testAddressGeoCoding() throws Exception
+	{
+		List<AddressSPI> addresses = this.geoCoder.geoCode("2046 Dogwood Gardens Drive", "Germantown", "TN", "USA", "38139");
+		assertTrue(addresses != null && !addresses.isEmpty());
+		
+		System.out.println("Number of Addresses Found: "+addresses.size());
+		
+		AddressSPI address = addresses.get(0);
+		
+		System.out.println("Street: "+address.getStreet());
+		//assertEquals("655 Mission St",address.getStreet());
+		
+		System.out.println("City: "+address.getCity());
+		//assertEquals("San Francisco",address.getCity());
+		
+		System.out.println("State: "+address.getState());
+		//assertEquals("California",address.getState());
+		
+		System.out.println("Country: "+address.getCountry());
+		//assertEquals("United States",address.getCountry());
+		
+		System.out.println("Zip: "+address.getZipCode());
+		//assertEquals("94105",address.getZipCode());
+		
+		System.out.println("Postal: "+address.getPostal());
+		//assertEquals("94105-4126",address.getPostal());
+		
+		System.out.println("County: "+address.getCounty());
+		//assertEquals("San Francisco County",address.getCounty());
+		
+		System.out.println("Latitude: "+address.getLatitude());
+		//assertEquals("37.787082",address.getLatitude());
+		
+		System.out.println("Longitude: "+address.getLongitude());
+		//assertEquals("-122.400929",address.getLongitude());
+		
+		System.out.println("Radius: "+address.getRadius());
+		//assertEquals("500",address.getRadius());
+		
+		System.out.println("woeid: "+address.getWoeid());
+		//assertEquals("12797156",address.getWoeid());
+		
+		System.out.println("woetype: "+address.getWoetype());
+		//assertEquals("11",address.getWoetype());
+	}
 }

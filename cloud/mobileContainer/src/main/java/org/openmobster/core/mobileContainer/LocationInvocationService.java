@@ -231,12 +231,44 @@ public class LocationInvocationService implements ContainerService
 		String latitude = locationContext.getLatitude();
 		String longitude = locationContext.getLongitude();
 		
-		//Find the address of this location
-		List<AddressSPI> addresses = this.geocoder.reverseGeoCode(latitude, longitude);
-		Address address = this.decideAddress(addresses);
-		if(address != null)
+		if(latitude == null || latitude.trim().length()==0 || longitude ==null || longitude.trim().length()==0)
 		{
-			locationContext.setAddress(address);
+			Address address = locationContext.getAddress();
+			if(address == null)
+			{
+				return;
+			}
+			String street = address.getStreet();
+			String city = address.getCity();
+			if(street == null || street.trim().length()==0 || city == null || city.trim().length() ==0)
+			{
+				return;
+			}
+			
+			List<AddressSPI> addresses = this.geocoder.geoCode(address.getStreet(), 
+					address.getCity(), 
+					address.getState(), 
+					address.getCountry(), 
+					address.getZipCode());
+			Address lookedup = this.decideAddress(addresses);
+			if(lookedup == null)
+			{
+				return;
+			}
+			
+			latitude = lookedup.getLatitude();
+			longitude = lookedup.getLongitude();
+			locationContext.setAddress(lookedup);
+		}
+		else
+		{
+			//Find the address of this location
+			List<AddressSPI> addresses = this.geocoder.reverseGeoCode(latitude, longitude);
+			Address address = this.decideAddress(addresses);
+			if(address != null)
+			{
+				locationContext.setAddress(address);
+			}
 		}
 		
 		//Find nearby places to this location
