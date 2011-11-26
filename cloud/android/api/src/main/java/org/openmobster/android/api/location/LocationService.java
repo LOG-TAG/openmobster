@@ -132,4 +132,19 @@ public final class LocationService
 			}
 		}
 	}
+	
+	public static Place getPlaceDetails(String placeReference) 
+	throws LocationServiceException
+	{
+		LocationContext locationContext = LocationContext.getInstance();
+		locationContext.setPlaceReference(placeReference);
+		
+		Request request = new Request("placeDetails");
+		
+		LocationContext responseContext = LocationService.invoke(request, locationContext);
+		
+		Place placeDetails = responseContext.getPlaceDetails();
+		
+		return placeDetails;
+	}
 }
