@@ -33,6 +33,7 @@ public class TestLocationService extends Test
 			this.testByCoordinates();
 			this.testByAddress();
 			this.testValidation();
+			this.testGetPlaceDetails();
 		}
 		catch(Exception e)
 		{
@@ -229,5 +230,69 @@ public class TestLocationService extends Test
 		}
 		
 		assertTrue(validationFailure,"/validation/exception");
+	}
+	
+	private void testGetPlaceDetails() throws Exception
+	{
+		Request request = new Request("friends");
+		
+		LocationContext locationContext = LocationContext.getInstance();
+		locationContext.setAttribute("request", request);
+		
+		//LocationContext
+		Address address = new Address();
+		address.setStreet("2046 Dogwood Gardens Dr");
+		address.setCity("Germantown");
+		locationContext.setAddress(address);
+		
+		locationContext.setRadius(1000);
+		
+		LocationContext responseContext = LocationService.invoke(request, locationContext);
+		
+		//Get nearby places
+		List<Place> nearbyPlaces = responseContext.getNearbyPlaces();
+		assertTrue(nearbyPlaces != null && !nearbyPlaces.isEmpty(),"nearbyPlaces/null/check");
+		
+		Place detailedPlace = nearbyPlaces.get(0);
+		String placeReference = detailedPlace.getReference();
+		System.out.println("Reference: "+placeReference);
+		
+		System.out.println("********************************************");
+		System.out.println("Address:"+detailedPlace.getAddress());
+		System.out.println("Phone:"+detailedPlace.getPhone());
+		System.out.println("InternationalPhoneNumber:"+detailedPlace.getInternationalPhoneNumber());
+		System.out.println("Url:"+detailedPlace.getUrl());
+		System.out.println("Website:"+detailedPlace.getWebsite());
+		System.out.println("Icon:"+detailedPlace.getIcon());
+		System.out.println("Name:"+detailedPlace.getName());
+		System.out.println("Latitude:"+detailedPlace.getLatitude());
+		System.out.println("Longitude:"+detailedPlace.getLongitude());
+		System.out.println("Id:"+detailedPlace.getId());
+		System.out.println("Rating:"+detailedPlace.getRating());
+		System.out.println("Reference:"+detailedPlace.getReference());
+		System.out.println("vicintty:"+detailedPlace.getVicinity());
+		System.out.println("HTMLAttribution:"+detailedPlace.getHtmlAttribution());
+		
+		assertTrue(detailedPlace.getAddress() ==null,"");
+		
+		detailedPlace = LocationService.getPlaceDetails(placeReference);
+		
+		System.out.println("********************************************");
+		System.out.println("Address:"+detailedPlace.getAddress());
+		System.out.println("Phone:"+detailedPlace.getPhone());
+		System.out.println("InternationalPhoneNumber:"+detailedPlace.getInternationalPhoneNumber());
+		System.out.println("Url:"+detailedPlace.getUrl());
+		System.out.println("Website:"+detailedPlace.getWebsite());
+		System.out.println("Icon:"+detailedPlace.getIcon());
+		System.out.println("Name:"+detailedPlace.getName());
+		System.out.println("Latitude:"+detailedPlace.getLatitude());
+		System.out.println("Longitude:"+detailedPlace.getLongitude());
+		System.out.println("Id:"+detailedPlace.getId());
+		System.out.println("Rating:"+detailedPlace.getRating());
+		System.out.println("Reference:"+detailedPlace.getReference());
+		System.out.println("vicintty:"+detailedPlace.getVicinity());
+		System.out.println("HTMLAttribution:"+detailedPlace.getHtmlAttribution());
+		
+		assertTrue(detailedPlace.getAddress() !=null,"");
 	}
 }

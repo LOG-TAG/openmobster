@@ -54,5 +54,13 @@
    		<property name="geocoder"><inject bean="GeoCoder"/></property>
    		<property name="placeProvider"><inject bean="Places"/></property>
    		<depends>mobileContainer://MobileContainer</depends>
+   </bean>
+   
+   <bean name="placeDetails" 
+   class="org.openmobster.core.mobileContainer.GetPlaceDetails">
+   		<property name="placeProvider"><inject bean="Places"/></property>
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   		<depends>org.openmobster.core.services.LocationServiceMonitor</depends>
    </bean>                    
 </deployment>
