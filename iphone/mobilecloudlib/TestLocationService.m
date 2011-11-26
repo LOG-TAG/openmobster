@@ -42,6 +42,8 @@
     [context setLatitude:@"-33.8670522"];
     [context setLongitude:@"151.1957362"];
     
+    [context setRadius:1000];
+    
     LocationService *locationService = [LocationService withInit];
     
     LocationContext *responseContext = [locationService invoke:request :context];
@@ -74,6 +76,8 @@
     address.street = @"2046 Dogwood Gardens Drive";
     address.city = @"Germantown";
     [context setAddress:address];
+    
+    [context setRadius:1000];
     
     LocationService *locationService = [LocationService withInit];
     

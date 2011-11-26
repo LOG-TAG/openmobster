@@ -186,4 +186,18 @@
  * @return the response
  */
 -(LocationResponse *) getResponse;
+
+/**
+ * Get the radius on how far to look for nearby places
+ * 
+ * @return
+ */
+-(int) getRadius;
+
+/**
+ * Set the radius of how far to look for nearby places
+ * 
+ * @param radius
+ */
+-(void)setRadius:(int) radius;
 @end
