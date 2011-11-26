@@ -7,6 +7,7 @@
 //
 
 #import "LocationContext.h"
+#import "StringUtil.h"
 
 
 @implementation LocationContext
@@ -169,4 +170,22 @@
     return (LocationResponse *)[attrMgr getAttribute:@"response"];
 }
 
+
+-(int) getRadius
+{
+    NSString *radiusValue = (NSString *)[attrMgr getAttribute:@"radius"];
+    
+    if([StringUtil isEmpty:radiusValue])
+    {
+        return 0;
+    }
+    
+    return [radiusValue intValue];
+}
+
+-(void)setRadius:(int) radius
+{
+    NSString *radiusStr = [NSString stringWithFormat:@"%d",radius];
+    [attrMgr setAttribute:@"radius" :radiusStr];
+}
 @end
