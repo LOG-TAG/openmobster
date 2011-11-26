@@ -2,9 +2,7 @@
 
 <deployment xmlns="urn:jboss:bean-deployer:2.0">        
    <bean name="GeoCoder" 
-   class="org.openmobster.core.location.yahoo.YahooProvider">
-   		<!-- Change this your own Yahoo App Id, this one is OpenMobster's Yahoo App Id -->
-   		<property name="appId">91XdMe7k</property>   	  
+   class="org.openmobster.core.location.yahoo.YahooProvider">  	  
    		<property name="deserializer"><inject bean="org.openmobster.core.location.yahoo.Deserializer"/></property> 
    </bean> 
    
@@ -13,9 +11,7 @@
    </bean> 
    
    <bean name="Places" 
-   class="org.openmobster.core.location.google.GooglePlaceProvider">
-   		<!-- Change this your own Google API Key, this one is OpenMobster's API Key -->
-   		<property name="apiKey">AIzaSyAntv38LTmUTBSlSLHzX-XbfNFcl4F5zrA</property>   	  
+   class="org.openmobster.core.location.google.GooglePlaceProvider">  	  
    		<property name="deserializer"><inject bean="org.openmobster.core.location.google.Deserializer"/></property> 
    </bean> 
    

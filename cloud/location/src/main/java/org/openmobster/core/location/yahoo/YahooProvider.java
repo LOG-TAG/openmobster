@@ -10,6 +10,9 @@ package org.openmobster.core.location.yahoo;
 import java.util.List;
 import java.util.ArrayList;
 import java.net.URLEncoder;
+import java.util.Properties;
+import java.io.InputStream;
+import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
@@ -37,7 +40,43 @@ public final class YahooProvider implements GeoCodeProvider
 	
 	public void start()
 	{
-		
+		log.info("***************************");
+		log.info("Yahoo Provider started.....");
+		log.info("***************************");
+		InputStream is = null;
+		try
+		{
+			is = Thread.currentThread().getContextClassLoader().getResourceAsStream("location.properties");
+			if(is == null)
+			{
+				return;
+			}
+			
+			Properties properties = new Properties();
+			properties.load(is);
+			
+			String yahooAppId = properties.getProperty("yahoo_appid");
+			if(yahooAppId != null && yahooAppId.trim().length()>0)
+			{
+				this.appId = yahooAppId;
+			}
+			else
+			{
+				throw new IllegalStateException("Yahoo AppId Not Found!!");
+			}
+		}
+		catch(IOException ioe)
+		{
+			log.error(this, ioe);
+			throw new RuntimeException(ioe);
+		}
+		finally
+		{
+			if(is != null)
+			{
+				try{is.close();}catch(IOException ioe){}
+			}
+		}
 	}
 	
 	public void stop()
