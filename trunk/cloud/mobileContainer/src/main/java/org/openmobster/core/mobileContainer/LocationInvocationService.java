@@ -273,7 +273,12 @@ public class LocationInvocationService implements ContainerService
 		
 		//Find nearby places to this location
 		List<String> placeTypes = locationContext.getPlaceTypes();
-		List<PlaceSPI> nearbyPlaces = this.placeProvider.fetchNearbyPlaces(latitude, longitude, placeTypes);
+		int radius = locationContext.getRadius();
+		if(radius == 0)
+		{
+			radius = 500; //default to a decent 500 m radius if not specified
+		}
+		List<PlaceSPI> nearbyPlaces = this.placeProvider.fetchNearbyPlaces(latitude, longitude, placeTypes,radius);
 		if(nearbyPlaces != null && !nearbyPlaces.isEmpty())
 		{
 			List<Place> places = new ArrayList<Place>();

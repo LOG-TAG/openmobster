@@ -80,6 +80,7 @@ public class TestLocationService extends Test
 		{
 			locationContext.setAttribute("name"+i, "value"+i);
 		}
+		locationContext.setRadius(1000);
 		
 		LocationContext responseContext = service.invoke(request, locationContext);
 		
@@ -167,6 +168,7 @@ public class TestLocationService extends Test
 		{
 			locationContext.setAttribute("name"+i, "value"+i);
 		}
+		locationContext.setRadius(1000);
 		
 		LocationContext responseContext = service.invoke(request, locationContext);
 		

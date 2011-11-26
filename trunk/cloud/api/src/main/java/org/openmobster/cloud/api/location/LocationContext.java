@@ -231,4 +231,29 @@ public final class LocationContext implements Serializable
 	{
 		this.attributeManager.setAttribute("placeReference", placeReference);
 	}
+	
+	/**
+	 * Set the radius of how far to look for nearby places
+	 * 
+	 * @param radius
+	 */
+	public void setRadius(int radius)
+	{
+		this.attributeManager.setAttribute("radius", ""+radius);
+	}
+	
+	/**
+	 * Get the radius on how far to look for nearby places
+	 * 
+	 * @return
+	 */
+	public int getRadius()
+	{
+		String radiusValue = (String)this.attributeManager.getAttribute("radius");
+		if(radiusValue == null || radiusValue.trim().length()==0)
+		{
+			return 0;
+		}
+		return Integer.parseInt(radiusValue);
+	}
 }
