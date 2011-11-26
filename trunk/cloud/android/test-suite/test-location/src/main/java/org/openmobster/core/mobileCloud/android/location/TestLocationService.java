@@ -32,6 +32,7 @@ public class TestLocationService extends Test
 		{
 			this.testByCoordinates();
 			this.testByAddress();
+			this.testValidation();
 		}
 		catch(Exception e)
 		{
@@ -209,5 +210,24 @@ public class TestLocationService extends Test
 		System.out.println("Longitude: "+responseContext.getLongitude());
 		assertEquals(address.getLatitude(),"35.093039","latitude/check");
 		assertEquals(address.getLongitude(),"-89.733933","longitude/check");
+	}
+	
+	private void testValidation() throws Exception
+	{
+		LocationContext context = LocationContext.getInstance();
+		
+		LocationService service = new LocationService();
+		
+		boolean validationFailure = false;
+		try
+		{
+			service.invoke(null, context);
+		}
+		catch(IllegalStateException ise)
+		{
+			validationFailure = true;
+		}
+		
+		assertTrue(validationFailure,"/validation/exception");
 	}
 }
