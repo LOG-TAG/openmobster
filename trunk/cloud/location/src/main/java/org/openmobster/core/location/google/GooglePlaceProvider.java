@@ -8,6 +8,9 @@
 package org.openmobster.core.location.google;
 
 import java.util.List;
+import java.util.Properties;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URLEncoder;
 
 import org.apache.log4j.Logger;
@@ -36,7 +39,43 @@ public final class GooglePlaceProvider implements PlaceProvider
 	
 	public GooglePlaceProvider()
 	{
-		
+		log.info("**********************************");
+		log.info("Google Place Provider started.....");
+		log.info("**********************************");
+		InputStream is = null;
+		try
+		{
+			is = Thread.currentThread().getContextClassLoader().getResourceAsStream("location.properties");
+			if(is == null)
+			{
+				return;
+			}
+			
+			Properties properties = new Properties();
+			properties.load(is);
+			
+			String googleApiKey = properties.getProperty("google_api_key");
+			if(googleApiKey != null && googleApiKey.trim().length()>0)
+			{
+				this.apiKey = googleApiKey;
+			}
+			else
+			{
+				throw new IllegalStateException("Google API Key Not Found!!");
+			}
+		}
+		catch(IOException ioe)
+		{
+			log.error(this, ioe);
+			throw new RuntimeException(ioe);
+		}
+		finally
+		{
+			if(is != null)
+			{
+				try{is.close();}catch(IOException ioe){}
+			}
+		}
 	}
 	
 	public String getApiKey()
