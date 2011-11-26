@@ -107,12 +107,11 @@ public final class GooglePlaceProvider implements PlaceProvider
 
 	@Override
 	public List<PlaceSPI> fetchNearbyPlaces(String latitude, String longitude,
-			List<String> types) throws LocationSPIException
+			List<String> types, int radius) throws LocationSPIException
 	{
 		try
 		{
 			String location = latitude+","+longitude;
-			String radius = "500"; //just default 500 meters
 			String typesParameter = null;
 			if(types !=null && !types.isEmpty())
 			{
@@ -127,7 +126,7 @@ public final class GooglePlaceProvider implements PlaceProvider
 			
 			//Setup the Url
 			String url = "https://maps.googleapis.com/maps/api/place/search/xml?location="+location +
-			"&radius=500&sensor="+sensor+"&key="+apiKey;
+			"&radius="+radius+"&sensor="+sensor+"&key="+apiKey;
 			if(typesParameter != null)
 			{
 				typesParameter = URLEncoder.encode(typesParameter, "UTF-8");

@@ -80,7 +80,7 @@ public class TestGoogleTestDrive extends TestCase
 		types.add("food");
 		types.add("hospital");
 		
-		List<PlaceSPI> places = this.placeProvider.fetchNearbyPlaces(latitude, longitude, types);
+		List<PlaceSPI> places = this.placeProvider.fetchNearbyPlaces(latitude, longitude, types, 500);
 		assertTrue(places !=null && !places.isEmpty());
 		
 		for(PlaceSPI place:places)

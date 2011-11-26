@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface PlaceProvider
 {
-	public List<PlaceSPI> fetchNearbyPlaces(String latitude, String longitude, List<String>types) throws LocationSPIException;
+	public List<PlaceSPI> fetchNearbyPlaces(String latitude, String longitude, List<String>types,int radius) throws LocationSPIException;
 	public PlaceSPI fetchPlace(String placeReference) throws LocationSPIException;
 }
