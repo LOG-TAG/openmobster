@@ -22,9 +22,42 @@ import android.content.Context;
  */
 public final class LocationService
 {
-	public LocationContext invoke(Request request,LocationContext locationContext) 
+	public static LocationContext invoke(Request request,LocationContext locationContext) 
 		throws LocationServiceException
 	{
+		if(request == null || locationContext == null)
+		{
+			throw new IllegalStateException("LocationService Validation Failure");
+		}
+		
+		//LocationContext Validation
+		boolean coordinatesMissing = false;
+		String latitude = locationContext.getLatitude();
+		String longitude = locationContext.getLongitude();
+		if(latitude == null || latitude.trim().length()==0 || longitude ==null || longitude.trim().length()==0)
+		{
+			coordinatesMissing = true;
+		}
+		
+		boolean addressMissing = false;
+		if(locationContext.getAddress() == null)
+		{
+			addressMissing = true;
+		}
+		
+		boolean referenceMissing = false;
+		String reference = locationContext.getPlaceReference();
+		if(reference == null || reference.trim().length()==0)
+		{
+			referenceMissing = true;
+		}
+		
+		if(coordinatesMissing && addressMissing && referenceMissing)
+		{
+			throw new IllegalStateException("LocationContext Validation Failure");
+		}
+		
+		//Go ahead and make the invocation
 		NetSession session = null;
 		try
 		{
@@ -85,7 +118,7 @@ public final class LocationService
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
-			LocationServiceException exception = new LocationServiceException(this.getClass().getName(),"invoke", new Object[]{
+			LocationServiceException exception = new LocationServiceException(LocationService.class.getName(),"invoke", new Object[]{
 				"Message: "+e.getMessage(),
 				"ToString: "+e.toString()
 			});

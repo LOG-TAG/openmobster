@@ -32,7 +32,8 @@
 		<bb.simulator.home>
 			${env.RIM_JDE_HOME}\simulator
 		</bb.simulator.home> 
-		<version.android.api>5</version.android.api>   
+		<version.android.api>5</version.android.api> 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
 	</properties>
 	
 	<build>
