@@ -17,7 +17,6 @@
     
 }
 
-+(id)withInit;
-
--(LocationContext *)invoke:(LocationRequest *)request :(LocationContext *)context;
++(LocationContext *)invoke:(LocationRequest *)request :(LocationContext *)context;
++(Place *)getPlaceDetails:(NSString *)placeReference;
 @end
