@@ -45,9 +45,9 @@ public class TestPayloadHandler extends Test
 	{
 		Request request = new Request("coupons");
 		
-		PayloadHandler payloadHandler = new PayloadHandler();
+		PayloadHandler payloadHandler = PayloadHandler.getInstance();
 		
-		LocationContext locationContext = LocationContext.getInstance();
+		LocationContext locationContext = new LocationContext();
 		locationContext.setAttribute("request", request);
 		
 		//Add a list
@@ -95,7 +95,7 @@ public class TestPayloadHandler extends Test
 "<location-payload><![CDATA[{\"param0\":\"value0\",\"param1\":\"value1\",\"param2\":\"value2\",\"address\":{\"street\":\"1782 Stillwind Lane\"},\"param3\":\"value3\",\"param4\":\"value4\",\"placeTypes\":[\"restaurant\",\"airport\"],\"longitude\":\"-200\",\"latitude\":\"-100\",\"places\":[{\"phone\":\"867-5309\",\"address\":\"2046 Dogwood Gardens Dr:0\",\"reference\":\"Reference:0\"},{\"phone\":\"867-5309\",\"address\":\"2046 Dogwood Gardens Dr:1\",\"reference\":\"Reference:1\"},{\"phone\":\"867-5309\",\"address\":\"2046 Dogwood Gardens Dr:2\",\"reference\":\"Reference:2\"},{\"phone\":\"867-5309\",\"address\":\"2046 Dogwood Gardens Dr:3\",\"reference\":\"Reference:3\"},{\"phone\":\"867-5309\",\"address\":\"2046 Dogwood Gardens Dr:4\",\"reference\":\"Reference:4\"}]}]]></location-payload>"+
 "</location-response>";
 		
-		PayloadHandler payloadHandler = new PayloadHandler();
+		PayloadHandler payloadHandler = PayloadHandler.getInstance();
 		
 		LocationContext locationContext = payloadHandler.deserializeResponse(xml);
 		

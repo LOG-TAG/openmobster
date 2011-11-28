@@ -103,7 +103,7 @@ public final class LocationService
 			LocationContext responseContext = null;
 			if(response.indexOf("status=200")!=-1)
 			{
-				PayloadHandler payloadHandler = new PayloadHandler();
+				PayloadHandler payloadHandler = PayloadHandler.getInstance();
 				locationContext.setAttribute("request", request);
 				
 				String xml = payloadHandler.serializeRequest(locationContext);
@@ -136,7 +136,7 @@ public final class LocationService
 	public static Place getPlaceDetails(String placeReference) 
 	throws LocationServiceException
 	{
-		LocationContext locationContext = LocationContext.getInstance();
+		LocationContext locationContext = new LocationContext();
 		locationContext.setPlaceReference(placeReference);
 		
 		Request request = new Request("placeDetails");

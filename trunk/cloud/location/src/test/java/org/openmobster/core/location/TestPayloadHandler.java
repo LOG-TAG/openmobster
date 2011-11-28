@@ -156,7 +156,7 @@ public class TestPayloadHandler extends TestCase
 	
 	public void testSerializeResponse() throws Exception
 	{
-		LocationContext locationContext = LocationContext.getInstance();
+		LocationContext locationContext = new LocationContext();
 		
 		//Places
 		List<Place> places = new ArrayList<Place>();

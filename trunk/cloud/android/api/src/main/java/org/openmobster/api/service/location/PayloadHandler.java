@@ -39,9 +39,26 @@ import org.json.JSONArray;
  */
 public final class PayloadHandler
 {
-	public PayloadHandler()
+	private static PayloadHandler singleton;
+	
+	private PayloadHandler()
 	{
 		
+	}
+	
+	public static PayloadHandler getInstance()
+	{
+		if(PayloadHandler.singleton == null)
+		{
+			synchronized(PayloadHandler.class)
+			{
+				if(PayloadHandler.singleton == null)
+				{
+					PayloadHandler.singleton = new PayloadHandler();
+				}
+			}
+		}
+		return PayloadHandler.singleton;
 	}
 	
 	public String serializeRequest(LocationContext locationContext)
@@ -183,7 +200,7 @@ public final class PayloadHandler
 	{
 		try
 		{
-			LocationContext locationContext = LocationContext.getInstance();
+			LocationContext locationContext = new LocationContext();
 			
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Document root = builder.parse(new ByteArrayInputStream(xml.getBytes()));
