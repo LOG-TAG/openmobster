@@ -16,14 +16,42 @@
 
 @implementation LocationService
 
-+(id)withInit
++(LocationContext *)invoke:(LocationRequest *)request :(LocationContext *)context
 {
-    LocationService *instance = [[[LocationService alloc] init] autorelease];
-    return instance;
-}
-
--(LocationContext *)invoke:(LocationRequest *)request :(LocationContext *)context
-{
+    if(request == nil || context == nil)
+    {
+        NSException *exception = [NSException exceptionWithName:@"IllegalStateException" reason:@"LocationService Validation Failure" userInfo:nil];
+        @throw exception;
+    }
+    
+    //LocationContext Validation
+    BOOL coordinatesMissing = NO;
+    NSString *latitude = [context getLatitude];
+    NSString *longitude = [context getLongitude];
+    if([StringUtil isEmpty:latitude] || [StringUtil isEmpty:longitude])
+    {
+        coordinatesMissing = YES;
+    }
+    
+    BOOL addressMissing = NO;
+    if([context getAddress] == nil)
+    {
+        addressMissing = YES;
+    }
+    
+    BOOL referenceMissing = NO;
+    NSString *reference = [context getPlaceReference];
+    if([StringUtil isEmpty:reference])
+    {
+        referenceMissing = YES;
+    }
+    
+    if(coordinatesMissing && addressMissing && referenceMissing)
+    {
+        NSException *exception = [NSException exceptionWithName:@"IllegalStateException" reason:@"LocationContext Validation Failure" userInfo:nil];
+        @throw exception;
+    }
+    
     NetSession *session = NULL;
 	@try
 	{
@@ -69,6 +97,20 @@
             [session close];
         }
     }
+}
+
++(Place *)getPlaceDetails:(NSString *)placeReference
+{
+    LocationContext *locationContext = [LocationContext withInit];
+    [locationContext setPlaceReference:placeReference];
+    
+    LocationRequest *request = [LocationRequest withInit:@"placeDetails"];
+    
+    LocationContext *responseContext = [LocationService invoke:request :locationContext];
+    
+    Place *placeDetails = [responseContext getPlaceDetails];
+    
+    return placeDetails;
 }
 
 @end
