@@ -47,7 +47,7 @@ public class TestLocationService extends Test
 		
 		Request request = new Request("friends");
 		
-		LocationContext locationContext = LocationContext.getInstance();
+		LocationContext locationContext = new LocationContext();
 		locationContext.setAttribute("request", request);
 		
 		//Add a list
@@ -131,7 +131,7 @@ public class TestLocationService extends Test
 		
 		Request request = new Request("friends");
 		
-		LocationContext locationContext = LocationContext.getInstance();
+		LocationContext locationContext = new LocationContext();
 		locationContext.setAttribute("request", request);
 		
 		//Add a list
@@ -215,7 +215,7 @@ public class TestLocationService extends Test
 	
 	private void testValidation() throws Exception
 	{
-		LocationContext context = LocationContext.getInstance();
+		LocationContext context = new LocationContext();
 		
 		LocationService service = new LocationService();
 		
@@ -236,7 +236,7 @@ public class TestLocationService extends Test
 	{
 		Request request = new Request("friends");
 		
-		LocationContext locationContext = LocationContext.getInstance();
+		LocationContext locationContext = new LocationContext();
 		locationContext.setAttribute("request", request);
 		
 		//LocationContext

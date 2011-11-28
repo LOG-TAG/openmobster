@@ -31,18 +31,9 @@ public final class LocationContext implements Serializable
 	/**
 	 * 
 	 */
-	private LocationContext()
+	public LocationContext()
 	{
 		this.attributeManager = new GenericAttributeManager();
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public static LocationContext getInstance()
-	{
-		return new LocationContext();
 	}
 	
 	/**

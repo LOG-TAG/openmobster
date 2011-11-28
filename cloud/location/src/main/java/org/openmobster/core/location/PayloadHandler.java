@@ -108,7 +108,7 @@ public final class PayloadHandler
 			}
 			
 			//Assemble the LocationContext
-			LocationContext locationContext = LocationContext.getInstance();
+			LocationContext locationContext = new LocationContext();
 			parsedRequest = (JSONObject)parser.parse(locationPayload);
 			
 			//Latitude Longitude data

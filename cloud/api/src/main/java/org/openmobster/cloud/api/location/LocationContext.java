@@ -28,19 +28,11 @@ public final class LocationContext implements Serializable
 	/**
 	 * 
 	 */
-	private LocationContext()
+	public LocationContext()
 	{
 		this.attributeManager = new InVMAttributeManager();
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public static LocationContext getInstance()
-	{
-		return new LocationContext();
-	}
 	
 	/**
 	 * Sets arbitrary attributes representing the contextual data associated with this context
