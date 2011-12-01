@@ -19,12 +19,11 @@
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/architecture.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/hellomobster.xml"/> 
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/installation.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/managementConsole.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/offlineapp.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilebean.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/push.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilerpc.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/managementConsole.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobletmvc.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/blackberry.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/android.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/iphone.xml"/>
 </book>

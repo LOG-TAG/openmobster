@@ -48,8 +48,8 @@ brings an App to life instantaneously. The closer this data is stored, the faste
    				<para>
    				<programlisting><![CDATA[
 import java.util.List;
-import org.openmobster.server.api.model.MobileBean;
-import org.openmobster.server.api.model.MobileBeanId;
+import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.cloud.api.sync.MobileBeanId;
 public class DemoBean implements MobileBean 
 {
 	@MobileBeanId
@@ -268,7 +268,7 @@ public void delete(MobileBean mobileBean)
    		<sect2>
    			<title>App/Device-Side: MobileBean component</title>
    			<para>
-   			On the device side, this data is accessible via the <emphasis role='bold'>org.openmobster.device.api.model.MobileBean</emphasis> component.
+   			On the device side, this data is accessible via the <emphasis role='bold'>org.openmobster.android.api.sync.MobileBean</emphasis> component.
 	The device-side MobileBean is a generic component which exposes a Cloud-side MobileBean information through 
 	a robust interface. Device-side MobileBean component semantic are covered here:<link linkend="mobilebean">Specification</link>
    			</para>

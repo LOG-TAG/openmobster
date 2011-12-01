@@ -23,7 +23,7 @@
    <sect1>
    		<title>Cloud-Side</title>
    		<para>
-   		On the Cloud-Side the MobileBean is a simple Java Object that implements the <interfacename>org.openmobster.server.api.model.MobileBean</interfacename> interface.
+   		On the Cloud-Side the MobileBean is a simple Java Object that implements the <interfacename>org.openmobster.cloud.api.sync.MobileBean</interfacename> interface.
    		The MobileBean is processed by its corresponding <emphasis>Channel</emphasis>. Through the channel instances of these beans are serialized into wire format
    		and propagated to their respective devices. In order to be successfully serialized/deserialized, they should follow the proper specification.
    		</para>
@@ -52,7 +52,7 @@
    		<title>Device-Side</title>
    		<para>
    		On the Device-Side the MobileBeans from a channel are made accessible via the <emphasis>Mobile Data Framework</emphasis>. The generic
-   		<interfacename>org.openmobster.core.mobileCloud.api.model.MobileBean</interfacename> component is used to extract the state associated 
+   		<interfacename>org.openmobster.android.api.sync.MobileBean</interfacename> component is used to extract the state associated 
    		with each instance. It provides various state-oriented operations. The individual properties of a bean are accessed using simple and intuitive
    		expressions.
    		</para>

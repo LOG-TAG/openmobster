@@ -83,13 +83,6 @@
    					<emphasis>AndroidManifest.xml, and res directory</emphasis>
    				</listitem>
    				<listitem>
-   					<emphasis role='bold'>app-rimos:</emphasis> Contains the src for the BlackBerry App. Java code is located under <emphasis>src/main/java</emphasis>,
-   					Configuration is located under <emphasis>src/main/resources/moblet-app</emphasis>.
-   				</listitem>
-   				<listitem>
-   					<emphasis role='bold'>app-iphone:</emphasis> Coming soon...wink wink ;)
-   				</listitem>
-   				<listitem>
    					<emphasis role='bold'>moblet:</emphasis> This is an assembly component that packages this App into a jar file ready for deployment in a JBoss AS based OpenMobster instance.
    				</listitem>
    			</itemizedlist>

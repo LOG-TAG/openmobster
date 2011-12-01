@@ -104,7 +104,7 @@
    			<title>Mobile Cloud</title>
    			<para>
    			Mobile Cloud is an on-device <emphasis>native system service</emphasis>. It hosts the runtime that is used by the above mentioned App Frameworks.
-  	On platforms that support inter-application communication such as <emphasis>Android</emphasis> and <emphasis>Blackberry</emphasis>, there is a single instance of a Mobile Cloud which is shared by all the Apps
+  	On platforms that support inter-application communication such as <emphasis>Android</emphasis>, there is a single instance of a Mobile Cloud which is shared by all the Apps
   	installed on the device. This helps make better use of device resources like storage, network management, push sockets, background services, etc. On platforms
   	that do not support inter-application communication, an instance of the Mobile Cloud runtime must be installed by bundling it with each 
   	App. The Mobile Cloud also comes with a Cloud Manager App. The Cloud Manager App provides configuration functions such as secure Device Activation, 

@@ -22,7 +22,7 @@ details like making network connections, security, resolving remote services, ma
    <sect1>
    		<title>Cloud-Side: MobileServiceBean implementation</title>
    		<para>
-   		MobileServiceBean is a simple interface <interfacename>org.openmobster.server.api.service.MobileServiceBean</interfacename> with a single "invoke" method. 
+   		MobileServiceBean is a simple interface <interfacename>org.openmobster.cloud.api.rpc.MobileServiceBean</interfacename> with a single "invoke" method. 
    		This implementation should carry coarse grained business process logic.
 		<programlisting><![CDATA[
 @ServiceInfo(uri="/demo/mobile-rpc")
@@ -89,7 +89,7 @@ public class DemoMobileBeanService implements MobileServiceBean
    <sect1>
    		<title>App/Device-Side: Invoking the MobileServiceBean</title>
    		<para>
-   		On the device side inside a Moblet, the remote "MobileServiceBean" instance can be invoked using the <interfacename>org.openmobster.device.api.service.MobileService</interfacename>
+   		On the device side inside a Moblet, the remote "MobileServiceBean" instance can be invoked using the <interfacename>org.openmobster.android.api.rpc.MobileService</interfacename>
    		component
    		<programlisting><![CDATA[
 Request request = new Request("/demo/mobile-rpc");
