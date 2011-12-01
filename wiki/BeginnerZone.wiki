@@ -27,6 +27,22 @@ Describes the [AppCreator_Project_Structure Maven layout] of an OpenMobster proj
 
 ----
 
+==== Channel Development ====
+
+A basic [BeginSync tutorial] which covers developing a Sync Channel. 
+----
+
+==== Android Sync API ====
+
+A basic [BeginMobileBean tutorial] on how to use the MobileBean component to access the synchronized channel data on the App
+
+----
+
+==== MobileRPC ====
+A basic [MobileRPC tutorial] to understand the Remote Procedure Call setup in OpenMobster
+
+----
+
 ==== Encryption Support ====
 
 A document describing the newly added [Encryption Encryption Support] (version 2.2-M4+). It describes how to produce encryption enabled apps.
@@ -38,30 +54,20 @@ This document describes the [PushFramework Push Framework] setup and configurati
 
 ----
 
-==== Channel Development ====
-
-A basic [BeginSync tutorial] which covers developing a Sync Channel. 
-----
-
-==== MobileBean component ====
-
-A basic [BeginMobileBean tutorial] on how to use the MobileBean component to access the synchronized channel data on the App
-
-----
-
 ==== Push Service ====
 A [PushService tutorial] for using the OpenMobster cross-platform Push 
 service
 
 ----
 
-==== MobileRPC ====
-A basic [MobileRPC tutorial] to understand the Remote Procedure Call setup in OpenMobster
+==== iPhone Cloud App Setup ====
+A step-by-step [iPhoneCloudAppSetup guide] for integrating the OpenMobster static library into your App
 
 ----
 
-==== iPhone Cloud App Setup ====
-A step-by-step [iPhoneCloudAppSetup guide] for integrating the OpenMobster static library into your App
+==== Setup iPhone Push ====
+
+A [iPhonePushSetup guide] for integrating iPhone Push with the OpenMobster Push service
 
 ----
 
@@ -87,12 +93,6 @@ A basic [LocalCommand tutorial] on how to perform a simple fast command within a
 ==== Management Console User Manual ====
 
 A [ManagementConsoleManual user manual] for the Management Console
-
-----
-
-==== Setup iPhone Push ====
-
-A [iPhonePushSetup guide] for integrating iPhone Push with the OpenMobster Push service
 
 ----
 
