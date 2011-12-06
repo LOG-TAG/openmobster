@@ -259,6 +259,8 @@ public class LocationInvocationService implements ContainerService
 			latitude = lookedup.getLatitude();
 			longitude = lookedup.getLongitude();
 			locationContext.setAddress(lookedup);
+			locationContext.setLatitude(latitude);
+			locationContext.setLongitude(longitude);
 		}
 		else
 		{
@@ -278,7 +280,8 @@ public class LocationInvocationService implements ContainerService
 		{
 			radius = 500; //default to a decent 500 m radius if not specified
 		}
-		List<PlaceSPI> nearbyPlaces = this.placeProvider.fetchNearbyPlaces(latitude, longitude, placeTypes,radius);
+		String searchName = locationContext.getSearchName();
+		List<PlaceSPI> nearbyPlaces = this.placeProvider.fetchNearbyPlaces(latitude, longitude, placeTypes,radius,searchName);
 		if(nearbyPlaces != null && !nearbyPlaces.isEmpty())
 		{
 			List<Place> places = new ArrayList<Place>();
