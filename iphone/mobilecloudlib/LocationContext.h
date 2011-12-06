@@ -200,4 +200,17 @@
  * @param radius
  */
 -(void)setRadius:(int) radius;
+
+/**
+ * Set the name of the place to search for
+ *
+ * @param searchName
+ */
+-(void)setSearchName:(NSString *)searchName;
+
+/**
+ * Get the name of the place to search for
+ *
+ */
+-(NSString *)getSearchName;
 @end
