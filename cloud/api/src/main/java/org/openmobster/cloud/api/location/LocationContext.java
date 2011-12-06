@@ -248,4 +248,24 @@ public final class LocationContext implements Serializable
 		}
 		return Integer.parseInt(radiusValue);
 	}
+	
+	/**
+	 * Set the name of the place to search for
+	 * 
+	 * @param searchName
+	 */
+	public void setSearchName(String searchName)
+	{
+		this.attributeManager.setAttribute("searchName", searchName);
+	}
+	
+	/**
+	 * Get the name of the place to search for
+	 * 
+	 * @return
+	 */
+	public String getSearchName()
+	{
+		return (String)this.attributeManager.getAttribute("searchName");
+	}
 }

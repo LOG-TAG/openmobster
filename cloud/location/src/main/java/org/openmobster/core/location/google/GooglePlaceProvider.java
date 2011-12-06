@@ -107,7 +107,7 @@ public final class GooglePlaceProvider implements PlaceProvider
 
 	@Override
 	public List<PlaceSPI> fetchNearbyPlaces(String latitude, String longitude,
-			List<String> types, int radius) throws LocationSPIException
+			List<String> types, int radius,String name) throws LocationSPIException
 	{
 		try
 		{
@@ -131,6 +131,11 @@ public final class GooglePlaceProvider implements PlaceProvider
 			{
 				typesParameter = URLEncoder.encode(typesParameter, "UTF-8");
 				url += "&types="+typesParameter;
+			}
+			if(name !=null && name.trim().length()>0)
+			{
+				String nameParameter = URLEncoder.encode(name,"UTF-8");
+				url+="&name="+nameParameter;
 			}
 			
 			//setup the request object
