@@ -34,6 +34,7 @@ public class AndroidAgentInstaller extends HttpServlet
 	private static Logger log = Logger.getLogger(AndroidAgentInstaller.class);
 	
 	private byte[] cloudModule;
+	private byte[] encryptedCloudModule;
 	//---------------------------------------------------------------------------------------------------------
 	public void init(ServletConfig servletConfig) throws ServletException 
 	{
@@ -43,6 +44,10 @@ public class AndroidAgentInstaller extends HttpServlet
 			getResourceAsStream("android/20/CloudManager.apk");
 			
 			this.cloudModule = IOUtilities.readBytes(is);
+			
+			is = Thread.currentThread().getContextClassLoader().getResourceAsStream("android/20/CloudManager-Encryption.apk");
+			
+			this.encryptedCloudModule = IOUtilities.readBytes(is);
 			
 			log.info("OpenMobster Android AppStore Successfully Initialized........................");
 		}
@@ -85,7 +90,14 @@ public class AndroidAgentInstaller extends HttpServlet
 			}
 			else
 			{
-				module = this.cloudModule;
+				if(requestURI.contains("/enc/"))
+				{
+					module = this.encryptedCloudModule;
+				}
+				else
+				{
+					module = this.cloudModule;
+				}
 			}
 		
 			//Send the module back after either loading it from cache or finding it and loading it into cache
