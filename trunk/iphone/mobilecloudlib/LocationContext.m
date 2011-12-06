@@ -188,4 +188,14 @@
     NSString *radiusStr = [NSString stringWithFormat:@"%d",radius];
     [attrMgr setAttribute:@"radius" :radiusStr];
 }
+
+-(void)setSearchName:(NSString *)searchName
+{
+    [attrMgr setAttribute:@"searchName" :searchName];
+}
+
+-(NSString *)getSearchName
+{
+    return (NSString *)[attrMgr getAttribute:@"searchName"];
+}
 @end

@@ -30,10 +30,16 @@
 
 -(void) runTest
 {
+    NSLog(@"@Running testByCoordinates....");
     [self testByCoordinates];
+    NSLog(@"@Running testByAddress....");
     [self testByAddress];
+    NSLog(@"@Running testValidation....");
     [self testValidation];
+    NSLog(@"@Running testGetPlaceDetails....");
     [self testGetPlaceDetails];
+    NSLog(@"@Running testBySearchName....");
+    [self testBySearchName];
 }
 
 -(void) testByCoordinates
@@ -87,6 +93,43 @@
     {
         NSLog(@"Name: %@",place.name);
     }
+    
+    //Assert address
+    address = [responseContext getAddress];
+    NSLog(@"Street: %@",address.street);
+    NSLog(@"City: %@",address.city);
+    NSLog(@"ZipCode: %@",address.zipCode);
+    NSLog(@"Latitude: %@",address.latitude);
+    NSLog(@"Longitude: %@",address.longitude);
+    [self assertTrue :[address.street isEqualToString:@"2046 Dogwood Gardens Dr"] :@"/address/street/check"];
+    [self assertTrue :[address.city isEqualToString:@"Germantown"] :@"/address/city/check"];
+    [self assertTrue :[address.zipCode isEqualToString:@"38139"] :@"/address/zipCode/check"];
+    [self assertTrue :[address.latitude isEqualToString:@"35.093039"] :@"/address/latitude/check"];
+    [self assertTrue :[address.longitude isEqualToString:@"-89.733933"] :@"/address/longitude/check"];
+}
+
+-(void) testBySearchName
+{
+    LocationRequest *request = [LocationRequest withInit:@"friends"];
+    LocationContext *context = [LocationContext withInit];
+    
+    Address *address = [Address withInit];
+    address.street = @"2046 Dogwood Gardens Drive";
+    address.city = @"Germantown";
+    [context setAddress:address];
+    
+    [context setRadius:1000];
+    [context setSearchName:@"mulan"];
+    
+    LocationContext *responseContext = [LocationService invoke:request :context];
+    
+    //Get the nearby places
+    NSArray *nearbyPlaces = [responseContext getNearbyPlaces];
+    for(Place *place in nearbyPlaces)
+    {
+        NSLog(@"Name: %@",place.name);
+    }
+    [self assertTrue:[nearbyPlaces count]==1 :@"/nearbyplaces/count/check"];
     
     //Assert address
     address = [responseContext getAddress];
