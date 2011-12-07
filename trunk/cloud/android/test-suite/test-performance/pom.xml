@@ -115,9 +115,9 @@
 										<include>target/*.apk</include>
 									</includes>
 									<keystore>${android.keystore.location}</keystore>
-									<storepass>password</storepass>
-									<keypass>password</keypass>
-									<alias>openmobster</alias>
+									<storepass>${storepass}</storepass>
+									<keypass>${keypass}</keypass>
+									<alias>${alias}</alias>
 								</configuration>
 							</execution>
 						</executions>
