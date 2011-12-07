@@ -8,11 +8,15 @@
 package org.openmobster.core.console.server.admin;
 
 import java.util.List;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.openmobster.core.console.server.Server;
+
+import org.openmobster.core.common.validation.ObjectValidator;
+import org.openmobster.core.console.server.ObjectValidatorFactory;
 
 /**
  * 
@@ -71,5 +75,19 @@ public class TestAdminAccount extends TestCase
 		
 		List<AdminAccount> all = AccountDS.getInstance().readAll();
 		log.info(AdminAccount.toXml(all));
+	}
+	
+	public void testValidation() throws Exception
+	{
+		AdminAccount adminAccount = new AdminAccount();
+		adminAccount.setUsername("test");
+		
+		Set<String> validationErrors = ObjectValidatorFactory.getInstance().validate(adminAccount, "username");
+		assertTrue(validationErrors !=null && !validationErrors.isEmpty());
+		for(String error:validationErrors)
+		{
+			log.info("Error: "+error);
+			assertEquals(error,"emailInvalid");
+		}
 	}
 }

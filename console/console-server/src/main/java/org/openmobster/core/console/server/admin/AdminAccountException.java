@@ -23,6 +23,7 @@ public class AdminAccountException extends Exception
 	public static final int ACCOUNT_ALREADY_EXISTS = 2;
 	public static final int ACCOUNT_INACTIVE = 3;
 	public static final int LAST_ACCOUNT_CANNOT_BE_DEACTIVATED = 4;
+	public static final int EMAIL_INVALID = 5;
 	
 	private Map<String, String[]> validationErrors;
 	private int type;
@@ -101,6 +102,10 @@ public class AdminAccountException extends Exception
 				
 				case AdminAccountException.LAST_ACCOUNT_CANNOT_BE_DEACTIVATED:
 					message = "last_account_cannot_be_deactivated";
+				break;
+				
+				case AdminAccountException.EMAIL_INVALID:
+					message = "email_invalid";
 				break;
 				
 				default:
