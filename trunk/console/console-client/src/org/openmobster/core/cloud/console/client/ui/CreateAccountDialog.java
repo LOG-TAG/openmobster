@@ -196,6 +196,11 @@ public class CreateAccountDialog implements Screen
 								//validation error
 								SC.say("Create Account", "Account already exists. Please try again with a different \"Email\"", null);
 							}
+							else if(result.trim().equals("5"))
+							{
+								//validation error
+								SC.say("Create Account", "Invalid Email Address. Please try again.", null);
+							}
 							else if(result.trim().equals("500"))
 							{
 								//validation error
