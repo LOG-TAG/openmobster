@@ -444,12 +444,53 @@ public class HomeScreen extends Screen
 			}
 			else
 			{
-				//go to the next screen
-				dialog.cancel();
 				Configuration conf = (Configuration)this.wizardState.getAttribute("conf");
 				String currentLabel = (String)this.wizardState.getAttribute("currentLabel");
 				EditText currentTextField = (EditText)this.wizardState.getAttribute("currentTextField");
 				
+				//Validation
+				if(currentLabel.equalsIgnoreCase("server"))
+				{
+					String server = currentTextField.getText().toString();
+					if(server == null || server.trim().length()==0)
+					{
+						ViewHelper.getOkModal(currentActivity, "Validation Error", "Server is required. Please try again.").show();
+						return;
+					}
+				}
+				
+				if(currentLabel.equalsIgnoreCase("port"))
+				{
+					String port = currentTextField.getText().toString();
+					if(port == null || port.trim().length()==0)
+					{
+						ViewHelper.getOkModal(currentActivity, "Validation Error", "Port is required. Please try again.").show();
+						return;
+					}
+				}
+				
+				if(currentLabel.equalsIgnoreCase("email"))
+				{
+					String email = currentTextField.getText().toString();
+					if(email == null || email.trim().length()==0)
+					{
+						ViewHelper.getOkModal(currentActivity, "Validation Error", "Email is required. Please try again.").show();
+						return;
+					}
+				}
+				
+				if(currentLabel.equalsIgnoreCase("password"))
+				{
+					String password = currentTextField.getText().toString();
+					if(password == null || password.trim().length()==0)
+					{
+						ViewHelper.getOkModal(currentActivity, "Validation Error", "Password is required. Please try again.").show();
+						return;
+					}
+				}
+				
+				//go to the next screen
+				dialog.cancel();
 				if(currentLabel.equalsIgnoreCase("server"))
 				{					
 					EditText portField = new EditText(currentActivity);
