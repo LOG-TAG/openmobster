@@ -183,6 +183,11 @@
 	
 	NSString *code = [appe getType];
 	NSString *message = [appe getMessage];
+    
+    if([message isEqualToString:@"validation_error"])
+    {
+        message = @"Email is invalid";
+    }
 	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	dialog = [dialog autorelease];
 	
