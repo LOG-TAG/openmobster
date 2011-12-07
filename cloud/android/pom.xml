@@ -12,6 +12,9 @@
 		<version.android.api>12</version.android.api>
 		<android.keystore.location>/Users/openmobster/projects/openmobster/openmobster-release-key.keystore</android.keystore.location>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<storepass>password</storepass>
+		<keypass>password</keypass>
+		<alias>openmobster</alias>
 	</properties>
 
 	<dependencyManagement>
