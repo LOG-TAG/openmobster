@@ -9,7 +9,10 @@ package org.openmobster.core.console.server.admin;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+
 import org.openmobster.core.common.transaction.TransactionHelper;
+import org.openmobster.core.console.server.ObjectValidatorFactory;
 import org.openmobster.core.console.server.Server;
 
 /**
@@ -62,6 +65,13 @@ public class AccountController
 				throw new AdminAccountException(AdminAccountException.VALIDATION_ERROR);
 			}
 			
+			//Validate the Email Field
+			Set<String> validationErrors = ObjectValidatorFactory.getInstance().validate(adminAccount, "username");
+			if(validationErrors != null && !validationErrors.isEmpty())
+			{
+				throw new AdminAccountException(AdminAccountException.EMAIL_INVALID);
+			}
+			
 			//Check for duplicates
 			if(AccountDS.getInstance().exists(username))
 			{
@@ -95,7 +105,14 @@ public class AccountController
 			{
 				TransactionHelper.rollbackTx();
 			}
-			throw new AdminAccountException(e);
+			if(e instanceof AdminAccountException)
+			{
+				throw (AdminAccountException)e;
+			}
+			else
+			{
+				throw new AdminAccountException(e);
+			}
 		}
 	}
 	
