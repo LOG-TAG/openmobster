@@ -6,7 +6,7 @@ Generate a Binary Release (includes documents, source code, and deployable binar
 
 Step 1:
 -------------------
-Prepare the encryption activated Android Cloud Manager App, use -Pandroid-release
+Prepare the encryption activated Android Cloud Manager App, use -Pandroid-release,cloudManager-${project.version}-encryption-zipped.apk
 
 Step 2:
 -----------------
