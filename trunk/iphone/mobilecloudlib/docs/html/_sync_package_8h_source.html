@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00002"></a>00002 <span class="preprocessor">#import &quot;SyncMessage.h&quot;</span>
 <a name="l00003"></a>00003 
 <a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="keyword">@interface </span><a class="code" href="interface_sync_package.html">SyncPackage</a> : NSObject 
+<a name="l00005"></a>00005 <span class="keyword">@interface </span><a class="code" href="interface_sync_package.html">SyncPackage</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00006"></a>00006 {
 <a name="l00007"></a>00007         <span class="keyword">@private</span>
 <a name="l00008"></a>00008         NSMutableArray *messages;<span class="comment">//SyncMessage instances</span>
@@ -91,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00013"></a>00013 <span class="keyword">@property</span> (assign) NSMutableArray *messages;
 <a name="l00014"></a>00014 
 <a name="l00015"></a>00015 -(void) addMessage:(<a class="code" href="interface_sync_message.html">SyncMessage</a> *)message;
-<a name="l00016"></a>00016 -(<a class="code" href="interface_sync_message.html">SyncMessage</a> *) findMessage:(NSString *)messageId;
+<a name="l00016"></a>00016 -(<a class="code" href="interface_sync_message.html">SyncMessage</a> *) findMessage:(<a class="code" href="class_n_s_string.html">NSString</a> *)messageId;
 <a name="l00017"></a>00017 
 <a name="l00018"></a>00018 <span class="keyword">@end</span>
 </pre></div></div>
@@ -113,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

@@ -27634,7 +27634,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>344978973.37443501</real>
+		<real>345148916.425093</real>
 		<string>{4811, 1407}</string>
 		<string>{5716, 0}</string>
 		<string>-doViewAppException:</string>
@@ -123210,7 +123210,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>344978973.37360799</real>
+		<real>345148916.42450899</real>
 		<string>{4811, 1407}</string>
 		<string>{5716, 0}</string>
 		<dict>
@@ -134679,7 +134679,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>7116</integer>
+					<integer>7364</integer>
 				</dict>
 			</array>
 		</dict>
@@ -134933,7 +134933,7 @@
 				<integer>7380</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>344978968.34726202</real>
+			<real>345148911.15012199</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -134944,7 +134944,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 1:29 PM</string>
+		<string>Today at 12:41 PM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>

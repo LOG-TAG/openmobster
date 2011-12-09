@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor">#import &quot;GenericAttributeManager.h&quot;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#import &quot;StringUtil.h&quot;</span>
 <a name="l00012"></a>00012 
-<a name="l00018"></a>00018 <span class="keyword">@interface </span><a class="code" href="interface_response.html">Response</a> : NSObject 
+<a name="l00018"></a>00018 <span class="keyword">@interface </span><a class="code" href="interface_response.html">Response</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00019"></a>00019 {
 <a name="l00020"></a>00020         <span class="keyword">@private</span>
 <a name="l00021"></a>00021         <a class="code" href="interface_generic_attribute_manager.html">GenericAttributeManager</a> *attrMgr;
@@ -89,27 +89,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00023"></a>00023 
 <a name="l00027"></a>00027 +(id) withInit;
 <a name="l00028"></a>00028 
-<a name="l00035"></a>00035 -(void) setAttribute:(NSString *)name :(NSString *)value;
+<a name="l00035"></a>00035 -(void) setAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name :(<a class="code" href="class_n_s_string.html">NSString</a> *)value;
 <a name="l00036"></a>00036 
-<a name="l00043"></a>00043 -(NSString *) getAttribute:(NSString *)name;
+<a name="l00043"></a>00043 -(<a class="code" href="class_n_s_string.html">NSString</a> *) getAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00044"></a>00044 
 <a name="l00050"></a>00050 -(NSArray *) getNames;
 <a name="l00051"></a>00051 
 <a name="l00057"></a>00057 -(NSArray *) getValues;
 <a name="l00058"></a>00058 
-<a name="l00064"></a>00064 -(void) removeAttribute:(NSString *)name;
+<a name="l00064"></a>00064 -(void) removeAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00065"></a>00065 
-<a name="l00073"></a>00073 -(void) setListAttribute:(NSString *)name :(NSArray *)list;
+<a name="l00073"></a>00073 -(void) setListAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name :(NSArray *)list;
 <a name="l00074"></a>00074 
-<a name="l00082"></a>00082 -(NSArray *) getListAttribute:(NSString *)name;
+<a name="l00082"></a>00082 -(NSArray *) getListAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00083"></a>00083 
-<a name="l00089"></a>00089 -(NSString *)getStatusCode;
+<a name="l00089"></a>00089 -(<a class="code" href="class_n_s_string.html">NSString</a> *)getStatusCode;
 <a name="l00090"></a>00090 
-<a name="l00096"></a>00096 -(void) setStatusCode:(NSString *)statusCode;
+<a name="l00096"></a>00096 -(void) setStatusCode:(<a class="code" href="class_n_s_string.html">NSString</a> *)statusCode;
 <a name="l00097"></a>00097 
-<a name="l00103"></a>00103 -(NSString *)getStatusMsg;
+<a name="l00103"></a>00103 -(<a class="code" href="class_n_s_string.html">NSString</a> *)getStatusMsg;
 <a name="l00104"></a>00104 
-<a name="l00110"></a>00110 -(void) setStatusMsg:(NSString *)statusMsg;
+<a name="l00110"></a>00110 -(void) setStatusMsg:(<a class="code" href="class_n_s_string.html">NSString</a> *)statusMsg;
 <a name="l00111"></a>00111 
 <a name="l00112"></a>00112 <span class="keyword">@end</span>
 </pre></div></div>
@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

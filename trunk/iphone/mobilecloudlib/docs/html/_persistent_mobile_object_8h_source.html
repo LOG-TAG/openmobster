@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -89,23 +89,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a>00022 {
 <a name="l00023"></a>00023 
 <a name="l00024"></a>00024 }
-<a name="l00025"></a>00025 <span class="keyword">@property</span> (nonatomic,retain) NSString *oid;
-<a name="l00026"></a>00026 <span class="keyword">@property</span> (nonatomic,retain) NSString *service;
+<a name="l00025"></a>00025 <span class="keyword">@property</span> (nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a> *oid;
+<a name="l00026"></a>00026 <span class="keyword">@property</span> (nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a> *service;
 <a name="l00027"></a>00027 <span class="keyword">@property</span> (nonatomic,retain) NSArray *fields;
 <a name="l00028"></a>00028 <span class="keyword">@property</span> (nonatomic,retain) NSArray *arrayMetaData;
-<a name="l00029"></a>00029 <span class="keyword">@property</span> (nonatomic,retain) NSString *serverRecordId;
+<a name="l00029"></a>00029 <span class="keyword">@property</span> (nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a> *serverRecordId;
 <a name="l00030"></a>00030 <span class="keyword">@property</span> (nonatomic,retain) NSNumber *proxy;
 <a name="l00031"></a>00031 <span class="keyword">@property</span> (nonatomic,retain) NSNumber *createdOnDevice;
 <a name="l00032"></a>00032 <span class="keyword">@property</span> (nonatomic,retain) NSNumber *locked;
-<a name="l00033"></a>00033 <span class="keyword">@property</span> (nonatomic,retain) NSString *dirtyStatus;
-<a name="l00034"></a>00034 <span class="keyword">@property</span> (nonatomic,retain) NSString *nameValuePairs;
+<a name="l00033"></a>00033 <span class="keyword">@property</span> (nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a> *dirtyStatus;
+<a name="l00034"></a>00034 <span class="keyword">@property</span> (nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a> *nameValuePairs;
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 +(<a class="code" href="interface_persistent_mobile_object.html">PersistentMobileObject</a> *) newInstance:(NSString *)channel;
-<a name="l00037"></a>00037 +(NSArray *) findByChannel:(NSString *) channel;
-<a name="l00038"></a>00038 +(<a class="code" href="interface_persistent_mobile_object.html">PersistentMobileObject</a> *) findByOID:(NSString *)oid;
+<a name="l00036"></a>00036 +(<a class="code" href="interface_persistent_mobile_object.html">PersistentMobileObject</a> *) newInstance:(<a class="code" href="class_n_s_string.html">NSString</a> *)channel;
+<a name="l00037"></a>00037 +(NSArray *) findByChannel:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel;
+<a name="l00038"></a>00038 +(<a class="code" href="interface_persistent_mobile_object.html">PersistentMobileObject</a> *) findByOID:(<a class="code" href="class_n_s_string.html">NSString</a> *)oid;
 <a name="l00039"></a>00039 +(NSArray *) all;
 <a name="l00040"></a>00040 +(BOOL) delete:(<a class="code" href="interface_persistent_mobile_object.html">PersistentMobileObject</a> *)mobileObject;
-<a name="l00041"></a>00041 +(BOOL) deleteAll:(NSString *)channel;
+<a name="l00041"></a>00041 +(BOOL) deleteAll:(<a class="code" href="class_n_s_string.html">NSString</a> *)channel;
 <a name="l00042"></a>00042 -(BOOL) saveInstance;
 <a name="l00043"></a>00043 
 <a name="l00044"></a>00044 <span class="comment">//some convenience methods</span>
@@ -138,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

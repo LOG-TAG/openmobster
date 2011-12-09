@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -95,16 +95,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00028"></a>00028 <span class="keyword">@interface </span><a class="code" href="interface_abstract_sync_test.html">AbstractSyncTest</a> : <a class="code" href="interface_test.html">Test</a> 
 <a name="l00029"></a>00029 {
 <a name="l00030"></a>00030         <span class="keyword">@protected</span>
-<a name="l00031"></a>00031         NSString *channel;
+<a name="l00031"></a>00031         <a class="code" href="class_n_s_string.html">NSString</a> *channel;
 <a name="l00032"></a>00032 }
 <a name="l00033"></a>00033 
 <a name="l00034"></a>00034 <span class="comment">//Test specific</span>
-<a name="l00035"></a>00035 -(void) setUp:(NSString *)operation;
-<a name="l00036"></a>00036 -(void) resetServerAdapter:(NSString *)payload;
+<a name="l00035"></a>00035 -(void) setUp:(<a class="code" href="class_n_s_string.html">NSString</a> *)operation;
+<a name="l00036"></a>00036 -(void) resetServerAdapter:(<a class="code" href="class_n_s_string.html">NSString</a> *)payload;
 <a name="l00037"></a>00037 
-<a name="l00038"></a>00038 -(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)getRecord:(NSString *)recordId;
-<a name="l00039"></a>00039 -(void)assertRecordPresence:(NSString *)recordId :(NSString *)context;
-<a name="l00040"></a>00040 -(void)assertRecordAbsence:(NSString *)recordId :(NSString *)context;
+<a name="l00038"></a>00038 -(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)getRecord:(<a class="code" href="class_n_s_string.html">NSString</a> *)recordId;
+<a name="l00039"></a>00039 -(void)assertRecordPresence:(<a class="code" href="class_n_s_string.html">NSString</a> *)recordId :(<a class="code" href="class_n_s_string.html">NSString</a> *)context;
+<a name="l00040"></a>00040 -(void)assertRecordAbsence:(<a class="code" href="class_n_s_string.html">NSString</a> *)recordId :(<a class="code" href="class_n_s_string.html">NSString</a> *)context;
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 <span class="keyword">@end</span>
 </pre></div></div>
@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:28 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

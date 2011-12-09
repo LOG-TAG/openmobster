@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -79,18 +79,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 
-<a name="l00004"></a>00004 <span class="keyword">@interface </span><a class="code" href="interface_string_util.html">StringUtil</a> : NSObject 
+<a name="l00004"></a>00004 <span class="keyword">@interface </span><a class="code" href="interface_string_util.html">StringUtil</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00005"></a>00005 
-<a name="l00006"></a>00006 +(BOOL) isEmpty:(NSString *)str;
-<a name="l00007"></a>00007 +(NSString *) trim:(NSString *) me;
-<a name="l00008"></a>00008 +(int) lastIndexOf:(NSString *) parent :(NSString *)search;
-<a name="l00009"></a>00009 +(int) indexOf:(NSString *) parent :(NSString *)search;
-<a name="l00010"></a>00010 +(int) indexOf:(NSString *) parent :(NSString *)search :(<span class="keywordtype">int</span>) startIndex;
-<a name="l00011"></a>00011 +(NSString *) replaceAll:(NSString *)parent :(NSString *)replace :(NSString *)with;
-<a name="l00012"></a>00012 +(NSArray *) tokenize:(NSString *)parent :(NSString *)separator;
-<a name="l00013"></a>00013 +(NSRange) lastRangeOf:(NSString *)parent :(NSString *)search;
-<a name="l00014"></a>00014 +(NSString *)substring:(NSString *)parent :(<span class="keywordtype">int</span>)from :(<span class="keywordtype">int</span>)to;
-<a name="l00015"></a>00015 +(NSString *)substring:(NSString *)parent :(<span class="keywordtype">int</span>)from;
+<a name="l00006"></a>00006 +(BOOL) isEmpty:(<a class="code" href="class_n_s_string.html">NSString</a> *)str;
+<a name="l00007"></a>00007 +(<a class="code" href="class_n_s_string.html">NSString</a> *) trim:(<a class="code" href="class_n_s_string.html">NSString</a> *) me;
+<a name="l00008"></a>00008 +(int) lastIndexOf:(<a class="code" href="class_n_s_string.html">NSString</a> *) parent :(<a class="code" href="class_n_s_string.html">NSString</a> *)search;
+<a name="l00009"></a>00009 +(int) indexOf:(<a class="code" href="class_n_s_string.html">NSString</a> *) parent :(<a class="code" href="class_n_s_string.html">NSString</a> *)search;
+<a name="l00010"></a>00010 +(int) indexOf:(<a class="code" href="class_n_s_string.html">NSString</a> *) parent :(<a class="code" href="class_n_s_string.html">NSString</a> *)search :(<span class="keywordtype">int</span>) startIndex;
+<a name="l00011"></a>00011 +(<a class="code" href="class_n_s_string.html">NSString</a> *) replaceAll:(<a class="code" href="class_n_s_string.html">NSString</a> *)parent :(<a class="code" href="class_n_s_string.html">NSString</a> *)replace :(<a class="code" href="class_n_s_string.html">NSString</a> *)with;
+<a name="l00012"></a>00012 +(NSArray *) tokenize:(<a class="code" href="class_n_s_string.html">NSString</a> *)parent :(<a class="code" href="class_n_s_string.html">NSString</a> *)separator;
+<a name="l00013"></a>00013 +(NSRange) lastRangeOf:(<a class="code" href="class_n_s_string.html">NSString</a> *)parent :(<a class="code" href="class_n_s_string.html">NSString</a> *)search;
+<a name="l00014"></a>00014 +(<a class="code" href="class_n_s_string.html">NSString</a> *)substring:(<a class="code" href="class_n_s_string.html">NSString</a> *)parent :(<span class="keywordtype">int</span>)from :(<span class="keywordtype">int</span>)to;
+<a name="l00015"></a>00015 +(<a class="code" href="class_n_s_string.html">NSString</a> *)substring:(<a class="code" href="class_n_s_string.html">NSString</a> *)parent :(<span class="keywordtype">int</span>)from;
 <a name="l00016"></a>00016 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
@@ -111,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00019"></a>00019 <span class="preprocessor">#import &quot;Credential.h&quot;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#import &quot;StringUtil.h&quot;</span>
 <a name="l00021"></a>00021 
-<a name="l00026"></a>00026 <span class="keyword">@interface </span><a class="code" href="interface_sync_object_generator.html">SyncObjectGenerator</a> : NSObject&lt;NSXMLParserDelegate&gt;
+<a name="l00026"></a>00026 <span class="keyword">@interface </span><a class="code" href="interface_sync_object_generator.html">SyncObjectGenerator</a> : <a class="code" href="class_n_s_object.html">NSObject</a>&lt;NSXMLParserDelegate&gt;
 <a name="l00027"></a>00027 {
 <a name="l00028"></a>00028         <span class="keyword">@private</span>
 <a name="l00029"></a>00029         <a class="code" href="interface_session.html">Session</a> *session;
@@ -107,30 +107,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040         NSMutableString *dataBuffer;
 <a name="l00041"></a>00041         
 <a name="l00042"></a>00042         <span class="comment">//some helper</span>
-<a name="l00043"></a>00043         NSString *alertPath;
-<a name="l00044"></a>00044         NSString *statusPath;
-<a name="l00045"></a>00045         NSString *syncPath;
-<a name="l00046"></a>00046         NSString *addPath;
-<a name="l00047"></a>00047         NSString *replacePath;
-<a name="l00048"></a>00048         NSString *deletePath;
-<a name="l00049"></a>00049         NSString *itemPath;
-<a name="l00050"></a>00050         NSString *moreDataPath;
-<a name="l00051"></a>00051         NSString *finalPath;
-<a name="l00052"></a>00052         NSString *deleteArchivePath;
-<a name="l00053"></a>00053         NSString *deleteSoftDeletePath;
+<a name="l00043"></a>00043         <a class="code" href="class_n_s_string.html">NSString</a> *alertPath;
+<a name="l00044"></a>00044         <a class="code" href="class_n_s_string.html">NSString</a> *statusPath;
+<a name="l00045"></a>00045         <a class="code" href="class_n_s_string.html">NSString</a> *syncPath;
+<a name="l00046"></a>00046         <a class="code" href="class_n_s_string.html">NSString</a> *addPath;
+<a name="l00047"></a>00047         <a class="code" href="class_n_s_string.html">NSString</a> *replacePath;
+<a name="l00048"></a>00048         <a class="code" href="class_n_s_string.html">NSString</a> *deletePath;
+<a name="l00049"></a>00049         <a class="code" href="class_n_s_string.html">NSString</a> *itemPath;
+<a name="l00050"></a>00050         <a class="code" href="class_n_s_string.html">NSString</a> *moreDataPath;
+<a name="l00051"></a>00051         <a class="code" href="class_n_s_string.html">NSString</a> *finalPath;
+<a name="l00052"></a>00052         <a class="code" href="class_n_s_string.html">NSString</a> *deleteArchivePath;
+<a name="l00053"></a>00053         <a class="code" href="class_n_s_string.html">NSString</a> *deleteSoftDeletePath;
 <a name="l00054"></a>00054         
-<a name="l00055"></a>00055         NSString *sessionIdPath;
-<a name="l00056"></a>00056         NSString *sourceUriPath;
-<a name="l00057"></a>00057         NSString *targetUriPath;
-<a name="l00058"></a>00058         NSString *msgIdPath;
-<a name="l00059"></a>00059         NSString *maxMsgSizePath;
-<a name="l00060"></a>00060 }
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 +(id) withInit;
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 -(<a class="code" href="interface_session.html">Session</a> *) parse:(NSString *) syncXml;
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066 <span class="keyword">@end</span>
+<a name="l00055"></a>00055         <a class="code" href="class_n_s_string.html">NSString</a> *sessionIdPath;
+<a name="l00056"></a>00056         <a class="code" href="class_n_s_string.html">NSString</a> *sourceUriPath;
+<a name="l00057"></a>00057         <a class="code" href="class_n_s_string.html">NSString</a> *targetUriPath;
+<a name="l00058"></a>00058         <a class="code" href="class_n_s_string.html">NSString</a> *msgIdPath;
+<a name="l00059"></a>00059         <a class="code" href="class_n_s_string.html">NSString</a> *maxMsgSizePath;
+<a name="l00060"></a>00060     <a class="code" href="class_n_s_string.html">NSString</a> *appPath;
+<a name="l00061"></a>00061 }
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 +(id) withInit;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 -(<a class="code" href="interface_session.html">Session</a> *) parse:(<a class="code" href="class_n_s_string.html">NSString</a> *) syncXml;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -150,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

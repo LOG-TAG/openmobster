@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -83,17 +83,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MobileService Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="MobileService" -->
+<!-- doxytag: class="MobileService" --><!-- doxytag: inherits="NSObject" -->
 <p><code>#include &lt;<a class="el" href="_mobile_service_8h_source.html">MobileService.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for MobileService:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_mobile_service.png" usemap="#MobileService_map" alt=""/>
+  <map id="MobileService_map" name="MobileService_map">
+<area href="class_n_s_object.html" alt="NSObject" shape="rect" coords="0,0,94,24"/>
+</map>
+ </div></div>
 
 <p><a href="class_mobile_service-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_response.html">Response</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#afccab06a27685cd5b856c08a8bebb463">invoke:</a> (<a class="el" href="interface_request.html">Request</a> *request)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#a07b800377937e7f5a0f3604f0f78a6c1">sendRequest:</a> (NSString *beanRequest)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#a52f0671f42c9430cfffbf644fee32858">serialize:</a> (<a class="el" href="interface_request.html">Request</a> *request)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_response.html">Response</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#a3037792535d9bf043b1bb285e086586d">parse:</a> (NSString *response)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_s_string.html">NSString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#a07b800377937e7f5a0f3604f0f78a6c1">sendRequest:</a> (<a class="el" href="class_n_s_string.html">NSString</a> *beanRequest)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_s_string.html">NSString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#a52f0671f42c9430cfffbf644fee32858">serialize:</a> (<a class="el" href="interface_request.html">Request</a> *request)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_response.html">Response</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mobile_service.html#a3037792535d9bf043b1bb285e086586d">parse:</a> (<a class="el" href="class_n_s_string.html">NSString</a> *response)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29618cda82256009388da0e28084a8f8"></a><!-- doxytag: member="MobileService::withInit" ref="a29618cda82256009388da0e28084a8f8" args="()" -->
@@ -145,7 +154,7 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>withInit</b> ()</td></t
         <tr>
           <td class="memname"><a class="el" href="interface_response.html">Response</a> * MobileService::parse: </td>
           <td>(</td>
-          <td class="paramtype">NSString *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_s_string.html">NSString</a> *&#160;</td>
           <td class="paramname"><em>response</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
@@ -161,9 +170,9 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>withInit</b> ()</td></t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">NSString * MobileService::sendRequest: </td>
+          <td class="memname"><a class="el" href="class_n_s_string.html">NSString</a> * MobileService::sendRequest: </td>
           <td>(</td>
-          <td class="paramtype">NSString *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_s_string.html">NSString</a> *&#160;</td>
           <td class="paramname"><em>beanRequest</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
@@ -179,7 +188,7 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>withInit</b> ()</td></t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">NSString * MobileService::serialize: </td>
+          <td class="memname"><a class="el" href="class_n_s_string.html">NSString</a> * MobileService::serialize: </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="interface_request.html">Request</a> *&#160;</td>
           <td class="paramname"><em>request</em></td><td>)</td>
@@ -214,7 +223,7 @@ id&#160;</td><td class="memItemRight" valign="bottom"><b>withInit</b> ()</td></t
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:18 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:31 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

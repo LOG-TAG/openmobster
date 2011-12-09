@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;SystemException.h&quot;</span>
 <a name="l00018"></a>00018 <span class="preprocessor">#import &quot;AppException.h&quot;</span>
 <a name="l00019"></a>00019 
-<a name="l00024"></a>00024 <span class="keyword">@interface </span><a class="code" href="interface_activate_device.html">ActivateDevice</a> : NSObject&lt;<a class="code" href="protocol_remote_command-p.html">RemoteCommand</a>&gt; 
+<a name="l00024"></a>00024 <span class="keyword">@interface </span><a class="code" href="interface_activate_device.html">ActivateDevice</a> : <a class="code" href="class_n_s_object.html">NSObject</a>&lt;<a class="code" href="protocol_remote_command-p.html">RemoteCommand</a>&gt; 
 <a name="l00025"></a>00025 {
 <a name="l00026"></a>00026 
 <a name="l00027"></a>00027 }
@@ -96,8 +96,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a>00029 +(id)withInit;
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 <span class="comment">//Used internally</span>
-<a name="l00032"></a>00032 -(void)activateDevice:(NSString *)deviceIdentifier :(NSString *)cloudIp :(NSString *)cloudPort;
-<a name="l00033"></a>00033 -(void)processProvisioningSuccess:(NSString *)email :(<a class="code" href="interface_response.html">Response</a> *)response;
+<a name="l00032"></a>00032 -(void)activateDevice:(<a class="code" href="class_n_s_string.html">NSString</a> *)deviceIdentifier :(<a class="code" href="class_n_s_string.html">NSString</a> *)cloudIp :(<a class="code" href="class_n_s_string.html">NSString</a> *)cloudPort;
+<a name="l00033"></a>00033 -(void)processProvisioningSuccess:(<a class="code" href="class_n_s_string.html">NSString</a> *)email :(<a class="code" href="interface_response.html">Response</a> *)response;
 <a name="l00034"></a>00034 <span class="keyword">@end</span>
 </pre></div></div>
 </div>
@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:28 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>
