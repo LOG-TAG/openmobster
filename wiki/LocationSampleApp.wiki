@@ -9,7 +9,7 @@ svn co http://openmobster.googlecode.com/svn/trunk/cloud/dev-tools/sampleApps/lo
 
                           or
 
-It is found under: Samples/locationapp in the binary distribution
+It is found under: *Samples/locationapp* in the binary distribution
 
 ==== Stuff to take care of ====
 
