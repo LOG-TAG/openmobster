@@ -1,4 +1,5 @@
 #summary Developing Location Aware Apps
+#labels Featured
 
 ==== Introduction ====
 
