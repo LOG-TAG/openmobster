@@ -21,6 +21,10 @@ to function seamlessly in both _online_ as well as _offline_ modes. The data is 
 
 App state changes are proactively pushed to an App from the Cloud server. The _Push_ mechanism uses pure network/socket based approach instead of clunky methodologies like sending sms alerts or email alerts. The Push notifications happen inside the App's execution environment. 
 
+==== Location Aware Apps ====
+
+A framework for creating Location Aware Apps. The App components are encapsulated by Location specific information. The components can then combine their business data with location data to build some compelling location apps.
+
 ==== Simple Mobile RPC (Remote Procedure Call) ====
 
 Exposes your server-side coarse grained business services. These services are invoked via a simple RPC mechanism without any low-level programming like http-client code, client side REST library, etc on the part of the App developer. There is a RPC API that is used for making these calls.
