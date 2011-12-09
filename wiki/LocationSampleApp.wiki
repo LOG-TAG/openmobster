@@ -7,6 +7,10 @@ This App consists of mapping nearby restaurants. Along with the restaurants you 
 
 svn co http://openmobster.googlecode.com/svn/trunk/cloud/dev-tools/sampleApps/locationapp/
 
+                          or
+
+It is found under: Samples/locationapp in the binary distribution
+
 ==== Stuff to take care of ====
 
   * Make sure ANDROID_HOME environment variable is set to the location where the Android SDK is installed
