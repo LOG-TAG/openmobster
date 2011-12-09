@@ -142,3 +142,20 @@ Narrow the search to only restaurants over a 1000 meter search radius.
 }}}
 
 Invoke the *RestaurantBean* providing the location data in the *LocationContext* and business data inside the *Request* object.
+
+==== Processing the Response ====
+{{{
+Map<String,String> coupons = response.getMapAttribute("coupons");
+			List<Place> restaurants = locationContext.getNearbyPlaces();
+			
+			//Add restaurant markers and corresponding coupon information
+			MyItemizedOverlay restaurantMarkers = new MyItemizedOverlay(marker,map);
+			for(Place restaurant:restaurants)
+			{
+				double latitude = Double.parseDouble(restaurant.getLatitude());
+				double longitude = Double.parseDouble(restaurant.getLongitude());
+				GeoPoint point = new GeoPoint((int)(latitude * 1E6), (int)(longitude * 1E6));
+				OverlayItem item = new OverlayItem(point,restaurant.getName(),coupons.get(restaurant.getId()));
+				restaurantMarkers.addOverlay(item);
+			}
+}}}
