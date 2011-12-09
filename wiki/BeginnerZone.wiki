@@ -71,6 +71,12 @@ A [iPhonePushSetup guide] for integrating iPhone Push with the OpenMobster Push 
 
 ----
 
+==== Developing Location-Aware Apps ====
+
+A [LocationAwareApps tutorial] showing how to develop Location Aware Apps using the new Location Module
+
+----
+
 ==== AsyncCommand component ====
 
 A basic [AsyncCommand tutorial] on how to perform an Ajax usecase within
