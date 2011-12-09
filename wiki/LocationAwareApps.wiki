@@ -99,4 +99,16 @@ String street = (String)commandContext.getAttribute("street");
 			
 			commandContext.setAttribute("locationContext", responseContext);
 }}}
- 
+
+{{{
+//Construct a request for the RestaurantBean
+                        Request request = new Request("restaurants");
+                        LocationContext locationContext = new LocationContext();
+                        locationContext.setRequest(request);
+
+}}}
+
+A *Request* object is created and its given the name of the component to invoke which is *restaurants* in this case. A *LocationContext* is also initialized which will carry the location data associated with the invocation
+
+{{{
+}}} 
