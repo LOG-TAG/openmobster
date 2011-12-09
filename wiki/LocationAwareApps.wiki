@@ -137,5 +137,8 @@ Create an *Address* object and assign it to the *LocationContext*.
 Narrow the search to only restaurants over a 1000 meter search radius.
 
 {{{
-
+//Make the invocation to the Cloud to make a Location Aware search
+                        LocationContext responseContext = LocationService.invoke(request, locationContext);
 }}}
+
+Invoke the *RestaurantBean* providing the location data in the *LocationContext* and business data inside the *Request* object.
