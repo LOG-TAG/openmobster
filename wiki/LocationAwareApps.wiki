@@ -64,4 +64,39 @@ public class RestaurantBean implements LocationServiceBean
 }}}
 
 It takes a list of nearby restaurants from the *LocationContext* and then associates coupons from a database with each. This business data married with location data is then sent back as a *Response* object.
+
+==== The App Side Logic ====
+
+In this app, the location data is provided by the user in terms of street, city, and zip code. Once this data is available, an invocation is made from the device to the cloud to get nearby restaurants to this location.
+
+{{{
+String street = (String)commandContext.getAttribute("street");
+			String city = (String)commandContext.getAttribute("city");
+			String zip = (String)commandContext.getAttribute("zip");
+			
+			//Construct a request for the RestaurantBean
+			Request request = new Request("restaurants");
+			LocationContext locationContext = new LocationContext();
+			locationContext.setRequest(request);
+			
+			//Add the Address around which the restaurants must be looked up
+			Address address = new Address();
+			address.setStreet(street);
+			address.setCity(city);
+			address.setZipCode(zip);
+			locationContext.setAddress(address);
+			
+			//Narrow search to restaurants
+			List<String> placeTypes = new ArrayList<String>();
+			placeTypes.add("food");
+			locationContext.setPlaceTypes(placeTypes);
+			
+			//Set the search radius
+			locationContext.setRadius(1000); //1000 meters
+			
+			//Make the invocation to the Cloud to make a Location Aware search
+			LocationContext responseContext = LocationService.invoke(request, locationContext);
+			
+			commandContext.setAttribute("locationContext", responseContext);
+}}}
  
