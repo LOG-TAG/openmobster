@@ -19,6 +19,7 @@
 		<module>webappsync</module>
 		<module>pushmail</module>
 		<module>i-cloud</module>
+		<module>locationapp</module>
 	</modules>
 	
 	<build>
