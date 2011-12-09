@@ -2,6 +2,66 @@
 
 ==== Introduction ====
 
-This tutorial covers developing Location Aware Apps using the new Location Module of the OpenMobster platform. Location Awareness means writing your business logic by taking Location information into account. In OpenMobster, the business components are encapsulated with this Location information. The components then have easy access to the Location data and can easily integrate it with the business data.
+This tutorial covers developing *Location Aware Apps* using the new *Location Module* of the OpenMobster platform. *Location Awareness* means writing your business logic by taking Location information into account.
 
+In OpenMobster, the business components are encapsulated with this Location information. The components then have easy access to the Location data and can easily integrate it with the business data.
+
+
+==== LocationServiceBean ====
+
+On the Cloud-side, *LocationServiceBean* components are encapsulated by Location Data carried inside an object called the *LocationContext*. Invocation of these components involves two paramaters. One is the *LocationContext* and the other is a *Request* object which carries the business data associated with the invocation. The following is a *RestaurantBean* which provides coupon data associated with restaurants that are close to a certain user provided location.
+
+{{{
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import org.openmobster.cloud.api.location.LocationContext;
+import org.openmobster.cloud.api.location.LocationServiceBean;
+import org.openmobster.cloud.api.location.BeanURI;
+import org.openmobster.cloud.api.location.Request;
+import org.openmobster.cloud.api.location.Response;
+import org.openmobster.cloud.api.location.Place;
+
+/**
+ *
+ * @author openmobster@gmail.com
+ */
+@BeanURI(uri="restaurants")
+public class RestaurantBean implements LocationServiceBean
+}}}
+
+*BeanURI* registers this component with the kernel.
+
+{{{
+@Override
+	public Response invoke(LocationContext locationContext, Request request)
+	{
+		Response response = new Response();
+		
+		//Get coupons associated with each place
+		List<Place> nearbyPlaces = locationContext.getNearbyPlaces();
+		if(nearbyPlaces != null && !nearbyPlaces.isEmpty())
+		{
+			Map<String,String> coupons = new HashMap<String,String>();
+			for(Place place:nearbyPlaces)
+			{
+				String placeId = place.getId();
+				
+				//In a real implementation, you can lookup the coupon in the database based on the Place object
+				int couponIndex = (this.random.nextInt())%7;
+				couponIndex = Math.abs(couponIndex);
+				String coupon = coupondb[couponIndex];
+				
+				coupons.put(placeId, coupon);
+			}
+			response.setMapAttribute("coupons", coupons);
+		}
+		
+		return response;
+	}
+}}}
+
+It takes a list of nearby restaurants from the *LocationContext* and then associates coupons from a database with each. This business data married with location data is then sent back as a *Response* object.
  
