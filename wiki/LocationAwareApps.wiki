@@ -111,4 +111,16 @@ String street = (String)commandContext.getAttribute("street");
 A *Request* object is created and its given the name of the component to invoke which is *restaurants* in this case. A *LocationContext* is also initialized which will carry the location data associated with the invocation
 
 {{{
+//Add the Address around which the restaurants must be looked up
+        Address address = new Address();
+        address.setStreet(street);
+        address.setCity(city);
+        address.setZipCode(zip);
+        locationContext.setAddress(address);
+
 }}} 
+
+Create an *Address* object and assign it to the *LocationContext*. 
+
+{{{
+}}}
