@@ -123,4 +123,15 @@ A *Request* object is created and its given the name of the component to invoke 
 Create an *Address* object and assign it to the *LocationContext*. 
 
 {{{
+//Narrow search to restaurants
+                        List<String> placeTypes = new ArrayList<String>();
+                        placeTypes.add("food");
+                        locationContext.setPlaceTypes(placeTypes);
+
+}}}
+
+Narrow the search to only restaurants
+
+{{{
+
 }}}
