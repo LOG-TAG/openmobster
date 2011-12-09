@@ -38,6 +38,12 @@ A basic [BeginMobileBean tutorial] on how to use the MobileBean component to acc
 
 ----
 
+==== Developing Location-Aware Apps ====
+
+A [LocationAwareApps tutorial] showing how to develop Location Aware Apps using the new Location Module
+
+----
+
 ==== MobileRPC ====
 A basic [MobileRPC tutorial] to understand the Remote Procedure Call setup in OpenMobster
 
@@ -68,12 +74,6 @@ A step-by-step [iPhoneCloudAppSetup guide] for integrating the OpenMobster stati
 ==== Setup iPhone Push ====
 
 A [iPhonePushSetup guide] for integrating iPhone Push with the OpenMobster Push service
-
-----
-
-==== Developing Location-Aware Apps ====
-
-A [LocationAwareApps tutorial] showing how to develop Location Aware Apps using the new Location Module
 
 ----
 
