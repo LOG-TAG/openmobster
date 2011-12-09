@@ -17,6 +17,8 @@ It is found under: *Samples/locationapp* in the binary distribution
 
   * Get your Map API Key
 
+  * Make sure the Google Libraries are present on the emulator
+
 ==== Getting the API Key ====
 
   * Generate an MD5 footprint from your debug certificate. The command is: keytool -list -keystore /path/to/debug.keystore -storepass android
