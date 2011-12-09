@@ -7,6 +7,10 @@ This tutorial covers developing *Location Aware Apps* using the new *Location Mo
 
 In OpenMobster, the business components are encapsulated with this Location information. The components then have easy access to the Location data and can easily integrate it with the business data.
 
+==== Sample App ====
+
+OpenMobster ships with a Location Aware Sample App. The App maps nearby restaurants and presents coupons upon clicking them on the map. Here are the instructions to use this sample app: [LocationSampleApp Sample App]
+
 
 ==== LocationServiceBean ====
 
