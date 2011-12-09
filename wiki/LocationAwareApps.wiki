@@ -128,9 +128,13 @@ Create an *Address* object and assign it to the *LocationContext*.
                         placeTypes.add("food");
                         locationContext.setPlaceTypes(placeTypes);
 
+//Set the search radius
+                        locationContext.setRadius(1000); //1000 meters
+
+
 }}}
 
-Narrow the search to only restaurants
+Narrow the search to only restaurants over a 1000 meter search radius.
 
 {{{
 
