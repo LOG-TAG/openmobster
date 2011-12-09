@@ -29,7 +29,7 @@ It is found under: *Samples/locationapp* in the binary distribution
 
   * Save the Android Maps API key generated on the next screen
 
-Once you have the API key, replace it inside app-android/res/layout/map.xml file.
+Once you have the API key, replace it inside *app-android/res/layout/map.xml* file.
 
 ==== Compiling and Installing the App ====
 
