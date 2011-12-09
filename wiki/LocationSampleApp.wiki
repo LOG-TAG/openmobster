@@ -1,0 +1,49 @@
+#summary Location Aware Sample App
+
+==== Introduction =====
+This App consists of mapping nearby restaurants. Along with the restaurants you can click on each restaurant to view the coupon associated with the restaurant.
+
+==== Getting the sample App ====
+
+svn co http://openmobster.googlecode.com/svn/trunk/cloud/dev-tools/sampleApps/locationapp/
+
+==== Stuff to take care of ====
+
+  * Make sure ANDROID_HOME environment variable is set to the location where the Android SDK is installed
+
+  * Get your Map API Key
+
+==== Getting the API Key ====
+
+  * Generate an MD5 footprint from your debug certificate. The command is: keytool -list -keystore /path/to/debug.keystore -storepass android
+
+  * Sign in to http://code.google.com/android/maps-api-signup.html with a Google account
+
+  * Accept the Terms of Services
+
+  * Paste in the fingerprint from Step 1
+
+  * Save the Android Maps API key generated on the next screen
+
+Once you have the API key, replace it inside app-android/res/layout/map.xml file.
+
+==== Compiling and Installing the App ====
+
+  * cd app-android
+    {{{
+      mvn -Phot-deploy install
+    }}}
+
+==== Compiling and Running the Cloud ====
+  
+  * cd cloud
+    {{{
+       mvn install
+    }}}
+
+  * Run the Cloud
+    {{{
+       mvn -PrunCloud integration-test
+    }}}
+
+Once you activate the device with the cloud using the *DevCloud* App, you can launch the *Location App* and see it in action
