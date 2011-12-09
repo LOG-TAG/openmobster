@@ -44,6 +44,12 @@ A [LocationAwareApps tutorial] showing how to develop Location Aware Apps using 
 
 ----
 
+==== Location Aware Sample App ====
+
+[LocationSampleApp Instructions] on using the Sample App. The App consists of mapping nearby restaurants.
+
+----
+
 ==== MobileRPC ====
 A basic [MobileRPC tutorial] to understand the Remote Procedure Call setup in OpenMobster
 
