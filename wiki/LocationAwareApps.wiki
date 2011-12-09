@@ -1,0 +1,7 @@
+#summary Developing Location Aware Apps
+
+==== Introduction ====
+
+This tutorial covers developing Location Aware Apps using the new Location Module of the OpenMobster platform. Location Awareness means writing your business logic by taking Location information into account. In OpenMobster, the business components are encapsulated with this Location information. The components then have easy access to the Location data and can easily integrate it with the business data.
+
+ 
