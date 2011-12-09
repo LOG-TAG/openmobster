@@ -135,6 +135,9 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/app-android/src/main/java" />
 	
+	<classpathentry kind="src" path="dev-tools/sampleApps/locationapp/cloud/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/locationapp/app-android/src/main/java" />
+	
 	<!-- Javascript bridge -->
 	<classpathentry kind="src" path="android/javascript-bridge/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/testapp/cloud/src/main/java"/>
@@ -206,6 +209,7 @@
     
     <!-- Android Dependencies -->
     <classpathentry kind="var" path="ANDROID_HOME/platforms/android-5/android.jar"/>
+    <classpathentry kind="var" path="ANDROID_HOME/add-ons/addon_google_apis_google_inc_9/libs/maps.jar"/>
     
     <classpathentry kind="var" path="M2_REPO/javapns/javapns-jdk15/165/javapns-jdk15-165.jar"/>
 </classpath>
