@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -81,30 +81,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor">#import &quot;GenericAttributeManager.h&quot;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#import &quot;StringUtil.h&quot;</span>
 <a name="l00012"></a>00012 
-<a name="l00018"></a>00018 <span class="keyword">@interface </span><a class="code" href="interface_request.html">Request</a> : NSObject 
+<a name="l00018"></a>00018 <span class="keyword">@interface </span><a class="code" href="interface_request.html">Request</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00019"></a>00019 {
 <a name="l00020"></a>00020         <span class="keyword">@private</span>
 <a name="l00021"></a>00021         <a class="code" href="interface_generic_attribute_manager.html">GenericAttributeManager</a> *attrMgr;
-<a name="l00022"></a>00022         NSString *service;
+<a name="l00022"></a>00022         <a class="code" href="class_n_s_string.html">NSString</a> *service;
 <a name="l00023"></a>00023 }
 <a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">@property</span> (assign) NSString *service;
+<a name="l00025"></a>00025 <span class="keyword">@property</span> (assign) <a class="code" href="class_n_s_string.html">NSString</a> *service;
 <a name="l00026"></a>00026 
-<a name="l00032"></a>00032 +(id) withInit:(NSString *)service;
+<a name="l00032"></a>00032 +(id) withInit:(<a class="code" href="class_n_s_string.html">NSString</a> *)service;
 <a name="l00033"></a>00033 
-<a name="l00040"></a>00040 -(void) setAttribute:(NSString *)name :(NSString *)value;
+<a name="l00040"></a>00040 -(void) setAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name :(<a class="code" href="class_n_s_string.html">NSString</a> *)value;
 <a name="l00041"></a>00041 
-<a name="l00048"></a>00048 -(NSString *) getAttribute:(NSString *)name;
+<a name="l00048"></a>00048 -(<a class="code" href="class_n_s_string.html">NSString</a> *) getAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00049"></a>00049 
 <a name="l00055"></a>00055 -(NSArray *) getNames;
 <a name="l00056"></a>00056 
 <a name="l00062"></a>00062 -(NSArray *) getValues;
 <a name="l00063"></a>00063 
-<a name="l00069"></a>00069 -(void) removeAttribute:(NSString *)name;
+<a name="l00069"></a>00069 -(void) removeAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00070"></a>00070 
-<a name="l00078"></a>00078 -(void) setListAttribute:(NSString *)name :(NSArray *)list;
+<a name="l00078"></a>00078 -(void) setListAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name :(NSArray *)list;
 <a name="l00079"></a>00079 
-<a name="l00087"></a>00087 -(NSArray *) getListAttribute:(NSString *)name;
+<a name="l00087"></a>00087 -(NSArray *) getListAttribute:(<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00088"></a>00088 
 <a name="l00089"></a>00089 <span class="keyword">@end</span>
 </pre></div></div>
@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

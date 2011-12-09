@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -80,17 +80,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
 <a name="l00010"></a>00010 <span class="preprocessor">#import &quot;BeanListEntry.h&quot;</span>
 <a name="l00011"></a>00011 
-<a name="l00016"></a>00016 <span class="keyword">@interface </span><a class="code" href="interface_bean_list.html">BeanList</a> : NSObject 
+<a name="l00016"></a>00016 <span class="keyword">@interface </span><a class="code" href="interface_bean_list.html">BeanList</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00017"></a>00017 {
 <a name="l00018"></a>00018         <span class="keyword">@private</span>
 <a name="l00019"></a>00019         NSMutableArray *<a class="code" href="interface_bean_list.html#af1c53b82ba2cb9562ea7630e471ceaf0">entries</a>;
-<a name="l00020"></a>00020         NSString *listProperty;
+<a name="l00020"></a>00020         <a class="code" href="class_n_s_string.html">NSString</a> *listProperty;
 <a name="l00021"></a>00021 }
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">@property</span>(nonatomic,retain)NSString *listProperty;
+<a name="l00023"></a>00023 <span class="keyword">@property</span>(nonatomic,retain)<a class="code" href="class_n_s_string.html">NSString</a> *listProperty;
 <a name="l00024"></a>00024 <span class="keyword">@property</span>(nonatomic,retain)NSMutableArray *entries;
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026 +(id)withInit:(NSString *)listProperty;
+<a name="l00026"></a>00026 +(id)withInit:(<a class="code" href="class_n_s_string.html">NSString</a> *)listProperty;
 <a name="l00027"></a>00027 
 <a name="l00033"></a>00033 -(int)size;
 <a name="l00034"></a>00034 
@@ -119,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:28 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

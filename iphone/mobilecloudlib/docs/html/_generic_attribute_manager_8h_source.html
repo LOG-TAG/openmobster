@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -78,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
 <a name="l00002"></a>00002 
-<a name="l00003"></a>00003 <span class="keyword">@interface </span><a class="code" href="interface_generic_attribute_manager.html">GenericAttributeManager</a> : NSObject 
+<a name="l00003"></a>00003 <span class="keyword">@interface </span><a class="code" href="interface_generic_attribute_manager.html">GenericAttributeManager</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00004"></a>00004 {
 <a name="l00005"></a>00005         <span class="keyword">@private</span>
 <a name="l00006"></a>00006         NSMutableDictionary *attributes;
@@ -89,11 +89,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 
 <a name="l00012"></a>00012 +(id) withInit;
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014 -(id) getAttribute: (NSString *)name;
+<a name="l00014"></a>00014 -(id) getAttribute: (<a class="code" href="class_n_s_string.html">NSString</a> *)name;
 <a name="l00015"></a>00015 
-<a name="l00016"></a>00016 -(void) setAttribute: (NSString *)name : (<span class="keywordtype">id</span>)value;
+<a name="l00016"></a>00016 -(void) setAttribute: (<a class="code" href="class_n_s_string.html">NSString</a> *)name : (<span class="keywordtype">id</span>)value;
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018 -(void) removeAttribute: (NSString *) name;
+<a name="l00018"></a>00018 -(void) removeAttribute: (<a class="code" href="class_n_s_string.html">NSString</a> *) name;
 <a name="l00019"></a>00019 
 <a name="l00020"></a>00020 -(BOOL) isEmpty;
 <a name="l00021"></a>00021 
@@ -121,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

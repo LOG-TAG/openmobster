@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -93,21 +93,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a>00022 <span class="preprocessor">#import &quot;XMLUtil.h&quot;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#import &quot;StringUtil.h&quot;</span>
 <a name="l00024"></a>00024 
-<a name="l00029"></a>00029 <span class="keyword">@interface </span><a class="code" href="interface_sync_x_m_l_generator.html">SyncXMLGenerator</a> : NSObject 
+<a name="l00029"></a>00029 <span class="keyword">@interface </span><a class="code" href="interface_sync_x_m_l_generator.html">SyncXMLGenerator</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 <span class="comment">//invoked by external clients</span>
-<a name="l00032"></a>00032 +(NSString *) generateInitMessage:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_message.html">SyncMessage</a> *)message;
-<a name="l00033"></a>00033 +(NSString *) generateSyncMessage:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_message.html">SyncMessage</a> *)message;
-<a name="l00034"></a>00034 +(NSString *) generateAnchor:(<a class="code" href="interface_anchor.html">Anchor</a> *) anchor;
+<a name="l00032"></a>00032 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateInitMessage:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_message.html">SyncMessage</a> *)message;
+<a name="l00033"></a>00033 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateSyncMessage:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_message.html">SyncMessage</a> *)message;
+<a name="l00034"></a>00034 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateAnchor:(<a class="code" href="interface_anchor.html">Anchor</a> *) anchor;
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 <span class="comment">//these are invoked internally</span>
-<a name="l00037"></a>00037 +(NSString *) generateItem:(<a class="code" href="interface_item.html">Item</a> *)item;
-<a name="l00038"></a>00038 +(NSString *) generateStatus:(<a class="code" href="interface_status.html">Status</a> *)status;
-<a name="l00039"></a>00039 +(NSString *) generateAlert:(<a class="code" href="interface_alert.html">Alert</a> *)alert;
-<a name="l00040"></a>00040 +(NSString *) generateCommand:(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)command;
-<a name="l00041"></a>00041 +(NSString *) generateAdd:(<a class="code" href="interface_add.html">Add</a> *)add;
-<a name="l00042"></a>00042 +(NSString *) generateReplace:(<a class="code" href="interface_replace.html">Replace</a> *)replace;
-<a name="l00043"></a>00043 +(NSString *) generateDelete:(<a class="code" href="interface_delete.html">Delete</a> *)delete;
+<a name="l00037"></a>00037 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateItem:(<a class="code" href="interface_item.html">Item</a> *)item;
+<a name="l00038"></a>00038 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateStatus:(<a class="code" href="interface_status.html">Status</a> *)status;
+<a name="l00039"></a>00039 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateAlert:(<a class="code" href="interface_alert.html">Alert</a> *)alert;
+<a name="l00040"></a>00040 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateCommand:(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)command;
+<a name="l00041"></a>00041 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateAdd:(<a class="code" href="interface_add.html">Add</a> *)add;
+<a name="l00042"></a>00042 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateReplace:(<a class="code" href="interface_replace.html">Replace</a> *)replace;
+<a name="l00043"></a>00043 +(<a class="code" href="class_n_s_string.html">NSString</a> *) generateDelete:(<a class="code" href="interface_delete.html">Delete</a> *)delete;
 <a name="l00044"></a>00044 
 <a name="l00045"></a>00045 <span class="keyword">@end</span>
 </pre></div></div>
@@ -129,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021 <span class="preprocessor">#import &quot;XMLUtil.h&quot;</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#import &quot;SyncConstants.h&quot;</span>
 <a name="l00023"></a>00023 
-<a name="l00028"></a>00028 <span class="keyword">@interface </span><a class="code" href="interface_sync_engine.html">SyncEngine</a> : NSObject 
+<a name="l00028"></a>00028 <span class="keyword">@interface </span><a class="code" href="interface_sync_engine.html">SyncEngine</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00029"></a>00029 {
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 }
@@ -100,46 +100,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033 +(id) withInit;
 <a name="l00034"></a>00034 
 <a name="l00035"></a>00035 <span class="comment">//reading sync related</span>
-<a name="l00036"></a>00036 -(NSArray *) getSlowSyncCommands:(<span class="keywordtype">int</span>) messageSize channel:(NSString *) channel;
-<a name="l00037"></a>00037 -(NSArray *) getAddCommands:(<span class="keywordtype">int</span>) messageSize channel:(NSString *) channel syncType:(NSString *) syncType;
-<a name="l00038"></a>00038 -(NSArray *) getReplaceCommands:(<span class="keywordtype">int</span>) messageSize channel:(NSString *) channel syncType:(NSString *) syncType;
-<a name="l00039"></a>00039 -(NSArray *) getDeleteCommands:(NSString *) channel syncType:(NSString *) syncType;
+<a name="l00036"></a>00036 -(NSArray *) getSlowSyncCommands:(<span class="keywordtype">int</span>) messageSize channel:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel;
+<a name="l00037"></a>00037 -(NSArray *) getAddCommands:(<span class="keywordtype">int</span>) messageSize channel:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel syncType:(<a class="code" href="class_n_s_string.html">NSString</a> *) syncType;
+<a name="l00038"></a>00038 -(NSArray *) getReplaceCommands:(<span class="keywordtype">int</span>) messageSize channel:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel syncType:(<a class="code" href="class_n_s_string.html">NSString</a> *) syncType;
+<a name="l00039"></a>00039 -(NSArray *) getDeleteCommands:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel syncType:(<a class="code" href="class_n_s_string.html">NSString</a> *) syncType;
 <a name="l00040"></a>00040 
 <a name="l00041"></a>00041 <span class="comment">//processing sync related</span>
-<a name="l00042"></a>00042 -(NSArray *) processSlowSyncCommand:(<a class="code" href="interface_session.html">Session</a> *) session channel:(NSString *) channel syncCommand:(<a class="code" href="interface_sync_command.html">SyncCommand</a> *) syncCommand;
-<a name="l00043"></a>00043 -(NSArray *) processSyncCommand:(<a class="code" href="interface_session.html">Session</a> *) session channel:(NSString *) channel syncCommand:(<a class="code" href="interface_sync_command.html">SyncCommand</a> *) syncCommand;
-<a name="l00044"></a>00044 -(void) startBootSync:(<a class="code" href="interface_session.html">Session</a> *)session channel:(NSString *)channel;
+<a name="l00042"></a>00042 -(NSArray *) processSlowSyncCommand:(<a class="code" href="interface_session.html">Session</a> *) session channel:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel syncCommand:(<a class="code" href="interface_sync_command.html">SyncCommand</a> *) syncCommand;
+<a name="l00043"></a>00043 -(NSArray *) processSyncCommand:(<a class="code" href="interface_session.html">Session</a> *) session channel:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel syncCommand:(<a class="code" href="interface_sync_command.html">SyncCommand</a> *) syncCommand;
+<a name="l00044"></a>00044 -(void) startBootSync:(<a class="code" href="interface_session.html">Session</a> *)session channel:(<a class="code" href="class_n_s_string.html">NSString</a> *)channel;
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 <span class="comment">//changelog related</span>
-<a name="l00047"></a>00047 -(NSArray *) getChangeLog:(NSString *) channel operation:(NSString *) operation;
+<a name="l00047"></a>00047 -(NSArray *) getChangeLog:(<a class="code" href="class_n_s_string.html">NSString</a> *) channel operation:(<a class="code" href="class_n_s_string.html">NSString</a> *) operation;
 <a name="l00048"></a>00048 -(void) addChangeLogEntries:(NSArray *) entries;
 <a name="l00049"></a>00049 -(void) clearChangeLogEntry:(<a class="code" href="interface_change_log_entry.html">ChangeLogEntry</a> *) logEntry;
 <a name="l00050"></a>00050 -(void) clearChangeLog;
-<a name="l00051"></a>00051 -(void) clearChangeLog:(NSString *)channel;
+<a name="l00051"></a>00051 -(void) clearChangeLog:(<a class="code" href="class_n_s_string.html">NSString</a> *)channel;
 <a name="l00052"></a>00052 
 <a name="l00053"></a>00053 <span class="comment">//anchor related</span>
-<a name="l00054"></a>00054 -(<a class="code" href="interface_anchor.html">Anchor</a> *) createNewAnchor:(NSString *)target;
+<a name="l00054"></a>00054 -(<a class="code" href="interface_anchor.html">Anchor</a> *) createNewAnchor:(<a class="code" href="class_n_s_string.html">NSString</a> *)target;
 <a name="l00055"></a>00055 
 <a name="l00056"></a>00056 <span class="comment">//error related</span>
-<a name="l00057"></a>00057 -(<a class="code" href="interface_sync_error.html">SyncError</a> *) saveError:(NSString *)source :(NSString *)target :(NSString *)code;
-<a name="l00058"></a>00058 -(void) removeError:(NSString *)source :(NSString *)target :(NSString *)code;
+<a name="l00057"></a>00057 -(<a class="code" href="interface_sync_error.html">SyncError</a> *) saveError:(<a class="code" href="class_n_s_string.html">NSString</a> *)source :(<a class="code" href="class_n_s_string.html">NSString</a> *)target :(<a class="code" href="class_n_s_string.html">NSString</a> *)code;
+<a name="l00058"></a>00058 -(void) removeError:(<a class="code" href="class_n_s_string.html">NSString</a> *)source :(<a class="code" href="class_n_s_string.html">NSString</a> *)target :(<a class="code" href="class_n_s_string.html">NSString</a> *)code;
 <a name="l00059"></a>00059 -(NSArray *)readErrors;
 <a name="l00060"></a>00060 
 <a name="l00061"></a>00061 <span class="comment">//utility</span>
-<a name="l00062"></a>00062 -(NSString *) generateSync;
+<a name="l00062"></a>00062 -(<a class="code" href="class_n_s_string.html">NSString</a> *) generateSync;
 <a name="l00063"></a>00063 
 <a name="l00064"></a>00064 <span class="comment">//some internal operations</span>
 <a name="l00065"></a>00065 -(<a class="code" href="interface_abstract_operation.html">AbstractOperation</a> *) getAddCommand:(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
 <a name="l00066"></a>00066 -(<a class="code" href="interface_abstract_operation.html">AbstractOperation</a> *) getReplaceCommand:(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
-<a name="l00067"></a>00067 -(NSString *)marshalId:(NSString *)id;
-<a name="l00068"></a>00068 -(NSString *)marshal:(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
-<a name="l00069"></a>00069 -(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)unmarshal:(NSString *)channel :(NSString *)xml;
-<a name="l00070"></a>00070 -(void)clearAll:(<a class="code" href="interface_session.html">Session</a> *)session :(NSString *)channel;
-<a name="l00071"></a>00071 -(<a class="code" href="interface_status.html">Status</a> *)getStatus:(NSString *)statusCode :(<a class="code" href="interface_abstract_operation.html">AbstractOperation</a> *)operation;
-<a name="l00072"></a>00072 -(void) processAddCommands:(NSMutableArray *) status :(NSString *)channel :(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)syncCommand;
-<a name="l00073"></a>00073 -(void) processReplaceCommands:(NSMutableArray *) status :(NSString *)channel :(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)syncCommand;
-<a name="l00074"></a>00074 -(void) processDeleteCommands:(NSMutableArray *) status :(NSString *)channel :(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)syncCommand;
-<a name="l00075"></a>00075 -(NSString *)saveRecord:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
+<a name="l00067"></a>00067 -(<a class="code" href="class_n_s_string.html">NSString</a> *)marshalId:(<a class="code" href="class_n_s_string.html">NSString</a> *)id;
+<a name="l00068"></a>00068 -(<a class="code" href="class_n_s_string.html">NSString</a> *)marshal:(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
+<a name="l00069"></a>00069 -(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)unmarshal:(<a class="code" href="class_n_s_string.html">NSString</a> *)channel :(<a class="code" href="class_n_s_string.html">NSString</a> *)xml;
+<a name="l00070"></a>00070 -(void)clearAll:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="class_n_s_string.html">NSString</a> *)channel;
+<a name="l00071"></a>00071 -(<a class="code" href="interface_status.html">Status</a> *)getStatus:(<a class="code" href="class_n_s_string.html">NSString</a> *)statusCode :(<a class="code" href="interface_abstract_operation.html">AbstractOperation</a> *)operation;
+<a name="l00072"></a>00072 -(void) processAddCommands:(NSMutableArray *) status :(<a class="code" href="class_n_s_string.html">NSString</a> *)channel :(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)syncCommand;
+<a name="l00073"></a>00073 -(void) processReplaceCommands:(NSMutableArray *) status :(<a class="code" href="class_n_s_string.html">NSString</a> *)channel :(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)syncCommand;
+<a name="l00074"></a>00074 -(void) processDeleteCommands:(NSMutableArray *) status :(<a class="code" href="class_n_s_string.html">NSString</a> *)channel :(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_sync_command.html">SyncCommand</a> *)syncCommand;
+<a name="l00075"></a>00075 -(<a class="code" href="class_n_s_string.html">NSString</a> *)saveRecord:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
 <a name="l00076"></a>00076 -(void)deleteRecord:(<a class="code" href="interface_session.html">Session</a> *)session :(<a class="code" href="interface_mobile_object.html">MobileObject</a> *)mobileObject;
 <a name="l00077"></a>00077 <span class="keyword">@end</span>
 </pre></div></div>
@@ -161,7 +161,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

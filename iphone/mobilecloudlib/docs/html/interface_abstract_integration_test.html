@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -91,11 +91,13 @@ Inheritance diagram for AbstractIntegrationTest:</div>
  <div class="center">
   <img src="interface_abstract_integration_test.png" usemap="#AbstractIntegrationTest_map" alt=""/>
   <map id="AbstractIntegrationTest_map" name="AbstractIntegrationTest_map">
-<area href="interface_test.html" alt="Test" shape="rect" coords="226,0,367,24"/>
-<area href="interface_test_array_access.html" alt="TestArrayAccess" shape="rect" coords="0,112,141,136"/>
-<area href="interface_test_c_r_u_d.html" alt="TestCRUD" shape="rect" coords="151,112,292,136"/>
-<area href="interface_test_read_only_channel.html" alt="TestReadOnlyChannel" shape="rect" coords="302,112,443,136"/>
-<area href="interface_test_simple_access.html" alt="TestSimpleAccess" shape="rect" coords="453,112,594,136"/>
+<area href="interface_test.html" alt="Test" shape="rect" coords="302,56,443,80"/>
+<area href="class_n_s_object.html" alt="NSObject" shape="rect" coords="302,0,443,24"/>
+<area href="interface_test_array_access.html" alt="TestArrayAccess" shape="rect" coords="0,168,141,192"/>
+<area href="interface_test_c_r_u_d.html" alt="TestCRUD" shape="rect" coords="151,168,292,192"/>
+<area href="interface_test_location_service.html" alt="TestLocationService" shape="rect" coords="302,168,443,192"/>
+<area href="interface_test_read_only_channel.html" alt="TestReadOnlyChannel" shape="rect" coords="453,168,594,192"/>
+<area href="interface_test_simple_access.html" alt="TestSimpleAccess" shape="rect" coords="604,168,745,192"/>
 </map>
  </div></div>
 
@@ -104,23 +106,23 @@ Inheritance diagram for AbstractIntegrationTest:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20080f1b58ea40ef1754d2a350678159"></a><!-- doxytag: member="AbstractIntegrationTest::setUp:" ref="a20080f1b58ea40ef1754d2a350678159" args="(NSString *operation)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUp:</b> (NSString *operation)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setUp:</b> (<a class="el" href="class_n_s_string.html">NSString</a> *operation)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5932549ea8dcbee3c8508083bac3bca"></a><!-- doxytag: member="AbstractIntegrationTest::resetServerAdapter:" ref="ac5932549ea8dcbee3c8508083bac3bca" args="(NSString *payload)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resetServerAdapter:</b> (NSString *payload)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resetServerAdapter:</b> (<a class="el" href="class_n_s_string.html">NSString</a> *payload)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5e42a89975dc51296b13bfd75abbba9"></a><!-- doxytag: member="AbstractIntegrationTest::restoreData" ref="ae5e42a89975dc51296b13bfd75abbba9" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>restoreData</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60b4d2880b6ca512131f9c89eae5871d"></a><!-- doxytag: member="AbstractIntegrationTest::getRecord:" ref="a60b4d2880b6ca512131f9c89eae5871d" args="(NSString *recordId)" -->
-<a class="el" href="interface_mobile_object.html">MobileObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getRecord:</b> (NSString *recordId)</td></tr>
+<a class="el" href="interface_mobile_object.html">MobileObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getRecord:</b> (<a class="el" href="class_n_s_string.html">NSString</a> *recordId)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1e1b03aa7487775ea7a2ba371cfec99"></a><!-- doxytag: member="AbstractIntegrationTest::assertRecordPresence::" ref="ab1e1b03aa7487775ea7a2ba371cfec99" args="(NSString *recordId,[] NSString *context)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>assertRecordPresence::</b> (NSString *recordId,[] NSString *context)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>assertRecordPresence::</b> (<a class="el" href="class_n_s_string.html">NSString</a> *recordId,[] <a class="el" href="class_n_s_string.html">NSString</a> *context)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a3b5fe02a54bcdba619fe1ea66f07c3"></a><!-- doxytag: member="AbstractIntegrationTest::assertRecordAbsence::" ref="a7a3b5fe02a54bcdba619fe1ea66f07c3" args="(NSString *recordId,[] NSString *context)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>assertRecordAbsence::</b> (NSString *recordId,[] NSString *context)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>assertRecordAbsence::</b> (<a class="el" href="class_n_s_string.html">NSString</a> *recordId,[] <a class="el" href="class_n_s_string.html">NSString</a> *context)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefd339da38f098c1e4e5bc22ab9f3e36"></a><!-- doxytag: member="AbstractIntegrationTest::assertChangeLogPresence:::" ref="aefd339da38f098c1e4e5bc22ab9f3e36" args="(NSString *channel,[] NSString *oid,[] NSString *operation)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>assertChangeLogPresence:::</b> (NSString *channel,[] NSString *oid,[] NSString *operation)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>assertChangeLogPresence:::</b> (<a class="el" href="class_n_s_string.html">NSString</a> *channel,[] <a class="el" href="class_n_s_string.html">NSString</a> *oid,[] <a class="el" href="class_n_s_string.html">NSString</a> *operation)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b68202e805cadd80325dfcd2d543f0a"></a><!-- doxytag: member="AbstractIntegrationTest::channel" ref="a9b68202e805cadd80325dfcd2d543f0a" args="" -->
-NSString *&#160;</td><td class="memItemRight" valign="bottom"><b>channel</b></td></tr>
+<a class="el" href="class_n_s_string.html">NSString</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>channel</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Copyright (c) {2003,2010} {<a href="mailto:openmobster@gmail.com">openmobster@gmail.com</a>} {individual contributors as indicated by the </p>
@@ -148,7 +150,7 @@ NSString *&#160;</td><td class="memItemRight" valign="bottom"><b>channel</b></td
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>

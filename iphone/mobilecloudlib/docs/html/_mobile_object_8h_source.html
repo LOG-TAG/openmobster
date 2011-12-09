@@ -27,7 +27,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">OpenMobster
-   &#160;<span id="projectnumber">2.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">2.2-M6</span>
    </div>
    <div id="projectbrief">Mobile Cloud Platform</div>
   </td>
@@ -82,24 +82,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="preprocessor">#import &quot;ArrayMetaData.h&quot;</span>
 <a name="l00012"></a>00012 <span class="preprocessor">#import &quot;StringUtil.h&quot;</span>
 <a name="l00013"></a>00013 
-<a name="l00018"></a>00018 <span class="keyword">@interface </span><a class="code" href="interface_mobile_object.html">MobileObject</a> : NSObject 
+<a name="l00018"></a>00018 <span class="keyword">@interface </span><a class="code" href="interface_mobile_object.html">MobileObject</a> : <a class="code" href="class_n_s_object.html">NSObject</a> 
 <a name="l00019"></a>00019 {
 <a name="l00020"></a>00020         <span class="keyword">@private</span>
-<a name="l00021"></a>00021         NSString *service;
-<a name="l00022"></a>00022         NSString *recordId;
-<a name="l00023"></a>00023         NSString *serverRecordId;
+<a name="l00021"></a>00021         <a class="code" href="class_n_s_string.html">NSString</a> *service;
+<a name="l00022"></a>00022         <a class="code" href="class_n_s_string.html">NSString</a> *recordId;
+<a name="l00023"></a>00023         <a class="code" href="class_n_s_string.html">NSString</a> *serverRecordId;
 <a name="l00024"></a>00024         BOOL proxy;
 <a name="l00025"></a>00025         BOOL createdOnDevice;
 <a name="l00026"></a>00026         BOOL locked;
-<a name="l00027"></a>00027         NSString *dirtyStatus;
+<a name="l00027"></a>00027         <a class="code" href="class_n_s_string.html">NSString</a> *dirtyStatus;
 <a name="l00028"></a>00028         NSMutableArray *fields;
 <a name="l00029"></a>00029         NSMutableArray *arrayMetaData;
 <a name="l00030"></a>00030 }
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="keyword">@property</span> (retain) NSString *service; <span class="comment">//not-null</span>
-<a name="l00033"></a>00033 <span class="keyword">@property</span> (retain) NSString *recordId; <span class="comment">//not-null</span>
-<a name="l00034"></a>00034 <span class="keyword">@property</span> (retain) NSString *serverRecordId;
-<a name="l00035"></a>00035 <span class="keyword">@property</span> (retain) NSString *dirtyStatus;
+<a name="l00032"></a>00032 <span class="keyword">@property</span> (retain) <a class="code" href="class_n_s_string.html">NSString</a> *service; <span class="comment">//not-null</span>
+<a name="l00033"></a>00033 <span class="keyword">@property</span> (retain) <a class="code" href="class_n_s_string.html">NSString</a> *recordId; <span class="comment">//not-null</span>
+<a name="l00034"></a>00034 <span class="keyword">@property</span> (retain) <a class="code" href="class_n_s_string.html">NSString</a> *serverRecordId;
+<a name="l00035"></a>00035 <span class="keyword">@property</span> (retain) <a class="code" href="class_n_s_string.html">NSString</a> *dirtyStatus;
 <a name="l00036"></a>00036 <span class="keyword">@property</span> (retain) NSMutableArray *fields;
 <a name="l00037"></a>00037 <span class="keyword">@property</span> (retain) NSMutableArray *arrayMetaData;
 <a name="l00038"></a>00038 <span class="keyword">@property</span> (assign) BOOL proxy;
@@ -108,25 +108,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 +(id) withInit;
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 -(NSString *) getValue:(NSString *)uri;
-<a name="l00045"></a>00045 -(void) setValue:(NSString *)uri value:(NSString *)value;
+<a name="l00044"></a>00044 -(<a class="code" href="class_n_s_string.html">NSString</a> *) getValue:(<a class="code" href="class_n_s_string.html">NSString</a> *)uri;
+<a name="l00045"></a>00045 -(void) setValue:(<a class="code" href="class_n_s_string.html">NSString</a> *)uri value:(<a class="code" href="class_n_s_string.html">NSString</a> *)value;
 <a name="l00046"></a>00046 
-<a name="l00047"></a>00047 -(int) getArrayLength:(NSString *) arrayUri;
-<a name="l00048"></a>00048 -(void) clearArray:(NSString *) indexedPropertyName;
-<a name="l00049"></a>00049 -(void) removeArrayElement:(NSString *) arrayUri :(<span class="keywordtype">int</span>) elementAt;
-<a name="l00050"></a>00050 -(NSDictionary *) getArrayElement:(NSString *)arrayUri :(<span class="keywordtype">int</span>) elementIndex;
-<a name="l00051"></a>00051 -(void) addToArray:(NSString *) indexedPropertyName :(NSDictionary *) properties;
+<a name="l00047"></a>00047 -(int) getArrayLength:(<a class="code" href="class_n_s_string.html">NSString</a> *) arrayUri;
+<a name="l00048"></a>00048 -(void) clearArray:(<a class="code" href="class_n_s_string.html">NSString</a> *) indexedPropertyName;
+<a name="l00049"></a>00049 -(void) removeArrayElement:(<a class="code" href="class_n_s_string.html">NSString</a> *) arrayUri :(<span class="keywordtype">int</span>) elementAt;
+<a name="l00050"></a>00050 -(NSDictionary *) getArrayElement:(<a class="code" href="class_n_s_string.html">NSString</a> *)arrayUri :(<span class="keywordtype">int</span>) elementIndex;
+<a name="l00051"></a>00051 -(void) addToArray:(<a class="code" href="class_n_s_string.html">NSString</a> *) indexedPropertyName :(NSDictionary *) properties;
 <a name="l00052"></a>00052 
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 <span class="comment">//used internally</span>
-<a name="l00055"></a>00055 -(<a class="code" href="interface_field.html">Field</a> *) findField:(NSString *)inputUri;
-<a name="l00056"></a>00056 -(BOOL) doesUriMatch:(NSString *)inputUri :(NSString *)fieldUri;
-<a name="l00057"></a>00057 -(int) calculateArrayIndex:(NSString *)fieldUri;
-<a name="l00058"></a>00058 -(NSString *) calculateArrayUri:(NSString *)fieldUri;
-<a name="l00059"></a>00059 -(<a class="code" href="interface_array_meta_data.html">ArrayMetaData</a> *) findArrayMetaData:(NSString *)arrayUri;
-<a name="l00060"></a>00060 -(NSArray *) findArrayFields:(NSString *) arrayUri;
-<a name="l00061"></a>00061 -(NSArray *) findArrayElementFields:(NSString *) arrayUri :(<span class="keywordtype">int</span>) elementIndex;
-<a name="l00062"></a>00062 -(int) findIndexValueInsertionPoint:(NSString *)indexedPropertyName;
+<a name="l00055"></a>00055 -(<a class="code" href="interface_field.html">Field</a> *) findField:(<a class="code" href="class_n_s_string.html">NSString</a> *)inputUri;
+<a name="l00056"></a>00056 -(BOOL) doesUriMatch:(<a class="code" href="class_n_s_string.html">NSString</a> *)inputUri :(<a class="code" href="class_n_s_string.html">NSString</a> *)fieldUri;
+<a name="l00057"></a>00057 -(int) calculateArrayIndex:(<a class="code" href="class_n_s_string.html">NSString</a> *)fieldUri;
+<a name="l00058"></a>00058 -(<a class="code" href="class_n_s_string.html">NSString</a> *) calculateArrayUri:(<a class="code" href="class_n_s_string.html">NSString</a> *)fieldUri;
+<a name="l00059"></a>00059 -(<a class="code" href="interface_array_meta_data.html">ArrayMetaData</a> *) findArrayMetaData:(<a class="code" href="class_n_s_string.html">NSString</a> *)arrayUri;
+<a name="l00060"></a>00060 -(NSArray *) findArrayFields:(<a class="code" href="class_n_s_string.html">NSString</a> *) arrayUri;
+<a name="l00061"></a>00061 -(NSArray *) findArrayElementFields:(<a class="code" href="class_n_s_string.html">NSString</a> *) arrayUri :(<span class="keywordtype">int</span>) elementIndex;
+<a name="l00062"></a>00062 -(int) findIndexValueInsertionPoint:(<a class="code" href="class_n_s_string.html">NSString</a> *)indexedPropertyName;
 <a name="l00063"></a>00063 
 <a name="l00064"></a>00064 <span class="comment">//some convenience methods</span>
 <a name="l00065"></a>00065 -(void)addField:(<a class="code" href="interface_field.html">Field</a> *)field;
@@ -151,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 19 2011 17:36:17 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 9 2011 12:36:29 for OpenMobster by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5
 </small></address>
