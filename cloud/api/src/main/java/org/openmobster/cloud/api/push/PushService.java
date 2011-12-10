@@ -16,6 +16,8 @@ import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 
+import org.openmobster.core.common.transaction.TransactionHelper;
+
 /**
  * PushService provides a cross platform API for pushing notifications to devices.
  *
@@ -61,51 +63,67 @@ public final class PushService
 	 */
 	public void push(String identity, String appId, String message, String title, String details)
 	{
-		//Validation
-		if(message == null || message.trim().length()==0)
+		boolean startedHere = TransactionHelper.startTx();
+		try
 		{
-			throw new IllegalArgumentException("Message is Required!!");
-		}
-		if(appId == null || appId.trim().length()==0)
-		{
-			throw new IllegalArgumentException("App Id is Required!!");
-		}
-		if(identity == null || identity.trim().length() == 0)
-		{
-			throw new IllegalArgumentException("Identity is Required!!");
-		}
-		
-		//Detect the device that will receive the push
-		DeviceController deviceController = DeviceController.getInstance();
-		Set<Device> devices = deviceController.readByIdentity(identity);
-		if(devices == null || devices.isEmpty())
-		{
-			return;
-		}
-		
-		for(Device device:devices)
-		{	
-			//Prepare the extras
-			Map<String,String> extras = new HashMap<String,String>();
-			if(appId != null && appId.trim().length()>0)
+			//Validation
+			if(message == null || message.trim().length()==0)
 			{
-				extras.put("app-id", appId);
+				throw new IllegalArgumentException("Message is Required!!");
 			}
-			if(title != null && title.trim().length()>0)
+			if(appId == null || appId.trim().length()==0)
 			{
-				extras.put("title", title);
+				throw new IllegalArgumentException("App Id is Required!!");
 			}
-			if(details != null && details.trim().length()>0)
+			if(identity == null || identity.trim().length() == 0)
 			{
-				extras.put("detail", details);
+				throw new IllegalArgumentException("Identity is Required!!");
 			}
 			
-			//Prepare the Notification
-			Notification notification = Notification.createPushNotification(device, message, extras);
+			//Detect the device that will receive the push
+			DeviceController deviceController = DeviceController.getInstance();
+			Set<Device> devices = deviceController.readByIdentity(identity);
+			if(devices == null || devices.isEmpty())
+			{
+				return;
+			}
 			
-			//Send the notification
-			Notifier notifier = Notifier.getInstance();
-			notifier.process(notification);
+			for(Device device:devices)
+			{	
+				//Prepare the extras
+				Map<String,String> extras = new HashMap<String,String>();
+				if(appId != null && appId.trim().length()>0)
+				{
+					extras.put("app-id", appId);
+				}
+				if(title != null && title.trim().length()>0)
+				{
+					extras.put("title", title);
+				}
+				if(details != null && details.trim().length()>0)
+				{
+					extras.put("detail", details);
+				}
+				
+				//Prepare the Notification
+				Notification notification = Notification.createPushNotification(device, message, extras);
+				
+				//Send the notification
+				Notifier notifier = Notifier.getInstance();
+				notifier.process(notification);
+			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
 		}
 	}
 }
