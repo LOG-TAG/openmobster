@@ -2,11 +2,10 @@
 <metadata>
   <groupId>org.openmobster.core.dev.tools</groupId>
   <artifactId>dev-cloudServer</artifactId>
-  <version>2.2-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20111006174357</lastUpdated>
+    <lastUpdated>20111210191030</lastUpdated>
   </versioning>
 </metadata>
