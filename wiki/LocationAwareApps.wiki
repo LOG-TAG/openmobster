@@ -164,3 +164,5 @@ Map<String,String> coupons = response.getMapAttribute("coupons");
 				restaurantMarkers.addOverlay(item);
 			}
 }}}
+
+The coupons being business data are read from the *Response* object as a Map<String,String>, while the nearby restaurants being location data are read from the *LocationContext*.
