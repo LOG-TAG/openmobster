@@ -2,11 +2,10 @@
 <metadata>
   <groupId>org.openmobster.core</groupId>
   <artifactId>console</artifactId>
-  <version>2.2-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20111006161026</lastUpdated>
+    <lastUpdated>20111210163527</lastUpdated>
   </versioning>
 </metadata>
