@@ -2,11 +2,10 @@
 <metadata>
   <groupId>org.openmobster.core</groupId>
   <artifactId>dataService</artifactId>
-  <version>2.2-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20111006155608</lastUpdated>
+    <lastUpdated>20111210163303</lastUpdated>
   </versioning>
 </metadata>
