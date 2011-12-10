@@ -2,11 +2,10 @@
 <metadata>
   <groupId>org.openmobster.core.dev.tools</groupId>
   <artifactId>appCreator</artifactId>
-  <version>2.2-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20111006174128</lastUpdated>
+    <lastUpdated>20111210190958</lastUpdated>
   </versioning>
 </metadata>
