@@ -1,0 +1,90 @@
+\hypertarget{interface_net_session}{
+\section{\-Net\-Session \-Class \-Reference}
+\label{interface_net_session}\index{\-Net\-Session@{\-Net\-Session}}
+}
+
+
+{\ttfamily \#include $<$\-Net\-Session.\-h$>$}
+
+\-Inheritance diagram for \-Net\-Session\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_net_session}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_net_session_a7bb9c333fa4588528843d2577984499c}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries perform\-Handshake\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$request)}
+\label{interface_net_session_a7bb9c333fa4588528843d2577984499c}
+
+\item 
+\hypertarget{interface_net_session_a3a71529897ca966e9f9eb7777bd1075d}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries send\-Payload\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$request)}
+\label{interface_net_session_a3a71529897ca966e9f9eb7777bd1075d}
+
+\item 
+\hypertarget{interface_net_session_a997806e3229ba5a4f614053f6e1b79ce}{
+void {\bfseries close} ()}
+\label{interface_net_session_a997806e3229ba5a4f614053f6e1b79ce}
+
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_net_session_a1834606353ba4a13102346ce6810ffc1}{read} ()
+\item 
+\hypertarget{interface_net_session_a37df3e8f8d7f99adc56256cdf0b99984}{
+void {\bfseries write\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$payload)}
+\label{interface_net_session_a37df3e8f8d7f99adc56256cdf0b99984}
+
+\item 
+void \hyperlink{interface_net_session_a403322c5ba3f458326bb8e2913e9f0e7}{write\-To\-Stream\-:} (\-N\-S\-Data $\ast$packet)
+\item 
+\hypertarget{interface_net_session_a836f798472a4526bf64de4fcf9a34433}{
+\-U\-Int8 {\bfseries read\-From\-Stream} ()}
+\label{interface_net_session_a836f798472a4526bf64de4fcf9a34433}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_net_session_aec2604b1d4473f35d216614ff200063a}{
+id {\bfseries with\-Init\-:::} (\-B\-O\-O\-L secure,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$host,\mbox{[}$\,$\mbox{]} int port)}
+\label{interface_net_session_aec2604b1d4473f35d216614ff200063a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_net_session_a1834606353ba4a13102346ce6810ffc1}{
+\index{\-Net\-Session@{\-Net\-Session}!read@{read}}
+\index{read@{read}!NetSession@{\-Net\-Session}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Net\-Session\-::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_net_session_a1834606353ba4a13102346ce6810ffc1}
+throws \hyperlink{interface_system_exception}{\-System\-Exception} \hypertarget{interface_net_session_a403322c5ba3f458326bb8e2913e9f0e7}{
+\index{\-Net\-Session@{\-Net\-Session}!write\-To\-Stream\-:@{write\-To\-Stream\-:}}
+\index{write\-To\-Stream\-:@{write\-To\-Stream\-:}!NetSession@{\-Net\-Session}}
+\subsubsection[{write\-To\-Stream\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Net\-Session\-::write\-To\-Stream\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Data $\ast$}]{packet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_net_session_a403322c5ba3f458326bb8e2913e9f0e7}
+throws \hyperlink{interface_system_exception}{\-System\-Exception} 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Net\-Session.\-h\item 
+\-Net\-Session.\-m\end{DoxyCompactItemize}
