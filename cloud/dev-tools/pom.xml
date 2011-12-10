@@ -3,7 +3,7 @@
 	<groupId>org.openmobster.core.dev.tools</groupId>
 	<artifactId>dev-tools</artifactId>
 	<packaging>pom</packaging>
-	<version>2.2-SNAPSHOT</version>
+	<version>2.2-M6</version>
 	<name>The OpenMobster Core Platform</name>
 	<url>http://www.openmobster.org</url>
 	
