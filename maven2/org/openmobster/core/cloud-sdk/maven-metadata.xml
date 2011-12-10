@@ -2,11 +2,10 @@
 <metadata>
   <groupId>org.openmobster.core</groupId>
   <artifactId>cloud-sdk</artifactId>
-  <version>2.2-SNAPSHOT</version>
   <versioning>
     <versions>
       <version>2.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20111006162433</lastUpdated>
+    <lastUpdated>20111210163801</lastUpdated>
   </versioning>
 </metadata>
