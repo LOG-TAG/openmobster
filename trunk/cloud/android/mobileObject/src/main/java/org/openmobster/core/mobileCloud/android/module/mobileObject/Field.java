@@ -81,10 +81,10 @@ final class Field
 			   value.equals(this.value)
 			)
 			{
-				System.out.println("Matched(Uri): "+this.uri);
-				System.out.println("Matched(Name): "+this.name);
-				System.out.println("Matched(Value): "+this.value);
-				System.out.println("----------------------------------");
+				//System.out.println("Matched(Uri): "+this.uri);
+				//System.out.println("Matched(Name): "+this.name);
+				//System.out.println("Matched(Value): "+this.value);
+				//System.out.println("----------------------------------");
 				return true;
 			}
 		}

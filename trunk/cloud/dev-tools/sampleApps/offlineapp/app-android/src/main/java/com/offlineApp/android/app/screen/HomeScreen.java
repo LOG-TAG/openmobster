@@ -48,6 +48,9 @@ public class HomeScreen extends Screen
 	{
 		try
 		{
+			System.out.println("****************************");
+			System.out.println("Launching the Offline App...");
+			System.out.println("****************************");
 			//Gets the currently active 'Activity' instance
 			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			

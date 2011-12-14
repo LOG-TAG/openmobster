@@ -69,7 +69,7 @@ public final class MobileService
 		}		
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(e);
 			throw new ServiceInvocationException(MobileService.class.getName(), "invoke", new Object[]{
 				"Service being Invoked="+request.getService(),
@@ -142,7 +142,7 @@ public final class MobileService
 		}	
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(MobileService.class.getName(), "sendRequest", new Object[]{
 				"Request="+beanRequest,
 				"Exception="+e.toString(),
