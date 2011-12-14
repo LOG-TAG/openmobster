@@ -32,7 +32,7 @@
 		<bb.simulator.home>
 			${env.RIM_JDE_HOME}\simulator
 		</bb.simulator.home> 
-		<version.android.api>5</version.android.api> 
+		<version.android.api>10</version.android.api> 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
 	</properties>
 	
@@ -77,8 +77,8 @@
 			<plugins>
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-					<artifactId>maven-android-plugin</artifactId>
-					<version>2.8.4</version>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>3.0.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

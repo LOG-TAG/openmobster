@@ -14,12 +14,11 @@
     <name>test-cloud-as-service</name>
     <packaging>apk</packaging>
     
-    <dependencies>
+    <dependencies>  
     	<dependency>
 			<groupId>org.openmobster.core.mobileCloud.android.2_0
 			</groupId>
 			<artifactId>device-sdk</artifactId>
-			<classifier>full</classifier>
 			<version>${project.version}</version>
 		</dependency>
     </dependencies>
@@ -28,7 +27,7 @@
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-				<artifactId>maven-android-plugin</artifactId>
+				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
 						<path>${env.ANDROID_HOME}</path>
@@ -74,7 +73,7 @@
 					
 					<plugin>
 						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-						<artifactId>maven-android-plugin</artifactId>
+						<artifactId>android-maven-plugin</artifactId>
 						<configuration>
 							<sdk>
 								<path>${env.ANDROID_HOME}</path>
@@ -132,7 +131,7 @@
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2
 					</groupId>
-					<artifactId>maven-android-plugin</artifactId>
+					<artifactId>android-maven-plugin</artifactId>
 					<configuration>
 						<sdk>
 							<path>${env.ANDROID_HOME}</path>
@@ -189,7 +188,7 @@
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2
 					</groupId>
-					<artifactId>maven-android-plugin</artifactId>
+					<artifactId>android-maven-plugin</artifactId>
 					<configuration>
 						<sdk>
 							<path>${env.ANDROID_HOME}</path>

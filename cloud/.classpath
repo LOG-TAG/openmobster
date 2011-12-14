@@ -208,7 +208,7 @@
     <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.1.2/httpclient-4.1.2.jar"/>
     
     <!-- Android Dependencies -->
-    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-5/android.jar"/>
+    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-10/android.jar"/>
     <classpathentry kind="var" path="ANDROID_HOME/add-ons/addon_google_apis_google_inc_9/libs/maps.jar"/>
     
     <classpathentry kind="var" path="M2_REPO/javapns/javapns-jdk15/165/javapns-jdk15-165.jar"/>
