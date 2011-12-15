@@ -78,7 +78,10 @@ public class ContainerContentProvider extends ContentProvider
 						"Message: "+e.getMessage()
 					}
 			));
-			throw new RuntimeException(e);
+			MatrixCursor cursor = new MatrixCursor(new String[]{"status"});
+			cursor.addRow(new String[]{""+Boolean.FALSE});
+			return cursor;
+			//throw new RuntimeException(e);
 		}
 	}
 	
