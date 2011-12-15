@@ -214,6 +214,7 @@ public class TestDatabase extends Test
 			System.out.println("Dirty: "+ email.getDirtyStatus());
 			System.out.println("--------------------------------------------");
 		}
+		assertEquals(""+all.size(),"5","/selectAll/numberofRecords/match/failure");
 	}
 	
 	private void testSelectCount(Context context) throws DBException
