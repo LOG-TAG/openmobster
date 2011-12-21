@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.HashSet;
+import java.io.IOException;
 
+import org.openmobster.core.mobileCloud.android.util.Base64;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
@@ -179,6 +181,53 @@ public final class MobileBean
 		}
 		this.data.setValue(fieldUri, value);
 		this.isDirty = true;
+	}
+	
+	/**
+	 * Gets the Binary Value of a Field of the bean
+	 * 
+	 * @param fieldUri expression identifying the field on the bean
+	 * @return the Binary Value value of the field on the bean
+	 */
+	public byte[] getBinaryValue(String fieldUri) throws IOException
+	{
+		if(!this.isInitialized())
+		{
+			throw new IllegalStateException("MobileBean is uninitialized!!");
+		}
+		if(this.data.isProxy())
+		{
+			throw new IllegalStateException("MobileBean is still in proxy state");
+		}
+		
+		String encodedValue = this.getValue(fieldUri);
+		if(encodedValue != null && encodedValue.trim().length()>0)
+		{
+			byte[] decodedValue = Base64.decode(encodedValue);
+			return decodedValue;
+		}
+		return null;
+	}
+	
+	/**
+	 * Sets the BinaryValue of a Field of the bean
+	 * 
+	 * @param fieldUri expression identifying the field on the bean
+	 * @param value value to be set
+	 */
+	public void setBinaryValue(String fieldUri, byte[] value)
+	{
+		if(!this.isInitialized())
+		{
+			throw new IllegalStateException("MobileBean is uninitialized!!");
+		}
+		if(this.data.isProxy())
+		{
+			throw new IllegalStateException("MobileBean is still in proxy state");
+		}
+		
+		String encodedValue = Base64.encodeBytes(value);
+		this.setValue(fieldUri, encodedValue);
 	}
 				
 	/**

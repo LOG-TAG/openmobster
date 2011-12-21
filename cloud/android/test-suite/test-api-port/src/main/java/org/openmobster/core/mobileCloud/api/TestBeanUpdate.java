@@ -43,12 +43,20 @@ public final class TestBeanUpdate extends AbstractAPITest
 				curr.setValue("from", "from/Updated");
 				assertEquals(curr.getValue("from"), "from/Updated", this.getInfo()+"://From does not match");
 				
+				curr.setBinaryValue("attachment", "blahblah".getBytes());
+				
 				MobileBean stored = MobileBean.readById(this.service, id);
 				assertEquals(stored.getValue("from"), "from@gmail.com", this.getInfo()+"://Should_Not_Be_Updated_Yet");
 				
+				System.out.println("Saving the bean.....");
 				curr.save();
+				
 				stored = MobileBean.readById(this.service, id);
-				assertEquals(stored.getValue("from"), "from/Updated", this.getInfo()+"://Should_Not_Be_Updated_Now");
+				assertEquals(stored.getValue("from"), "from/Updated", this.getInfo()+"://Should_Be_Updated_Now");
+				
+				byte[] attachment = stored.getBinaryValue("attachment");
+				String attachmentValue = new String(attachment);
+				assertEquals(attachmentValue,"blahblah",this.getInfo()+"://Attachment_Didnot_Match");
 			}
 		}
 		catch(Exception e)

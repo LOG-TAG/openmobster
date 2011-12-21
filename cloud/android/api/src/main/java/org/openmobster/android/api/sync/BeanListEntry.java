@@ -8,9 +8,11 @@
 
 package org.openmobster.android.api.sync;
 
+import java.io.IOException;
 import java.util.Hashtable;
 
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
+import org.openmobster.core.mobileCloud.android.util.Base64;
 
 /**
  * BeanEntry represents members of a BeanList
@@ -54,6 +56,25 @@ public class BeanListEntry
 	}
 	
 	/**
+	 * Reads a property value on this object using a property expression
+	 * 
+	 * @return the value of the specified property
+	 */
+	public byte[] getBinaryProperty(String propertyExpression) throws IOException
+	{
+		String propertyUri = this.calculatePropertyUri(propertyExpression);		
+		String value = this.properties.get(propertyUri);
+		
+		if(value != null && value.trim().length()>0)
+		{
+			byte[] binary = Base64.decode(value);
+			return binary;
+		}
+		
+		return null;
+	}
+	
+	/**
 	 * Set the property value on this object using a property expression
 	 * 
 	 * @param propertyExpression expression to signify the property to be set
@@ -63,6 +84,19 @@ public class BeanListEntry
 	{
 		String propertyUri = this.calculatePropertyUri(propertyExpression);
 		this.properties.put(propertyUri, value);
+	}
+	
+	/**
+	 * Set the property value on this object using a property expression
+	 * 
+	 * @param propertyExpression expression to signify the property to be set
+	 * @param value value to be set
+	 */
+	public void setBinaryProperty(String propertyExpression, byte[] value)
+	{
+		String propertyUri = this.calculatePropertyUri(propertyExpression);
+		String propertyValue = Base64.encodeBytes(value);
+		this.properties.put(propertyUri, propertyValue);
 	}
 	
 	/**
