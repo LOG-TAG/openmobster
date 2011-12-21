@@ -49,10 +49,15 @@ public final class TestBeanRead extends AbstractAPITest
 				this.getInfo()+"://Message does not match");
 				
 				//Assert the IndexedProperty emails
-				this.assertEmails(curr);				
+				//this.assertEmails(curr);				
 				
 				//Assert Fruits
-				this.assertFruits(curr);
+				//this.assertFruits(curr);
+				
+				byte[] attachment = curr.getBinaryValue("attachment");
+				String attachmentValue = new String(attachment);
+				assertEquals(attachmentValue,"blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah",
+						this.getInfo()+"://Attachment Does not match");
 			}
 		}
 		catch(Exception e)

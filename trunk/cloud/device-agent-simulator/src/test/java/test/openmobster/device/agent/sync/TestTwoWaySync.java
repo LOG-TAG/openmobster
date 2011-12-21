@@ -10,6 +10,7 @@ package test.openmobster.device.agent.sync;
 
 import test.openmobster.device.agent.sync.server.ServerRecord;
 
+import org.openmobster.core.common.Utilities;
 import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
 
 /**
@@ -37,8 +38,21 @@ public class TestTwoWaySync extends AbstractSync
 		this.assertDevicePresence(this.newDeviceRecordId);
 		
 		//TODO: Assert the State of the Server Sync Engine
+		ServerRecord record = this.serverController.readServerRecord(this.newServerRecordId);
+		String attachment = new String(record.getAttachment());
+		System.out.println("************Attachment******************");
+		System.out.println(attachment);
+		System.out.println("****************************************");
 		
 		//TODO: Assert the State of teh Device Sync Engine
+		MobileObject mobileObject = this.deviceDatabase.read(this.service, this.newServerRecordId);
+		String attachment2 = mobileObject.getValue("attachment");
+		attachment2 = new String(Utilities.decodeBinaryData(attachment2));
+		System.out.println("************Attachment******************");
+		System.out.println(attachment2);
+		System.out.println("****************************************");
+		
+		assertEquals(attachment,attachment2);
 	}
 	
 	public void testReplace() throws Exception

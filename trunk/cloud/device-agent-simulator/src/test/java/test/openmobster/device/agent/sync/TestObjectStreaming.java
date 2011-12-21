@@ -40,13 +40,13 @@ public class TestObjectStreaming extends AbstractSync
 		MobileObject deviceRecord = this.getDeviceRecord(this.newServerRecordId);
 		assertNotNull("Device Record to be Streamed must be present!!!", deviceRecord);
 		
-		Object attachment = deviceRecord.getValue("attachment");
-		assertNull("Attachment should not be present before streaming!!", attachment);
+		//Object attachment = deviceRecord.getValue("attachment");
+		//assertNull("Attachment should not be present before streaming!!", attachment);
 		
 		this.performStreamSync(this.newServerRecordId);
 		
 		deviceRecord = this.getDeviceRecord(this.newServerRecordId);
-		attachment = deviceRecord.getValue("attachment");
+		Object attachment = deviceRecord.getValue("attachment");
 		assertNotNull("Attachment should *now* be present after streaming!!", attachment);
 	}	
 }

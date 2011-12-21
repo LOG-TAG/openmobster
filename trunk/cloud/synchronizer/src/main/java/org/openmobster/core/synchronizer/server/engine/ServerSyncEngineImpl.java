@@ -875,10 +875,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	{
 		AbstractOperation commandInfo = null;
 		
-		if(record instanceof MobileBeanStreamable)
+		/*if(record instanceof MobileBeanStreamable)
 		{
 			record = ((MobileBeanStreamable)record).getPartial();
-		}
+		}*/
 		
 		boolean isAdd = false;
 		if (operation.equals(ServerSyncEngine.OPERATION_ADD))
@@ -921,10 +921,10 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 	{
 		AbstractOperation commandInfo = null;
 		
-		if(record instanceof MobileBeanStreamable)
+		/*if(record instanceof MobileBeanStreamable)
 		{
 			record = ((MobileBeanStreamable)record).getFull();
-		}
+		}*/
 		
 		boolean isAdd = false;
 		if (operation.equals(ServerSyncEngine.OPERATION_ADD))
