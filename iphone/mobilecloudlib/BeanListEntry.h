@@ -43,6 +43,21 @@
 -(void)setProperty:(NSString *)propertyExpression :(NSString *)value;
 
 /**
+ * Reads a binary property value on this object using a property expression
+ * 
+ * @return the value of the specified property
+ */
+-(NSData *) getBinaryProperty:(NSString *)propertyExpression;
+
+/**
+ * Set the binary property value on this object using a property expression
+ * 
+ * @param propertyExpression expression to signify the property to be set
+ * @param value value to be set
+ */
+-(void)setBinaryProperty:(NSString *)propertyExpression :(NSData *)value;
+
+/**
  * If this object carries a single property, read it using getValue
  * 
  * @return the value of this object

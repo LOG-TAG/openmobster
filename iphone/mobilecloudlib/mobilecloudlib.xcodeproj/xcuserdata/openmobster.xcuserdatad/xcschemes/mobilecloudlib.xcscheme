@@ -75,6 +75,20 @@
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2DF3E2A1225C377004C908F"
+               BuildableName = "commonTests.octest"
+               BlueprintName = "commonTests"
+               ReferencedContainer = "container:mobilecloudlib.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

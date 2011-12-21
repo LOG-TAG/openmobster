@@ -170,6 +170,8 @@
 		A2A997D1147D3F0600DE13E9 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A997CF147D3F0500DE13E9 /* LocationService.m */; };
 		A2A997D4147D47DA00DE13E9 /* TestLocationService.h in Headers */ = {isa = PBXBuildFile; fileRef = A2A997D2147D47DA00DE13E9 /* TestLocationService.h */; };
 		A2A997D5147D47DA00DE13E9 /* TestLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A997D3147D47DA00DE13E9 /* TestLocationService.m */; };
+		A2A9982714A0FA7800DE13E9 /* QSStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = A2A9982514A0FA7800DE13E9 /* QSStrings.h */; };
+		A2A9982814A0FA7800DE13E9 /* QSStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A9982614A0FA7800DE13E9 /* QSStrings.m */; };
 		A2BF168C1263728600691535 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
 		A2BF185512833D0E00691535 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
 		A2BF187E1283430800691535 /* CFNetworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BF187D1283430800691535 /* CFNetworkTests.m */; };
@@ -536,6 +538,8 @@
 		A2A997CF147D3F0500DE13E9 /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		A2A997D2147D47DA00DE13E9 /* TestLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLocationService.h; sourceTree = "<group>"; };
 		A2A997D3147D47DA00DE13E9 /* TestLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLocationService.m; sourceTree = "<group>"; };
+		A2A9982514A0FA7800DE13E9 /* QSStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSStrings.h; sourceTree = "<group>"; };
+		A2A9982614A0FA7800DE13E9 /* QSStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSStrings.m; sourceTree = "<group>"; };
 		A2BF184D12833C8F00691535 /* connectionTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = connectionTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BF184E12833C8F00691535 /* connectionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "connectionTests-Info.plist"; sourceTree = "<group>"; };
 		A2BF187C1283430800691535 /* CFNetworkTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFNetworkTests.h; sourceTree = "<group>"; };
@@ -790,6 +794,7 @@
 		0867D691FE84028FC02AAC07 /* mobilecloudlib */ = {
 			isa = PBXGroup;
 			children = (
+				A2A9982414A0FA2E00DE13E9 /* base64 */,
 				A2A9978F1476A4E500DE13E9 /* json */,
 				A20AE40D13F83B02006FF636 /* CoreGraphics.framework */,
 				D2AAC07E0554694100DB518D /* libmobilecloudlib.a */,
@@ -1129,6 +1134,15 @@
 				A2A997CF147D3F0500DE13E9 /* LocationService.m */,
 			);
 			name = location;
+			sourceTree = "<group>";
+		};
+		A2A9982414A0FA2E00DE13E9 /* base64 */ = {
+			isa = PBXGroup;
+			children = (
+				A2A9982514A0FA7800DE13E9 /* QSStrings.h */,
+				A2A9982614A0FA7800DE13E9 /* QSStrings.m */,
+			);
+			name = base64;
 			sourceTree = "<group>";
 		};
 		A2BF184712833C1F00691535 /* connectionTests */ = {
@@ -1625,6 +1639,7 @@
 				A2A997C31479611400DE13E9 /* PayloadHandler.h in Headers */,
 				A2A997D0147D3F0600DE13E9 /* LocationService.h in Headers */,
 				A2A997D4147D47DA00DE13E9 /* TestLocationService.h in Headers */,
+				A2A9982714A0FA7800DE13E9 /* QSStrings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2130,6 +2145,7 @@
 				A2A997C41479611400DE13E9 /* PayloadHandler.m in Sources */,
 				A2A997D1147D3F0600DE13E9 /* LocationService.m in Sources */,
 				A2A997D5147D47DA00DE13E9 /* TestLocationService.m in Sources */,
+				A2A9982814A0FA7800DE13E9 /* QSStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

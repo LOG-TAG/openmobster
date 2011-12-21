@@ -119,7 +119,19 @@
 		MobileBean *oldInstance = [MobileBean readById:channel :[local getId]];
 		
 		[local setValue:@"from" :@"From://Updated"];
+        
+        //Update the attachment
+        NSString *newAttachment = @"blah";
+        NSData *newAttachmentBin = [newAttachment dataUsingEncoding:NSUTF8StringEncoding];
+        [local setBinaryValue:@"attachment" :newAttachmentBin];
+        
 		[local save];
+        
+        NSData *attachmentData = [local getBinaryValue:@"attachment"];
+        NSString *attachment = [NSString stringWithUTF8String:[attachmentData bytes]];
+        NSLog(@"Updated Attachment: %@",attachment);
+        
+        [self assertTrue:[attachment isEqualToString:@"blah"] :@"/TestCRUD/atttachment/update/failed"];
 		
 		NSString *oldFrom = [oldInstance getValue:@"from"];
 		NSString *newFrom = [local getValue:@"from"];
