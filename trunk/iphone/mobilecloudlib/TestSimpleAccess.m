@@ -38,7 +38,7 @@
 	{
 		NSString *beanChannel = [bean getChannel];
 		NSString *oid = [bean getId];
-	
+        NSData *attachmentData = [bean getBinaryValue:@"attachment"];
 	
 		NSLog(@"****************************************************");
 		NSLog(@"Channel: %@",beanChannel);
@@ -47,6 +47,10 @@
 		NSLog(@"To: %@",[bean getValue:@"to"]);
 		NSLog(@"Subject: %@",[bean getValue:@"subject"]);
 		NSLog(@"Message: %@",[bean getValue:@"message"]);
+        if(attachmentData != nil)
+        {
+            NSLog(@"Attachment: %@",[NSString stringWithUTF8String:[attachmentData bytes]]);
+        }
 		NSLog(@"****************************************************");
 	}
 	

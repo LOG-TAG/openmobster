@@ -7,6 +7,8 @@
  */
 
 #import "BeanListEntry.h"
+#import "StringUtil.h"
+#import "QSStrings.h"
 
 
 /**
@@ -52,6 +54,29 @@
 {
 	NSString *propertyUri = [self calculatePropertyUri:propertyExpression];
 	[properties setValue:value forKey:propertyUri];
+}
+
+-(NSData *) getBinaryProperty:(NSString *)propertyExpression
+{
+    NSString *propertyUri = [self calculatePropertyUri:propertyExpression];
+	NSString *value = (NSString *)[properties valueForKey:propertyUri];
+	
+    if(![StringUtil isEmpty:value])
+    {
+        NSData *binary = [QSStrings decodeBase64WithString:value];
+        return binary;
+    }
+    
+	return nil; 
+}
+
+-(void)setBinaryProperty:(NSString *)propertyExpression :(NSData *)value
+{
+    NSString *propertyUri = [self calculatePropertyUri:propertyExpression];
+    
+    NSString *encodedValue = [QSStrings encodeBase64WithData:value];
+    
+	[properties setValue:encodedValue forKey:propertyUri];
 }
 
 -(NSString *)getValue

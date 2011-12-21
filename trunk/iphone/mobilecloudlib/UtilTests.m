@@ -6,6 +6,7 @@
 #import "XMLUtil.h"
 #import "Kernel.h"
 #import "Bus.h"
+#import "QSStrings.h"
 
 @implementation UtilTests
 
@@ -272,5 +273,23 @@
 	
 	
 	[kernel shutdown];
+}
+
+-(void) testBase64
+{
+    NSLog(@"Running testBase64......");
+    
+    NSString *encodeMe = @"blahblahblahblahblah";
+    NSData *encodeData = [encodeMe dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *encoded = [QSStrings encodeBase64WithData:encodeData];
+    
+    NSLog(@"%@",encoded);
+    
+    NSData *decoded = [QSStrings decodeBase64WithString:encoded];
+    
+    NSString* decodedStr = [NSString stringWithUTF8String:[decoded bytes]];
+    
+    NSLog(@"%@",decodedStr);
 }
 @end

@@ -5,6 +5,7 @@
 #import "Anchor.h"
 #import "ChangeLogEntry.h"
 #import "SyncError.h"
+#import "QSStrings.h"
 
 
 @implementation StorageTests

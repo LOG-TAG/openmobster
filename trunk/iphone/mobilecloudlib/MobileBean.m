@@ -13,6 +13,7 @@
 #import "LogicChain.h"
 #import "LogicExpression.h"
 #import "CommitException.h"
+#import "QSStrings.h"
 
 
 /**
@@ -249,6 +250,54 @@
 	[data setValue:fieldUri value:value];
 	isDirty = YES;
 }
+
+-(NSData *)getBinaryValue:(NSString *)fieldUri
+{
+    if(![self isInitialized])
+	{
+		NSMutableArray *params = [NSMutableArray arrayWithObjects:@"MobileBean is uninitialized",nil];
+		SystemException *ex = [SystemException withContext:@"MobileBean" method:@"getValue" parameters:params];
+		@throw ex;
+	}
+	
+	if(data.proxy)
+	{
+		NSMutableArray *params = [NSMutableArray arrayWithObjects:@"MobileBean is in proxy state",nil];
+		SystemException *ex = [SystemException withContext:@"MobileBean" method:@"getValue" parameters:params];
+		@throw ex;
+	}
+    
+    NSString *encodedValue = [self getValue:fieldUri];
+    
+    if(![StringUtil isEmpty:encodedValue])
+    {
+        NSData *binaryValue = [QSStrings decodeBase64WithString:encodedValue];
+        return binaryValue;
+    }
+    
+    return nil;
+}
+
+-(void)setBinaryValue:(NSString *)fieldUri :(NSData *)value
+{
+    if(![self isInitialized])
+	{
+		NSMutableArray *params = [NSMutableArray arrayWithObjects:@"MobileBean is uninitialized",nil];
+		SystemException *ex = [SystemException withContext:@"MobileBean" method:@"getValue" parameters:params];
+		@throw ex;
+	}
+	
+	if(data.proxy)
+	{
+		NSMutableArray *params = [NSMutableArray arrayWithObjects:@"MobileBean is in proxy state",nil];
+		SystemException *ex = [SystemException withContext:@"MobileBean" method:@"getValue" parameters:params];
+		@throw ex;
+	}
+    
+    NSString *encodedValue = [QSStrings encodeBase64WithData:value];
+    [self setValue:fieldUri :encodedValue];
+}
+
 
 -(BeanList *)readList:(NSString *)listProperty
 {

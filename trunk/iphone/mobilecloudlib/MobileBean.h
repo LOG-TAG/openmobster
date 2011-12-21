@@ -139,6 +139,22 @@
 -(void)setValue:(NSString *)fieldUri :(NSString *)value;
 
 /**
+ * Gets the Binary Value of a Field of the bean
+ * 
+ * @param fieldUri expression identifying the field on the bean
+ * @return the Value value of the field on the bean
+ */
+-(NSData *)getBinaryValue:(NSString *)fieldUri;
+
+/**
+ * Sets the Binary Value of a Field of the bean
+ * 
+ * @param fieldUri expression identifying the field on the bean
+ * @param value value to be set
+ */
+-(void)setBinaryValue:(NSString *)fieldUri :(NSData *)value;
+
+/**
  * Reads a List of Beans under the Mobile Bean "parent" Object
  * 
  * @param listProperty expression to specify the List
