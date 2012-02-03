@@ -17,23 +17,23 @@
     <servlet-class>org.openmobster.core.cloud.console.server.AccountServiceStubImpl</servlet-class>
   </servlet>
   -->
-   
+    
   <servlet>
     <servlet-name>DeviceServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.DeviceServiceImpl</servlet-class>
   </servlet>
-  <!--          
+  <!--           
   <servlet>
     <servlet-name>DeviceServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.DeviceServiceStubImpl</servlet-class>
   </servlet>
   -->
-    
+      
   <servlet>
     <servlet-name>PushAppServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceImpl</servlet-class>
   </servlet>
-  <!--         
+  <!--           
   <servlet>
     <servlet-name>PushAppServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.PushAppServiceStubImpl</servlet-class>
@@ -48,6 +48,11 @@
   <servlet>
     <servlet-name>DownloadAPNCertificateServlet</servlet-name>
     <servlet-class>org.openmobster.core.cloud.console.server.DownloadAPNCertificateServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>DeviceManagementServlet</servlet-name>
+    <servlet-class>org.openmobster.core.cloud.console.server.DeviceManagementServiceImpl</servlet-class>
   </servlet>
   
   
@@ -79,6 +84,11 @@
   <servlet-mapping>
     <servlet-name>DownloadAPNCertificateServlet</servlet-name>
     <url-pattern>/app/apn/certificate/download</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DeviceManagementServlet</servlet-name>
+    <url-pattern>/app/deviceManagement</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

@@ -64,7 +64,7 @@ public class AccountDetailDialog implements Screen
 		
 		String icon = "openmobster/"+this.record.getAttribute("active")+".png";
 		
-		winModal.setWidth(400);
+		winModal.setWidth(425);
         winModal.setHeight(150);
         winModal.setTitle("Account");
         winModal.setShowMinimizeButton(false);
@@ -114,18 +114,6 @@ public class AccountDetailDialog implements Screen
 	        toggleActivate.addClickHandler(new ActivateClickHandler());
         }
         
-        /*Button deviceManagement = new Button();
-        deviceManagement.setTitle("Manage Device");
-        deviceManagement.addClickHandler(new ClickHandler() {
-
-            @Override
-            public void onClick(ClickEvent event) 
-            {
-                TabController.getInstance().openTab("/device/blah2@gmail.com",true,new ManageDeviceScreen("Device: blah2@gmail.com"));
-                FlowServiceRegistry.getTransitionService().closeActiveWindow();
-            }
-        });*/
-        
         //Re-assign button
         Button reassign = new Button();
         reassign.setTitle("Re-Assign");
@@ -144,7 +132,28 @@ public class AccountDetailDialog implements Screen
         
         toolbar.addMember(toggleActivate);
         toolbar.addMember(reassign);
-        //toolbar.addMember(deviceManagement);
+        
+        String platform = record.getAttribute("os");
+        boolean activateDeviceManagement = platform.toLowerCase().contains("android");
+        
+        if(activateDeviceManagement)
+        {
+        	final String accountName = record.getAttribute("account");
+	        Button deviceManagement = new Button();
+	        deviceManagement.setTitle("Manage Device");
+	        deviceManagement.addClickHandler(new ClickHandler() {
+	
+	            @Override
+	            public void onClick(ClickEvent event) 
+	            {
+	                TabController.getInstance().openTab("/device/"+accountName,true,
+	                new ManageDeviceScreen("Device: "+accountName,accountName));
+	                FlowServiceRegistry.getTransitionService().closeActiveWindow();
+	            }
+	        });
+	        toolbar.addMember(deviceManagement);
+        }
+        
         toolbar.addMember(close);
         
         
