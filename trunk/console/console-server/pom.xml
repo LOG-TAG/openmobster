@@ -26,6 +26,11 @@
 		<artifactId>api</artifactId>
 		<version>${openmobster.version}</version>				
 	</dependency>
+	<dependency>
+		<groupId>org.openmobster.core</groupId>
+		<artifactId>push-apn</artifactId>
+		<version>${openmobster.version}</version>				
+	</dependency>
 	
 	<!-- third party dependencies -->
 	<dependency>

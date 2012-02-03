@@ -9,15 +9,17 @@ package org.openmobster.core.console.server.device;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.openmobster.core.common.transaction.TransactionHelper;
 import org.openmobster.core.console.server.Server;
+import org.openmobster.core.push.notification.Notification;
+import org.openmobster.core.push.notification.Notifier;
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceAttribute;
 import org.openmobster.core.security.identity.Identity;
-import org.openmobster.cloud.api.push.PushService;
 
 
 /**
@@ -199,12 +201,44 @@ public final class ManageDevice
 	
 	public void lock(String identity)
 	{
-		System.out.println("******************************");
-		System.out.println("Locking the Device............");
-		System.out.println("******************************");
-		PushService push = PushService.getInstance();
-		String appId = "org.openmobster.core.mobileCloud";
-		push.push(identity, appId, "lock:device", "Lock Device", "Lock Device Details");
+		boolean startedHere = TransactionHelper.startTx();
+		try
+		{
+			if(identity == null || identity.trim().length() == 0)
+			{
+				throw new IllegalArgumentException("Identity is Required!!");
+			}
+			
+			//Detect the device that will receive the push
+			DeviceController deviceController = DeviceController.getInstance();
+			Set<Device> devices = deviceController.readByIdentity(identity);
+			if(devices == null || devices.isEmpty())
+			{
+				return;
+			}
+			
+			for(Device device:devices)
+			{	
+				//Prepare the Notification
+				Notification notification = Notification.createDeviceManagementNotification(device,"lock");
+				
+				//Send the notification
+				Notifier notifier = Notifier.getInstance();
+				notifier.process(notification);
+			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+		}
 	}
 	
 	public void wipe(String identity)
