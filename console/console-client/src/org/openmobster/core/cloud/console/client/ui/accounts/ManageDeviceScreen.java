@@ -7,9 +7,10 @@
  */
 package org.openmobster.core.cloud.console.client.ui.accounts;
 
+import org.openmobster.core.cloud.console.client.flow.FlowServiceRegistry;
+import org.openmobster.core.cloud.console.client.flow.TransitionService;
 import org.openmobster.core.cloud.console.client.ui.NavigationController;
 import org.openmobster.core.cloud.console.client.ui.Screen;
-import org.openmobster.core.cloud.console.client.ui.TabController;
 
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -30,10 +31,12 @@ import com.smartgwt.client.data.Record;
 public class ManageDeviceScreen implements Screen
 {
     private String title;
+    private String account;
     
-    public ManageDeviceScreen(String title)
+    public ManageDeviceScreen(String title,String account)
     {
         this.title = title;
+        this.account = account;
     }
     
 	public String title()
@@ -75,7 +78,7 @@ public class ManageDeviceScreen implements Screen
         
         tileGrid.setData(manageDevices);
         
-        tileGrid.addRecordClickHandler(new HomeScreenHandler());
+        tileGrid.addRecordClickHandler(new HomeScreenHandler(this.account));
         
         canvas.addMember(tileGrid);
 		
@@ -83,16 +86,35 @@ public class ManageDeviceScreen implements Screen
 	}
 	
 	private static TreeNode[] manageDevices = new TreeNode[]{
-		NavigationController.createNavigationNode("Remote Lock", "remoteLock", "remote_lock", "silk/layout_content.png", "thumbnails/featured_complete_app.gif", true),
-		NavigationController.createNavigationNode("Remote Wipe", "remoteWipe", "remote_wipe", "silk/layout_content.png", "thumbnails/featured_complete_app.gif", true)
+		NavigationController.createNavigationNode("Remote Lock", "remoteLock", "remote_lock", "openmobster/lock.png", "openmobster/lock.png", true),
+		NavigationController.createNavigationNode("Remote Wipe", "remoteWipe", "remote_wipe", "openmobster/Eraser.png", "openmobster/Eraser.png", true)
 	};
 	
 	private static class HomeScreenHandler implements RecordClickHandler
 	{
+		private String account;
+		
+		private HomeScreenHandler(String account)
+		{
+			this.account = account;
+		}
+		
 	    @Override
 	    public void onRecordClick(RecordClickEvent event) 
 	    {   
 	        Record record = event.getRecord();
+	        String id = record.getAttribute("id");
+	        
+	        if(id.equals("remoteWipe"))
+	        {
+	        	TransitionService transitionService = FlowServiceRegistry.getTransitionService();
+	        	transitionService.transitionActiveWindow(new ConfirmRemoteWipeDialog(account));
+	        }
+	        else
+	        {
+	        	TransitionService transitionService = FlowServiceRegistry.getTransitionService();
+	        	transitionService.transitionActiveWindow(new ConfirmRemoteLockDialog(account));
+	        }
 	    }
 	}
 }
