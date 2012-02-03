@@ -42,4 +42,6 @@ public interface Constants
 	public final String extras = "extras";
 	public final String push = "push";
 	public final String silent = "silent";
+	public final String action = "action";
+	public final String deviceManagement = "dm";
 }
