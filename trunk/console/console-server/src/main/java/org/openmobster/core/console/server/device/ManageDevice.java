@@ -243,8 +243,43 @@ public final class ManageDevice
 	
 	public void wipe(String identity)
 	{
-		System.out.println("******************************");
-		System.out.println("Wiping the Device");
-		System.out.println("******************************");
+		boolean startedHere = TransactionHelper.startTx();
+		try
+		{
+			if(identity == null || identity.trim().length() == 0)
+			{
+				throw new IllegalArgumentException("Identity is Required!!");
+			}
+			
+			//Detect the device that will receive the push
+			DeviceController deviceController = DeviceController.getInstance();
+			Set<Device> devices = deviceController.readByIdentity(identity);
+			if(devices == null || devices.isEmpty())
+			{
+				return;
+			}
+			
+			for(Device device:devices)
+			{	
+				//Prepare the Notification
+				Notification notification = Notification.createDeviceManagementNotification(device,"wipe");
+				
+				//Send the notification
+				Notifier notifier = Notifier.getInstance();
+				notifier.process(notification);
+			}
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+		}
 	}
 }
