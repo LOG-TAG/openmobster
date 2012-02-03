@@ -167,5 +167,35 @@ public class Notifier
 				}
 			}
 		}
+		else if(notification.getType() == NotificationType.DM)
+		{
+			log.debug("DeviceManagment Notification for "+notification.getMetaDataAsString(Constants.device));
+			
+			StringBuilder commandBuilder = new StringBuilder();
+			commandBuilder.append(Constants.command+"="+Constants.deviceManagement+Constants.separator);
+			commandBuilder.append(Constants.action+"="+notification.getMetaDataAsString(Constants.action));
+			
+			command = commandBuilder.toString()+Constants.endOfCommand;
+			deviceToNotify = notification.getMetaDataAsString(Constants.device);
+			
+			if(deviceToNotify != null && command != null)
+			{
+				Device device = this.deviceController.read(deviceToNotify);
+				String os = device.getOs();
+				
+				if(os != null)
+				{
+					BusMessage busMessage = new BusMessage();
+					busMessage.setBusUri(deviceToNotify);
+					busMessage.setSenderUri(Constants.deviceManagement);
+					busMessage.setAttribute(Constants.command, command);
+					busMessage.setAttribute(Constants.notification_type, Constants.deviceManagement);
+					busMessage.setAttribute(Constants.os, os);
+					busMessage.setAttribute(Constants.action, notification.getMetaDataAsString(Constants.action));
+					
+					Bus.sendMessage(busMessage);
+				}
+			}
+		}
 	}
 }

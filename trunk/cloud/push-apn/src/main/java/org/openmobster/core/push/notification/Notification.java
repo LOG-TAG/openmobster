@@ -121,4 +121,18 @@ public class Notification implements Serializable
 		
 		return notification;
 	}
+	
+	public static Notification createDeviceManagementNotification(Device device, String action)
+	{
+		if(action == null || action.trim().length()==0)
+		{
+			new IllegalArgumentException("Action cannot be null");
+		}
+		Notification notification = new Notification(NotificationType.DM);
+		
+		notification.setMetaData(Constants.device, device.getIdentifier());
+		notification.setMetaData(Constants.action,action);
+		
+		return notification;
+	}
 }
