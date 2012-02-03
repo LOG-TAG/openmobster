@@ -17,6 +17,7 @@ import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceAttribute;
 import org.openmobster.core.security.identity.Identity;
+import org.openmobster.cloud.api.push.PushService;
 
 
 /**
@@ -194,5 +195,22 @@ public final class ManageDevice
 			}
 			throw new ManageDeviceException(e);
 		}
+	}
+	
+	public void lock(String identity)
+	{
+		System.out.println("******************************");
+		System.out.println("Locking the Device............");
+		System.out.println("******************************");
+		PushService push = PushService.getInstance();
+		String appId = "org.openmobster.core.mobileCloud";
+		push.push(identity, appId, "lock:device", "Lock Device", "Lock Device Details");
+	}
+	
+	public void wipe(String identity)
+	{
+		System.out.println("******************************");
+		System.out.println("Wiping the Device");
+		System.out.println("******************************");
 	}
 }
