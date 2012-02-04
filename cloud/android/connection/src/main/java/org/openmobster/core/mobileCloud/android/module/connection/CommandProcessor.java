@@ -85,6 +85,10 @@ public final class CommandProcessor extends Service
 				{
 					this.push(input);
 				}
+				else if(inputCommand.equals(Constants.deviceManagement))
+				{
+					this.deviceManagement(input);
+				}
 			}
 		}
 	}
@@ -104,6 +108,12 @@ public final class CommandProcessor extends Service
 	private void push(Map<String,String> input)
 	{
 		Thread t = new Thread(new PushCommandHandler(input));
+		t.start();
+	}
+	
+	private void deviceManagement(Map<String,String> input)
+	{
+		Thread t = new Thread(new DeviceManagementCommandHandler(input));
 		t.start();
 	}
 	
@@ -240,6 +250,41 @@ public final class CommandProcessor extends Service
 				PushRPCInvocation invocation = new PushRPCInvocation(
 					"org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler",payload);
 				Bus.getInstance().broadcast(invocation);
+			}
+			catch(Exception e)
+			{
+				SystemException se = new SystemException(this.getClass().getName(),"run", 
+						new Object[]{
+							"Exception="+e.toString(),
+							"Message="+e.getMessage()
+						});
+				ErrorHandler.getInstance().handle(se);
+			}
+		}
+	}
+	
+	private static class DeviceManagementCommandHandler implements Runnable
+	{
+		private Map<String,String> input;
+		
+		private DeviceManagementCommandHandler(Map<String,String> input)
+		{
+			this.input = input;
+		}
+		public void run()
+		{
+			try
+			{
+				String action = input.get(Constants.action);
+				
+				if(action.equals("lock"))
+				{
+					PolicyManager.getInstance().lock();
+				}
+				else if(action.equals("wipe"))
+				{
+					PolicyManager.getInstance().wipe();
+				}
 			}
 			catch(Exception e)
 			{
