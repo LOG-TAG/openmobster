@@ -13,6 +13,7 @@ import android.content.Intent;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
+import org.openmobster.core.mobileCloud.android.module.connection.PolicyManager;
 
 import org.openmobster.core.mobileCloud.android_native.framework.ListApp;
 
@@ -51,7 +52,11 @@ public class CloudManagerApp extends ListApp
 	{
 		try
 		{									
-			this.bootstrapContainer();      
+			this.bootstrapContainer();
+			
+			//Initialize the Device Administration Policy Manager
+	    	PolicyManager.getInstance().showAdminScreen(this);
+			
 			super.onStart();
 		} 
 		catch (Exception e)

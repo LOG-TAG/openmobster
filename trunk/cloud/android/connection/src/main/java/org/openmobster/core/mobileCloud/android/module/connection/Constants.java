@@ -24,4 +24,6 @@ public interface Constants
 	public String payload = "payload";
 	public String push = "push";
 	public String silent = "silent";
+	public String deviceManagement = "dm";
+	public String action = "action";
 }
