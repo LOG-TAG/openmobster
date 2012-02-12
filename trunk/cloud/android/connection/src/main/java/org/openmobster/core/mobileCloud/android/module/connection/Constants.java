@@ -26,4 +26,13 @@ public interface Constants
 	public String silent = "silent";
 	public String deviceManagement = "dm";
 	public String action = "action";
+	public String d2d = "d2d";
+	public final String from = "from";
+	public final String to = "to";
+	public final String source_deviceid = "source_deviceid";
+	public final String destination_deviceid = "destination_deviceid";
+	public final String app_id = "app_id";
+	public final String timestamp = "timestamp";
+	public final String d2dMessage = "d2dMessage";
+	public final String message = "message";
 }

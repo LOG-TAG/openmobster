@@ -7,9 +7,12 @@
  */
 package org.openmobster.android.api.d2d;
 
+import org.openmobster.core.mobileCloud.android.module.connection.Constants;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 /**
  *
@@ -20,12 +23,28 @@ public final class D2DReceiver extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
-		D2DMessage message = (D2DMessage)intent.getSerializableExtra("message");
-		if(message == null)
+		Bundle input = intent.getBundleExtra(Constants.d2dMessage);
+		if(input == null)
 		{
 			//do nothing
 			return;
 		}
+		
+		String from = input.getString(Constants.from);
+		String to = input.getString(Constants.to);
+		String msg = input.getString(Constants.message);
+		String source_deviceid = input.getString(Constants.source_deviceid);
+		String destination_deviceid = input.getString(Constants.destination_deviceid);
+		String timestamp = input.getString(Constants.timestamp);
+		String app_id = input.getString(Constants.app_id);
+		
+		D2DMessage message = new D2DMessage();
+		message.setFrom(from);
+		message.setTo(to);
+		message.setMessage(msg);
+		message.setSenderDeviceId(source_deviceid);
+		message.setTimestamp(timestamp);
+		
 		
 		D2DSession session = D2DSession.getSession();
 		if(session.isActive())

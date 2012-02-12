@@ -48,6 +48,10 @@
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>api-cloudConnector</artifactId>				
 		</dependency>
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>d2d</artifactId>				
+		</dependency>
 		
 		<!-- test dependencies -->														
 		<dependency>
@@ -147,11 +151,11 @@
 			              		<include>**/RunServer.java</include>
 			            	</includes>
 			            	
-			            	<!-- toggle to activate debugger -->			            			            	            	              
-			            	<forkMode>none</forkMode>			            	
-			            	<!--			            				            	    			            				            								   	
+			            	<!-- toggle to activate debugger -->  			            			            	            	              
+			            	<forkMode>none</forkMode>
+			            	<!--  	            				            	    			            				            								   	
 			          		<debugForkedProcess>true</debugForkedProcess>
-			          		-->			          		          		          		            	            	          	    	          			          		          				          		
+			          		-->          		          		            	            	          	    	          			          		          				          		
 			          </configuration>
 			        </plugin> 			        
 			        <plugin>

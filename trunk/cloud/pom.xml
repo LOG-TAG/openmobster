@@ -37,6 +37,7 @@
 		<module>cloud-sdk</module>
 		<module>push-apn</module>
 		<module>location</module>
+		<module>d2d</module>
 		<module>android</module>
   </modules>
 
@@ -92,6 +93,7 @@
 				<module>cloud-sdk</module>
 				<module>push-apn</module>
 				<module>location</module>
+				<module>d2d</module>
 			</modules>
 		</profile>
 	</profiles>
@@ -440,6 +442,11 @@
 			<dependency>
 				<groupId>org.openmobster.core</groupId>
 				<artifactId>location</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openmobster.core</groupId>
+				<artifactId>d2d</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			

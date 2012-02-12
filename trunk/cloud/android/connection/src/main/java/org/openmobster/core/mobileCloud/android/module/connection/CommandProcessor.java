@@ -10,6 +10,7 @@ package org.openmobster.core.mobileCloud.android.module.connection;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.net.URLDecoder;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -24,6 +25,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 
 import android.content.Intent;
 import android.content.Context;
+import android.os.Bundle;
 
 /**
  * 
@@ -64,6 +66,15 @@ public final class CommandProcessor extends Service
 		{
 			for(String token:tokens)
 			{
+				try
+				{
+					token = URLDecoder.decode(token, "UTF-8");
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace(System.out);
+					return;
+				}
 				int index = token.indexOf('=');
 				String name = token.substring(0, index);
 				String value = token.substring(index+1);
@@ -88,6 +99,10 @@ public final class CommandProcessor extends Service
 				else if(inputCommand.equals(Constants.deviceManagement))
 				{
 					this.deviceManagement(input);
+				}
+				else if(inputCommand.equals(Constants.d2d))
+				{
+					this.d2d(input);
 				}
 			}
 		}
@@ -114,6 +129,12 @@ public final class CommandProcessor extends Service
 	private void deviceManagement(Map<String,String> input)
 	{
 		Thread t = new Thread(new DeviceManagementCommandHandler(input));
+		t.start();
+	}
+	
+	private void d2d(Map<String,String> input)
+	{
+		Thread t = new Thread(new D2DCommandHandler(input));
 		t.start();
 	}
 	
@@ -285,6 +306,55 @@ public final class CommandProcessor extends Service
 				{
 					PolicyManager.getInstance().wipe();
 				}
+			}
+			catch(Exception e)
+			{
+				SystemException se = new SystemException(this.getClass().getName(),"run", 
+						new Object[]{
+							"Exception="+e.toString(),
+							"Message="+e.getMessage()
+						});
+				ErrorHandler.getInstance().handle(se);
+			}
+		}
+	}
+	
+	private static class D2DCommandHandler implements Runnable
+	{
+		private Map<String,String> input;
+		
+		private D2DCommandHandler(Map<String,String> input)
+		{
+			this.input = input;
+		}
+		public void run()
+		{
+			try
+			{
+				String from = input.get(Constants.from);
+				String to = input.get(Constants.to);
+				String message = input.get(Constants.message);
+				String source_deviceid = input.get(Constants.source_deviceid);
+				String destination_deviceid = input.get(Constants.destination_deviceid);
+				String timestamp = input.get(Constants.timestamp);
+				String app_id = input.get(Constants.app_id);
+				
+				Bundle bundle = new Bundle();
+				bundle.putString(Constants.from, from);
+				bundle.putString(Constants.to, to);
+				bundle.putString(Constants.message, message);
+				bundle.putString(Constants.source_deviceid, source_deviceid);
+				bundle.putString(Constants.destination_deviceid, destination_deviceid);
+				bundle.putString(Constants.timestamp, timestamp);
+				bundle.putString(Constants.app_id, app_id);
+				
+				//create the broadcast intent
+				Intent intent = new Intent("d2d://"+app_id);
+				
+				intent.putExtra(Constants.d2dMessage, bundle);
+				
+				Context context = Registry.getActiveInstance().getContext();
+				context.sendBroadcast(intent);
 			}
 			catch(Exception e)
 			{
