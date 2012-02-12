@@ -135,4 +135,47 @@ public class Notification implements Serializable
 		
 		return notification;
 	}
+	
+	public static Notification createD2DNotification(Device device, Map<String,String> d2dMessage)
+	{
+		String from = d2dMessage.get(Constants.from);
+		String to = d2dMessage.get(Constants.to);
+		String message = d2dMessage.get(Constants.message);
+		String source_deviceid = d2dMessage.get(Constants.source_deviceid);
+		String timestamp = d2dMessage.get(Constants.timestamp);
+		String app_id = d2dMessage.get(Constants.app_id);
+		
+		//Validate
+		if(from == null || from.trim().length()==0)
+		{
+			throw new IllegalArgumentException("From is required");
+		}
+		if(to == null || to.trim().length()==0)
+		{
+			throw new IllegalArgumentException("To is required");
+		}
+		if(message == null || message.trim().length()==0)
+		{
+			throw new IllegalArgumentException("Message is required");
+		}
+		if(source_deviceid == null || source_deviceid.trim().length()==0)
+		{
+			throw new IllegalArgumentException("Source DeviceId is required");
+		}
+		if(timestamp == null || timestamp.trim().length()==0)
+		{
+			throw new IllegalArgumentException("Timestamp is required");
+		}
+		if(app_id == null || app_id.trim().length()==0)
+		{
+			throw new IllegalArgumentException("App Id is required");
+		}
+		
+		Notification notification = new Notification(NotificationType.D2D);
+		
+		notification.setMetaData(Constants.device, device.getIdentifier());
+		notification.setMetaData(Constants.d2dMessage, d2dMessage);
+		
+		return notification;
+	}
 }

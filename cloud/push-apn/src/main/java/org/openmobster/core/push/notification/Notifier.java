@@ -9,6 +9,7 @@
 package org.openmobster.core.push.notification;
 
 import java.util.Map;
+import java.net.URLEncoder;
 
 import org.apache.log4j.Logger;
 
@@ -74,15 +75,25 @@ public class Notifier
 			log.debug("Sync Notification for "+notification.getMetaDataAsString(Constants.device));
 			
 			StringBuilder commandBuilder = new StringBuilder();
-			commandBuilder.append(Constants.command+"="+Constants.sync+Constants.separator);
-			commandBuilder.append(Constants.service+"="+notification.getMetaDataAsString(Constants.service));
-			Boolean isSilent = (Boolean)notification.getMetaData(Constants.silent);
-			if(isSilent != null && isSilent)
-			{
-				commandBuilder.append(Constants.separator+Constants.silent+"=true");
-			}
 			
-			command = commandBuilder.toString()+Constants.endOfCommand;
+			try
+			{
+				commandBuilder.append(Constants.command+"="+Constants.sync+Constants.separator);
+				commandBuilder.append(Constants.service+"="+URLEncoder.encode(notification.getMetaDataAsString(Constants.service)
+						,"UTF-8"));
+				Boolean isSilent = (Boolean)notification.getMetaData(Constants.silent);
+				if(isSilent != null && isSilent)
+				{
+					commandBuilder.append(Constants.separator+Constants.silent+"=true");
+				}
+				
+				command = commandBuilder.toString()+Constants.endOfCommand;
+			}
+			catch(Exception e)
+			{
+				log.error(this, e);
+				throw new RuntimeException(e);
+			}
 			deviceToNotify = notification.getMetaDataAsString(Constants.device);
 			
 			if(deviceToNotify != null && command != null)
@@ -103,7 +114,8 @@ public class Notifier
 				}
 			}
 		}
-		else if(notification.getType() == NotificationType.RPC)
+		//Deprecated....Used to be an experimental feature
+		/*else if(notification.getType() == NotificationType.RPC)
 		{
 			log.debug("PushRPC Notification for "+notification.getMetaDataAsString(Constants.device));
 			
@@ -132,19 +144,30 @@ public class Notifier
 					Bus.sendMessage(busMessage);
 				}
 			}
-		}
+		}*/
 		else if(notification.getType() == NotificationType.PUSH)
 		{
 			log.debug("Push Notification for "+notification.getMetaDataAsString(Constants.device));
 			
 			StringBuilder commandBuilder = new StringBuilder();
-			commandBuilder.append(Constants.command+"="+Constants.push+Constants.separator);
-			commandBuilder.append(Constants.message+"="+notification.getMetaDataAsString(Constants.message));
-			Map<String,String> extras = (Map<String,String>)notification.getMetaData(Constants.extras);
-			String extrasStr = XMLUtilities.marshal(extras);
-			commandBuilder.append(Constants.separator+Constants.extras+"="+extrasStr);
 			
-			command = commandBuilder.toString()+Constants.endOfCommand;
+			try
+			{
+				commandBuilder.append(Constants.command+"="+Constants.push+Constants.separator);
+				commandBuilder.append(Constants.message+"="+URLEncoder.
+						encode(notification.getMetaDataAsString(Constants.message),"UTF-8"));
+				Map<String,String> extras = (Map<String,String>)notification.getMetaData(Constants.extras);
+				String extrasStr = XMLUtilities.marshal(extras);
+				commandBuilder.append(Constants.separator+Constants.extras+"="+URLEncoder.encode(extrasStr,"UTF-8"));
+				
+				command = commandBuilder.toString()+Constants.endOfCommand;
+			}
+			catch(Exception e)
+			{
+				log.error(this, e);
+				throw new RuntimeException(e);
+			}
+			
 			deviceToNotify = notification.getMetaDataAsString(Constants.device);
 			
 			if(deviceToNotify != null && command != null)
@@ -192,6 +215,62 @@ public class Notifier
 					busMessage.setAttribute(Constants.notification_type, Constants.deviceManagement);
 					busMessage.setAttribute(Constants.os, os);
 					busMessage.setAttribute(Constants.action, notification.getMetaDataAsString(Constants.action));
+					
+					Bus.sendMessage(busMessage);
+				}
+			}
+		}
+		else if(notification.getType() == NotificationType.D2D)
+		{
+			log.debug("D2D Notification for "+notification.getMetaDataAsString(Constants.device));
+			
+			Map<String,String> d2dMessage = (Map<String,String>)notification.getMetaData(Constants.d2dMessage);
+			String from = d2dMessage.get(Constants.from);
+			String to = d2dMessage.get(Constants.to);
+			String message = d2dMessage.get(Constants.message);
+			String source_deviceid = d2dMessage.get(Constants.source_deviceid);
+			String destination_deviceid = d2dMessage.get(Constants.destination_deviceid);
+			String timestamp = d2dMessage.get(Constants.timestamp);
+			String app_id = d2dMessage.get(Constants.app_id);
+			
+			StringBuilder commandBuilder = new StringBuilder();
+			try
+			{
+				commandBuilder.append(Constants.command+"="+Constants.d2d+Constants.separator);
+				commandBuilder.append(Constants.from+"="+URLEncoder.encode(from, "UTF-8")+Constants.separator);
+				commandBuilder.append(Constants.to+"="+URLEncoder.encode(to, "UTF-8")+Constants.separator);
+				commandBuilder.append(Constants.message+"="+URLEncoder.encode(message, "UTF-8")+Constants.separator);
+				commandBuilder.append(Constants.source_deviceid+"="+URLEncoder.encode(source_deviceid, "UTF-8")+Constants.separator);
+				if(destination_deviceid != null)
+				{
+					commandBuilder.append(Constants.destination_deviceid+"="+URLEncoder.encode(destination_deviceid, "UTF-8")+Constants.separator);
+				}
+				commandBuilder.append(Constants.timestamp+"="+URLEncoder.encode(timestamp, "UTF-8")+Constants.separator);
+				commandBuilder.append(Constants.app_id+"="+URLEncoder.encode(app_id, "UTF-8"));
+				
+				command = commandBuilder.toString()+Constants.endOfCommand;
+			}
+			catch(Exception e)
+			{
+				log.error(this, e);
+				throw new RuntimeException(e);
+			}
+			
+			deviceToNotify = notification.getMetaDataAsString(Constants.device);
+			
+			if(deviceToNotify != null && command != null)
+			{
+				Device device = this.deviceController.read(deviceToNotify);
+				String os = device.getOs();
+				
+				if(os != null)
+				{
+					BusMessage busMessage = new BusMessage();
+					busMessage.setBusUri(deviceToNotify);
+					busMessage.setSenderUri(Constants.d2d);
+					busMessage.setAttribute(Constants.command, command);
+					busMessage.setAttribute(Constants.notification_type, Constants.d2d);
+					busMessage.setAttribute(Constants.os, os);
 					
 					Bus.sendMessage(busMessage);
 				}

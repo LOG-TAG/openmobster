@@ -62,6 +62,7 @@
 									<fileset file="${settings.localRepository}/org/openmobster/core/console-server/${project.version}/console-server-${project.version}.jar" />
 									<fileset file="${settings.localRepository}/org/openmobster/core/push-apn/${project.version}/push-apn-${project.version}.jar" />
 									<fileset file="${settings.localRepository}/org/openmobster/core/location/${project.version}/location-${project.version}.jar" />
+									<fileset file="${settings.localRepository}/org/openmobster/core/d2d/${project.version}/d2d-${project.version}.jar" />
 																	
 					                <!-- Thirdparty Components -->	
 									<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
@@ -148,6 +149,7 @@
 									<fileset file="${settings.localRepository}/org/openmobster/core/console-server/${project.version}/console-server-${project.version}.jar" />
 									<fileset file="${settings.localRepository}/org/openmobster/core/push-apn/${project.version}/push-apn-${project.version}.jar" />
 									<fileset file="${settings.localRepository}/org/openmobster/core/location/${project.version}/location-${project.version}.jar" />
+									<fileset file="${settings.localRepository}/org/openmobster/core/d2d/${project.version}/d2d-${project.version}.jar" />
 																	
 					                <!-- Thirdparty Components -->	
 									<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
@@ -230,6 +232,7 @@
 												<fileset file="${settings.localRepository}/org/openmobster/core/console-server/${project.version}/console-server-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/push-apn/${project.version}/push-apn-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/location/${project.version}/location-${project.version}.jar" />
+												<fileset file="${settings.localRepository}/org/openmobster/core/d2d/${project.version}/d2d-${project.version}.jar" />
 																				
 								                <!-- Thirdparty Components -->	
 												<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
@@ -287,6 +290,7 @@
 												<fileset file="${settings.localRepository}/org/openmobster/core/console-server/${project.version}/console-server-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/push-apn/${project.version}/push-apn-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/location/${project.version}/location-${project.version}.jar" />
+												<fileset file="${settings.localRepository}/org/openmobster/core/d2d/${project.version}/d2d-${project.version}.jar" />
 																				
 								                <!-- Thirdparty Components -->	
 												<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
@@ -367,6 +371,7 @@
 												<fileset file="${settings.localRepository}/org/openmobster/core/console-server/${project.version}/console-server-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/push-apn/${project.version}/push-apn-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/location/${project.version}/location-${project.version}.jar" />
+												<fileset file="${settings.localRepository}/org/openmobster/core/d2d/${project.version}/d2d-${project.version}.jar" />
 																				
 								                <!-- Thirdparty Components -->	
 												<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
@@ -424,6 +429,7 @@
 												<fileset file="${settings.localRepository}/org/openmobster/core/console-server/${project.version}/console-server-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/push-apn/${project.version}/push-apn-${project.version}.jar" />
 												<fileset file="${settings.localRepository}/org/openmobster/core/location/${project.version}/location-${project.version}.jar" />
+												<fileset file="${settings.localRepository}/org/openmobster/core/d2d/${project.version}/d2d-${project.version}.jar" />
 																				
 								                <!-- Thirdparty Components -->	
 												<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
