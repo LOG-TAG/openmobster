@@ -37,9 +37,9 @@ public class TestSend extends TestCase
 	public void testSend() throws Exception
 	{
 		Request request = new Request("/d2d/send");		
-		request.setAttribute("from", "from@gmail.com");		
+		request.setAttribute("from", "from1@gmail.com");		
 		request.setAttribute("to", "blah2@gmail.com");
-		request.setAttribute("message", "Hello World");
+		request.setAttribute("message", "Hello World This Rocks!!!");
 		request.setAttribute("source_deviceid", "IMEI:8675309");
 		request.setAttribute("app_id", "com.chat.android.app");
 		
@@ -49,7 +49,7 @@ public class TestSend extends TestCase
 		log.info("Status Message: "+response.getStatusMsg());
 	}
 	
-	/*public void testPush() throws Exception
+	public void testPush() throws Exception
 	{
 		Request request = new Request("/test/unit/push");		
 		request.setAttribute("app-id", "com.chat.android.app");
@@ -58,5 +58,5 @@ public class TestSend extends TestCase
 		Response response = service.invoke(request);
 		
 		log.info("Status Message: "+response.getStatusMsg());
-	}*/
+	}
 }

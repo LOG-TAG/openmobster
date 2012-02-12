@@ -7,7 +7,15 @@
  */
 package org.openmobster.android.api.d2d;
 
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  *
@@ -89,5 +97,68 @@ public final class D2DMessage implements Serializable
 		buffer.append("</d2d-message>\n");
 		
 		return buffer.toString();
+	}
+	
+	public static D2DMessage parse(String xml)
+	{
+		try
+		{
+			D2DMessage message = new D2DMessage();
+			
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document root = builder.parse(new ByteArrayInputStream(xml.getBytes()));
+			
+			//message
+			NodeList local = root.getElementsByTagName("message");
+			if(local != null && local.getLength()>0)
+			{
+				Element element = (Element)local.item(0);
+				String value = element.getFirstChild().getNodeValue().trim();
+				message.message = value;
+			}
+			
+			//to
+			local = root.getElementsByTagName("to");
+			if(local != null && local.getLength()>0)
+			{
+				Element element = (Element)local.item(0);
+				String value = element.getFirstChild().getNodeValue().trim();
+				message.to = value;
+			}
+			
+			//from
+			local = root.getElementsByTagName("from");
+			if(local != null && local.getLength()>0)
+			{
+				Element element = (Element)local.item(0);
+				String value = element.getFirstChild().getNodeValue().trim();
+				message.from = value;
+			}
+			
+			//sender-device-id
+			local = root.getElementsByTagName("sender-device-id");
+			if(local != null && local.getLength()>0)
+			{
+				Element element = (Element)local.item(0);
+				String value = element.getFirstChild().getNodeValue().trim();
+				message.senderDeviceId = value;
+			}
+			
+			//timestamp
+			local = root.getElementsByTagName("timestamp");
+			if(local != null && local.getLength()>0)
+			{
+				Element element = (Element)local.item(0);
+				String value = element.getFirstChild().getNodeValue().trim();
+				message.timestamp = value;
+			}
+			
+			return message;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			return null;
+		}
 	}
 }

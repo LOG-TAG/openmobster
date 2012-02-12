@@ -7,6 +7,9 @@
  */
 package org.openmobster.core.mobileCloud.api.ui.framework.push;
 
+import java.util.UUID;
+import java.util.Random;
+
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
@@ -88,7 +91,8 @@ public class PushBroadcastReceiver extends BroadcastReceiver
 				notificationIntent.putExtra("detail", detail);
 			}
 			
-			PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+			Random random = new Random();
+			PendingIntent contentIntent = PendingIntent.getActivity(context,random.nextInt(), notificationIntent, 0);
 			notification.setLatestEventInfo(context, appName, contentText, contentIntent);
 			
 			//Notification Flags
