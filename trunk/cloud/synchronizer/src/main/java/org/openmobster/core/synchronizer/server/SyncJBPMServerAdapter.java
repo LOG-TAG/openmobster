@@ -153,6 +153,13 @@ public class SyncJBPMServerAdapter implements SyncServer
 			
 			String responsePayload = this.process(session);
 			response.setAttribute(SyncServer.PAYLOAD, responsePayload);
+			
+			//Check for tx-rollback
+			if(session.isRollback())
+			{
+				response.setAttribute("tx-rollback", Boolean.TRUE);
+				session.setRollback(false); //clear the tx flag
+			}
 									
 			return response;
 		}

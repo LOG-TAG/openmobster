@@ -348,6 +348,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			{
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
+				session.setRollback(true);
 				
 				if(e.toString().contains("optimistic_lock_error"))
 				{
@@ -397,6 +398,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			{
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
+				session.setRollback(true);
 				
 				if(e.toString().contains("optimistic_lock_error"))
 				{
@@ -442,6 +444,7 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 			{
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
+				session.setRollback(true);
 				
 				if(e.toString().contains("optimistic_lock_error"))
 				{
@@ -486,6 +489,8 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 				errorOccured = true;
 				ErrorHandler.getInstance().handle(e);
 				logger.error(this, e);
+				session.setRollback(true);
+				
 				status.add(this.getStatus(SyncServer.COMMAND_FAILURE, delete));
 				this.updateBulkErrorStatus(status);
 			}
