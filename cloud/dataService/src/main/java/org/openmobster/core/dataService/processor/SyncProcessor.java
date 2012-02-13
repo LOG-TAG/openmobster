@@ -10,6 +10,7 @@ package org.openmobster.core.dataService.processor;
 
 import org.apache.log4j.Logger;
 
+import org.apache.mina.common.IoSession;
 
 import org.openmobster.core.synchronizer.model.SyncAdapterRequest;
 import org.openmobster.core.synchronizer.model.SyncAdapterResponse;
@@ -89,6 +90,12 @@ public class SyncProcessor implements Processor
 			
 			log.debug("Sending------------------------------------------------------------------------");
 			log.debug(payload);
+			
+			if(serverResponse.getAttribute("tx-rollback") != null)
+			{
+				IoSession session = input.getSession();
+				session.setAttribute("tx-rollback", Boolean.TRUE);
+			}
 			
 			return payload;
 		}

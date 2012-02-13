@@ -94,6 +94,8 @@ public class Session implements Serializable
 	private Map recordMap = null;
 	private boolean mapExchangeInProgress = false;
 	
+	private boolean rollback = false;
+	
 	
 	/**
 	 * 
@@ -1032,5 +1034,15 @@ public class Session implements Serializable
 	public String getChannel()
 	{
 		return this.getDataSource(false);
+	}
+
+	public boolean isRollback()
+	{
+		return rollback;
+	}
+
+	public void setRollback(boolean rollback)
+	{
+		this.rollback = rollback;
 	}
 }

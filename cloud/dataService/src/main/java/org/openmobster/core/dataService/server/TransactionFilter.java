@@ -8,6 +8,8 @@
 
 package org.openmobster.core.dataService.server;
 
+import org.apache.log4j.Logger;
+
 import org.apache.mina.common.IoFilterAdapter;
 import org.apache.mina.common.IoSession;
 
@@ -17,7 +19,9 @@ import org.openmobster.core.common.transaction.TransactionHelper;
  * @author openmobster@gmail.com
  */
 public class TransactionFilter extends IoFilterAdapter
-{			
+{
+	private static Logger log = Logger.getLogger(TransactionFilter.class);
+	
 	public TransactionFilter()
 	{
 		
@@ -41,11 +45,16 @@ public class TransactionFilter extends IoFilterAdapter
 				else
 				{
 					TransactionHelper.rollbackTx();
+					session.removeAttribute("tx-rollback");
+					log.debug("********************************");
+					log.debug("Rolling back the tx............");
+					log.debug("********************************");
 				}
 			}
 		}
 		catch(Throwable t)
 		{
+			log.error(this, t);
 			try
 			{
 				if(isStartedHere)
