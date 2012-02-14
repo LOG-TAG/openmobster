@@ -146,6 +146,15 @@ public class MobileObjectSerializer
 							PropertyDescriptor metaData = PropertyUtils.getPropertyDescriptor(pojo, 
 							expression);
 							
+							if(metaData == null || metaData.getPropertyType() == null)
+							{
+								log.error("******************************");
+								log.error("MetaData Null For: "+expression);
+								log.error("Field Not Found on the MobileBean");
+								log.error("******************************");
+								continue;
+							}
+							
 							if(metaData.getPropertyType().isArray() && 
 							metaData.getPropertyType().getComponentType().isAssignableFrom(byte.class))
 							{
@@ -220,6 +229,15 @@ public class MobileObjectSerializer
 				{
 					String indexedPropertyName = token.substring(0, token.indexOf('['));
 					metaData = PropertyUtils.getPropertyDescriptor(courObj,indexedPropertyName);
+				}
+				
+				if(metaData == null)
+				{
+					log.error("******************************");
+					log.error("MetaData Null For: "+token);
+					log.error("Field Not Found on the MobileBean");
+					log.error("******************************");
+					continue;
 				}
 							
 				if(!st.hasMoreTokens())
