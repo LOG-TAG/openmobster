@@ -16,6 +16,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
+ * Receives a broadcast from the on device CloudManager when a new message is received from the Cloud.
+ * 
+ * If the D2DActivity is in the foreground, it invokes the activity via the callback mechanism.
+ * 
+ * If not, it sends a notification to the user using the Android Notification system
  *
  * @author openmobster@gmail.com
  */

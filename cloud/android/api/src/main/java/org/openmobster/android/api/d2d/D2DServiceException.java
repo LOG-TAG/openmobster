@@ -10,6 +10,7 @@ package org.openmobster.android.api.d2d;
 import org.openmobster.core.mobileCloud.android.errors.BaseException;
 
 /**
+ * Represents an exception that occurs during invocation of service on D2DService
  *
  * @author openmobster@gmail.com
  */

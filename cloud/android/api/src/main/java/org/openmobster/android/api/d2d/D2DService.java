@@ -21,6 +21,7 @@ import org.openmobster.android.api.rpc.MobileService;
 import android.content.Context;
 
 /**
+ * The Device-To-Device Push Service. This is used for sending the push message.
  *
  * @author openmobster@gmail.com
  */
@@ -41,6 +42,13 @@ public final class D2DService extends Service
 		return (D2DService)Registry.getActiveInstance().lookup(D2DService.class);
 	}
 	//----------------------------------------------------------------------------------------
+	/**
+	 * Send a message to the designated user
+	 * 
+	 * @param to The user that is supposed to receive this message
+	 * @param message
+	 * @throws D2DServiceException
+	 */
 	public void send(String to,String message) throws D2DServiceException
 	{
 		try
@@ -91,6 +99,12 @@ public final class D2DService extends Service
 		}
 	}
 	
+	/**
+	 * Get a list of activated users from the Cloud
+	 * 
+	 * @return
+	 * @throws D2DServiceException
+	 */
 	public List<String> userList() throws D2DServiceException
 	{
 		try
