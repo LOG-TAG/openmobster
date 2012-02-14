@@ -16,7 +16,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,6 +39,7 @@ public class MainActivity extends D2DActivity
 {
 	public static MainActivity mainActivity;
 	
+	//The user with whom a chat session must be started
 	private String to;
 	
 	public MainActivity()
@@ -47,11 +47,6 @@ public class MainActivity extends D2DActivity
 		
 	}
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-	}
 	
 	@Override
 	protected void onStart()
@@ -68,13 +63,23 @@ public class MainActivity extends D2DActivity
 		{
 			super.onResume();
 			
-			//See intent for message details
+			//See intent for message details...This is to read a D2DMessage sent via the Notification system
 			Intent intent = this.getIntent();
 			String details = intent.getStringExtra("detail");
 			
 			System.out.println("****************************");
 			System.out.println("Detail: "+details);
 			System.out.println("****************************");
+			
+			//Display the message if one is found
+			if(details != null)
+			{
+				D2DMessage msg = D2DMessage.parse(details);
+				if(msg != null)
+				{
+					this.callback(msg);
+				}
+			}
 			
 			//render the main screen
 			String layoutClass = this.getPackageName()+".R$layout";
@@ -93,13 +98,12 @@ public class MainActivity extends D2DActivity
 				{
 					try
 					{
-						final Activity activity = MainActivity.this;
-						
+						//Get the typed in message and clear the text box
 						String chat = message.getText().toString();
 						message.setText("");
 						
+						//Send a chat message if a user to whom to communicate with is found
 						D2DService service = D2DService.getInstance();
-						
 						if(MainActivity.this.to != null)
 						{
 							service.send(MainActivity.this.to, chat);
@@ -112,7 +116,7 @@ public class MainActivity extends D2DActivity
 				}
 			});
 			
-			//User button
+			//Users button. Displays a list of activated users on the system with whom a chat session can be established
 			final Button users = (Button)ViewHelper.findViewById(this, "users");
 			users.setOnClickListener(new OnClickListener(){
 				@Override
@@ -122,12 +126,14 @@ public class MainActivity extends D2DActivity
 					{
 						final Activity activity = MainActivity.this;
 						
+						//Get a list of activated users from the Cloud
 						List<String> users = D2DService.getInstance().userList();
 						if(users == null)
 						{
 							users = new ArrayList<String>();
 						}
 						
+						//Setup an Alert Dialog to show the user and here they can be selected to establish a chat session
 						UserSelectListener listener = new UserSelectListener(users);
 						
 						AlertDialog dialog = new AlertDialog.Builder(activity).
@@ -144,15 +150,6 @@ public class MainActivity extends D2DActivity
 				}
 			});
 			
-			if(details != null)
-			{
-				D2DMessage msg = D2DMessage.parse(details);
-				if(msg != null)
-				{
-					this.callback(msg);
-				}
-			}
-			
 			if(this.to != null)
 			{
 				TextView user = (TextView)ViewHelper.findViewById(this, "user");
@@ -168,6 +165,7 @@ public class MainActivity extends D2DActivity
 	
 	public void callback(D2DMessage message)
 	{
+		//Append a newly received message from the chat system
 		LinearLayout layout = (LinearLayout)ViewHelper.findViewById(MainActivity.this, "layout");
 		TextView chatView = new TextView(MainActivity.this);
 		chatView.setText(message.getMessage());
@@ -193,11 +191,14 @@ public class MainActivity extends D2DActivity
 		{
 			final Activity activity = MainActivity.this;
 			
+			//Select the user with whom communication will be done
 			String selectedUser = this.users.get(status);
 			
+			//Display this selected user
 			TextView user = (TextView)ViewHelper.findViewById(activity, "user");
 			user.setText(selectedUser);
 			
+			//Establish a chat session with this user
 			MainActivity.this.to = selectedUser;
 		}
 	}

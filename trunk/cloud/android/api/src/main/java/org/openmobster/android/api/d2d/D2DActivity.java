@@ -12,6 +12,8 @@ import org.openmobster.core.mobileCloud.d2d.D2DSession;
 import android.app.Activity;
 
 /**
+ * A Device-to-Device Activity class. It manages the Device-To-Device session of the App
+ * 
  *
  * @author openmobster@gmail.com
  */
@@ -31,5 +33,12 @@ public abstract class D2DActivity extends Activity
 		D2DSession.getSession().stop();
 	}
 	
+	/**
+	 * This message is invoked when a new message is received
+	 * Its the implementation's job to handle the GUI aspects of
+	 * this callback
+	 * 
+	 * @param message
+	 */
 	public abstract void callback(D2DMessage message);
 }

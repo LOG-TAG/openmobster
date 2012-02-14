@@ -18,6 +18,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
+ * This represents an incoming message
  *
  * @author openmobster@gmail.com
  */
@@ -84,6 +85,9 @@ public final class D2DMessage implements Serializable
 		this.timestamp = timestamp;
 	}
 	
+	/**
+	 * Produces an XML representation of the state of the message
+	 */
 	public String toString()
 	{
 		StringBuilder buffer = new StringBuilder();
@@ -99,6 +103,12 @@ public final class D2DMessage implements Serializable
 		return buffer.toString();
 	}
 	
+	/**
+	 * Parses the xml representation of the message into a message instance
+	 * 
+	 * @param xml
+	 * @return
+	 */
 	public static D2DMessage parse(String xml)
 	{
 		try
