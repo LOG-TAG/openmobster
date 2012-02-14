@@ -140,6 +140,8 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/locationapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/locationapp/app-android/src/main/java" />
 	
+	<classpathentry kind="src" path="dev-tools/sampleApps/chat/app-android/src/main/java" />
+	
 	<!-- Javascript bridge -->
 	<classpathentry kind="src" path="android/javascript-bridge/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/testapp/cloud/src/main/java"/>

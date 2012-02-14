@@ -28,6 +28,7 @@ import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
+import org.openmobster.android.api.d2d.D2DService;
 
 /**
  * Application Container. There is one instance of an Application Container deployed per Application. Application Container provides
@@ -97,6 +98,9 @@ public final class Moblet
 			
 			//Moblet App State management service			
 			services.add(new AppStateManager());
+			
+			//Device-To-Device Push service
+			services.add(new D2DService());
 										
 			Registry.getActiveInstance().start(services);
 			

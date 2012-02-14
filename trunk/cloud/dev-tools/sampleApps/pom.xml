@@ -20,6 +20,7 @@
 		<module>pushmail</module>
 		<module>i-cloud</module>
 		<module>locationapp</module>
+		<module>chat</module>
 	</modules>
 	
 	<build>
