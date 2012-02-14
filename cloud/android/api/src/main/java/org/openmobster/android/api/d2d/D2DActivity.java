@@ -7,6 +7,8 @@
  */
 package org.openmobster.android.api.d2d;
 
+import org.openmobster.core.mobileCloud.d2d.D2DSession;
+
 import android.app.Activity;
 
 /**

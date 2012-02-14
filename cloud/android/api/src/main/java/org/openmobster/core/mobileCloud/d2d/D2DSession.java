@@ -5,7 +5,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.android.api.d2d;
+package org.openmobster.core.mobileCloud.d2d;
+
+import org.openmobster.android.api.d2d.D2DActivity;
+import org.openmobster.android.api.d2d.D2DMessage;
 
 /**
  *
@@ -61,5 +64,10 @@ public final class D2DSession
 	public boolean isActive()
 	{
 		return this.activity != null;
+	}
+	
+	public D2DMessage getLatestMessage()
+	{
+		return this.latest;
 	}
 }
