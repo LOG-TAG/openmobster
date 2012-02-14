@@ -204,6 +204,8 @@ public class CloudService
 		{
 			ViewHelper.getOkModalWithCloseApp(this.currentActvity, "System Error", "CloudManager App is either not installed or not running")
 			.show();
+			
+			Looper.myLooper().quit();
 		}
 	}
 }
