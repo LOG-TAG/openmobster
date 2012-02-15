@@ -73,6 +73,6 @@ public void callback(D2DMessage message)
 </app-conf>
 }}}
 
-  * launch-activity-class: Is the Activity that must be launched when a Push notification is clicked
+  * *launch-activity-class:* Is the Activity that must be launched when a Push notification is clicked
 
-  * icon-name: Is the icon to display with the Push notification
+  * *icon-name:* Is the icon to display with the Push notification
