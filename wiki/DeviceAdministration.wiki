@@ -9,19 +9,19 @@ Starting with OpenMobster 2.2-M7, the Management Console comes integrated with *
 
   * Login to the Management Console
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen1.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen1.xml" width="775" height="491"/>
 
   * Display the list of Devices activated with the Cloud
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen2.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen2.xml" width="775" height="491"/>
 
   * Select the device to be managed
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen3.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen3.xml" width="775" height="491"/>
 
   * Click the *Manage Device* button
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen4.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen4.xml" width="775" height="491"/>
 
   * Click on *Remote Wipe* or *Remote Lock*
 
