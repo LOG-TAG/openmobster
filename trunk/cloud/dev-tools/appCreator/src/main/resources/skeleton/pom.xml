@@ -21,26 +21,6 @@
 				DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform
 			-->
 			<dependency>
-				<groupId>org.openmobster.core.mobileCloud.rimos
-				</groupId>
-				<artifactId>device-sdk</artifactId>
-				<version>${openmobster.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.openmobster.core.mobileCloud.rimos
-				</groupId>
-				<artifactId>device-sdk</artifactId>
-				<version>${openmobster.version}</version>
-				<classifier>full</classifier>
-			</dependency>
-			<dependency>
-				<groupId>org.openmobster.core.mobileCloud.rimos
-				</groupId>
-				<artifactId>mobileCloud</artifactId>
-				<version>${openmobster.version}</version>
-				<classifier>bin</classifier>
-			</dependency>
-			<dependency>
 				<groupId>org.openmobster.core</groupId>
 				<artifactId>cloud-sdk</artifactId>
 				<version>${openmobster.version}</version>
@@ -49,13 +29,6 @@
 				<groupId>org.openmobster.core.dev.tools
 				</groupId>
 				<artifactId>dev-cloudServer
-				</artifactId>
-				<version>${openmobster.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.openmobster.core.dev.tools
-				</groupId>
-				<artifactId>rimos-devcloud
 				</artifactId>
 				<version>${openmobster.version}</version>
 			</dependency>
