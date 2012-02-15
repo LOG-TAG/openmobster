@@ -38,6 +38,12 @@ A basic [BeginMobileBean tutorial] on how to use the MobileBean component to acc
 
 ----
 
+==== Developing Device-To-Device Push Apps ====
+
+A basic [D2DPushFramework tutorial] on how to develop Device-To-Device apps like chat and instant messaging
+
+----
+
 ==== Developing Location-Aware Apps ====
 
 A [LocationAwareApps tutorial] showing how to develop Location Aware Apps using the new Location Module
