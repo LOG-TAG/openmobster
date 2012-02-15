@@ -1,0 +1,6 @@
+#summary Device Administration
+
+==== Introduction =====
+
+Starting with OpenMobster 2.2-M7, the Management Console comes integrated with *Remote Wipe* and *Remote Locking* of Android devices.
+
