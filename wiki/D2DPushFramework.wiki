@@ -76,3 +76,7 @@ public void callback(D2DMessage message)
   * *launch-activity-class:* Is the Activity that must be launched when a Push notification is clicked
 
   * *icon-name:* Is the icon to display with the Push notification
+
+==== Step 3: Sample App ====
+
+The OpenMobster, 2.2-M7 binary distribution comes packaged with a sample application for the Device-To-Device Push Framework. It is a simple *Chat* app and its goal is to show how the framework should be used to build more complex app. The app is located under *AppCreator/sampleApps/chat*
