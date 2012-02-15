@@ -7,6 +7,7 @@
  */
 package org.openmobster.core.mobileCloud.api.ui.framework.push;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -137,7 +138,16 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 		Notification notification = new Notification(icon, appName, when);
 		
 		//Setup the intent for this notification
-		CharSequence contentText = ""+ beanMetaData.size()+" Updates";
+		String syncPushMessage = AppSystemConfig.getInstance().getSyncPushMessage();
+		CharSequence contentText = null;
+		if(syncPushMessage == null || syncPushMessage.trim().length()==0)
+		{
+			contentText = ""+ beanMetaData.size()+" Update(s)";
+		}
+		else
+		{
+			contentText = MessageFormat.format(syncPushMessage, beanMetaData.size());
+		}
 		
 		Intent notificationIntent = null;
 		if(activityClass != null)

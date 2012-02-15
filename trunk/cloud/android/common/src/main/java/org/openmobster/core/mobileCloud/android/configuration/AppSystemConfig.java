@@ -115,6 +115,17 @@ public final class AppSystemConfig
 				this.attrMgr.setAttribute("push-icon-name", pushIconName);
 			}
 			
+			/**
+			 * Parse the <sync-push-message>You have {0} ticket Updates</sync-push-message>
+			 */
+			NodeList syncPush = root.getElementsByTagName("sync-push-message");
+			if(syncPush != null && syncPush.getLength()>0)
+			{
+				Element syncPushElement = (Element)syncPush.item(0);
+				String syncPushMessage = syncPushElement.getFirstChild().getNodeValue().trim();
+				this.attrMgr.setAttribute("sync-push-message", syncPushMessage);
+			}
+			
 			this.isActive = true;
 		}
 		catch(Throwable e)
@@ -158,5 +169,10 @@ public final class AppSystemConfig
 	public String getPushIconName()
 	{
 		return (String)this.attrMgr.getAttribute("push-icon-name");
+	}
+	
+	public String getSyncPushMessage()
+	{
+		return (String)this.attrMgr.getAttribute("sync-push-message");
 	}
 }
