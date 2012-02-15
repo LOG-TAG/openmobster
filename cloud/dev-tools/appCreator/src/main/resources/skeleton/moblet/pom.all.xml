@@ -33,13 +33,6 @@
 	      <version>${project.version}</version>
 	      <classifier>bin</classifier>
 	    </dependency>
-	    
-		<dependency>
-	      <groupId><appCreator.rimos.app.groupId></groupId>
-	      <artifactId><appCreator.rimos.app.artifactId></artifactId>
-	      <version>${project.version}</version>
-	      <classifier>bin</classifier>
-	    </dependency>
 	</dependencies>
 	<profiles>
 		<profile>
