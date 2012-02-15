@@ -13,13 +13,15 @@ Starting with OpenMobster 2.2-M7, the Management Console comes integrated with *
 
   * Display the list of Devices activated with the Cloud
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/architecture-gadget.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen2.xml" width="927" height="491"/>
 
   * Select the device to be managed
 
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/architecture-gadget.xml" width="927" height="491"/>
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen3.xml" width="927" height="491"/>
 
-  * Click the *Device Management* button
+  * Click the *Manage Device* button
+
+<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen4.xml" width="927" height="491"/>
 
   * Click on *Remote Wipe* or *Remote Lock*
 
@@ -27,4 +29,4 @@ Starting with OpenMobster 2.2-M7, the Management Console comes integrated with *
 
 ==== CloudManager App ====
 
-On the device side a new CloudManager App needs to be installed. Once installed, launch the App. You should see a *Security* screen. Just click *Activate* button. Once the security manager is activated, you should be able to manage this device remotely from the *Management Console*
+On the device side a new *CloudManager App* needs to be installed. Once installed, launch the App. You should see a *Security* screen. Just click the *Activate* button. Once the security manager is activated, you should be able to manage this device remotely from the Management Console
