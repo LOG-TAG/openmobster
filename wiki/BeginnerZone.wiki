@@ -114,6 +114,10 @@ A [ManagementConsoleManual user manual] for the Management Console
 
 ----
 
+==== Remote Wipe and Remote Lock ====
+
+A [DeviceAdministration guide] to using the Remote Wipe and Remote Lock capabilities of the Management Console
+
 ==== iPhone Showcase ====
 
 This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
