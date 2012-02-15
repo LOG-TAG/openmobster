@@ -1,0 +1,39 @@
+#summary Device-to-Device Push Framework
+
+==== Introduction ====
+
+OpenMobster *2.2-M7*, introduces a new device to device push framework. Using this framework developers can write Apps which communicate with other devices in the cloud and vice versa. Some applications of this would be a Chat App or an Instant Messaging App.
+
+
+==== Step 1: Extend org.openmobster.android.api.d2d.D2DActivity ====
+
+  * Override the *onStart* method to start the CloudService
+
+{{{
+       @Override
+	protected void onStart()
+	{
+		super.onStart();
+		
+		CloudService.getInstance().start(this);
+	}
+}}}
+
+  * Implement the *callback* method to handle the GUI aspects of receiving an incoming push message
+
+{{{
+public void callback(D2DMessage message)
+	{
+		//Append a newly received message from the chat system
+		LinearLayout layout = (LinearLayout)ViewHelper.findViewById(MainActivity.this, "layout");
+		TextView chatView = new TextView(MainActivity.this);
+		chatView.setText(message.getMessage());
+		layout.addView(chatView);
+		
+		Toast.makeText(MainActivity.this, message.getMessage(), Toast.LENGTH_SHORT).show();
+		
+		TextView user = (TextView)ViewHelper.findViewById(this, "user");
+		user.setText(message.getFrom());
+		this.to = message.getFrom();
+	}
+}}}
