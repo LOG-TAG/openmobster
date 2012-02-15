@@ -9,4 +9,6 @@ Starting with OpenMobster 2.2-M7, the Management Console comes integrated with *
 
   * Login to the Management Console
 
-  * 
+  <wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/architecture-gadget.xml" width="927" height="491"/>
+
+  * Display the list of Devices activated with the Cloud
