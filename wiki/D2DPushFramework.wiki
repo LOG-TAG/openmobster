@@ -37,3 +37,42 @@ public void callback(D2DMessage message)
 		this.to = message.getFrom();
 	}
 }}}
+
+==== Step 2: Configuration ====
+
+  * In AndroidManifest.xml, register the *org.openmobster.android.api.d2d.D2DReceiver* broadcast receiver
+
+{{{
+<receiver android:name="org.openmobster.android.api.d2d.D2DReceiver">
+                <intent-filter>
+                    <!-- action should be d2d://{packagename} of the App -->
+                    <action android:name="d2d://com.chat.android.app" />
+                </intent-filter>
+         </receiver>
+}}}
+
+  * Also in AndroidManifest.xml, register the *org.openmobster.core.mobileCloud.api.ui.framework.push.PushBroadcastReceiver* to receive and notify arrival of Push messages
+{{{
+<receiver android:name="org.openmobster.core.mobileCloud.api.ui.framework.push.PushBroadcastReceiver">
+    		<intent-filter>
+                        <!-- Action should be the {packagename} of the App-->
+    			<action android:name="com.chat.android.app"/>
+    		</intent-filter>
+    	</receiver>
+}}}
+
+  * In openmobster-app.xml, configure the Push settings as follows:
+{{{
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>org.openmobster.app.MainActivity</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+</app-conf>
+}}}
+
+  * launch-activity-class: Is the Activity that must be launched when a Push notification is clicked
+
+  * icon-name: Is the icon to display with the Push notification
