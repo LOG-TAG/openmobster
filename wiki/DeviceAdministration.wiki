@@ -29,4 +29,4 @@ Starting with OpenMobster [http://code.google.com/p/openmobster/downloads/list 2
 
 ==== CloudManager App ====
 
-On the device side a new *CloudManager App* needs to be installed. Once installed, launch the App. You should see a *Security* screen. Just click the *Activate* button. Once the security manager is activated, you should be able to manage this device remotely from the Management Console
+On the device side a new *[http://code.google.com/p/openmobster/wiki/WhatNext CloudManager App]* needs to be installed. Once installed, launch the App. You should see a *Security* screen. Just click the *Activate* button. Once the security manager is activated, you should be able to manage this device remotely from the Management Console
