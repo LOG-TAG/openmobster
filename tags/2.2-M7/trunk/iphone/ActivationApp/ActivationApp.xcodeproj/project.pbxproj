@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* ActivationAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* ActivationAppAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* ActivationAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ActivationAppViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* ActivationAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ActivationAppViewController.m */; };
+		A21EC840131C2F790030ECCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC83F131C2F790030ECCE /* CFNetwork.framework */; };
+		A21EC842131C2F790030ECCE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC841131C2F790030ECCE /* CoreData.framework */; };
+		A21EC84D131C2FB10030ECCE /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21EC845131C2FB10030ECCE /* configuration.xcdatamodel */; };
+		A21EC84E131C2FB10030ECCE /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21EC846131C2FB10030ECCE /* sync.xcdatamodel */; };
+		A21EC84F131C2FB10030ECCE /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21EC847131C2FB10030ECCE /* mobileobject.xcdatamodel */; };
+		A21EC850131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC848131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib */; };
+		A21EC851131C2FB10030ECCE /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC849131C2FB10030ECCE /* CloudManagerApp.xib */; };
+		A21EC852131C2FB10030ECCE /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */; };
+		A262297E1341336E00B1BEB3 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A262297C1341336E00B1BEB3 /* SecurityConfig.xib */; };
+		A262297F1341336E00B1BEB3 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */; };
+		A2A99813148FF63C00DE13E9 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A99812148FF63C00DE13E9 /* libmobilecloudlib.a */; };
+		A2D3237313CB5C67005691F7 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3237213CB5C67005691F7 /* appicon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* ActivationAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationAppAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* ActivationAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationAppAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* ActivationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* ActivationAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivationAppViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* ActivationAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationAppViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* ActivationAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationAppViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* ActivationApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationApp_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* ActivationApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ActivationApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A21EC83F131C2F790030ECCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A21EC841131C2F790030ECCE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A21EC845131C2FB10030ECCE /* configuration.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = configuration.xcdatamodel; path = ../mobilecloudlib/configuration.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		A21EC846131C2FB10030ECCE /* sync.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = sync.xcdatamodel; path = ../mobilecloudlib/sync.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		A21EC847131C2FB10030ECCE /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = mobileobject.xcdatamodel; path = ../mobilecloudlib/mobileobject.xcdatamodel; sourceTree = SOURCE_ROOT; };
+		A21EC848131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = SOURCE_ROOT; };
+		A21EC849131C2FB10030ECCE /* CloudManagerApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CloudManagerApp.xib; path = ../mobilecloudlib/CloudManagerApp.xib; sourceTree = SOURCE_ROOT; };
+		A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = SOURCE_ROOT; };
+		A262297C1341336E00B1BEB3 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = SOURCE_ROOT; };
+		A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = SOURCE_ROOT; };
+		A2A99812148FF63C00DE13E9 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = "<group>"; };
+		A2D3237213CB5C67005691F7 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				A21EC840131C2F790030ECCE /* CFNetwork.framework in Frameworks */,
+				A21EC842131C2F790030ECCE /* CoreData.framework in Frameworks */,
+				A2A99813148FF63C00DE13E9 /* libmobilecloudlib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* ActivationAppAppDelegate.h */,
+				1D3623250D0F684500981E51 /* ActivationAppAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* ActivationAppViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* ActivationAppViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* ActivationApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* ActivationApp_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2D3237213CB5C67005691F7 /* appicon.png */,
+				A21EC845131C2FB10030ECCE /* configuration.xcdatamodel */,
+				A262297C1341336E00B1BEB3 /* SecurityConfig.xib */,
+				A262297D1341336E00B1BEB3 /* ModalActivateDevice.xib */,
+				A21EC846131C2FB10030ECCE /* sync.xcdatamodel */,
+				A21EC847131C2FB10030ECCE /* mobileobject.xcdatamodel */,
+				A21EC848131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib */,
+				A21EC849131C2FB10030ECCE /* CloudManagerApp.xib */,
+				A21EC84A131C2FB10030ECCE /* ActivityIndicatorView.xib */,
+				2899E5210DE3E06400AC0155 /* ActivationAppViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* ActivationApp-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2A99812148FF63C00DE13E9 /* libmobilecloudlib.a */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				A21EC83F131C2F790030ECCE /* CFNetwork.framework */,
+				A21EC841131C2F790030ECCE /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* ActivationApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ActivationApp" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ActivationApp;
+			productName = ActivationApp;
+			productReference = 1D6058910D05DD3D006BFB54 /* ActivationApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ActivationApp" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* ActivationApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* ActivationAppViewController.xib in Resources */,
+				A21EC850131C2FB10030ECCE /* ActivateDeviceCloudInfo.xib in Resources */,
+				A21EC851131C2FB10030ECCE /* CloudManagerApp.xib in Resources */,
+				A21EC852131C2FB10030ECCE /* ActivityIndicatorView.xib in Resources */,
+				A262297E1341336E00B1BEB3 /* SecurityConfig.xib in Resources */,
+				A262297F1341336E00B1BEB3 /* ModalActivateDevice.xib in Resources */,
+				A2D3237313CB5C67005691F7 /* appicon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* ActivationAppAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* ActivationAppViewController.m in Sources */,
+				A21EC84D131C2FB10030ECCE /* configuration.xcdatamodel in Sources */,
+				A21EC84E131C2FB10030ECCE /* sync.xcdatamodel in Sources */,
+				A21EC84F131C2FB10030ECCE /* mobileobject.xcdatamodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sohil Shah (XG8UY6SJTX)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ActivationApp_Prefix.pch;
+				INFOPLIST_FILE = "ActivationApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Release-iphoneos\"",
+				);
+				PRODUCT_NAME = ActivationApp;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D2FC9EF-9373-4A01-815C-7BFA08F7F7E3";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sohil Shah";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ActivationApp_Prefix.pch;
+				INFOPLIST_FILE = "ActivationApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../mobilecloudlib/build/Release-iphoneos\"",
+				);
+				PRODUCT_NAME = ActivationApp;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C38C1301-9A0D-44E9-B7A8-DE68D3B27087";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/**";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/**";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ActivationApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ActivationApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

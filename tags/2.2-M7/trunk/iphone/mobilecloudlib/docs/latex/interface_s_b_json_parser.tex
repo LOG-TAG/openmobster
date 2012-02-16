@@ -1,0 +1,89 @@
+\hypertarget{interface_s_b_json_parser}{
+\section{\-S\-B\-Json\-Parser \-Class \-Reference}
+\label{interface_s_b_json_parser}\index{\-S\-B\-Json\-Parser@{\-S\-B\-Json\-Parser}}
+}
+
+
+\-The \-J\-S\-O\-N parser class.  
+
+
+
+
+{\ttfamily \#include $<$\-S\-B\-Json\-Parser.\-h$>$}
+
+\-Inheritance diagram for \-S\-B\-Json\-Parser\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_s_b_json_parser}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_s_b_json_parser_a1ec40b986576044d58d30172b141c74c}{object\-With\-String\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$repr)
+\begin{DoxyCompactList}\small\item\em \-Return the object represented by the given string. \end{DoxyCompactList}\item 
+id \hyperlink{interface_s_b_json_parser_a7a7fff47f41a08fa0defc4f628846e15}{object\-With\-String\-:error\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$json\-Text,\mbox{[}error\mbox{]} \-N\-S\-Error $\ast$$\ast$error)
+\begin{DoxyCompactList}\small\item\em \-Return the object represented by the given string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-The \-J\-S\-O\-N parser class. 
+
+\-J\-S\-O\-N is mapped to \-Objective-\/\-C types in the following way\-:
+
+\begin{DoxyItemize}
+\item \-Null -\/$>$ \-N\-S\-Null \item \-String -\/$>$ \-N\-S\-Mutable\-String \item \-Array -\/$>$ \-N\-S\-Mutable\-Array \item \-Object -\/$>$ \-N\-S\-Mutable\-Dictionary \item \-Boolean -\/$>$ \-N\-S\-Number (initialised with -\/init\-With\-Bool\-:) \item \-Number -\/$>$ (\-N\-S\-Number $|$ \-N\-S\-Decimal\-Number)\end{DoxyItemize}
+\-Since \-Objective-\/\-C doesn't have a dedicated class for boolean values, these turns into \-N\-S\-Number instances. \-These are initialised with the -\/init\-With\-Bool\-: method, and round-\/trip back to \-J\-S\-O\-N properly. (\-They won't silently suddenly become 0 or 1; they'll be represented as 'true' and 'false' again.)
+
+\-As an optimisation short \-J\-S\-O\-N integers turn into \-N\-S\-Number instances, while complex ones turn into \-N\-S\-Decimal\-Number instances. \-We can thus avoid any loss of precision as \-J\-S\-O\-N allows ridiculously large numbers. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_s_b_json_parser_a1ec40b986576044d58d30172b141c74c}{
+\index{\-S\-B\-Json\-Parser@{\-S\-B\-Json\-Parser}!object\-With\-String\-:@{object\-With\-String\-:}}
+\index{object\-With\-String\-:@{object\-With\-String\-:}!SBJsonParser@{\-S\-B\-Json\-Parser}}
+\subsubsection[{object\-With\-String\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-S\-B\-Json\-Parser\-::object\-With\-String\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{repr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_parser_a1ec40b986576044d58d30172b141c74c}
+
+
+\-Return the object represented by the given string. 
+
+\-Returns the object represented by the passed-\/in string or nil on error. \-The returned object can be a string, number, boolean, null, array or dictionary.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em repr} & the json string to parse \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_s_b_json_parser_a7a7fff47f41a08fa0defc4f628846e15}{
+\index{\-S\-B\-Json\-Parser@{\-S\-B\-Json\-Parser}!object\-With\-String\-:error\-:@{object\-With\-String\-:error\-:}}
+\index{object\-With\-String\-:error\-:@{object\-With\-String\-:error\-:}!SBJsonParser@{\-S\-B\-Json\-Parser}}
+\subsubsection[{object\-With\-String\-:error\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-S\-B\-Json\-Parser\-::object\-With\-String\-:error\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String}$\ast$}]{json\-Text, }
+\item[{\mbox{[}error\mbox{]} \-N\-S\-Error$\ast$$\ast$}]{error}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_parser_a7a7fff47f41a08fa0defc4f628846e15}
+
+
+\-Return the object represented by the given string. 
+
+\-Returns the object represented by the passed-\/in string or nil on error. \-The returned object can be a string, number, boolean, null, array or dictionary.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em json\-Text} & the json string to parse \\
+\hline
+{\em error} & pointer to an \-N\-S\-Error object to populate on error \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-S\-B\-Json\-Parser.\-h\item 
+\-S\-B\-Json\-Parser.\-m\end{DoxyCompactItemize}
