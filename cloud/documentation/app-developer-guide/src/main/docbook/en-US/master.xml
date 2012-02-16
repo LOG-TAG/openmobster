@@ -22,6 +22,7 @@
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/offlineapp.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilebean.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/push.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/d2d.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/locationapp.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilerpc.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/managementConsole.xml"/>
