@@ -7,7 +7,7 @@ Starting with OpenMobster 2.2-M7, the Management Console comes integrated with *
 
 ==== Instructions ====
 
-  * Login to the Management Console
+  * Launch the Management Console located at: http://{your_openmobster_host}/console. Login to the Management Console
 
 <wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/dm-screen1.xml" width="775" height="491"/>
 
