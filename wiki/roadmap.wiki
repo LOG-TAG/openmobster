@@ -78,7 +78,13 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 
   * Integration with Appcelerator to develop cross platform Cloud Apps using html, css, and javascript
 
-  * Experiment with Location Based Programming
+  * Location Based Programming Framework
+
+  * Remote Wipe and Remote Lock from the Management Console
+
+  * A Device to Device Push Framework. Allows for two way communication between two mobile devices from your App.
+
+  * Integration with PhoneGap to build Hybrid Cloud Apps
 	
 ----
 
