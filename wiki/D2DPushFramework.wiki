@@ -82,3 +82,5 @@ public void callback(D2DMessage message)
 *[http://code.google.com/p/openmobster/downloads/detail?name=openmobster-2.2-M7.zip&can=2&q=#makechanges OpenMobster  2.2-M7]* binary distribution comes packaged with a sample application for the Device-To-Device Push Framework. It is a simple *Chat* app and its goal is to show how the framework should be used to build more complex app. The app is located under *AppCreator/sampleApps/chat*. Instructions for installing the Chat App and running the Cloud Server are found in the *README.txt* file of the sample.
 
 *Note*: You must install the CloudManager App and activate your device with the Cloud Server before the Chat App can work through the Push Notification Service. Instructions on installing the Cloud App are found in the *README.txt* file.
+
+For more help with how to install and use the *Chat Sample*, please take a look at the [GetStarted Get Started] wiki doc.
