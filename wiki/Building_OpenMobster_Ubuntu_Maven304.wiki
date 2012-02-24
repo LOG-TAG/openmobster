@@ -83,3 +83,42 @@
   nano openmobster-app.xml
   (change <encryption>false</encryption> to <encryption>true</encryption>
 }}}
+
+2) Small tweek to get rid of Maven3 "problems were encountered while building the effective model" warnings
+{{{
+  cd ~/openmobster-read-only/cloud/android
+  nano pom.xml
+  locate <artifactId>maven-compiler-plugin</artifactId>
+  on next line add <version>2.3.2</version>
+}}}
+
+3) OK, let's build the whole enchilada (grab a coffee)
+{{{
+  cd ~/openmobster-read-only/cloud
+  mvn -DskipTests -Pbuild-all install
+  (Build should be SUCCESSFUL)
+}}}
+
+4) Now build Android cloudManager
+{{{
+  cd ~/openmobster-read-only/cloud/android/cloudManager
+  mvn -Pandroid-release install
+  (Build should be SUCCESSFUL)
+}}}
+
+5) Rename the newly built encrypted Android package
+{{{
+  cd ~/openmobster-read-only/cloud/android/cloudManager/target
+  mv cloudManager-2.2-SNAPSHOT-zipped.apk cloudManager-2.2-SNAPSHOT-encryption-zipped.apk
+}}}
+
+6) Reset the encryption entry
+{{{
+  cd ~/openmobster-read-only/cloud/android/cloudManager/src/main/resources
+  nano openmobster-app.xml
+  (change <encryption>true</encryption> to <encryption>false</encryption>
+}}}
+
+At this point your environment is ready to build more stuff. On most occasions just: *mvn -DskipTests -Pbuild-all install* is enough to build everything. These additional steps are to build the binary release which gets shipped for downloading.
+
+1) 
