@@ -62,3 +62,15 @@
   Default locale: en_US, platform encoding: UTF-8
   OS name: "linux", version: "2.6.32-33-server", arch: "amd64", family: "unix"
 }}}  
+
+8) Create a working directory that matches all pom.xml entries in the distro (just easier than changing all the pom's)
+{{{
+  mkdir -p /Users/openmobster/projects/openmobster
+}}}
+
+9) Create a keystore for Android builds and code signing
+{{{
+  cd /Users/openmobster/projects/openmobster
+  keytool -genkey -v -keystore openmobster-release-key.keystore -alias openmobster -keyalg RSA -keysize 2048 -validity 10000
+  (fill out the locale entries and set both the storepass and keypass to: *password*)
+}}}
