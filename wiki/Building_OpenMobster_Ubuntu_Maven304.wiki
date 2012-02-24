@@ -28,14 +28,16 @@
   * tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
 
 5) Add the following lines to the bottom of ~/.bashrc This puts the new maven path ahead of the old maven path
-  * export M3_HOME="/usr/local/apache-maven-3.0.4"
-  * export MAVEN_HOME="/usr/local/apache-maven-3.0.4"
-  * export M3="/usr/local/apache-maven-3.0.4/bin"
-  * export ANDROID_HOME="/root/android-sdks"
-  * export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
-  * export GWT_HOME="/root/gwt-2.4.0"
-  * export PATH=/usr/local/apache-maven-3.0.4/bin:/root/android-sdks/platform-tools:$PATH
-  * unset M2_HOME
+{{{
+  export M3_HOME="/usr/local/apache-maven-3.0.4"
+  export MAVEN_HOME="/usr/local/apache-maven-3.0.4"
+  export M3="/usr/local/apache-maven-3.0.4/bin"
+  export ANDROID_HOME="/root/android-sdks"
+  export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
+  export GWT_HOME="/root/gwt-2.4.0"
+  export PATH=/usr/local/apache-maven-3.0.4/bin:/root/android-sdks/platform-tools:$PATH
+  unset M2_HOME
+}}}
 
 6) Source ~/.bashrc to enable the new environment settings
   * source ~/.bashrc
