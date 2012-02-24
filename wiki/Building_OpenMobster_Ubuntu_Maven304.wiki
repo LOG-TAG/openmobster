@@ -4,7 +4,7 @@
   * Have ant installed - *apt-get install ant*
   * Have openjdk6 installed - *apt-get install openjdk-6-jdk*
   * This document refers to OpenMobster release: *openmobster-2.2-M7*
-
+----
 
 == Details ==
 
