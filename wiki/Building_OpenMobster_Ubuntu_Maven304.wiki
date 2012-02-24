@@ -27,7 +27,7 @@
   * cd /usr/local
   * tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
 
-5) Add the following lines to the bottom of ~/.bashrc
+5) Add the following lines to the bottom of ~/.bashrc This puts the new maven path ahead of the old maven path
   * export M3_HOME="/usr/local/apache-maven-3.0.4"
   * export MAVEN_HOME="/usr/local/apache-maven-3.0.4"
   * export M3="/usr/local/apache-maven-3.0.4/bin"
