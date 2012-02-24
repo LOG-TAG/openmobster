@@ -1,3 +1,4 @@
+#labels BuildingOpenMobsteronUbuntuServer10.04LTSwMaven3.0.4
 == Introductory Notes ==
 
   * I'm doing everything as *root*
