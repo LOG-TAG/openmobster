@@ -1,6 +1,8 @@
 = Introduction =
 
-.
+  * I'm doing everything as root
+  * Have ant installed (stock ant that comes with Ubuntu 10.04 Server LTS)
+  * This document refers to OpenMobster release: openmobster-2.2-M7
 
 
 = Details =
