@@ -71,7 +71,10 @@
 	                        classpath:/xslt/org/jboss/seam/xhtml.xsl
 	                     </stylesheetResource>
 	                     <finalName>index.html</finalName>
-	                  </format>			
+	                  </format>	
+	                  <format>
+	                  	<formatName>pdf</formatName>
+	                  </format>		
 	                </formats>
 					<options>
 	                  <xincludeSupported>true</xincludeSupported>
