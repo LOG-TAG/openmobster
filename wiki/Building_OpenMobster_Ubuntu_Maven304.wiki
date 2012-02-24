@@ -11,7 +11,7 @@
   * svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
 
 2) Install Google Web Toolkit (GWT - I'm using 2.4.0)
-  * Download frm: http://code.google.com/webtoolkit/gettingstarted.html
+  * Download from: http://code.google.com/webtoolkit/gettingstarted.html
   * (Just unzip it and point to it with the GWT_HOME env variable outlined below)
 
 3) Install the Android SDK
@@ -41,6 +41,8 @@
   * source ~/.bashrc
 
 7) Check that maven was totally switched over (you should see something like the following)
- root@vworkz:~#  mvn -version
- Apache Maven 3.0.4 (r1232337; 2012-01-17 03:44:56-0500)
-  
+{{{
+  root@vworkz:~#  mvn -version
+  Apache Maven 3.0.4 (r1232337; 2012-01-17 03:44:56-0500)
+  Maven home: /usr/local/apache-maven-3.0.4
+}}}  
