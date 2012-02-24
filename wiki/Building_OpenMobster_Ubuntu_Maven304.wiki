@@ -8,7 +8,9 @@
 == Prepare Environment ==
 
 1) Checkout the OpenMobster source code to your favorite working directory
-  * svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
+{{{
+  svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
+}}}
 
 2) Install Google Web Toolkit (GWT - I'm using 2.4.0)
   * Download from: http://code.google.com/webtoolkit/gettingstarted.html
@@ -47,4 +49,8 @@
   root@vworkz:~#  mvn -version
   Apache Maven 3.0.4 (r1232337; 2012-01-17 03:44:56-0500)
   Maven home: /usr/local/apache-maven-3.0.4
+  Java version: 1.6.0_20, vendor: Sun Microsystems Inc.
+  Java home: /usr/lib/jvm/java-6-openjdk/jre
+  Default locale: en_US, platform encoding: UTF-8
+  OS name: "linux", version: "2.6.32-33-server", arch: "amd64", family: "unix"
 }}}  
