@@ -15,5 +15,9 @@
   * (Just unzip it and point to it with the GWT_HOME env variable outlined below)
 
 3) Install the Android SDK
-  cd ~
+  * cd ~
+  * wget http://dl.google.com/android/android-sdk_r16-linux.tgz
+  * tar xvf android-sdk_r16-linux.tgz
+  * cd android-sdks/tools
+  * ./android (I installed android-15, android-10 and android-12 SDKs)
   
