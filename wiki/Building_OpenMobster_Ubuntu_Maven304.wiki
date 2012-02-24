@@ -1,4 +1,4 @@
-= Introduction =
+= Introductory Notes =
 
   * I'm doing everything as root
   * Have ant installed (stock ant that comes with Ubuntu 10.04 Server LTS)
