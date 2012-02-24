@@ -1,0 +1,13 @@
+#Building OpenMobster on Ubuntu Server 10.04 LTS /w Maven 3.0.4.
+
+= Introduction =
+
+.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
