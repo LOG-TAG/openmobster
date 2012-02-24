@@ -13,21 +13,27 @@
 }}}
 
 2) Install Google Web Toolkit (GWT - I'm using 2.4.0)
-  * Download from: http://code.google.com/webtoolkit/gettingstarted.html
-  * (Just unzip it and point to it with the GWT_HOME env variable outlined below)
+{{{
+  Download from: http://code.google.com/webtoolkit/gettingstarted.html
+  (Just unzip it and point to it with the GWT_HOME env variable outlined below)
+}}}
 
 3) Install the Android SDK
-  * cd ~
-  * wget http://dl.google.com/android/android-sdk_r16-linux.tgz
-  * tar xvf android-sdk_r16-linux.tgz
-  * cd android-sdks/tools
-  * ./android (I installed android-15, android-10 and android-12 SDKs)
+{{{
+  cd ~
+  wget http://dl.google.com/android/android-sdk_r16-linux.tgz
+  tar xvf android-sdk_r16-linux.tgz
+  cd android-sdks/tools
+  ./android (I installed android-15, android-10 and android-12 SDKs)
+}}}
 
 4) Update your Maven distribution on Ubuntu 10.04 LTS Server
+{{{
   * cd /tmp
   * wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/binaries/apache-maven-3.0.4-bin.tar.gz
   * cd /usr/local
   * tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
+}}}
 
 5) Add the following lines to the bottom of ~/.bashrc This puts the new maven path ahead of the old maven path
 {{{
@@ -42,7 +48,9 @@
 }}}
 
 6) Source ~/.bashrc to enable the new environment settings
-  * source ~/.bashrc
+{{{
+  source ~/.bashrc
+}}}
 
 7) Check that maven was totally switched over (you should see something like the following)
 {{{
