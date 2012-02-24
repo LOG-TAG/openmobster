@@ -20,4 +20,9 @@
   * tar xvf android-sdk_r16-linux.tgz
   * cd android-sdks/tools
   * ./android (I installed android-15, android-10 and android-12 SDKs)
-  
+
+4) Update your Maven distribution on Ubuntu 10.04 LTS Server
+  * cd /tmp
+  * wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/binaries/apache-maven-3.0.4-bin.tar.gz
+  * cd /usr/local
+  * tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
