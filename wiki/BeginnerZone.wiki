@@ -15,6 +15,12 @@ So you downloaded the software, [WhatNext What Next?]. This gives detailed instr
 
 ----
 
+==== Build From Source ====
+
+A step-by-step procedure detailing how to [Building_OpenMobster_Ubuntu_Maven304 build] OpenMobster from source code.
+
+----
+
 ==== Development Setup ====
 
 A [DevSetup tutorial] for setting up the development enviroment to start developing OpenMobster based apps
@@ -117,6 +123,8 @@ A [ManagementConsoleManual user manual] for the Management Console
 ==== Remote Wipe and Remote Lock ====
 
 A [DeviceAdministration guide] to using the Remote Wipe and Remote Lock capabilities of the Management Console
+
+----
 
 ==== iPhone Showcase ====
 
