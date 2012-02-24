@@ -72,5 +72,7 @@
 {{{
   cd /Users/openmobster/projects/openmobster
   keytool -genkey -v -keystore openmobster-release-key.keystore -alias openmobster -keyalg RSA -keysize 2048 -validity 10000
-  (fill out the locale entries and set both the storepass and keypass to: *password*)
+  (fill out the locale entries and set both the storepass and keypass to: password)
 }}}
+
+== The environment should now be ready to build OpenMobster! ==
