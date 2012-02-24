@@ -121,4 +121,26 @@
 
 At this point your environment is ready to build more stuff. On most occasions just: *mvn -DskipTests -Pbuild-all install* is enough to build everything. These additional steps are to build the binary release which gets shipped for downloading.
 
-1) 
+1) Build the console projects
+{{{
+  cd ~/openmobster-read-only/console/console-server
+  mvn clean install
+  cd ~/openmobster-read-only/console/console-client
+  ant war
+}}}
+
+2) At this time the Titianium SDK is too complex to install and will be deprecated in the next release in favor of PhoneGap and Sencha Touch. So for now we just comment out the 'Titanium Packaging' in cloud/binary-release/pom.xml
+{{{
+  cd ~/openmobster-read-only/cloud/binary-release
+  nano pom.xml 
+  (comment out the whole '<!-- Titanium Packaing -->' section)
+  Note: This will be commented in the next release
+}}}
+
+3) Build final binary distribution
+{{{
+  cd ~/openmobster-read-only/cloud
+  mvn -DskipTests -Pandroid-release javadoc:aggregate install
+}}}
+
+Enjoy!!
