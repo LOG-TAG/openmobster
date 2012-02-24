@@ -1,4 +1,4 @@
-= Introductory Notes =
+== Introductory Notes ==
 
   * I'm doing everything as *root*
   * Have ant installed - *apt-get install ant*
@@ -6,7 +6,7 @@
   * This document refers to OpenMobster release: *openmobster-2.2-M7*
 
 
-= Details =
+== Details ==
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
