@@ -29,10 +29,10 @@
 
 4) Update your Maven distribution on Ubuntu 10.04 LTS Server
 {{{
-  * cd /tmp
-  * wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/binaries/apache-maven-3.0.4-bin.tar.gz
-  * cd /usr/local
-  * tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
+  cd /tmp
+  wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/binaries/apache-maven-3.0.4-bin.tar.gz
+  cd /usr/local
+  tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
 }}}
 
 5) Add the following lines to the bottom of ~/.bashrc This puts the new maven path ahead of the old maven path
