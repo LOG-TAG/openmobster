@@ -76,3 +76,10 @@
 }}}
 
 == The environment should now be ready to build OpenMobster! ==
+
+1) Setup encryption for Android
+{{{
+  cd ~/openmobster-read-only/cloud/android/cloudManager/src/main/resources
+  nano openmobster-app.xml
+  (change <encryption>false</encryption> to <encryption>true</encryption>
+}}}
