@@ -1,5 +1,3 @@
-#Building OpenMobster on Ubuntu Server 10.04 LTS /w Maven 3.0.4.
-
 = Introduction =
 
 .
