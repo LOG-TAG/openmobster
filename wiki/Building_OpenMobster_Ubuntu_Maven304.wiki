@@ -129,7 +129,7 @@ At this point your environment is ready to build more stuff. On most occasions j
   ant war
 }}}
 
-2) At this time the Titianium SDK is too complex to install and will be deprecated in the next release in favor of PhoneGap and Sencha Touch. So for now we just comment out the 'Titanium Packaging' in cloud/binary-release/pom.xml
+2) At this time the Titianium SDK is too complex to install and will be deprecated in the next release in favor of PhoneGap and Sencha Touch. So for now we just comment out the 'Titanium Packaging' in ~/openmobster-read-only/cloud/binary-release/pom.xml
 {{{
   cd ~/openmobster-read-only/cloud/binary-release
   nano pom.xml 
