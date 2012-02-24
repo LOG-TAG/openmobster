@@ -26,3 +26,8 @@
   * wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/binaries/apache-maven-3.0.4-bin.tar.gz
   * cd /usr/local
   * tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
+
+5) Then I stuck this at the bottom of my ~/.bashrc to put the new maven path ahead of the existing maven path (I haven’t un-installed Maven 2 at this point - just testing it out) and setup the environment variables to be maven 3 instead of 2.
+  - I also set MAVEN_OPTS so I dont run out of PermGen space (just to be safe)
+  - Added ANDROID_HOME environment variable - needed for maven build process and added /root/android-sdks/platform-tools to PATH
+  - Added GWT_HOME environment variable - needed for console-client buld
