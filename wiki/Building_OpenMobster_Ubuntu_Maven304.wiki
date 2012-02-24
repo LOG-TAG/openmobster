@@ -36,3 +36,11 @@
   * export GWT_HOME="/root/gwt-2.4.0"
   * export PATH=/usr/local/apache-maven-3.0.4/bin:/root/android-sdks/platform-tools:$PATH
   * unset M2_HOME
+
+6) Source ~/.bashrc to enable the new environment settings
+  * source ~/.bashrc
+
+7) Check that maven was totally switched over (you should see something like the following)
+  root@vworkz:~#  mvn -version
+  Apache Maven 3.0.4 (r1232337; 2012-01-17 03:44:56-0500)
+  
