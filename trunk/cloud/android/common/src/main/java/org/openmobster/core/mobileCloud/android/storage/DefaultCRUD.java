@@ -91,7 +91,7 @@ public class DefaultCRUD implements CRUDProvider
 		return 0;
 	}
 	
-	public Set<Record> selectAll(String from) throws DBException
+	public synchronized Set<Record> selectAll(String from) throws DBException
 	{
 		Cursor cursor = null;
 		try
@@ -143,7 +143,7 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
-	public Record select(String from, String recordId) throws DBException
+	public synchronized Record select(String from, String recordId) throws DBException
 	{
 		Cursor cursor = null;
 		try
@@ -371,7 +371,7 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
-	public void update(String table, Record record) throws DBException
+	public synchronized void update(String table, Record record) throws DBException
 	{
 		try
 		{

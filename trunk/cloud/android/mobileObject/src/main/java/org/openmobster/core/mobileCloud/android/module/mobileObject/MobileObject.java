@@ -478,7 +478,20 @@ public final class MobileObject
 					
 					if(this.fields.size() > insertionIndex)
 					{
-						((List<Field>)this.fields).set(insertionIndex, newField);
+						//FIXME:make this more efficient
+						//((List<Field>)this.fields).set(insertionIndex, newField);
+						int length = this.fields.size();
+						List<Field> temp = new ArrayList<Field>();
+						for(int i=0; i<length; i++)
+						{
+							Field tempField = this.fields.get(i);
+							if(i == insertionIndex)
+							{
+								temp.add(newField);
+							}
+							temp.add(tempField);
+						}
+						this.fields = temp;
 					}
 					else
 					{

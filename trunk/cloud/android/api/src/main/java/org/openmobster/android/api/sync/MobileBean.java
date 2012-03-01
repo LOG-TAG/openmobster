@@ -419,6 +419,64 @@ public final class MobileBean
 		}
 	}
 	
+	public synchronized void saveWithoutSync() throws CommitException
+	{
+		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
+		
+		//If Bean Created on Device
+		if(this.isNew)
+		{
+			String newId = deviceDB.create(this.data);			
+			this.data = deviceDB.read(this.data.getStorageId(), newId);
+			
+			this.isNew = false;
+			this.refresh();
+			
+			//Integration with the SyncService
+			try
+			{
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+				SyncInvocation.changelogOnly, this.getService(), this.getId(), SyncInvocation.OPERATION_ADD);		
+				Bus.getInstance().invokeService(syncInvocation);
+			}
+			catch(Exception e)
+			{
+				SystemException sys = new SystemException(this.getClass().getName(), "save://Create", new Object[]{
+					"Exception="+e.toString(),
+					"Message="+e.getMessage()
+				});
+				ErrorHandler.getInstance().handle(sys);
+				throw new CommitException(sys);
+			}			
+			
+			return;
+		}
+		
+		//If Bean Updated on Device
+		if(this.isDirty)
+		{
+			try
+			{
+				deviceDB.update(this.data);
+				this.clearMetaData();
+			
+				//Integration with the SyncService
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+				SyncInvocation.changelogOnly, this.getService(), this.getId(), SyncInvocation.OPERATION_UPDATE);		
+				Bus.getInstance().invokeService(syncInvocation);
+			}
+			catch(Exception e)
+			{
+				SystemException sys = new SystemException(this.getClass().getName(), "save://Update", new Object[]{
+					"Exception="+e.toString(),
+					"Message="+e.getMessage()
+				});
+				ErrorHandler.getInstance().handle(sys);
+				throw new CommitException(sys);
+			}
+		}
+	}
+	
 	/**
 	 * Deletes the bean from the channel. This also makes sure this action is reflected on the Cloud Side as well
 	 */
@@ -442,6 +500,39 @@ public final class MobileBean
 			//Integration with the SyncService
 			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 			SyncInvocation.updateChangeLog, service, id, SyncInvocation.OPERATION_DELETE);		
+			Bus.getInstance().invokeService(syncInvocation);
+		}
+		catch(Exception e)
+		{
+			SystemException sys = new SystemException(this.getClass().getName(), "delete", new Object[]{
+				"Exception="+e.toString(),
+				"Message="+e.getMessage()
+			});
+			ErrorHandler.getInstance().handle(sys);
+			throw new CommitException(sys);
+		}
+	}
+	
+	public synchronized void deleteWithoutSync() throws CommitException
+	{
+		if(this.isNew)
+		{
+			throw new IllegalStateException("Instance is created on the device and not saved. Hence it cannot be deleted");
+		}
+		
+		try
+		{
+			MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
+			String service = this.getService();
+			String id = this.getId();
+			
+			deviceDB.delete(this.data);
+			
+			this.clearAll();
+			
+			//Integration with the SyncService
+			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+			SyncInvocation.changelogOnly, service, id, SyncInvocation.OPERATION_DELETE);		
 			Bus.getInstance().invokeService(syncInvocation);
 		}
 		catch(Exception e)
@@ -555,6 +646,37 @@ public final class MobileBean
 		newInstance.isNew = true;
 		
 		return newInstance;
+	}
+	
+	public static void bulkSave(Set<MobileBean> beans) throws CommitException
+	{
+		if(beans == null)
+		{
+			return;
+		}
+		
+		for(MobileBean bean:beans)
+		{
+			bean.saveWithoutSync();
+		}
+		
+		//sync now
+		//Integration with the SyncService
+		try
+		{
+			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+					SyncInvocation.scheduleSync);		
+			Bus.getInstance().invokeService(syncInvocation);
+		}
+		catch(Exception e)
+		{
+			SystemException sys = new SystemException(MobileBean.class.getName(), "bulkSave", new Object[]{
+				"Exception="+e.toString(),
+				"Message="+e.getMessage()
+			});
+			ErrorHandler.getInstance().handle(sys);
+			throw new CommitException(sys);
+		}
 	}
 	//---Query functionality--------------------------------------------------------------------------------------------------------------
 	/**

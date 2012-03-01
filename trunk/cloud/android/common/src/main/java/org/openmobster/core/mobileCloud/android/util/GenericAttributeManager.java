@@ -68,4 +68,9 @@ public final class GenericAttributeManager
 		}
 		return false;
 	}
+	
+	public void clear()
+	{
+		this.attributes.clear();
+	}
 }
