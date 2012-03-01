@@ -104,6 +104,14 @@ public class SyncInvocationHandler extends Service implements InvocationHandler
 					//Schedules a background task that silently loads proxies from the server
 					LoadProxyDaemon.getInstance().scheduleProxyTask();
 				break;
+				
+				case SyncInvocation.changelogOnly:
+					SyncService.getInstance().updateChangeLog(service, invocation.getValue("operation"), recordId);
+				break;
+				
+				case SyncInvocation.scheduleSync:
+					Daemon.getInstance().scheduleSyncInitiation();
+				break;
 			}
 		}
 		catch(SyncException synce)

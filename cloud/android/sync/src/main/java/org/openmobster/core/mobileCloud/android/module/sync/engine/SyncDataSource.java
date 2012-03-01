@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import android.content.Context;
 
@@ -193,8 +194,13 @@ public final class SyncDataSource extends Service
 		if(entries != null)
 		{
 			Context context = Registry.getActiveInstance().getContext();
+			List<ChangeLogEntry> changelog = this.readChangeLog();
 			for(ChangeLogEntry cour:entries)
 			{
+				if(changelog.contains(cour))
+				{
+					continue;
+				}
 				Record record = cour.getRecord();
 				Database.getInstance(context).insert(Database.sync_changelog_table, record);
 			}

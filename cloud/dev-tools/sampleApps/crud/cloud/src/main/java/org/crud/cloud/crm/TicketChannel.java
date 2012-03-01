@@ -116,6 +116,10 @@ public class TicketChannel implements Channel
 	public void update(MobileBean mobileBean)
 	{
 		Ticket local = (Ticket)mobileBean;
+		
+		Ticket stored = this.ds.readByTicketId(local.getTicketId());
+		local.setId(stored.getId());
+		
 		this.ds.update(local);
 	}
 	
