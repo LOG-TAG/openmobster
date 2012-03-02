@@ -104,6 +104,9 @@
 	<classpathentry kind="src" path="android/test-suite/test-location/src/main/java"/>
 	<classpathentry kind="src" path="android/ide_hack"/>
 	
+	<!-- PhoneGap plugin -->
+	<classpathentry kind="src" path="phonegap/plugin/src/main/java"/>
+	<classpathentry kind="src" path="phonegap/plugin-sandbox/src/main/java"/>
 	
 	<classpathentry kind="src" path="dev-tools/android-devcloud/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/dev-cloudServer/src/main/java"/>
@@ -214,6 +217,9 @@
     <!-- Android Dependencies -->
     <classpathentry kind="var" path="ANDROID_HOME/platforms/android-10/android.jar"/>
     <classpathentry kind="var" path="ANDROID_HOME/add-ons/addon_google_apis_google_inc_9/libs/maps.jar"/>
+    
+    <!-- PhoneGap Dependecy -->
+	<classpathentry kind="var" path="M2_REPO/com/phonegap/phonegap/1.4.1/phonegap-1.4.1.jar"/>
     
     <classpathentry kind="var" path="M2_REPO/javapns/javapns-jdk15/165/javapns-jdk15-165.jar"/>
 </classpath>

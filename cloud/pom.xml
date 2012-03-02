@@ -39,6 +39,7 @@
 		<module>location</module>
 		<module>d2d</module>
 		<module>android</module>
+		<module>phonegap</module>
   </modules>
 
 	<profiles>
