@@ -1,0 +1,5 @@
+<moblet-app>
+	<channels>
+		<channel>phonegap_channel</channel>
+	</channels>					
+</moblet-app>
