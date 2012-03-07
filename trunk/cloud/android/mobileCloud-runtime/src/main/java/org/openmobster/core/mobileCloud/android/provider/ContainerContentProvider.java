@@ -51,7 +51,16 @@ public class ContainerContentProvider extends ContentProvider
 			MatrixCursor cursor = new MatrixCursor(new String[]{"status"});
 			
 			//query all
-			Context context = Registry.getActiveInstance().getContext();
+			Registry registry = Registry.getActiveInstance();
+			if(!registry.isStarted())
+			{
+				cursor = new MatrixCursor(new String[]{"status"});
+				cursor.addRow(new String[]{""+Boolean.FALSE});
+				return cursor;
+			}
+			
+			
+			Context context = registry.getContext();
 			Database database = Database.getInstance(context);
 												
 			Set<Record> records = database.selectAll(Database.config_table);
