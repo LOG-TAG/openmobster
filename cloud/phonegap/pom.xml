@@ -50,6 +50,27 @@
 				<artifactId>device-sdk</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>org.openmobster.core</groupId>
+				<artifactId>cloud-sdk</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openmobster.core.dev.tools
+				</groupId>
+				<artifactId>dev-cloudServer
+				</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.openmobster.core</groupId>
+				<artifactId>device-agent-simulator
+				</artifactId>
+				<version>${project.version}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -64,6 +85,7 @@
 		<module>plugin</module>
 		<module>plugin-sandbox</module>
 		<module>plugin-jquery</module>
+		<module>plugin-sandbox-cloud</module>
 	</modules>
 	
 	<build>
