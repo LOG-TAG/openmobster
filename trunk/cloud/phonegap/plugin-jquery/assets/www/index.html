@@ -22,6 +22,16 @@
 	{
 	}
 	
+	document.addEventListener("backbutton", function(e){
+	    if($.mobile.activePage.is('#tickets')){
+	        e.preventDefault();
+	        navigator.app.exitApp();
+	    }
+	    else {
+	        navigator.app.backHistory()
+	    }
+	}, false);
+	
     document.addEventListener("deviceready", loadTickets, false);
     function loadTickets()
     {		    
@@ -173,7 +183,7 @@
 						alert("Ticket Add Error:"+error);
 					});
 					
-					$.mobile.changePage('#tickets','slide',true,true);
+					$.mobile.changePage('#tickets','slide',true,false);
 				}
 			</script>
       		<div class="ui-header" data-role="header" data-theme="b" data-position="fixed"> 
@@ -288,14 +298,14 @@
 							alert("Ticket Delete Failed: "+error);
 						}
 					);
-					$.mobile.changePage('#tickets','slide',true,true);
+					$.mobile.changePage('#tickets','slide',true,false);
 				}
 				
 				function updateTicket()
 				{
 					var oid = $('#read_ticket_oid').val();
 					$('#update_ticket_oid').val(oid);
-					$.mobile.changePage('#update_ticket','slide',true,true);
+					$.mobile.changePage('#update_ticket','slide',true,false);
 				}
 			</script>
       		<div class="ui-header" data-role="header" data-theme="b" data-position="fixed"> 
@@ -428,7 +438,7 @@
 						alert('Ticket Update Failed: '+error);
 					});
 					
-					$.mobile.changePage('#tickets','slide',true,true);
+					$.mobile.changePage('#tickets','slide',true,false);
 				}
 			</script>
       		<div class="ui-header" data-role="header" data-theme="b" data-position="fixed"> 

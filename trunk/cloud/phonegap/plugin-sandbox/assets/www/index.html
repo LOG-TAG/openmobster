@@ -3,11 +3,11 @@
 <head>
 <title>PhoneGap</title>
 <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-<script type="text/javascript" charset="utf-8" src="mobilebean.js"></script>
+<script type="text/javascript" charset="utf-8" src="openmobster-sync-2.2.js"></script>
 <script type="text/javascript">
 	function testArray(channel)
 	{
-		window.plugins.mobileBeanPlugin.readall(channel,
+		window.plugins.sync.readall(channel,
 			function(success)
 			{
 				if(success == '0')
@@ -22,13 +22,13 @@
 					var oid = oids[i];
 					
 					//insert into the string array and iterate through it
-					window.plugins.mobileBeanPlugin.insertIntoArray(channel,oid,'customers',{'string':'insert'},
+					window.plugins.sync.insertIntoArray(channel,oid,'customers',{'string':'insert'},
 						function(arrayLength)
 						{
 							for(var j=0;j<arrayLength; j++)
 							{
 								var customerUri = 'customers['+j+']';
-								window.plugins.mobileBeanPlugin.value(channel,oid,customerUri,
+								window.plugins.sync.value(channel,oid,customerUri,
 									function(value)
 									{
 										console.log(value);
@@ -47,13 +47,13 @@
 					);
 					
 					//insert into the object array and iterate through it
-					window.plugins.mobileBeanPlugin.insertIntoArray(channel,oid,'messages',{'from':'from@test.com','to':'to@test.com','message':'you got mail'},
+					window.plugins.sync.insertIntoArray(channel,oid,'messages',{'from':'from@test.com','to':'to@test.com','message':'you got mail'},
 						function(arrayLength)
 						{
 							for(var j=0;j<arrayLength; j++)
 							{
 								var fromUri = 'messages['+j+'].from';
-								window.plugins.mobileBeanPlugin.value(channel,oid,fromUri,
+								window.plugins.sync.value(channel,oid,fromUri,
 									function(value)
 									{
 										console.log(value);
@@ -65,7 +65,7 @@
 								);
 								
 								var toUri = 'messages['+j+'].to';
-								window.plugins.mobileBeanPlugin.value(channel,oid,toUri,
+								window.plugins.sync.value(channel,oid,toUri,
 									function(value)
 									{
 										console.log(value);
@@ -77,7 +77,7 @@
 								);
 								
 								var messageUri = 'messages['+j+'].message';
-								window.plugins.mobileBeanPlugin.value(channel,oid,messageUri,
+								window.plugins.sync.value(channel,oid,messageUri,
 									function(value)
 									{
 										console.log(value);
@@ -97,7 +97,7 @@
 				}
 				
 				//Commit here
-				window.plugins.mobileBeanPlugin.commit(function(success)
+				window.plugins.sync.commit(function(success)
 				{
 					alert('Commit successful');
 				},
@@ -110,12 +110,381 @@
 		);
 	}
 	
+	function clearArray(channel)
+	{
+		window.plugins.sync.readall(channel,
+			function(success)
+			{
+				if(success == '0')
+				{
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					//clear this array
+					window.plugins.sync.clearArray(channel,oid,'customers',
+						function(success)
+						{
+							window.plugins.sync.arrayLength(channel,oid,'customers',
+							function(arrayLength)
+							{
+								console.log('ArrayLength: '+arrayLength);
+							},
+							function(error)
+							{
+								alert('StringArrayLength: '+error);
+							}
+						   );
+						},
+						function(error)
+						{
+							alert('ClearStringArray: '+error);
+						}
+					);
+					
+					//clear the object array
+					window.plugins.sync.clearArray(channel,oid,'messages',
+						function(success)
+						{
+							window.plugins.sync.arrayLength(channel,oid,'messages',
+							function(arrayLength)
+							{
+								console.log('ArrayLength: '+arrayLength);
+							},
+							function(error)
+							{
+								alert('ObjectArrayLength: '+error);
+							}
+						  );
+						},
+						function(error)
+						{
+							alert('ClearObjectArray: '+error);
+						}
+					);
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('ClearArray Error: '+error);
+			}
+		);
+	}
+	
+	function queryByMatchAll(channel,criteria)
+	{
+		window.plugins.sync.queryByMatchAll(channel,{'title':criteria},
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('QueryByMatchAll Error: '+error);
+			}
+		);
+	}
+	
+	function queryByMatchOne(channel,criteria)
+	{
+		window.plugins.sync.queryByMatchOne(channel,{'title':criteria},
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('QueryByMatchAll Error: '+error);
+			}
+		);
+	}
+	
+	function queryByNotMatchAll(channel,criteria)
+	{
+		window.plugins.sync.queryByNotMatchAll(channel,{'title':criteria},
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchAll Error: '+error);
+			}
+		);
+	}
+	
+	function queryByNotMatchOne(channel,criteria)
+	{
+		window.plugins.sync.queryByNotMatchOne(channel,{'title':criteria},
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchAll Error: '+error);
+			}
+		);
+	}
+	
+	function queryByContainsAll(channel,criteria)
+	{
+		window.plugins.sync.queryByContainsAll(channel,{'title':criteria},
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchAll Error: '+error);
+			}
+		);
+	}
+	
+	function queryByContainsOne(channel,criteria)
+	{
+		window.plugins.sync.queryByContainsOne(channel,{'title':criteria},
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+				
+				//Commit here
+				window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error){});
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchAll Error: '+error);
+			}
+		);
+	}
+	
 	function addNewBean(channel)
 	{
-		window.plugins.mobileBeanPlugin.addNewBean(channel,
+		window.plugins.sync.addNewBean(channel,
 		function(tempOid)
 		{
 			console.log('Temporary Oid: '+tempOid);
+			
+			//set the title
+			window.plugins.sync.updateBean(channel,tempOid,'title','/test/newbean',
+				function(success)
+				{
+				},
+				function(error){
+					alert('Setting the Title: '+error);
+				}
+			);
+			
+			//insert into a string array
+			window.plugins.sync.insertIntoArray(channel,tempOid,'customers',{'string':'/test/newbean/string/array'},
+				function(success)
+				{
+				},
+				function(error)
+				{
+					alert('InsertIntoStringArray: '+error);
+				}
+			);
+			
+			//insert into an object array
+			window.plugins.sync.insertIntoArray(channel,tempOid,'messages',{'from':'from@test.com','to':'to@test.com','message':'you got mail'},
+				function(success)
+				{
+				},
+				function(error)
+				{
+					alert('InsertIntoObjectArray: '+error);
+				}
+			);
 		},
 		function(error)
 		{
@@ -123,7 +492,7 @@
 		});
 		
 		//Commit here
-		window.plugins.mobileBeanPlugin.commit(function(success)
+		window.plugins.sync.commit(function(success)
 		{
 			alert('Commit successful');
 		},
@@ -132,7 +501,7 @@
 	
 	function deleteBean(channel)
 	{
-		window.plugins.mobileBeanPlugin.readall(channel,
+		window.plugins.sync.readall(channel,
 			function(success)
 			{
 				if(success == '0')
@@ -146,7 +515,7 @@
 					var oid = oids[i];
 					
 					//delete this bean
-					window.plugins.mobileBeanPlugin.deleteBean(channel,oid,
+					window.plugins.sync.deleteBean(channel,oid,
 						function(success){
 						},
 						function(error){
@@ -162,7 +531,7 @@
 	   );
 	   
 	   //commit
-	   window.plugins.mobileBeanPlugin.commit(function(success)
+	   window.plugins.sync.commit(function(success)
 		{
 			alert('Commit successful');
 		},
@@ -171,7 +540,7 @@
 	
 	function updateBean(channel)
 	{
-		window.plugins.mobileBeanPlugin.readall(channel,
+		window.plugins.sync.readall(channel,
 			function(success)
 			{
 				if(success == '0')
@@ -185,9 +554,9 @@
 				{
 					var oid = oids[i];
 					
-					window.plugins.mobileBeanPlugin.updateBean(channel,oid,'title','title://updated',
+					window.plugins.sync.updateBean(channel,oid,'title','title://updated',
 					function(success){
-						window.plugins.mobileBeanPlugin.value(channel,oid,'title',
+						window.plugins.sync.value(channel,oid,'title',
 									function(value)
 									{
 										console.log(value);
@@ -205,16 +574,16 @@
 					
 					
 					//insert into the string array and iterate through it
-					window.plugins.mobileBeanPlugin.arrayLength(channel,oid,'customers',
+					window.plugins.sync.arrayLength(channel,oid,'customers',
 						function(arrayLength)
 						{
 							for(var j=0;j<arrayLength; j++)
 							{
 								var customerUri = 'customers['+j+']';
-								window.plugins.mobileBeanPlugin.updateBean(channel,oid,customerUri,'customer://updated',
+								window.plugins.sync.updateBean(channel,oid,customerUri,'customer://updated',
 									function(value)
 									{
-										window.plugins.mobileBeanPlugin.value(channel,oid,customerUri,
+										window.plugins.sync.value(channel,oid,customerUri,
 											function(value)
 											{
 												console.log(value);
@@ -239,16 +608,16 @@
 					);
 					
 					//insert into the object array and iterate through it
-					window.plugins.mobileBeanPlugin.arrayLength(channel,oid,'messages',
+					window.plugins.sync.arrayLength(channel,oid,'messages',
 						function(arrayLength)
 						{
 							for(var j=0;j<arrayLength; j++)
 							{
 								var fromUri = 'messages['+j+'].from';
-								window.plugins.mobileBeanPlugin.updateBean(channel,oid,fromUri,'from@test.com',
+								window.plugins.sync.updateBean(channel,oid,fromUri,'from@test.com',
 									function(value)
 									{
-										window.plugins.mobileBeanPlugin.value(channel,oid,fromUri,
+										window.plugins.sync.value(channel,oid,fromUri,
 											function(value)
 											{
 												console.log(value);
@@ -266,10 +635,10 @@
 								);
 								
 								var toUri = 'messages['+j+'].to';
-								window.plugins.mobileBeanPlugin.updateBean(channel,oid,toUri,'to@test.com',
+								window.plugins.sync.updateBean(channel,oid,toUri,'to@test.com',
 									function(value)
 									{
-										window.plugins.mobileBeanPlugin.value(channel,oid,toUri,
+										window.plugins.sync.value(channel,oid,toUri,
 											function(value)
 											{
 												console.log(value);
@@ -287,10 +656,10 @@
 								);
 								
 								var messageUri = 'messages['+j+'].message';
-								window.plugins.mobileBeanPlugin.updateBean(channel,oid,messageUri,'message://updated',
+								window.plugins.sync.updateBean(channel,oid,messageUri,'message://updated',
 									function(value)
 									{
-										window.plugins.mobileBeanPlugin.value(channel,oid,messageUri,
+										window.plugins.sync.value(channel,oid,messageUri,
 											function(value)
 											{
 												console.log(value);
@@ -316,7 +685,7 @@
 				}
 				
 				//Commit here
-				window.plugins.mobileBeanPlugin.commit(function(success)
+				window.plugins.sync.commit(function(success)
 				{
 					alert('Commit successful');
 				},
@@ -331,10 +700,17 @@
 </script>
 </head>
 <body>
-	<h1>Hello World</h1><br/>
+	<h1>PhoneGap OpenMobster Sync Plugin</h1><br/>
 	<input type='button' value='TestArray' onclick="javascript:testArray('phonegap_channel');"/><br/>
+	<input type='button' value='ClearArrays' onclick="javascript:clearArray('phonegap_channel');"/><br/>
+	<input type='button' value='Query By Match All' onclick="javascript:queryByMatchAll('phonegap_channel','title://2');"/><br/>
+	<input type='button' value='Query By Match One' onclick="javascript:queryByMatchOne('phonegap_channel','title://2');"/><br/>
+	<input type='button' value='Query By Not Match All' onclick="javascript:queryByNotMatchAll('phonegap_channel','title://2');"/><br/>
+	<input type='button' value='Query By Not Match One' onclick="javascript:queryByNotMatchOne('phonegap_channel','title://2');"/><br/>
+	<input type='button' value='Query By Contains All' onclick="javascript:queryByContainsAll('phonegap_channel','title');"/><br/>
+	<input type='button' value='Query By Contains One' onclick="javascript:queryByContainsOne('phonegap_channel','://');"/><br/>
 	<input type='button' value='TestAddNewBean' onclick="javascript:addNewBean('phonegap_channel');"/><br/>
+	<input type='button' value='TestUpdateBean' onclick="javascript:updateBean('phonegap_channel');"/><br/>
 	<input type='button' value='TestDeleteBean' onclick="javascript:deleteBean('phonegap_channel');"/><br/>
-	<input type='button' value='TestUpdateBean' onclick="javascript:updateBean('phonegap_channel');"/>
 </body>
 </html>
