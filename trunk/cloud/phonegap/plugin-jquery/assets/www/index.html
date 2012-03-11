@@ -122,7 +122,9 @@
 	      		var loadNewTicket = function(){
 	      			$('#new_ticket_title').val(''); 
 	      			$('#new_ticket_customer').val('0');
+	      			$('#new_ticket_customer').selectmenu('refresh',true);
 	      			$('#new_ticket_specialist').val('0');
+	      			$('#new_ticket_specialist').selectmenu('refresh',true);
 	      			$('#new_ticket_comments').val('');
 				};
 				$('#new_ticket').live('pageshow',loadNewTicket);
@@ -354,6 +356,7 @@
 						function(value)
 						{
 							$('#update_ticket_customer').val(value);
+							$('#update_ticket_customer').selectmenu('refresh',true);
 						},
 						function(error)
 						{
@@ -365,6 +368,7 @@
 						function(value)
 						{
 							$('#update_ticket_specialist').val(value);
+							$('#update_ticket_specialist').selectmenu('refresh',true);
 						},
 						function(error)
 						{

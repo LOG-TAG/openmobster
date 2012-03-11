@@ -163,20 +163,27 @@ public final class Moblet
 	
 	private void registerPush()
 	{
-		try
+		Thread t = new Thread(new Runnable()
 		{
-			//Populate the Cloud Request
-			Request request = new Request("android_push_callback");	
-			request.setAttribute("app-id", Registry.getActiveInstance().getContext().getPackageName());
-			
-			new MobileService().invoke(request);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace(System.out);
-			
-			//Record this error in the Cloud Error Log
-			ErrorHandler.getInstance().handle(e);
-		}
+			public void run()
+			{
+				try
+				{
+					//Populate the Cloud Request
+					Request request = new Request("android_push_callback");	
+					request.setAttribute("app-id", Registry.getActiveInstance().getContext().getPackageName());
+					
+					new MobileService().invoke(request);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace(System.out);
+					
+					//Record this error in the Cloud Error Log
+					ErrorHandler.getInstance().handle(e);
+				}
+			}
+		});
+		t.start();
 	}
 }
