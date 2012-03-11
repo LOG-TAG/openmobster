@@ -1,5 +1,5 @@
 <moblet-app>
 	<channels>
-		<channel>phonegap_channel</channel>
+		<channel>plugin_jquery_channel</channel>
 	</channels>					
 </moblet-app>
