@@ -18,5 +18,5 @@
     <plugin name="Capture" value="com.phonegap.Capture"/>
     
     <!-- Custom Plugin -->
-    <plugin name="MobileBeanPlugin" value="org.openmobster.core.phonegap.plugin.MobileBeanPlugin" />
+    <plugin name="SyncPlugin" value="org.openmobster.core.phonegap.plugin.SyncPlugin" />
 </plugins>

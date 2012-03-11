@@ -7,15 +7,15 @@
 	<link rel="stylesheet" href="jquery/openmobster.css" />
 	
 	<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-	<script type="text/javascript" charset="utf-8" src="mobilebean.js"></script>
+	<script type="text/javascript" charset="utf-8" src="openmobster-sync-2.2.js"></script>
 	
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<link rel="stylesheet" href="jquery/jquery.mobile-1.0.1.min.css" />
+	<script src="jquery/jquery-1.6.4.min.js"></script>
+	<script src="jquery/jquery.mobile-1.0.1.min.js"></script>
 	
 	<script type="text/javascript">
 	
-	var channel = 'phonegap_channel';
+	var channel = 'plugin_jquery_channel';
 	
 	$(document).ready(function(){ initialize(); });
 	function initialize()
@@ -37,9 +37,9 @@
     {		    
 		var html = '<ul data-role="listview" data-theme="g">';
 	  	
-	  	if(window.plugins.mobileBeanPlugin !== undefined)
+	  	if(window.plugins.sync !== undefined)
 	  	{
-	  		window.plugins.mobileBeanPlugin.readall(channel,
+	  		window.plugins.sync.readall(channel,
 				function(oids)
 				{
 					if(oids == '0')
@@ -52,7 +52,7 @@
 					for(var i=0; i<length; i++)
 					{
 					   var oid = oids[i];
-					   window.plugins.mobileBeanPlugin.value(channel,oid,'title',
+					   window.plugins.sync.value(channel,oid,'title',
 						   function(value)
 						   {
 						   		var encodedOid = encodeURIComponent(oid);
@@ -134,10 +134,10 @@
 					var specialist = $('#new_ticket_specialist').val();
 					var comments = $('#new_ticket_comments').val();
 					
-					window.plugins.mobileBeanPlugin.addNewBean(channel,
+					window.plugins.sync.addNewBean(channel,
 					function(tempoid)
 					{
-						window.plugins.mobileBeanPlugin.updateBean(channel,tempoid,'title',title,
+						window.plugins.sync.updateBean(channel,tempoid,'title',title,
 						function(success)
 						{
 						},
@@ -145,7 +145,7 @@
 						{
 						});
 						
-						window.plugins.mobileBeanPlugin.updateBean(channel,tempoid,'customer',customer,
+						window.plugins.sync.updateBean(channel,tempoid,'customer',customer,
 						function(success)
 						{
 						},
@@ -153,7 +153,7 @@
 						{
 						});
 						
-						window.plugins.mobileBeanPlugin.updateBean(channel,tempoid,'specialist',specialist,
+						window.plugins.sync.updateBean(channel,tempoid,'specialist',specialist,
 						function(success)
 						{
 						},
@@ -161,7 +161,7 @@
 						{
 						});
 						
-						window.plugins.mobileBeanPlugin.updateBean(channel,tempoid,'comments',comments,
+						window.plugins.sync.updateBean(channel,tempoid,'comments',comments,
 						function(success)
 						{
 						},
@@ -175,7 +175,7 @@
 					});
 					
 					//Commit here
-					window.plugins.mobileBeanPlugin.commit(function(success)
+					window.plugins.sync.commit(function(success)
 					{
 						alert("Ticket was successfully added");
 					},
@@ -232,7 +232,7 @@
 	      		{
 	      			var oid = $('#read_ticket_oid').val();
 	      			
-	      			window.plugins.mobileBeanPlugin.value(channel,oid,'title',
+	      			window.plugins.sync.value(channel,oid,'title',
 						function(value)
 						{
 							$("label[for='read_ticket_title']").html('Title: '+value);
@@ -243,7 +243,7 @@
 						}
 					);
 					
-					window.plugins.mobileBeanPlugin.value(channel,oid,'customer',
+					window.plugins.sync.value(channel,oid,'customer',
 						function(value)
 						{
 							$("label[for='read_ticket_customer']").html('Customer: '+value);
@@ -254,7 +254,7 @@
 						}
 					);
 					
-					window.plugins.mobileBeanPlugin.value(channel,oid,'specialist',
+					window.plugins.sync.value(channel,oid,'specialist',
 						function(value)
 						{
 							$("label[for='read_ticket_specialist']").html('Specialist: '+value);
@@ -265,7 +265,7 @@
 						}
 					);
 					
-					window.plugins.mobileBeanPlugin.value(channel,oid,'comments',
+					window.plugins.sync.value(channel,oid,'comments',
 						function(value)
 						{
 							$("label[for='read_ticket_comments']").html('Comments: '+value);
@@ -283,11 +283,11 @@
 					var oid = $('#read_ticket_oid').val();
 					
 					//delete this bean
-					window.plugins.mobileBeanPlugin.deleteBean(channel,oid,
+					window.plugins.sync.deleteBean(channel,oid,
 						function(success)
 						{
 							//commit
-						    window.plugins.mobileBeanPlugin.commit(function(success)
+						    window.plugins.sync.commit(function(success)
 							{
 								alert("The Ticket was successfully deleted");
 							},
@@ -339,7 +339,7 @@
 	      		var loadTicket = function(){ 
 	      			var oid = $('#update_ticket_oid').val();
 	      			
-	      			window.plugins.mobileBeanPlugin.value(channel,oid,'title',
+	      			window.plugins.sync.value(channel,oid,'title',
 						function(value)
 						{
 							$('#update_ticket_title').val(value);
@@ -350,7 +350,7 @@
 						}
 					);
 					
-					window.plugins.mobileBeanPlugin.value(channel,oid,'customer',
+					window.plugins.sync.value(channel,oid,'customer',
 						function(value)
 						{
 							$('#update_ticket_customer').val(value);
@@ -361,7 +361,7 @@
 						}
 					);
 					
-					window.plugins.mobileBeanPlugin.value(channel,oid,'specialist',
+					window.plugins.sync.value(channel,oid,'specialist',
 						function(value)
 						{
 							$('#update_ticket_specialist').val(value);
@@ -372,7 +372,7 @@
 						}
 					);
 					
-					window.plugins.mobileBeanPlugin.value(channel,oid,'comments',
+					window.plugins.sync.value(channel,oid,'comments',
 						function(value)
 						{
 							$('#update_ticket_comments').val(value);
@@ -393,7 +393,7 @@
 					var comments = $('#update_ticket_comments').val();
 					var oid = $('#update_ticket_oid').val();
 					
-					window.plugins.mobileBeanPlugin.updateBean(channel,oid,'title',title,
+					window.plugins.sync.updateBean(channel,oid,'title',title,
 					function(success)
 					{
 						
@@ -402,7 +402,7 @@
 					{
 					});
 					
-					window.plugins.mobileBeanPlugin.updateBean(channel,oid,'customer',customer,
+					window.plugins.sync.updateBean(channel,oid,'customer',customer,
 					function(success)
 					{
 						
@@ -411,7 +411,7 @@
 					{
 					});
 					
-					window.plugins.mobileBeanPlugin.updateBean(channel,oid,'specialist',specialist,
+					window.plugins.sync.updateBean(channel,oid,'specialist',specialist,
 					function(success)
 					{
 						
@@ -420,7 +420,7 @@
 					{
 					});
 					
-					window.plugins.mobileBeanPlugin.updateBean(channel,oid,'comments',comments,
+					window.plugins.sync.updateBean(channel,oid,'comments',comments,
 					function(success)
 					{
 						
@@ -430,7 +430,7 @@
 					});
 					
 					//commit
-				    window.plugins.mobileBeanPlugin.commit(function(success)
+				    window.plugins.sync.commit(function(success)
 					{
 						alert("The Ticket was successfully saved");
 					},

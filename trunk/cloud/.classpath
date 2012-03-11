@@ -109,6 +109,7 @@
 	<classpathentry kind="src" path="phonegap/plugin-sandbox/src/main/java"/>
 	<classpathentry kind="src" path="phonegap/plugin-jquery/src/main/java"/>
 	<classpathentry kind="src" path="phonegap/plugin-sandbox-cloud/src/main/java"/>
+	<classpathentry kind="src" path="phonegap/plugin-jquery-cloud/src/main/java"/>
 	
 	<classpathentry kind="src" path="dev-tools/android-devcloud/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/dev-cloudServer/src/main/java"/>
