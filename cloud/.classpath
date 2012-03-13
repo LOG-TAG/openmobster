@@ -222,7 +222,7 @@
     <classpathentry kind="var" path="ANDROID_HOME/add-ons/addon_google_apis_google_inc_9/libs/maps.jar"/>
     
     <!-- PhoneGap Dependecy -->
-	<classpathentry kind="var" path="M2_REPO/com/phonegap/phonegap/1.4.1/phonegap-1.4.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/phonegap/phonegap/1.5.0/phonegap-1.5.0.jar"/>
     
     <classpathentry kind="var" path="M2_REPO/javapns/javapns-jdk15/165/javapns-jdk15-165.jar"/>
 </classpath>

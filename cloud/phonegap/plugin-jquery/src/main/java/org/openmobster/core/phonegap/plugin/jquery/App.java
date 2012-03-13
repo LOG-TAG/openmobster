@@ -13,7 +13,7 @@ import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 
 import android.os.Bundle;
 
-import com.phonegap.DroidGap;
+import org.apache.cordova.DroidGap;
 
 /**
  *
