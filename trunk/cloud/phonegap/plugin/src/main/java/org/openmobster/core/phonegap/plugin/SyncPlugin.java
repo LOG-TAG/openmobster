@@ -19,7 +19,7 @@ import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import com.phonegap.api.PhonegapActivity;
 import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
-import com.phonegap.api.PluginResult.Status;
+import org.apache.cordova.api.PluginResult.Status;
 
 /**
  *
@@ -27,11 +27,11 @@ import com.phonegap.api.PluginResult.Status;
  */
 public final class SyncPlugin extends Plugin
 {	
-	@Override
+	/*@Override
 	public void setContext(PhonegapActivity ctx) 
 	{
 		super.setContext(ctx);
-	}
+	}*/
 
 	@Override
 	public synchronized PluginResult execute(String action, JSONArray input, String callbackId) 
