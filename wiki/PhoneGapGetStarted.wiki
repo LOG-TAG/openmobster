@@ -167,3 +167,44 @@ window.plugins.sync.addNewBean(channel,
 						alert("Ticket Add Error:"+error);
 					});
 }}}
+The above code creates a new bean in the Sync Channel. Once the bean is created, its properties are updated and committed to the Sync Engine for synchronization
+
+{{{
+window.plugins.sync.addNewBean(channel,
+					function(tempoid)
+					{
+}}}
+*window.plugins.sync.addNewBean* creates a new bean into the Sync Channel. The method returns a temporary oid used to refer to this newly added bean.
+
+{{{
+window.plugins.sync.updateBean(channel,tempoid,'title',title,
+						function(success)
+						{
+						},
+						function(error)
+						{
+						});
+						
+						window.plugins.sync.updateBean(channel,tempoid,'customer',customer,
+						function(success)
+						{
+						},
+						function(error)
+						{
+						});
+}}}
+
+*window.plugins.sync.updateBean* updates the specified property on the bean referred to by its oid. In this case it modifies the *title* property on the newly added bean referred to by *tempoid*.
+
+{{{
+//Commit here
+					window.plugins.sync.commit(function(success)
+					{
+						alert("Ticket was successfully added");
+					},
+					function(error){
+						alert("Ticket Add Error:"+error);
+					});
+}}}
+
+*window.plugins.sync.commit* commits the beans into the Sync Channel for synchronization
