@@ -24,3 +24,12 @@ mvn -PrunCloud integration-test
 This should make the OpenMobster Cloud Server up and running for the Offline App.
 
 === Cloud Activation ===
+
+For security reasons, before apps can use the OpenMobster Cloud, the device must be registered with the cloud. This is done using a CloudManager App that comes with the OpenMobster distribution.
+
+You can locate this App in the distribution under *Android/core-runtime/CloudManager.apk*. You can install this App on the Android device or emulator using the following command:
+{{{
+adb install -r install CloudManager.apk
+}}}
+
+Once installed you can use the *Activate* function to register with the Cloud.
