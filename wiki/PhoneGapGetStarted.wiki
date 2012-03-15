@@ -208,3 +208,90 @@ window.plugins.sync.updateBean(channel,tempoid,'title',title,
 }}}
 
 *window.plugins.sync.commit* commits the beans into the Sync Channel for synchronization
+
+==== Updating an existing Bean in the Sync Channel ====
+
+{{{
+var oid = $('#update_ticket_oid').val();
+					
+					//update the 'title' property on the ticket bean
+					window.plugins.sync.updateBean(channel,oid,'title',title,
+					function(success)
+					{
+						
+					},
+					function(error)
+					{
+					});
+					
+					//update the 'customer' property on the ticket bean
+					window.plugins.sync.updateBean(channel,oid,'customer',customer,
+					function(success)
+					{
+						
+					},
+					function(error)
+					{
+					});
+					
+					//update the 'specialist' property on the ticket bean
+					window.plugins.sync.updateBean(channel,oid,'specialist',specialist,
+					function(success)
+					{
+						
+					},
+					function(error)
+					{
+					});
+					
+					//update the 'comments' property on the ticket bean
+					window.plugins.sync.updateBean(channel,oid,'comments',comments,
+					function(success)
+					{
+						
+					},
+					function(error)
+					{
+					});
+					
+					//commit
+				    window.plugins.sync.commit(function(success)
+					{
+						alert("The Ticket was successfully saved");
+					},
+					function(error){
+						alert('Ticket Update Failed: '+error);
+					});
+}}}
+
+This is very similar to the add new bean explanation above. It updates each property of the bean and then calls commit to get the bean synchronized with the Cloud.
+
+==== Delete a Bean from the Sync Channel ====
+{{{
+function deleteTicket()
+				{
+					var oid = $('#read_ticket_oid').val();
+					
+					//delete this bean
+					window.plugins.sync.deleteBean(channel,oid,
+						function(success)
+						{
+							//commit
+						    window.plugins.sync.commit(function(success)
+							{
+								alert("The Ticket was successfully deleted");
+							},
+							function(error){alert("Ticket Delete Failed: "+error);});
+						},
+						function(error)
+						{
+							alert("Ticket Delete Failed: "+error);
+						}
+					);
+					$.mobile.changePage('#tickets','slide',true,false);
+				}
+}}}
+
+*window.plugins.sync.deleteBean* deletes the bean referred to by the oid on the specified channel.
+
+*window.plugins.sync.commit* commits this change into the Sync Channel and prepares for synchronization with the Cloud.
