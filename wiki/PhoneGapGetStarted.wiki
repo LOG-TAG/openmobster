@@ -97,3 +97,73 @@ window.plugins.sync.readall(channel,
 }}}
 
 Invokes the *readall* function and reads the oids of all the beans stored in the sync channel. If the function is successful it returns an array of oids in JSON format. oids are then parse into a JavaScript object using the *JSON.parse* function.
+
+{{{
+//read the value of the 'title' property of the synchronized bean
+					   window.plugins.sync.value(channel,oid,'title',
+						   function(value)
+						   {
+						   		var encodedOid = encodeURIComponent(oid);
+		   		
+		   						//create a list item corresponding to the ticket in question
+		   						html += '<li><a href="#read_ticket?oid='+encodedOid+'" data-rel="dialog">'+value+'</a></li>';
+						   },
+						   function(error)
+						   {
+						   }
+					   );
+}}}
+
+*window.plugins.sync.value* reads the value of the specified *title* property. It takes the channel name and the oid of the bean as arguments to locate the bean whose property is to be read.
+
+==== Add a New Bean to the Sync Channel ====
+{{{
+window.plugins.sync.addNewBean(channel,
+					function(tempoid)
+					{
+						window.plugins.sync.updateBean(channel,tempoid,'title',title,
+						function(success)
+						{
+						},
+						function(error)
+						{
+						});
+						
+						window.plugins.sync.updateBean(channel,tempoid,'customer',customer,
+						function(success)
+						{
+						},
+						function(error)
+						{
+						});
+						
+						window.plugins.sync.updateBean(channel,tempoid,'specialist',specialist,
+						function(success)
+						{
+						},
+						function(error)
+						{
+						});
+						
+						window.plugins.sync.updateBean(channel,tempoid,'comments',comments,
+						function(success)
+						{
+						},
+						function(error)
+						{
+						});
+					},
+					function(error)
+					{
+						alert("Sync Plugin:"+error);
+					});
+					
+					//Commit here
+					window.plugins.sync.commit(function(success)
+					{
+						alert("Ticket was successfully added");
+					},
+					function(error){
+						alert("Ticket Add Error:"+error);
+					});
+}}}
