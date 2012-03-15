@@ -43,7 +43,7 @@ adb install -r install JQueryOfflineApp.apk
 
 === Dissecting the JQuery Offline App ===
 
-===== Load Synchronized Beans =====
+==== Load Synchronized Beans ====
 {{{
 //read the oids of the tickets stored in the sync channel
 	  		window.plugins.sync.readall(channel,
