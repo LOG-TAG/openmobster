@@ -33,3 +33,51 @@ adb install -r install CloudManager.apk
 }}}
 
 Once installed you can use the *Activate* function to register with the Cloud.
+
+=== Installing the Offline App ===
+{{{
+adb install -r install JQueryOfflineApp.apk
+}}}
+
+----
+
+=== Dissecting the JQuery Offline App ===
+
+===== Load Synchronized Beans =====
+{{{
+//read the oids of the tickets stored in the sync channel
+	  		window.plugins.sync.readall(channel,
+				function(oids)
+				{
+					if(oids == '0')
+					{
+						return;
+					}
+					
+					oids = JSON.parse(oids);
+					var length = oids.length;
+					for(var i=0; i<length; i++)
+					{
+					   var oid = oids[i];
+					   
+					   //read the value of the 'title' property of the synchronized bean
+					   window.plugins.sync.value(channel,oid,'title',
+						   function(value)
+						   {
+						   		var encodedOid = encodeURIComponent(oid);
+		   		
+		   						//create a list item corresponding to the ticket in question
+		   						html += '<li><a href="#read_ticket?oid='+encodedOid+'" data-rel="dialog">'+value+'</a></li>';
+						   },
+						   function(error)
+						   {
+						   }
+					   );
+					}
+				},
+				function(error)
+				{
+					alert('Sync Plugin:'+error);
+				}
+			);
+}}}
