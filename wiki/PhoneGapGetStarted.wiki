@@ -95,3 +95,5 @@ window.plugins.sync.readall(channel,
 					
 					oids = JSON.parse(oids);
 }}}
+
+Invokes the *readall* function and reads the oids of all the beans stored in the sync channel. If the function is successful it returns an array of oids in JSON format. oids are then parse into a JavaScript object using the *JSON.parse* function.
