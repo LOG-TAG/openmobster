@@ -81,3 +81,17 @@ adb install -r install JQueryOfflineApp.apk
 				}
 			);
 }}}
+
+This function reads the oids of the beans and then iterates through each bean and extracts the *title* property.
+
+{{{
+window.plugins.sync.readall(channel,
+				function(oids)
+				{
+					if(oids == '0')
+					{
+						return;
+					}
+					
+					oids = JSON.parse(oids);
+}}}
