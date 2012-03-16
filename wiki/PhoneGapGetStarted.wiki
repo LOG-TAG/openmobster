@@ -452,3 +452,9 @@ The *ChannelInfo.uri* specifies the name of the Sync Channel and *ChannelInfo.mo
 		this.objectStore.delete(toDelete.getOid());
 	}
 }}}
+
+----
+
+=== Conclusion ===
+
+This tutorial should give you a good idea on how to develop Offline Sync Apps using PhoneGap and the OpenMobster Sync Plugin
