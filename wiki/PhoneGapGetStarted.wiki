@@ -388,3 +388,67 @@ public class JQueryBean implements MobileBean,Serializable
 @ChannelInfo(uri="plugin_jquery_channel", mobileBeanClass="org.openmobster.core.phonegap.plugin.jquery.cloud.JQueryBean")
 public class PluginJQueryChannel implements Channel
 }}}
+
+The *ChannelInfo.uri* specifies the name of the Sync Channel and *ChannelInfo.mobileBeanClass* specifies the class of the MobileBean instance that the channel will be dealing with. The MobileBean instances used by the Channel implementation must be instances of this specified class. If this rule is not followed there will be unexpected errors during the synchronization process.
+
+===== Read the MobileBeans =====
+
+{{{
+        @Override
+	public List<? extends MobileBean> readAll() 
+	{
+		Collection<Object> all = this.objectStore.readAll();
+		List<JQueryBean> beans = new ArrayList<JQueryBean>();
+		if(all != null && !all.isEmpty())
+		{
+			for(Object bean:all)
+			{
+				beans.add((JQueryBean)bean);
+			}
+		}
+		
+		return beans;
+	}
+
+	@Override
+	public List<? extends MobileBean> bootup() 
+	{
+		return this.readAll();
+	}
+	
+	@Override
+	public MobileBean read(String id) 
+	{
+		return (JQueryBean)this.objectStore.read(id);
+	} 						
+}}}
+
+===== Create the MobileBean =====
+{{{
+@Override
+	public String create(MobileBean mobileBean) 
+	{
+		JQueryBean toCreate = (JQueryBean)mobileBean;
+		return this.objectStore.save(toCreate.getOid(), toCreate);
+	}
+}}}
+
+===== Update the MobileBean =====
+{{{
+@Override
+	public void update(MobileBean mobileBean) 
+	{
+		JQueryBean toUpdate = (JQueryBean)mobileBean;
+		this.objectStore.save(toUpdate.getOid(), toUpdate);
+	}
+}}}
+
+===== Delete the MobileBean =====
+{{{
+@Override
+	public void delete(MobileBean mobileBean) 
+	{	
+		JQueryBean toDelete = (JQueryBean)mobileBean;
+		this.objectStore.delete(toDelete.getOid());
+	}
+}}}
