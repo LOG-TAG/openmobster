@@ -381,3 +381,10 @@ public class JQueryBean implements MobileBean,Serializable
 }}}
 
 ==== The Channel ====
+
+*The Channel* is the component that exposes the *MobileBeans* to the Sync Engine via a CRUD (Create, Read, Update, Delete) interface.
+
+{{{
+@ChannelInfo(uri="plugin_jquery_channel", mobileBeanClass="org.openmobster.core.phonegap.plugin.jquery.cloud.JQueryBean")
+public class PluginJQueryChannel implements Channel
+}}}
