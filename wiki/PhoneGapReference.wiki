@@ -131,3 +131,34 @@ window.plugins.sync.queryByMatchOne(channel,{'title':'titleValue','comments':'co
 
 ----
 
+=== Execute Query Do Not Match All - window.plugins.sync.queryByNotMatchAll ===
+
+  * *Description:* Queries the Sync Channel for beans such that instances that do not match all the name/value pairs of the criteria are returned
+
+  * *Return Value:* Returns a JSON Array of oids of beans that do not match the criteria
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*criteria*:||JSON name/value pairs to match against||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+window.plugins.sync.queryByNotMatchAll(channel,{'title':'titleValue','comments':'commentsValue'},
+				function(matchedOids)
+				{
+					if(matchedOids == '0')
+					{
+						alert('No Records Found!!!');
+						return;
+					}
+					
+					var oids = JSON.parse(matchedOids);
+				},
+				function(error)
+				{
+				}
+			);
+    }}}
+
+----
