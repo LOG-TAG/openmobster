@@ -17,7 +17,7 @@
     ||*successCallback*:||function that will be invoked if this call is successful||
     ||*errorCallback*:||function that will be invoked if this call fails||
 
-  * Usage Example
+  * *Usage Example*
     {{{
 window.plugins.sync.readall(channel,
 				function(jsonArray)
