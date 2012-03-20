@@ -8,10 +8,34 @@
 
 === ReadAll - window.plugins.sync.readll ===
 
-  * Reads all the beans stored in the sync channel
+  * Description: Reads all the beans stored in the sync channel
 
-  * Returns a JSON array of oids associated with the beans
+  * Return Value: Returns a JSON array of oids associated with the beans
 
   * Parameters
-    ||*channel*||The Sync Channel name where the beans are stored||
-    
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * Usage Example
+    {{{
+window.plugins.sync.readall(channel,
+				function(jsonArray)
+				{
+					if(jsonArray == '0')
+					{
+						return;
+					}
+					
+					var oids = JSON.parse(jsonArray);
+				},
+				function(error)
+				{
+					alert(error);
+				}
+			);
+    }}}
+
+----
+
+=== 
