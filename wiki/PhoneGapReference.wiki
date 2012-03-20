@@ -69,27 +69,65 @@ window.plugins.sync.value(channel,oid,'property',
 
 === Execute Query Match All - window.plugins.sync.queryByMatchAll ===
 
-  * *Description:* Reads the value of a property of a bean
+  * *Description:* Queries the Sync Channel for beans such that all name/value pairs from the search criteria have to match
 
-  * *Return Value:* Returns the value of the property
-
+  * *Return Value:* Returns a JSON Array of oids of beans that match the criteria
   * *Parameters*
     ||*channel*:||The Sync Channel name where the beans are stored||
-    ||*oid*:||unique oid of the targeted bean||
-    ||*property*:||The property of the bean||
+    ||*criteria*:||JSON name/value pairs to match against||
     ||*successCallback*:||function that will be invoked if this call is successful||
     ||*errorCallback*:||function that will be invoked if this call fails||
 
   * *Usage Example*
     {{{
-window.plugins.sync.value(channel,oid,'property',
-				function(value)
+window.plugins.sync.queryByMatchAll(channel,{'title':'titleValue','comments':'commentsValue'},
+				function(matchedOids)
 				{
-					console.log(value);
+					if(matchedOids == '0')
+					{
+						alert('No Records Found!!!');
+						return;
+					}
+					
+					var oids = JSON.parse(matchedOids);
 				},
 				function(error)
 				{
-					alert(error);
 				}
 			);
     }}}
+
+----
+
+=== Execute Query Match Atleast One - window.plugins.sync.queryByMatchOne ===
+
+  * *Description:* Queries the Sync Channel for beans such that atleast one of the name/value pairs from the search criteria have to match
+
+  * *Return Value:* Returns a JSON Array of oids of beans that match the criteria
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*criteria*:||JSON name/value pairs to match against||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+window.plugins.sync.queryByMatchOne(channel,{'title':'titleValue','comments':'commentsValue'},
+				function(matchedOids)
+				{
+					if(matchedOids == '0')
+					{
+						alert('No Records Found!!!');
+						return;
+					}
+					
+					var oids = JSON.parse(matchedOids);
+				},
+				function(error)
+				{
+				}
+			);
+    }}}
+
+----
+
