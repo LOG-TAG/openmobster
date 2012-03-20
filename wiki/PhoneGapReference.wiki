@@ -38,4 +38,31 @@ window.plugins.sync.readall(channel,
 
 ----
 
-=== 
+=== Get a Property Value - window.plugins.sync.value ===
+
+  * *Description:* Reads the value of a property of a bean
+
+  * *Return Value:* Returns the value of the property
+
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*oid*:||unique oid of the targeted bean||
+    ||*property*:||The property of the bean||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+window.plugins.sync.value(channel,oid,'property',
+				function(value)
+				{
+					console.log(value);
+				},
+				function(error)
+				{
+					alert(error);
+				}
+			);
+    }}}
+
+----
