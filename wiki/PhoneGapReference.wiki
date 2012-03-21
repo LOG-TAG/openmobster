@@ -259,3 +259,70 @@ window.plugins.sync.queryByContainsOne(channel,{'title':'title','comments':'comm
 				}
 			);
     }}}
+
+----
+
+=== Add a New Bean into the Sync Channel - window.plugins.sync.addNewBean ===
+
+  * *Description:* Adds a New Bean into the Sync Channel. The method returns with a temporary oid to reference this bean by. A permanent oid is assigned to the bean once it is synchronized with the Cloud 
+
+  * *Return Value:* Returns a temporary oid to work with this bean before commit/synchronization
+
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+window.plugins.sync.addNewBean(channel,
+		function(tempOid)
+		{
+			console.log('Temporary Oid: '+tempOid);
+			
+			//set the title
+			window.plugins.sync.updateBean(channel,tempOid,'title','/test/newbean',
+				function(success)
+				{
+				},
+				function(error){
+					alert('Setting the Title: '+error);
+				}
+			);
+			
+			//insert into a string array
+			window.plugins.sync.insertIntoArray(channel,tempOid,'customers',{'string':'/test/newbean/string/array'},
+				function(success)
+				{
+				},
+				function(error)
+				{
+					alert('InsertIntoStringArray: '+error);
+				}
+			);
+			
+			//insert into an object array
+			window.plugins.sync.insertIntoArray(channel,tempOid,'messages',{'from':'from@test.com','to':'to@test.com','message':'you got mail'},
+				function(success)
+				{
+				},
+				function(error)
+				{
+					alert('InsertIntoObjectArray: '+error);
+				}
+			);
+		},
+		function(error)
+		{
+			alert(error);
+		});
+		
+		//Commit here
+		window.plugins.sync.commit(function(success)
+		{
+			alert('Commit successful');
+		},
+		function(error){});
+    }}}
+
+----
