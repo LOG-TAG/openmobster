@@ -368,3 +368,98 @@ window.plugins.sync.updateBean(channel,oid,'title','title://updated',
 			},
 			function(error){});
     }}}
+
+----
+
+=== Delete a Bean from the Sync Channel - window.plugins.sync.deleteBean
+===
+
+  * *Description:* Deletes the specified bean from the Sync Channel
+
+  * *Return Value:* Returns nothing
+
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*oid*:|| The unique identifier of the bean||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+                        //delete this bean
+			window.plugins.sync.deleteBean(channel,oid,
+				function(success){
+				},
+				function(error){
+					alert(error);
+				}
+			);
+			
+			//Commit here
+			window.plugins.sync.commit(function(success)
+			{
+				alert('Commit successful');
+			},
+			function(error){});
+    }}}
+
+----
+
+=== Commit the operations with the Sync Channel - window.plugins.sync.commit
+===
+
+  * *Description:* Commits the operation to the Sync Channel. Upon commit the Sync Engine synchronizes the Channel with the Cloud
+
+  * *Return Value:* Returns nothing
+
+  * *Parameters*
+
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+                        //commit
+		   	window.plugins.sync.commit(function(success)
+				{
+					alert('Commit successful');
+				},
+				function(error)
+				{
+					alert(error);
+				}
+			);
+    }}}
+
+----
+
+=== Get the Length of an Array/List property - window.plugins.sync.arrayLength
+===
+
+  * *Description:* Retrieves the length/size of an Array/List property of the specified bean
+
+  * *Return Value:* Returns the array length
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*oid*:|| The unique identifier of the bean||
+    ||*property*:||The property of the bean to be updated||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+                        window.plugins.sync.arrayLength(channel,oid,'customers',
+				function(arrayLength)
+				{
+					console.log('ArrayLength: '+arrayLength);
+				},
+				function(error)
+				{
+					alert(error);
+				}
+		    );
+    }}}
+
+----
+
+
