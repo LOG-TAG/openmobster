@@ -458,3 +458,59 @@ window.plugins.sync.updateBean(channel,oid,'title','title://updated',
     }}}
 
 ----
+
+=== Insert an object into an Array/List property - window.plugins.sync.insertIntoArray ===
+
+  * *Description:* Inserts an object into the array
+
+  * *Return Value:* Returns the new array length after adding the object to the Array/List
+
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*oid*:|| The unique identifier of the bean||
+    ||*property*:||The property of the bean to be updated||
+    ||*value*:||The object in JSON format||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+                        window.plugins.sync.insertIntoArray(channel,oid,'customers',{'string':'insert'},
+				function(arrayLength)
+				{
+				},
+				function(error)
+				{
+					alert('InsertIntoArray: '+error);
+				}
+			);
+    }}}
+
+----
+
+=== Clear the entries inside an Array/List property - window.plugins.sync.clearArray ===
+
+  * *Description:* Clears all the entries inside the Array/List property
+
+  * *Return Value:* Returns nothing
+
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*oid*:|| The unique identifier of the bean||
+    ||*property*:||The property of the bean to be updated||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+                        //clear this array
+			window.plugins.sync.clearArray(channel,oid,'customers',
+				function(success)
+				{
+				},
+				function(error)
+				{
+					alert(error);
+				}
+			);
+    }}}
