@@ -326,3 +326,45 @@ window.plugins.sync.addNewBean(channel,
     }}}
 
 ----
+
+=== Update a Bean in the Sync Channel - window.plugins.sync.updateBean ===
+
+  * *Description:* Updates the specified property of a bean in the Sync Channel
+
+  * *Return Value:* Returns nothing
+
+  * *Parameters*
+    ||*channel*:||The Sync Channel name where the beans are stored||
+    ||*oid*:|| The unique identifier of the bean||
+    ||*property*:||The property of the bean to be updated||
+    ||*value*:||The new value of the property||
+    ||*successCallback*:||function that will be invoked if this call is successful||
+    ||*errorCallback*:||function that will be invoked if this call fails||
+
+  * *Usage Example*
+    {{{
+window.plugins.sync.updateBean(channel,oid,'title','title://updated',
+					function(success){
+						window.plugins.sync.value(channel,oid,'title',
+									function(value)
+									{
+										console.log(value);
+									},
+									function(error)
+									{
+										alert('Reading the Title:'+error);
+									}
+								);
+					},
+					function(error){
+						alert('Updating Title: '+error);
+					}
+			);
+			
+			//Commit here
+			window.plugins.sync.commit(function(success)
+			{
+				alert('Commit successful');
+			},
+			function(error){});
+    }}}
