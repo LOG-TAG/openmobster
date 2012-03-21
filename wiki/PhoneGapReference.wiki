@@ -371,8 +371,7 @@ window.plugins.sync.updateBean(channel,oid,'title','title://updated',
 
 ----
 
-=== Delete a Bean from the Sync Channel - window.plugins.sync.deleteBean
-===
+=== Delete a Bean from the Sync Channel - window.plugins.sync.deleteBean ===
 
   * *Description:* Deletes the specified bean from the Sync Channel
 
@@ -405,8 +404,7 @@ window.plugins.sync.updateBean(channel,oid,'title','title://updated',
 
 ----
 
-=== Commit the operations with the Sync Channel - window.plugins.sync.commit
-===
+=== Commit the operations with the Sync Channel - window.plugins.sync.commit ===
 
   * *Description:* Commits the operation to the Sync Channel. Upon commit the Sync Engine synchronizes the Channel with the Cloud
 
@@ -433,8 +431,7 @@ window.plugins.sync.updateBean(channel,oid,'title','title://updated',
 
 ----
 
-=== Get the Length of an Array/List property - window.plugins.sync.arrayLength
-===
+=== Get the Length of an Array/List property - window.plugins.sync.arrayLength ===
 
   * *Description:* Retrieves the length/size of an Array/List property of the specified bean
 
@@ -461,5 +458,3 @@ window.plugins.sync.updateBean(channel,oid,'title','title://updated',
     }}}
 
 ----
-
-
