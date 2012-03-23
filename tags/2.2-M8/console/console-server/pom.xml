@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.openmobster.core.console.server</groupId>
+  <artifactId>console-server</artifactId>
+  <version>2.2-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>console-server</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <openmobster.version>2.2-SNAPSHOT</openmobster.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+		<groupId>org.openmobster.core</groupId>
+		<artifactId>security</artifactId>
+		<version>${openmobster.version}</version>				
+	</dependency>
+	<dependency>
+		<groupId>org.openmobster.core</groupId>
+		<artifactId>api</artifactId>
+		<version>${openmobster.version}</version>				
+	</dependency>
+	<dependency>
+		<groupId>org.openmobster.core</groupId>
+		<artifactId>push-apn</artifactId>
+		<version>${openmobster.version}</version>				
+	</dependency>
+	
+	<!-- third party dependencies -->
+	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+		<groupId>hsqldb</groupId>
+		<artifactId>hsqldb</artifactId>
+		<version>1.8.0.7</version>
+	</dependency>
+  </dependencies>
+  
+  <build>
+  	<!-- using java5 -->
+  	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.5</source>
+				<target>1.5</target>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+</project>

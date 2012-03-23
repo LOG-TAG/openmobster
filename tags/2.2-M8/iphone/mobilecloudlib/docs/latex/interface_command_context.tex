@@ -1,0 +1,113 @@
+\hypertarget{interface_command_context}{
+\section{\-Command\-Context \-Class \-Reference}
+\label{interface_command_context}\index{\-Command\-Context@{\-Command\-Context}}
+}
+
+
+{\ttfamily \#include $<$\-Command\-Context.\-h$>$}
+
+\-Inheritance diagram for \-Command\-Context\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_command_context}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_command_context_a0b8bd20fcb252ddf29e9d9dae283c74c}{
+void {\bfseries set\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} id value)}
+\label{interface_command_context_a0b8bd20fcb252ddf29e9d9dae283c74c}
+
+\item 
+\hypertarget{interface_command_context_a3a47d7b68985f7fef98aad713daa5d6f}{
+id {\bfseries get\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)}
+\label{interface_command_context_a3a47d7b68985f7fef98aad713daa5d6f}
+
+\item 
+\hypertarget{interface_command_context_a4843201ab3232a624cc001600d9dd551}{
+void {\bfseries set\-Target\-:} (id target)}
+\label{interface_command_context_a4843201ab3232a624cc001600d9dd551}
+
+\item 
+\hypertarget{interface_command_context_a0a098f39f68014cb11a72a838e5f6f81}{
+id {\bfseries get\-Target} ()}
+\label{interface_command_context_a0a098f39f68014cb11a72a838e5f6f81}
+
+\item 
+\hypertarget{interface_command_context_aa62fb99118c778cc08c7b72b27d77647}{
+void {\bfseries set\-Error\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$code,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$message)}
+\label{interface_command_context_aa62fb99118c778cc08c7b72b27d77647}
+
+\item 
+\hypertarget{interface_command_context_aa2a78fb1ffdb86f1037426f7e570ed76}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries get\-Error\-Code} ()}
+\label{interface_command_context_aa2a78fb1ffdb86f1037426f7e570ed76}
+
+\item 
+\hypertarget{interface_command_context_aa553ae8eb3a85f7cfc5756866ced48a5}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries get\-Error\-Message} ()}
+\label{interface_command_context_aa553ae8eb3a85f7cfc5756866ced48a5}
+
+\item 
+\hypertarget{interface_command_context_afb6922cbed9d44144ccfc5755b8add65}{
+\-B\-O\-O\-L {\bfseries has\-Errors} ()}
+\label{interface_command_context_afb6922cbed9d44144ccfc5755b8add65}
+
+\item 
+\hypertarget{interface_command_context_a2c6073266e4ec22ac6b6227ce56e2bd6}{
+void {\bfseries activate\-Timeout} ()}
+\label{interface_command_context_a2c6073266e4ec22ac6b6227ce56e2bd6}
+
+\item 
+\hypertarget{interface_command_context_a7c19633dd9421913e6a63078150583c8}{
+void {\bfseries deactivate\-Timeout} ()}
+\label{interface_command_context_a7c19633dd9421913e6a63078150583c8}
+
+\item 
+\hypertarget{interface_command_context_a5f72d0c0ca42b8502fa2580acbf62204}{
+\-B\-O\-O\-L {\bfseries is\-Timeout\-Activated} ()}
+\label{interface_command_context_a5f72d0c0ca42b8502fa2580acbf62204}
+
+\item 
+\hypertarget{interface_command_context_a489082496684047d76503079a74eac3e}{
+void {\bfseries set\-App\-Exception\-:} (\hyperlink{interface_app_exception}{\-App\-Exception} $\ast$appe)}
+\label{interface_command_context_a489082496684047d76503079a74eac3e}
+
+\item 
+\hypertarget{interface_command_context_a384335d72d424590c7e98f23b97bcc00}{
+\hyperlink{interface_app_exception}{\-App\-Exception} $\ast$ {\bfseries get\-App\-Exception} ()}
+\label{interface_command_context_a384335d72d424590c7e98f23b97bcc00}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_command_context_a7e3659ae01648b7db18812a2b1e4cf5c}{
+id {\bfseries with\-Init\-:} (\-U\-I\-View\-Controller $\ast$caller)}
+\label{interface_command_context_a7e3659ae01648b7db18812a2b1e4cf5c}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_command_context_a3da5c5d788e8d7402907548f7725614c}{
+\-U\-I\-View\-Controller $\ast$ {\bfseries caller}}
+\label{interface_command_context_a3da5c5d788e8d7402907548f7725614c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Command\-Context.\-h\item 
+\-Command\-Context.\-m\end{DoxyCompactItemize}
