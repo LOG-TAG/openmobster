@@ -42,7 +42,7 @@
    			You can install this App on the Android device or emulator using the following command:
    			<programlisting>
    				<![CDATA[
-   					adb install -r install CloudManager.apk
+   					adb install -r CloudManager.apk
    				]]>
    			</programlisting>
    			Once installed you can use the <emphasis role="bold">Activate</emphasis> function to register with the Cloud.
@@ -53,7 +53,7 @@
    			<para>
    			<programlisting>
    				<![CDATA[
-   					adb install -r install JQueryOfflineApp.apk
+   					adb install -r JQueryOfflineApp.apk
    				]]>
    			</programlisting>
    			</para>
