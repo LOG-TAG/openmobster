@@ -362,7 +362,8 @@
 											</fileset>
 										</copy>
 										
-										<!-- Titanium Packaging -->
+										<!-- Titanium Packaging: Deprecated -->
+										<!--  
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/Titanium/titanium_module_android" overwrite="true">
 											<fileset dir="../../titanium_module_android">
 												<exclude name="**/build/**" />
@@ -383,6 +384,17 @@
 											<fileset dir="${basedir}/../dev-tools/sampleApps/crud">
 												<exclude name="**/target/**" />
 												<exclude name="**/build/**" />
+											</fileset>
+										</copy>
+										-->
+										<!--  Packaging PhoneGap -->
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap" overwrite="true">
+											<fileset dir="../phonegap">
+												<exclude name="**/target/**" />
+											</fileset>
+										</copy>
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap/JQueryOfflineApp.apk" overwrite="true">
+											<fileset file="../phonegap/plugin-jquery/target/plugin-jquery-${project.version}-zipped.apk">
 											</fileset>
 										</copy>
 										
