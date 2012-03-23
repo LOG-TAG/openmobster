@@ -1,4 +1,4 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- User Provided -->
@@ -95,8 +95,7 @@
 							<tasks>
 								<echo>Assembling Android App
 								</echo>
-								<jar
-									file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 									<fileset dir="${basedir}/target">
 										<include name="**/*.apk" />
 									</fileset>
@@ -114,8 +113,7 @@
 							<tasks>
 								<echo>Installing Android App
 								</echo>
-								<copy todir="${settings.localRepository}/com/chat/android/app/${project.artifactId}/${project.version}" overwrite="true"
-								file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								<copy todir="${settings.localRepository}/com/chat/android/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 								</copy>
 							</tasks>
 						</configuration>
@@ -159,7 +157,7 @@
 								<phase>package</phase>
 								<inherited>false</inherited>
 								<configuration>
-									<archiveDirectory></archiveDirectory>
+									<archiveDirectory />
 									<includes>
 										<include>target/*.apk</include>
 									</includes>
@@ -233,8 +231,7 @@
 									<tasks>
 										<echo>Assembling Android App
 								</echo>
-										<jar
-											file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+										<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 											<fileset dir="${basedir}/target">
 												<include name="**/*.apk" />
 											</fileset>
@@ -252,8 +249,7 @@
 									<tasks>
 										<echo>Installing Android App
 								</echo>
-										<copy todir="${settings.localRepository}/com/chat/android/app/${project.artifactId}/${project.version}" overwrite="true"
-										file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+										<copy todir="${settings.localRepository}/com/chat/android/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 										</copy>
 									</tasks>
 								</configuration>
@@ -306,16 +302,12 @@
 								<tasks> 
 									<echo>Hot Deploying the Android App....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
-										<arg
-										line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" 
-										/>
+										<arg line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" />
 									</exec>
 									
 									<echo>Hot Deploying the Development Mode CloudManager....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
-										<arg
-										line="install -r ${settings.localRepository}/org/openmobster/core/dev/tools/android-devcloud/${openmobster.version}/android-devcloud-${openmobster.version}.apk" 
-										/>
+										<arg line="install -r ${settings.localRepository}/org/openmobster/core/dev/tools/android-devcloud/${openmobster.version}/android-devcloud-${openmobster.version}.apk" />
 									</exec>
 								</tasks>
 							</configuration>
@@ -368,9 +360,7 @@
 								<tasks> 
 									<echo>Hot Deploying the Android App....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
-										<arg
-										line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" 
-										/>
+										<arg line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" />
 									</exec>
 								</tasks>
 							</configuration>
