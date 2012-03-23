@@ -33,7 +33,7 @@ public class DeviceServiceStubImpl extends RemoteServiceServlet implements Devic
 		if(devices == null)
 		{
 			devices = new ArrayList<DeviceUI>();
-			for(int i=0; i<5; i++)
+			for(int i=0; i<50; i++)
 			{
 				DeviceUI local = new DeviceUI();
 				local.setAccount("blah"+i+"@gmail.com");
@@ -73,6 +73,12 @@ public class DeviceServiceStubImpl extends RemoteServiceServlet implements Devic
 		{
 			String deviceId = parameters.get(1);
 			return this.reassign(deviceId);
+		}
+		else if(action.equalsIgnoreCase("resetpassword"))
+		{
+			String deviceId = parameters.get(1);
+			String newPassword = parameters.get(2);
+			return this.resetPassword(deviceId,newPassword);
 		}
 		
 		return "500"; //If I get here, error occurred
@@ -128,6 +134,21 @@ public class DeviceServiceStubImpl extends RemoteServiceServlet implements Devic
 			{
 				devices.remove(device);
 			}
+			
+			return "200";
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+			return "500";
+		}
+	}
+	
+	private String resetPassword(String deviceId,String newPassword)
+	{
+		try
+		{
+			System.out.println("NewPassword: "+newPassword);
 			
 			return "200";
 		}

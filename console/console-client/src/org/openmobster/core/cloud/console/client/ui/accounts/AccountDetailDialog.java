@@ -64,7 +64,7 @@ public class AccountDetailDialog implements Screen
 		
 		String icon = "openmobster/"+this.record.getAttribute("active")+".png";
 		
-		winModal.setWidth(425);
+		winModal.setWidth(525);
         winModal.setHeight(150);
         winModal.setTitle("Account");
         winModal.setShowMinimizeButton(false);
@@ -130,8 +130,14 @@ public class AccountDetailDialog implements Screen
             }
         });
         
+        //Reset Password button
+        Button resetPassword = new Button();
+        resetPassword.setTitle("Reset Password");
+        resetPassword.addClickHandler(new ResetPasswordClickHandler());
+        
         toolbar.addMember(toggleActivate);
         toolbar.addMember(reassign);
+        toolbar.addMember(resetPassword);
         
         String platform = record.getAttribute("os");
         boolean activateDeviceManagement = platform.toLowerCase().contains("android");
@@ -318,6 +324,16 @@ public class AccountDetailDialog implements Screen
 	                }
 	            });
 			}
+		}
+	}
+	
+	private class ResetPasswordClickHandler implements ClickHandler
+	{
+		@Override
+		public void onClick(ClickEvent event) 
+		{
+			TransitionService transitionService = FlowServiceRegistry.getTransitionService();
+            transitionService.transitionActiveWindow(new ResetPasswordDialog(record));
 		}
 	}
 }
