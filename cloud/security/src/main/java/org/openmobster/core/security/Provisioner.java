@@ -346,5 +346,38 @@ public class Provisioner
 		identity.setInactiveCredential(newpassword);
 		this.identityController.update(identity);
 	}
+	
+	public void resetPassword(String deviceId,String newpassword) throws IDMException
+	{
+		if(deviceId == null || deviceId.trim().length()==0)
+		{
+			throw new IllegalStateException("Device Id should not be null!!");
+		}
+		if(newpassword == null || newpassword.trim().length()==0)
+		{
+			throw new IllegalStateException("New Password should not be null!!");
+		}
+		
+		DeviceController deviceController = DeviceController.getInstance();
+		Device device = deviceController.read(deviceId);
+		
+		Identity identity = device.getIdentity();
+		if(identity == null)
+		{
+			throw new IDMException(IDMException.IDENITITY_NOT_FOUND);
+		}
+		
+		//change the credential hash
+		//Generate a one way credential hash
+		String authenticationHash = Utilities.generateOneWayHash(newpassword, identity.getPrincipal()+newpassword);
+		
+		//Everything checks out...go ahead and modify the password
+		identity.setInactiveCredential(newpassword);
+		identity.setCredential(authenticationHash);
+		this.identityController.update(identity);
+		
+		device.updateAttribute(new DeviceAttribute("nonce", authenticationHash));
+		this.deviceController.update(device);
+	}
 	//-----------------------------------------------------------------------------------------------------------------------------------------------
 }
