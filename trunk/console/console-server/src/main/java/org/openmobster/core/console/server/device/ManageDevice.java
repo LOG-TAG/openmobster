@@ -199,6 +199,30 @@ public final class ManageDevice
 		}
 	}
 	
+	public void resetPassword(String deviceId,String newPassword) throws ManageDeviceException
+	{
+		boolean startedHere = TransactionHelper.startTx();
+		try
+		{
+			Provisioner provisioner = Provisioner.getInstance();
+			
+			provisioner.resetPassword(deviceId, newPassword);
+			
+			if(startedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			if(startedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			throw new ManageDeviceException(e);
+		}
+	}
+	
 	public void lock(String identity)
 	{
 		boolean startedHere = TransactionHelper.startTx();
