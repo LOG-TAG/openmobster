@@ -50,6 +50,12 @@ public class DeviceServiceImpl extends RemoteServiceServlet implements DeviceSer
 			String deviceId = parameters.get(1);
 			return this.reassign(deviceId);
 		}
+		else if(action.equalsIgnoreCase("resetpassword"))
+		{
+			String deviceId = parameters.get(1);
+			String newPassword = parameters.get(2);
+			return this.resetPassword(deviceId,newPassword);
+		}
 		
 		return "500"; //If I get here, error occurred
 	}
@@ -102,6 +108,21 @@ public class DeviceServiceImpl extends RemoteServiceServlet implements DeviceSer
 		try
 		{
 			ManageDevice.getInstance().reassign(deviceId);
+			return "200";
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+			return "500";
+		}
+	}
+	
+	private String resetPassword(String deviceId,String newPassword)
+	{
+		try
+		{
+			ManageDevice.getInstance().resetPassword(deviceId,newPassword);
+			
 			return "200";
 		}
 		catch(Throwable t)
