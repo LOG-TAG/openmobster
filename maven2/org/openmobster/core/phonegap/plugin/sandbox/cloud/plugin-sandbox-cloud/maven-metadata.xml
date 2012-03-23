@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.openmobster.core.phonegap.plugin.sandbox.cloud</groupId>
+  <artifactId>plugin-sandbox-cloud</artifactId>
+  <versioning>
+    <versions>
+      <version>2.2-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20120323194437</lastUpdated>
+  </versioning>
+</metadata>
