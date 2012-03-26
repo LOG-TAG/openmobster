@@ -11,6 +11,7 @@
   * Java 6
   * [http://developer.android.com/sdk/index.html Android SDK]
   * [http://code.google.com/p/openmobster/downloads/list OpenMobster-2.2-M8] 
+  * [http://maven.apache.org/download.html Apache Maven]
 
 ----
 
