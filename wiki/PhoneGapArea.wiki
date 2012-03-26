@@ -1,0 +1,27 @@
+#summary Titanium Tutorials
+
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [AndroidArea Android Area], [DeveloperZone Advanced Tutorials]
+
+----
+
+This area contains documentation related to the OpenMobster/Titanium integration. [http://www.appcelerator.com Titanium] is a cross-platform open source framework for developing apps using javascript. The greatest advantage of this approach is that you can write you app once and then run it on many platforms. From an OpenMobster standpoint, the platforms of interest will be the iPhone and Android.
+
+==== [TitaniumGetStarted Get Started] ====
+
+This [TitaniumGetStarted tutorial] covers how to get your OpenMobster/Titanium App up and running.
+
+----
+
+==== [TitaniumSampleApp Understanding the Sample App] ====
+
+This [TitaniumSampleApp tutorial] covers the application code that makes up the OpenMobster/Titanium App.
+
+----
+
+==== [TitaniumAPI Javascript API] ====
+
+This [Titanium API documents] the OpenMobster Javascript API with usage examples.
+
+----
+
+*Related Links:* [GetStarted Get Started], [BeginnerZone Beginner], [iPhoneZone iPhone Area], [AndroidArea Android Area], [DeveloperZone Advanced Tutorials]
