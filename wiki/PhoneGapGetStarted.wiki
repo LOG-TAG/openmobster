@@ -30,14 +30,14 @@ For security reasons, before apps can use the OpenMobster Cloud, the device must
 
 You can locate this App in the distribution under *Android/core-runtime/CloudManager.apk*. You can install this App on the Android device or emulator using the following command:
 {{{
-adb install -r install CloudManager.apk
+adb install -r CloudManager.apk
 }}}
 
 Once installed you can use the *Activate* function to register with the Cloud.
 
 === Installing the Offline App ===
 {{{
-adb install -r install JQueryOfflineApp.apk
+adb install -r JQueryOfflineApp.apk
 }}}
 
 ----
