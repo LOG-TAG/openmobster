@@ -10,6 +10,20 @@
 
 ----
 
+=== Features ===
+
+  * two way synchronization between the local sqlite database and the corporate backend in the Cloud
+
+  * Offline mode operation. All data changes are tracked and auto synchronized with the Cloud once the connection returns
+
+  * Use of Push notifications to push data changes from the Cloud to the device
+
+  * Support for replicating changes to multiple devices like iCloud does
+
+  * A Java based Channel Framework for integrating your backend with the Cloud
+
+----
+
 === System Requirements ===
 
   * Java 6
