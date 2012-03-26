@@ -1,5 +1,9 @@
 #summary Get Started: PhoneGap Sync Plugin
 
+*Related Links:* [PhoneGapArea PhoneGap Area], [GetStarted Get Started], [BeginnerZone Beginner]
+
+----
+
 === Introduction ===
 
 [http://www.phonegap.com PhoneGap] is an HTML5 app platform that allows you to author native applications with web technologies and get access to APIs and app stores. *PhoneGap* leverages web technologies developers already know best... HTML and JavaScript. Starting with *OpenMobster 2.2-M8*, you can write offline web apps with synchronization of data using the *OpenMobster Sync Plugin* for PhoneGap. The Sync Plugin exposes the native Sync service to the JavaScript layer using the PhoneGap bridge technology. The rest of this chapter will discuss how to use the Sync Plugin using a JQuery based sample offline application.
@@ -459,3 +463,7 @@ The *ChannelInfo.uri* specifies the name of the Sync Channel and *ChannelInfo.mo
 === Conclusion ===
 
 This tutorial should give you a good idea on how to develop Offline Sync Apps using PhoneGap and the OpenMobster Sync Plugin. For more info about the Plugin please take a look at the [PhoneGapReference API Reference] document
+
+----
+
+*Related Links:* [PhoneGapArea PhoneGap Area], [GetStarted Get Started], [BeginnerZone Beginner]
