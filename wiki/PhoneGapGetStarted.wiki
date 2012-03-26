@@ -51,7 +51,7 @@ You can locate this App in the distribution under *Android/core-runtime/CloudMan
 adb install -r CloudManager.apk
 }}}
 
-Once installed you can use the *Activate* function to register with the Cloud.
+Once installed you can use the [http://code.google.com/p/openmobster/wiki/WhatNext Activate] function to register with the Cloud.
 
 === Installing the Offline App ===
 {{{
