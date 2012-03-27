@@ -66,6 +66,7 @@
 		<module>plugin-sandbox</module>
 		<module>plugin-jquery</module>
 		<module>plugin-sandbox-cloud</module>
+		<module>plugin-jquery-cloud</module>
 	</modules>
 	
 	<build>
