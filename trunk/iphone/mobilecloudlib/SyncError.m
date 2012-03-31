@@ -36,7 +36,7 @@ NSString *const _RESET_SYNC_STATE = @"1";
 	}
 	
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"SyncError" inManagedObjectContext:managedContext];
 	
 	//Get an instance if its already been provisioned
@@ -72,7 +72,7 @@ NSString *const _RESET_SYNC_STATE = @"1";
 +(NSArray *) all
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"SyncError" inManagedObjectContext:managedContext];
 	
 	//Get an instance if its already been provisioned
@@ -87,7 +87,7 @@ NSString *const _RESET_SYNC_STATE = @"1";
 -(BOOL) saveInstance
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	
 	NSError* error;
 	BOOL success = [managedContext save:&error];
@@ -109,7 +109,7 @@ NSString *const _RESET_SYNC_STATE = @"1";
 
 +(BOOL)delete:(SyncError *)syncError
 {
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	[managedContext deleteObject:syncError];
 	
 	NSError* error;
@@ -131,7 +131,7 @@ NSString *const _RESET_SYNC_STATE = @"1";
 
 +(BOOL)deleteAll
 {
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSArray *all = [SyncError all];
 	if(all != nil)
 	{

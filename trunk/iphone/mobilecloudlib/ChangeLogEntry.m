@@ -46,7 +46,7 @@
 	}
 	
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"ChangeLogEntry" inManagedObjectContext:managedContext];
 	
 	//Get an instance if its already been provisioned
@@ -82,7 +82,7 @@
 +(NSArray *)all
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"ChangeLogEntry" inManagedObjectContext:managedContext];
 	
 	//Get an instance if its already been provisioned
@@ -97,7 +97,7 @@
 -(BOOL) saveInstance
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	
 	NSError* error;
 	BOOL success = [managedContext save:&error];
@@ -119,7 +119,7 @@
 
 +(BOOL)delete:(ChangeLogEntry *)entry
 {
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	[managedContext deleteObject:entry];
 	
 	NSError* error;
@@ -146,7 +146,7 @@
 		return YES;
 	}
 	
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	
 	if(entries != nil)
 	{

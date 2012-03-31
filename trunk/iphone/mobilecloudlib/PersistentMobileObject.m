@@ -30,7 +30,7 @@
 +(PersistentMobileObject *) newInstance:(NSString *)channel
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	
 	
 	//Creates a new instance and returns it
@@ -46,7 +46,7 @@
 +(NSArray *) findByChannel:(NSString *) channel
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
 											  inManagedObjectContext:managedContext];
 	
@@ -66,7 +66,7 @@
 +(PersistentMobileObject *) findByOID:(NSString *) oid
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
 											  inManagedObjectContext:managedContext];
 	
@@ -92,7 +92,7 @@
 +(NSArray *) all
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
 											  inManagedObjectContext:managedContext];
 	
@@ -107,7 +107,7 @@
 
 +(BOOL) delete:(PersistentMobileObject *)mobileObject
 {
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	[managedContext deleteObject:mobileObject];
 	
 	NSError* error;
@@ -133,7 +133,7 @@
 	
 	if(all != nil)
 	{
-		NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+		NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 		
 		for(PersistentMobileObject *local in all)
 		{
@@ -163,7 +163,7 @@
 -(BOOL) saveInstance
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	
 	NSError* error;
 	BOOL success = [managedContext save:&error];

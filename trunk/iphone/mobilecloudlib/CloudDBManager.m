@@ -39,37 +39,60 @@ static CloudDBManager *singleton = nil;
 
 -(void) dealloc
 {
+    [table release];
+    [coordinator release];
 	[super dealloc];
-	[storageContext release];
+}
+
+-init
+{
+	if(self == [super init])
+	{
+        @try
+        {
+            coordinator = [self persistentStoreCoordinator];
+        }
+        @catch(SystemException *se)
+        {
+            //Establishing peristent storage crashed. The App must not be allowed
+            //to keep going
+            NSLog(@"%@",[se getMessage]);
+            
+            //TODO: may be show some error message..Find the best way to exit the App
+            exit(-1);
+        }  
+    }
+	
+	return self;
 }
 
 
 -(NSManagedObjectContext *) storageContext
 {
-	if(storageContext != nil)
-	{
-		return storageContext;
-	}
+    NSThread *currentThread = [NSThread currentThread];
+    NSManagedObjectContext *context = [currentThread.threadDictionary objectForKey:@"context"];
+    if(context != nil)
+    {
+        //NSLog(@"Resuing the NSManagedObjectContext............");
+        if([currentThread isMainThread])
+        {
+            [context processPendingChanges];
+        }
+        return context;
+    }
 	
-	NSPersistentStoreCoordinator *coordinator = nil;
-	@try
-	{
-		coordinator = [self persistentStoreCoordinator];
-	}
-	@catch(SystemException *se)
-	{
-		//Establishing peristent storage crashed. The App must not be allowed
-		//to keep going
-		NSLog(@"%@",[se getMessage]);
-		
-		//TODO: may be show some error message..Find the best way to exit the App
-		exit(-1);
-	}
+    //NSLog(@"Creating a new NSManagedObjectContext............");
+	context = [[NSManagedObjectContext alloc] init];
+	[context setPersistentStoreCoordinator: coordinator];
+    
+    [currentThread.threadDictionary setObject:context forKey:@"context"];
+    
+    if([currentThread isMainThread])
+    {
+        [context processPendingChanges];
+    }
 	
-	storageContext = [[NSManagedObjectContext alloc] init];
-	[storageContext setPersistentStoreCoordinator: coordinator];
-	
-	return storageContext;
+	return context;
 }
 
 //For the classes internal-use only
