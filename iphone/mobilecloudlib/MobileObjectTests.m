@@ -888,7 +888,7 @@
     }
     
     //Get the Storage Context
-    NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
                                               inManagedObjectContext:managedContext];
     

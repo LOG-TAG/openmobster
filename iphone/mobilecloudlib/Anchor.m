@@ -11,7 +11,7 @@
 +(Anchor *) getInstance:(NSString *)channel
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Anchor" 
 											  inManagedObjectContext:managedContext];
 	
@@ -47,7 +47,7 @@
 -(BOOL) saveInstance
 {
 	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [CloudDBManager getInstance].storageContext;
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
 	
 	NSError* error;
 	BOOL success = [managedContext save:&error];

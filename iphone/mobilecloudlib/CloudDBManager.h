@@ -5,13 +5,13 @@
 @interface CloudDBManager : NSObject 
 {
 	@private
-	NSManagedObjectContext *storageContext;
+    NSMutableDictionary *table;
+    NSPersistentStoreCoordinator *coordinator;
 }
-
-@property (nonatomic,retain,readonly) NSManagedObjectContext *storageContext;
 
 +(CloudDBManager *) getInstance;
 +(void)stop;
+-(NSManagedObjectContext *) storageContext;
 
 //For the classes internal-use only
 -(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
