@@ -140,6 +140,7 @@ static CloudDBManager *singleton = nil;
     NSError *error;
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) 
 	{
+        NSLog(@"Core Data: %@",[error userInfo]);
 		//Handle the error by throwing a SystemException
 		NSString *errorInfo = [error localizedDescription];
 		NSMutableArray *info = [NSMutableArray arrayWithObjects:errorInfo, nil];
@@ -153,10 +154,10 @@ static CloudDBManager *singleton = nil;
 
 -(NSManagedObjectModel *)managedModel
 {
-	//NSArray *allBundles = [NSBundle allBundles];
-	//NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:allBundles];
+	NSArray *allBundles = [NSBundle allBundles];
+	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:allBundles];
 	
-	ManagedObjectModelFactory *factory = [ManagedObjectModelFactory withInit];
+	/*ManagedObjectModelFactory *factory = [ManagedObjectModelFactory withInit];
 	NSManagedObjectModel *confModel = [factory buildConfigurationModel];
 	NSManagedObjectModel *mobileObjectModel = [factory buildMobileObjectModel];
 	NSManagedObjectModel *anchorModel = [factory buildAnchorModel];
@@ -169,7 +170,7 @@ static CloudDBManager *singleton = nil;
 					   syncErrorModel,
 					   nil];
 	
-	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel modelByMergingModels:models];
+	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel modelByMergingModels:models];*/
 	
     return managedObjectModel;
 }
