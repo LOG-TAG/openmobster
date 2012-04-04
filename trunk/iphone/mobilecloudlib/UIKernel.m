@@ -94,7 +94,7 @@ static UIKernel *singleton = nil;
 		[commandService stop];
 		if(singleton != nil)
 		{
-			[singleton release];
+			[self release];
 			singleton = nil;
 		}
 	}

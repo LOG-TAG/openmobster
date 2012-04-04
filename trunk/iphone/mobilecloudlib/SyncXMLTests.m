@@ -16,7 +16,9 @@
 {
 	NSLog(@"Starting testGeneratorAnchorXML....");
 	
+    NSLog(@"1........");
 	Anchor *anchor = [Anchor getInstance:@"testServerBean"];
+    NSLog(@"2........");
 	
 	anchor.lastSync = @"mockLastSync";
 	anchor.nextSync = @"mockNextSync";

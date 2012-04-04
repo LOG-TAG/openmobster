@@ -7,6 +7,9 @@ static CloudDBManager *singleton = nil;
 
 @implementation CloudDBManager
 
+@synthesize coordinator;
+@synthesize mainContext;
+
 +(CloudDBManager *) getInstance
 {
 	if(singleton)
@@ -31,7 +34,7 @@ static CloudDBManager *singleton = nil;
 	{
 		if(singleton != nil)
 		{
-			[singleton release];
+			[self release];
 			singleton = nil;
 		}
 	}
@@ -39,8 +42,11 @@ static CloudDBManager *singleton = nil;
 
 -(void) dealloc
 {
-    [table release];
-    [coordinator release];
+    [self.coordinator release];
+    if(self.mainContext != nil)
+    {
+        [self.mainContext release];
+    }
 	[super dealloc];
 }
 
@@ -50,7 +56,7 @@ static CloudDBManager *singleton = nil;
 	{
         @try
         {
-            coordinator = [self persistentStoreCoordinator];
+            self.coordinator = [self persistentStoreCoordinator];
         }
         @catch(SystemException *se)
         {
@@ -73,26 +79,38 @@ static CloudDBManager *singleton = nil;
     NSManagedObjectContext *context = [currentThread.threadDictionary objectForKey:@"context"];
     if(context != nil)
     {
-        //NSLog(@"Resuing the NSManagedObjectContext............");
-        if([currentThread isMainThread])
-        {
-            [context processPendingChanges];
-        }
+        [context processPendingChanges];
         return context;
     }
 	
-    //NSLog(@"Creating a new NSManagedObjectContext............");
-	context = [[NSManagedObjectContext alloc] init];
-	[context setPersistentStoreCoordinator: coordinator];
-    
+	context = [[[NSManagedObjectContext alloc] init] autorelease];
+	[context setPersistentStoreCoordinator: self.coordinator];
+    [context processPendingChanges];
+
     [currentThread.threadDictionary setObject:context forKey:@"context"];
     
-    if([currentThread isMainThread])
+    if([NSThread isMainThread])
     {
-        [context processPendingChanges];
+        self.mainContext = context;
     }
+    /*else
+    {
+        //Add the Observer
+        NSNotificationCenter *defaultCenter = (NSNotificationCenter *)[NSNotificationCenter defaultCenter];
+        [defaultCenter addObserver:self selector:@selector(contextDidSave:) name:NSManagedObjectContextDidSaveNotification object:context];
+    }*/
 	
 	return context;
+}
+
+-(void) contextDidSave:(NSNotification *)saveNotification
+{
+    //NSLog(@"Merge Notification on the Main Thread received!!!!!");
+    //[self.mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+      //                    withObject:saveNotification
+      //                 waitUntilDone:YES];
+    
+    //[self.mainContext mergeChangesFromContextDidSaveNotification:saveNotification];
 }
 
 //For the classes internal-use only

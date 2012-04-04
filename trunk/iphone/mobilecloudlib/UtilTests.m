@@ -182,6 +182,7 @@
 	NSLog(@"IsSSLActive: %@", [configuration.sslActive stringValue]);
 	NSLog(@"MaxPacketSize: %@", [configuration.maxPacketSize stringValue]);
 }
+
 -(void) testCleanupAndRestoreXML
 {
 	NSLog(@"Starting testCleanupXML......");

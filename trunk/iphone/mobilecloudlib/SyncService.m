@@ -41,6 +41,35 @@
 
 -(void)startDaemons
 {
+     /*NSArray *changelog = [engine getChangeLog:@"phonegap_channel" operation:@"Replace"];
+     NSLog(@"-----ChangeLog Dump On the Main Thread-----------------------");
+     if(changelog != nil && [changelog count]>0)
+     {
+     for(ChangeLogEntry *local in changelog)
+     {
+     NSString * recordId = local.recordId;
+     NSLog(@"RecordId(Main): %@",local.recordId);
+     NSLog(@"--------------------------------------");
+     }
+     }
+     else 
+     {
+     NSLog(@"ChangeLog is Empty!!!");
+     }*/
+    
+    //persist the managedcontext in the database
+    /*NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+	
+	NSError* error;
+	BOOL success = [managedContext save:&error];
+    if(!success)
+    {
+        NSLog(@"Error during save!!!");
+        NSLog(@"SaveError: %@, %@", error, [error userInfo]);
+    }
+    
+    NSLog(@"Save Success:%d",success);*/
+    
 	//Schedule a background sync to sync up the channes at App startup
 	SyncScheduler *backgroudSync = [SyncScheduler getInstance];
 	[backgroudSync startBackgroundSync];
@@ -108,7 +137,8 @@
 		[entries addObject:attr];
 	
 		[engine addChangeLogEntries:entries];
-		
+        
+        
 		//sync in the background
 		[self startDaemons];
 	}

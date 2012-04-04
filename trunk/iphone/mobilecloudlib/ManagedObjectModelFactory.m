@@ -105,7 +105,7 @@
 	NSAttributeDescription *sslActive = [[NSAttributeDescription alloc] init];
     [sslActive setName:@"sslActive"];
     [sslActive setAttributeType:NSBooleanAttributeType];
-    [sslActive setOptional:NO];
+    [sslActive setOptional:YES]; //this is a hack. not sure why core data barfs on this property being required. The App logic makes sure the property is always required. 
 	[sslActive setDefaultValue:NO];
 	[properties addObject:sslActive];
 	[sslActive release];
