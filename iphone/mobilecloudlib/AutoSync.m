@@ -28,7 +28,7 @@
 {
 	@try 
 	{
-        /*SyncEngine *syncEngine = [SyncEngine withInit];
+        SyncEngine *syncEngine = [SyncEngine withInit];
         NSArray *changelog = [syncEngine getChangeLog:@"phonegap_channel" operation:@"Replace"];
         NSLog(@"-----ChangeLog Dump On the Thread-----------------------");
         if(changelog != nil && [changelog count]>0)
@@ -42,7 +42,7 @@
         else 
         {
             NSLog(@"ChangeLog is Empty!!!");
-        }*/
+        }
         
 	AppService *appService = [AppService getInstance];
 	SyncService *sync = [SyncService getInstance];
