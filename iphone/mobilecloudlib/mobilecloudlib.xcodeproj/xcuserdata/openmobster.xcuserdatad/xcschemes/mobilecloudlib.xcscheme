@@ -89,6 +89,20 @@
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2BF184C12833C8F00691535"
+               BuildableName = "connectionTests.octest"
+               BlueprintName = "connectionTests"
+               ReferencedContainer = "container:mobilecloudlib.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -126,14 +140,6 @@
                BlueprintName = "apiTests"
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "MobileBeanTest">
-               </Test>
-               <Test
-                  Identifier = "MobileServiceTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "YES">
@@ -146,7 +152,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E531225C60E004C908F"

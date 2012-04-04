@@ -214,7 +214,11 @@
     else
     {
         //In case of LIKE and CONTAINS queries
-        result = [self readAll:channel];
+        NSArray *all = [self readAll:channel];
+        for(MobileObject *local in all)
+        {
+            [result addObject:local];
+        }
     }
 
     return result;

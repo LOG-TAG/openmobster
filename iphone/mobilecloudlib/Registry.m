@@ -63,7 +63,7 @@ static Registry *singleton = nil;
 {
 	if(singleton != nil)
 	{
-		[singleton release];
+		[self release];
 		singleton = nil;
 	}
 }

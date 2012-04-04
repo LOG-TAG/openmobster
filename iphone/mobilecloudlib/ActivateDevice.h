@@ -16,6 +16,7 @@
 #import "ErrorHandler.h"
 #import "SystemException.h"
 #import "AppException.h"
+#import "LocalCommand.h"
 
 /**
  * 

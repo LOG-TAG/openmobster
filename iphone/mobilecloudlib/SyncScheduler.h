@@ -24,4 +24,6 @@
 +(SyncScheduler *)getInstance;
 
 -(void)startBackgroundSync;
+
+-(void)run;
 @end

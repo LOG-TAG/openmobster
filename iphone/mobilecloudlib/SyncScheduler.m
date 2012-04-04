@@ -7,6 +7,8 @@
  */
 
 #import "SyncScheduler.h"
+#import "SyncEngine.h"
+#import "ChangeLogEntry.h"
 
 
 /**
@@ -46,5 +48,17 @@
 	
 	//Add the operation to the queue
 	[queue addOperation:operation];
+    
+    //[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];
+}
+
+-(void)run
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    AutoSync *sync = [AutoSync withInit];
+    [sync sync];
+    
+    [pool release];
 }
 @end

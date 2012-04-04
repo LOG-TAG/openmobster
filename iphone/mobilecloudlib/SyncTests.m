@@ -43,12 +43,10 @@
 	[kernel startup];
 	
 	SyncScheduler *syncScheduler = [SyncScheduler getInstance];
-	ProxyLoader *proxyLoader = [ProxyLoader getInstance];
 	
 	for(int i=0; i<10; i++)
 	{
 		[syncScheduler startBackgroundSync];
-		[proxyLoader startProxySync:@"testServerBean"];
 	}
 	
 	//sleep for 5 seconds before exiting

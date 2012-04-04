@@ -43,8 +43,6 @@ static CloudService *singleton = nil;
 
 -(void) dealloc
 {
-	[super dealloc];
-	
 	[kernel release];
 	[bootupKernel release];
 	[uiKernel release];
@@ -53,6 +51,8 @@ static CloudService *singleton = nil;
 	{
 		[viewController release];
 	}
+    
+    [super dealloc];
 }
 
 +(CloudService *) getInstance:(UIViewController *)viewController
@@ -114,7 +114,7 @@ static CloudService *singleton = nil;
 	
 		if(singleton != nil)
 		{
-			[singleton release];
+			[self release];
 			singleton = nil;
 		}
 	}

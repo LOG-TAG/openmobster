@@ -5,9 +5,12 @@
 @interface CloudDBManager : NSObject 
 {
 	@private
-    NSMutableDictionary *table;
     NSPersistentStoreCoordinator *coordinator;
+    NSManagedObjectContext *mainContext;
 }
+
+@property(nonatomic,retain) NSPersistentStoreCoordinator *coordinator;
+@property(nonatomic,retain) NSManagedObjectContext *mainContext;
 
 +(CloudDBManager *) getInstance;
 +(void)stop;
@@ -19,5 +22,7 @@
 -(NSManagedObjectModel *)managedModel;
 
 -(NSString *)applicationDocumentsDirectory;
+
+-(void) contextDidSave:(NSNotification *)saveNotification;
 
 @end
