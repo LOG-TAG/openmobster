@@ -99,6 +99,28 @@ SyncPlugin.prototype.commit = function(successCallback,errorCallback)
                          );
 };
 
+SyncPlugin.prototype.value = function(channel,oid,fieldUri,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'value', //Tell plugin, which action must be performed
+                         [channel,oid,fieldUri] //Passing a list of arguments to the Plugin
+                         );
+};
+
+SyncPlugin.prototype.queryByMatchAll = function(channel,criteria,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'queryByMatchAll', //Tell plugin, which action must be performed
+                         [channel,criteria] //Passing a list of arguments to the Plugin
+                         );
+};
+
 
 Cordova.addConstructor(function(){
 	if(!window.plugins)

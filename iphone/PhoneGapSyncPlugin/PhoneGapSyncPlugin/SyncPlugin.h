@@ -27,4 +27,6 @@
 -(void) clearArray:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
 -(void) commit:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) value:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 @end
