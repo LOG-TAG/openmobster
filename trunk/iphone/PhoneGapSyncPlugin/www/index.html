@@ -284,6 +284,98 @@
                                        },
                                        function(error){});
         }
+        
+        function testValue(channel)
+        {
+            window.plugins.sync.readall(channel,
+            function(oids)
+            {
+                oids = JSON.parse(oids);
+                var length = oids.length;
+                for(var i=0; i<length; i++)
+                {
+                   var oid = oids[i];
+                                        
+                   //read the value of 'title'
+                   window.plugins.sync.value(channel,oid,'title',
+                   function(titleValue)
+                   {
+                        console.log('Title: '+titleValue);
+                   },
+                   function(error)
+                   {
+                        alert('Title Error :'+error);
+                   }
+                   );
+                                        
+                   //read the customers array
+                   for(var j=0; j<4; j++)
+                   {
+                     var customerUri = 'customers['+j+']';
+                     window.plugins.sync.value(channel,oid,customerUri,
+                     function(customerValue)
+                     {
+                        console.log('Customer: '+customerValue);
+                     },
+                     function(error)
+                     {
+                        alert('Customer Error: '+error);
+                     }
+                     );
+                    }
+                    
+                    //read the messages array
+                    for(var j=0; j<5; j++)
+                    {
+                        var messageFrom = 'messages['+j+'].from';
+                        var messageTo = 'messages['+j+'].to';
+                        var message = 'messages['+j+'].message';
+                        
+                        //from
+                        window.plugins.sync.value(channel,oid,messageFrom,
+                        function(from)
+                        {
+                            console.log('From: '+from);
+                        },
+                        function(error)
+                        {
+                            alert('Message From Error: '+error);
+                        }
+                        );
+                        
+                        //to
+                        window.plugins.sync.value(channel,oid,messageTo,
+                        function(to)
+                        {
+                            console.log('To: '+to);
+                        },
+                        function(error)
+                        {
+                            alert('Message To Error: '+error);
+                        }
+                        );
+                        
+                        //message
+                        window.plugins.sync.value(channel,oid,message,
+                        function(message)
+                        {
+                            console.log('Message: '+message);
+                        },
+                        function(error)
+                        {
+                            alert('Message Error: '+error);
+                        }
+                        );
+
+                    }
+                }
+            },
+            function(error)
+            {
+                alert('Error ReadAll: '+error);                        
+            }
+            );
+        }
     </script>
   </head>
   <body onload="onBodyLoad()">
@@ -298,5 +390,6 @@
     <p><input type='button' value='Test Add New Bean' onclick='javascript:addNewBean("phonegap_channel");'/></p>
     <p><input type='button' value='Test Clear Array' onclick='javascript:clearArray("phonegap_channel");'/></p>
     <p><input type='button' value='Test Delete Bean' onclick='javascript:deleteBean("phonegap_channel");'/></p>
+    <p><input type='button' value='Test Value' onclick='javascript:testValue("phonegap_channel");'/></p>
   </body>
 </html>

@@ -536,4 +536,51 @@
         [self writeJavascript:jsString];
     } 
 }
+
+-(void) value:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"Value Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    NSString *oid = [arguments objectAtIndex:1];
+    NSString *fieldUri = [arguments objectAtIndex:2];
+    @try 
+    {
+        //Bean in question
+        MobileBean *bean = [MobileBean readById:channel :oid];
+        if(bean == nil)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        //read the value of the field
+        returnValue = [bean getValue:fieldUri];
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    } 
+}
 @end
