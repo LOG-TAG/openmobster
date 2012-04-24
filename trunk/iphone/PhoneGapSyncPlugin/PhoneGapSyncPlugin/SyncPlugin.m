@@ -13,6 +13,7 @@
 #import "BeanList.h"
 #import "StringUtil.h"
 #import "BeanListEntry.h"
+#import "GenericAttributeManager.h"
 
 @implementation SyncPlugin
 
@@ -582,5 +583,514 @@
     {
         [self writeJavascript:jsString];
     } 
+}
+
+-(void) queryByMatchAll:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"QueryByMatchAll Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    SBJsonParser *jsonParser = [[[SBJsonParser alloc] init] autorelease];
+    @try 
+    {
+        //validation
+        if([arguments count]==1)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        NSString *json = [arguments objectAtIndex:1];
+        
+        //Parse the JSON
+        NSDictionary *values = (NSDictionary *)[jsonParser objectWithString:json];
+        if([values count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        //extract the name/value pairs to be used as criteria for the query
+        GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+        NSArray *keys = [values allKeys];
+        for(NSString *name in keys)
+        {
+            NSString *value = [values objectForKey:name];
+            [criteria setAttribute:name :value];
+        }
+        
+        NSArray *beans = [MobileBean queryByEqualsAll:channel :criteria];
+        if(beans == nil || [beans count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return; 
+        }
+        
+        //Get the 'oids' of these beans
+        NSMutableArray *oids = [NSMutableArray array];
+        for(MobileBean *bean in beans)
+        {
+            NSString *oid = [bean getId];
+            [oids addObject:oid];
+        }
+        
+        //Generate a JSON payload of this array of 'oids'
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        returnValue = [jsonWriter stringWithObject:oids];
+
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    }
+}
+
+-(void) queryByMatchOne:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"QueryByMatchOne Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    SBJsonParser *jsonParser = [[[SBJsonParser alloc] init] autorelease];
+    @try 
+    {
+        //validation
+        if([arguments count]==1)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        NSString *json = [arguments objectAtIndex:1];
+        
+        //Parse the JSON
+        NSDictionary *values = (NSDictionary *)[jsonParser objectWithString:json];
+        if([values count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        //extract the name/value pairs to be used as criteria for the query
+        GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+        NSArray *keys = [values allKeys];
+        for(NSString *name in keys)
+        {
+            NSString *value = [values objectForKey:name];
+            [criteria setAttribute:name :value];
+        }
+        
+        NSArray *beans = [MobileBean queryByEqualsAtleastOne:channel :criteria];
+        if(beans == nil || [beans count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return; 
+        }
+        
+        //Get the 'oids' of these beans
+        NSMutableArray *oids = [NSMutableArray array];
+        for(MobileBean *bean in beans)
+        {
+            NSString *oid = [bean getId];
+            [oids addObject:oid];
+        }
+        
+        //Generate a JSON payload of this array of 'oids'
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        returnValue = [jsonWriter stringWithObject:oids];
+        
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    }
+}
+
+-(void) queryByNotMatchAll:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"QueryByNotMatchAll Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    SBJsonParser *jsonParser = [[[SBJsonParser alloc] init] autorelease];
+    @try 
+    {
+        //validation
+        if([arguments count]==1)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        NSString *json = [arguments objectAtIndex:1];
+        
+        //Parse the JSON
+        NSDictionary *values = (NSDictionary *)[jsonParser objectWithString:json];
+        if([values count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        //extract the name/value pairs to be used as criteria for the query
+        GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+        NSArray *keys = [values allKeys];
+        for(NSString *name in keys)
+        {
+            NSString *value = [values objectForKey:name];
+            [criteria setAttribute:name :value];
+        }
+        
+        NSArray *beans = [MobileBean queryByNotEqualsAll:channel :criteria];
+        if(beans == nil || [beans count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return; 
+        }
+        
+        //Get the 'oids' of these beans
+        NSMutableArray *oids = [NSMutableArray array];
+        for(MobileBean *bean in beans)
+        {
+            NSString *oid = [bean getId];
+            [oids addObject:oid];
+        }
+        
+        //Generate a JSON payload of this array of 'oids'
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        returnValue = [jsonWriter stringWithObject:oids];
+        
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    }
+}
+
+-(void) queryByNotMatchOne:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"QueryByNotMatchOne Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    SBJsonParser *jsonParser = [[[SBJsonParser alloc] init] autorelease];
+    @try 
+    {
+        //validation
+        if([arguments count]==1)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        NSString *json = [arguments objectAtIndex:1];
+        
+        //Parse the JSON
+        NSDictionary *values = (NSDictionary *)[jsonParser objectWithString:json];
+        if([values count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        //extract the name/value pairs to be used as criteria for the query
+        GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+        NSArray *keys = [values allKeys];
+        for(NSString *name in keys)
+        {
+            NSString *value = [values objectForKey:name];
+            [criteria setAttribute:name :value];
+        }
+        
+        NSArray *beans = [MobileBean queryByNotEqualsAtleastOne:channel :criteria];
+        if(beans == nil || [beans count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return; 
+        }
+        
+        //Get the 'oids' of these beans
+        NSMutableArray *oids = [NSMutableArray array];
+        for(MobileBean *bean in beans)
+        {
+            NSString *oid = [bean getId];
+            [oids addObject:oid];
+        }
+        
+        //Generate a JSON payload of this array of 'oids'
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        returnValue = [jsonWriter stringWithObject:oids];
+        
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    }
+}
+
+-(void) queryByContainsAll:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"QueryByContainsAll Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    SBJsonParser *jsonParser = [[[SBJsonParser alloc] init] autorelease];
+    @try 
+    {
+        //validation
+        if([arguments count]==1)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        NSString *json = [arguments objectAtIndex:1];
+        
+        //Parse the JSON
+        NSDictionary *values = (NSDictionary *)[jsonParser objectWithString:json];
+        if([values count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        //extract the name/value pairs to be used as criteria for the query
+        GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+        NSArray *keys = [values allKeys];
+        for(NSString *name in keys)
+        {
+            NSString *value = [values objectForKey:name];
+            [criteria setAttribute:name :value];
+        }
+        
+        NSArray *beans = [MobileBean queryByContainsAll:channel :criteria];
+        if(beans == nil || [beans count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return; 
+        }
+        
+        //Get the 'oids' of these beans
+        NSMutableArray *oids = [NSMutableArray array];
+        for(MobileBean *bean in beans)
+        {
+            NSString *oid = [bean getId];
+            [oids addObject:oid];
+        }
+        
+        //Generate a JSON payload of this array of 'oids'
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        returnValue = [jsonWriter stringWithObject:oids];
+        
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    }
+}
+-(void) queryByContainsOne:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    //spit out arguments
+    /*NSLog(@"QueryByContainsOne Invoked.....");
+     for(NSString *local in arguments)
+     {
+     NSLog(@"%@",local);
+     }*/
+    
+    NSString *callback = [arguments pop];
+    NSString *jsString = NULL;
+    CDVPluginResult *result = nil;
+    NSString *returnValue = @"0";
+    
+    NSString *channel = [arguments objectAtIndex:0];
+    SBJsonParser *jsonParser = [[[SBJsonParser alloc] init] autorelease];
+    @try 
+    {
+        //validation
+        if([arguments count]==1)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        
+        NSString *json = [arguments objectAtIndex:1];
+        
+        //Parse the JSON
+        NSDictionary *values = (NSDictionary *)[jsonParser objectWithString:json];
+        if([values count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return;
+        }
+        
+        //extract the name/value pairs to be used as criteria for the query
+        GenericAttributeManager *criteria = [GenericAttributeManager withInit];
+        NSArray *keys = [values allKeys];
+        for(NSString *name in keys)
+        {
+            NSString *value = [values objectForKey:name];
+            [criteria setAttribute:name :value];
+        }
+        
+        NSArray *beans = [MobileBean queryByContainsAtleastOne:channel :criteria];
+        if(beans == nil || [beans count] == 0)
+        {
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+            jsString = [result toSuccessCallbackString:callback];
+            
+            return; 
+        }
+        
+        //Get the 'oids' of these beans
+        NSMutableArray *oids = [NSMutableArray array];
+        for(MobileBean *bean in beans)
+        {
+            NSString *oid = [bean getId];
+            [oids addObject:oid];
+        }
+        
+        //Generate a JSON payload of this array of 'oids'
+        SBJsonWriter *jsonWriter = [[[SBJsonWriter alloc] init] autorelease];
+        returnValue = [jsonWriter stringWithObject:oids];
+        
+        
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnValue];
+        jsString = [result toSuccessCallbackString:callback];
+    }
+    @catch (NSException *exception) 
+    {
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[exception reason]];
+        jsString = [result toErrorCallbackString:callback];
+    }
+    @finally 
+    {
+        [self writeJavascript:jsString];
+    }
 }
 @end

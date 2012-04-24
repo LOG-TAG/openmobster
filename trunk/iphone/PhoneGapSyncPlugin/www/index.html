@@ -376,6 +376,228 @@
             }
             );
         }
+        
+        function queryByMatchAll(channel,criteria)
+        {
+		window.plugins.sync.queryByMatchAll(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByMatchAll Error: '+error);
+			}
+		);
+        }
+        
+        function queryByMatchOne(channel,criteria)
+        {
+		window.plugins.sync.queryByMatchOne(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByMatchOne Error: '+error);
+			}
+		);
+        }
+        
+        function queryByNotMatchAll(channel,criteria)
+        {
+		window.plugins.sync.queryByNotMatchAll(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchAll Error: '+error);
+			}
+		);
+        }
+        
+        function queryByNotMatchOne(channel,criteria)
+        {
+		window.plugins.sync.queryByNotMatchOne(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchOne Error: '+error);
+			}
+		);
+        }
+        
+        function queryByContainsAll(channel,criteria)
+        {
+		window.plugins.sync.queryByContainsAll(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByContainsAll Error: '+error);
+			}
+		);
+        }
+        
+        function queryByContainsOne(channel,criteria)
+        {
+		window.plugins.sync.queryByContainsOne(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByContainsOne Error: '+error);
+			}
+		);
+        }
     </script>
   </head>
   <body onload="onBodyLoad()">
@@ -391,5 +613,11 @@
     <p><input type='button' value='Test Clear Array' onclick='javascript:clearArray("phonegap_channel");'/></p>
     <p><input type='button' value='Test Delete Bean' onclick='javascript:deleteBean("phonegap_channel");'/></p>
     <p><input type='button' value='Test Value' onclick='javascript:testValue("phonegap_channel");'/></p>
+    <p><input type='button' value='Query By Match All' onclick='javascript:queryByMatchAll("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Match One' onclick='javascript:queryByMatchOne("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Not Match All' onclick='javascript:queryByNotMatchAll("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Not Match One' onclick='javascript:queryByNotMatchOne("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Contains All' onclick='javascript:queryByContainsAll("phonegap_channel","title");'/></p>
+    <p><input type='button' value='Query By Contains One' onclick='javascript:queryByContainsOne("phonegap_channel","://");'/></p>
   </body>
 </html>

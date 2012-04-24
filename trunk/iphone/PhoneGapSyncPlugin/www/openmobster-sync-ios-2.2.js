@@ -121,6 +121,60 @@ SyncPlugin.prototype.queryByMatchAll = function(channel,criteria,successCallback
                          );
 };
 
+SyncPlugin.prototype.queryByMatchOne = function(channel,criteria,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'queryByMatchOne', //Tell plugin, which action must be performed
+                         [channel,criteria] //Passing a list of arguments to the Plugin
+                         );
+};
+
+SyncPlugin.prototype.queryByNotMatchAll = function(channel,criteria,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'queryByNotMatchAll', //Tell plugin, which action must be performed
+                         [channel,criteria] //Passing a list of arguments to the Plugin
+                         );
+};
+
+SyncPlugin.prototype.queryByNotMatchOne = function(channel,criteria,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'queryByNotMatchOne', //Tell plugin, which action must be performed
+                         [channel,criteria] //Passing a list of arguments to the Plugin
+                         );
+};
+
+SyncPlugin.prototype.queryByContainsAll = function(channel,criteria,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'queryByContainsAll', //Tell plugin, which action must be performed
+                         [channel,criteria] //Passing a list of arguments to the Plugin
+                         );
+};
+
+SyncPlugin.prototype.queryByContainsOne = function(channel,criteria,successCallback,errorCallback)
+{
+	return Cordova.exec(
+                         successCallback, //Success callback
+                         errorCallback, //Failure callback
+                         'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+                         'queryByContainsOne', //Tell plugin, which action must be performed
+                         [channel,criteria] //Passing a list of arguments to the Plugin
+                         );
+};
 
 Cordova.addConstructor(function(){
 	if(!window.plugins)

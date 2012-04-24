@@ -29,4 +29,16 @@
 -(void) commit:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
 -(void) value:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) queryByMatchAll:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) queryByMatchOne:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) queryByNotMatchAll:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) queryByNotMatchOne:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) queryByContainsAll:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+-(void) queryByContainsOne:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 @end
