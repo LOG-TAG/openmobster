@@ -82,6 +82,6 @@ Here are the values to use when connecting to the CloudServer on your localhost
 
 JBoss Commmand to start the server: *./run.sh -c openmobster -b 127.0.0.1*
 
-URL to use to download the CloudManager App: *http://10.0.2.2/o/android/cloudmanager*
+URL to use to download the CloudManager App: http://10.0.2.2/o/android/cloudmanager
 
 Server IP to use when activating the device : *10.0.2.2*
