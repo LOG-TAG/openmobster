@@ -63,7 +63,7 @@ Note: In the Emulator you must have an SD Card for this OTA download to work
 
 You can launch the Cloud Manager App. There you can choose "Activate" and follow the activation wizard. It will collect 4 values:
 
-*Server:* the IP or FQDN address where the Cloud Server is running. For localhost you should use the address, 10.0.2.2
+*Server:* the IP or FQDN address where the Cloud Server is running. For localhost you should use the address, *10.0.2.2*
 
 *Port:* Port where the Cloud Server is running. The default value is *1502*.
 
