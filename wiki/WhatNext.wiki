@@ -76,3 +76,12 @@ You can launch the Cloud Manager App. There you can choose "Activate" and follow
 From the Cloud Manager App, select *Corporate App Store*. This will give you a list of some sample apps that are installed on the server. You can now download, install and play around with some of them.
 
 That's it. This concludes the process of take the OpenMobster system for a test drive. It definitely give you an idea of how the entities are setup architecturally.
+
+=== Helpful Hints ===
+Here are the values to use when connecting to the CloudServer on your localhost
+
+JBoss Commmand to start the server: *./run.sh -c openmobster -b 127.0.0.1*
+
+URL to use to download the CloudManager App: *http://10.0.2.2/o/android/cloudmanager*
+
+Server IP to use when activating the device : *10.0.2.2*
