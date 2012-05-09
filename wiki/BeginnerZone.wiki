@@ -44,6 +44,18 @@ A basic [BeginMobileBean tutorial] on how to use the MobileBean component to acc
 
 ----
 
+==== iPhone Showcase ====
+
+This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
+
+----
+
+==== iPhone Sync App Tutorial ====
+
+This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
+
+----
+
 ==== Developing Device-To-Device Push Apps ====
 
 A basic [D2DPushFramework tutorial] on how to develop Device-To-Device apps like chat and instant messaging
@@ -123,18 +135,6 @@ A [ManagementConsoleManual user manual] for the Management Console
 ==== Remote Wipe and Remote Lock ====
 
 A [DeviceAdministration guide] to using the Remote Wipe and Remote Lock capabilities of the Management Console
-
-----
-
-==== iPhone Showcase ====
-
-This [iPhoneShowcase tutorial] is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
-
-----
-
-==== iPhone Sync App Tutorial ====
-
-This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
 
 ----
 
