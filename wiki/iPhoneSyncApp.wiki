@@ -1,5 +1,9 @@
 #summary iPhone Sync App tutorial
 
+*Related Links:* [iPhoneShowCase iPhone Showcase]
+
+----
+
 This tutorial teaches how to architect a simple Sync App for the iPhone platform
 
 ==== Step 1: Write the server side MobileBean component ====
@@ -247,3 +251,7 @@ You must specify the channels that your App will be using. This is done in the _
   * At first you will have to activate the App with the Cloud. Use the account, Username: blah2@gmail.com, Password: blahblah2
 
   * Then specify the IP address of the Cloud Server. It should something like a 192.168.xx.xx address. Do not use _localhost_ or _127.0.0.1_.
+
+----
+
+*Related Links:* [iPhoneShowCase iPhone Showcase]
