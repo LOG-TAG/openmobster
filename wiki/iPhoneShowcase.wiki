@@ -1,6 +1,10 @@
 #summary iPhone Showcase App
 #labels Tutorial
 
+*Related Links:* [iPhoneSyncApp iPhone Sync App]
+
+----
+
 === Introduction ===
 
 This tutorial is to guide you through the process of running the iPhone Showcase App with the OpenMobster Cloud Server.
@@ -42,3 +46,7 @@ If the App launches with a Device Activation screen go ahead with the Activation
   * *Port:* 1502 (default)
 
 For security purposes, the device must provisioned before using the Cloud services.
+
+----
+
+*Related Links:* [iPhoneSyncApp iPhone Sync App]
