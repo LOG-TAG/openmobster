@@ -1,6 +1,6 @@
 #summary iPhone Sync App tutorial
 
-*Related Links:* [iPhoneShowCase iPhone Showcase]
+*Related Links:* [iPhoneShowcase iPhone Showcase]
 
 ----
 
@@ -254,4 +254,4 @@ You must specify the channels that your App will be using. This is done in the _
 
 ----
 
-*Related Links:* [iPhoneShowCase iPhone Showcase]
+*Related Links:* [iPhoneShowcase iPhone Showcase]
