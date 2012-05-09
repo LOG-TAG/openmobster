@@ -132,4 +132,10 @@ This [iPhoneShowcase tutorial] is to guide you through the process of running th
 
 ----
 
+==== iPhone Sync App Tutorial ====
+
+This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
+
+----
+
 *Related Links:* [GetStarted Get Started], [AndroidArea Android Area], [iPhoneZone iPhone Area], [DeveloperZone Advanced Tutorials]
