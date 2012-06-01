@@ -71,7 +71,7 @@ More details can be found on our [roadmap project roadmap].
 
 ----
 
-=== Read to write your first Mobile Cloud App? ===
+=== Ready to write your first Mobile Cloud App? ===
 [http://code.google.com/p/openmobster/downloads/list Download] the latest stable release.
 
 *Related Links:* [GetStarted Get Started]
