@@ -99,6 +99,8 @@ This installs the Sync App and the _Development Mode_ Cloud Manager App on the e
 
   * There is a small bug with AppCreator which leads to the Dev Mode CloudManager App to not be installed on the emulator during *mvn -Phot-deploy install* command. For a workaround until this is fixed, please take a look at: https://groups.google.com/forum/?fromgroups#!topic/openmobster-users/FaBhvejD85w
 
+  * For the build to succeed, you must have an environment variable called *ANDROID_HOME* pointing to the directory where the Android SDK is installed
+
 ----
 
 *Related Links:* [GetStartedFromSource Get Started From Source], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
