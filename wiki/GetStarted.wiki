@@ -97,6 +97,8 @@ This installs the Sync App and the _Development Mode_ Cloud Manager App on the e
 
   * When launching the sample offline sync app, if you get a message saying, "Cloud Manager App is not installed or active", simply launch the "DevCloud" app that is installed along with your App. "DevCloud" houses the runtime for the Cloud system services. Without these services, the sync app cannot function. More details are available in the README.txt file generated with the project
 
+  * There is a small bug with AppCreator which leads to the Dev Mode CloudManager App to not be installed on the emulator during *mvn -Phot-deploy install* command. For a workaround until this is fixed, please take a look at: https://groups.google.com/forum/?fromgroups#!topic/openmobster-users/FaBhvejD85w
+
 ----
 
 *Related Links:* [GetStartedFromSource Get Started From Source], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
