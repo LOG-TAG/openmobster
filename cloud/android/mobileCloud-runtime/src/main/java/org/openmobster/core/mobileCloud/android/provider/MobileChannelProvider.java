@@ -300,7 +300,8 @@ public class MobileChannelProvider extends ContentProvider
 		
 		cursor.addRow(new String[]{recordId,"recordId",record.getRecordId()});
 		cursor.addRow(new String[]{recordId,"storageId",record.getValue("storageId")});		
-		cursor.addRow(new String[]{recordId,"dirty",record.getDirtyStatus()});		
+		cursor.addRow(new String[]{recordId,"dirty",record.getDirtyStatus()});
+		cursor.addRow(new String[]{recordId,"serverRecordId",record.getValue("serverRecordId")});
 		
 		if(record.getValue("isCreatedOnDevice").equals(Boolean.TRUE.toString()))
 		{
@@ -381,6 +382,12 @@ public class MobileChannelProvider extends ContentProvider
 		if(local != null && local.trim().length() > 0)
 		{
 			record.setDirtyStatus(local);
+		}
+		
+		local = values.getAsString("serverRecordId");
+		if(local != null && local.trim().length() >0)
+		{
+			record.setValue("serverRecordId", local);
 		}
 		
 		
