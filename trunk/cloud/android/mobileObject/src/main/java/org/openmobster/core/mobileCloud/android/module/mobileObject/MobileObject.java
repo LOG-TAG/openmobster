@@ -53,6 +53,7 @@ public final class MobileObject
 		this.storageId = record.getValue("storageId");
 		this.recordId = record.getRecordId();
 		this.dirtyStatus = record.getDirtyStatus();
+		this.serverRecordId = record.getValue("serverRecordId");
 		
 		this.isCreatedOnDevice = false;
 		if(record.getValue("isCreatedOnDevice").equals(Boolean.TRUE.toString()))
@@ -117,6 +118,11 @@ public final class MobileObject
 		if(this.dirtyStatus != null && this.dirtyStatus.trim().length() > 0)
 		{
 			record.setDirtyStatus(this.dirtyStatus);
+		}
+		
+		if(this.serverRecordId != null && this.serverRecordId.trim().length() > 0)
+		{
+			record.setValue("serverRecordId", this.serverRecordId);
 		}
 		
 		record.setValue("storageId", storageId);
