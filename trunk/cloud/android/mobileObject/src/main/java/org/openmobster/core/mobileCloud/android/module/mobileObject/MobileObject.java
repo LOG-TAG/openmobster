@@ -53,7 +53,10 @@ public final class MobileObject
 		this.storageId = record.getValue("storageId");
 		this.recordId = record.getRecordId();
 		this.dirtyStatus = record.getDirtyStatus();
-		this.serverRecordId = record.getValue("serverRecordId");
+		if(record.getValue("serverRecordId") != null)
+		{
+			this.serverRecordId = record.getValue("serverRecordId");
+		}
 		
 		this.isCreatedOnDevice = false;
 		if(record.getValue("isCreatedOnDevice").equals(Boolean.TRUE.toString()))
