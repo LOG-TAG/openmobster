@@ -110,6 +110,7 @@
 					<artifactId>device-agent-simulator</artifactId>
 					<version>${project.version}</version>
 					<exclusions>
+					    <!--  
 						<exclusion>
 							<groupId>org.openmobster.core</groupId>
 							<artifactId>synchronizer</artifactId>
@@ -122,6 +123,7 @@
 							<groupId>org.openmobster.core</groupId>
 							<artifactId>services</artifactId>
 						</exclusion>
+						-->
 						<exclusion>
 							<groupId>org.openmobster.core</groupId>
 							<artifactId>console-server</artifactId>
@@ -129,6 +131,10 @@
 						<exclusion>
 							<groupId>org.openmobster.core</groupId>
 							<artifactId>agent-provisioning</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.openmobster.core</groupId>
+							<artifactId>d2d</artifactId>				
 						</exclusion>
 					</exclusions>
 				</dependency>
@@ -172,7 +178,7 @@
 										<property name="classpath" refid="maven.test.classpath" />
 										<exec dir="${basedir}/target" executable="java">
 											<arg
-												line="-cp ${classpath} -Xms512M -Xmx1024M org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 5 -Xserver 192.168.1.102" />
+												line="-cp ${classpath} -Xms512M -Xmx1024M org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 5 -Xserver 192.168.1.104" />
 										</exec>
 									</tasks>
 								</configuration>
