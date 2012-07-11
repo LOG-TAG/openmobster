@@ -70,7 +70,7 @@
 				</dependency>
 			</dependencies>
 			<build>
-				<plugins>
+				<plugins> 
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
@@ -89,7 +89,7 @@
 							</mainClass>
 							<arguments>
 							    <argument>-XconcurrentUsers</argument>
-								<argument>5</argument>
+								<argument>1500</argument>
 							</arguments>
 						</configuration>
 					</plugin>
@@ -178,7 +178,7 @@
 										<property name="classpath" refid="maven.test.classpath" />
 										<exec dir="${basedir}/target" executable="java">
 											<arg
-												line="-cp ${classpath} -Xms512M -Xmx1024M org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 5 -Xserver 192.168.1.104" />
+												line="-cp ${classpath} -Xms512M -Xmx2000M org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 1500 -Xserver 192.168.1.107" />
 										</exec>
 									</tasks>
 								</configuration>
