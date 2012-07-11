@@ -35,10 +35,10 @@ public final class BackgroundSync extends TimerTask
 			//Subscribe to channels
 	    	CometUtil.subscribeChannels();
 	    	
-			//Perfom boot-sync on the unbooted channels
-			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.ChannelBootupHandler");
-			invocation.setValue("push-restart-cancel", ""+Boolean.FALSE);
-			Bus.getInstance().invokeService(invocation);
+			//Perfom boot-sync on the unbooted channels....CometUtil.subscribeChannels does this for you
+			//Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.ChannelBootupHandler");
+			//invocation.setValue("push-restart-cancel", ""+Boolean.FALSE);
+			//Bus.getInstance().invokeService(invocation);
 			
 			//Get the non-booted but active channels with a two-way sync
 			List<String> channelsToSync = this.findTwoWaySyncChannels();
