@@ -91,7 +91,9 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 === Release 2.4 ===
   * Windows Phone 7 Support
   * Support for the evolving HTML5 standard
-  * ?????
+  * Expand PhoneGap Support to more modules in addition to the already supported Sync Plugin
+  * Upgrade to JBoss 7
+  * Exposing web services using REST/JSON. This will probably replace the use the RPC module from the end user developer standpoint. The RPC module will still be used internally by the platform since it most likely will give better performance
 
 ----
 
