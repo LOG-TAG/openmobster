@@ -40,6 +40,11 @@ public final class EventManager
 		String listenerClass = listener.getClass().getName();
 		for(EventListener local:this.listeners)
 		{
+			if(local.getClass().getName().equals("org.openmobster.core.services.channel.ChannelDaemon"))
+			{
+				//makes sure multiple instances of ChannelDaemon class are allowed to receive notifications
+				break;
+			}
 			if(local.getClass().getName().equals(listenerClass))
 			{
 				return;

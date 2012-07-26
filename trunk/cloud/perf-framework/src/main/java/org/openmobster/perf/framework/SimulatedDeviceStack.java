@@ -121,7 +121,13 @@ public final class SimulatedDeviceStack
 		HibernateManager securityHibernateManager = new HibernateManager();
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("security-perf-hibernate.cfg.xml");
 		String xml = new String(IOUtilities.readBytes(is));
-		Document doc = XMLUtilities.parse(xml.replace("${device}", runner.getDeviceId()));
+		
+		
+		String deviceId = runner.getDeviceId();
+		deviceId = deviceId.substring(deviceId.indexOf(':')+1);
+		Document doc = XMLUtilities.parse(xml.replace("${device}", deviceId));
+		
+		
 		securityHibernateManager.startSessionFactory(doc);
 		
 		identityController.setHibernateManager(securityHibernateManager);
@@ -143,7 +149,13 @@ public final class SimulatedDeviceStack
 		HibernateManager mobileObjectHibernateManager = new HibernateManager();
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate-perf-mobileObject.cfg.xml");
 		String xml = new String(IOUtilities.readBytes(is));
-		Document doc = XMLUtilities.parse(xml.replace("${device}", runner.getDeviceId()));
+		
+		
+		String deviceId = runner.getDeviceId();
+		deviceId = deviceId.substring(deviceId.indexOf(':')+1);
+		Document doc = XMLUtilities.parse(xml.replace("${device}", deviceId));
+		
+		
 		mobileObjectHibernateManager.startSessionFactory(doc);
 		
 		newDb.setHibernateManager(mobileObjectHibernateManager);
@@ -155,7 +167,11 @@ public final class SimulatedDeviceStack
 		HibernateManager simulatorHibernateManager = new HibernateManager();
 		is = Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate-perf-simulator.cfg.xml");
 		xml = new String(IOUtilities.readBytes(is));
-		doc = XMLUtilities.parse(xml.replace("${device}", runner.getDeviceId()));
+		
+		
+		doc = XMLUtilities.parse(xml.replace("${device}", deviceId));
+		
+		
 		simulatorHibernateManager.startSessionFactory(doc);
 		
 		Database newSyncDb = new Database();

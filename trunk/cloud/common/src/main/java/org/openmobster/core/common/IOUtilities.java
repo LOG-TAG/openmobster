@@ -56,7 +56,7 @@ public class IOUtilities
 	}
 		
 	public static String readServerResponse(InputStream is) throws IOException
-	{
+	{	
 		String data = null;
 		int received = 0;
 		ByteArrayOutputStream bos = null;
@@ -89,7 +89,24 @@ public class IOUtilities
 			buffer.append(new String(cour));						
 			data = buffer.toString();
 			
+			//log that response is read successfully
+			PerfLogInterceptor.getInstance().logResponseRead();
+			
 			return data;
+		}
+		catch(Throwable t)
+		{
+			//log that response is unsuccessful
+			PerfLogInterceptor.getInstance().logResponseFailed();
+			
+			if(t instanceof IOException)
+			{
+				throw (IOException)t;
+			}
+			else
+			{
+				throw new IOException(t);
+			}
 		}
 		finally
 		{
@@ -102,30 +119,50 @@ public class IOUtilities
 	
 	public static void writePayLoad(String payLoad, OutputStream os) throws IOException
 	{
-		int startIndex = 0;
-		int endIndex = 0;
-		boolean eofSent = false;
-		while((endIndex=payLoad.indexOf("\n", startIndex))!=-1)
-		{				
-			String packet = payLoad.substring(startIndex, endIndex);
-			os.write((packet+"\n").getBytes());
-			
-			startIndex = endIndex +1;
-			
-			//Check if startIndex has exceeded beyond the last index of the string
-			if(startIndex >= payLoad.length()-1)
-			{
-				os.write("EOF\n".getBytes());
-				os.flush();
-				eofSent = true;
-				break;
-			}
-		}
-		if(!eofSent)
+		try
 		{
-			String packet = payLoad.substring(startIndex);
-			os.write((packet+"EOF\n").getBytes());
-			os.flush();
+			int startIndex = 0;
+			int endIndex = 0;
+			boolean eofSent = false;
+			while((endIndex=payLoad.indexOf("\n", startIndex))!=-1)
+			{				
+				String packet = payLoad.substring(startIndex, endIndex);
+				os.write((packet+"\n").getBytes());
+				
+				startIndex = endIndex +1;
+				
+				//Check if startIndex has exceeded beyond the last index of the string
+				if(startIndex >= payLoad.length()-1)
+				{
+					os.write("EOF\n".getBytes());
+					os.flush();
+					eofSent = true;
+					break;
+				}
+			}
+			if(!eofSent)
+			{
+				String packet = payLoad.substring(startIndex);
+				os.write((packet+"EOF\n").getBytes());
+				os.flush();
+			}
+			
+			//log that request is successfull
+			PerfLogInterceptor.getInstance().logRequestSent();
+		}
+		catch(Throwable t)
+		{
+			//log that request is unsuccessful
+			PerfLogInterceptor.getInstance().logRequestFailed();
+			
+			if(t instanceof IOException)
+			{
+				throw (IOException)t;
+			}
+			else
+			{
+				throw new IOException(t);
+			}
 		}
 	}
 }
