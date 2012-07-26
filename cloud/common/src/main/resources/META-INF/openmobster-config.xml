@@ -61,4 +61,9 @@
    <bean name="common://EventManager" 
       class="org.openmobster.core.common.event.EventManager">
    </bean>
+   
+   <!-- Performance Log Interceptor -->
+   <bean name="org.openmobster.core.common.PerfLogInterceptor" 
+      class="org.openmobster.core.common.PerfLogInterceptor">
+   </bean>
 </deployment>

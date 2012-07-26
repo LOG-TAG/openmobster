@@ -26,6 +26,9 @@ import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusMessage;
 import org.openmobster.core.common.XMLUtilities;
+import org.openmobster.core.common.event.Event;
+import org.openmobster.core.common.event.EventListener;
+import org.openmobster.core.common.event.EventManager;
 
 import org.openmobster.core.services.event.ChannelEvent;
 import org.openmobster.core.security.device.Device;
@@ -38,13 +41,15 @@ import org.openmobster.core.security.identity.Identity;
  * 
  * @author openmobster@gmail.com
  */
-public final class ChannelDaemon 
+public final class ChannelDaemon implements EventListener 
 {
 	private static Logger log = Logger.getLogger(ChannelDaemon.class);
 	
 	private Timer timer;
 	private HibernateManager hibernateManager;
 	private DeviceController deviceController;
+	private List<Device> allDevices;
+	private boolean isRegisteredForCacheInvalidationEvent;
 	
 	/**
 	 * The channel being monitored
@@ -64,13 +69,16 @@ public final class ChannelDaemon
 	{
 		return this.channelRegistration;
 	}
-	
+
 	public void start()
 	{
 		String channel = this.channelRegistration.getUri();
 		
 		Bus.startBus(channel);
-						
+		
+		//load the device cache
+		this.allDevices = this.deviceController.readAll();
+		
 		//Start a background daemon timer that scans the channel for updates and generates
 		//Channel Update Events
 		this.timer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
@@ -93,8 +101,23 @@ public final class ChannelDaemon
 		this.timer.purge();
 		Bus.stopBus(channel);
 	}
+	
+	@Override
+	public void onEvent(Event event)
+	{
+		Device device = (Device)event.getAttribute("new-device");
+		if(device != null)
+		{
+			log.debug("***************************************************************");
+			log.debug("Invalidating the device cache: "+this.channelRegistration.getUri());
+			log.debug("***************************************************************");
+			
+			//invalidate the device cache and reload all devices
+			this.allDevices = this.deviceController.readAll();
+		}
+	}
 	//-----------------------------------------------------------------------------------------------------------
-	private static class CheckForUpdates extends TimerTask
+	private class CheckForUpdates extends TimerTask
 	{
 		private ChannelRegistration channelRegistration;
 		private HibernateManager hibernateManager;
@@ -118,7 +141,19 @@ public final class ChannelDaemon
 				List<ChannelBeanMetaData> allUpdates = new ArrayList<ChannelBeanMetaData>();
 				
 				//Get all the registered devices
-				List<Device> allDevices = this.deviceController.readAll();
+				//List<Device> allDevices = this.deviceController.readAll();
+				if(!isRegisteredForCacheInvalidationEvent)
+				{
+					try
+					{
+						EventManager.getInstance().addListener(ChannelDaemon.this);
+						isRegisteredForCacheInvalidationEvent = true;
+					}
+					catch(Throwable t)
+					{
+						//DO nothing...will try to register in the next go
+					}
+				}
 				
 				if(allDevices != null)
 				{

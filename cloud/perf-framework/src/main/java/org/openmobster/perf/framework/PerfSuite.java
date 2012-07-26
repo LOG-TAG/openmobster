@@ -45,7 +45,8 @@ public class PerfSuite
 			{
 				if(argument.equals("-XconcurrentUsers") || 
 				   argument.equals("-Xtest") ||
-				   argument.equals("-Xserver")
+				   argument.equals("-Xserver") ||
+				   argument.equals("-Xduration")
 				 )
 				{
 					currentParam = argument;
@@ -57,8 +58,31 @@ public class PerfSuite
 				}
 			}
 			
+			//Execute the TestSuite
 			ServiceManager.bootstrap();
-			junit.textui.TestRunner.run(prepareSuite(attributeManager));
+			
+			String duration = (String)attributeManager.getAttribute("duration"); //duration in minutes
+			long durationInMillis = 0;
+			if(duration != null && duration.trim().length() > 0)
+			{
+				durationInMillis = Integer.parseInt(duration) * 60 * 1000;
+			}
+			long endTime = System.currentTimeMillis() + durationInMillis;
+			long currentTime = System.currentTimeMillis();
+			do
+			{
+				junit.textui.TestRunner.run(prepareSuite(attributeManager));
+				try
+				{
+					Thread.sleep(1000);
+				}
+				catch(Throwable t)
+				{
+					//Don't worry about it
+				}
+				currentTime = System.currentTimeMillis();
+			}while(endTime > currentTime);
+			
 			ServiceManager.shutdown();
 		}
 		else
@@ -75,6 +99,7 @@ public class PerfSuite
 			String test = (String)attributeManager.getAttribute("test");
 			int iterations = 1;
 			PerfSuite.suiteContext = attributeManager;
+			devices.clear();
 			
 			//Load the simulated device stack for each user
 			for(int i=0; i<concurrentUsers; i++)
@@ -113,6 +138,11 @@ public class PerfSuite
 	public static String getCloudServer()
 	{
 		return (String)suiteContext.getAttribute("server");
+	}
+	
+	public static String getDuration()
+	{
+		return (String)suiteContext.getAttribute("duration");
 	}
 	
 	public static SimulatedDeviceStack getDevice()
