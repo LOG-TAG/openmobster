@@ -44,6 +44,12 @@ public final class PerfLogInterceptor
 	{
 		try
 		{
+			String perfFramework = System.getProperty("perf-framework");
+			if(perfFramework == null)
+			{
+				return;
+			}
+			
 			//Connection Success
 			File createConnectionFile = new File("connection-success.xml");
 			createConnectionFile.delete();
@@ -90,6 +96,12 @@ public final class PerfLogInterceptor
 	{
 		try
 		{
+			String perfFramework = System.getProperty("perf-framework");
+			if(perfFramework == null)
+			{
+				return;
+			}
+			
 			if(this.createConnection != null)
 			{
 				this.createConnection.close();
@@ -133,6 +145,11 @@ public final class PerfLogInterceptor
 	
 	public void logCreateConnection()
 	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
 		try
 		{
 			synchronized(this.createConnection)
@@ -164,6 +181,11 @@ public final class PerfLogInterceptor
 	
 	public void logConnectionFailed()
 	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
 		try
 		{
 			synchronized(this.failedConnection)
@@ -195,6 +217,11 @@ public final class PerfLogInterceptor
 	
 	public void logRequestSent()
 	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
 		try
 		{
 			synchronized(this.requestSent)
@@ -226,6 +253,11 @@ public final class PerfLogInterceptor
 	
 	public void logRequestFailed()
 	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
 		try
 		{
 			synchronized(this.requestFailed)
@@ -257,6 +289,11 @@ public final class PerfLogInterceptor
 	
 	public void logResponseRead()
 	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
 		try
 		{
 			synchronized(this.responseReceived)
@@ -288,6 +325,11 @@ public final class PerfLogInterceptor
 	
 	public void logResponseFailed()
 	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
 		try
 		{
 			synchronized(this.responseFailed)

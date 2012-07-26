@@ -38,6 +38,8 @@ public class PerfSuite
 	{
 		if(args != null)
 		{
+			System.setProperty("perf-framework", "true");
+			
 			String currentParam = null;
 			InVMAttributeManager attributeManager = new InVMAttributeManager();
 			devices = new Stack<SimulatedDeviceStack>();
