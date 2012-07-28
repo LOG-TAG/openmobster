@@ -33,6 +33,7 @@ public class PerfSuite
 	
 	private static InVMAttributeManager suiteContext;
 	private static Stack<SimulatedDeviceStack> devices;
+	private static Stack<SimulatedDeviceStack> deviceCache;
 	
 	public static void main(String[] args)
 	{
@@ -43,6 +44,7 @@ public class PerfSuite
 			String currentParam = null;
 			InVMAttributeManager attributeManager = new InVMAttributeManager();
 			devices = new Stack<SimulatedDeviceStack>();
+			deviceCache = new Stack<SimulatedDeviceStack>();
 			for(String argument:args)
 			{
 				if(argument.equals("-XconcurrentUsers") || 
@@ -104,12 +106,20 @@ public class PerfSuite
 			devices.clear();
 			
 			//Load the simulated device stack for each user
-			for(int i=0; i<concurrentUsers; i++)
+			if(PerfSuite.deviceCache.isEmpty())
 			{
-				SimulatedDeviceStack local = new SimulatedDeviceStack();
-				local.start();
-				
-				devices.push(local);
+				for(int i=0; i<concurrentUsers; i++)
+				{
+					SimulatedDeviceStack local = new SimulatedDeviceStack();
+					local.start();
+					
+					devices.push(local);
+				}
+			}
+			else
+			{
+				devices.addAll(deviceCache);
+				deviceCache.clear();
 			}
 			
 			TestSuite suite = new TestSuite();
@@ -151,7 +161,12 @@ public class PerfSuite
 	{
 		if(!PerfSuite.devices.empty())
 		{
-			return PerfSuite.devices.pop();
+			SimulatedDeviceStack device = PerfSuite.devices.pop();
+			
+			//cache it for the next iteration
+			PerfSuite.deviceCache.push(device);
+			
+			return device;
 		}
 		return null;
 	}
