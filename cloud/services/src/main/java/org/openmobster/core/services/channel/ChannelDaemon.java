@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.text.DateFormat;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
@@ -50,6 +52,7 @@ public final class ChannelDaemon implements EventListener
 	private DeviceController deviceController;
 	private List<Device> allDevices;
 	private boolean isRegisteredForCacheInvalidationEvent;
+	private Map<String,LastScanTimestamp> lastScanTimestamps;
 	
 	/**
 	 * The channel being monitored
@@ -63,6 +66,7 @@ public final class ChannelDaemon implements EventListener
 		this.channelRegistration = channelRegistration;
 		this.hibernateManager = hibernateManager;
 		this.deviceController = deviceController;
+		this.lastScanTimestamps = new HashMap<String,LastScanTimestamp>();
 	}
 	
 	public ChannelRegistration getChannelRegistration()
@@ -77,7 +81,7 @@ public final class ChannelDaemon implements EventListener
 		Bus.startBus(channel);
 		
 		//load the device cache
-		this.allDevices = this.deviceController.readAll();
+		this.loadDevices();
 		
 		//Start a background daemon timer that scans the channel for updates and generates
 		//Channel Update Events
@@ -97,6 +101,7 @@ public final class ChannelDaemon implements EventListener
 	public void stop()
 	{
 		String channel = this.channelRegistration.getUri();
+		
 		this.timer.cancel();
 		this.timer.purge();
 		Bus.stopBus(channel);
@@ -112,9 +117,128 @@ public final class ChannelDaemon implements EventListener
 			log.debug("Invalidating the device cache: "+this.channelRegistration.getUri());
 			log.debug("***************************************************************");
 			
-			//invalidate the device cache and reload all devices
-			this.allDevices = this.deviceController.readAll();
+			//add this device to the cache
+			device = this.deviceController.read(device.getIdentifier());
+			this.allDevices.add(device);
 		}
+	}
+	
+	private void loadDevices()
+	{
+		boolean isStartedHere = TransactionHelper.startTx();
+		try
+		{
+			this.allDevices = this.deviceController.readAll();
+			
+			if(allDevices != null && !allDevices.isEmpty())
+			{
+				List<Device> localCopy = new ArrayList<Device>();
+				localCopy.addAll(allDevices);
+				for(Device device:localCopy)
+				{
+					LastScanTimestamp lastScanTimestamp = this.findScanTimestamp(device);
+					this.lastScanTimestamps.put(device.getIdentifier(), lastScanTimestamp);
+				}
+			}
+			
+			if(isStartedHere)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Exception e)
+		{
+			log.error(this, e);
+			
+			if(isStartedHere)
+			{
+				TransactionHelper.rollbackTx();
+			}
+							
+			ErrorHandler.getInstance().handle(e);
+		}
+	}
+	
+	private LastScanTimestamp findScanTimestamp(Device device) throws Exception
+	{
+		LastScanTimestamp scanTimestamp = null;
+		
+		scanTimestamp = this.read(this.channelRegistration.getUri(),device.getIdentifier());
+		if(scanTimestamp == null)
+		{
+			scanTimestamp = new LastScanTimestamp();
+			scanTimestamp.setTimestamp(new Date());
+			scanTimestamp.setChannel(this.channelRegistration.getUri());
+			scanTimestamp.setClientId(device.getIdentifier());
+		}
+		
+		return scanTimestamp;
+	}
+	
+	private LastScanTimestamp read(String channel, String clientId) throws Exception
+	{
+		Session session = null;
+		Transaction tx = null;
+		try
+		{
+			LastScanTimestamp lastScanTimestamp = null;
+											
+			session = this.hibernateManager.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			lastScanTimestamp = (LastScanTimestamp)session.
+			createQuery("from LastScanTimestamp where channel=? and clientId=?").
+			setString(0, channel).
+			setString(1, clientId).
+			uniqueResult();				
+			
+			tx.commit();
+			return lastScanTimestamp;
+		}
+		catch(Exception e)
+		{
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+							
+			throw e;
+		}
+	}
+	
+	private long save(LastScanTimestamp lastScanTimestamp) throws Exception
+	{
+		Session session = null;
+		Transaction tx = null;
+		try
+		{	
+			long id = 0;
+			session = this.hibernateManager.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+			
+			if(lastScanTimestamp.getId() ==0)
+			{
+				id = (Long)session.save(lastScanTimestamp);
+			}
+			else
+			{
+				session.update(lastScanTimestamp);
+				id = lastScanTimestamp.getId();
+			}
+			
+			tx.commit();
+			
+			return id;
+		}
+		catch(Exception e)
+		{
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+							
+			throw e;
+		}		
 	}
 	//-----------------------------------------------------------------------------------------------------------
 	private class CheckForUpdates extends TimerTask
@@ -158,7 +282,9 @@ public final class ChannelDaemon implements EventListener
 				if(allDevices != null)
 				{
 					//Scan for channel updates for each device
-					for(Device device: allDevices)
+					List<Device> localCopy = new ArrayList<Device>();
+					localCopy.addAll(allDevices);
+					for(Device device:localCopy)
 					{
 						if(!device.getIdentity().isActive())
 						{
@@ -198,7 +324,17 @@ public final class ChannelDaemon implements EventListener
 		{			
 			try
 			{
-				LastScanTimestamp lastScanTimestamp = this.findScanTimestamp(device);
+				LastScanTimestamp lastScanTimestamp = ChannelDaemon.this.lastScanTimestamps.get(device.getIdentifier());
+				if(lastScanTimestamp == null)
+				{
+					//create a new timestamp
+					lastScanTimestamp = new LastScanTimestamp();
+					lastScanTimestamp.setTimestamp(timestamp);
+					lastScanTimestamp.setChannel(this.channelRegistration.getUri());
+					lastScanTimestamp.setClientId(device.getIdentifier());
+				}
+				
+				
 				Identity identity = device.getIdentity();
 				
 				//Get any new beans
@@ -256,7 +392,11 @@ public final class ChannelDaemon implements EventListener
 				}
 				
 				lastScanTimestamp.setTimestamp(timestamp);
-				this.save(lastScanTimestamp);
+				
+				//save the new timestamp
+				long id = ChannelDaemon.this.save(lastScanTimestamp);
+				lastScanTimestamp.setId(id);
+				ChannelDaemon.this.lastScanTimestamps.put(device.getIdentifier(), lastScanTimestamp);
 			}
 			catch(Exception e)
 			{
@@ -285,77 +425,6 @@ public final class ChannelDaemon implements EventListener
 			message.setAttribute(ChannelEvent.event, XMLUtilities.marshal(event));
 									
 			Bus.sendMessage(message);
-		}
-		
-		private LastScanTimestamp findScanTimestamp(Device device) throws Exception
-		{
-			LastScanTimestamp scanTimestamp = null;
-			
-			scanTimestamp = this.read(this.channelRegistration.getUri(),device.getIdentifier());
-			if(scanTimestamp == null)
-			{
-				scanTimestamp = new LastScanTimestamp();
-				scanTimestamp.setTimestamp(new Date());
-				scanTimestamp.setChannel(this.channelRegistration.getUri());
-				scanTimestamp.setClientId(device.getIdentifier());
-			}
-			
-			return scanTimestamp;
-		}
-		
-		private LastScanTimestamp read(String channel, String clientId) throws Exception
-		{
-			Session session = null;
-			Transaction tx = null;
-			try
-			{
-				LastScanTimestamp lastScanTimestamp = null;
-												
-				session = this.hibernateManager.getSessionFactory().getCurrentSession();
-				tx = session.beginTransaction();
-				
-				lastScanTimestamp = (LastScanTimestamp)session.
-				createQuery("from LastScanTimestamp where channel=? and clientId=?").
-				setString(0, channel).
-				setString(1, clientId).
-				uniqueResult();				
-				
-				tx.commit();
-				return lastScanTimestamp;
-			}
-			catch(Exception e)
-			{
-				if(tx != null)
-				{
-					tx.rollback();
-				}
-								
-				throw e;
-			}			
-		}
-		
-		private void save(LastScanTimestamp lastScanTimestamp) throws Exception
-		{
-			Session session = null;
-			Transaction tx = null;
-			try
-			{				
-				session = this.hibernateManager.getSessionFactory().getCurrentSession();
-				tx = session.beginTransaction();
-				
-				session.saveOrUpdate(lastScanTimestamp);
-				
-				tx.commit();
-			}
-			catch(Exception e)
-			{
-				if(tx != null)
-				{
-					tx.rollback();
-				}
-								
-				throw e;
-			}			
 		}
 	}			
 }
