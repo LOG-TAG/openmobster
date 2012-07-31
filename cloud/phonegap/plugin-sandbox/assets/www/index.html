@@ -449,20 +449,15 @@
 	
 	function addNewBean(channel)
 	{
-		window.plugins.sync.addNewBean(channel,
+		var payload = {};
+        payload.title = '/test/newbean';
+                    
+        var json = JSON.stringify(payload);
+                    
+		window.plugins.sync.addNewBean(channel,json,
 		function(tempOid)
 		{
 			console.log('Temporary Oid: '+tempOid);
-			
-			//set the title
-			window.plugins.sync.updateBean(channel,tempOid,'title','/test/newbean',
-				function(success)
-				{
-				},
-				function(error){
-					alert('Setting the Title: '+error);
-				}
-			);
 			
 			//insert into a string array
 			window.plugins.sync.insertIntoArray(channel,tempOid,'customers',{'string':'/test/newbean/string/array'},
@@ -554,7 +549,10 @@
 				{
 					var oid = oids[i];
 					
-					window.plugins.sync.updateBean(channel,oid,'title','title://updated',
+					var payload = {};
+        			payload.title = 'title://updated';
+        			var json = JSON.stringify(payload);
+					window.plugins.sync.updateBean(channel,oid,json,
 					function(success){
 						window.plugins.sync.value(channel,oid,'title',
 									function(value)
@@ -580,7 +578,10 @@
 							for(var j=0;j<arrayLength; j++)
 							{
 								var customerUri = 'customers['+j+']';
-								window.plugins.sync.updateBean(channel,oid,customerUri,'customer://updated',
+								var customerPayload = {};
+        						customerPayload[customerUri] = 'customer://updated';
+        						var customerJson = JSON.stringify(customerPayload);
+								window.plugins.sync.updateBean(channel,oid,customerJson,
 									function(value)
 									{
 										window.plugins.sync.value(channel,oid,customerUri,
@@ -614,7 +615,10 @@
 							for(var j=0;j<arrayLength; j++)
 							{
 								var fromUri = 'messages['+j+'].from';
-								window.plugins.sync.updateBean(channel,oid,fromUri,'from@test.com',
+								var fromPayload = {};
+        						fromPayload[fromUri] = 'from@test.com';
+        						var fromJson = JSON.stringify(fromPayload);
+								window.plugins.sync.updateBean(channel,oid,fromJson,
 									function(value)
 									{
 										window.plugins.sync.value(channel,oid,fromUri,
@@ -635,7 +639,10 @@
 								);
 								
 								var toUri = 'messages['+j+'].to';
-								window.plugins.sync.updateBean(channel,oid,toUri,'to@test.com',
+								var toPayload = {};
+        						toPayload[toUri] = 'to@test.com';
+        						var toJson = JSON.stringify(toPayload);
+								window.plugins.sync.updateBean(channel,oid,toJson,
 									function(value)
 									{
 										window.plugins.sync.value(channel,oid,toUri,
@@ -656,7 +663,10 @@
 								);
 								
 								var messageUri = 'messages['+j+'].message';
-								window.plugins.sync.updateBean(channel,oid,messageUri,'message://updated',
+								var messagePayload = {};
+        						messagePayload[messageUri] = 'message://updated';
+        						var messageJson = JSON.stringify(messagePayload);
+								window.plugins.sync.updateBean(channel,oid,messageJson,
 									function(value)
 									{
 										window.plugins.sync.value(channel,oid,messageUri,

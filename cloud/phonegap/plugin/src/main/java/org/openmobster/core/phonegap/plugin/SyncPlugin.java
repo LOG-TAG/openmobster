@@ -7,6 +7,8 @@
  */
 package org.openmobster.core.phonegap.plugin;
 
+import java.util.Iterator;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,9 +18,8 @@ import org.openmobster.android.api.sync.BeanList;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
-import com.phonegap.api.PhonegapActivity;
-import com.phonegap.api.Plugin;
-import com.phonegap.api.PluginResult;
+import org.apache.cordova.api.Plugin;
+import org.apache.cordova.api.PluginResult;
 import org.apache.cordova.api.PluginResult.Status;
 
 /**
@@ -278,6 +279,7 @@ public final class SyncPlugin extends Plugin
 	private String addNewBean(JSONArray input) throws Exception
 	{
 		String channel = input.getString(0);
+		String jsonAdd = input.getString(1);
 		
 		MobileBean newBean = MobileBean.newInstance(channel);
 		
@@ -288,7 +290,69 @@ public final class SyncPlugin extends Plugin
 		//cache this bean
 		SyncSession.getInstance().cacheBean(tempOid, newBean);
 		
+		//Parse the JSON object
+		JSONObject state = new JSONObject(jsonAdd);
+		if(state != null)
+		{
+			Iterator keys = state.keys();
+			if(keys != null)
+			{
+				while(keys.hasNext())
+				{
+					String name = (String)keys.next();
+					String value = state.getString(name);
+					
+					//validate for array...arrays should be specified by array specific methods
+					if(name.indexOf('[') != -1)
+					{
+						continue;
+					}
+					
+					newBean.setValue(name, value);
+				}
+			}
+		}
+		
 		return tempOid;
+	}
+	
+	private String updateBean(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String oid = input.getString(1);
+		String jsonUpdate = input.getString(2);
+		
+		MobileBean bean = SyncSession.getInstance().readBean(oid);
+		if(bean == null)
+		{
+			bean = MobileBean.readById(channel, oid);
+			SyncSession.getInstance().cacheBean(bean);
+		}
+		
+		//Parse the JSON object
+		JSONObject state = new JSONObject(jsonUpdate);
+		if(state != null)
+		{
+			Iterator keys = state.keys();
+			if(keys != null)
+			{
+				while(keys.hasNext())
+				{
+					String name = (String)keys.next();
+					String value = state.getString(name);
+					
+					//validate for array...arrays should be specified by array specific methods
+					/*if(name.indexOf('[') != -1)
+					{
+						continue;
+					}*/
+					
+					bean.setValue(name, value);
+				}
+			}
+		}
+		
+		return "0";
 	}
 	
 	private String deleteBean(JSONArray input) throws Exception
@@ -304,24 +368,6 @@ public final class SyncPlugin extends Plugin
     	return deletedBeanId;
 	}
 	
-	private String updateBean(JSONArray input) throws Exception
-	{
-		String channel = input.getString(0);
-		String oid = input.getString(1);
-		String fieldUri = input.getString(2);
-		String value = input.getString(3);
-		
-		MobileBean bean = SyncSession.getInstance().readBean(oid);
-		if(bean == null)
-		{
-			bean = MobileBean.readById(channel, oid);
-			SyncSession.getInstance().cacheBean(bean);
-		}
-		
-		bean.setValue(fieldUri, value);
-		
-		return "0";
-	}
 	
 	private String queryByMatchAll(JSONArray input) throws Exception
 	{
