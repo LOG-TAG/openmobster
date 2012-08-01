@@ -507,7 +507,8 @@
 			
 			if([self.fields count] > insertionIndex)
 			{
-				[self.fields replaceObjectAtIndex:insertionIndex withObject:newField];
+				//[self.fields replaceObjectAtIndex:insertionIndex withObject:newField];
+                [self.fields insertObject:newField atIndex:insertionIndex];
 			}
 			else 
 			{
