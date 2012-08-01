@@ -8,7 +8,7 @@
 	
 	<!-- PhoneGap/OpenMobster Javascript code -->
 	<script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="openmobster-sync-ios-2.2.js"></script>
+	<script type="text/javascript" charset="utf-8" src="openmobster-sync-2.2.js"></script>
 	
 	<!-- JQuery integration -->
 	<link rel="stylesheet" href="jquery/jquery.mobile-1.0.1.min.css" />
@@ -52,10 +52,8 @@
 
     function load()
     {
-        var html = '<ul data-role="listview" data-theme="g">';
+            var html = '<ul data-role="listview" data-theme="g">';
 	  	
-	  	if(window.plugins.sync !== undefined)
-	  	{
 	  		//read the oids of the tickets stored in the sync channel
 	  		window.plugins.sync.readall(channel,
 				function(oids)
@@ -68,29 +66,33 @@
 					
 					oids = JSON.parse(oids);
 					var length = oids.length;
+                    var counter = 0;
 					for(var i=0; i<length; i++)
 					{
 					   var oid = oids[i];
 					   
 					   //read the value of the 'title' property of the synchronized bean
 					   window.plugins.sync.value(channel,oid,'title',
-						   function(value)
-						   {
-						   		var encodedOid = encodeURIComponent(oid);
+                       function(value)
+                       {
+                           var encodedOid = encodeURIComponent(oid);
 		   		
-		   						//create a list item corresponding to the ticket in question
-		   						html += '<li><a href="#read_ticket?oid='+encodedOid+'" data-rel="dialog">'+value+'</a></li>';
+                           //create a list item corresponding to the ticket in question
+                           html += '<li><a href="#read_ticket?oid='+encodedOid+'" data-rel="dialog">'+value+'</a></li>';
                                                  
-                                html += '</ul>';
-                                                 
-                                //update the DOM
-                                $("#tickets_content").html(html);
-                                $("#tickets_content ul").listview();
-						   },
-						   function(error)
-						   {
-						   }
-					   );
+                           counter++;
+                           if(counter == length)
+                           {
+                              html += '</ul>';
+                              //update the DOM
+                              $("#tickets_content").html(html);
+                              $("#tickets_content ul").listview();                   
+                           }
+                       },
+                       function(error)
+                       {
+                       }
+                      );
 					}
 				},
 				function(error)
@@ -98,7 +100,6 @@
 					alert('Sync Plugin:'+error);
 				}
 			);
-	  	}
     }
 </script>
 </head>
