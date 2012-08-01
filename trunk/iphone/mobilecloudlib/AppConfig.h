@@ -10,7 +10,7 @@
 #import "StringUtil.h"
 #import "SyncScheduler.h"
 #import "ProxyLoader.h"
-#import "Channel.h";
+#import "Channel.h"
 #import "Service.h"
 
 /**

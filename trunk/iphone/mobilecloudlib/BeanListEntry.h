@@ -26,6 +26,7 @@
 @property (nonatomic,retain) NSMutableDictionary *properties;
 
 +(BeanListEntry *)withInit:(int) index :(NSDictionary *) properties :(NSString *)listProperty;
++(BeanListEntry *)withInit:(NSString *)listProperty;
 
 /**
  * Reads a property value on this object using a property expression

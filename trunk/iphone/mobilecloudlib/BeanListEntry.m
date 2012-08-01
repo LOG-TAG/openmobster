@@ -35,6 +35,19 @@
 	return instance;
 }
 
++(BeanListEntry *)withInit:(NSString *)listProperty
+{
+    BeanListEntry *instance = [[BeanListEntry alloc] init];
+	
+	instance.index = 0;
+	instance.properties = [NSMutableDictionary dictionary];
+	instance.listProperty = listProperty;
+	
+	instance = [instance autorelease];
+	
+	return instance; 
+}
+
 -(void)dealloc
 {
     [properties release];
