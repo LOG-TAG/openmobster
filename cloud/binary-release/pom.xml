@@ -387,17 +387,70 @@
 											</fileset>
 										</copy>
 										-->
-										<!--  Packaging PhoneGap -->
-										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap" overwrite="true">
+										<!--  Packaging PhoneGap for Android -->
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/Android/src" overwrite="true">
 											<fileset dir="../phonegap">
 												<exclude name="**/target/**" />
 											</fileset>
 										</copy>
-										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap/JQueryOfflineApp.apk" overwrite="true">
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/Android/bin/plugin.jar" overwrite="true">
+											<fileset file="../phonegap/plugin/target/plugin-${project.version}.jar">
+											</fileset>
+										</copy>
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/Android/bin/openmobster-sync-2.2.js" overwrite="true">
+											<fileset file="../phonegap/plugin-jquery/assets/www/openmobster-sync-2.2.js">
+											</fileset>
+										</copy>
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/Android/bin/plugin.xml" overwrite="true">
+											<fileset file="../phonegap/plugin-jquery/res/xml/plugins.xml">
+											</fileset>
+										</copy>
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/Android/Samples/JQueryOfflineApp.apk" overwrite="true">
 											<fileset file="../phonegap/plugin-jquery/target/plugin-jquery-${project.version}-zipped.apk">
 											</fileset>
 										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/Android/Samples/plugin-jquery-cloud" overwrite="true">
+											<fileset dir="../phonegap/plugin-jquery-cloud">
+												<exclude name="**/target/**" />
+											</fileset>
+										</copy>
 										
+										<!-- Packaging PhoneGap for iOS -->
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/iOS/src/PhoneGapSyncApp" overwrite="true">
+											<fileset dir="../../iphone/PhoneGapSyncApp">
+												<exclude name="**/build/**" />
+											</fileset>
+										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/iOS/src/PhoneGapSyncPlugin" overwrite="true">
+											<fileset dir="../../iphone/PhoneGapSyncPlugin">
+												<exclude name="**/build/**" />
+											</fileset>
+										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/iOS/src/mobilecloudlib" overwrite="true">
+											<fileset dir="../../iphone/mobilecloudlib">
+												<exclude name="**/build/**" />
+											</fileset>
+										</copy>
+										
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/iOS/bin" overwrite="true">
+											<fileset file="../../iphone/PhoneGapSyncApp/PhoneGapSyncApp/Plugins/SyncPlugin.h">
+											</fileset>
+											<fileset file="../../iphone/PhoneGapSyncApp/PhoneGapSyncApp/Plugins/SyncPlugin.m">
+											</fileset>
+											<fileset file="../../iphone/PhoneGapSyncApp/www/openmobster-sync-2.2.js">
+											</fileset>
+										</copy>
+										
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/iOS/Samples/PhoneGapSyncApp" overwrite="true">
+											<fileset dir="../../iphone/PhoneGapSyncApp">
+												<exclude name="**/build/**" />
+											</fileset>
+										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/PhoneGap-1.5.0/iOS/Samples/plugin-jquery-cloud" overwrite="true">
+											<fileset dir="../phonegap/plugin-jquery-cloud">
+												<exclude name="**/target/**" />
+											</fileset>
+										</copy>
 										
 										<!--  cleaup -->
 										<delete dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps"/>
