@@ -28,11 +28,11 @@
 	
 	<properties>
 		<android.keystore.location>
-			/Users/openmobster/projects/openmobster/openmobster-release-key.keystore
+			${env.ANDROID_KEYSTORE}
 		</android.keystore.location>
-		<storepass>password</storepass>
-		<keypass>password</keypass>
-		<alias>openmobster</alias>
+		<storepass>${env.ANDROID_STORE_PASS}</storepass>
+		<keypass>${env.ANDROID_KEY_PASS}</keypass>
+		<alias>${env.ANDROID_KEYSTORE_ALIAS}</alias>
 	</properties>
 
 	<dependencies>
