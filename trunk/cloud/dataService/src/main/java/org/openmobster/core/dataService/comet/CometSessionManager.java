@@ -126,7 +126,8 @@ public final class CometSessionManager implements EventListener
 	{
 		if(this.cometSessions != null)
 		{
-			for(CometSession deviceSession: this.cometSessions)
+			List<CometSession> sessions = sessions();
+			for(CometSession deviceSession: sessions)
 			{
 				deviceSession.stop();
 			}
@@ -153,9 +154,17 @@ public final class CometSessionManager implements EventListener
 		return Collections.unmodifiableList(this.cometSessions); 
 	}
 	
+	private List<CometSession> sessions()
+	{
+		List<CometSession> sessions = new ArrayList<CometSession>();
+		sessions.addAll(this.cometSessions);
+		return Collections.unmodifiableList(sessions);
+	}
+	
 	public CometSession findCometSession(String deviceId)
 	{
-		for(CometSession deviceSession: this.cometSessions)
+		List<CometSession> sessions = sessions();
+		for(CometSession deviceSession: sessions)
 		{
 			if(deviceSession.getUri().equals(deviceId))
 			{
@@ -184,7 +193,8 @@ public final class CometSessionManager implements EventListener
 			throw new IllegalArgumentException("DeviceId must be specified!!");
 		}		
 			
-		for(CometSession deviceSession: this.cometSessions)
+		List<CometSession> sessions = sessions();
+		for(CometSession deviceSession: sessions)
 		{
 			if(deviceSession.getUri().equals(deviceId))
 			{
@@ -227,7 +237,8 @@ public final class CometSessionManager implements EventListener
 	{
 		public void run()
 		{
-			for(CometSession session: CometSessionManager.this.cometSessions)
+			List<CometSession> sessions = CometSessionManager.this.sessions();
+			for(CometSession session: sessions)
 			{
 				if(session.isActive())
 				{

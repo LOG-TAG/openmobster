@@ -114,10 +114,10 @@ public class CommandController
 		//not in fact hold. After lots of trial and error, 55 seconds turns out to be 
 		//the best option for keep alive interval. After running it on an actual device
 		//even with 55 seconds, the device's battery is not impacted too much
-		if(platform.equals("blackberry") && device.startsWith("833"))
+		/*if(platform.equals("blackberry") && device.startsWith("833"))
 		{
 			keepAliveInterval = 55000;
-		}
+		}*/
 		
 		return keepAliveInterval;
 	}
