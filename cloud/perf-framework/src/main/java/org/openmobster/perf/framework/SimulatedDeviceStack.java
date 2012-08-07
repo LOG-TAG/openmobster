@@ -30,6 +30,7 @@ import org.openmobster.device.agent.sync.engine.SyncDataSource;
 import org.openmobster.device.agent.sync.engine.SyncEngine;
 import org.openmobster.device.agent.sync.SyncService;
 import org.openmobster.device.agent.test.framework.Configuration;
+import org.openmobster.device.agent.test.framework.CometDaemon;
 
 import org.openmobster.core.common.IOUtilities;
 import org.openmobster.core.common.XMLUtilities;
@@ -46,6 +47,7 @@ public final class SimulatedDeviceStack
 	private static long deviceCounter = 0;
 	
 	private DeviceStackRunner runner;
+	private boolean pushSocketIsActive;
 	
 	public SimulatedDeviceStack()
 	{	
@@ -71,6 +73,17 @@ public final class SimulatedDeviceStack
 	public DeviceStackRunner getRunner()
 	{
 		return this.runner;
+	}
+	
+	public void startPushSocket()
+	{
+		if(this.pushSocketIsActive)
+		{
+			return;
+		}
+		
+		this.runner.startCometDaemon();
+		this.pushSocketIsActive = true;
 	}
 	
 	private synchronized void setupRunner() throws Exception
@@ -100,6 +113,11 @@ public final class SimulatedDeviceStack
 		this.setUpSyncStack(this.runner);
 		
 		this.runner.start();
+		
+		//Setup the comet daemon
+		CometDaemon cometDaemon = new CometDaemon();
+		cometDaemon.setConfiguration(this.runner.getConfiguration());
+		this.runner.setCometDaemon(cometDaemon);
 	}
 	
 	private synchronized void setUpProvisioner(DeviceStackRunner runner) throws Exception
