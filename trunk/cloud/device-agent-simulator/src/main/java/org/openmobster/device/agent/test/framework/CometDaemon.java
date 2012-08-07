@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 
 import org.openmobster.device.agent.Tools;
 import org.openmobster.core.common.IOUtilities;
+import org.openmobster.core.common.PerfLogInterceptor;
 
 /**
  * @author openmobster@gmail.com
@@ -129,6 +130,9 @@ public class CometDaemon
 			catch(Exception e)
 			{
 				log.error(this, e);
+				
+				//Log this
+				PerfLogInterceptor.getInstance().logPushFailed();
 			}
 			finally
 			{

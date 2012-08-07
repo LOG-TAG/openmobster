@@ -35,6 +35,9 @@ public final class PerfLogInterceptor
 	private FileOutputStream responseFailed;
 	private long responseFailedCtr;
 	
+	private FileOutputStream pushFailed;
+	private long pushFailedCtr;
+	
 	public PerfLogInterceptor()
 	{
 		
@@ -85,6 +88,12 @@ public final class PerfLogInterceptor
 			responseFailedFile.delete();
 			this.responseFailed = new FileOutputStream("response-failed.xml",true);
 			this.responseFailedCtr = 0;
+			
+			//Push Failed
+			File pushFailedFile = new File("push-failed.xml");
+			pushFailedFile.delete();
+			this.pushFailed = new FileOutputStream("push-failed.xml",true);
+			this.pushFailedCtr = 0;
 		}
 		catch(Throwable t)
 		{
@@ -130,6 +139,11 @@ public final class PerfLogInterceptor
 			if(this.responseFailed != null)
 			{
 				this.responseFailed.close();
+			}
+			
+			if(this.pushFailed != null)
+			{
+				this.pushFailed.close();
 			}
 		}
 		catch(Throwable t)
@@ -351,6 +365,42 @@ public final class PerfLogInterceptor
 				
 				this.responseFailed.write(buffer.toString().getBytes());
 				this.responseFailed.flush();
+			}
+		}
+		catch(Throwable t)
+		{
+			throw new RuntimeException(t);
+		}
+	}
+	
+	public void logPushFailed()
+	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
+		try
+		{
+			synchronized(this.pushFailed)
+			{	
+				Calendar calendar = Calendar.getInstance();
+				int hour_of_day = calendar.get(Calendar.HOUR_OF_DAY);
+				int minute = calendar.get(Calendar.MINUTE);
+				int second = calendar.get(Calendar.SECOND);
+				int milli = calendar.get(Calendar.MILLISECOND);
+				
+				
+				StringBuilder buffer = new StringBuilder();
+				
+				buffer.append("<entry>\n");
+				buffer.append("<time-millis>"+calendar.getTimeInMillis()+"</time-millis>\n");
+				buffer.append("<time>"+hour_of_day+":"+minute+":"+second+":"+milli+"</time>\n");
+				buffer.append("<push-number>"+(++this.pushFailedCtr)+"</push-number>\n");
+				buffer.append("</entry>\n\n");
+				
+				this.pushFailed.write(buffer.toString().getBytes());
+				this.pushFailed.flush();
 			}
 		}
 		catch(Throwable t)
