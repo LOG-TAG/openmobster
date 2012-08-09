@@ -89,7 +89,7 @@ public class ConflictEngine
 		log.debug("Serialized: "+serializedBean);
 		log.debug("***********************************************");
 		
-		bean.setState(serializedBean);
+		bean.setState(serializedBean.getBytes());
 		
 		this.saveLock(bean);
 	}
@@ -101,11 +101,11 @@ public class ConflictEngine
 		
 		ConflictEntry bean = this.readLock(deviceId, oid, app, channel);
 		
-		String state = bean.getState();
+		String state = bean.getStateAsString();
 		if(state != null && state.trim().length()>0)
 		{
 			String serializedBean = this.serializer.serialize(cloudBean).trim();
-			String checkAgainst = bean.getState();
+			String checkAgainst = bean.getStateAsString();
 			
 			if(!serializedBean.equals(checkAgainst))
 			{
