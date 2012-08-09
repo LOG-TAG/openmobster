@@ -21,7 +21,7 @@ public class ConflictEntry implements Serializable
 	private String app;
 	private String channel;
 	private String oid;
-	private String state;
+	private byte[] state;
 	
 	public ConflictEntry()
 	{
@@ -58,12 +58,12 @@ public class ConflictEntry implements Serializable
 		this.oid = oid;
 	}
 
-	public String getState()
+	public byte[] getState()
 	{
 		return state;
 	}
 
-	public void setState(String state)
+	public void setState(byte[] state)
 	{
 		this.state = state;
 	}
@@ -86,5 +86,15 @@ public class ConflictEntry implements Serializable
 	public void setApp(String app)
 	{
 		this.app = app;
+	}
+	
+	public String getStateAsString()
+	{
+		String stateAsString = "";
+		if(this.state != null)
+		{
+			stateAsString = new String(this.state);
+		}
+		return stateAsString;
 	}
 }
