@@ -25,7 +25,8 @@ public class PerfBootupChannel extends TestCase
 		log.info("Starting BootupChannel....................................................");
 		this.deviceStack = PerfSuite.getDevice();
 		this.deviceStack.getRunner().activateDevice();
-		this.deviceStack.startPushSocket();
+		
+		//this.deviceStack.startPushSocket();
 	}
 	
 	public void tearDown() throws Exception
