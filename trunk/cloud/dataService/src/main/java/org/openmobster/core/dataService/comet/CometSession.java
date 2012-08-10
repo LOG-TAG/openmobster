@@ -9,8 +9,6 @@
 package org.openmobster.core.dataService.comet;
 
 import java.io.Serializable;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 
@@ -40,7 +38,6 @@ public final class CometSession implements Serializable,BusListener
 	
 	
 	private Subscription subscription;
-	private Timer keepAlive;
 	
 	
 	private CometSession()
@@ -107,8 +104,6 @@ public final class CometSession implements Serializable,BusListener
 		{
 			this.activeSession.close();
 		}
-		
-		this.cleanupKeepAliveDaemon();
 	}
 	
 	public void sendHeartBeat()
@@ -116,7 +111,7 @@ public final class CometSession implements Serializable,BusListener
 		this.sendPacket(null);
 	}
 	
-	public void startKeepAliveDaemon(long pulseInterval)
+	/*public void startKeepAliveDaemon(long pulseInterval)
 	{
 		this.cleanupKeepAliveDaemon();
 		
@@ -125,15 +120,15 @@ public final class CometSession implements Serializable,BusListener
 		TimerTask keepAliveDaemon = new KeepAliveDaemon(pulseInterval,this);
 		long startDelay = 5000;
 		this.keepAlive.schedule(keepAliveDaemon, startDelay, pulseInterval);
-	}
+	}*/
 	
-	private void cleanupKeepAliveDaemon() 
+	/*private void cleanupKeepAliveDaemon() 
 	{
 		if(this.keepAlive != null)
 		{
 			this.keepAlive.cancel();
 		}
-	}
+	}*/
 	//-----Bus Listener implementation--------------------------------------------------------------------------------------------------------
 	public void messageIncoming(BusMessage busMessage) 
 	{
