@@ -90,7 +90,8 @@ public final class SimulatedDeviceStack
 	{
 		this.runner = new DeviceStackRunner();
 		DeviceStackRunner originalRunner = (DeviceStackRunner)ServiceManager.locate("deviceStack");
-		String deviceId = ""+SimulatedDeviceStack.deviceCounter++;
+		//String deviceId = ""+SimulatedDeviceStack.deviceCounter++;
+		String deviceId = ""+System.currentTimeMillis();
 		String imei = "IMEI:"+deviceId;
 		
 		String user = "blah"+deviceId+"@gmail.com";
