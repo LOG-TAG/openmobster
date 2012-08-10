@@ -38,9 +38,7 @@ public final class CometSessionManager implements EventListener
 	private List<CometSession> cometSessions; //consists of all comet sessions corresponding to
 	//all registered devices in the system
 	
-	@Deprecated
 	private Timer timer; //sends keep-alive heartbeats active connections
-	@Deprecated
 	private long pulseInterval;
 	
 	private DeviceController deviceController;
@@ -97,10 +95,10 @@ public final class CometSessionManager implements EventListener
 			//TCP stack supports more robust timeout configuration.
 			//Longer the heartbeat interval that keeps the push socket alive, the better it is for 
 			//the battery life on the device
-			/*this.timer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
+			this.timer = new Timer(this.getClass().getName(), true); //sets it as a daemon thread
 			TimerTask heartBeatDaemon = new HeartBeatDaemon();
 			long startDelay = 5000;
-			this.timer.schedule(heartBeatDaemon, startDelay, this.pulseInterval);*/			
+			this.timer.schedule(heartBeatDaemon, startDelay, this.pulseInterval*60*1000);			
 			
 			if(isStartedHere)
 			{
@@ -108,7 +106,7 @@ public final class CometSessionManager implements EventListener
 			}
 			
 			log.info("--------------------------------------------------------");
-			log.info("Push Service successfully started. Pulse Interval set to: "+this.pulseInterval+"(ms)");
+			log.info("Push Service successfully started. Pulse Interval set to: "+this.pulseInterval*60*1000+"(ms)");
 			log.info("--------------------------------------------------------");
 		}
 		catch(Exception e)
@@ -232,7 +230,6 @@ public final class CometSessionManager implements EventListener
 		}
 	}
 	//---------------------------------------------------------------------------------------------------------
-	@Deprecated
 	private class HeartBeatDaemon extends TimerTask
 	{
 		public void run()
@@ -242,6 +239,11 @@ public final class CometSessionManager implements EventListener
 			{
 				if(session.isActive())
 				{
+					log.debug("---------------------------------------------------------------");
+					log.debug("Sender: "+this.hashCode());
+					log.debug("Target Device: "+session.getUri());
+					log.debug("Sending a KeepAlive HeartBeat Every: ("+CometSessionManager.this.pulseInterval*60*1000+" ms)");
+					log.debug("---------------------------------------------------------------");
 					session.sendHeartBeat();
 				}
 			}

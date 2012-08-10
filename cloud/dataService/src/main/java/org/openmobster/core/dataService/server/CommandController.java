@@ -92,16 +92,6 @@ public class CommandController
 			
 			//Device Processing
 			session.setAttribute("device", device);
-			
-			long keepAliveInterval = this.computeKeepAliveInterval(platform, device);
-			
-			//Start the KeepAliveDaemon for the active push session
-			String deviceId = subscriptionMgr.getSubscription().getClientId();
-			CometSession cometSession = cometSessionManager.findCometSession(deviceId);
-			if(cometSession != null)
-			{
-				cometSession.startKeepAliveDaemon(keepAliveInterval);
-			}
 		}
 	}
 	//-----------------------------------------------------------------------------------------------------------------------------------------

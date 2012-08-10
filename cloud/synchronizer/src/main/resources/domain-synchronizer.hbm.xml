@@ -28,7 +28,7 @@
 	        <property name="app" type="string" column="app" not-null="true"/>
 	        <property name="oid" type="string" column="oid" not-null="true"/>
         </properties>       
-        <property name="state" type="binary" column="state" not-null="true"/>
+        <property name="state" type="binary" column="state" not-null="true" length="1000000000"/>
     </class>   
     
     <!-- AppToChannelAssociation -->
