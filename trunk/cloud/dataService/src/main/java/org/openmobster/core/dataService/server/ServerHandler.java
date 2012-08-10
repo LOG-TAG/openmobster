@@ -92,7 +92,7 @@ public class ServerHandler extends IoHandlerAdapter
         
 	public void exceptionCaught(IoSession session, Throwable t) throws Exception 
 	{
-		log.error(this, t);
+		//log.error(this, t);
 		session.close();
 	}
 	//------------------------------------------------------------------------------------------------------------------------
