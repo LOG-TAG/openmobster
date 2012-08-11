@@ -27,6 +27,7 @@ import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
 import org.openmobster.device.agent.frameworks.mobileObject.MobileObjectDatabase;
 import org.openmobster.device.agent.frameworks.mobileObject.DeviceSerializer;
 import org.openmobster.device.agent.service.database.DBException;
+import org.openmobster.core.common.Utilities;
 import org.openmobster.core.common.XMLUtilities;
 
 import org.openmobster.device.agent.sync.AbstractOperation;
@@ -769,7 +770,8 @@ public class SyncEngine
 	{
 		String sync = null;
 
-		sync = String.valueOf(System.currentTimeMillis());
+		//sync = String.valueOf(System.currentTimeMillis());
+		sync = Utilities.generateUID();
 
 		return sync;
 	}
