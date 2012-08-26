@@ -15,10 +15,13 @@
     UIViewController *delegate;
     
     ManualSyncMenuController *menu;
+    
+    NSArray *myChannels;
 }
 
 @property (nonatomic,retain) UIViewController *delegate;
 @property (nonatomic,retain) ManualSyncMenuController *menu;
+@property (nonatomic,retain) NSArray *myChannels;
 
 -(IBAction) cancel:(id) sender;
 @end

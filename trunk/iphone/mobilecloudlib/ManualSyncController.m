@@ -7,11 +7,14 @@
 //
 
 #import "ManualSyncController.h"
+#import "AppService.h"
+#import "Channel.h"
 
 @implementation ManualSyncController
 
 @synthesize delegate;
 @synthesize menu;
+@synthesize myChannels;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +40,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.menu = [[ManualSyncMenuController alloc] initWithNibName:@"ManualSyncMenuController" bundle:nil];
+    
+    //get my sync channels
+    AppService *appService = [AppService getInstance];
+    self.myChannels = [appService myChannels];
 }
 
 - (void)viewDidUnload
@@ -56,6 +63,7 @@
 {
 	[delegate release];
     [menu release];
+    [myChannels release];
     [super dealloc];
 }
 
@@ -67,7 +75,8 @@
 //--------UITableView Protocols implementation---------------------------------------------------------------------
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 3;
+    int size = [self.myChannels count];
+	return size;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -81,20 +90,8 @@
 	
 	int index = indexPath.row;
 	
-	switch(index)
-	{
-		case 0:
-			local.textLabel.text = @"CRM";
-            break;
-            
-        case 1:
-			local.textLabel.text = @"ERP";
-            break;
-            
-        case 2:
-			local.textLabel.text = @"NoSQL";
-            break;
-	}
+    Channel *channel = (Channel *)[self.myChannels objectAtIndex:index];
+    local.textLabel.text = channel.name;
 	
 	return local;
 }
@@ -107,7 +104,12 @@
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	//int index = indexPath.row;
+	int index = indexPath.row;
+    
+    Channel *selectedChannel = (Channel *)[self.myChannels objectAtIndex:index];
+    
+    //set this on the menu
+    self.menu.selectedChannel = selectedChannel;
     
     UINavigationController *navCtrl = self.navigationController;
     [navCtrl pushViewController:self.menu animated:YES];

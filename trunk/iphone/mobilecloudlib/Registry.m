@@ -19,8 +19,8 @@ static Registry *singleton = nil;
 
 -(void)dealloc
 {
-	[super dealloc];
 	[services release];
+    [super dealloc];
 }
 
 +(Registry *) getInstance

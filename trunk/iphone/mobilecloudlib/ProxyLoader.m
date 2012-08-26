@@ -28,8 +28,8 @@
 
 -(void)dealloc
 {
-	[super dealloc];
 	[queue release];
+    [super dealloc];
 }
 
 +(ProxyLoader *) getInstance
