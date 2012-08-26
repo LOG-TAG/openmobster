@@ -66,7 +66,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 3;
+	return 2;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -74,7 +74,7 @@
 	UITableViewCell *local = [tableView dequeueReusableCellWithIdentifier:@"control-panel"];
 	if(local == nil)
 	{
-		local = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"control-panel"];
+		local = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"control-panel"];
 		local = [local autorelease];
 	}
 	
@@ -87,11 +87,7 @@
 			break;
 			
 		case 1:
-			local.textLabel.text = @"Security";
-			break;
-			
-		case 2:
-			local.textLabel.text = @"Cloud Status";
+			local.textLabel.text = @"Manual Sync";
 			break;
 	}
 	
@@ -116,15 +112,8 @@
 	}
 	else if(index == 1)
 	{
-		//Security
-		[CloudManager modalSecurityConfig:self];
+		//Manual Sync
+		[CloudManager modalManualSync:self];
 	}	
-	else if(index == 2)
-	{
-		//Cloud Status
-		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:@"Status" message:@"Cloud Status!!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		dialog = [dialog autorelease];
-		[dialog show];
-	}
 }
 @end

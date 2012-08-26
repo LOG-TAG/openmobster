@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A20AE40C13F8298F006FF636 /* MobileBeanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A20AE40B13F8298F006FF636 /* MobileBeanTest.m */; };
 		A20AE40E13F83B02006FF636 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20AE40D13F83B02006FF636 /* CoreGraphics.framework */; };
+		A242E98515E92F1B0092AFA4 /* ManualSyncController.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E98215E92F1A0092AFA4 /* ManualSyncController.h */; };
+		A242E98615E92F1B0092AFA4 /* ManualSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E98315E92F1B0092AFA4 /* ManualSyncController.m */; };
+		A242E98C15E95A360092AFA4 /* ManualSyncMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E98915E95A350092AFA4 /* ManualSyncMenuController.h */; };
+		A242E98D15E95A360092AFA4 /* ManualSyncMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E98A15E95A350092AFA4 /* ManualSyncMenuController.m */; };
 		A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */; };
@@ -375,6 +379,12 @@
 		A20AE40A13F8298F006FF636 /* MobileBeanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanTest.h; sourceTree = "<group>"; };
 		A20AE40B13F8298F006FF636 /* MobileBeanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileBeanTest.m; sourceTree = "<group>"; };
 		A20AE40D13F83B02006FF636 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A242E98215E92F1A0092AFA4 /* ManualSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSyncController.h; sourceTree = "<group>"; };
+		A242E98315E92F1B0092AFA4 /* ManualSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSyncController.m; sourceTree = "<group>"; };
+		A242E98415E92F1B0092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
+		A242E98915E95A350092AFA4 /* ManualSyncMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSyncMenuController.h; sourceTree = "<group>"; };
+		A242E98A15E95A350092AFA4 /* ManualSyncMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSyncMenuController.m; sourceTree = "<group>"; };
+		A242E98B15E95A360092AFA4 /* ManualSyncMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncMenuController.xib; sourceTree = "<group>"; };
 		A2502467130580EC006DC2C8 /* TestReadOnlyChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestReadOnlyChannel.h; sourceTree = "<group>"; };
 		A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReadOnlyChannel.m; sourceTree = "<group>"; };
 		A252E49F13C20FBC004F5344 /* CloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudService.h; sourceTree = "<group>"; };
@@ -919,6 +929,10 @@
 				A296311512CB8F5700928950 /* CloudManagerApp.m */,
 				A296334B12CBF27200928950 /* ActivateDeviceCloudInfo.h */,
 				A296334C12CBF27200928950 /* ActivateDeviceCloudInfo.m */,
+				A242E98215E92F1A0092AFA4 /* ManualSyncController.h */,
+				A242E98315E92F1B0092AFA4 /* ManualSyncController.m */,
+				A242E98915E95A350092AFA4 /* ManualSyncMenuController.h */,
+				A242E98A15E95A350092AFA4 /* ManualSyncMenuController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -938,6 +952,8 @@
 		A2869D7112F9BC0900A4792E /* app-bundle */ = {
 			isa = PBXGroup;
 			children = (
+				A242E98B15E95A360092AFA4 /* ManualSyncMenuController.xib */,
+				A242E98415E92F1B0092AFA4 /* ManualSyncController.xib */,
 				A262293513412C9B00B1BEB3 /* SecurityConfig.xib */,
 				A262293413412C8900B1BEB3 /* ModalActivateDevice.xib */,
 				A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */,
@@ -1640,6 +1656,8 @@
 				A2A997D0147D3F0600DE13E9 /* LocationService.h in Headers */,
 				A2A997D4147D47DA00DE13E9 /* TestLocationService.h in Headers */,
 				A2A9982714A0FA7800DE13E9 /* QSStrings.h in Headers */,
+				A242E98515E92F1B0092AFA4 /* ManualSyncController.h in Headers */,
+				A242E98C15E95A360092AFA4 /* ManualSyncMenuController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2146,6 +2164,8 @@
 				A2A997D1147D3F0600DE13E9 /* LocationService.m in Sources */,
 				A2A997D5147D47DA00DE13E9 /* TestLocationService.m in Sources */,
 				A2A9982814A0FA7800DE13E9 /* QSStrings.m in Sources */,
+				A242E98615E92F1B0092AFA4 /* ManualSyncController.m in Sources */,
+				A242E98D15E95A360092AFA4 /* ManualSyncMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
