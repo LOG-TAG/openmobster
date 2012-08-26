@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Channel.h"
 
 @interface ManualSyncMenuController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    @private
+    Channel *selectedChannel;
+}
+
+@property (nonatomic,retain)Channel *selectedChannel;
 
 @end

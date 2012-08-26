@@ -10,6 +10,8 @@
 
 @implementation ManualSyncMenuController
 
+@synthesize selectedChannel;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,10 +50,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)dealloc
+{
+    [selectedChannel release];
+    [super dealloc];
+}
+
 //--------UITableView Protocols implementation---------------------------------------------------------------------
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 3;
+	return 2;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -74,10 +82,6 @@
         case 1:
 			local.textLabel.text = @"Sync Channel";
             break;
-            
-        case 2:
-			local.textLabel.text = @"Cancel";
-            break;
 	}
 	
 	return local;
@@ -92,5 +96,19 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	int index = indexPath.row;
+    
+    NSString *channel = self.selectedChannel.name;
+    switch(index)
+	{
+		case 0:
+            //reset channel
+            NSLog(@"Resetting: %@",channel);
+        break;
+            
+        case 1:
+            //sync the channel
+            NSLog(@"Syncing: %@",channel);
+        break;
+	}
 }
 @end

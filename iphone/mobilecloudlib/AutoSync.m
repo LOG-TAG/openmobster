@@ -28,22 +28,6 @@
 {
 	@try 
 	{
-        SyncEngine *syncEngine = [SyncEngine withInit];
-        NSArray *changelog = [syncEngine getChangeLog:@"phonegap_channel" operation:@"Replace"];
-        NSLog(@"-----ChangeLog Dump On the Thread-----------------------");
-        if(changelog != nil && [changelog count]>0)
-        {
-            for(ChangeLogEntry *local in changelog)
-            {
-                NSLog(@"RecordId(Spawned): %@",local.recordId);
-                NSLog(@"--------------------------------------");
-            }
-        }
-        else 
-        {
-            NSLog(@"ChangeLog is Empty!!!");
-        }
-        
 	AppService *appService = [AppService getInstance];
 	SyncService *sync = [SyncService getInstance];
 	NSMutableDictionary *booted = [NSMutableDictionary dictionary];

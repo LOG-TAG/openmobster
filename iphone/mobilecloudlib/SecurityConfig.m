@@ -59,8 +59,8 @@
 
 -(void)dealloc 
 {
-    [super dealloc];
 	[delegate release];
+    [super dealloc];
 }
 
 -(IBAction) cancel:(id) sender

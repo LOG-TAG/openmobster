@@ -30,8 +30,8 @@
 
 -(void)dealloc
 {
-	[super dealloc];
 	[queue release];
+    [super dealloc];
 }
 
 +(SyncScheduler *) getInstance
