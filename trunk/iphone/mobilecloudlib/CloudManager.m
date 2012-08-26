@@ -92,6 +92,27 @@
 	[navCtrl release];
 }
 
++(void)modalManualSync:(UIViewController *)caller
+{
+	ManualSyncController *modalView = [[ManualSyncController alloc] initWithNibName:@"ManualSyncController" bundle:nil];
+	modalView.delegate = caller;
+	
+	UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:modalView];
+	[modalView release];
+	
+	//Add the Title
+	navCtrl.navigationBar.topItem.title = @"Manual Sync";
+	
+	//Add the Cancel button to the navbar
+	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:modalView action:@selector(cancel:)];
+	navCtrl.topViewController.navigationItem.leftBarButtonItem = cancelButton;
+	[cancelButton release];
+	
+	
+	[caller presentModalViewController:navCtrl animated:YES];
+	[navCtrl release];
+}
+
 +(void)modalCloudManager:(UIViewController *)caller
 {
 	CloudManagerApp *modalView = [[CloudManagerApp alloc] initWithNibName:@"CloudManagerApp" bundle:nil];

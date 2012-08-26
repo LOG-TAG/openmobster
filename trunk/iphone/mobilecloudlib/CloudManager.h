@@ -12,6 +12,7 @@
 #import "SecurityConfig.h"
 #import "CloudManagerApp.h"
 #import "ActivateDeviceCloudInfo.h"
+#import "ManualSyncController.h"
 
 /**
  * 
@@ -26,4 +27,5 @@
 +(void)modalActivateDevice:(UIViewController *)caller;
 +(void)modalForceActivation:(UIViewController *)caller;
 +(void)modalSecurityConfig:(UIViewController *)caller;
++(void)modalManualSync:(UIViewController *)caller;
 @end
