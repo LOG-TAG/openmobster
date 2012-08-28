@@ -7,6 +7,9 @@
 //
 
 #import "ManualSyncMenuController.h"
+#import "CommandContext.h"
+#import "CommandService.h"
+#import "ManualSync.h"
 
 @implementation ManualSyncMenuController
 
@@ -98,17 +101,57 @@
 	int index = indexPath.row;
     
     NSString *channel = self.selectedChannel.name;
+    
+    ManualSync *manualSync = [ManualSync withInit];
+    CommandContext *commandContext = [CommandContext withInit:self];
+    [commandContext setAttribute:@"channel" :channel];
+    [commandContext setTarget:manualSync];
+    CommandService *service = [CommandService getInstance];
     switch(index)
 	{
 		case 0:
             //reset channel
-            NSLog(@"Resetting: %@",channel);
+            [commandContext setAttribute:@"sync-type" :@"reset"];
+            [service execute:commandContext];
         break;
             
         case 1:
             //sync the channel
-            NSLog(@"Syncing: %@",channel);
+            [commandContext setAttribute:@"sync-type" :@"two-way"];
+            [service execute:commandContext];
         break;
 	}
+}
+//----------Implementing the UICommandDelegate protocol--------------------------------------------------
+-(void)doViewAfter:(CommandContext *)callback
+{
+    NSString *code = @"Channel Sync";
+	NSString *message = @"Channel successfully synchronized";
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	
+	[dialog show];
+}
+-(void)doViewError:(CommandContext *)callback
+{
+    NSString *code = [callback getErrorCode];
+	NSString *message = [callback getErrorMessage];
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	
+	[dialog show];
+}
+-(void)doViewAppException:(CommandContext *)callback
+{
+    AppException *appe = [callback getAppException];
+	
+	NSString *code = [appe getType];
+	NSString *message = [appe getMessage];
+    
+    
+	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	dialog = [dialog autorelease];
+	
+	[dialog show]; 
 }
 @end
