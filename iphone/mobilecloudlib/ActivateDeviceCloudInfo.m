@@ -171,8 +171,12 @@
 {
 	NSString *code = [callback getErrorCode];
 	NSString *message = [callback getErrorMessage];
+    
 	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	dialog = [dialog autorelease];
+    
+    //cleanup the error from the commandcontext
+    [callback clearErrors];
 	
 	[dialog show];
 }

@@ -68,6 +68,12 @@
 	[attrMgr setAttribute:@"error_message" :message];
 }
 
+-(void)clearErrors
+{
+    [attrMgr removeAttribute:@"error_code"];
+    [attrMgr removeAttribute:@"error_message"];
+}
+
 -(NSString *)getErrorCode
 {
 	return (NSString *)[attrMgr getAttribute:@"error_code"];
