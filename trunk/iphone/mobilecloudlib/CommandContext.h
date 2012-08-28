@@ -36,6 +36,7 @@
 -(NSString *)getErrorCode;
 -(NSString *)getErrorMessage;
 -(BOOL)hasErrors;
+-(void)clearErrors;
 
 -(void)activateTimeout;
 -(void)deactivateTimeout;
