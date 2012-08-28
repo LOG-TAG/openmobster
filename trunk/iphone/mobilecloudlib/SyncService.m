@@ -225,6 +225,11 @@
 		{
 			[self performSync:session :syncType :channel :isBackground :oid];
 		}
+        else
+        {
+            SystemException *syse = [SystemException withContext:@"Start Sync" method:@"startSync" parameters:[NSMutableArray arrayWithObjects:response,nil]];
+            @throw syse;
+        }
 	}
 	@finally 
 	{
