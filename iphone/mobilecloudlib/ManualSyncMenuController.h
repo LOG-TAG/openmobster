@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Channel.h"
+#import "UICommandDelegate.h"
 
-@interface ManualSyncMenuController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface ManualSyncMenuController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICommandDelegate>
 {
     @private
     Channel *selectedChannel;
