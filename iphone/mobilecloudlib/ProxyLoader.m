@@ -38,12 +38,12 @@
 	return (ProxyLoader *)[registry lookup:[ProxyLoader class]];
 }
 
--(void)startProxySync:(id)channel
+-(void)startProxySync
 {	
 	ProxySync *target = [ProxySync withInit];
 	NSInvocationOperation *operation = [[NSInvocationOperation alloc] 
 										initWithTarget:target 
-										selector:@selector(sync:) object:channel];	
+										selector:@selector(sync) object:nil];	
 	operation = [operation autorelease];
 	
 	//Add the operation to the queue

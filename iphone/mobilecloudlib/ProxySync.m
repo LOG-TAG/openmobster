@@ -7,7 +7,7 @@
  */
 
 #import "ProxySync.h"
-
+#import "AppService.h"
 
 /**
  * 
@@ -21,8 +21,44 @@
 	return instance;
 }
 
--(void)sync:(id)channel
+-(void)sync
 {
-	NSLog(@"Executing Proxy sync: %@",channel);
+    @try 
+    {
+        AppService *appService = [AppService getInstance];
+        
+        NSArray *allChannels = [appService myChannels];
+        if(allChannels != nil && [allChannels count]>0)
+        {
+            for(Channel *local in allChannels)
+            {
+                NSString *name = local.name;
+                [self proxySync:name];
+            }
+        }
+    }
+    @catch (NSException *exception) 
+    {
+        //this is happening in the background....do nothing
+    }
+}
+
+-(void)proxySync:(NSString *)channel
+{
+	SyncService *sync = [SyncService getInstance];
+	MobileObjectDatabase *mdb = [MobileObjectDatabase getInstance];
+	NSArray *allObjects = [mdb readAll:channel];
+	if(allObjects != nil)
+	{
+		for(MobileObject *local in allObjects)
+		{
+			if(local.proxy)
+			{
+				NSString *oid = local.recordId;
+				//NSLog(@"Performing Load Proxy sync....");
+				[sync performStreamSync:channel :NO :oid];
+			}
+		}
+	}
 }
 @end

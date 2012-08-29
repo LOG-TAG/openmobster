@@ -105,6 +105,76 @@
 	}
 }
 
+-(void)syncWithoutProxy
+{
+    @try 
+	{
+        AppService *appService = [AppService getInstance];
+        SyncService *sync = [SyncService getInstance];
+        NSMutableDictionary *booted = [NSMutableDictionary dictionary];
+        
+        //Get all the channels and perfom boot-sync on the unbooted ones
+        //NSLog(@"Starting Boot Sync");
+        NSArray *allChannels = [appService myChannels];
+        if(allChannels != nil && [allChannels count]>0)
+        {
+            //NSLog(@"Boot Sync candidat found!!!");
+            for(Channel *local in allChannels)
+            {
+                NSString *name = local.name;
+                if(![MobileBean isBooted:name])
+                {
+                    //NSLog(@"Performing Boot Sync on: %@",name);
+                    [sync performBootSync:name :NO];
+                    [booted setObject:name forKey:name];
+                }
+            }
+        }
+        
+        //Get writable channels, and perform a two-way sync on these
+        NSArray *writableChannels = [appService writableChannels];
+        if(writableChannels != nil && [writableChannels count]>0)
+        {
+            for(Channel *local in writableChannels)
+            {
+                NSString *name = local.name;
+                
+                //Check if just bootstrapped, so skip the two way sync
+                if([booted objectForKey:name] != nil)
+                {
+                    continue;
+                }
+                
+                //NSLog(@"Performing Two Way Sync on: %@",name);
+                [sync performTwoWaySync:name :NO];
+            }
+        }
+        
+        //Get rest of the channels and do a one-way server sync on these
+        NSArray *readonlyChannels = [appService readonlyChannels];
+        if(readonlyChannels != nil && [readonlyChannels count]>0)
+        {
+            for(Channel *local in readonlyChannels)
+            {
+                NSString *name = local.name;
+                
+                //Check if just bootstrapped, so skip the one way sync
+                if([booted objectForKey:name] != nil)
+                {
+                    continue;
+                }
+                
+                //NSLog(@"Performing a OneWayServer Sync on: %@",name);
+                [sync performOneWayServerSync:name :NO];
+            }
+        }
+	}
+	@catch(NSException *e)
+	{
+		//saves from a crash...tried to sync
+	}  
+}
+
 -(void)proxySync:(NSString *)channel
 {
 	SyncService *sync = [SyncService getInstance];

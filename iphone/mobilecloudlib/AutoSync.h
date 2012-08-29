@@ -20,4 +20,6 @@
 +(id)withInit;
 -(void)sync;
 -(void)proxySync:(NSString *)channel;
+
+-(void)syncWithoutProxy;
 @end

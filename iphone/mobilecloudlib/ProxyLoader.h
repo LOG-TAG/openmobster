@@ -23,6 +23,6 @@
 
 +(ProxyLoader *)getInstance;
 
--(void)startProxySync:(id)channel;
+-(void)startProxySync;
 
 @end
