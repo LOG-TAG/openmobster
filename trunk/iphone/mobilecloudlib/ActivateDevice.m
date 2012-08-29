@@ -9,6 +9,7 @@
 #import "ActivateDevice.h"
 #import "Bus.h"
 #import "DeviceManager.h"
+#import "SyncUtility.h"
 
 
 /**
@@ -50,6 +51,10 @@
 	{
 		//success
 		[self processProvisioningSuccess:login :response];
+        
+        //perform a sync operation to get the data up-to-date
+        SyncUtility *syncUtility = [SyncUtility withInit];
+        [syncUtility syncAll];
 	}
 	else 
 	{
