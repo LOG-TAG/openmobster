@@ -8,6 +8,7 @@
 
 #import "SyncUtility.h"
 #import "SyncService.h"
+#import "AutoSync.h"
 
 @implementation SyncUtility
 
@@ -41,5 +42,11 @@
     {
         @throw exception;
     }
+}
+
+-(void)syncAll
+{
+    AutoSync *autoSync = [AutoSync withInit];
+    [autoSync sync];
 }
 @end

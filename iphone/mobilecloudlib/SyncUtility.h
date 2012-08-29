@@ -14,4 +14,5 @@
 
 -(void)resetChannel:(NSString *)channel;
 -(void)syncChannel:(NSString *)channel;
+-(void)syncAll;
 @end
