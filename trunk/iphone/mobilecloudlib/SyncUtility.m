@@ -9,6 +9,7 @@
 #import "SyncUtility.h"
 #import "SyncService.h"
 #import "AutoSync.h"
+#import "ProxyLoader.h"
 
 @implementation SyncUtility
 
@@ -24,6 +25,10 @@
     {
        SyncService *sync = [SyncService getInstance];
        [sync performBootSync:channel :NO];
+        
+        //load proxies in the background
+        ProxyLoader *proxyLoader = [ProxyLoader getInstance];
+        [proxyLoader startProxySync];
     }
     @catch (NSException *exception) 
     {
@@ -46,7 +51,18 @@
 
 -(void)syncAll
 {
-    AutoSync *autoSync = [AutoSync withInit];
-    [autoSync sync];
+    @try 
+    {
+        AutoSync *autoSync = [AutoSync withInit];
+        [autoSync syncWithoutProxy];
+        
+        //load proxies in the background
+        ProxyLoader *proxyLoader = [ProxyLoader getInstance];
+        [proxyLoader startProxySync];
+    }
+    @catch (NSException *exception) 
+    {
+        @throw exception;
+    }
 }
 @end

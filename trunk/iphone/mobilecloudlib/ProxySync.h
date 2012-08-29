@@ -18,6 +18,8 @@
 }
 
 +(id)withInit;
--(void)sync:(id)channel;
+-(void)sync;
+
+-(void)proxySync:(NSString *)channel;
 
 @end

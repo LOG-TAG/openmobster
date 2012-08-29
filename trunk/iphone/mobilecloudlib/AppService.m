@@ -8,6 +8,7 @@
 
 #import "AppService.h"
 #import "Bus.h"
+#import "SyncUtility.h"
 
 
 /**
@@ -90,8 +91,11 @@
 	if([conf isActivated])
 	{
 	//	NSLog(@"Starting Sync Daemons...........");
-		SyncService *sync = [SyncService getInstance];
-		[sync startDaemons];
+		//SyncService *sync = [SyncService getInstance];
+		//[sync startDaemons];
+        //perform a sync operation to get the data up-to-date
+        SyncUtility *syncUtility = [SyncUtility withInit];
+        [syncUtility syncAll];
 	}
 	
 	//MyChannles
