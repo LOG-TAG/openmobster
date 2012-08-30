@@ -28,4 +28,6 @@
 +(id)withInit;
 +(id)withInit:(NSString *)name :(NSString *)owner :(BOOL)writable;
 
+- (BOOL)isEqual:(id)anObject;
+
 @end

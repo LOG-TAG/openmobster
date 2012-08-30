@@ -19,6 +19,7 @@
 
 @synthesize writableChannels;
 @synthesize allChannels;
+@synthesize isActive;
 
 -init
 {
@@ -58,7 +59,7 @@
 	//Load up registered channels
 	NSArray *channelRegistry = [appConfig getChannels];
 	BOOL broadcastConf = NO;
-	if(channelRegistry != nil)
+	if(channelRegistry != nil && !isActive)
 	{
 		for(Channel *local in channelRegistry)
 		{
@@ -74,6 +75,8 @@
 					[writableChannels addObject:local];
 					broadcastConf = YES;
 				}*/
+                
+                
                 //Making all channels writable
                 [writableChannels addObject:local];
 			}
@@ -111,6 +114,7 @@
 	//{
 	//	NSLog(@"Empty Channels......");
 	//}
+    isActive = YES;
 }
 
 -(NSArray *)myChannels

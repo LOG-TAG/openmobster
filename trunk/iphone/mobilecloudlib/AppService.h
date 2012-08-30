@@ -22,10 +22,12 @@
 	@private 
 	NSMutableArray *writableChannels;
 	NSMutableArray *allChannels;
+    BOOL isActive;
 }
 
 @property (nonatomic,retain)NSMutableArray *writableChannels;
 @property (nonatomic,retain)NSMutableArray *allChannels;
+@property (nonatomic,assign)BOOL isActive;
 
 +(AppService *) getInstance;
 
