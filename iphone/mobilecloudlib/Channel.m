@@ -49,4 +49,9 @@
 	
 	return instance;
 }
+
+- (BOOL)isEqual:(id)anObject
+{
+    return false;
+}
 @end
