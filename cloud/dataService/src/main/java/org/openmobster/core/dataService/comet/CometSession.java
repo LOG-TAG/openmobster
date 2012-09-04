@@ -138,12 +138,12 @@ public final class CometSession implements Serializable,BusListener
 			String command = (String)busMessage.getAttribute(Constants.command);
 			String os = (String)busMessage.getAttribute(Constants.os);
 			
-			log.debug("-------------------------------------------------");
-			log.debug("Bus Message received by: "+busMessage.getBusUri());
-			log.debug("Sent by: "+busMessage.getSenderUri());
-			log.debug("Command: "+command);
-			log.debug("OS: "+os);
-			log.debug("-------------------------------------------------");
+			//log.debug("-------------------------------------------------");
+			//log.debug("Bus Message received by: "+busMessage.getBusUri());
+			//log.debug("Sent by: "+busMessage.getSenderUri());
+			//log.debug("Command: "+command);
+			//log.debug("OS: "+os);
+			//log.debug("-------------------------------------------------");
 			
 			if(command != null)
 			{
@@ -177,13 +177,13 @@ public final class CometSession implements Serializable,BusListener
 	{
 		if(this.isActive())
 		{
-			log.debug("Comet is Active!!!");
+			//log.debug("Comet is Active!!!");
 			if(this.allowNotification(busMessage))
 			{
-				log.debug("Actually Sending-------------------------------------------------");
-				log.debug("Bus Message received by: "+busMessage.getBusUri());
-				log.debug("Sent by: "+busMessage.getSenderUri());
-				log.debug("-----------------------------------------------------------------");
+				//log.debug("Actually Sending-------------------------------------------------");
+				//log.debug("Bus Message received by: "+busMessage.getBusUri());
+				//log.debug("Sent by: "+busMessage.getSenderUri());
+				//log.debug("-----------------------------------------------------------------");
 				
 				if(packet != null)
 				{
@@ -196,7 +196,7 @@ public final class CometSession implements Serializable,BusListener
 		}
 		else
 		{
-			log.debug("Comet is inactive!!!!");
+			//log.debug("Comet is inactive!!!!");
 		}
 	}
 	
@@ -232,12 +232,12 @@ public final class CometSession implements Serializable,BusListener
 	//--------------iPhone APN integration-----------------------------------------------------------------
 	private synchronized void sendiPhoneNotification(String command, BusMessage busMessage)
 	{
-		log.debug("Actually Sending-------------------------------------------------");
-		log.debug("Bus Message received by: "+busMessage.getBusUri());
-		log.debug("Sent by: "+busMessage.getSenderUri());
-		log.debug("Command: "+command);
-		log.debug("NotificationType: "+busMessage.getAttribute(Constants.notification_type));
-		log.debug("-----------------------------------------------------------------");
+		//log.debug("Actually Sending-------------------------------------------------");
+		//log.debug("Bus Message received by: "+busMessage.getBusUri());
+		//log.debug("Sent by: "+busMessage.getSenderUri());
+		//log.debug("Command: "+command);
+		//log.debug("NotificationType: "+busMessage.getAttribute(Constants.notification_type));
+		//log.debug("-----------------------------------------------------------------");
 		
 		if(command != null)
 		{

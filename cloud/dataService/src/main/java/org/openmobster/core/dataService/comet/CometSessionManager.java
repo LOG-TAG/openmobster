@@ -211,6 +211,14 @@ public final class CometSessionManager implements EventListener
 	//-------------------------------------------------------------------------------------------------------------
 	private void addSession(Device device)
 	{
+		CometSession session = this.findCometSession(device.getIdentifier());
+		if(session != null)
+		{
+			//Checking to make sure multiple device sessions are not created
+			//resulting in multiple Bus infrastructure for each device
+			return;
+		}
+		
 		Subscription subscription = new Subscription();
 		subscription.setClientId(device.getIdentifier());
 		subscription.setConfigValue("identity", device.getIdentity().getPrincipal());

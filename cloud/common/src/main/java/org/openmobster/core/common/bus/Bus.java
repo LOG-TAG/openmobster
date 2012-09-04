@@ -8,6 +8,7 @@
 
 package org.openmobster.core.common.bus;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -15,7 +16,6 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-import org.hornetq.core.client.ClientConsumer;
 import org.hornetq.core.client.ClientMessage;
 import org.hornetq.core.client.ClientProducer;
 import org.hornetq.core.client.ClientSession;
@@ -29,7 +29,6 @@ import org.hornetq.utils.SimpleString;
 import org.openmobster.core.common.errors.ErrorHandler;
 import org.openmobster.core.common.errors.SystemException;
 import org.openmobster.core.common.XMLUtilities;
-import org.openmobster.core.common.transaction.TransactionHelper;
 
 /**
  * @author openmobster@gmail.com
@@ -42,13 +41,14 @@ public final class Bus
 	private static ClientSessionFactory sessionFactory;
 	static
 	{
-		activeBuses = new HashMap<String, Bus>();		
+		activeBuses = new HashMap<String, Bus>();
+		
+		Thread t = new Thread(BusConsumer.getInstance());
+		t.start();
 	}
 	
 	private String uri;
 	private List<BusListener> busListeners;
-	private Thread busReader;
-	private BusReader threadRunner;
 	
 	private Bus(String uri)
 	{
@@ -66,7 +66,13 @@ public final class Bus
 		ClientSession coreSession = null;
 		try
 		{
-			Bus.activeBuses.put(this.uri, this);
+			if(Bus.activeBuses.containsKey(this.uri))
+			{
+				//Bus infrastructure for this already exists
+				//no need to create redundant one
+				return;
+			}
+			
 			
 			synchronized(Bus.class)
 			{
@@ -89,10 +95,7 @@ public final class Bus
 	                        
 	        coreSession.close();
 	        
-	        //Start a BusReader
-	        this.threadRunner = new BusReader();
-	        this.busReader = new Thread(this.threadRunner);
-	        this.busReader.start();
+	        Bus.activeBuses.put(this.uri, this);
 		}
 		catch(HornetQException hqe)
 		{
@@ -119,10 +122,6 @@ public final class Bus
 		try
 		{
 			Bus.activeBuses.remove(uri);
-			if(this.busReader != null)
-			{
-				this.threadRunner.exit = true;
-			}
 		}
 		catch(Exception e)
 		{
@@ -130,27 +129,14 @@ public final class Bus
 		}
 	}
 	
-	private void restart()
+	String getUri()
 	{
-		try
-		{
-			if(this.busReader != null)
-			{
-				this.threadRunner.exit = true;
-				this.busReader.join();
-				
-				//Start a new BusReader
-		        this.threadRunner = new BusReader();
-		        this.busReader = new Thread(this.threadRunner);
-		        this.busReader.start();
-			}
-		}
-		catch(Exception e)
-		{
-			log.error(this, e);
-			ErrorHandler.getInstance().handle(e);
-		}
-
+		return this.uri;
+	}
+	
+	List<BusListener> getBusListeners()
+	{
+		return this.busListeners;
 	}
 	//-----------------------------------------------------------------------------------------------------------
 	private void addBusListener(BusListener listener)
@@ -233,8 +219,8 @@ public final class Bus
 	
 	public static void restartBus(String uri)
 	{
-		Bus bus = Bus.activeBuses.get(uri);
-		bus.restart();
+		//does nothing....just here so that the public contract is not broken
+		//deprecated
 	}
 	
 	public static void addBusListener(String uri, BusListener listener)
@@ -286,110 +272,14 @@ public final class Bus
 		//Send the message on a queue
 		bus.sendMessageOnQueue(message);
 	}
-	//----------------------------------------------------------------------------------------------------------------------------------------	
-	private class BusReader implements Runnable
+	
+	static Map<String,Bus> getActiveBuses()
 	{
-		private ClientSession session;
-		private boolean exit;
-		public void run()
-		{
-			ClientConsumer messageConsumer = null;
-			try
-			{				
-				session = sessionFactory.createSession();
-				session.start();
-				messageConsumer = session.createConsumer(uri);
-				do
-				{	
-			        ClientMessage message = messageConsumer.receive(20000);
-			        
-			        if(exit)
-			        {
-			        	break;
-			        }
-			        
-			        if(message != null)
-			        {
-			        	boolean isStartedHere = TransactionHelper.startTx();
-			        	try
-			        	{
-				        	//message.acknowledge(); //Not done here...let the BusListener process the message and decide if 
-				        	//this message is fully processed and can be safely removed from the queue
-				        	
-				        	SimpleString msg = (SimpleString)message.getProperty("message");
-				        	
-				        	BusMessage busMessage = (BusMessage)XMLUtilities.unmarshal(msg.toString());
-				        	busMessage.setAttribute("hornetq-message", message);
-				        	
-				        	this.sendBusListenerEvent(busMessage);
-				        	
-				        	if(isStartedHere)
-				        	{
-				        		TransactionHelper.commitTx();
-				        	}
-			        	}
-			        	catch(Exception e)
-			        	{
-			        		e.printStackTrace();
-			        		if(isStartedHere)
-			        		{
-			        			TransactionHelper.rollbackTx();
-			        		}
-			        	}
-			        }
-				}while(true);
-			}
-			catch(HornetQException hqe)
-			{
-				ErrorHandler.getInstance().handle(hqe);
-				throw new SystemException(hqe.getMessage(),hqe);
-			}
-			finally
-			{
-				if(messageConsumer != null && !messageConsumer.isClosed())
-				{
-					try
-					{
-						messageConsumer.close();
-					}
-					catch(HornetQException hqe)
-					{
-						ErrorHandler.getInstance().handle(hqe);
-						throw new SystemException(hqe.getMessage(),hqe);
-					}
-				}
-				
-				if(session != null && !session.isClosed())
-				{
-					try
-					{
-						session.stop();
-						session.close();
-					}
-					catch(HornetQException hqe)
-					{
-						ErrorHandler.getInstance().handle(hqe);
-						throw new SystemException(hqe.getMessage(),hqe);
-					}
-				}
-			}
-		}
-		
-		private void sendBusListenerEvent(BusMessage busMessage)
-		{
-			for(BusListener busListener: busListeners)
-			{
-				try
-				{
-					busListener.messageIncoming(busMessage);
-				}
-				catch(Exception e)
-				{
-					//so that if an error occurs on one listener, others don't suffer
-					//listeners must be isolated of each other
-					try{ErrorHandler.getInstance().handle(e);}catch(Exception ex){}
-				}
-			}
-		}
+		return Collections.unmodifiableMap(Bus.activeBuses);
+	}
+	
+	static ClientSessionFactory getSessionFactory()
+	{
+		return Bus.sessionFactory;
 	}
 }
