@@ -18,7 +18,6 @@ static CloudService *singleton = nil;
 @synthesize kernel;
 @synthesize bootupKernel;
 @synthesize uiKernel;
-@synthesize viewController;
 
 +(CloudService *)getInstance
 {
@@ -46,21 +45,8 @@ static CloudService *singleton = nil;
 	[kernel release];
 	[bootupKernel release];
 	[uiKernel release];
-	
-	if(viewController != nil)
-	{
-		[viewController release];
-	}
     
     [super dealloc];
-}
-
-+(CloudService *) getInstance:(UIViewController *)viewController
-{
-	CloudService *instance = [CloudService getInstance];
-	instance.viewController = viewController;
-	
-	return instance;
 }
 
 -(void) startup
@@ -76,10 +62,7 @@ static CloudService *singleton = nil;
 			[self.bootupKernel startup];
 	
 			//Now UIKernel if necessary
-			if(self.viewController != nil)
-			{
-				[self.uiKernel startup:viewController];
-			}
+			[self.uiKernel startup];
 		}
 		@catch(NSException *ex)
 		{
@@ -101,10 +84,7 @@ static CloudService *singleton = nil;
 	@synchronized(self)
 	{
 		//UIKernel if necessary
-		if(self.viewController != nil)
-		{
-			[self.uiKernel shutdown];
-		}
+		[self.uiKernel shutdown];
 	
 		//Now the App level kernel
 		[self.bootupKernel shutdown];
@@ -123,5 +103,14 @@ static CloudService *singleton = nil;
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	exit(0);
+}
+
+-(void) forceActivation:(UIViewController *)caller
+{
+    Configuration *conf = [Configuration getInstance];
+    if(![conf isActivated])
+    {
+        [self.uiKernel forceActivation:caller];
+    }
 }
 @end

@@ -17,6 +17,8 @@
 		A242E99C15EABB000092AFA4 /* SyncUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E99A15EABAFF0092AFA4 /* SyncUtility.m */; };
 		A242E99F15ED36CD0092AFA4 /* ManualSync.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E99D15ED36CC0092AFA4 /* ManualSync.h */; };
 		A242E9A015ED36CD0092AFA4 /* ManualSync.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E99E15ED36CC0092AFA4 /* ManualSync.m */; };
+		A242E9A915F0306D0092AFA4 /* BackgroundSyncCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E9A715F0306C0092AFA4 /* BackgroundSyncCommand.h */; };
+		A242E9AA15F0306D0092AFA4 /* BackgroundSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E9A815F0306D0092AFA4 /* BackgroundSyncCommand.m */; };
 		A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */; };
@@ -393,6 +395,8 @@
 		A242E99A15EABAFF0092AFA4 /* SyncUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtility.m; sourceTree = "<group>"; };
 		A242E99D15ED36CC0092AFA4 /* ManualSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSync.h; sourceTree = "<group>"; };
 		A242E99E15ED36CC0092AFA4 /* ManualSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSync.m; sourceTree = "<group>"; };
+		A242E9A715F0306C0092AFA4 /* BackgroundSyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundSyncCommand.h; sourceTree = "<group>"; };
+		A242E9A815F0306D0092AFA4 /* BackgroundSyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundSyncCommand.m; sourceTree = "<group>"; };
 		A2502467130580EC006DC2C8 /* TestReadOnlyChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestReadOnlyChannel.h; sourceTree = "<group>"; };
 		A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestReadOnlyChannel.m; sourceTree = "<group>"; };
 		A252E49F13C20FBC004F5344 /* CloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudService.h; sourceTree = "<group>"; };
@@ -880,6 +884,8 @@
 		A252E49E13C20F97004F5344 /* bootstrap */ = {
 			isa = PBXGroup;
 			children = (
+				A242E9A715F0306C0092AFA4 /* BackgroundSyncCommand.h */,
+				A242E9A815F0306D0092AFA4 /* BackgroundSyncCommand.m */,
 				A252E49F13C20FBC004F5344 /* CloudService.h */,
 				A252E4A013C20FBC004F5344 /* CloudService.m */,
 			);
@@ -1672,6 +1678,7 @@
 				A242E98C15E95A360092AFA4 /* ManualSyncMenuController.h in Headers */,
 				A242E99B15EABB000092AFA4 /* SyncUtility.h in Headers */,
 				A242E99F15ED36CD0092AFA4 /* ManualSync.h in Headers */,
+				A242E9A915F0306D0092AFA4 /* BackgroundSyncCommand.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2182,6 +2189,7 @@
 				A242E98D15E95A360092AFA4 /* ManualSyncMenuController.m in Sources */,
 				A242E99C15EABB000092AFA4 /* SyncUtility.m in Sources */,
 				A242E9A015ED36CD0092AFA4 /* ManualSync.m in Sources */,
+				A242E9AA15F0306D0092AFA4 /* BackgroundSyncCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

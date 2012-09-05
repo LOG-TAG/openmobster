@@ -24,13 +24,11 @@
 	Kernel *kernel;
 	BootupKernel *bootupKernel;
 	UIKernel *uiKernel;
-	UIViewController *viewController;
 }
 
 @property(nonatomic,retain) Kernel *kernel;
 @property(nonatomic,retain) BootupKernel *bootupKernel;
 @property(nonatomic,retain) UIKernel *uiKernel;
-@property(nonatomic,retain) UIViewController *viewController;
 
 /**
  * Gets a service that will be used in a non-gui environment
@@ -39,13 +37,6 @@
  */
 +(CloudService *) getInstance;
 
-/**
- * Gets a service that will be used in a GUI environment
- *
- * @param viewController the view controller that will be used to bring up a Modal activation screen if needed
- * @return the CloudService
- */
-+(CloudService *) getInstance:(UIViewController *)viewController;
 
 /**
  *  Start the Cloud Service. This starts all the kernels. This must be called before OpenMobster services can
@@ -57,4 +48,6 @@
  * Shuts down the Cloud Service and all its kernels
  */
 -(void) shutdown;
+
+-(void) forceActivation:(UIViewController *)caller;
 @end
