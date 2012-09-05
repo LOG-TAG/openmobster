@@ -79,11 +79,11 @@
 	BOOL success = [managedContext save:&error];
 	
 	//Used for debugging
-	if(!success)
+	/*if(!success)
 	{
 		NSLog(@"Error during save!!!");
 		NSLog(@"SaveError: %@, %@", error, [error userInfo]);
-	}
+	}*/
 	
 	return success;
 }

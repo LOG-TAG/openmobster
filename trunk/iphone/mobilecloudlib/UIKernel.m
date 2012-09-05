@@ -20,8 +20,6 @@ static UIKernel *singleton = nil;
  */
 @implementation UIKernel
 
-@synthesize home;
-
 +(UIKernel *)getInstance
 {
 	if(singleton)
@@ -41,18 +39,15 @@ static UIKernel *singleton = nil;
 
 -(void)dealloc
 {
-	[home release];
 	[super dealloc];
 }
 
--(void)startup:(UIViewController *)startupController
+-(void)startup
 {
 	//Implementation not needed yet
 	@synchronized(self)
 	{
 		Registry *registry = [Registry getInstance];
-		
-		self.home = startupController;
 		
 		CommandService *commandService = [CommandService getInstance];
 		[commandService stop];
@@ -78,11 +73,11 @@ static UIKernel *singleton = nil;
 		}
 		
 		
-		Configuration *conf = [Configuration getInstance];
+		/*Configuration *conf = [Configuration getInstance];
 		if(![conf isActivated])
 		{
 			[self forceActivation:home];
-		}
+		}*/
 	}
 }
 

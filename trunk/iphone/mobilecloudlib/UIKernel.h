@@ -17,16 +17,12 @@
  */
 @interface UIKernel : NSObject 
 {
-	@private
-	UIViewController *home;
 }
 
 
-@property (nonatomic,retain)UIViewController *home;
-
 +(UIKernel *)getInstance;
 
--(void)startup:(UIViewController *)startupController;
+-(void)startup;
 -(void)shutdown;
 -(BOOL)isRunning;
 
