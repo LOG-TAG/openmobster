@@ -7,7 +7,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RemoteCommand.h";
+#import "RemoteCommand.h"
 
 /**
  * 

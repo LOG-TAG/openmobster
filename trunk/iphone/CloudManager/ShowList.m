@@ -14,6 +14,7 @@
 @implementation ShowList
 
 @synthesize delegate;
+@synthesize beanList;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -59,6 +60,7 @@
 - (void)dealloc 
 {
 	[delegate release];
+    [beanList release];
     [super dealloc];
 }
 

@@ -7,8 +7,6 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "Kernel.h"
-#import "UIKernel.h"
 
 @interface CloudManagerAppDelegate : NSObject <UIApplicationDelegate> 
 {
@@ -22,5 +20,8 @@
 
 -(void)startCloudService;
 -(void)stopCloudService;
+-(void)sync;
+-(void)startActivation;
+-(IBAction)launchCloudManager:(id)sender;
 @end
 
