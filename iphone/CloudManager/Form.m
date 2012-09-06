@@ -91,7 +91,6 @@
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	int index = indexPath.row;
 	int section = indexPath.section;
 	
 	//Setup cell properties

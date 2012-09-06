@@ -66,7 +66,7 @@
 //UITableViewDataSource and UITableViewDelegate protocol implementation
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return 5;
+	return 2;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -90,17 +90,17 @@
 			local.textLabel.text = @"Ajax Showcase";
 		break;
 			
-		case 2:
+		/*case 2:
 			local.textLabel.text = @"Form Submission Showcase";
-		break;
+		break;*/
 		
-		case 3:
+		/*case 3:
 			local.textLabel.text = @"Command Framework Showcase";
-		break;
+		break;*/
 			
-		case 4:
-			local.textLabel.text = @"Showcase Not Working?";
-		break;
+		/*case 4:
+			local.textLabel.text = @"Activate Device";
+		break;*/
 	}
 	
 	return local;
@@ -134,7 +134,7 @@
 		CommandService *service = [CommandService getInstance];
 		[service execute:commandContext];
 	}
-	else if(index == 2)
+	/*else if(index == 2)
 	{
 		Form *modalView = [[Form alloc] initWithNibName:@"Form" bundle:nil];
 		modalView.delegate = self;
@@ -178,7 +178,7 @@
 	{
 		UIKernel *uiKernel = [UIKernel getInstance];
 		[uiKernel launchDeviceActivation:self];
-	}
+	}*/
 }
 //------UICommandDelegate impl-----------------------------------------------------
 -(void)doViewAfter:(CommandContext *)commandContext

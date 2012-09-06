@@ -7,8 +7,11 @@
  */
 
 #import "CloudManagerAppDelegate.h"
-#import "AppService.h"
+
 #import "CloudService.h"
+#import "CommandContext.h"
+#import "CommandService.h"
+#import "BackgroundSyncCommand.h"
 
 @implementation CloudManagerAppDelegate
 
@@ -20,12 +23,22 @@
 #pragma mark Application lifecycle
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
-{    
+{   
+    //OpenMobster bootstrapping
+    [self startCloudService];
+    [self sync];
+    
+    //Add the CloudManager button to the mainView NavigationController
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Cloud Manager" style:UIBarButtonItemStyleDone target:self action:@selector(launchCloudManager:)];
+    self.mainView.topViewController.navigationItem.leftBarButtonItem = button;
+	[button release];
+    
     // Override point for customization after application launch.
 	[window addSubview:mainView.view];
     [window makeKeyAndVisible];
 	
-	[self startCloudService];
+	//OpenMobster bootstrapping
+    [self startActivation];
 	
 	return YES;
 }
@@ -45,40 +58,8 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-	AppService *appService = [AppService getInstance];
-	[appService start];
-	
-	//FIXME: remove this
-	Configuration *conf = [Configuration getInstance];
-	NSDictionary *channelRegistry = [conf getChannelRegistry];
-	NSArray *allKeys = [channelRegistry allKeys];
-	NSLog(@"*********************************************");
-	for(NSString *local in allKeys)
-	{
-		NSString *value = (NSString *)[channelRegistry valueForKey:local];
-		NSLog(@"Key: %@, Value: %@",local,value);
-	}
-	NSLog(@"*********************************************");
-	
-	//Read-Only Channels
-	NSArray *readonly = [appService readonlyChannels];
-	for(Channel *local in readonly)
-	{
-		NSLog(@"ReadOnly : %@, Owner: %@",local.name,local.owner);
-	}
-	
-	//Writable Channels
-	NSArray *writable = [appService writableChannels];
-	for(Channel *local in writable)
-	{
-		NSLog(@"Writable : %@, Owner: %@",local.name,local.owner);
-	}
-	
-	BOOL isWritable = [appService isWritable:@"webappsync_ticket_channel"];
-	NSLog(@"IsWritable(websync_ticket_channel) : %d",isWritable);
-	
-	isWritable = [appService isWritable:@"push_mail_channel"];
-	NSLog(@"IsWritable(push_mail_channel) : %d",isWritable);
+    //OpenMobster bootstrapping
+    [self sync];
 }
 
 -(void)applicationWillResignActive:(UIApplication *)application 
@@ -125,13 +106,33 @@
     [super dealloc];
 }
 //---OpenMobster Cloud Layer integration-------------------------------------------------------
+-(IBAction)launchCloudManager:(id)sender
+{
+    //Launch the CloudManager App
+    [CloudManager modalCloudManager:self.window.rootViewController];
+}
+
 -(void)startCloudService
 {
 	@try 
 	{
-		CloudService *cloudService = [CloudService getInstance:mainView];
-		
+		CloudService *cloudService = [CloudService getInstance];
 		[cloudService startup];
+	}
+	@catch (NSException * e) 
+	{
+		//something caused the kernel to crash
+		//stop the kernel
+		[self stopCloudService];
+	}
+}
+
+-(void)startActivation
+{
+	@try 
+	{
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService forceActivation:self.window.rootViewController];
 	}
 	@catch (NSException * e) 
 	{
@@ -152,5 +153,14 @@
 	{
 		
 	}
+}
+
+-(void)sync
+{
+    CommandContext *commandContext = [CommandContext withInit:self.window.rootViewController];
+    BackgroundSyncCommand *syncCommand = [BackgroundSyncCommand withInit];
+    [commandContext setTarget:syncCommand];
+    CommandService *service = [CommandService getInstance];
+    [service execute:commandContext]; 
 }
 @end
