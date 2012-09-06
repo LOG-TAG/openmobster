@@ -127,7 +127,7 @@ public class PerfSuite
 			String[] tests = test.split(":");
 			for(String local:tests)
 			{
-				Timer timer = new ConstantTimer(1000);
+				Timer timer = new ConstantTimer(0);
 				TestFactory testFactory = new TestFactory(Thread.currentThread().getContextClassLoader().loadClass(local));
 				LoadTest loadTest = new LoadTest(testFactory,concurrentUsers,iterations,timer);
 				suite.addTest(loadTest);
