@@ -101,7 +101,7 @@ public class PerfSuite
 		{
 			int concurrentUsers = Integer.parseInt((String)attributeManager.getAttribute("concurrentUsers"));
 			String test = (String)attributeManager.getAttribute("test");
-			int iterations = 1;
+			int iterations = 10;
 			PerfSuite.suiteContext = attributeManager;
 			devices.clear();
 			
