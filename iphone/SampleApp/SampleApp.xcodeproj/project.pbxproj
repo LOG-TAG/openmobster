@@ -30,6 +30,10 @@
 		A242E9F515F16C360092AFA4 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242E9EA15F16C360092AFA4 /* CloudManagerApp.xib */; };
 		A242E9F615F16C360092AFA4 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242E9EB15F16C360092AFA4 /* ActivityIndicatorView.xib */; };
 		A242E9F715F16C360092AFA4 /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A242E9EC15F16C360092AFA4 /* openmobster-app.xml */; };
+		A242EA4215F964F10092AFA4 /* SaveTicket_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA4115F964F10092AFA4 /* SaveTicket_iPhone.xib */; };
+		A242EA4515F965E70092AFA4 /* SaveTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = A242EA4415F965E70092AFA4 /* SaveTicket.m */; };
+		A242EA4815FA935F0092AFA4 /* SaveTicketCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A242EA4715FA93390092AFA4 /* SaveTicketCommand.m */; };
+		A242EA4B15FA9DCD0092AFA4 /* DeleteTicketCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A242EA4A15FA9DCC0092AFA4 /* DeleteTicketCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +65,13 @@
 		A242E9EA15F16C360092AFA4 /* CloudManagerApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CloudManagerApp.xib; sourceTree = "<group>"; };
 		A242E9EB15F16C360092AFA4 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
 		A242E9EC15F16C360092AFA4 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
+		A242EA4115F964F10092AFA4 /* SaveTicket_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveTicket_iPhone.xib; sourceTree = "<group>"; };
+		A242EA4315F965E60092AFA4 /* SaveTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTicket.h; sourceTree = "<group>"; };
+		A242EA4415F965E70092AFA4 /* SaveTicket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTicket.m; sourceTree = "<group>"; };
+		A242EA4615FA93380092AFA4 /* SaveTicketCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTicketCommand.h; sourceTree = "<group>"; };
+		A242EA4715FA93390092AFA4 /* SaveTicketCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTicketCommand.m; sourceTree = "<group>"; };
+		A242EA4915FA9DCA0092AFA4 /* DeleteTicketCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteTicketCommand.h; sourceTree = "<group>"; };
+		A242EA4A15FA9DCC0092AFA4 /* DeleteTicketCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteTicketCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +125,7 @@
 		A242E9C015F167510092AFA4 /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A242EA3515F961F60092AFA4 /* CRUD */,
 				A242E9C915F167510092AFA4 /* AppDelegate.h */,
 				A242E9CA15F167510092AFA4 /* AppDelegate.m */,
 				A242E9CC15F167510092AFA4 /* ViewController.h */,
@@ -152,6 +164,20 @@
 				A242E9EC15F16C360092AFA4 /* openmobster-app.xml */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		A242EA3515F961F60092AFA4 /* CRUD */ = {
+			isa = PBXGroup;
+			children = (
+				A242EA4115F964F10092AFA4 /* SaveTicket_iPhone.xib */,
+				A242EA4315F965E60092AFA4 /* SaveTicket.h */,
+				A242EA4415F965E70092AFA4 /* SaveTicket.m */,
+				A242EA4615FA93380092AFA4 /* SaveTicketCommand.h */,
+				A242EA4715FA93390092AFA4 /* SaveTicketCommand.m */,
+				A242EA4915FA9DCA0092AFA4 /* DeleteTicketCommand.h */,
+				A242EA4A15FA9DCC0092AFA4 /* DeleteTicketCommand.m */,
+			);
+			name = CRUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +241,7 @@
 				A242E9F515F16C360092AFA4 /* CloudManagerApp.xib in Resources */,
 				A242E9F615F16C360092AFA4 /* ActivityIndicatorView.xib in Resources */,
 				A242E9F715F16C360092AFA4 /* openmobster-app.xml in Resources */,
+				A242EA4215F964F10092AFA4 /* SaveTicket_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +258,9 @@
 				A242E9F115F16C360092AFA4 /* configuration.xcdatamodel in Sources */,
 				A242E9F215F16C360092AFA4 /* sync.xcdatamodel in Sources */,
 				A242E9F315F16C360092AFA4 /* mobileobject.xcdatamodel in Sources */,
+				A242EA4515F965E70092AFA4 /* SaveTicket.m in Sources */,
+				A242EA4815FA935F0092AFA4 /* SaveTicketCommand.m in Sources */,
+				A242EA4B15FA9DCD0092AFA4 /* DeleteTicketCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +402,7 @@
 				A242E9D915F167510092AFA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

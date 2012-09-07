@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
+#import "SaveTicket.h"
 
 #import "CloudService.h"
 #import "CommandContext.h"
@@ -59,9 +60,16 @@
 	self.navigationController.topViewController.navigationItem.leftBarButtonItem = button;
 	[button release];
     
+    //Add the Create button to the nav bar
+    UIBarButtonItem *create = [[UIBarButtonItem alloc] initWithTitle:@"Create" style:UIBarButtonItemStyleDone target:self.viewController action:@selector(launchCreateBean)];
+    
+	self.navigationController.topViewController.navigationItem.rightBarButtonItem = create;
+	[create release];
+    
     
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
     
     //OpenMobster bootstrapping
     [self startActivation];

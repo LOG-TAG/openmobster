@@ -10,7 +10,7 @@
 
 #import "UICommandDelegate.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICommandDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UICommandDelegate>
 {
     @private
     IBOutlet UITableView *beansTable;
@@ -19,6 +19,8 @@
 @property (nonatomic,strong) IBOutlet UITableView *beansTable;
 
 -(IBAction)launchCloudManager:(id)sender;
+-(void)launchSaveView;
+-(void)launchCreateBean;
 
 -(void)setUpBeans;
 @end

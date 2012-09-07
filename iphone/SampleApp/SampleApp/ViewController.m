@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "SaveTicket.h"
+#import "DeleteTicketCommand.h"
 
 #import "CloudManager.h"
 #import "AppSession.h"
@@ -140,6 +142,7 @@
 	int index = indexPath.row;
     
     MobileBean *bean = [beans objectAtIndex:index];
+    [session setAttribute:@"active-bean" :bean];
     
     //Show the ticket in a dialog box
 	NSString *title = [bean getValue:@"title"];
@@ -148,11 +151,56 @@
 	UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:title
 													 message:comment 
 													delegate:self cancelButtonTitle:@"OK" 
-										   otherButtonTitles:nil];
+										   otherButtonTitles:@"Update",@"Delete",nil];
 	
 	
 	dialog = [dialog autorelease];
 	[dialog show];
+}
+//--------------------------------------------------------------------------------------------------
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        //Update
+        [self launchSaveView];
+    }
+    else if(buttonIndex == 2)
+    {
+        //Delete
+        CommandContext *commandContext = [CommandContext withInit:self];
+		[commandContext setTarget:[DeleteTicketCommand withInit]];
+        
+		CommandService *service = [CommandService getInstance];
+		[service execute:commandContext];
+    }
+}
+
+-(void)launchSaveView
+{
+	//Go to SaveTicket
+	SaveTicket *saveTicket = [[SaveTicket alloc] initWithNibName:@"SaveTicket_iPhone" bundle:nil];
+	UINavigationController *navCtrl = self.navigationController;
+	//saveTicket.delegate = delegate;
+	
+	[navCtrl pushViewController:saveTicket animated:YES];
+	
+	//Add the Save Button to the NavBar
+	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:saveTicket action:@selector(save:)];
+	navCtrl.topViewController.navigationItem.rightBarButtonItem = saveButton;
+	
+	//Cleanup
+	[saveTicket release];
+	[saveButton release];
+}
+
+-(void)launchCreateBean
+{
+    //Create a New Bean
+    AppSession *session = [AppSession getInstance];
+    [session removeAttribute:@"active-bean"];
+    
+    [self launchSaveView]; 
 }
 //--------------------------------------------------------------------------------------------------
 -(void)doViewAfter:(CommandContext *)callback
