@@ -53,5 +53,7 @@
 
 -(void)startCloudService;
 -(void)stopCloudService;
+-(void)sync;
+-(void)startActivation;
 @end
 
