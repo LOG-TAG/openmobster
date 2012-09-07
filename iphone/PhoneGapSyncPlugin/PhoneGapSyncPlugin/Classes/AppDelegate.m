@@ -29,6 +29,7 @@
 #import "MainViewController.h"
 #import "AppService.h"
 #import "CloudService.h"
+#import "BackgroundSyncCommand.h"
 
 #ifdef CORDOVA_FRAMEWORK
     #import <Cordova/CDVPlugin.h>
@@ -62,7 +63,11 @@
  * This is main kick off after the app inits, the views and Settings are setup here. (preferred - iOS4 and up)
  */
 - (BOOL) application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
-{    
+{  
+    //OpenMobster bootstrapping
+    [self startCloudService];
+    [self sync];
+    
     NSURL* url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
     if (url && [url isKindOfClass:[NSURL class]]) {
         self.invokeString = [url absoluteString];
@@ -114,8 +119,8 @@
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
     
-    //OpenMobster integration
-    [self startCloudService];
+    //OpenMobster bootstrapping
+    [self startActivation];
     
     return YES;
 }
@@ -199,8 +204,8 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-	AppService *appService = [AppService getInstance];
-	[appService start];
+	//OpenMobster bootstrapping
+    [self sync];
 }
 
 -(void)applicationWillTerminate:(UIApplication *)application 
@@ -216,9 +221,23 @@
 {
 	@try 
 	{
-		CloudService *cloudService = [CloudService getInstance:self.viewController];
-		
+		CloudService *cloudService = [CloudService getInstance];
 		[cloudService startup];
+	}
+	@catch (NSException * e) 
+	{
+		//something caused the kernel to crash
+		//stop the kernel
+		[self stopCloudService];
+	}
+}
+
+-(void)startActivation
+{
+	@try 
+	{
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService forceActivation:self.viewController];
 	}
 	@catch (NSException * e) 
 	{
@@ -239,5 +258,14 @@
 	{
 		
 	}
+}
+
+-(void)sync
+{
+    CommandContext *commandContext = [CommandContext withInit:self.viewController];
+    BackgroundSyncCommand *syncCommand = [BackgroundSyncCommand withInit];
+    [commandContext setTarget:syncCommand];
+    CommandService *service = [CommandService getInstance];
+    [service execute:commandContext]; 
 }
 @end
