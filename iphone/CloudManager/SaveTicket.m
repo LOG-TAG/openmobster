@@ -100,14 +100,26 @@
 
 -(IBAction) save:(id) sender
 {
+    //Validate the data
+	NSString *title = ticketTitle.text;
+	NSString *comment = ticketComments.text;
+    if([StringUtil isEmpty:title] || [StringUtil isEmpty:comment])
+	{
+		NSString *code = @"Validation Error";
+		NSString *message = @"All the fields are required";
+		UIAlertView *dialog = [[UIAlertView alloc] initWithTitle:code message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		dialog = [dialog autorelease];
+		
+		[dialog show];
+		
+		return;
+	}
+    
 	CommandContext *commandContext = [CommandContext withInit:self];
 	[commandContext setTarget:[SaveTicketCommand withInit]];
 	
 	CommandService *service = [CommandService getInstance];
 	
-	//Add the data
-	NSString *title = ticketTitle.text;
-	NSString *comment = ticketComments.text;
 	
 	[commandContext setAttribute:@"title" :title];
 	[commandContext setAttribute:@"comment" :comment];
