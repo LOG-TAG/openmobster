@@ -201,6 +201,11 @@
 		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:modalView action:@selector(done:)];
 		navCtrl.topViewController.navigationItem.leftBarButtonItem = doneButton;
 		[doneButton release];
+        
+        //Add the Create button to the navbar
+		UIBarButtonItem *createButton = [[UIBarButtonItem alloc] initWithTitle:@"Create" style:UIBarButtonItemStyleDone target:modalView action:@selector(newticket:)];
+		navCtrl.topViewController.navigationItem.rightBarButtonItem = createButton;
+		[createButton release];
 	
 	
 		[self presentModalViewController:navCtrl animated:YES];
