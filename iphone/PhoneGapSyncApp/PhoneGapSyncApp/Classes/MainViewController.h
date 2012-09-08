@@ -33,4 +33,8 @@
 
 @interface MainViewController : CDVViewController
 
+
+
+-(IBAction)launchCloudManager:(id)sender;
+
 @end

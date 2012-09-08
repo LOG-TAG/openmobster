@@ -27,6 +27,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UICommandDelegate.h"
+
 #ifdef CORDOVA_FRAMEWORK
     #import <Cordova/CDVViewController.h>
 #else
@@ -34,7 +36,7 @@
 #endif
 
 
-@interface AppDelegate : NSObject < UIApplicationDelegate, UIWebViewDelegate, CDVCommandDelegate > {
+@interface AppDelegate : NSObject < UIApplicationDelegate, UIWebViewDelegate, CDVCommandDelegate,UICommandDelegate > {
 
 	NSString* invokeString;
 }
@@ -47,6 +49,8 @@
 @property (nonatomic, copy)  NSString* invokeString;
 @property (nonatomic, retain) IBOutlet UIWindow* window;
 @property (nonatomic, retain) IBOutlet CDVViewController* viewController;
+
+
 
 //OpenMobster integration
 -(void)startCloudService;

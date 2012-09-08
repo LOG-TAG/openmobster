@@ -116,6 +116,7 @@
         [[UIApplication sharedApplication] setStatusBarOrientation:newOrient];
     }
     
+    
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
     
@@ -195,6 +196,9 @@
 
 - (void) dealloc
 {
+    [window release];
+    [viewController release];
+    [invokeString release];
 	[super dealloc];
 }
 
@@ -266,5 +270,15 @@
     [commandContext setTarget:syncCommand];
     CommandService *service = [CommandService getInstance];
     [service execute:commandContext]; 
+}
+//-------------------------------------------------------------------------------------------------
+-(void)doViewAfter:(CommandContext *)callback
+{
+}
+-(void)doViewError:(CommandContext *)callback
+{
+}
+-(void)doViewAppException:(CommandContext *)callback
+{
 }
 @end
