@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A242EA7415FAC15D0092AFA4 /* ManualSyncMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6A15FAC1590092AFA4 /* ManualSyncMenuController.xib */; };
+		A242EA7515FAC15D0092AFA4 /* ManualSyncController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6B15FAC1590092AFA4 /* ManualSyncController.xib */; };
+		A242EA7615FAC15D0092AFA4 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6C15FAC1590092AFA4 /* SecurityConfig.xib */; };
+		A242EA7715FAC15D0092AFA4 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6D15FAC1590092AFA4 /* ModalActivateDevice.xib */; };
+		A242EA7815FAC15D0092AFA4 /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A242EA6E15FAC15A0092AFA4 /* configuration.xcdatamodel */; };
+		A242EA7915FAC15D0092AFA4 /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A242EA6F15FAC15A0092AFA4 /* sync.xcdatamodel */; };
+		A242EA7A15FAC15D0092AFA4 /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A242EA7015FAC15B0092AFA4 /* mobileobject.xcdatamodel */; };
+		A242EA7B15FAC15D0092AFA4 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA7115FAC15B0092AFA4 /* ActivateDeviceCloudInfo.xib */; };
+		A242EA7C15FAC15D0092AFA4 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA7215FAC15C0092AFA4 /* CloudManagerApp.xib */; };
+		A242EA7D15FAC15D0092AFA4 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA7315FAC15C0092AFA4 /* ActivityIndicatorView.xib */; };
 		A26FF3421548691B00447484 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FF3411548691B00447484 /* Foundation.framework */; };
 		A26FF3441548691B00447484 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FF3431548691B00447484 /* UIKit.framework */; };
 		A26FF3461548691B00447484 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FF3451548691B00447484 /* CoreGraphics.framework */; };
@@ -44,14 +54,6 @@
 		A26FF3A4154879A100447484 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FF3A2154879A100447484 /* CFNetwork.framework */; };
 		A26FF3A5154879A100447484 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FF3A3154879A100447484 /* CoreData.framework */; };
 		A26FF3A915487A5A00447484 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FF3A815487A5A00447484 /* libmobilecloudlib.a */; };
-		A26FF3B515487BC300447484 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26FF3AD15487BC300447484 /* SecurityConfig.xib */; };
-		A26FF3B615487BC300447484 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26FF3AE15487BC300447484 /* ModalActivateDevice.xib */; };
-		A26FF3B715487BC300447484 /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A26FF3AF15487BC300447484 /* configuration.xcdatamodel */; };
-		A26FF3B815487BC300447484 /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A26FF3B015487BC300447484 /* sync.xcdatamodel */; };
-		A26FF3B915487BC300447484 /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A26FF3B115487BC300447484 /* mobileobject.xcdatamodel */; };
-		A26FF3BA15487BC300447484 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26FF3B215487BC300447484 /* ActivateDeviceCloudInfo.xib */; };
-		A26FF3BB15487BC300447484 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26FF3B315487BC300447484 /* CloudManagerApp.xib */; };
-		A26FF3BC15487BC300447484 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26FF3B415487BC300447484 /* ActivityIndicatorView.xib */; };
 		A26FF3BE15487C6100447484 /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A26FF3BD15487C6100447484 /* openmobster-app.xml */; };
 		A26FF3CA15488E3400447484 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FF3C115488E3400447484 /* NSObject+SBJSON.m */; };
 		A26FF3CB15488E3400447484 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FF3C315488E3400447484 /* NSString+SBJSON.m */; };
@@ -62,6 +64,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A242EA6A15FAC1590092AFA4 /* ManualSyncMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncMenuController.xib; sourceTree = "<group>"; };
+		A242EA6B15FAC1590092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
+		A242EA6C15FAC1590092AFA4 /* SecurityConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecurityConfig.xib; sourceTree = "<group>"; };
+		A242EA6D15FAC1590092AFA4 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalActivateDevice.xib; sourceTree = "<group>"; };
+		A242EA6E15FAC15A0092AFA4 /* configuration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = configuration.xcdatamodel; sourceTree = "<group>"; };
+		A242EA6F15FAC15A0092AFA4 /* sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sync.xcdatamodel; sourceTree = "<group>"; };
+		A242EA7015FAC15B0092AFA4 /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mobileobject.xcdatamodel; sourceTree = "<group>"; };
+		A242EA7115FAC15B0092AFA4 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateDeviceCloudInfo.xib; sourceTree = "<group>"; };
+		A242EA7215FAC15C0092AFA4 /* CloudManagerApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CloudManagerApp.xib; sourceTree = "<group>"; };
+		A242EA7315FAC15C0092AFA4 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
 		A26FF33D1548691B00447484 /* PhoneGapSyncApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneGapSyncApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26FF3411548691B00447484 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A26FF3431548691B00447484 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -105,14 +117,6 @@
 		A26FF3A2154879A100447484 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A26FF3A3154879A100447484 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A26FF3A815487A5A00447484 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = "<group>"; };
-		A26FF3AD15487BC300447484 /* SecurityConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = "<group>"; };
-		A26FF3AE15487BC300447484 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = "<group>"; };
-		A26FF3AF15487BC300447484 /* configuration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = configuration.xcdatamodel; path = ../mobilecloudlib/configuration.xcdatamodel; sourceTree = "<group>"; };
-		A26FF3B015487BC300447484 /* sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = sync.xcdatamodel; path = ../mobilecloudlib/sync.xcdatamodel; sourceTree = "<group>"; };
-		A26FF3B115487BC300447484 /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = mobileobject.xcdatamodel; path = ../mobilecloudlib/mobileobject.xcdatamodel; sourceTree = "<group>"; };
-		A26FF3B215487BC300447484 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = "<group>"; };
-		A26FF3B315487BC300447484 /* CloudManagerApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CloudManagerApp.xib; path = ../mobilecloudlib/CloudManagerApp.xib; sourceTree = "<group>"; };
-		A26FF3B415487BC300447484 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = "<group>"; };
 		A26FF3BD15487C6100447484 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
 		A26FF3C015488E3400447484 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		A26FF3C115488E3400447484 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -333,14 +337,16 @@
 		A26FF3A7154879FA00447484 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A26FF3AD15487BC300447484 /* SecurityConfig.xib */,
-				A26FF3AE15487BC300447484 /* ModalActivateDevice.xib */,
-				A26FF3AF15487BC300447484 /* configuration.xcdatamodel */,
-				A26FF3B015487BC300447484 /* sync.xcdatamodel */,
-				A26FF3B115487BC300447484 /* mobileobject.xcdatamodel */,
-				A26FF3B215487BC300447484 /* ActivateDeviceCloudInfo.xib */,
-				A26FF3B315487BC300447484 /* CloudManagerApp.xib */,
-				A26FF3B415487BC300447484 /* ActivityIndicatorView.xib */,
+				A242EA6A15FAC1590092AFA4 /* ManualSyncMenuController.xib */,
+				A242EA6B15FAC1590092AFA4 /* ManualSyncController.xib */,
+				A242EA6C15FAC1590092AFA4 /* SecurityConfig.xib */,
+				A242EA6D15FAC1590092AFA4 /* ModalActivateDevice.xib */,
+				A242EA6E15FAC15A0092AFA4 /* configuration.xcdatamodel */,
+				A242EA6F15FAC15A0092AFA4 /* sync.xcdatamodel */,
+				A242EA7015FAC15B0092AFA4 /* mobileobject.xcdatamodel */,
+				A242EA7115FAC15B0092AFA4 /* ActivateDeviceCloudInfo.xib */,
+				A242EA7215FAC15C0092AFA4 /* CloudManagerApp.xib */,
+				A242EA7315FAC15C0092AFA4 /* ActivityIndicatorView.xib */,
 				A26FF3BD15487C6100447484 /* openmobster-app.xml */,
 			);
 			name = Resources;
@@ -434,12 +440,14 @@
 				A26FF38F1548691B00447484 /* MainViewController.xib in Resources */,
 				A26FF3931548691B00447484 /* verify.sh in Resources */,
 				A26FF39A154869AD00447484 /* www in Resources */,
-				A26FF3B515487BC300447484 /* SecurityConfig.xib in Resources */,
-				A26FF3B615487BC300447484 /* ModalActivateDevice.xib in Resources */,
-				A26FF3BA15487BC300447484 /* ActivateDeviceCloudInfo.xib in Resources */,
-				A26FF3BB15487BC300447484 /* CloudManagerApp.xib in Resources */,
-				A26FF3BC15487BC300447484 /* ActivityIndicatorView.xib in Resources */,
 				A26FF3BE15487C6100447484 /* openmobster-app.xml in Resources */,
+				A242EA7415FAC15D0092AFA4 /* ManualSyncMenuController.xib in Resources */,
+				A242EA7515FAC15D0092AFA4 /* ManualSyncController.xib in Resources */,
+				A242EA7615FAC15D0092AFA4 /* SecurityConfig.xib in Resources */,
+				A242EA7715FAC15D0092AFA4 /* ModalActivateDevice.xib in Resources */,
+				A242EA7B15FAC15D0092AFA4 /* ActivateDeviceCloudInfo.xib in Resources */,
+				A242EA7C15FAC15D0092AFA4 /* CloudManagerApp.xib in Resources */,
+				A242EA7D15FAC15D0092AFA4 /* ActivityIndicatorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,15 +477,15 @@
 				A26FF3621548691B00447484 /* main.m in Sources */,
 				A26FF38A1548691B00447484 /* AppDelegate.m in Sources */,
 				A26FF38D1548691B00447484 /* MainViewController.m in Sources */,
-				A26FF3B715487BC300447484 /* configuration.xcdatamodel in Sources */,
-				A26FF3B815487BC300447484 /* sync.xcdatamodel in Sources */,
-				A26FF3B915487BC300447484 /* mobileobject.xcdatamodel in Sources */,
 				A26FF3CA15488E3400447484 /* NSObject+SBJSON.m in Sources */,
 				A26FF3CB15488E3400447484 /* NSString+SBJSON.m in Sources */,
 				A26FF3CC15488E3400447484 /* SBJsonBase.m in Sources */,
 				A26FF3CD15488E3400447484 /* SBJsonParser.m in Sources */,
 				A26FF3CE15488E3400447484 /* SBJsonWriter.m in Sources */,
 				A26FF3D115488F8200447484 /* SyncPlugin.m in Sources */,
+				A242EA7815FAC15D0092AFA4 /* configuration.xcdatamodel in Sources */,
+				A242EA7915FAC15D0092AFA4 /* sync.xcdatamodel in Sources */,
+				A242EA7A15FAC15D0092AFA4 /* mobileobject.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +603,7 @@
 					"DEBUG=1,",
 					"CORDOVA_FRAMEWORK=1",
 				);
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../mobilecloudlib\"/**";
 				INFOPLIST_FILE = "PhoneGapSyncApp/PhoneGapSyncApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,6 +638,7 @@
 					"NDEBUG=1,",
 					"CORDOVA_FRAMEWORK=1",
 				);
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../mobilecloudlib\"/**";
 				INFOPLIST_FILE = "PhoneGapSyncApp/PhoneGapSyncApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
