@@ -27,6 +27,8 @@
 
 #import "MainViewController.h"
 
+#import "CloudManager.h"
+
 @implementation MainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,4 +69,9 @@
     return [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
+-(IBAction)launchCloudManager:(id)sender
+{
+    //Launch the CloudManager App
+    [CloudManager modalCloudManager:self]; 
+}
 @end
