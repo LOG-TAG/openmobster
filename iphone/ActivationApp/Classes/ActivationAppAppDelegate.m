@@ -22,13 +22,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
+    //OpenMobster bootstrapping
+    [self startCloudService];
 
     // Add the view controller's view to the window and display.
     [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
-	
-	//Bootstrap the Cloud 
-	//[self startCloudService];
 
     return YES;
 }
@@ -54,8 +53,6 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-	//AppService *appService = [AppService getInstance];
-	//[appService start];
 }
 
 
@@ -71,7 +68,7 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
-	//[self stopCloudService];
+	[self stopCloudService];
 }
 
 
@@ -96,8 +93,7 @@
 {
 	@try 
 	{
-		CloudService *cloudService = [CloudService getInstance:viewController];
-		
+		CloudService *cloudService = [CloudService getInstance];
 		[cloudService startup];
 	}
 	@catch (NSException * e) 
