@@ -11,7 +11,7 @@ This tutorial is to guide you through the process of running the iPhone Showcase
 
 === Getting the Showcase App ===
 
-  * You can download the app here:[http://openmobster.googlecode.com/svn/samples/showcase.zip Showcase]
+  * You can find this App under the *SampleApps* directory under the OpenMobster distribution
 
 === Running the Cloud Server ===
 
