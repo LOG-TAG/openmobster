@@ -17,14 +17,6 @@
 		A20AE3BE13F59347006FF636 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3BC13F59347006FF636 /* MainWindow_iPhone.xib */; };
 		A20AE3C213F59347006FF636 /* IntegrationTestAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A20AE3C113F59347006FF636 /* IntegrationTestAppDelegate_iPad.m */; };
 		A20AE3C513F59347006FF636 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3C313F59347006FF636 /* MainWindow_iPad.xib */; };
-		A20AE3D313F5940B006FF636 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3CB13F5940B006FF636 /* SecurityConfig.xib */; };
-		A20AE3D413F5940B006FF636 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3CC13F5940B006FF636 /* ModalActivateDevice.xib */; };
-		A20AE3D513F5940B006FF636 /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3CD13F5940B006FF636 /* configuration.xcdatamodel */; };
-		A20AE3D613F5940B006FF636 /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3CE13F5940B006FF636 /* sync.xcdatamodel */; };
-		A20AE3D713F5940B006FF636 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3CF13F5940B006FF636 /* mobileobject.xcdatamodel */; };
-		A20AE3D813F5940B006FF636 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3D013F5940B006FF636 /* ActivateDeviceCloudInfo.xib */; };
-		A20AE3D913F5940B006FF636 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3D113F5940B006FF636 /* CloudManagerApp.xib */; };
-		A20AE3DA13F5940B006FF636 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3D213F5940B006FF636 /* ActivityIndicatorView.xib */; };
 		A20AE3DD13F59430006FF636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20AE3DB13F59430006FF636 /* CFNetwork.framework */; };
 		A20AE3DE13F59430006FF636 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20AE3DC13F59430006FF636 /* CoreData.framework */; };
 		A20AE3E013F59470006FF636 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20AE3DF13F59470006FF636 /* libmobilecloudlib.a */; };
@@ -32,6 +24,16 @@
 		A20AE3FE13F5A617006FF636 /* IntegrationTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3FC13F5A617006FF636 /* IntegrationTestViewController.xib */; };
 		A20AE40113F5CC1C006FF636 /* SyncIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A20AE40013F5CC1B006FF636 /* SyncIntegrationTest.m */; };
 		A20AE40313F5D120006FF636 /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A20AE40213F5D120006FF636 /* openmobster-app.xml */; };
+		A242EAA515FCF6FF0092AFA4 /* ManualSyncMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9B15FCF6FF0092AFA4 /* ManualSyncMenuController.xib */; };
+		A242EAA615FCF6FF0092AFA4 /* ManualSyncController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9C15FCF6FF0092AFA4 /* ManualSyncController.xib */; };
+		A242EAA715FCF6FF0092AFA4 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9D15FCF6FF0092AFA4 /* SecurityConfig.xib */; };
+		A242EAA815FCF6FF0092AFA4 /* ModalActivateDevice.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9E15FCF6FF0092AFA4 /* ModalActivateDevice.xib */; };
+		A242EAA915FCF6FF0092AFA4 /* configuration.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A242EA9F15FCF6FF0092AFA4 /* configuration.xcdatamodel */; };
+		A242EAAA15FCF6FF0092AFA4 /* sync.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A242EAA015FCF6FF0092AFA4 /* sync.xcdatamodel */; };
+		A242EAAB15FCF6FF0092AFA4 /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A242EAA115FCF6FF0092AFA4 /* mobileobject.xcdatamodel */; };
+		A242EAAC15FCF6FF0092AFA4 /* ActivateDeviceCloudInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EAA215FCF6FF0092AFA4 /* ActivateDeviceCloudInfo.xib */; };
+		A242EAAD15FCF6FF0092AFA4 /* CloudManagerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EAA315FCF6FF0092AFA4 /* CloudManagerApp.xib */; };
+		A242EAAE15FCF6FF0092AFA4 /* ActivityIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EAA415FCF6FF0092AFA4 /* ActivityIndicatorView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,14 +53,6 @@
 		A20AE3C013F59347006FF636 /* IntegrationTestAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntegrationTestAppDelegate_iPad.h; path = iPad/IntegrationTestAppDelegate_iPad.h; sourceTree = "<group>"; };
 		A20AE3C113F59347006FF636 /* IntegrationTestAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntegrationTestAppDelegate_iPad.m; path = iPad/IntegrationTestAppDelegate_iPad.m; sourceTree = "<group>"; };
 		A20AE3C413F59347006FF636 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
-		A20AE3CB13F5940B006FF636 /* SecurityConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SecurityConfig.xib; path = ../mobilecloudlib/SecurityConfig.xib; sourceTree = "<group>"; };
-		A20AE3CC13F5940B006FF636 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModalActivateDevice.xib; path = ../mobilecloudlib/ModalActivateDevice.xib; sourceTree = "<group>"; };
-		A20AE3CD13F5940B006FF636 /* configuration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = configuration.xcdatamodel; path = ../mobilecloudlib/configuration.xcdatamodel; sourceTree = "<group>"; };
-		A20AE3CE13F5940B006FF636 /* sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = sync.xcdatamodel; path = ../mobilecloudlib/sync.xcdatamodel; sourceTree = "<group>"; };
-		A20AE3CF13F5940B006FF636 /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = mobileobject.xcdatamodel; path = ../mobilecloudlib/mobileobject.xcdatamodel; sourceTree = "<group>"; };
-		A20AE3D013F5940B006FF636 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivateDeviceCloudInfo.xib; path = ../mobilecloudlib/ActivateDeviceCloudInfo.xib; sourceTree = "<group>"; };
-		A20AE3D113F5940B006FF636 /* CloudManagerApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CloudManagerApp.xib; path = ../mobilecloudlib/CloudManagerApp.xib; sourceTree = "<group>"; };
-		A20AE3D213F5940B006FF636 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ActivityIndicatorView.xib; path = ../mobilecloudlib/ActivityIndicatorView.xib; sourceTree = "<group>"; };
 		A20AE3DB13F59430006FF636 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A20AE3DC13F59430006FF636 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A20AE3DF13F59470006FF636 /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "../mobilecloudlib/build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = "<group>"; };
@@ -67,7 +61,17 @@
 		A20AE3FC13F5A617006FF636 /* IntegrationTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntegrationTestViewController.xib; sourceTree = "<group>"; };
 		A20AE3FF13F5CC1B006FF636 /* SyncIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncIntegrationTest.h; sourceTree = "<group>"; };
 		A20AE40013F5CC1B006FF636 /* SyncIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncIntegrationTest.m; sourceTree = "<group>"; };
-		A20AE40213F5D120006FF636 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "openmobster-app.xml"; sourceTree = "<group>"; };
+		A20AE40213F5D120006FF636 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "openmobster-app.xml"; path = "IntegrationTest/openmobster-app.xml"; sourceTree = "<group>"; };
+		A242EA9B15FCF6FF0092AFA4 /* ManualSyncMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncMenuController.xib; sourceTree = "<group>"; };
+		A242EA9C15FCF6FF0092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
+		A242EA9D15FCF6FF0092AFA4 /* SecurityConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecurityConfig.xib; sourceTree = "<group>"; };
+		A242EA9E15FCF6FF0092AFA4 /* ModalActivateDevice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalActivateDevice.xib; sourceTree = "<group>"; };
+		A242EA9F15FCF6FF0092AFA4 /* configuration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = configuration.xcdatamodel; sourceTree = "<group>"; };
+		A242EAA015FCF6FF0092AFA4 /* sync.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sync.xcdatamodel; sourceTree = "<group>"; };
+		A242EAA115FCF6FF0092AFA4 /* mobileobject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mobileobject.xcdatamodel; sourceTree = "<group>"; };
+		A242EAA215FCF6FF0092AFA4 /* ActivateDeviceCloudInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateDeviceCloudInfo.xib; sourceTree = "<group>"; };
+		A242EAA315FCF6FF0092AFA4 /* CloudManagerApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CloudManagerApp.xib; sourceTree = "<group>"; };
+		A242EAA415FCF6FF0092AFA4 /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,18 +94,11 @@
 		A20AE39713F59347006FF636 = {
 			isa = PBXGroup;
 			children = (
+				A242EA9A15FCF6240092AFA4 /* Resources */,
 				A20AE3DF13F59470006FF636 /* libmobilecloudlib.a */,
 				A20AE3DB13F59430006FF636 /* CFNetwork.framework */,
 				A20AE3DC13F59430006FF636 /* CoreData.framework */,
 				A20AE3AC13F59347006FF636 /* IntegrationTest */,
-				A20AE3CB13F5940B006FF636 /* SecurityConfig.xib */,
-				A20AE3CC13F5940B006FF636 /* ModalActivateDevice.xib */,
-				A20AE3CD13F5940B006FF636 /* configuration.xcdatamodel */,
-				A20AE3CE13F5940B006FF636 /* sync.xcdatamodel */,
-				A20AE3CF13F5940B006FF636 /* mobileobject.xcdatamodel */,
-				A20AE3D013F5940B006FF636 /* ActivateDeviceCloudInfo.xib */,
-				A20AE3D113F5940B006FF636 /* CloudManagerApp.xib */,
-				A20AE3D213F5940B006FF636 /* ActivityIndicatorView.xib */,
 				A20AE3A513F59347006FF636 /* Frameworks */,
 				A20AE3A313F59347006FF636 /* Products */,
 			);
@@ -128,7 +125,6 @@
 		A20AE3AC13F59347006FF636 /* IntegrationTest */ = {
 			isa = PBXGroup;
 			children = (
-				A20AE40213F5D120006FF636 /* openmobster-app.xml */,
 				A20AE3B513F59347006FF636 /* IntegrationTestAppDelegate.h */,
 				A20AE3B613F59347006FF636 /* IntegrationTestAppDelegate.m */,
 				A20AE3B813F59347006FF636 /* iPhone */,
@@ -172,6 +168,24 @@
 				A20AE3C313F59347006FF636 /* MainWindow_iPad.xib */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		A242EA9A15FCF6240092AFA4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A242EA9B15FCF6FF0092AFA4 /* ManualSyncMenuController.xib */,
+				A242EA9C15FCF6FF0092AFA4 /* ManualSyncController.xib */,
+				A242EA9D15FCF6FF0092AFA4 /* SecurityConfig.xib */,
+				A242EA9E15FCF6FF0092AFA4 /* ModalActivateDevice.xib */,
+				A242EA9F15FCF6FF0092AFA4 /* configuration.xcdatamodel */,
+				A242EAA015FCF6FF0092AFA4 /* sync.xcdatamodel */,
+				A242EAA115FCF6FF0092AFA4 /* mobileobject.xcdatamodel */,
+				A242EAA215FCF6FF0092AFA4 /* ActivateDeviceCloudInfo.xib */,
+				A242EAA315FCF6FF0092AFA4 /* CloudManagerApp.xib */,
+				A242EAA415FCF6FF0092AFA4 /* ActivityIndicatorView.xib */,
+				A20AE40213F5D120006FF636 /* openmobster-app.xml */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,18 +236,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20AE3B113F59347006FF636 /* InfoPlist.strings in Resources */,
-				A20AE3D313F5940B006FF636 /* SecurityConfig.xib in Resources */,
-				A20AE3D413F5940B006FF636 /* ModalActivateDevice.xib in Resources */,
-				A20AE3D513F5940B006FF636 /* configuration.xcdatamodel in Resources */,
-				A20AE3D613F5940B006FF636 /* sync.xcdatamodel in Resources */,
-				A20AE3D713F5940B006FF636 /* mobileobject.xcdatamodel in Resources */,
-				A20AE3D813F5940B006FF636 /* ActivateDeviceCloudInfo.xib in Resources */,
-				A20AE3D913F5940B006FF636 /* CloudManagerApp.xib in Resources */,
-				A20AE3DA13F5940B006FF636 /* ActivityIndicatorView.xib in Resources */,
 				A20AE3BE13F59347006FF636 /* MainWindow_iPhone.xib in Resources */,
 				A20AE3C513F59347006FF636 /* MainWindow_iPad.xib in Resources */,
 				A20AE3FE13F5A617006FF636 /* IntegrationTestViewController.xib in Resources */,
 				A20AE40313F5D120006FF636 /* openmobster-app.xml in Resources */,
+				A242EAA515FCF6FF0092AFA4 /* ManualSyncMenuController.xib in Resources */,
+				A242EAA615FCF6FF0092AFA4 /* ManualSyncController.xib in Resources */,
+				A242EAA715FCF6FF0092AFA4 /* SecurityConfig.xib in Resources */,
+				A242EAA815FCF6FF0092AFA4 /* ModalActivateDevice.xib in Resources */,
+				A242EAAC15FCF6FF0092AFA4 /* ActivateDeviceCloudInfo.xib in Resources */,
+				A242EAAD15FCF6FF0092AFA4 /* CloudManagerApp.xib in Resources */,
+				A242EAAE15FCF6FF0092AFA4 /* ActivityIndicatorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +263,9 @@
 				A20AE3C213F59347006FF636 /* IntegrationTestAppDelegate_iPad.m in Sources */,
 				A20AE3FD13F5A617006FF636 /* IntegrationTestViewController.m in Sources */,
 				A20AE40113F5CC1C006FF636 /* SyncIntegrationTest.m in Sources */,
+				A242EAA915FCF6FF0092AFA4 /* configuration.xcdatamodel in Sources */,
+				A242EAAA15FCF6FF0092AFA4 /* sync.xcdatamodel in Sources */,
+				A242EAAB15FCF6FF0092AFA4 /* mobileobject.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,12 +343,14 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTest/IntegrationTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../mobilecloudlib\"/**";
 				INFOPLIST_FILE = "IntegrationTest/IntegrationTest-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -344,12 +362,14 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTest/IntegrationTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../mobilecloudlib\"/**";
 				INFOPLIST_FILE = "IntegrationTest/IntegrationTest-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -374,6 +394,7 @@
 				A20AE3CA13F59347006FF636 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
