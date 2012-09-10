@@ -94,6 +94,9 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
   * Expand PhoneGap Support to more modules in addition to the already supported Sync Plugin
   * Upgrade to JBoss 7
   * Developer Framework for Exposing web services using REST/JSON. This will probably replace the use of the RPC module from the end user developer standpoint. The RPC module will still be used internally by the platform since it most likely will give better performance
+  * Clustering
+  * BlackBerry Support
+  * Create an Android runtime for Consumer Apps
 
 ----
 
