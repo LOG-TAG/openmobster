@@ -8,11 +8,14 @@
 
 package org.openmobster.core.common.bus;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -281,5 +284,57 @@ public final class Bus
 	static ClientSessionFactory getSessionFactory()
 	{
 		return Bus.sessionFactory;
+	}
+	
+	public static void dumpUnprocessedQueueCount()
+	{
+		ClientSession coreSession = null;
+	    int count = 0;
+	    try 
+	    {
+	        coreSession = sessionFactory.createSession(false, false, false);
+	        
+	        if(!Bus.activeBuses.isEmpty())
+	        {
+	        	Set<String> uris = Bus.activeBuses.keySet();
+	        	for(String uri:uris)
+	        	{
+	        		count += coreSession.queueQuery(new SimpleString(uri)).getMessageCount();
+	        	}
+	        }
+	        
+	        StringBuilder buffer = new StringBuilder(); 
+	        buffer.append("*****************************************\n");
+	        buffer.append("# of unprocessed messages: "+count+"\n");
+	        buffer.append("*****************************************\n");
+	        
+	        String dump = buffer.toString();
+	        File dumpFile = new File("queue-dump.xml");
+			dumpFile.delete();
+			FileOutputStream dumpStream = new FileOutputStream("queue-dump.xml",true);
+			dumpStream.write(dump.getBytes());
+			dumpStream.flush();
+			
+			dumpStream.close();
+	    } 
+	    catch (Throwable t) 
+	    {
+	        t.printStackTrace();
+	        throw new RuntimeException(t);
+	    } 
+	    finally 
+	    {
+	        if (coreSession!= null )
+	        {
+	            try 
+	            {
+	                coreSession.close();
+	            } 
+	            catch (HornetQException e) 
+	            {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
 	}
 }
