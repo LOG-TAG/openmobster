@@ -22,6 +22,7 @@ import junit.framework.TestSuite;
 
 import org.openmobster.core.common.InVMAttributeManager;
 import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.common.bus.Bus;
 
 /**
  * 
@@ -87,6 +88,9 @@ public class PerfSuite
 				currentTime = System.currentTimeMillis();
 			}while(endTime > currentTime);
 			
+			
+			Bus.dumpUnprocessedQueueCount();
+			
 			ServiceManager.shutdown();
 		}
 		else
@@ -101,7 +105,7 @@ public class PerfSuite
 		{
 			int concurrentUsers = Integer.parseInt((String)attributeManager.getAttribute("concurrentUsers"));
 			String test = (String)attributeManager.getAttribute("test");
-			int iterations = 10;
+			int iterations = 1;
 			PerfSuite.suiteContext = attributeManager;
 			devices.clear();
 			
@@ -159,6 +163,11 @@ public class PerfSuite
 	
 	public static SimulatedDeviceStack getDevice()
 	{
+		if(PerfSuite.devices.empty())
+		{
+			devices.addAll(deviceCache);
+			deviceCache.clear();
+		}
 		if(!PerfSuite.devices.empty())
 		{
 			SimulatedDeviceStack device = PerfSuite.devices.pop();

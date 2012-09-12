@@ -11,20 +11,21 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Calendar;
 
+import org.openmobster.core.common.bus.Bus;
+import org.openmobster.core.common.bus.BusMessage;
+
 /**
  *
  * @author openmobster@gmail.com
  */
 public final class PerfLogInterceptor
 {
-	private FileOutputStream createConnection;
-	private long createConnectionCtr;
+	private CreateConnectionBusListener createConnectionBusListener;
 	
 	private FileOutputStream failedConnection;
 	private long failedConnectionCtr;
 	
-	private FileOutputStream requestSent;
-	private long requestSentCtr;
+	private RequestSentBusListener requestSentBusListener;
 	
 	private FileOutputStream requestFailed;
 	private long requestFailedCtr;
@@ -54,10 +55,10 @@ public final class PerfLogInterceptor
 			}
 			
 			//Connection Success
-			File createConnectionFile = new File("connection-success.xml");
-			createConnectionFile.delete();
-			this.createConnection = new FileOutputStream("connection-success.xml",true);
-			this.createConnectionCtr = 0;
+			this.createConnectionBusListener = new CreateConnectionBusListener();
+			this.createConnectionBusListener.start();
+			Bus.startBus("connection-success");
+			Bus.addBusListener("connection-success", this.createConnectionBusListener);
 			
 			//Failed Connection
 			File failedConnectionFile = new File("connection-failed.xml");
@@ -66,10 +67,10 @@ public final class PerfLogInterceptor
 			this.failedConnectionCtr = 0;
 			
 			//Request Sent Successfully
-			File requestSentFile = new File("request-success.xml");
-			requestSentFile.delete();
-			this.requestSent = new FileOutputStream("request-success.xml",true);
-			this.requestSentCtr = 0;
+			this.requestSentBusListener = new RequestSentBusListener();
+			this.requestSentBusListener.start();
+			Bus.startBus("request-success");
+			Bus.addBusListener("request-success", this.requestSentBusListener);
 			
 			//Request Failed
 			File requestFailedFile = new File("request-failed.xml");
@@ -111,20 +112,14 @@ public final class PerfLogInterceptor
 				return;
 			}
 			
-			if(this.createConnection != null)
-			{
-				this.createConnection.close();
-			}
+			this.createConnectionBusListener.stop();
 			
 			if(this.failedConnection != null)
 			{
 				this.failedConnection.close();
 			}
 			
-			if(this.requestSent != null)
-			{
-				this.requestSent.close();
-			}
+			this.requestSentBusListener.stop();
 			
 			if(this.requestFailed != null)
 			{
@@ -164,33 +159,10 @@ public final class PerfLogInterceptor
 		{
 			return;
 		}
-		try
-		{
-			synchronized(this.createConnection)
-			{	
-				Calendar calendar = Calendar.getInstance();
-				int hour_of_day = calendar.get(Calendar.HOUR_OF_DAY);
-				int minute = calendar.get(Calendar.MINUTE);
-				int second = calendar.get(Calendar.SECOND);
-				int milli = calendar.get(Calendar.MILLISECOND);
-				
-				
-				StringBuilder buffer = new StringBuilder();
-				
-				buffer.append("<entry>\n");
-				buffer.append("<time-millis>"+calendar.getTimeInMillis()+"</time-millis>\n");
-				buffer.append("<time>"+hour_of_day+":"+minute+":"+second+":"+milli+"</time>\n");
-				buffer.append("<connection-number>"+(++this.createConnectionCtr)+"</connection-number>\n");
-				buffer.append("</entry>\n\n");
-				
-				this.createConnection.write(buffer.toString().getBytes());
-				this.createConnection.flush();
-			}
-		}
-		catch(Throwable t)
-		{
-			throw new RuntimeException(t);
-		}
+		BusMessage busMessage = new BusMessage();
+		busMessage.setBusUri("connection-success");
+		busMessage.setSenderUri("connection-success");
+		Bus.sendMessage(busMessage);
 	}
 	
 	public void logConnectionFailed()
@@ -236,33 +208,10 @@ public final class PerfLogInterceptor
 		{
 			return;
 		}
-		try
-		{
-			synchronized(this.requestSent)
-			{	
-				Calendar calendar = Calendar.getInstance();
-				int hour_of_day = calendar.get(Calendar.HOUR_OF_DAY);
-				int minute = calendar.get(Calendar.MINUTE);
-				int second = calendar.get(Calendar.SECOND);
-				int milli = calendar.get(Calendar.MILLISECOND);
-				
-				
-				StringBuilder buffer = new StringBuilder();
-				
-				buffer.append("<entry>\n");
-				buffer.append("<time-millis>"+calendar.getTimeInMillis()+"</time-millis>\n");
-				buffer.append("<time>"+hour_of_day+":"+minute+":"+second+":"+milli+"</time>\n");
-				buffer.append("<request-number>"+(++this.requestSentCtr)+"</request-number>\n");
-				buffer.append("</entry>\n\n");
-				
-				this.requestSent.write(buffer.toString().getBytes());
-				this.requestSent.flush();
-			}
-		}
-		catch(Throwable t)
-		{
-			throw new RuntimeException(t);
-		}
+		BusMessage busMessage = new BusMessage();
+		busMessage.setBusUri("request-success");
+		busMessage.setSenderUri("request-success");
+		Bus.sendMessage(busMessage);
 	}
 	
 	public void logRequestFailed()
@@ -308,7 +257,7 @@ public final class PerfLogInterceptor
 		{
 			return;
 		}
-		try
+		/*try
 		{
 			synchronized(this.responseReceived)
 			{	
@@ -334,7 +283,7 @@ public final class PerfLogInterceptor
 		catch(Throwable t)
 		{
 			throw new RuntimeException(t);
-		}
+		}*/
 	}
 	
 	public void logResponseFailed()
