@@ -24,7 +24,12 @@ public class PerfBootupChannel extends TestCase
 	{
 		log.info("Starting BootupChannel....................................................");
 		this.deviceStack = PerfSuite.getDevice();
-		this.deviceStack.getRunner().activateDevice();
+		
+		if(!this.deviceStack.isActivated())
+		{
+			this.deviceStack.getRunner().activateDevice();
+			this.deviceStack.setActivated(true);
+		}
 		
 		//this.deviceStack.startPushSocket();
 	}

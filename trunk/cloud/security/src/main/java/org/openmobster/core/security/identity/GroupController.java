@@ -92,7 +92,7 @@ public class GroupController
 			
 			String query = "from Group where name=?";
 			
-			group = (Group)session.createQuery(query).setString(0, name).uniqueResult();
+			group = (Group)session.createQuery(query).setString(0, name).setCacheable(true).uniqueResult();
 						
 			tx.commit();
 			
@@ -123,7 +123,7 @@ public class GroupController
 			
 			String query = "from Group";
 			
-			List cour = session.createQuery(query).list();
+			List cour = session.createQuery(query).setCacheable(true).list();
 			groups.addAll(cour);
 						
 			tx.commit();

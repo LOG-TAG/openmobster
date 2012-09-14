@@ -25,6 +25,9 @@ import com.thoughtworks.xstream.XStream;
  */
 public class XMLUtilities
 {
+	private static XStream xstream = new XStream();
+	private static DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	
 	/**
 	 * Parses an input stream of xml data into a DOM tree
 	 * 
@@ -37,7 +40,7 @@ public class XMLUtilities
 		{
 			Document document = null;
 			
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilder builder = factory.newDocumentBuilder();
 			document = builder.parse(is);
 			
 			return document;
@@ -68,7 +71,7 @@ public class XMLUtilities
 		{
 			Document document = null;
 			
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilder builder = factory.newDocumentBuilder();
 			is = new ByteArrayInputStream(xml.getBytes());
 			document = builder.parse(is);
 			
@@ -210,7 +213,6 @@ public class XMLUtilities
 	 */
 	public static String marshal(Object object)
 	{
-		XStream xstream = new XStream();
 		return xstream.toXML(object);
 	}
 	
@@ -222,7 +224,6 @@ public class XMLUtilities
 	 */
 	public static Object unmarshal(String xml)
 	{
-		XStream xstream = new XStream();
 		return xstream.fromXML(xml);
 	}
 }
