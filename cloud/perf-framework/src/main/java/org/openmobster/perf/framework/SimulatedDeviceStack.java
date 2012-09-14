@@ -104,6 +104,8 @@ public final class SimulatedDeviceStack
 		DeviceStackRunner originalRunner = (DeviceStackRunner)ServiceManager.locate("deviceStack");
 		//String deviceId = ""+SimulatedDeviceStack.deviceCounter++;
 		String deviceId = ""+Utilities.generateUID();
+		deviceId = deviceId.replaceAll(":", "");
+		deviceId = deviceId.replaceAll("-", "");
 		String imei = "IMEI:"+deviceId;
 		
 		String user = "blah"+deviceId+"@gmail.com";
