@@ -33,6 +33,7 @@ import org.openmobster.device.agent.test.framework.Configuration;
 import org.openmobster.device.agent.test.framework.CometDaemon;
 
 import org.openmobster.core.common.IOUtilities;
+import org.openmobster.core.common.Utilities;
 import org.openmobster.core.common.XMLUtilities;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.common.database.HibernateManager;
@@ -102,7 +103,7 @@ public final class SimulatedDeviceStack
 		this.runner = new DeviceStackRunner();
 		DeviceStackRunner originalRunner = (DeviceStackRunner)ServiceManager.locate("deviceStack");
 		//String deviceId = ""+SimulatedDeviceStack.deviceCounter++;
-		String deviceId = ""+System.currentTimeMillis();
+		String deviceId = ""+Utilities.generateUID();
 		String imei = "IMEI:"+deviceId;
 		
 		String user = "blah"+deviceId+"@gmail.com";
