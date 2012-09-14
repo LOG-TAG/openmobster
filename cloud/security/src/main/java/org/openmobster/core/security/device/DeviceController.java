@@ -97,8 +97,8 @@ public class DeviceController
 			tx = session.beginTransaction();
 			
 			String query = "from Device device where device.identifier=?";
+			device = (Device)session.createQuery(query).setString(0, identifier).setCacheable(true).uniqueResult();
 			
-			device = (Device)session.createQuery(query).setString(0, identifier).uniqueResult();
 						
 			tx.commit();
 			
@@ -129,7 +129,7 @@ public class DeviceController
 			
 			String query = "from Device";
 			
-			List devices = session.createQuery(query).list();
+			List devices = session.createQuery(query).setCacheable(true).list();
 			if(devices != null)
 			{
 				allDevices.addAll(devices);
@@ -162,7 +162,7 @@ public class DeviceController
 			
 			String query = "from Device device where device.identifier=?";
 			
-			List count = session.createQuery(query).setString(0, identifier).list();
+			List count = session.createQuery(query).setString(0, identifier).setCacheable(true).list();
 			
 			boolean exists = false;
 			if(count != null && !count.isEmpty())
@@ -200,7 +200,7 @@ public class DeviceController
 			String query = "from Device device, Identity identity " +
 			"where device.identity.id=identity.id and identity.principal=?";
 			
-			List objects = session.createQuery(query).setString(0, principal).list();
+			List objects = session.createQuery(query).setString(0, principal).setCacheable(true).list();
 			if(objects != null && !objects.isEmpty())
 			{
 				for(Object local:objects)

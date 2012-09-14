@@ -102,7 +102,7 @@ public class IdentityController
 			
 			String query = "from Identity where principal=?";
 			
-			identity = (Identity)session.createQuery(query).setString(0, principal).uniqueResult();
+			identity = (Identity)session.createQuery(query).setString(0, principal).setCacheable(true).uniqueResult();
 						
 			tx.commit();
 			
@@ -131,7 +131,7 @@ public class IdentityController
 			
 			String query = "from Identity where principal=?";
 			
-			List count = session.createQuery(query).setString(0, principal).list();
+			List count = session.createQuery(query).setString(0, principal).setCacheable(true).list();
 									
 			boolean exists = false;
 			if(count != null && !count.isEmpty())
@@ -169,7 +169,7 @@ public class IdentityController
 			
 			String query = "from Identity";
 			
-			List cour = session.createQuery(query).list();
+			List cour = session.createQuery(query).setCacheable(true).list();
 			identities.addAll(cour);
 						
 			tx.commit();

@@ -132,9 +132,15 @@ public class Provisioner
 			
 			if(this.groupController.read("standard") == null)
 			{
-				Group group = new Group();
-				group.setName("standard");
-				this.groupController.create(group);
+				synchronized(Provisioner.class)
+				{
+					if(this.groupController.read("standard") == null)
+					{
+						Group group = new Group();
+						group.setName("standard");
+						this.groupController.create(group);
+					}
+				}
 			}
 			
 			//Generate a one way credential hash

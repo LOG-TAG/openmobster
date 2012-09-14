@@ -48,6 +48,7 @@ public final class SimulatedDeviceStack
 	
 	private DeviceStackRunner runner;
 	private boolean pushSocketIsActive;
+	private boolean isActivated;
 	
 	public SimulatedDeviceStack()
 	{	
@@ -84,6 +85,16 @@ public final class SimulatedDeviceStack
 		
 		this.runner.startCometDaemon();
 		this.pushSocketIsActive = true;
+	}
+	
+	public boolean isActivated()
+	{
+		return this.isActivated;
+	}
+	
+	public void setActivated(boolean isActivated)
+	{
+		this.isActivated = isActivated;
 	}
 	
 	private synchronized void setupRunner() throws Exception

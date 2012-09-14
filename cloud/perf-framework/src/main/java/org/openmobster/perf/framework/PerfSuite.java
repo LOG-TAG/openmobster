@@ -18,6 +18,7 @@ import com.clarkware.junitperf.LoadTest;
 import com.clarkware.junitperf.TestFactory;
 import com.clarkware.junitperf.ConstantTimer;
 import com.clarkware.junitperf.Timer;
+import com.clarkware.junitperf.RandomTimer;
 import junit.framework.TestSuite;
 
 import org.openmobster.core.common.InVMAttributeManager;
@@ -131,7 +132,7 @@ public class PerfSuite
 			String[] tests = test.split(":");
 			for(String local:tests)
 			{
-				Timer timer = new ConstantTimer(0);
+				Timer timer = new RandomTimer(250,100);
 				TestFactory testFactory = new TestFactory(Thread.currentThread().getContextClassLoader().loadClass(local));
 				LoadTest loadTest = new LoadTest(testFactory,concurrentUsers,iterations,timer);
 				suite.addTest(loadTest);
