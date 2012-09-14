@@ -383,6 +383,7 @@
 				GCC_PREFIX_HEADER = CloudManager_Prefix.pch;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "CloudManager-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
@@ -405,6 +406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CloudManager_Prefix.pch;
 				INFOPLIST_FILE = "CloudManager-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",

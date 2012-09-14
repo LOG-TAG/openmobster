@@ -605,6 +605,7 @@
 				);
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../mobilecloudlib\"/**";
 				INFOPLIST_FILE = "PhoneGapSyncApp/PhoneGapSyncApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
@@ -640,6 +641,7 @@
 				);
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../mobilecloudlib\"/**";
 				INFOPLIST_FILE = "PhoneGapSyncApp/PhoneGapSyncApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../mobilecloudlib/build/Debug-iphonesimulator\"",
