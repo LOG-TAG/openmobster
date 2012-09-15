@@ -178,7 +178,7 @@
 										<property name="classpath" refid="maven.test.classpath" />
 										<exec dir="${basedir}/target" executable="java">
 											<arg
-												line="-Xms512M -Xmx2000M -cp ${classpath} org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 1000 -Xserver 192.168.1.106 -Xduration 120" />
+												line="-Xms512M -Xmx2000M -cp ${classpath} org.openmobster.perf.framework.PerfSuite -Xtest org.openmobster.perf.framework.PerfBootupChannel -XconcurrentUsers 5 -Xserver 192.168.1.106 -Xduration 1" />
 										</exec>
 									</tasks>
 								</configuration>

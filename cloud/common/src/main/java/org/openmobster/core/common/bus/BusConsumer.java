@@ -29,7 +29,7 @@ import org.openmobster.core.common.transaction.TransactionHelper;
  *
  * @author openmobster@gmail.com
  */
-final class BusConsumer implements Runnable
+public final class BusConsumer implements Runnable
 {
 	private static Logger log = Logger.getLogger(BusConsumer.class);
 	
@@ -42,7 +42,7 @@ final class BusConsumer implements Runnable
 		
 	}
 	
-	static BusConsumer getInstance()
+	public static BusConsumer getInstance()
 	{
 		if(BusConsumer.singleton == null)
 		{

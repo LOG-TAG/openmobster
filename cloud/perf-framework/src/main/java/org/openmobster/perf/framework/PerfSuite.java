@@ -24,6 +24,7 @@ import junit.framework.TestSuite;
 import org.openmobster.core.common.InVMAttributeManager;
 import org.openmobster.core.common.ServiceManager;
 import org.openmobster.core.common.bus.Bus;
+import org.openmobster.core.common.bus.BusConsumer;
 
 /**
  * 
@@ -91,6 +92,7 @@ public class PerfSuite
 			
 			
 			Bus.dumpUnprocessedQueueCount();
+			BusConsumer.getInstance().stop();
 			
 			ServiceManager.shutdown();
 		}
