@@ -8,7 +8,52 @@
 
 /* Begin PBXBuildFile section */
 		A20AE40C13F8298F006FF636 /* MobileBeanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A20AE40B13F8298F006FF636 /* MobileBeanTest.m */; };
-		A20AE40E13F83B02006FF636 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20AE40D13F83B02006FF636 /* CoreGraphics.framework */; };
+		A23A484E16042D13003A32EE /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = A23A484A16042D13003A32EE /* UIDevice+IdentifierAddition.h */; };
+		A23A484F16042D13003A32EE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A484B16042D13003A32EE /* UIDevice+IdentifierAddition.m */; };
+		A23A485016042D13003A32EE /* NSString+MD5Addition.h in Headers */ = {isa = PBXBuildFile; fileRef = A23A484C16042D13003A32EE /* NSString+MD5Addition.h */; };
+		A23A485116042D13003A32EE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A484D16042D13003A32EE /* NSString+MD5Addition.m */; };
+		A23A4857160442C9003A32EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		A23A485D160444A1003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A485E160444A1003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A485F160444A1003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A486116044596003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A48621604463B003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A48631604463B003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A48641604463B003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A48651604463B003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A48671604466E003A32EE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A48661604466E003A32EE /* libmobilecloudlib.a */; };
+		A23A4868160447F5003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A4869160447F5003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A486A160447F5003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A486B160447F5003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A486C160447FF003A32EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		A23A486D1604481F003A32EE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A48661604466E003A32EE /* libmobilecloudlib.a */; };
+		A23A486E1604487E003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A486F1604487E003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A48701604487E003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A48711604487E003A32EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		A23A48721604487E003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A487316044890003A32EE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A48661604466E003A32EE /* libmobilecloudlib.a */; };
+		A23A487416044913003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A487516044913003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A487616044913003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A487716044913003A32EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		A23A487816044913003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A48791604492A003A32EE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A48661604466E003A32EE /* libmobilecloudlib.a */; };
+		A23A487A1604494C003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A487B1604494C003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A487C1604494C003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A487D1604494C003A32EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		A23A487E1604494C003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A487F1604495E003A32EE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A48661604466E003A32EE /* libmobilecloudlib.a */; };
+		A23A488016044987003A32EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485A160444A1003A32EE /* CFNetwork.framework */; };
+		A23A488116044987003A32EE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485B160444A1003A32EE /* CoreData.framework */; };
+		A23A488216044987003A32EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A485C160444A1003A32EE /* CoreGraphics.framework */; };
+		A23A488316044987003A32EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		A23A488416044987003A32EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A486016044596003A32EE /* UIKit.framework */; };
+		A23A488516044997003A32EE /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A48661604466E003A32EE /* libmobilecloudlib.a */; };
+		A23A4886160450CC003A32EE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A484B16042D13003A32EE /* UIDevice+IdentifierAddition.m */; };
+		A23A4887160450CC003A32EE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A484D16042D13003A32EE /* NSString+MD5Addition.m */; };
 		A242E98515E92F1B0092AFA4 /* ManualSyncController.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E98215E92F1A0092AFA4 /* ManualSyncController.h */; };
 		A242E98615E92F1B0092AFA4 /* ManualSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E98315E92F1B0092AFA4 /* ManualSyncController.m */; };
 		A242E98C15E95A360092AFA4 /* ManualSyncMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E98915E95A350092AFA4 /* ManualSyncMenuController.h */; };
@@ -19,8 +64,6 @@
 		A242E9A015ED36CD0092AFA4 /* ManualSync.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E99E15ED36CC0092AFA4 /* ManualSync.m */; };
 		A242E9A915F0306D0092AFA4 /* BackgroundSyncCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A242E9A715F0306C0092AFA4 /* BackgroundSyncCommand.h */; };
 		A242E9AA15F0306D0092AFA4 /* BackgroundSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A242E9A815F0306D0092AFA4 /* BackgroundSyncCommand.m */; };
-		A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
-		A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28694EA12F774AA00A4792E /* CoreGraphics.framework */; };
 		A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */; };
 		A252E4A113C20FBC004F5344 /* CloudService.h in Headers */ = {isa = PBXBuildFile; fileRef = A252E49F13C20FBC004F5344 /* CloudService.h */; };
 		A252E4A213C20FBC004F5344 /* CloudService.m in Sources */ = {isa = PBXBuildFile; fileRef = A252E4A013C20FBC004F5344 /* CloudService.m */; };
@@ -41,7 +84,6 @@
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
 		A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58E12C5484300693E1A /* ActivityIndicatorView.h */; };
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
-		A28694F412F774F600A4792E /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
 		A286951D12F7795D00A4792E /* TestObjectStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = A286951C12F7795D00A4792E /* TestObjectStreaming.m */; };
 		A286957112F77F3B00A4792E /* TestSimpleAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = A286957012F77F3B00A4792E /* TestSimpleAccess.m */; };
 		A286964B12F7CC0300A4792E /* BeanList.h in Headers */ = {isa = PBXBuildFile; fileRef = A286964912F7CC0300A4792E /* BeanList.h */; };
@@ -55,7 +97,6 @@
 		A28F5C811246982C00EA2E90 /* PersistentMobileObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A28F5C7F1246982C00EA2E90 /* PersistentMobileObject.h */; };
 		A28F5C821246982C00EA2E90 /* PersistentMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A28F5C801246982C00EA2E90 /* PersistentMobileObject.m */; };
 		A28F5C9712469ACD00EA2E90 /* mobileobject.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
-		A28F5CF2124BE61700EA2E90 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DF3E311225C3EE004C908F /* CoreData.framework */; };
 		A28F5E09124E88A600EA2E90 /* MobileObjectDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = A28F5E07124E88A600EA2E90 /* MobileObjectDatabase.h */; };
 		A28F5E0A124E88A600EA2E90 /* MobileObjectDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A28F5E08124E88A600EA2E90 /* MobileObjectDatabase.m */; };
 		A2962BF912C9118600928950 /* AppException.h in Headers */ = {isa = PBXBuildFile; fileRef = A2962BF712C9118600928950 /* AppException.h */; };
@@ -88,15 +129,12 @@
 		A29D56FE12849BB000DAE753 /* NetworkConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D56FC12849BB000DAE753 /* NetworkConnector.m */; };
 		A29D570212849BCE00DAE753 /* NetSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D570012849BCE00DAE753 /* NetSession.h */; };
 		A29D570312849BCE00DAE753 /* NetSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D570112849BCE00DAE753 /* NetSession.m */; };
-		A29D573C12886B8900DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
 		A29D5950128A5AD800DAE753 /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */; };
 		A29D5951128A5AD800DAE753 /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D241225BDDA004C908F /* sync.xcdatamodel */; };
 		A29D5952128A5AD800DAE753 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
-		A29D5953128A5AF800DAE753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DF3E311225C3EE004C908F /* CoreData.framework */; };
 		A29D5A1A128C200200DAE753 /* AbstractSyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D5A19128C200200DAE753 /* AbstractSyncTest.m */; };
 		A29D5A3F128C53FA00DAE753 /* TestBootSync.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D5A3E128C53FA00DAE753 /* TestBootSync.m */; };
 		A29D5A4A128C553500DAE753 /* SyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D5A49128C553500DAE753 /* SyncTests.m */; };
-		A29D5A5B128C592200DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
 		A29D5A9D128C8A0A00DAE753 /* SyncService.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D5A9B128C8A0A00DAE753 /* SyncService.h */; };
 		A29D5A9E128C8A0A00DAE753 /* SyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D5A9C128C8A0A00DAE753 /* SyncService.m */; };
 		A29D5ABE128C977A00DAE753 /* Test.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D5ABC128C977A00DAE753 /* Test.h */; };
@@ -115,9 +153,6 @@
 		A29D5BAF1292C15000DAE753 /* ActivationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D5BAD1292C15000DAE753 /* ActivationUtil.m */; };
 		A29D5BF51293204D00DAE753 /* CloudPayload.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D5BF31293204D00DAE753 /* CloudPayload.h */; };
 		A29D5BF61293204D00DAE753 /* CloudPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D5BF41293204D00DAE753 /* CloudPayload.m */; };
-		A29D5C2E1293415500DAE753 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
-		A29D5C2F1293416400DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
-		A29D5C301293416400DAE753 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DF3E311225C3EE004C908F /* CoreData.framework */; };
 		A29D5C311293418500DAE753 /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */; };
 		A29D5C321293418500DAE753 /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D241225BDDA004C908F /* sync.xcdatamodel */; };
 		A29D5C331293418500DAE753 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
@@ -149,8 +184,6 @@
 		A29D689112B7C30400DAE753 /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D241225BDDA004C908F /* sync.xcdatamodel */; };
 		A29D689212B7C30400DAE753 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
 		A29D689312B7C31900DAE753 /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D241225BDDA004C908F /* sync.xcdatamodel */; };
-		A29D68B012B7C4DE00DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
-		A29D68B112B7C4F500DAE753 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
 		A29D6C6D12B8FF1B00DAE753 /* Channel.h in Headers */ = {isa = PBXBuildFile; fileRef = A29D6C6B12B8FF1B00DAE753 /* Channel.h */; };
 		A29D6C6E12B8FF1B00DAE753 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = A29D6C6C12B8FF1B00DAE753 /* Channel.m */; };
 		A2A9979B1476A65400DE13E9 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = A2A997911476A65400DE13E9 /* NSObject+SBJSON.h */; };
@@ -183,12 +216,9 @@
 		A2A9982714A0FA7800DE13E9 /* QSStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = A2A9982514A0FA7800DE13E9 /* QSStrings.h */; };
 		A2A9982814A0FA7800DE13E9 /* QSStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A9982614A0FA7800DE13E9 /* QSStrings.m */; };
 		A2BF168C1263728600691535 /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
-		A2BF185512833D0E00691535 /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
 		A2BF187E1283430800691535 /* CFNetworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BF187D1283430800691535 /* CFNetworkTests.m */; };
-		A2BF18D21283A5F900691535 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
 		A2C5DA2613EDA8F3002F62BB /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */; };
 		A2C5DA2713EDA8F3002F62BB /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
-		A2C5DA2D13EDABC9002F62BB /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
 		A2C5DA3313F0976E002F62BB /* LogicExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A2C5DA3113F0976E002F62BB /* LogicExpression.h */; };
 		A2C5DA3413F0976E002F62BB /* LogicExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C5DA3213F0976E002F62BB /* LogicExpression.m */; };
 		A2C5DA3713F195B0002F62BB /* LogicChain.h in Headers */ = {isa = PBXBuildFile; fileRef = A2C5DA3513F195AF002F62BB /* LogicChain.h */; };
@@ -294,13 +324,9 @@
 		A2DF3DF61225BE6F004C908F /* MobileObjectReader.h in Headers */ = {isa = PBXBuildFile; fileRef = A2DF3DEC1225BE6F004C908F /* MobileObjectReader.h */; };
 		A2DF3DF71225BE6F004C908F /* MobileObjectReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3DED1225BE6F004C908F /* MobileObjectReader.m */; };
 		A2DF3E0D1225C240004C908F /* MobileObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3E0C1225C240004C908F /* MobileObjectTests.m */; };
-		A2DF3E301225C3DB004C908F /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
-		A2DF3E321225C3EE004C908F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DF3E311225C3EE004C908F /* CoreData.framework */; };
 		A2DF3E331225C413004C908F /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */; };
 		A2DF3E3B1225C434004C908F /* UtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3E381225C434004C908F /* UtilTests.m */; };
 		A2DF3E3C1225C434004C908F /* StorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3E3A1225C434004C908F /* StorageTests.m */; };
-		A2DF3E5E1225C639004C908F /* libmobilecloudlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */; };
-		A2DF3E5F1225C648004C908F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DF3E311225C3EE004C908F /* CoreData.framework */; };
 		A2DF3E601225C655004C908F /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */; };
 		A2DF3E611225C655004C908F /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D241225BDDA004C908F /* sync.xcdatamodel */; };
 		A2DF3E701225C691004C908F /* SimpleActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF3E651225C691004C908F /* SimpleActionHandler.m */; };
@@ -323,8 +349,6 @@
 		A2E5564212F72664008B3FCE /* BeanListEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E5564012F72664008B3FCE /* BeanListEntry.m */; };
 		A2E5568612F750C8008B3FCE /* MobileBean.h in Headers */ = {isa = PBXBuildFile; fileRef = A2E5568412F750C8008B3FCE /* MobileBean.h */; };
 		A2E5568712F750C8008B3FCE /* MobileBean.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E5568512F750C8008B3FCE /* MobileBean.m */; };
-		A2E557AF12F76A80008B3FCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BF18D11283A5F900691535 /* CFNetwork.framework */; };
-		A2E557B012F76A80008B3FCE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DF3E311225C3EE004C908F /* CoreData.framework */; };
 		A2E557B312F76AD8008B3FCE /* configuration.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */; };
 		A2E557B412F76ADC008B3FCE /* sync.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A2DF3D241225BDDA004C908F /* sync.xcdatamodel */; };
 		A2E557B512F76AE0008B3FCE /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
@@ -384,7 +408,15 @@
 /* Begin PBXFileReference section */
 		A20AE40A13F8298F006FF636 /* MobileBeanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanTest.h; sourceTree = "<group>"; };
 		A20AE40B13F8298F006FF636 /* MobileBeanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileBeanTest.m; sourceTree = "<group>"; };
-		A20AE40D13F83B02006FF636 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A23A484A16042D13003A32EE /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		A23A484B16042D13003A32EE /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		A23A484C16042D13003A32EE /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		A23A484D16042D13003A32EE /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		A23A485A160444A1003A32EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A23A485B160444A1003A32EE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A23A485C160444A1003A32EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A23A486016044596003A32EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A23A48661604466E003A32EE /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = "<group>"; };
 		A242E98215E92F1A0092AFA4 /* ManualSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSyncController.h; sourceTree = "<group>"; };
 		A242E98315E92F1B0092AFA4 /* ManualSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSyncController.m; sourceTree = "<group>"; };
 		A242E98415E92F1B0092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
@@ -422,7 +454,6 @@
 		A267E58E12C5484300693E1A /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		A267E58F12C5484300693E1A /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
 		A267E59012C5484300693E1A /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
-		A28694EA12F774AA00A4792E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A286951B12F7795D00A4792E /* TestObjectStreaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjectStreaming.h; sourceTree = "<group>"; };
 		A286951C12F7795D00A4792E /* TestObjectStreaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjectStreaming.m; sourceTree = "<group>"; };
 		A286956F12F77F3B00A4792E /* TestSimpleAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimpleAccess.h; sourceTree = "<group>"; };
@@ -566,7 +597,6 @@
 		A2BF184E12833C8F00691535 /* connectionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "connectionTests-Info.plist"; sourceTree = "<group>"; };
 		A2BF187C1283430800691535 /* CFNetworkTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFNetworkTests.h; sourceTree = "<group>"; };
 		A2BF187D1283430800691535 /* CFNetworkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFNetworkTests.m; sourceTree = "<group>"; };
-		A2BF18D11283A5F900691535 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A2C5DA3113F0976E002F62BB /* LogicExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicExpression.h; sourceTree = "<group>"; };
 		A2C5DA3213F0976E002F62BB /* LogicExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicExpression.m; sourceTree = "<group>"; };
 		A2C5DA3513F195AF002F62BB /* LogicChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicChain.h; sourceTree = "<group>"; };
@@ -677,7 +707,6 @@
 		A2DF3E0C1225C240004C908F /* MobileObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileObjectTests.m; path = ../../MobileObjectTests.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF3E2B1225C377004C908F /* commonTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = commonTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF3E2C1225C377004C908F /* commonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "commonTests-Info.plist"; sourceTree = "<group>"; };
-		A2DF3E311225C3EE004C908F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A2DF3E371225C434004C908F /* UtilTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtilTests.h; path = ../../UtilTests.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF3E381225C434004C908F /* UtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UtilTests.m; path = ../../UtilTests.m; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DF3E391225C434004C908F /* StorageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StorageTests.h; path = ../../StorageTests.h; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -721,7 +750,7 @@
 		A2FA7F7514379B710054223D /* CommitException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitException.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* mobilecloudlib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mobilecloudlib_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D2AAC07E0554694100DB518D /* libmobilecloudlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmobilecloudlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC07E0554694100DB518D /* libmobilecloudlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libmobilecloudlib.a; path = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/build/Release-iphoneos/libmobilecloudlib.a"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -729,10 +758,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A20AE40E13F83B02006FF636 /* CoreGraphics.framework in Frameworks */,
-				A29D5C2E1293415500DAE753 /* libmobilecloudlib.a in Frameworks */,
-				A29D5C2F1293416400DAE753 /* CFNetwork.framework in Frameworks */,
-				A29D5C301293416400DAE753 /* CoreData.framework in Frameworks */,
+				A23A487F1604495E003A32EE /* libmobilecloudlib.a in Frameworks */,
+				A23A487A1604494C003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A487B1604494C003A32EE /* CoreData.framework in Frameworks */,
+				A23A487C1604494C003A32EE /* CoreGraphics.framework in Frameworks */,
+				A23A487D1604494C003A32EE /* Foundation.framework in Frameworks */,
+				A23A487E1604494C003A32EE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,9 +771,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BF185512833D0E00691535 /* libmobilecloudlib.a in Frameworks */,
-				A2BF18D21283A5F900691535 /* CFNetwork.framework in Frameworks */,
-				A29D5953128A5AF800DAE753 /* CoreData.framework in Frameworks */,
+				A23A48791604492A003A32EE /* libmobilecloudlib.a in Frameworks */,
+				A23A487416044913003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A487516044913003A32EE /* CoreData.framework in Frameworks */,
+				A23A487616044913003A32EE /* CoreGraphics.framework in Frameworks */,
+				A23A487716044913003A32EE /* Foundation.framework in Frameworks */,
+				A23A487816044913003A32EE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,9 +784,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2C5DA2D13EDABC9002F62BB /* libmobilecloudlib.a in Frameworks */,
-				A28F5CF2124BE61700EA2E90 /* CoreData.framework in Frameworks */,
-				A29D68B112B7C4F500DAE753 /* CFNetwork.framework in Frameworks */,
+				A23A486D1604481F003A32EE /* libmobilecloudlib.a in Frameworks */,
+				A23A486C160447FF003A32EE /* Foundation.framework in Frameworks */,
+				A23A4868160447F5003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A4869160447F5003A32EE /* CoreData.framework in Frameworks */,
+				A23A486A160447F5003A32EE /* CoreGraphics.framework in Frameworks */,
+				A23A486B160447F5003A32EE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,9 +797,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2DF3E301225C3DB004C908F /* libmobilecloudlib.a in Frameworks */,
-				A2DF3E321225C3EE004C908F /* CoreData.framework in Frameworks */,
-				A29D68B012B7C4DE00DAE753 /* CFNetwork.framework in Frameworks */,
+				A23A48671604466E003A32EE /* libmobilecloudlib.a in Frameworks */,
+				A23A48621604463B003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A48631604463B003A32EE /* CoreData.framework in Frameworks */,
+				A23A48641604463B003A32EE /* CoreGraphics.framework in Frameworks */,
+				A23A48651604463B003A32EE /* UIKit.framework in Frameworks */,
+				A23A4857160442C9003A32EE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,10 +810,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2DF3E5E1225C639004C908F /* libmobilecloudlib.a in Frameworks */,
-				A2DF3E5F1225C648004C908F /* CoreData.framework in Frameworks */,
-				A29D5A5B128C592200DAE753 /* CFNetwork.framework in Frameworks */,
-				A250246013057F7C006DC2C8 /* CoreGraphics.framework in Frameworks */,
+				A23A487316044890003A32EE /* libmobilecloudlib.a in Frameworks */,
+				A23A486E1604487E003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A486F1604487E003A32EE /* CoreData.framework in Frameworks */,
+				A23A48701604487E003A32EE /* CoreGraphics.framework in Frameworks */,
+				A23A48711604487E003A32EE /* Foundation.framework in Frameworks */,
+				A23A48721604487E003A32EE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,10 +823,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2E557B012F76A80008B3FCE /* CoreData.framework in Frameworks */,
-				A2E557AF12F76A80008B3FCE /* CFNetwork.framework in Frameworks */,
-				A28694F412F774F600A4792E /* libmobilecloudlib.a in Frameworks */,
-				A250245813057F46006DC2C8 /* CoreGraphics.framework in Frameworks */,
+				A23A488516044997003A32EE /* libmobilecloudlib.a in Frameworks */,
+				A23A488016044987003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A488116044987003A32EE /* CoreData.framework in Frameworks */,
+				A23A488216044987003A32EE /* CoreGraphics.framework in Frameworks */,
+				A23A488316044987003A32EE /* Foundation.framework in Frameworks */,
+				A23A488416044987003A32EE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,8 +836,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23A486116044596003A32EE /* UIKit.framework in Frameworks */,
+				A23A485D160444A1003A32EE /* CFNetwork.framework in Frameworks */,
+				A23A485E160444A1003A32EE /* CoreData.framework in Frameworks */,
+				A23A485F160444A1003A32EE /* CoreGraphics.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-				A29D573C12886B8900DAE753 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,10 +863,9 @@
 		0867D691FE84028FC02AAC07 /* mobilecloudlib */ = {
 			isa = PBXGroup;
 			children = (
+				A23A48661604466E003A32EE /* libmobilecloudlib.a */,
 				A2A9982414A0FA2E00DE13E9 /* base64 */,
 				A2A9978F1476A4E500DE13E9 /* json */,
-				A20AE40D13F83B02006FF636 /* CoreGraphics.framework */,
-				D2AAC07E0554694100DB518D /* libmobilecloudlib.a */,
 				A26227DD13317A4E00B1BEB3 /* dm */,
 				A2869F3A12F9F1AF00A4792E /* app-service */,
 				A2869D7112F9BC0900A4792E /* app-bundle */,
@@ -845,14 +891,11 @@
 				034768DFFF38A50411DB9C8B /* Products */,
 				A2DF3E031225C1EF004C908F /* mobileObjectTests-Info.plist */,
 				A2DF3E2C1225C377004C908F /* commonTests-Info.plist */,
-				A2DF3E311225C3EE004C908F /* CoreData.framework */,
 				A2DF3E551225C60E004C908F /* syncTests-Info.plist */,
 				A2BF184E12833C8F00691535 /* connectionTests-Info.plist */,
-				A2BF18D11283A5F900691535 /* CFNetwork.framework */,
 				A29D5C2A1293412A00DAE753 /* apiTests-Info.plist */,
 				A2E5579B12F7695F008B3FCE /* syncTests-Info copy.plist */,
 				A2E557A612F769FB008B3FCE /* integration-tests-Info.plist */,
-				A28694EA12F774AA00A4792E /* CoreGraphics.framework */,
 				A263E66E138F1219000145FA /* mom-tests-Info.plist */,
 			);
 			name = mobilecloudlib;
@@ -861,6 +904,10 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A23A486016044596003A32EE /* UIKit.framework */,
+				A23A485A160444A1003A32EE /* CFNetwork.framework */,
+				A23A485B160444A1003A32EE /* CoreData.framework */,
+				A23A485C160444A1003A32EE /* CoreGraphics.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -968,8 +1015,12 @@
 		A2869D7112F9BC0900A4792E /* app-bundle */ = {
 			isa = PBXGroup;
 			children = (
+				A23A484A16042D13003A32EE /* UIDevice+IdentifierAddition.h */,
+				A23A484C16042D13003A32EE /* NSString+MD5Addition.h */,
 				A242E98B15E95A360092AFA4 /* ManualSyncMenuController.xib */,
 				A242E98415E92F1B0092AFA4 /* ManualSyncController.xib */,
+				A23A484B16042D13003A32EE /* UIDevice+IdentifierAddition.m */,
+				A23A484D16042D13003A32EE /* NSString+MD5Addition.m */,
 				A262293513412C9B00B1BEB3 /* SecurityConfig.xib */,
 				A262293413412C8900B1BEB3 /* ModalActivateDevice.xib */,
 				A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */,
@@ -1679,6 +1730,8 @@
 				A242E99B15EABB000092AFA4 /* SyncUtility.h in Headers */,
 				A242E99F15ED36CD0092AFA4 /* ManualSync.h in Headers */,
 				A242E9A915F0306D0092AFA4 /* BackgroundSyncCommand.h in Headers */,
+				A23A484E16042D13003A32EE /* UIDevice+IdentifierAddition.h in Headers */,
+				A23A485016042D13003A32EE /* NSString+MD5Addition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2022,6 +2075,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23A4886160450CC003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
+				A23A4887160450CC003A32EE /* NSString+MD5Addition.m in Sources */,
 				A2DF3E3B1225C434004C908F /* UtilTests.m in Sources */,
 				A2DF3E3C1225C434004C908F /* StorageTests.m in Sources */,
 			);
@@ -2190,6 +2245,8 @@
 				A242E99C15EABB000092AFA4 /* SyncUtility.m in Sources */,
 				A242E9A015ED36CD0092AFA4 /* ManualSync.m in Sources */,
 				A242E9AA15F0306D0092AFA4 /* BackgroundSyncCommand.m in Sources */,
+				A23A484F16042D13003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
+				A23A485116042D13003A32EE /* NSString+MD5Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2312,6 +2369,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "apiTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2340,6 +2401,10 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "apiTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2370,6 +2435,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "connectionTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2398,6 +2467,10 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "connectionTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2494,6 +2567,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "commonTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2522,6 +2599,10 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "commonTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2552,6 +2633,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "syncTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2580,6 +2665,10 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "syncTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2610,6 +2699,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "integration-tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2639,6 +2732,10 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "integration-tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug-iphonesimulator\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
