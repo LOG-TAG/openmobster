@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache>
-  <diskStore path="/tmp/openmobster/hibernate/cache/security"/>
+  <diskStore path="cache/openmobster/security"/>
 
  <defaultCache
 	maxElementsInMemory="0"
