@@ -1,6 +1,5 @@
-#import <UIKit/UIDevice.h>
-
 #import "GeneralTools.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @implementation GeneralTools
 
@@ -16,7 +15,7 @@
 
 +(NSString *) getDeviceIdentifier
 {
-	NSString * deviceIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
+	NSString * deviceIdentifier = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
 	return deviceIdentifier;
 }
 
