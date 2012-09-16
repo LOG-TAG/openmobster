@@ -32,12 +32,12 @@
    </bean>
    
    <!--  Ajax services -->
-   <bean name="/asyncserviceapp/getlist" class="org.openmobster.showcase.cloud.ajax.GetList">
+   <bean name="/showcase/getlist" class="org.openmobster.showcase.cloud.ajax.GetList">
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
    
-   <bean name="/asyncserviceapp/getdetails" class="org.openmobster.showcase.cloud.ajax.GetDetails">
+   <bean name="/showcase/getdetails" class="org.openmobster.showcase.cloud.ajax.GetDetails">
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>

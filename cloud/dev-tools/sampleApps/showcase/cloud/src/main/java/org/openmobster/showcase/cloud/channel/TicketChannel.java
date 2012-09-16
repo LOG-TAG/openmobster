@@ -23,10 +23,12 @@ import org.openmobster.core.security.device.Device;
  * 
  * @author openmobster@gmail.com
  */
-@ChannelInfo(uri="webappsync_ticket_channel", mobileBeanClass="org.openmobster.showcase.cloud.channel.Ticket")
+@ChannelInfo(uri="showcase_ticket_channel", mobileBeanClass="org.openmobster.showcase.cloud.channel.Ticket")
 public class TicketChannel implements Channel
 {
 	private TicketDS ds;
+	
+	private boolean newDataPushed;
 	
 		
 	public TicketDS getDs()
@@ -119,7 +121,21 @@ public class TicketChannel implements Channel
 	 */
 	public String[] scanForNew(Device device, Date lastScanTimestamp)
 	{
-		return null;
+		if(this.newDataPushed)
+		{
+			return null;
+		}
+		
+		Ticket newTicket = new Ticket();
+		newTicket.setTitle("Pushed Ticket");
+		newTicket.setComment("This Rocks!!!");
+		String ticketId = this.ds.create(newTicket);
+		
+		String[] newoids = new String[]{ticketId};
+		
+		this.newDataPushed = true;
+		
+		return newoids;
 	}
 	
 	/**

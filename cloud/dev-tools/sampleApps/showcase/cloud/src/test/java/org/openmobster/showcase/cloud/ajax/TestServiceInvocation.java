@@ -56,7 +56,7 @@ public class TestServiceInvocation extends TestCase
 	
 	public void testGetList() throws Exception
 	{
-		Request request = new Request("/asyncserviceapp/getlist");
+		Request request = new Request("/showcase/getlist");
 		
 		MobileService service = new MobileService();
 		Response response = service.invoke(request);
@@ -77,7 +77,7 @@ public class TestServiceInvocation extends TestCase
 	
 	public void testGetDetails() throws Exception
 	{
-		Request request = new Request("/asyncserviceapp/getdetails");
+		Request request = new Request("/showcase/getdetails");
 		request.setAttribute("oid", ""+1);
 		
 		MobileService service = new MobileService();

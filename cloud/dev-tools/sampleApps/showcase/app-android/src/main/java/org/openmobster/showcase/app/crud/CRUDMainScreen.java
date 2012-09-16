@@ -101,7 +101,7 @@ public class CRUDMainScreen extends Screen
 		ListView view = (ListView)ViewHelper.findViewById(activity, "list");
 		activity.setTitle("CRUD");
 		
-		MobileBean[] beans = MobileBean.readAll(AppConstants.webappsync);
+		MobileBean[] beans = MobileBean.readAll(AppConstants.channel);
 		
 		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
 		for(MobileBean local:beans)

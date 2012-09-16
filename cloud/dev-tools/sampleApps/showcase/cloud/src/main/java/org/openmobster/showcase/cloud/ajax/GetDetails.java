@@ -23,7 +23,7 @@ import org.openmobster.cloud.api.rpc.ServiceInfo;
  * 
  * @author openmobster@gmail.com
  */
-@ServiceInfo(uri="/asyncserviceapp/getdetails")
+@ServiceInfo(uri="/showcase/getdetails")
 public class GetDetails implements MobileServiceBean
 {
 	private static Logger log = Logger.getLogger(GetDetails.class);
@@ -36,7 +36,7 @@ public class GetDetails implements MobileServiceBean
 	public void start()
 	{
 		log.info("--------------------------------------------------------------------------");
-		log.info("/asyncserviceapp/getdetails: was successfully started......................");
+		log.info("/showcase/getdetails: was successfully started......................");
 		log.info("--------------------------------------------------------------------------");
 	}
 	
