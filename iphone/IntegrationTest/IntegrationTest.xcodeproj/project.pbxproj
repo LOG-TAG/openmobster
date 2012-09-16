@@ -24,6 +24,8 @@
 		A20AE3FE13F5A617006FF636 /* IntegrationTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A20AE3FC13F5A617006FF636 /* IntegrationTestViewController.xib */; };
 		A20AE40113F5CC1C006FF636 /* SyncIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A20AE40013F5CC1B006FF636 /* SyncIntegrationTest.m */; };
 		A20AE40313F5D120006FF636 /* openmobster-app.xml in Resources */ = {isa = PBXBuildFile; fileRef = A20AE40213F5D120006FF636 /* openmobster-app.xml */; };
+		A23A493C1605843B003A32EE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A493A1605843B003A32EE /* UIDevice+IdentifierAddition.m */; };
+		A23A493D1605843B003A32EE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A493B1605843B003A32EE /* NSString+MD5Addition.m */; };
 		A242EAA515FCF6FF0092AFA4 /* ManualSyncMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9B15FCF6FF0092AFA4 /* ManualSyncMenuController.xib */; };
 		A242EAA615FCF6FF0092AFA4 /* ManualSyncController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9C15FCF6FF0092AFA4 /* ManualSyncController.xib */; };
 		A242EAA715FCF6FF0092AFA4 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA9D15FCF6FF0092AFA4 /* SecurityConfig.xib */; };
@@ -62,6 +64,10 @@
 		A20AE3FF13F5CC1B006FF636 /* SyncIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncIntegrationTest.h; sourceTree = "<group>"; };
 		A20AE40013F5CC1B006FF636 /* SyncIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncIntegrationTest.m; sourceTree = "<group>"; };
 		A20AE40213F5D120006FF636 /* openmobster-app.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "openmobster-app.xml"; path = "IntegrationTest/openmobster-app.xml"; sourceTree = "<group>"; };
+		A23A49381605843B003A32EE /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		A23A49391605843B003A32EE /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		A23A493A1605843B003A32EE /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		A23A493B1605843B003A32EE /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		A242EA9B15FCF6FF0092AFA4 /* ManualSyncMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncMenuController.xib; sourceTree = "<group>"; };
 		A242EA9C15FCF6FF0092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
 		A242EA9D15FCF6FF0092AFA4 /* SecurityConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecurityConfig.xib; sourceTree = "<group>"; };
@@ -173,6 +179,10 @@
 		A242EA9A15FCF6240092AFA4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A23A49381605843B003A32EE /* UIDevice+IdentifierAddition.h */,
+				A23A49391605843B003A32EE /* NSString+MD5Addition.h */,
+				A23A493A1605843B003A32EE /* UIDevice+IdentifierAddition.m */,
+				A23A493B1605843B003A32EE /* NSString+MD5Addition.m */,
 				A242EA9B15FCF6FF0092AFA4 /* ManualSyncMenuController.xib */,
 				A242EA9C15FCF6FF0092AFA4 /* ManualSyncController.xib */,
 				A242EA9D15FCF6FF0092AFA4 /* SecurityConfig.xib */,
@@ -266,6 +276,8 @@
 				A242EAA915FCF6FF0092AFA4 /* configuration.xcdatamodel in Sources */,
 				A242EAAA15FCF6FF0092AFA4 /* sync.xcdatamodel in Sources */,
 				A242EAAB15FCF6FF0092AFA4 /* mobileobject.xcdatamodel in Sources */,
+				A23A493C1605843B003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
+				A23A493D1605843B003A32EE /* NSString+MD5Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

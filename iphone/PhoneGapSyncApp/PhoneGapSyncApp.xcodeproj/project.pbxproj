@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A23A492616058242003A32EE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A492416058242003A32EE /* UIDevice+IdentifierAddition.m */; };
+		A23A492716058242003A32EE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A492516058242003A32EE /* NSString+MD5Addition.m */; };
 		A242EA7415FAC15D0092AFA4 /* ManualSyncMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6A15FAC1590092AFA4 /* ManualSyncMenuController.xib */; };
 		A242EA7515FAC15D0092AFA4 /* ManualSyncController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6B15FAC1590092AFA4 /* ManualSyncController.xib */; };
 		A242EA7615FAC15D0092AFA4 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA6C15FAC1590092AFA4 /* SecurityConfig.xib */; };
@@ -64,6 +66,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A23A492216058242003A32EE /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		A23A492316058242003A32EE /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		A23A492416058242003A32EE /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		A23A492516058242003A32EE /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		A242EA6A15FAC1590092AFA4 /* ManualSyncMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncMenuController.xib; sourceTree = "<group>"; };
 		A242EA6B15FAC1590092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
 		A242EA6C15FAC1590092AFA4 /* SecurityConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecurityConfig.xib; sourceTree = "<group>"; };
@@ -337,6 +343,10 @@
 		A26FF3A7154879FA00447484 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A23A492216058242003A32EE /* UIDevice+IdentifierAddition.h */,
+				A23A492316058242003A32EE /* NSString+MD5Addition.h */,
+				A23A492416058242003A32EE /* UIDevice+IdentifierAddition.m */,
+				A23A492516058242003A32EE /* NSString+MD5Addition.m */,
 				A242EA6A15FAC1590092AFA4 /* ManualSyncMenuController.xib */,
 				A242EA6B15FAC1590092AFA4 /* ManualSyncController.xib */,
 				A242EA6C15FAC1590092AFA4 /* SecurityConfig.xib */,
@@ -486,6 +496,8 @@
 				A242EA7815FAC15D0092AFA4 /* configuration.xcdatamodel in Sources */,
 				A242EA7915FAC15D0092AFA4 /* sync.xcdatamodel in Sources */,
 				A242EA7A15FAC15D0092AFA4 /* mobileobject.xcdatamodel in Sources */,
+				A23A492616058242003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
+				A23A492716058242003A32EE /* NSString+MD5Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

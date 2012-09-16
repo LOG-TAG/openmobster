@@ -22,7 +22,7 @@
 {
     int counter = 5;
 	
-	while(![MobileBean isBooted:@"webappsync_ticket_channel"])
+	while(![MobileBean isBooted:@"showcase_ticket_channel"])
 	{
 		[NSThread sleepForTimeInterval:2];
 		counter--;
@@ -34,13 +34,13 @@
 		}
 	}
     
-    NSArray *beans = [MobileBean readAll:@"webappsync_ticket_channel"];
+    NSArray *beans = [MobileBean readAll:@"showcase_ticket_channel"];
 	
 	if(beans == nil || [beans count] ==0)
 	{
 		SyncService *sync = [SyncService getInstance];
-		[sync performBootSync:@"webappsync_ticket_channel" :NO];
-		beans = [MobileBean readAll:@"webappsync_ticket_channel"];
+		[sync performBootSync:@"showcase_ticket_channel" :NO];
+		beans = [MobileBean readAll:@"showcase_ticket_channel"];
 	}
     
     for(MobileBean *local in beans)
