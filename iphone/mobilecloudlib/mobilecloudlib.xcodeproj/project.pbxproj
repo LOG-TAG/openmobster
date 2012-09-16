@@ -417,6 +417,7 @@
 		A23A485C160444A1003A32EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A23A486016044596003A32EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A23A48661604466E003A32EE /* libmobilecloudlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmobilecloudlib.a; path = "build/Debug-iphonesimulator/libmobilecloudlib.a"; sourceTree = "<group>"; };
+		A23A48DC16056A09003A32EE /* libmobilecloudlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmobilecloudlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A242E98215E92F1A0092AFA4 /* ManualSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSyncController.h; sourceTree = "<group>"; };
 		A242E98315E92F1B0092AFA4 /* ManualSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSyncController.m; sourceTree = "<group>"; };
 		A242E98415E92F1B0092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
@@ -750,7 +751,6 @@
 		A2FA7F7514379B710054223D /* CommitException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitException.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* mobilecloudlib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mobilecloudlib_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D2AAC07E0554694100DB518D /* libmobilecloudlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libmobilecloudlib.a; path = "/Users/openmobster/projects/openmobster/googlecode/src/trunk/iphone/mobilecloudlib/build/Release-iphoneos/libmobilecloudlib.a"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -856,6 +856,7 @@
 				A2BF184D12833C8F00691535 /* connectionTests.octest */,
 				A29D5C291293412A00DAE753 /* apiTests.octest */,
 				A2E557A512F769FB008B3FCE /* integration-tests.octest */,
+				A23A48DC16056A09003A32EE /* libmobilecloudlib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1016,11 +1017,11 @@
 			isa = PBXGroup;
 			children = (
 				A23A484A16042D13003A32EE /* UIDevice+IdentifierAddition.h */,
+				A23A484B16042D13003A32EE /* UIDevice+IdentifierAddition.m */,
 				A23A484C16042D13003A32EE /* NSString+MD5Addition.h */,
+				A23A484D16042D13003A32EE /* NSString+MD5Addition.m */,
 				A242E98B15E95A360092AFA4 /* ManualSyncMenuController.xib */,
 				A242E98415E92F1B0092AFA4 /* ManualSyncController.xib */,
-				A23A484B16042D13003A32EE /* UIDevice+IdentifierAddition.m */,
-				A23A484D16042D13003A32EE /* NSString+MD5Addition.m */,
 				A262293513412C9B00B1BEB3 /* SecurityConfig.xib */,
 				A262293413412C8900B1BEB3 /* ModalActivateDevice.xib */,
 				A2DF3D231225BDDA004C908F /* configuration.xcdatamodel */,
@@ -1866,7 +1867,7 @@
 			);
 			name = mobilecloudlib;
 			productName = mobilecloudlib;
-			productReference = D2AAC07E0554694100DB518D /* libmobilecloudlib.a */;
+			productReference = A23A48DC16056A09003A32EE /* libmobilecloudlib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */

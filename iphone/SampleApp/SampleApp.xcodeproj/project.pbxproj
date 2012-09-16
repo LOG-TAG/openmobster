@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A23A48E116056A2E003A32EE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A48DF16056A2E003A32EE /* UIDevice+IdentifierAddition.m */; };
+		A23A48E216056A2E003A32EE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A48E016056A2E003A32EE /* NSString+MD5Addition.m */; };
 		A242E9BB15F167510092AFA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A242E9BA15F167510092AFA4 /* UIKit.framework */; };
 		A242E9BD15F167510092AFA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A242E9BC15F167510092AFA4 /* Foundation.framework */; };
 		A242E9BF15F167510092AFA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A242E9BE15F167510092AFA4 /* CoreGraphics.framework */; };
@@ -37,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A23A48DD16056A2E003A32EE /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		A23A48DE16056A2E003A32EE /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		A23A48DF16056A2E003A32EE /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		A23A48E016056A2E003A32EE /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		A242E9B615F167510092AFA4 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A242E9BA15F167510092AFA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A242E9BC15F167510092AFA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +161,10 @@
 				A242E9E315F16C360092AFA4 /* ManualSyncController.xib */,
 				A242E9E415F16C360092AFA4 /* SecurityConfig.xib */,
 				A242E9E515F16C360092AFA4 /* ModalActivateDevice.xib */,
+				A23A48DD16056A2E003A32EE /* UIDevice+IdentifierAddition.h */,
+				A23A48DE16056A2E003A32EE /* NSString+MD5Addition.h */,
+				A23A48DF16056A2E003A32EE /* UIDevice+IdentifierAddition.m */,
+				A23A48E016056A2E003A32EE /* NSString+MD5Addition.m */,
 				A242E9E615F16C360092AFA4 /* configuration.xcdatamodel */,
 				A242E9E715F16C360092AFA4 /* sync.xcdatamodel */,
 				A242E9E815F16C360092AFA4 /* mobileobject.xcdatamodel */,
@@ -261,6 +271,8 @@
 				A242EA4515F965E70092AFA4 /* SaveTicket.m in Sources */,
 				A242EA4815FA935F0092AFA4 /* SaveTicketCommand.m in Sources */,
 				A242EA4B15FA9DCD0092AFA4 /* DeleteTicketCommand.m in Sources */,
+				A23A48E116056A2E003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
+				A23A48E216056A2E003A32EE /* NSString+MD5Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
