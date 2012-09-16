@@ -82,7 +82,7 @@
 {
     //read the beans and populate the AppSession
     AppSession *session = [AppSession getInstance];
-	NSArray *beans = [MobileBean readAll:@"webappsync_ticket_channel"];
+	NSArray *beans = [MobileBean readAll:@"showcase_ticket_channel"];
     
     if(beans != nil)
     {

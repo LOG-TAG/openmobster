@@ -41,7 +41,7 @@
 	[session removeAttribute:@"active-bean"];
 	
 	//Refresh
-	NSArray *beans = [MobileBean readAll:@"webappsync_ticket_channel"];
+	NSArray *beans = [MobileBean readAll:@"showcase_ticket_channel"];
 	[session setAttribute:@"beans" :beans];
 }
 

@@ -45,7 +45,7 @@
 	else 
 	{
 		//Create
-		MobileBean *newBean = [MobileBean newInstance:@"webappsync_ticket_channel"];
+		MobileBean *newBean = [MobileBean newInstance:@"showcase_ticket_channel"];
 		[newBean setValue:@"title" :title];
 		[newBean setValue:@"comment" :comment];
 		[newBean save];
@@ -55,7 +55,7 @@
 	[session removeAttribute:@"active-bean"];
 	
 	//Refresh
-	NSArray *beans = [MobileBean readAll:@"webappsync_ticket_channel"];
+	NSArray *beans = [MobileBean readAll:@"showcase_ticket_channel"];
 	[session setAttribute:@"beans" :beans];
 	
 	/*for(MobileBean *local in beans)
