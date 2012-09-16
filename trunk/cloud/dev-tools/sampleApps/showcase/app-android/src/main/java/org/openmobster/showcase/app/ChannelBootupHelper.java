@@ -29,7 +29,7 @@ public class ChannelBootupHelper implements RemoteCommand
 	{
 		Activity activity = (Activity)commandContext.getAppContext();
 		Toast.makeText(activity, 
-				"Waiting for the '"+AppConstants.webappsync+"' to finish bootstrapping....", 
+				"Waiting for the '"+AppConstants.channel+"' to finish bootstrapping....", 
 				Toast.LENGTH_LONG).show();
 	}
 
@@ -38,7 +38,7 @@ public class ChannelBootupHelper implements RemoteCommand
 		try
 		{
 		    int counter = 5;
-			while(!MobileBean.isBooted(AppConstants.webappsync))
+			while(!MobileBean.isBooted(AppConstants.channel))
 			{
 				Thread.currentThread().sleep(1000);
 				if(counter-- == 0)
@@ -61,7 +61,7 @@ public class ChannelBootupHelper implements RemoteCommand
 	public void doViewError(CommandContext commandContext)
 	{
 		Activity activity = (Activity)commandContext.getAppContext();
-		ViewHelper.getOkModalWithCloseApp(activity, "App Error", "The '"+AppConstants.webappsync+"' is not ready. Please launch the App again in a few minutes").
+		ViewHelper.getOkModalWithCloseApp(activity, "App Error", "The '"+AppConstants.channel+"' is not ready. Please launch the App again in a few minutes").
 		show();
 	}
 }

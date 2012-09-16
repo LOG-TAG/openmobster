@@ -139,7 +139,7 @@ public class SaveTicketScreen extends Screen
 		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
 		//Creates a new ticket instance on the device. Once 'saved', it will be seamlessly synchronized with the Cloud
-		MobileBean activeBean = MobileBean.newInstance(AppConstants.webappsync);
+		MobileBean activeBean = MobileBean.newInstance(AppConstants.channel);
 		
 		EditText title = (EditText)ViewHelper.findViewById(currentActivity, "title");
 		activeBean.setValue("title", title.getText().toString());

@@ -9,5 +9,5 @@ package org.openmobster.showcase.app;
  */
 public interface AppConstants
 {
-	public String webappsync = "webappsync_ticket_channel";
+	public String channel = "showcase_ticket_channel";
 }

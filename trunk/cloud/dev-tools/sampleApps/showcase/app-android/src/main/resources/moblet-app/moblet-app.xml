@@ -25,6 +25,6 @@
 	</screens>
 	
 	<channels>
-		<channel>webappsync_ticket_channel</channel>
+		<channel>showcase_ticket_channel</channel>
 	</channels>		
 </moblet-app>

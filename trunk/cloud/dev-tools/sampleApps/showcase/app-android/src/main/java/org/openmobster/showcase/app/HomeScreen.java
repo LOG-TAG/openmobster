@@ -145,7 +145,7 @@ public class HomeScreen extends Screen
 			
 			if(selectedIndex == 0)
 			{
-				if(!MobileBean.isBooted(AppConstants.webappsync))
+				if(!MobileBean.isBooted(AppConstants.channel))
 				{
 					CommandContext commandContext = new CommandContext();
 					commandContext.setTarget("/channel/bootup/helper");
