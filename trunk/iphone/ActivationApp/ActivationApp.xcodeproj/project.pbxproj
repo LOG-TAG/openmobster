@@ -15,6 +15,10 @@
 		28D7ACF80DDB3853001CB0EB /* ActivationAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ActivationAppViewController.m */; };
 		A21EC840131C2F790030ECCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC83F131C2F790030ECCE /* CFNetwork.framework */; };
 		A21EC842131C2F790030ECCE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21EC841131C2F790030ECCE /* CoreData.framework */; };
+		A23A49121605789A003A32EE /* ActivationAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23A49111605789A003A32EE /* ActivationAppViewController.xib */; };
+		A23A49141605803A003A32EE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23A49131605803A003A32EE /* MainWindow.xib */; };
+		A23A491C16058163003A32EE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A491A16058163003A32EE /* UIDevice+IdentifierAddition.m */; };
+		A23A491D16058163003A32EE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A491B16058163003A32EE /* NSString+MD5Addition.m */; };
 		A242EA8B15FCF0F20092AFA4 /* ManualSyncMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA8115FCF0F20092AFA4 /* ManualSyncMenuController.xib */; };
 		A242EA8C15FCF0F20092AFA4 /* ManualSyncController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA8215FCF0F20092AFA4 /* ManualSyncController.xib */; };
 		A242EA8D15FCF0F20092AFA4 /* SecurityConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = A242EA8315FCF0F20092AFA4 /* SecurityConfig.xib */; };
@@ -43,6 +47,12 @@
 		8D1107310486CEB800E47090 /* ActivationApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ActivationApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A21EC83F131C2F790030ECCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A21EC841131C2F790030ECCE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A23A49111605789A003A32EE /* ActivationAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationAppViewController.xib; sourceTree = "<group>"; };
+		A23A49131605803A003A32EE /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		A23A491816058163003A32EE /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		A23A491916058163003A32EE /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		A23A491A16058163003A32EE /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		A23A491B16058163003A32EE /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		A242EA8115FCF0F20092AFA4 /* ManualSyncMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncMenuController.xib; sourceTree = "<group>"; };
 		A242EA8215FCF0F20092AFA4 /* ManualSyncController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualSyncController.xib; sourceTree = "<group>"; };
 		A242EA8315FCF0F20092AFA4 /* SecurityConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecurityConfig.xib; sourceTree = "<group>"; };
@@ -77,6 +87,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A23A49131605803A003A32EE /* MainWindow.xib */,
+				A23A49111605789A003A32EE /* ActivationAppViewController.xib */,
 				1D3623240D0F684500981E51 /* ActivationAppAppDelegate.h */,
 				1D3623250D0F684500981E51 /* ActivationAppAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* ActivationAppViewController.h */,
@@ -117,6 +129,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A23A491816058163003A32EE /* UIDevice+IdentifierAddition.h */,
+				A23A491916058163003A32EE /* NSString+MD5Addition.h */,
+				A23A491A16058163003A32EE /* UIDevice+IdentifierAddition.m */,
+				A23A491B16058163003A32EE /* NSString+MD5Addition.m */,
 				A242EA8115FCF0F20092AFA4 /* ManualSyncMenuController.xib */,
 				A242EA8215FCF0F20092AFA4 /* ManualSyncController.xib */,
 				A242EA8315FCF0F20092AFA4 /* SecurityConfig.xib */,
@@ -203,6 +219,8 @@
 				A242EA9215FCF0F20092AFA4 /* ActivateDeviceCloudInfo.xib in Resources */,
 				A242EA9315FCF0F20092AFA4 /* CloudManagerApp.xib in Resources */,
 				A242EA9415FCF0F20092AFA4 /* ActivityIndicatorView.xib in Resources */,
+				A23A49121605789A003A32EE /* ActivationAppViewController.xib in Resources */,
+				A23A49141605803A003A32EE /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +237,8 @@
 				A242EA8F15FCF0F20092AFA4 /* configuration.xcdatamodel in Sources */,
 				A242EA9015FCF0F20092AFA4 /* sync.xcdatamodel in Sources */,
 				A242EA9115FCF0F20092AFA4 /* mobileobject.xcdatamodel in Sources */,
+				A23A491C16058163003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
+				A23A491D16058163003A32EE /* NSString+MD5Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
