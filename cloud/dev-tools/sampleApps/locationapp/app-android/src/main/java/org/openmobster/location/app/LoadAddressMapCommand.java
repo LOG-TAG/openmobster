@@ -139,6 +139,11 @@ public final class LoadAddressMapCommand implements RemoteCommand
 			
 			Map<String,String> coupons = response.getMapAttribute("coupons");
 			List<Place> restaurants = locationContext.getNearbyPlaces();
+			if(restaurants == null)
+			{
+				ViewHelper.getOkModal(currentActivity, "Restaurants", "Restaurants Not Found").show();
+				return;
+			}
 			
 			//Add restaurant markers and corresponding coupon information
 			MyItemizedOverlay restaurantMarkers = new MyItemizedOverlay(marker,map);
