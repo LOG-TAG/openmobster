@@ -4,6 +4,8 @@
    <bean name="mail_processor" class="org.openmobster.pushmail.cloud.domain.MailProcessor">
    		<property name="protocol">imaps</property>
    		<property name="storeAddress">imap.gmail.com</property>
+   		
+   		<!-- NOTE: Change these values to represent your own email account and password -->
    		<property name="account">openmobster.test@gmail.com</property>
    		<property name="password">password1!A</property>
    </bean>
