@@ -88,6 +88,7 @@
 									<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpcore/${version.httpcore}/httpcore-${version.httpcore}.jar" />
 									<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpclient/${version.httpclient}/httpclient-${version.httpclient}.jar" />
 									<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
+									<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 								</copy>
 							    <delete dir="${server.dir}/deploy/openmobster.last" />																	        					        																								       							       							       							
        							<copy todir="${server.dir}/deploy/openmobster.last" overwrite="true">									
@@ -175,6 +176,7 @@
 									<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpcore/${version.httpcore}/httpcore-${version.httpcore}.jar" />
 									<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpclient/${version.httpclient}/httpclient-${version.httpclient}.jar" />
 									<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
+									<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 								</copy>
 							    <delete dir="${server.dir}/deploy/openmobster.last" />																	        					        																								       							       							       							
        							<copy todir="${server.dir}/deploy/openmobster.last" overwrite="true">									
@@ -258,6 +260,7 @@
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpcore/${version.httpcore}/httpcore-${version.httpcore}.jar" />
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpclient/${version.httpclient}/httpclient-${version.httpclient}.jar" />
 												<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
+												<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 											</copy>
 											
 											<copy tofile="target/mysql5/openmobster-ds.xml" file="${basedir}/src/main/config/mysql5/openmobster-ds.xml" overwrite="true" />
@@ -316,6 +319,7 @@
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpcore/${version.httpcore}/httpcore-${version.httpcore}.jar" />
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpclient/${version.httpclient}/httpclient-${version.httpclient}.jar" />
 												<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
+												<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 											</copy>
 											
 											<copy tofile="target/hsqldb/openmobster-ds.xml" file="${basedir}/src/main/config/hsqldb/openmobster-ds.xml" overwrite="true" />																																															       																							
@@ -397,6 +401,7 @@
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpcore/${version.httpcore}/httpcore-${version.httpcore}.jar" />
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpclient/${version.httpclient}/httpclient-${version.httpclient}.jar" />
 												<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
+												<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 											</copy>
 											
 											<copy tofile="target/mysql5/openmobster-ds.xml" file="${basedir}/src/main/config/mysql5/openmobster-ds.xml" overwrite="true" />
@@ -455,6 +460,7 @@
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpcore/${version.httpcore}/httpcore-${version.httpcore}.jar" />
 												<fileset file="${settings.localRepository}/org/apache/httpcomponents/httpclient/${version.httpclient}/httpclient-${version.httpclient}.jar" />
 												<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
+												<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 											</copy>
 											
 											<copy tofile="target/hsqldb/openmobster-ds.xml" file="${basedir}/src/main/config/hsqldb/openmobster-ds.xml" overwrite="true" />																																															       																							
