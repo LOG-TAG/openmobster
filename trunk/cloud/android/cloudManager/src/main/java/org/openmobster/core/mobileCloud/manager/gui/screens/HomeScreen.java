@@ -49,7 +49,7 @@ public class HomeScreen extends Screen
 	private Integer screenId;
 	
 	private static String[] functions = new String[]
-	{"Activate","Corporate App Store","Push Settings", "Manual Sync","Security", "Cloud Status"};
+	{"Activate","Corporate App Store","Push Settings", "Manual Sync","Cloud Status"};
 	
 	public HomeScreen()
 	{										
@@ -129,12 +129,12 @@ public class HomeScreen extends Screen
 						HomeScreen.this.startManualSyncConf();
 					break;
 					
-					case 4:
+					//case 4:
 						//Security Configuration
-						HomeScreen.this.startSecurityConf();
-					break;
+					//	HomeScreen.this.startSecurityConf();
+					//break;
 					
-					case 5:
+					case 4:
 						//Check Cloud Status
 						HomeScreen.this.checkCloudStatus();
 					break;
