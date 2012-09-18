@@ -39,6 +39,12 @@
 			</groupId>
 			<artifactId>device-sdk</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>org.openmobster.core.dev.tools</groupId>
+            <artifactId>android-devcloud</artifactId>
+            <version>${openmobster.version}</version>
+            <type>apk</type>
+        </dependency>
 
 		<!-- 
 			More Dependencies can be added here 
