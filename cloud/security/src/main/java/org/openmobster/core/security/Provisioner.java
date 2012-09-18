@@ -17,6 +17,7 @@ import org.openmobster.core.common.validation.ObjectValidator;
 import org.openmobster.core.common.Utilities;
 import org.openmobster.core.common.event.EventManager;
 import org.openmobster.core.common.event.Event;
+import org.openmobster.core.common.transaction.TransactionHelper;
 import org.openmobster.core.security.identity.Identity;
 import org.openmobster.core.security.identity.Group;
 import org.openmobster.core.security.identity.GroupController;
@@ -102,6 +103,43 @@ public class Provisioner
 	{
 		this.eventManager = eventManager;
 	}
+	
+	public void start()
+	{
+		boolean isStarted = TransactionHelper.startTx();
+		try
+		{
+			if(this.groupController.read("standard") == null)
+			{
+				Group group = new Group();
+				group.setName("standard");
+				this.groupController.create(group);
+				
+				log.info("***************************************");
+				log.info("Standard Group successfully created.....");
+				log.info("****************************************");
+			}
+			else
+			{
+				log.info("***************************************");
+				log.info("Standard Group already exists..........");
+				log.info("****************************************");
+			}
+			
+			if(isStarted)
+			{
+				TransactionHelper.commitTx();
+			}
+		}
+		catch(Throwable t)
+		{
+			if(isStarted)
+			{
+				TransactionHelper.rollbackTx();
+			}
+			log.error(this, t);
+		}
+	}
 	//-----------------------------------------------------------------------------------------------------------------------------------------------
 	public boolean exists(String email)
 	{
@@ -130,7 +168,9 @@ public class Provisioner
 				throw new IDMException(IDMException.IDENITITY_ALREADY_EXISTS);
 			}
 			
-			if(this.groupController.read("standard") == null)
+			//Remove this code once things are stable. This is now moved into
+			//the start method
+			/*if(this.groupController.read("standard") == null)
 			{
 				synchronized(Provisioner.class)
 				{
@@ -141,7 +181,7 @@ public class Provisioner
 						this.groupController.create(group);
 					}
 				}
-			}
+			}*/
 			
 			//Generate a one way credential hash
 			String authenticationHash = Utilities.generateOneWayHash(credential, email+credential);
