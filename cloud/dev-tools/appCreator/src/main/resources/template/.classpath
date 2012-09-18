@@ -11,24 +11,8 @@
     <!--
     	DO NOT MODIFY: Required by the OpenMobster Mobile Cloud Platform 
      -->
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/api/2.2-SNAPSHOT/api-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/bus/2.2-SNAPSHOT/bus-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/common/2.2-SNAPSHOT/common-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/connection/2.2-SNAPSHOT/connection-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/device-sdk/2.2-SNAPSHOT/device-sdk-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/mobileObject/2.2-SNAPSHOT/mobileObject-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/moblet-runtime/2.2-SNAPSHOT/moblet-runtime-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/org/openmobster/core/mobileCloud/rimos/native-framework/2.2-SNAPSHOT/native-framework-2.2-SNAPSHOT.jar" />
-	<classpathentry kind="var"
-		path="M2_REPO/net/rim/net_rim_api/4.3.0/net_rim_api-4.3.0.jar" />
+	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-10/android.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openmobster/core/mobileCloud/android/2_0/device-sdk/2.2-SNAPSHOT/device-sdk-2.2-SNAPSHOT-full.jar"/>
 
 
 	<!--

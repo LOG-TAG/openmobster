@@ -9,7 +9,8 @@
 
     	
     <!-- Android Dependencies -->
-    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-5/android.jar"/>
+    <classpathentry kind="var" path="ANDROID_HOME/platforms/android-10/android.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openmobster/core/mobileCloud/android/2_0/device-sdk/2.2-SNAPSHOT/device-sdk-2.2-SNAPSHOT-full.jar"/>
 
 
 	<!--
