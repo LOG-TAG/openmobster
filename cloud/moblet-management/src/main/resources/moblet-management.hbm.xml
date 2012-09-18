@@ -14,6 +14,10 @@
         not-null="true"
         unique="true"
         />
+        <property name="deploymentUrl" type="string" column="deploymentUrl"
+        not-null="true"
+        unique="false"
+        />
         <property name="name" type="string" column="name"
         not-null="true"
         unique="false"
@@ -29,6 +33,6 @@
         <property name="configLocation" type="string" column="configLocation"
         not-null="true"
         unique="false"
-        />                
+        />                       
     </class>         
 </hibernate-mapping>

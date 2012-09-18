@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.net.URL;
 import java.io.InputStream;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -61,13 +63,46 @@ public class MobletDeployer
 	{		
 		InputStream is = url.openStream();
 		
-		List<MobletApp> apps = this.parseMobletApps(is);
+		List<MobletApp> apps = this.parseMobletApps(url.toString(),is);
 		
 		//Make them available for the provisioning system
 		this.registry.register(apps);
 	}
+	
+	public void undeploy(Set<URL> activeApps) throws Throwable
+	{
+		//Get all Apps
+		List<MobletApp> allApps = this.registry.getAllApps();
+		
+		Set<String> removeUrls = new HashSet<String>();
+		for(MobletApp app:allApps)
+		{
+			String deploymentUrl = app.getDeploymentUrl();
+			boolean isAnActiveUrl = this.isAnActiveUrl(deploymentUrl, activeApps);
+			if(!isAnActiveUrl)
+			{
+				removeUrls.add(deploymentUrl);
+			}
+		}
+		
+		//remove these apps
+		this.registry.removeApps(removeUrls);
+	}
 	//--------------------------------------------------------------------------------------------------
-	private List<MobletApp> parseMobletApps(InputStream is) throws Exception
+	private boolean isAnActiveUrl(String registeredUrl,Set<URL> activeUrls)
+	{
+		for(URL active:activeUrls)
+		{
+			String activeUrl = active.toString();
+			if(registeredUrl.equals(activeUrl))
+			{
+				//url is active...don't remove this app
+				return true;
+			}
+		}
+		return false;
+	}
+	private List<MobletApp> parseMobletApps(String deploymentUrl,InputStream is) throws Exception
 	{
 		List<MobletApp> apps = new ArrayList<MobletApp>();
 		
@@ -81,6 +116,7 @@ public class MobletDeployer
 			{
 				Element mobletAppElem = (Element)mobletAppNodes.item(i);
 				MobletApp app = this.parseMobletApp(mobletAppElem);
+				app.setDeploymentUrl(deploymentUrl);
 				apps.add(app);
 			}
 		}
