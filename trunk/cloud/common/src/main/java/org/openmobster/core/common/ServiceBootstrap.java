@@ -11,6 +11,8 @@ package org.openmobster.core.common;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.jboss.kernel.plugins.bootstrap.basic.BasicBootstrap;
 import org.jboss.kernel.plugins.deployment.xml.BasicXMLDeployer;
@@ -56,14 +58,19 @@ public class ServiceBootstrap extends BasicBootstrap
 	{
 		boolean isStartedHere = TransactionHelper.startTx(); 
 		try
-		{						
+		{
+			Set<URL> appUrls = new HashSet<URL>();
+			
 			//Deploy the moblet-apps
 			ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		    for(Enumeration e = cl.getResources("META-INF/moblet-apps.xml");e.hasMoreElements();)
 		    {
 		    	URL url = (URL) e.nextElement();
+		    	appUrls.add(url);
 		    	this.deployMobletApps(url);
 		    }
+		    
+		    this.undeployMobletApps(appUrls);
 		    
 		    if(isStartedHere)
 		    {
@@ -119,5 +126,26 @@ public class ServiceBootstrap extends BasicBootstrap
     	//Deploy the moblet-apps associated with this artifact
     	Method deploy = mobletDeployer.getClass().getMethod("deploy", new Class[]{URL.class});
     	deploy.invoke(mobletDeployer, new Object[]{url});
+    }
+    
+    private void undeployMobletApps(Set<URL> appUrls)
+    {
+    	try
+    	{
+	    	Class mobletDeployerClass = Thread.currentThread().
+	    	getContextClassLoader().loadClass("org.openmobster.core.moblet.deployment.MobletDeployer");
+	    	
+	    	//Invoke static method via reflection
+	    	Method getInstance = mobletDeployerClass.getMethod("getInstance", null);
+	    	Object mobletDeployer = getInstance.invoke(null, null);
+	    	
+	    	//Undeploy the moblet-apps deleted from the deploy folder
+	    	Method undeploy = mobletDeployer.getClass().getMethod("undeploy", new Class[]{Set.class});
+	    	undeploy.invoke(mobletDeployer, new Object[]{appUrls});
+    	}
+    	catch(Throwable t)
+    	{
+    		//don't worry about undeploying
+    	}
     }
 }

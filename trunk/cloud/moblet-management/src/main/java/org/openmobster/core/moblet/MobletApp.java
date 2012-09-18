@@ -34,6 +34,7 @@ public class MobletApp extends BusinessObject
 	private String description;
 	private String binaryLocation;
 	private String configLocation;
+	private String deploymentUrl;
 	
 	public MobletApp()
 	{
@@ -98,6 +99,18 @@ public class MobletApp extends BusinessObject
 	{
 		this.configLocation = configLocation;
 	}
+	
+	
+	public String getDeploymentUrl()
+	{
+		return deploymentUrl;
+	}
+
+
+	public void setDeploymentUrl(String deploymentUrl)
+	{
+		this.deploymentUrl = deploymentUrl;
+	}
 	//-------Persistence Services--------------------------------------------------------------------------------------------------
 	public static void create(MobletApp mobletApp) throws SystemException
 	{
@@ -153,6 +166,33 @@ public class MobletApp extends BusinessObject
 			tx.commit();
 			
 			return allApps;
+		}
+		catch(Exception e)
+		{
+			log.error(MobletApp.class, e);
+			
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+			throw new SystemException(e.getMessage(), e);
+		}
+	}
+	
+	public static void delete(MobletApp mobletApp) throws SystemException
+	{
+		Session session = null;
+		Transaction tx = null;
+		try
+		{
+			session = getHibernateManager().getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
+		
+			String query = "delete from MobletApp where uri=?";
+			session.createQuery(query).setString(0, mobletApp.getUri()).executeUpdate();
+						
+						
+			tx.commit();
 		}
 		catch(Exception e)
 		{

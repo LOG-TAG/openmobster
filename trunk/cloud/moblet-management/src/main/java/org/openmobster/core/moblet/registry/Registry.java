@@ -11,6 +11,8 @@ package org.openmobster.core.moblet.registry;
 import java.util.List;
 import java.io.InputStream;
 import java.io.IOException;
+import java.util.Set;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -132,7 +134,34 @@ public class Registry
 	public List<MobletApp> getAllApps()
 	{		
 		return MobletApp.readAll();
-	}	
+	}
+	
+	public void removeApps(Set<String> removeApps)
+	{
+		List<MobletApp> allApps = this.getAllApps();
+		if(allApps == null)
+		{
+			return;
+		}
+		
+		List<MobletApp> removeMe = new ArrayList<MobletApp>();
+		for(MobletApp app:allApps)
+		{
+			String deploymentUrl = app.getDeploymentUrl();
+			
+			//Check if this url is present in the list to be removed
+			boolean shouldRemove = removeApps.contains(deploymentUrl);
+			if(shouldRemove)
+			{
+				removeMe.add(app);
+			}
+		}
+		
+		for(MobletApp remove:removeMe)
+		{
+			MobletApp.delete(remove);
+		}
+	}
 	//---------------------------------------------------------------------------------------------------------------
 	private boolean doesResourceExist(String resourceLocation)
 	{
