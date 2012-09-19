@@ -408,7 +408,7 @@ public class HomeScreen extends Screen
 			}
 			else if(label.equalsIgnoreCase("port"))
 			{
-				String value = conf.decidePort();
+				/*String value = conf.decidePort();
 				if(value != null && value.trim().length()>0)
 				{
 					textField.setText(value);
@@ -416,7 +416,8 @@ public class HomeScreen extends Screen
 				else
 				{
 					textField.setText("1502"); //default port
-				}
+				}*/
+				textField.setText("1502"); //default cleartext port
 			}
 			else if(label.equalsIgnoreCase("email"))
 			{
