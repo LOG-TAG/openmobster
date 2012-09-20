@@ -15,6 +15,7 @@ import java.util.HashMap;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.cloud.api.sync.MobileBean;
 import org.openmobster.cloud.api.sync.MobileBeanStreamable;
 import org.openmobster.core.synchronizer.SyncException;
@@ -609,6 +610,41 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}		
 	}
 	
+	private int doesEntryExist(String deviceId,String channel,String app,String beanId, String operation)
+	{
+		Session session = this.hibernateManager.getSessionFactory()
+				.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		try
+		{
+			String query = "from ChangeLogEntry entry where entry.target=? AND entry.nodeId=? AND entry.app=? AND entry.recordId=? AND entry.operation=?";
+
+			List changelog = session.createQuery(query).setString(0, deviceId).
+			setString(1, channel).
+			setString(2,app).
+			setString(3, beanId).setString(4, operation).list();
+			
+			int count = 0;
+			if(changelog != null && changelog.size()>0)
+			{
+				count = changelog.size();
+			}
+
+			tx.commit();
+			
+			return count;
+		}
+		catch (Exception e)
+		{
+			logger.error(this, e);
+			if (tx != null)
+			{
+				tx.rollback();
+			}
+			throw new SyncException(e);
+		}		
+	}
+	
 	public boolean changeLogEntryExists(ChangeLogEntry entry)
 	{
 		Session session = this.hibernateManager.getSessionFactory()
@@ -851,6 +887,16 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		}
 		else
 		{
+			//Check and make sure the bean is not deleted
+			if(this.isBeanDeleted(recordId))
+			{
+				//This bean has been deleted from the system.
+				//This is a form of conflict
+				//this should not be allowed to recreate the bean in the Cloud
+				//it has been deleted everywhere
+				return;
+			}
+			
 			//Create this record			
 			String newRecordId = this.gateway.createRecord(pluginId, xml);
 			if(!newRecordId.equals(recordId))
@@ -965,6 +1011,24 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 		
 		
 		return commandInfo;
+	}
+	
+	private boolean isBeanDeleted(String beanId)
+	{
+		String deviceId = Tools.getDeviceId();
+		String channel = Tools.getChannel();
+		String app = SyncContext.getInstance().getApp();
+		String operation = ServerSyncEngine.OPERATION_DELETE;
+		
+		int count = this.doesEntryExist(deviceId,channel,app,beanId,operation);
+		if(count == 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 	//------Miscellaneous services---------------------------------------------------------------------------------------------------------------------------		
 	private Status getStatus(String statusCode, AbstractOperation operation)

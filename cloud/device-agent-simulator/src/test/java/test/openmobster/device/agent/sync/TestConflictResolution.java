@@ -148,4 +148,35 @@ public class TestConflictResolution extends AbstractSync
 		this.assertDevicePresence("unique-2");
 		this.assertDeviceMessage("unique-1", serverRecord.getMessage());
 	}
+	
+	public void testTwoWaySyncUpdateDeleteConflict() throws Exception
+	{
+		//Make sure both nodes are prepared
+		this.deviceDatabase.deleteAll(this.service);
+		this.performSlowSync();
+		
+		
+		MobileObject deviceRecord = this.updateDeviceRecord("unique-1");
+		this.deleteServerRecord("unique-1");
+		
+		//Assert Server State
+		this.assertServerAbsence("unique-1");
+		this.assertServerPresence("unique-2");
+		
+		//Assert Device State
+		this.assertDevicePresence("unique-1");
+		this.assertDevicePresence("unique-2");
+		
+		this.performTwoWaySync();
+		
+		//Rule for TwoWaySync: The conflict will be resolved based on Conflict Resolution Policy associated with the Channel
+		
+		//Assert Server State
+		this.assertServerAbsence("unique-1");
+		this.assertServerPresence("unique-2");
+		
+		//Assert Device State
+		this.assertDeviceAbsence("unique-1");
+		this.assertDevicePresence("unique-2");
+	}
 }
