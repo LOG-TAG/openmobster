@@ -170,6 +170,7 @@ public final class SimulatedDeviceStack
 		provisioner.setIdentityController(identityController);
 		provisioner.setGroupController(groupController);
 		provisioner.setDeviceController(deviceController);
+		provisioner.start();
 		
 		runner.setProvisioner(provisioner);
 	}
