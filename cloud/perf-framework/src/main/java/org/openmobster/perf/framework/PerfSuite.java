@@ -53,7 +53,8 @@ public class PerfSuite
 				if(argument.equals("-XconcurrentUsers") || 
 				   argument.equals("-Xtest") ||
 				   argument.equals("-Xserver") ||
-				   argument.equals("-Xduration")
+				   argument.equals("-Xduration") ||
+				   argument.equals("-Xspeed")
 				 )
 				{
 					currentParam = argument;
@@ -108,6 +109,7 @@ public class PerfSuite
 		{
 			int concurrentUsers = Integer.parseInt((String)attributeManager.getAttribute("concurrentUsers"));
 			String test = (String)attributeManager.getAttribute("test");
+			String speed = (String)attributeManager.getAttribute("speed");
 			int iterations = 1;
 			PerfSuite.suiteContext = attributeManager;
 			devices.clear();
@@ -131,10 +133,38 @@ public class PerfSuite
 			
 			TestSuite suite = new TestSuite();
 			
+			if(speed == null || speed.trim().length()==0)
+			{
+				speed = "goal";
+			}
+			long delay = 1000;
+			if(speed.equalsIgnoreCase("fast"))
+			{
+				delay = 250;
+				log.info("****************************************");
+				log.info("Speed: Fast");
+				log.info("****************************************");
+			}
+			else if(speed.equalsIgnoreCase("medium"))
+			{
+				delay = 500;
+				log.info("****************************************");
+				log.info("Speed: Medium");
+				log.info("****************************************");
+			}
+			else if(speed.equalsIgnoreCase("goal"))
+			{
+				delay = 1000;
+				log.info("****************************************");
+				log.info("Speed: Goal");
+				log.info("****************************************");
+			}
+			
+			
 			String[] tests = test.split(":");
 			for(String local:tests)
 			{
-				Timer timer = new RandomTimer(500,100);
+				Timer timer = new RandomTimer(delay,100);
 				TestFactory testFactory = new TestFactory(Thread.currentThread().getContextClassLoader().loadClass(local));
 				LoadTest loadTest = new LoadTest(testFactory,concurrentUsers,iterations,timer);
 				suite.addTest(loadTest);
