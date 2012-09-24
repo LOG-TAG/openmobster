@@ -6,6 +6,6 @@ Supported MobileBean specification
 
 * Supports simple and nested properties
 
-* Supports indexed properties like Arrays and Lists for MobileBeans originating from the server side
+* Supports indexed properties like Arrays and Lists for MobileBeans
 
 * mapped properties are not currently supported on both device and server
