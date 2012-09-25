@@ -25,9 +25,9 @@ This tutorial is to guide you through the process of running the iPhone Showcase
 
   * Build the project in Xcode
 
-=== Build/Run the CloudManager ===
+=== Build/Run the SampleApp ===
 
-  * Open the CloudManager project by opening: CloudManager/CloudManager.xcodeproj
+  * Open the SampleApp project by opening: iphone/SampleApp/SampleApp.xcodeproj
 
   * Build/Run the project in Xcode
 
