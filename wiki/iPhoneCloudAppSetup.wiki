@@ -12,12 +12,18 @@ For simplicity, if possible try to locate the two projects (Your project and mob
 
 In your project, under Frameworks, do "Add Existing Files", locate the library stored in the build folder of mobilecloudlib.
 
-==== Step 3: Link CFNetwork.Framework and CoreData.Framework ====
+==== Step 3: Link the required Frameworks ====
 Under Frameworks, do "Add Existing Frameworks", locate both the frameworks and add them
 
-==== Step 4: Copy Resources ====
+  * CoreData.framework
+  * CFNetwork.framework
+  * CoreGraphics.framework
+  * UIKit.framework
 
-Drag-n-Drop all the resources located under the *app-bundle* group of mobilecloudlib into the *Resources* group of your project.
+==== Step 4: Copy mobilecloudlib Resources to a new folder named OpenMobster ====
+
+  * Create a New group named OpenMobster
+  * From the mobilecloudlibproject, DragnDrop/Copy all the resources located under the app-bundle group
 
 ==== Step 5: Integrate via the App Delegate ====
 
