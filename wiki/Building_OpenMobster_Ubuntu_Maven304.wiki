@@ -49,6 +49,10 @@
   export GWT_HOME="/root/gwt-2.4.0"
   export PATH=/usr/local/apache-maven-3.0.4/bin:/root/android-sdks/platform-tools:$PATH
   unset M2_HOME
+  export ANDROID_KEYSTORE=/Users/openmobster/projects/openmobster/openmobster-release-key.keystore
+  export ANDROID_STORE_PASS=password
+  export ANDROID_KEY_PASS=password
+  export ANDROID_KEYSTORE_ALIAS=openmobster
 }}}
 
 6) Source ~/.bashrc to enable the new environment settings
