@@ -35,11 +35,8 @@ You can add code to start and stop the Cloud infrastructure within your App dele
 {
 	@try 
 	{
-		Kernel *kernel = [Kernel getInstance];
-		[kernel startup];
-		
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel startup:mainView];
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService startup];
 	}
 	@catch (NSException * e) 
 	{
@@ -56,11 +53,8 @@ You can add code to start and stop the Cloud infrastructure within your App dele
 {
 	@try
 	{
-		UIKernel *uiKernel = [UIKernel getInstance];
-		[uiKernel shutdown];
-	
-		Kernel *kernel = [Kernel getInstance];
-		[kernel shutdown];
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService shutdown];
 	}
 	@catch (NSException *e) 
 	{
@@ -69,7 +63,35 @@ You can add code to start and stop the Cloud infrastructure within your App dele
 }
 }}}
 
-These two methods are called by various App Delegate methods depending on the life cycle. Here are the various integration points
+===== Start Device Activation if it is not activated with the Cloud already =====
+{{{
+-(void)startActivation
+{
+	@try 
+	{
+		CloudService *cloudService = [CloudService getInstance];
+		[cloudService forceActivation:self.window.rootViewController];
+	}
+	@catch (NSException * e) 
+	{
+		//something caused the kernel to crash
+		//stop the kernel
+		[self stopCloudService];
+	}
+}
+}}}
+
+===== Do a Sync at Startup =====
+{{{
+-(void)sync
+{
+    CommandContext *commandContext = [CommandContext withInit:self.viewController];
+    BackgroundSyncCommand *syncCommand = [BackgroundSyncCommand withInit];
+    [commandContext setTarget:syncCommand];
+    CommandService *service = [CommandService getInstance];
+    [service execute:commandContext]; 
+}
+}}}
 
 ===== -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions =====
 {{{
