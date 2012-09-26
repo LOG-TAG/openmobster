@@ -160,7 +160,14 @@ public final class MobileBean
 		{
 			throw new IllegalStateException("MobileBean is still in proxy state");
 		}
-		return this.data.getValue(fieldUri).trim();
+		
+		String value = this.data.getValue(fieldUri);
+		if(value != null)
+		{
+			return value.trim();
+		}
+		
+		return null;
 	}
 	
 	/**
