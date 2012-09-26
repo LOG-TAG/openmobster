@@ -2,14 +2,14 @@
     <parent>
     	<groupId>org.openmobster.core</groupId>
    		<artifactId>openmobster-documentation-parent</artifactId>
-   		<version>2.2-SNAPSHOT</version>
+   		<version>2.2-RC1</version>
     	<relativePath>../pom.xml</relativePath>
    	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
     <artifactId>android-developer-guide</artifactId>
     <name>Android_Developer_Guide</name>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.2-RC1</version>
     <packaging>jdocbook</packaging>        
     
     <build>
