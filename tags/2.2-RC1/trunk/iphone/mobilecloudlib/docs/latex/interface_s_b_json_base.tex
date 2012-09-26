@@ -1,0 +1,84 @@
+\hypertarget{interface_s_b_json_base}{
+\section{\-S\-B\-Json\-Base \-Class \-Reference}
+\label{interface_s_b_json_base}\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}}
+}
+
+
+\-Common base class for parsing \& writing.  
+
+
+
+
+{\ttfamily \#include $<$\-S\-B\-Json\-Base.\-h$>$}
+
+\-Inheritance diagram for \-S\-B\-Json\-Base\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_s_b_json_base}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_s_b_json_base_af6fc685c386c1c4528bd30b2bd630d56}{
+void {\bfseries add\-Error\-With\-Code\-:description\-:} (\-N\-S\-U\-Integer code,\mbox{[}description\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$str)}
+\label{interface_s_b_json_base_af6fc685c386c1c4528bd30b2bd630d56}
+
+\item 
+\hypertarget{interface_s_b_json_base_a6a429d6db2149fea7435b9e0aac5d3fa}{
+void {\bfseries clear\-Error\-Trace} ()}
+\label{interface_s_b_json_base_a6a429d6db2149fea7435b9e0aac5d3fa}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_s_b_json_base_a9fd64724d5da34a0f9842cee3d14620c}{
+\-N\-S\-Mutable\-Array $\ast$ {\bfseries error\-Trace}}
+\label{interface_s_b_json_base_a9fd64724d5da34a0f9842cee3d14620c}
+
+\item 
+\hypertarget{interface_s_b_json_base_a5e80155581d240f565ec4149ad812e03}{
+\-N\-S\-U\-Integer {\bfseries depth}}
+\label{interface_s_b_json_base_a5e80155581d240f565ec4149ad812e03}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-U\-Integer \hyperlink{interface_s_b_json_base_abe3e47517711570a9a57e2d92a15055b}{max\-Depth}
+\begin{DoxyCompactList}\small\item\em \-The maximum recursing depth. \end{DoxyCompactList}\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_s_b_json_base_aa83f0ee5efade2fd26ddf6591ffd8dc0}{error\-Trace}
+\begin{DoxyCompactList}\small\item\em \-Return an error trace, or nil if there was no errors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Common base class for parsing \& writing. 
+
+\-This class contains the common error-\/handling code and option between the parser/writer. 
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_s_b_json_base_aa83f0ee5efade2fd26ddf6591ffd8dc0}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!error\-Trace@{error\-Trace}}
+\index{error\-Trace@{error\-Trace}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{error\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array$\ast$ \-S\-B\-Json\-Base\-::error\-Trace\hspace{0.3cm}{\ttfamily  \mbox{[}read, copy\mbox{]}}}}
+\label{interface_s_b_json_base_aa83f0ee5efade2fd26ddf6591ffd8dc0}
+
+
+\-Return an error trace, or nil if there was no errors. 
+
+\-Note that this method returns the trace of the last method that failed. \-You need to check the return value of the call you're making to figure out if the call actually failed, before you know call this method. \hypertarget{interface_s_b_json_base_abe3e47517711570a9a57e2d92a15055b}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!max\-Depth@{max\-Depth}}
+\index{max\-Depth@{max\-Depth}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{max\-Depth}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-U\-Integer \-S\-B\-Json\-Base\-::max\-Depth\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_s_b_json_base_abe3e47517711570a9a57e2d92a15055b}
+
+
+\-The maximum recursing depth. 
+
+\-Defaults to 512. \-If the input is nested deeper than this the input will be deemed to be malicious and the parser returns nil, signalling an error. (\char`\"{}\-Nested too deep\char`\"{}.) \-You can turn off this security feature by setting the max\-Depth value to 0. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-S\-B\-Json\-Base.\-h\item 
+\-S\-B\-Json\-Base.\-m\end{DoxyCompactItemize}
