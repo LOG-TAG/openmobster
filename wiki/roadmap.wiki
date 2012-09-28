@@ -59,7 +59,7 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 
 ----
 
-=== Release 2.2 - (Actively Under Development) ===
+=== Release 2.2 - (Release Candidate 1 just released) ===
 
 ==== Device Side ====
   * iPhone Support
@@ -88,7 +88,7 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 	
 ----
 
-=== Release 2.4 ===
+=== Release 2.4 (Under Active Prototyping) ===
   * Windows Phone 7 Support
   * Support for the evolving HTML5 standard
   * Expand PhoneGap Support to more modules in addition to the already supported Sync Plugin
