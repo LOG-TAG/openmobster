@@ -1,0 +1,102 @@
+\hypertarget{interface_sync_helper}{
+\section{\-Sync\-Helper \-Class \-Reference}
+\label{interface_sync_helper}\index{\-Sync\-Helper@{\-Sync\-Helper}}
+}
+
+
+{\ttfamily \#include $<$\-Sync\-Helper.\-h$>$}
+
+\-Inheritance diagram for \-Sync\-Helper\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_sync_helper}
+\end{center}
+\end{figure}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_sync_helper_a87a4d553d84a6af9a7ce1709656cc5ea}{
+void {\bfseries cleanup\-Change\-Log\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a87a4d553d84a6af9a7ce1709656cc5ea}
+
+\item 
+\hypertarget{interface_sync_helper_a3d5feaaf51a1e2f3c4284219b6e6f522}{
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ {\bfseries normal\-Sync\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a3d5feaaf51a1e2f3c4284219b6e6f522}
+
+\item 
+\hypertarget{interface_sync_helper_a25614c8dc347b76f49d039c6577358eb}{
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ {\bfseries boot\-Sync\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a25614c8dc347b76f49d039c6577358eb}
+
+\item 
+\hypertarget{interface_sync_helper_a296743c0ce82d3d03eadd32af6d9027e}{
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ {\bfseries stream\-Sync\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a296743c0ce82d3d03eadd32af6d9027e}
+
+\item 
+\hypertarget{interface_sync_helper_a8d6011a5d33536808e7c1eddfbc66a0d}{
+\-B\-O\-O\-L {\bfseries contains\-Final\-:} (\-N\-S\-Array $\ast$messages)}
+\label{interface_sync_helper_a8d6011a5d33536808e7c1eddfbc66a0d}
+
+\item 
+\hypertarget{interface_sync_helper_a82eb407384a4e6fd80b763c9cc3bfc66}{
+\-B\-O\-O\-L {\bfseries init\-Success\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a82eb407384a4e6fd80b763c9cc3bfc66}
+
+\item 
+\hypertarget{interface_sync_helper_a62a98066f665672a708cd665ad974815}{
+\-B\-O\-O\-L {\bfseries authorized\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a62a98066f665672a708cd665ad974815}
+
+\item 
+\hypertarget{interface_sync_helper_a077fea806643f0327aea70bb8d94c387}{
+void {\bfseries process\-Next\-Nonce\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a077fea806643f0327aea70bb8d94c387}
+
+\item 
+\hypertarget{interface_sync_helper_a512e8a3540b1e98b7b90a0064d034ee8}{
+\-B\-O\-O\-L {\bfseries has\-Errors\-:} (\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$current\-Message)}
+\label{interface_sync_helper_a512e8a3540b1e98b7b90a0064d034ee8}
+
+\item 
+\hypertarget{interface_sync_helper_a21a293ea4849bd1eadd24d45d63a8d99}{
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ {\bfseries set\-Up\-Reply\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)}
+\label{interface_sync_helper_a21a293ea4849bd1eadd24d45d63a8d99}
+
+\item 
+\hypertarget{interface_sync_helper_a52073dfff575ed4ff2da93d039051125}{
+void {\bfseries set\-Up\-Client\-Sync\-Final\-:::} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)}
+\label{interface_sync_helper_a52073dfff575ed4ff2da93d039051125}
+
+\item 
+\hypertarget{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}{
+void {\bfseries process\-Sync\-Commands\-::::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} int cmd\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply\-Message)}
+\label{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}
+
+\item 
+\hypertarget{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}{
+void {\bfseries process\-Sync\-Commands\-::::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} int cmd\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply\-Message)}
+\label{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}
+
+\item 
+\hypertarget{interface_sync_helper_a064e2513483268fcc2beb49f22eb4ae1}{
+\hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$ {\bfseries generate\-Sync\-Command\-::::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} int cmd\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply\-Message)}
+\label{interface_sync_helper_a064e2513483268fcc2beb49f22eb4ae1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sync\-Helper.\-h\item 
+\-Sync\-Helper.\-m\end{DoxyCompactItemize}

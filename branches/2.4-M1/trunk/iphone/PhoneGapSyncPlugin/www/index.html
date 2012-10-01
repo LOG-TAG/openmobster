@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title></title>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+
+
+	<!-- iPad/iPhone specific css below, add after your main css >
+	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
+	-->
+	<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+	<script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="openmobster-sync-2.2.js"></script>    
+        
+    <script type="text/javascript">
+
+
+	// If you want to prevent dragging, uncomment this section
+	/*
+	function preventBehavior(e) 
+	{ 
+      e.preventDefault(); 
+    };
+	document.addEventListener("touchmove", preventBehavior, false);
+	*/
+	
+	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+	for more details -jm */
+	/*
+	function handleOpenURL(url)
+	{
+		// TODO: do something with the url passed in.
+	}
+	*/
+	
+	function onBodyLoad()
+	{		
+		document.addEventListener("deviceready", onDeviceReady, false);
+	}
+	
+	/* When this function is called, Cordova has been initialized and is ready to roll */
+	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+	for more details -jm */
+	function onDeviceReady()
+	{
+		// do your thing!
+		navigator.notification.alert("Cordova is working")
+	}
+        
+        function updateBean(channel)
+        {
+            window.plugins.sync.readall(channel,
+            function(oids)
+            {
+                oids = JSON.parse(oids);
+                var length = oids.length;
+                for(var i=0; i<length; i++)
+                {
+                   var oid = oids[i];
+                                        
+                   var updatePayload = {};
+                   
+                   updatePayload.title = 'title://updated';
+                                        
+                   //update the customers array
+                   window.plugins.sync.arrayLength(channel,oid,'customers',
+                   function(arrayLength)
+                   {
+                     for(var j=0; j<arrayLength; j++)
+                     {
+                        var customerUri = 'customers['+j+']';
+                        updatePayload[customerUri] = 'customer://updated';
+                     }
+                                                   
+                     window.plugins.sync.arrayLength(channel,oid,'messages',
+                     function(messagesLength)
+                     {
+                        for(var j=0; j<messagesLength; j++)
+                        {
+                           var messageFrom = 'messages['+j+'].from';
+                           var messageTo = 'messages['+j+'].to';
+                           var message = 'messages['+j+'].message';
+                           updatePayload[messageFrom] = 'from@test.com';
+                           updatePayload[messageTo] = 'to@test.com';
+                           updatePayload[message] = 'message://updated';
+                        }
+                        var payload = JSON.stringify(updatePayload); 
+                        
+                        window.plugins.sync.updateBean(channel,oid,payload,
+                        function(success)
+                        {
+                        },
+                        function(error)
+                        {
+                            alert('Error UpdateBean: '+error);
+                        }
+                        ); 
+                                                     
+                        //Commit here
+                        window.plugins.sync.commit(function(success)
+                        {
+                           console.log('Commit successful');
+                        },
+                        function(error){});
+                     },
+                     function(messagesError)
+                     {
+                        alert('Error Messages ArrayLength: '+messagesError);                             
+                     }
+                     );
+                   },
+                   function(error)
+                   {
+                      alert('Error Customers ArrayLength: '+error);                             
+                   }
+                   );
+                }
+            },
+            function(error)
+            {
+                alert('Error ReadAll: '+error);                        
+            }
+            );
+        }
+        
+        function addNewBean(channel)
+        {
+            var payload = {};
+            payload.title = 'added://title';
+            var json = JSON.stringify(payload);
+            
+            window.plugins.sync.addNewBean(channel,json,
+            function(newoid)
+            {
+                //insert into a string array
+                window.plugins.sync.insertIntoArray(channel,newoid,'customers','{"string":"/test/newbean/string/array"}',
+                                                                               function(size)
+                                                                               {
+                                                                                    console.log("Size: "+size);
+                                                                               },
+                                                                               function(error)
+                                                                               {
+                                                                               alert('InsertIntoStringArray: '+error);
+                                                                               }
+                                                                               );
+                                           
+                //insert into an object array
+                window.plugins.sync.insertIntoArray(channel,newoid,'messages','{"from":"from@test.com","to":"to@test.com","message":"you got mail"}',
+                                                                               function(size)
+                                                                               {
+                                                                                    console.log("Size: "+size);
+                                                                               },
+                                                                               function(error)
+                                                                               {
+                                                                               alert('InsertIntoObjectArray: '+error);
+                                                                               }
+                                                                               );
+                
+                
+            },
+            function(error)
+            {
+                alert('Error AddNewBean: '+error);
+            }
+            );
+            
+            //Commit here
+            window.plugins.sync.commit(function(success)
+            {
+               console.log('Commit successful');
+            },
+            function(error){});
+        }
+        
+        function clearArray(channel)
+        {
+            window.plugins.sync.readall(channel,
+            function(oids)
+            {
+              oids = JSON.parse(oids);
+              var length = oids.length;
+              for(var i=0; i<length; i++)
+              {
+                var oid = oids[i];
+                                        
+                //clear the string array
+                window.plugins.sync.clearArray(channel,oid,'customers',
+                function(success)
+                {
+                   window.plugins.sync.arrayLength(channel,oid,'customers',
+                   function(arrayLength)
+                   {
+                     console.log('String ArrayLength: '+arrayLength);
+                   },
+                   function(error)
+                   {
+                      alert('StringArrayLength: '+error);
+                   }
+                  );
+                },
+                function(error)
+                {
+                  alert('ClearStringArray: '+error);
+                }
+                );  
+                                        
+                
+                //clear the object array
+                window.plugins.sync.clearArray(channel,oid,'messages',
+                function(success)
+                {
+                   window.plugins.sync.arrayLength(channel,oid,'messages',
+                   function(arrayLength)
+                   {
+                     console.log('Object ArrayLength: '+arrayLength);
+                   },
+                   function(error)
+                   {
+                      alert('Object ArrayLength: '+error);
+                   }
+                   );
+                },
+                function(error)
+                {
+                   alert('ClearObjectArray: '+error);
+                }
+                );
+              }
+                                        
+              //Commit here
+              window.plugins.sync.commit(function(success)
+              {
+                console.log('Commit successful');
+              },
+              function(error){});
+            },
+            function(error)
+            {
+              alert('Error ClearArray: '+error);
+            }
+           );
+        }
+        
+        function deleteBean(channel)
+        {
+            window.plugins.sync.readall(channel,
+            function(success)
+            {
+               if(success == '0')
+               {
+                 return;
+               }
+               var oids = JSON.parse(success);
+               var length = oids.length;
+               for(var i=0; i<length; i++)
+               {
+                 var oid = oids[i];
+                                        
+                 //delete this bean
+                 window.plugins.sync.deleteBean(channel,oid,
+                 function(success){
+                 },
+                 function(error){
+                   alert(error);
+                 }
+                 );
+               }
+            },
+            function(error)
+            {
+              alert(error);
+            }
+            );
+            
+            //commit
+            window.plugins.sync.commit(function(success)
+                                       {
+                                        console.log('Commit successful');
+                                       },
+                                       function(error){});
+        }
+        
+        function testValue(channel)
+        {
+            window.plugins.sync.readall(channel,
+            function(oids)
+            {
+                oids = JSON.parse(oids);
+                var length = oids.length;
+                for(var i=0; i<length; i++)
+                {
+                   var oid = oids[i];
+                                        
+                   //read the value of 'title'
+                   window.plugins.sync.value(channel,oid,'title',
+                   function(titleValue)
+                   {
+                        console.log('Title: '+titleValue);
+                   },
+                   function(error)
+                   {
+                        alert('Title Error :'+error);
+                   }
+                   );
+                                        
+                   //read the customers array
+                   for(var j=0; j<4; j++)
+                   {
+                     var customerUri = 'customers['+j+']';
+                     window.plugins.sync.value(channel,oid,customerUri,
+                     function(customerValue)
+                     {
+                        console.log('Customer: '+customerValue);
+                     },
+                     function(error)
+                     {
+                        alert('Customer Error: '+error);
+                     }
+                     );
+                    }
+                    
+                    //read the messages array
+                    for(var j=0; j<5; j++)
+                    {
+                        var messageFrom = 'messages['+j+'].from';
+                        var messageTo = 'messages['+j+'].to';
+                        var message = 'messages['+j+'].message';
+                        
+                        //from
+                        window.plugins.sync.value(channel,oid,messageFrom,
+                        function(from)
+                        {
+                            console.log('From: '+from);
+                        },
+                        function(error)
+                        {
+                            alert('Message From Error: '+error);
+                        }
+                        );
+                        
+                        //to
+                        window.plugins.sync.value(channel,oid,messageTo,
+                        function(to)
+                        {
+                            console.log('To: '+to);
+                        },
+                        function(error)
+                        {
+                            alert('Message To Error: '+error);
+                        }
+                        );
+                        
+                        //message
+                        window.plugins.sync.value(channel,oid,message,
+                        function(message)
+                        {
+                            console.log('Message: '+message);
+                        },
+                        function(error)
+                        {
+                            alert('Message Error: '+error);
+                        }
+                        );
+
+                    }
+                }
+            },
+            function(error)
+            {
+                alert('Error ReadAll: '+error);                        
+            }
+            );
+        }
+        
+        function queryByMatchAll(channel,criteria)
+        {
+		window.plugins.sync.queryByMatchAll(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByMatchAll Error: '+error);
+			}
+		);
+        }
+        
+        function queryByMatchOne(channel,criteria)
+        {
+		window.plugins.sync.queryByMatchOne(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByMatchOne Error: '+error);
+			}
+		);
+        }
+        
+        function queryByNotMatchAll(channel,criteria)
+        {
+		window.plugins.sync.queryByNotMatchAll(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchAll Error: '+error);
+			}
+		);
+        }
+        
+        function queryByNotMatchOne(channel,criteria)
+        {
+		window.plugins.sync.queryByNotMatchOne(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByNotMatchOne Error: '+error);
+			}
+		);
+        }
+        
+        function queryByContainsAll(channel,criteria)
+        {
+		window.plugins.sync.queryByContainsAll(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByContainsAll Error: '+error);
+			}
+		);
+        }
+        
+        function queryByContainsOne(channel,criteria)
+        {
+		window.plugins.sync.queryByContainsOne(channel,'{"title":"'+criteria+'"}',
+			function(success)
+			{
+				if(success == '0')
+				{
+					alert('No Records Found!!!');
+					return;
+				}
+				
+				var oids = JSON.parse(success);
+				var length = oids.length;
+				for(var i=0; i<length; i++)
+				{
+					var oid = oids[i];
+					
+					window.plugins.sync.value(channel,oid,'title',
+						function(value)
+						{
+							console.log('Title: '+value);
+						},
+						function(error)
+						{
+							alert('Read Title Error: '+error);
+						}
+				    );
+					
+				}
+			},
+			function(error)
+			{
+				alert('QueryByContainsOne Error: '+error);
+			}
+		);
+        }
+    </script>
+  </head>
+  <body onload="onBodyLoad()">
+	<h1>Hey, it's Cordova!</h1>
+	<p>Don't know how to get started? Check out our <em><a target="_blank" href="http://docs.phonegap.com/en/1.4.1/guide_getting-started_ios_index.md.html#Getting%20Started%20with%20iOS">Getting Started Guide</a></em>
+	<br />
+	<ol>
+		<li>Check your console log for any white-list rejection errors.</li>
+		<li>Add your allowed <strong>hosts</strong> in Cordova.plist/ExternalHosts (wildcards OK, don't enter the URL scheme)</li>
+	</ol>
+    <p><input type='button' value='Test UpdateBean' onclick='javascript:updateBean("phonegap_channel");'/></p>
+    <p><input type='button' value='Test Add New Bean' onclick='javascript:addNewBean("phonegap_channel");'/></p>
+    <p><input type='button' value='Test Clear Array' onclick='javascript:clearArray("phonegap_channel");'/></p>
+    <p><input type='button' value='Test Delete Bean' onclick='javascript:deleteBean("phonegap_channel");'/></p>
+    <p><input type='button' value='Test Value' onclick='javascript:testValue("phonegap_channel");'/></p>
+    <p><input type='button' value='Query By Match All' onclick='javascript:queryByMatchAll("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Match One' onclick='javascript:queryByMatchOne("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Not Match All' onclick='javascript:queryByNotMatchAll("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Not Match One' onclick='javascript:queryByNotMatchOne("phonegap_channel","title://2");'/></p>
+    <p><input type='button' value='Query By Contains All' onclick='javascript:queryByContainsAll("phonegap_channel","title");'/></p>
+    <p><input type='button' value='Query By Contains One' onclick='javascript:queryByContainsOne("phonegap_channel","://");'/></p>
+  </body>
+</html>
