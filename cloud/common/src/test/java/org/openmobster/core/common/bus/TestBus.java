@@ -55,6 +55,7 @@ public class TestBus extends TestCase
 		//As we are not using a JNDI environment we instantiate the objects directly         
         this.sessionFactory = new ClientSessionFactoryImpl (new TransportConfiguration(
         InVMConnectorFactory.class.getName()));
+        this.sessionFactory.setMinLargeMessageSize(1000000000); //a gig
         
         // Create a core queue
         ClientSession coreSession = this.sessionFactory.createSession(false, false, false);        
@@ -75,7 +76,17 @@ public class TestBus extends TestCase
 	public void testSimpleCoreScenario() throws Exception
 	{
 		final String propName = "myprop";
-		final String msg = "Hello Queue!!!";
+		final String msg;
+		
+		StringBuilder buffer = new StringBuilder();
+		for(int i=0;i<1024; i++)
+		{
+			for(int j=0; j<1000; j++)
+			{
+				buffer.append("a");
+			}
+		}
+		msg = buffer.toString();
 		
 		//Publish a message				
         ClientSession session = null;
