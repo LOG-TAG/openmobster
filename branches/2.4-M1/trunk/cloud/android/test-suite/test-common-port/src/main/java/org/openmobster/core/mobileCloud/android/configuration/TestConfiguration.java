@@ -33,7 +33,6 @@ public class TestConfiguration extends Test
 			
 			Database.getInstance(context).dropTable(Database.provisioning_table);
 			Database.getInstance(context).createTable(Database.provisioning_table);
-			Database.getInstance(context).insert(Database.provisioning_table, new Record());
 		}
 		catch(Exception e)
 		{
@@ -55,12 +54,18 @@ public class TestConfiguration extends Test
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			throw new RuntimeException(e);
 		}
 	}
 
 	private void testConfiguration(Context context) throws Exception
 	{	
 		Configuration configuration = Configuration.getInstance(context);
+		
+		System.out.println("Upon Load-----------------------------------------------------");
+		System.out.println("DeviceId: "+configuration.getDeviceId());
+		System.out.println("Port: "+configuration.decidePort());
+		System.out.println("Auth: "+configuration.getAuthenticationHash());
 		
 		configuration.setDeviceId("IMEI:1234");
 		configuration.activateSSL();

@@ -10,30 +10,20 @@ package org.openmobster.core.mobileCloud.android.configuration;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 import android.content.Context;
-import android.content.ContentResolver;
-import android.net.Uri;
-import android.database.Cursor;
-import android.content.ContentValues;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.storage.Database;
+import org.openmobster.core.mobileCloud.android.storage.Record;
 
 /**
- * Concurrency Marker: Inter-App Shared State component
  * 
  * @author openmobster@gmail.com
  */
 public class Configuration
-{
-	private static final Uri uri;
-	
-	static
-	{
-		uri = Uri.
-		parse("content://org.openmobster.core.mobileCloud.android.provider.configuration");
-	}
-	
+{	
 	private static Configuration singleton;
 	
 	private String deviceId;
@@ -337,61 +327,27 @@ public class Configuration
 	{
 		try
 		{			
-			ContentResolver resolver = context.getContentResolver();
-			ContentValues provisioningRecord = new ContentValues();
-					
-			if(this.deviceId != null)
-			{
-				provisioningRecord.put("deviceId", this.deviceId);
-			}
-			if(this.serverId != null)
-			{
-				provisioningRecord.put("serverId", this.serverId);
-			}
-			if(this.serverIp != null)
-			{
-				provisioningRecord.put("serverIp", this.serverIp);
-			}
-			if(this.plainServerPort != null)
-			{
-				provisioningRecord.put("plainServerPort", this.plainServerPort);
-			}
-			if(this.secureServerPort != null)
-			{
-				provisioningRecord.put("secureServerPort", this.secureServerPort);
-			}			
-			if(this.authenticationHash != null)
-			{
-				provisioningRecord.put("authenticationHash", this.authenticationHash);
-			}
-			if(this.authenticationNonce != null)
-			{
-				provisioningRecord.put("authenticationNonce", this.authenticationNonce);
-			}
-			if(this.email != null)
-			{
-				provisioningRecord.put("email", this.email);
-			}			
-			if(this.cometMode != null)
-			{
-				provisioningRecord.put("cometMode", this.cometMode);
-			}
-			provisioningRecord.put("cometPollInterval", ""+this.cometPollInterval);
+			Database database = Database.getInstance(context);
 			
-			provisioningRecord.put("isSSLActive", ""+this.isSSLActive);
-			provisioningRecord.put("maxPacketSize", ""+this.maxPacketSize);
-			provisioningRecord.put("isActive", ""+this.isActive);
-			provisioningRecord.put("isSSLCertStored", ""+this.isSSLCertStored);
-			
-			if(this.httpPort != null)
+			Set<Record> all = database.selectAll(Database.provisioning_table);
+			if(all == null || all.isEmpty())
 			{
-				provisioningRecord.put("httpPort", this.httpPort);
-			}		
-									
-			//persist myChannels
-			this.serializeChannels(provisioningRecord);
-			
-			resolver.insert(uri, provisioningRecord);
+				//insert
+				Record provisioningRecord = new Record();
+				this.prepareRecord(provisioningRecord);
+				
+				database.insert(Database.provisioning_table, 
+				provisioningRecord);
+			}
+			else
+			{
+				//update
+				Record provisioningRecord = all.iterator().next();
+				this.prepareRecord(provisioningRecord);
+				
+				database.update(Database.provisioning_table, 
+				provisioningRecord);
+			}
 		}
 		catch(Exception e)
 		{
@@ -405,112 +361,14 @@ public class Configuration
 	{
 		try
 		{
-			ContentResolver resolver = context.getContentResolver();
-							
-			Cursor cursor = resolver.query(uri, 
-			null, 
-			null, 
-			null, 
-			null);
+			Database database = Database.getInstance(context);
 			
-			if(cursor == null || cursor.getCount()==0)
+			Set<Record> all = database.selectAll(Database.provisioning_table);
+			if(all != null && !all.isEmpty())
 			{
-				return;
-			}
-			
-			this.myChannels = new ArrayList<String>();
-			int nameIndex = cursor.getColumnIndex("name");
-			int valueIndex = cursor.getColumnIndex("value");
-			cursor.moveToFirst();			
-			do
-			{
-				String name = cursor.getString(nameIndex);
-				String value = cursor.getString(valueIndex);
+				Record provisioningRecord = all.iterator().next();
 				
-				if(name.equals("deviceId"))
-				{
-					this.deviceId = value;
-				}
-				else if(name.equals("serverId"))
-				{
-					this.serverId = value;
-				}
-				else if(name.equals("serverIp"))
-				{
-					this.serverIp = value;
-				}
-				else if(name.equals("plainServerPort"))
-				{
-					this.plainServerPort = value;
-				}
-				else if(name.equals("secureServerPort"))
-				{
-					this.secureServerPort = value;
-				}
-				else if(name.equals("authenticationHash"))
-				{
-					this.authenticationHash = value;
-				}
-				else if(name.equals("authenticationNonce"))
-				{
-					this.authenticationNonce = value;
-				}
-				else if(name.equals("email"))
-				{
-					this.email = value;
-				}
-				else if(name.equals("cometMode"))
-				{
-					this.cometMode = value;
-				}
-				else if(name.equals("httpPort"))
-				{
-					this.httpPort = value;
-				}
-				else if(name.equals("cometPollInterval"))
-				{
-					this.cometPollInterval = Long.parseLong(value);
-				}
-				else if(name.equals("maxPacketSize"))
-				{
-					this.maxPacketSize = Integer.parseInt(value);
-				}
-				else if(name.equals("isSSLActive"))
-				{
-					this.isSSLActive = value.equals("true")?
-					Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
-				}
-				else if(name.equals("isActive"))
-				{
-					this.isActive = value.equals("true")?
-					Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
-				}
-				else if(name.equals("isSSLCertStored"))
-				{
-					this.isSSLCertStored = value.equals("true")?
-					Boolean.TRUE.booleanValue():Boolean.FALSE.booleanValue();
-				}
-				else if(name.startsWith("myChannels["))
-				{
-					this.myChannels.add(value);
-				}
-				
-				cursor.moveToNext();
-			}while(!cursor.isAfterLast());
-																											
-			//This is default out-of-the-box server configuration
-			if(this.plainServerPort == null || this.plainServerPort.trim().length() == 0)
-			{
-				this.plainServerPort = "1502"; //non-ssl port for the cloud server
-			}
-			if(this.secureServerPort == null || this.secureServerPort.trim().length() == 0)
-			{
-				this.secureServerPort = "1500"; //ssl port for the cloud server
-			}
-			
-			if(this.httpPort == null || this.httpPort.trim().length() == 0)
-			{
-				this.httpPort = "80"; //http port by default
+				this.prepareConfiguration(provisioningRecord);
 			}
 		}
 		catch(Exception e)
@@ -521,7 +379,82 @@ public class Configuration
 		}
 	}
 	
-	private void serializeChannels(ContentValues record)
+	private void prepareRecord(Record provisioningRecord)
+	{
+		if(this.deviceId != null)
+		{
+			provisioningRecord.setValue("deviceId", this.deviceId);
+		}
+		
+		if(this.serverId != null)
+		{
+			provisioningRecord.setValue("serverId", this.serverId);
+		}
+		
+		if(this.serverIp != null)
+		{
+			provisioningRecord.setValue("serverIp", this.serverIp);
+		}
+		
+		if(this.plainServerPort != null)
+		{
+			provisioningRecord.setValue("plainServerPort", this.plainServerPort);
+		}
+		
+		if(this.secureServerPort != null)
+		{
+			provisioningRecord.setValue("secureServerPort", this.secureServerPort);
+		}
+		
+		if(this.authenticationHash != null)
+		{
+			provisioningRecord.setValue("authenticationHash", this.authenticationHash);
+		}
+		else
+		{
+			provisioningRecord.removeValue("authenticationHash");
+		}
+		
+		if(this.authenticationNonce != null)
+		{
+			provisioningRecord.setValue("authenticationNonce", this.authenticationNonce);
+		}
+		else
+		{
+			provisioningRecord.removeValue("authenticationNonce");
+		}
+		
+		if(this.email != null)
+		{
+			provisioningRecord.setValue("email", this.email);
+		}
+		
+		if(this.cometMode != null)
+		{
+			provisioningRecord.setValue("cometMode", this.cometMode);
+		}
+		
+		provisioningRecord.setValue("cometPollInterval", ""+this.cometPollInterval);
+		
+		if(this.httpPort != null)
+		{
+			provisioningRecord.setValue("httpPort", this.httpPort);
+		}
+				
+		provisioningRecord.setValue("isSSLActive", 
+		""+this.isSSLActive);
+		
+		provisioningRecord.setValue("maxPacketSize", 
+		""+this.maxPacketSize);
+		
+		provisioningRecord.setValue("isActive", ""+this.isActive);
+		
+		provisioningRecord.setValue("isSSLCertStored", ""+this.isSSLCertStored);
+		
+		this.serializeChannels(provisioningRecord);
+	}
+	
+	private void serializeChannels(Record record)
 	{
 		if(this.myChannels == null || this.myChannels.isEmpty())
 		{
@@ -529,11 +462,71 @@ public class Configuration
 		}
 		
 		int channelCount = this.myChannels.size();
-		record.put("myChannels:size", ""+channelCount);
+		record.setValue("myChannels:size", ""+channelCount);
 		int i = 0;
 		for(String channel: this.myChannels)
 		{
-			record.put("myChannels["+(i++)+"]", channel);
+			record.setValue("myChannels["+(i++)+"]", channel);
+		}
+	}
+	
+	private void prepareConfiguration(Record record)
+	{				
+		this.deviceId = record.getValue("deviceId");
+		this.serverId = record.getValue("serverId");
+		this.serverIp = record.getValue("serverIp");
+		this.plainServerPort = record.getValue("plainServerPort");
+		this.secureServerPort = record.getValue("secureServerPort");
+		this.authenticationHash = record.getValue("authenticationHash");
+		this.authenticationNonce = record.getValue("authenticationNonce");
+		this.email = record.getValue("email");
+		this.cometMode = record.getValue("cometMode");
+		this.httpPort = record.getValue("httpPort");
+		
+		String cometPollIntervalStr = record.getValue("cometPollInterval");
+		if(cometPollIntervalStr != null && cometPollIntervalStr.trim().length()>0)
+		{
+			this.cometPollInterval = Long.parseLong(cometPollIntervalStr);			
+		}
+		
+		String maxPacketSizeStr = record.getValue("maxPacketSize");
+		if(maxPacketSizeStr != null && maxPacketSizeStr.trim().length()>0)
+		{
+			this.maxPacketSize = Integer.parseInt(maxPacketSizeStr);
+		}
+				
+		String sslStatus = record.getValue("isSSLActive");
+		if(sslStatus != null && sslStatus.trim().length()>0)
+		{
+			this.isSSLActive = Boolean.parseBoolean(sslStatus);
+		}
+						
+		String isActiveStr = record.getValue("isActive");
+		if(isActiveStr != null && isActiveStr.trim().length()>0)
+		{
+			this.isActive = Boolean.parseBoolean(isActiveStr);
+		}
+		
+		String isSSLCertStoredStr = record.getValue("isSSLCertStored");
+		if(isSSLCertStoredStr != null && isSSLCertStoredStr.trim().length()>0)
+		{
+			isSSLCertStored = Boolean.parseBoolean(isSSLCertStoredStr);
+		}
+		
+		this.prepareChannels(record);
+	}
+	
+	private void prepareChannels(Record record)
+	{
+		String cour = record.getValue("myChannels:size");
+		if(cour != null && cour.trim().length()>0)
+		{
+			int channelCount = Integer.parseInt(cour);
+			for(int i=0; i<channelCount; i++)
+			{
+				String channel = record.getValue("myChannels["+i+"]");
+				this.addMyChannel(channel);
+			}
 		}
 	}
 }
