@@ -8,11 +8,13 @@
 
 package org.openmobster.core.mobileCloud.android.module.mobileObject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
 import org.openmobster.core.mobileCloud.android.testsuite.Test;
+import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
 /**
  * @author openmobster@gmail.com
@@ -30,11 +32,19 @@ public class TestMobileChannelProvider extends Test
 			Set<String> ids = new HashSet<String>();
 			for(int i=0; i<5; i++)
 			{
-				String id = this.testInsert();
+				String id = this.testInsert(i);
 				ids.add(id);
 			}
 						
 			this.testQueryAll();
+			
+			//test query interface
+			this.testQueryByEqualsAll();
+			this.testQueryByEqualsAtleastOne();
+			this.testQueryByNotEqualsAll();
+			this.testQueryByNotEqualsAtleastOne();
+			this.testQueryByContainsAll();
+			this.testQueryByContainsAtleastOne();
 			
 			String id = ids.iterator().next();
 			this.testQuery(id);
@@ -50,13 +60,16 @@ public class TestMobileChannelProvider extends Test
 		}
 	}
 	
-	private String testInsert()
+	private String testInsert(int index)
 	{
 		MobileObject mobileObject = new MobileObject();
 		mobileObject.setStorageId("email");
 		mobileObject.setCreatedOnDevice(false);
 		mobileObject.setLocked(false);
 		mobileObject.setProxy(false);
+		mobileObject.setValue("to", "to://"+index);
+		mobileObject.setValue("from", "from");
+		mobileObject.setValue("subject", "subject://"+index);
 		
 		String id = MobileObjectDatabase.getInstance().
 		create(mobileObject);
@@ -76,6 +89,9 @@ public class TestMobileChannelProvider extends Test
 			System.out.println("--------------------------------------------------");
 			System.out.println("RecordId: "+mo.getRecordId());
 			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
 			System.out.println("--------------------------------------------------");
 		}		
 	}
@@ -119,5 +135,227 @@ public class TestMobileChannelProvider extends Test
 		
 		Set<MobileObject> all = database.readAll("email");	
 		assertTrue(all == null || all.isEmpty(),"testDeleteAll://ChannelShouldBeEmpty");
+	}
+	
+	private void testQueryByEqualsAll()
+	{
+		GenericAttributeManager input = new GenericAttributeManager();
+		
+		input.setAttribute("logicLink", new Integer(LogicChain.AND));
+		
+		List<LogicExpression> expressions = new ArrayList<LogicExpression>();
+		input.setAttribute("expressions", expressions);
+		
+		String lhs = "to";
+		String rhs = "to://2";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_EQUALS));
+		
+		lhs = "from";
+		rhs = "from";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_EQUALS));
+		
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
+				query("email", input);
+		
+		int number_of_objects_found = result.size();
+		this.assertEquals(""+number_of_objects_found, "1", this.getInfo()+"/testQueryByEquals/OneObjectShouldBeFound");
+		
+		for(MobileObject mo:result)
+		{
+			System.out.println("-------------------testQueryByEqualsAll-------------------------------");
+			System.out.println("RecordId: "+mo.getRecordId());
+			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
+			System.out.println("-------------------------------------------------------------------");
+		}
+	}
+	
+	private void testQueryByEqualsAtleastOne()
+	{
+		GenericAttributeManager input = new GenericAttributeManager();
+		
+		input.setAttribute("logicLink", new Integer(LogicChain.OR));
+		
+		List<LogicExpression> expressions = new ArrayList<LogicExpression>();
+		input.setAttribute("expressions", expressions);
+		
+		String lhs = "to";
+		String rhs = "to://2";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_EQUALS));
+		
+		lhs = "from";
+		rhs = "from";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_EQUALS));
+		
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
+				query("email", input);
+		
+		int number_of_objects_found = result.size();
+		this.assertEquals(""+number_of_objects_found, "5", this.getInfo()+"/testQueryByEqualsAtleastOne/AllObjectsShouldBeFound");
+		
+		for(MobileObject mo:result)
+		{
+			System.out.println("-------------------testQueryByEqualsAtleastOne-------------------------------");
+			System.out.println("RecordId: "+mo.getRecordId());
+			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
+			System.out.println("-----------------------------------------------------------------------------");
+		}
+	}
+	
+	private void testQueryByNotEqualsAll()
+	{
+		GenericAttributeManager input = new GenericAttributeManager();
+		
+		input.setAttribute("logicLink", new Integer(LogicChain.AND));
+		
+		List<LogicExpression> expressions = new ArrayList<LogicExpression>();
+		input.setAttribute("expressions", expressions);
+		
+		String lhs = "to";
+		String rhs = "to://2";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_NOT_EQUALS));
+		
+		lhs = "subject";
+		rhs = "subject";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_NOT_EQUALS));
+		
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
+				query("email", input);
+		
+		int number_of_objects_found = result.size();
+		this.assertEquals(""+number_of_objects_found, "4", this.getInfo()+"/testQueryByNotEqualsAll/OneObjectShouldBeLeftBehind");
+		
+		for(MobileObject mo:result)
+		{
+			System.out.println("-------------------testQueryByNotEqualsAll-------------------------------");
+			System.out.println("RecordId: "+mo.getRecordId());
+			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
+			System.out.println("-------------------------------------------------------------------");
+		}
+	}
+	
+	private void testQueryByNotEqualsAtleastOne()
+	{
+		GenericAttributeManager input = new GenericAttributeManager();
+		
+		input.setAttribute("logicLink", new Integer(LogicChain.OR));
+		
+		List<LogicExpression> expressions = new ArrayList<LogicExpression>();
+		input.setAttribute("expressions", expressions);
+		
+		String lhs = "to";
+		String rhs = "to://2";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_NOT_EQUALS));
+		
+		lhs = "subject";
+		rhs = "subject";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_NOT_EQUALS));
+		
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
+				query("email", input);
+		
+		int number_of_objects_found = result.size();
+		this.assertEquals(""+number_of_objects_found, "5", this.getInfo()+"/testQueryByNotEqualsAtleastOne/AllObjectsShouldBeFound");
+		
+		for(MobileObject mo:result)
+		{
+			System.out.println("-------------------testQueryByNotEqualsAtleastOne-------------------------------");
+			System.out.println("RecordId: "+mo.getRecordId());
+			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
+			System.out.println("-------------------------------------------------------------------");
+		}
+	}
+	
+	private void testQueryByContainsAll()
+	{
+		GenericAttributeManager input = new GenericAttributeManager();
+		
+		input.setAttribute("logicLink", new Integer(LogicChain.AND));
+		
+		List<LogicExpression> expressions = new ArrayList<LogicExpression>();
+		input.setAttribute("expressions", expressions);
+		
+		String lhs = "to";
+		String rhs = "://";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_CONTAINS));
+		
+		lhs = "subject";
+		rhs = "mustnotmatchany";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_CONTAINS));
+		
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
+				query("email", input);
+		
+		int number_of_objects_found = result.size();
+		this.assertEquals(""+number_of_objects_found, "0", this.getInfo()+"/testQueryByContainsAll/NoneShouldBeFound");
+		
+		for(MobileObject mo:result)
+		{
+			System.out.println("-------------------testQueryByContainsAll-------------------------------");
+			System.out.println("RecordId: "+mo.getRecordId());
+			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
+			System.out.println("-------------------------------------------------------------------");
+		}
+	}
+	
+	private void testQueryByContainsAtleastOne()
+	{
+		GenericAttributeManager input = new GenericAttributeManager();
+		
+		input.setAttribute("logicLink", new Integer(LogicChain.OR));
+		
+		List<LogicExpression> expressions = new ArrayList<LogicExpression>();
+		input.setAttribute("expressions", expressions);
+		
+		String lhs = "to";
+		String rhs = "://";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_CONTAINS));
+		
+		lhs = "subject";
+		rhs = "mustnotmatchany";
+		expressions.add(LogicExpression.
+		createInstance(lhs, rhs, LogicExpression.OP_CONTAINS));
+		
+		Set<MobileObject> result = MobileObjectDatabase.getInstance().
+				query("email", input);
+		
+		int number_of_objects_found = result.size();
+		this.assertEquals(""+number_of_objects_found, "5", this.getInfo()+"/testQueryByContainsAtleastOne/AllShouldBeFound");
+		
+		for(MobileObject mo:result)
+		{
+			System.out.println("-------------------testQueryByContainsAtleastOne-------------------------------");
+			System.out.println("RecordId: "+mo.getRecordId());
+			System.out.println("Channel: "+mo.getStorageId());
+			System.out.println("To: "+mo.getValue("to"));
+			System.out.println("From: "+mo.getValue("from"));
+			System.out.println("Subject: "+mo.getValue("subject"));
+			System.out.println("-------------------------------------------------------------------");
+		}
 	}
 }

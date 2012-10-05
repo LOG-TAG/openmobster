@@ -10,20 +10,15 @@ package org.openmobster.core.mobileCloud.android.module.mobileObject;
 
 import java.util.List;
 import java.util.Set;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.HashSet;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.content.ContentValues;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
+import org.openmobster.core.mobileCloud.android.storage.DBException;
+import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.android.storage.Record;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
@@ -33,10 +28,6 @@ import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
  */
 public final class MobileObjectDatabase extends Service
 {		
-	public static String storageId = "storageId";
-	public static String recordId = "recordId";
-	public static String syncOperation = "syncOperation";
-	
 	public MobileObjectDatabase()
 	{	
 	}
@@ -61,25 +52,22 @@ public final class MobileObjectDatabase extends Service
 		try
 		{
 			Set<MobileObject> objects = new HashSet<MobileObject>();
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+channel);
 			Context context = Registry.getActiveInstance().getContext();
 			
-			ContentResolver resolver = context.getContentResolver();
-			Cursor cursor = resolver.query(uri, 
-			null, 
-			null, 
-			null, 
-			null);
-			
-			objects = this.parse(cursor);
+			//read all the rows
+			Set<Record> all = Database.getInstance(context).
+			selectAll(channel);
+			if(all != null)
+			{
+				objects = this.parse(all);
+			}
 			
 			return objects;
 		}
 		catch(Exception e)
 		{
 			throw new SystemException(this.getClass().getName(), "readAll", new Object[]{
-				storageId,
+				channel,
 				"Exception="+e.toString(),
 				"Error="+e.getMessage()
 			});
@@ -90,36 +78,20 @@ public final class MobileObjectDatabase extends Service
 	{
 		try
 		{			
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
-			channel);
 			Context context = Registry.getActiveInstance().getContext();
 			
-			ContentResolver resolver = context.getContentResolver();
-			Cursor cursor = resolver.query(uri, 
-			null, 
-			recordId, 
-			null, 
-			null);
-						
-			Set<MobileObject> all = this.parse(cursor);
-			if(all != null)
+			Record mobileObject = Database.getInstance(context).select(channel, recordId);
+			if(mobileObject == null)
 			{
-				for(MobileObject curr: all)
-				{	
-					if(curr.getRecordId().equals(recordId))
-					{
-						return curr;
-					}
-				}
+				return null;
 			}
 		
-			return null;
+			return new MobileObject(mobileObject);
 		}
 		catch(Exception e)
 		{
 			throw new SystemException(this.getClass().getName(), "read", new Object[]{
-				storageId, recordId,
+				channel, recordId,
 				"Exception="+e.toString(),
 				"Error="+e.getMessage()
 			});
@@ -146,19 +118,14 @@ public final class MobileObjectDatabase extends Service
 					mobileObject.setRecordId(mappedRecordId);
 				}
 			}*/					
-			
+			Context context = Registry.getActiveInstance().getContext();
 			String channel = mobileObject.getStorageId();
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
-			channel);
-			Context context = Registry.getActiveInstance().getContext();				
-			ContentResolver resolver = context.getContentResolver();
+			this.checkStorage(context,channel);
 			
-			ContentValues values = new ContentValues();
-			this.prepareForStorage(values, mobileObject.getRecord());
-			
-			Uri insertUri = resolver.insert(uri, values);
-			newId = insertUri.getQueryParameter("id");
+			Record insert = mobileObject.getRecord();
+			newId = Database.getInstance(context).insert(
+			channel, 
+			insert);
 			
 			return newId;
 		}
@@ -179,21 +146,23 @@ public final class MobileObjectDatabase extends Service
 		try
 		{
 			String channel = mobileObject.getStorageId();
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
-			channel);
+			String recordId = mobileObject.getRecordId();
 			Context context = Registry.getActiveInstance().getContext();				
-			ContentResolver resolver = context.getContentResolver();
+			Database database = Database.getInstance(context);
 			
-			ContentValues values = new ContentValues();
-			this.prepareForStorage(values, mobileObject.getRecord());
+			this.checkStorage(context,channel);	
 			
-			int resultCode = resolver.update(uri, values, null, null);
+			Record recordToBeUpdated = mobileObject.getRecord();
 			
-			if(resultCode == -1)
+			String dirtyStatus = recordToBeUpdated.getDirtyStatus();
+			if(dirtyStatus == null || dirtyStatus.trim().length() == 0)
 			{
-				throw new RuntimeException("Locking Error!!");
+				Record currentRecord = database.
+				select(channel, recordId);
+				recordToBeUpdated.setDirtyStatus(currentRecord.getDirtyStatus());
 			}
+			
+			database.update(channel, recordToBeUpdated);
 		}
 		catch(Exception e)
 		{
@@ -212,19 +181,13 @@ public final class MobileObjectDatabase extends Service
 		try
 		{
 			String channel = mobileObject.getStorageId();
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
-			channel);
 			Context context = Registry.getActiveInstance().getContext();				
-			ContentResolver resolver = context.getContentResolver();
+			Database database = Database.getInstance(context);
 			
-			int resultCode = resolver.delete(uri, mobileObject.getRecordId(), 
-			null);
+			String recordId = mobileObject.getRecordId();
 			
-			if(resultCode == -1)
-			{
-				throw new RuntimeException("Locking Error!!");
-			}
+			Record recordToBeDeleted = Database.getInstance(context).select(channel, recordId);				
+			database.delete(channel, recordToBeDeleted);
 		}
 		catch(Exception e)
 		{
@@ -238,23 +201,20 @@ public final class MobileObjectDatabase extends Service
 		}		
 	}
 	
-	public void deleteAll(String storageId)
+	public void deleteAll(String channel)
 	{
 		try
 		{
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+
-			storageId);
 			Context context = Registry.getActiveInstance().getContext();				
-			ContentResolver resolver = context.getContentResolver();
+			Database database = Database.getInstance(context);
 			
-			resolver.delete(uri, null, null);
+			database.deleteAll(channel);
 		}
 		catch(Exception e)
 		{
 			throw new SystemException(this.getClass().getName(), "deleteAll", new Object[]
    			{
-				"storageId="+storageId,
+				"storageId="+channel,
 				"error="+e.getMessage()
    			}
    			);
@@ -363,45 +323,38 @@ public final class MobileObjectDatabase extends Service
 		try
 		{
 			Set<MobileObject> objects = new HashSet<MobileObject>();
-			Uri uri = Uri.
-			parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.channels/"+channel);
 			Context context = Registry.getActiveInstance().getContext();
+			String value = expression.getRhs();
+			Set<Record> records = null;
+			Database database = Database.getInstance(context);
 			
-			String query = null;
 			switch(expression.getOp())
 			{
 				case LogicExpression.OP_EQUALS:
-					query = "query://equals";
+					records = database.selectByValue(channel, value);
 				break;
 				
 				case LogicExpression.OP_NOT_EQUALS:
-					query = "query://notequals";
+					records = database.selectByNotEquals(channel, value);
 				break;
 				
 				case LogicExpression.OP_CONTAINS:
-					query = "query://contains";
+					records = database.selectByContains(channel, value);
 				break;
 				
 				default:
-					query = "query://equals";
+					records = database.selectByValue(channel, value);
 				break;
 			}
 			
-			ContentResolver resolver = context.getContentResolver();
-			Cursor cursor = resolver.query(uri, 
-			null, 
-			query, 
-			new String[]{expression.getLhs()+"="+expression.getRhs()}, 
-			null);
-			
-			objects = this.parse(cursor);
+			objects = this.parse(records);
 			
 			return objects;
 		}
 		catch(Exception e)
 		{
-			throw new SystemException(this.getClass().getName(), "readAll", new Object[]{
-				storageId,
+			throw new SystemException(this.getClass().getName(), "logicExpressionBeans", new Object[]{
+				channel,
 				"Exception="+e.toString(),
 				"Error="+e.getMessage()
 			});
@@ -412,61 +365,27 @@ public final class MobileObjectDatabase extends Service
 	{
 		
 	}	
-	//-------------------------------------------------------------------------------------------
-	private Set<MobileObject> parse(Cursor cursor)
+	//-----------------------------------------------------------------------------------------------------------------------------------------------
+	private Set<MobileObject> parse(Set<Record> records)
 	{
 		Set<MobileObject> mobileObjects = new HashSet<MobileObject>();
 		
-		if(cursor != null && cursor.getCount()>0)
+		if(records != null && !records.isEmpty())
 		{			
-			int idIndex = cursor.getColumnIndex("recordId");
-			int nameIndex = cursor.getColumnIndex("name");
-			int valueIndex = cursor.getColumnIndex("value");
-			Map<String,Record> records = new HashMap<String,Record>();
-			
-			cursor.moveToFirst();
-			do
+			for(Record record:records)
 			{
-				String recordId = cursor.getString(idIndex);
-				String name = cursor.getString(nameIndex);
-				String value = cursor.getString(valueIndex);
-				
-				if(name.equals("recordId"))
-				{
-					Record record = new Record();
-					record.setRecordId(recordId);
-					records.put(recordId, record);
-				}
-				else
-				{
-					records.get(recordId).setValue(name, value);
-				}
-				
-				cursor.moveToNext();
-			}while(!cursor.isAfterLast());
-			
-			cursor.close();
-			
-			Set<String> recordIds = records.keySet();
-			for(String recordId:recordIds)
-			{
-				mobileObjects.add(
-				new MobileObject(records.get(recordId)));
+				mobileObjects.add(new MobileObject(record));
 			}
 		}
 		
 		return mobileObjects;
 	}
 	
-	private void prepareForStorage(ContentValues values, Record record)
+	private void checkStorage(Context context,String storageId) throws DBException
 	{
-		Set<String> names = record.getNames();
-		if(names != null)
+		if(!Database.getInstance(context).doesTableExist(storageId))
 		{
-			for(String name: names)
-			{
-				values.put(name, record.getValue(name));
-			}
-		}		
+			Database.getInstance(context).createTable(storageId);
+		}
 	}
 }
