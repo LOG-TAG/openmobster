@@ -19,7 +19,6 @@ import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Database;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncObjectGenerator;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.Daemon;
@@ -33,7 +32,6 @@ import org.openmobster.core.mobileCloud.android.module.connection.CommandProcess
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.module.dm.DeviceManager;
 
-import org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder;
 import org.openmobster.core.mobileCloud.android.invocation.MockInvocationHandler;
 import org.openmobster.core.mobileCloud.android.module.bus.MockBroadcastInvocationHandler;
 import org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler;
@@ -141,8 +139,7 @@ public final class DeviceContainer
 			LoadProxyDaemon.getInstance().scheduleProxyTask();*/
 			
 			//Core Low-Level Services		
-			services.add(new Bus());	
-			services.add(new IBinderManager());				
+			services.add(new Bus());			
 			services.add(new Daemon());	
 			services.add(new LoadProxyDaemon());	
 			
@@ -161,7 +158,6 @@ public final class DeviceContainer
 			services.add(new AppStateManager());
 			
 			//Invocation Handlers
-			services.add(new RegisterIBinder());
 			services.add(new MockInvocationHandler());
 			services.add(new MockBroadcastInvocationHandler());
 			services.add(new SyncInvocationHandler());									

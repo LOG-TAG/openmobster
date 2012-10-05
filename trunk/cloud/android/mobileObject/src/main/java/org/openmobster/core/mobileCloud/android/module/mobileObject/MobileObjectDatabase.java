@@ -47,12 +47,35 @@ public final class MobileObjectDatabase extends Service
 		return (MobileObjectDatabase)Registry.getActiveInstance().lookup(MobileObjectDatabase.class);
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------
+	public boolean isChannelBooted(String channel)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			boolean isTableEmpty = database.isTableEmpty(channel);
+			
+			return !(isTableEmpty);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "readAll", new Object[]{
+				channel,
+				"Exception="+e.toString(),
+				"Error="+e.getMessage()
+			});
+		}
+	}
+	
 	public Set<MobileObject> readAll(String channel)
 	{	
 		try
 		{
 			Set<MobileObject> objects = new HashSet<MobileObject>();
 			Context context = Registry.getActiveInstance().getContext();
+			this.checkStorage(context, channel);
 			
 			//read all the rows
 			Set<Record> all = Database.getInstance(context).
@@ -79,6 +102,7 @@ public final class MobileObjectDatabase extends Service
 		try
 		{			
 			Context context = Registry.getActiveInstance().getContext();
+			this.checkStorage(context, channel);
 			
 			Record mobileObject = Database.getInstance(context).select(channel, recordId);
 			if(mobileObject == null)
@@ -149,7 +173,6 @@ public final class MobileObjectDatabase extends Service
 			String recordId = mobileObject.getRecordId();
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			
 			this.checkStorage(context,channel);	
 			
 			Record recordToBeUpdated = mobileObject.getRecord();
@@ -183,6 +206,7 @@ public final class MobileObjectDatabase extends Service
 			String channel = mobileObject.getStorageId();
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
 			
 			String recordId = mobileObject.getRecordId();
 			
@@ -207,6 +231,7 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
 			
 			database.deleteAll(channel);
 		}
@@ -223,57 +248,72 @@ public final class MobileObjectDatabase extends Service
 	//---Query Integration------------------------------------------------------------------------------------------------------------------------------------------
 	public Set<MobileObject> query(String channel, GenericAttributeManager queryAttributes)
 	{
-		if(AppSystemConfig.getInstance().isEncryptionActivated())
+		try
 		{
-			return this.queryEncryptedMode(channel, queryAttributes);
-		}
-		
-		Set<MobileObject> result = new HashSet<MobileObject>();
-		
-		int logicLink = LogicChain.AND; //assumed by default
-		if(queryAttributes.getAttribute("logicLink")!=null)
-		{
-			logicLink = ((Integer)queryAttributes.getAttribute("logicLink")).intValue();
-		}
-		
-		List<LogicExpression> expressions = (List<LogicExpression>)queryAttributes.
-		getAttribute("expressions");
-		if(expressions != null && !expressions.isEmpty())
-		{
-			LogicChain chain = null;
-			switch(logicLink)
+			Context context = Registry.getActiveInstance().getContext();
+			this.checkStorage(context, channel);
+			
+			if(AppSystemConfig.getInstance().isEncryptionActivated())
 			{
-				case LogicChain.AND:
-					chain = LogicChain.createANDChain();					
-				break;
-				
-				case LogicChain.OR:
-					chain = LogicChain.createORChain();
-				break;
-				
-				default:
-				break;
+				return this.queryEncryptedMode(channel, queryAttributes);
 			}
-			if(chain != null)
+			
+			Set<MobileObject> result = new HashSet<MobileObject>();
+			
+			int logicLink = LogicChain.AND; //assumed by default
+			if(queryAttributes.getAttribute("logicLink")!=null)
 			{
-				for(LogicExpression courExpr:expressions)
+				logicLink = ((Integer)queryAttributes.getAttribute("logicLink")).intValue();
+			}
+			
+			List<LogicExpression> expressions = (List<LogicExpression>)queryAttributes.
+			getAttribute("expressions");
+			if(expressions != null && !expressions.isEmpty())
+			{
+				LogicChain chain = null;
+				switch(logicLink)
 				{
-					chain.add(courExpr);
+					case LogicChain.AND:
+						chain = LogicChain.createANDChain();					
+					break;
 					
-					//get beans that match this expression
-					Set<MobileObject> matchedBeans = this.logicExpressionBeans(channel,courExpr);
-					if(matchedBeans != null)
-					{
-						result.addAll(matchedBeans);
-					}
+					case LogicChain.OR:
+						chain = LogicChain.createORChain();
+					break;
+					
+					default:
+					break;
 				}
-				
-				Query query = Query.createInstance(chain);
-				result = query.executeQuery(result);
+				if(chain != null)
+				{
+					for(LogicExpression courExpr:expressions)
+					{
+						chain.add(courExpr);
+						
+						//get beans that match this expression
+						Set<MobileObject> matchedBeans = this.logicExpressionBeans(channel,courExpr);
+						if(matchedBeans != null)
+						{
+							result.addAll(matchedBeans);
+						}
+					}
+					
+					Query query = Query.createInstance(chain);
+					result = query.executeQuery(result);
+				}
 			}
+			
+			return result;
 		}
-		
-		return result;
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "query", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
 	}
 	
 	private Set<MobileObject> queryEncryptedMode(String channel, GenericAttributeManager queryAttributes)

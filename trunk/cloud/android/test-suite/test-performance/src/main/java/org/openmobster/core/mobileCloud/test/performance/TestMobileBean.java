@@ -51,8 +51,10 @@ public final class TestMobileBean implements RemoteCommand
 			//create perfbeans
 			if(!MobileBean.isBooted("perfbeans"))
 			{
+				System.out.println("Adding beans.........");
+				
 				long startTime = System.currentTimeMillis();
-				for(int i=0; i<100; i++)
+				for(int i=0; i<1000; i++)
 				{
 					MobileBean perfBean = MobileBean.newInstance("perfbeans");
 					
@@ -72,6 +74,8 @@ public final class TestMobileBean implements RemoteCommand
 					
 					//save the bean
 					perfBean.perfSave();
+					
+					System.out.println("Added Bean # "+i);
 				}
 				long endTime = System.currentTimeMillis();
 				System.out.println("WriteTime: "+(endTime-startTime));
@@ -82,11 +86,11 @@ public final class TestMobileBean implements RemoteCommand
 			
 			GenericAttributeManager criteria = new GenericAttributeManager();
 			criteria.setAttribute("name", "name://19");
-			//criteria.setAttribute("title", "title://20");
+			criteria.setAttribute("title", "title://19");
 			
 			//MobileBean[] all = MobileBean.readAll("perfbeans");
-			//MobileBean[] all = MobileBean.queryByEqualsAll("perfbeans", criteria);
-			MobileBean[] all = MobileBean.queryByNotEqualsAll("perfbeans", criteria);
+			MobileBean[] all = MobileBean.queryByEqualsAll("perfbeans", criteria);
+			//MobileBean[] all = MobileBean.queryByNotEqualsAll("perfbeans", criteria);
 			//MobileBean[] all = MobileBean.queryByContainsAll("perfbeans", criteria);
 			//MobileBean[] all = MobileBean.queryByEqualsAtleastOne("perfbeans", criteria);
 			//MobileBean[] all = MobileBean.queryByNotEqualsAtleastOne("perfbeans", criteria);
@@ -96,7 +100,7 @@ public final class TestMobileBean implements RemoteCommand
 			System.out.println("ReadTime: "+(readEndTime-readStartTime));
 			System.out.println("Number of Beans read: "+all.length);
 			
-			for(MobileBean local:all)
+			/*for(MobileBean local:all)
 			{
 				String name = local.getValue("name");
 				String title = local.getValue("title");
@@ -111,7 +115,7 @@ public final class TestMobileBean implements RemoteCommand
 				}
 				
 				System.out.println("*******************************");
-			}
+			}*/
 		}
 		catch(Exception e)
 		{
