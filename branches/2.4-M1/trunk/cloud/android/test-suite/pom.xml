@@ -30,5 +30,6 @@
 		<module>test-dm</module>
 		<module>test-performance</module>
 		<module>test-location</module>
+		<module>test-encryption</module>
 	</modules>
 </project>
