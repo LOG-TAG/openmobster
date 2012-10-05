@@ -26,18 +26,15 @@ import android.database.sqlite.SQLiteDatabase;
 public class DefaultCRUD implements CRUDProvider
 {
 	private SQLiteDatabase db;
-	private Map<String,Record> cache;
 	
 	public void init(SQLiteDatabase db)
 	{
 		this.db = db;
-		this.cache = new HashMap<String,Record>();
 	}
 	
 	public void cleanup()
 	{
 		this.db = null;
-		this.cache = null;
 	}
 	
 	public String insert(String table, Record record) throws DBException
@@ -120,9 +117,6 @@ public class DefaultCRUD implements CRUDProvider
 						record = new Record();
 						localCache.put(recordid, record);
 						all.add(record);
-						
-						//place object into a cache
-						this.cache.put(from+":"+recordid, record);
 					}
 					
 					record.setRecordId(recordid);
@@ -148,13 +142,7 @@ public class DefaultCRUD implements CRUDProvider
 		Cursor cursor = null;
 		try
 		{
-			//Read this from cache
-			Record record = this.cache.get(from+":"+recordId);
-			if(record != null)
-			{
-				return record;
-			}
-			
+			Record record = null;
 			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE recordid=?", new String[]{recordId});
 			
 			if(cursor.getCount() > 0)
@@ -175,9 +163,6 @@ public class DefaultCRUD implements CRUDProvider
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
-				
-				//place the object into a cache
-				this.cache.put(from+":"+record.getRecordId(), record);
 			}
 			
 			return record;
@@ -379,9 +364,6 @@ public class DefaultCRUD implements CRUDProvider
 			
 			String recordId = record.getRecordId();
 			
-			//invalidate the cacched copy if present
-			this.cache.remove(table+":"+recordId);
-			
 			Set<String> names = record.getNames();
 			
 			record.setDirtyStatus(GeneralTools.generateUniqueId());
@@ -420,9 +402,6 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			this.db.beginTransaction();
 			
-			//invalidate the cached object 
-			this.cache.remove(table+":"+record.getRecordId());
-			
 			//delete this record
 			String delete = "DELETE FROM "+table+" WHERE recordid='"+record.getRecordId()+"'";
 			this.db.execSQL(delete);
@@ -440,9 +419,6 @@ public class DefaultCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
-			
-			//clear the entire cache
-			this.cache.clear();
 			
 			//delete this record
 			String delete = "DELETE FROM "+table;

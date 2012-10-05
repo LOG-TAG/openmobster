@@ -102,6 +102,7 @@
 	<classpathentry kind="src" path="android/test-suite/test-dm/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-performance/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-location/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-encryption/src/main/java"/>
 	<classpathentry kind="src" path="android/ide_hack"/>
 	
 	<!-- PhoneGap plugin -->

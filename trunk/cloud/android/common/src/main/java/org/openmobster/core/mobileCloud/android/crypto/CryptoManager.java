@@ -7,12 +7,17 @@
  */
 package org.openmobster.core.mobileCloud.android.crypto;
 
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.crypto.KeyGenerator;
+
+import android.content.Context;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.Base64;
+import org.openmobster.core.mobileCloud.android.util.IOUtil;
 
 /**
  *
@@ -46,25 +51,13 @@ public final class CryptoManager
 	{
 		try
 		{
-			Uri uri = Uri.parse("content://org.openmobster.core.mobileCloud.android.provider.crypto.secret.key");
-			
-			//Read the secret key from the provider
-			ContentResolver resolver = Registry.getActiveInstance().getContext().getContentResolver();
-			Cursor cursor = resolver.query(uri, 
-					null, 
-					null, 
-					null, 
-					null);
-			
-			if(cursor == null || cursor.getCount()==0)
+			String secretKey = this.findSecretKeyOnLocalStorage();
+			if(secretKey == null)
 			{
-				this.stop();
-				return;
+				secretKey = this.generateSecretKey();
+				this.storeSecretKeyOnLocalStorage(secretKey);
+				secretKey = this.findSecretKeyOnLocalStorage();
 			}
-			
-			cursor.moveToFirst();
-			int index = cursor.getColumnIndex("secret-key");
-			String secretKey = cursor.getString(index);
 			
 			//set the secret key for the Cryptographer
 			byte[] secretKeyBytes = Base64.decode(secretKey);
@@ -81,5 +74,63 @@ public final class CryptoManager
 	{
 		Cryptographer.stop();
 		CryptoManager.singleton = null;
+	}
+	//---------------------------------------------------------------------------------------------------------------------
+	private String generateSecretKey() throws Exception
+	{
+		KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+		keyGenerator.init(256);
+		byte[] secretKey = keyGenerator.generateKey().getEncoded();
+		
+		return Base64.encodeBytes(secretKey);
+	}
+	
+	private String findSecretKeyOnLocalStorage() 
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		FileInputStream fis = null;
+		try
+		{
+			fis = context.openFileInput("misc");
+			byte[] buffer = IOUtil.read(fis);
+			
+			return new String(buffer);
+		}
+		catch(IOException ioe)
+		{
+			return null;
+		}
+		finally
+		{
+			if(fis != null)
+			{
+				try{fis.close();}catch(Exception e){}
+			}
+		}
+	}
+	
+	private boolean storeSecretKeyOnLocalStorage(String secretKey)
+	{
+		Context context = Registry.getActiveInstance().getContext();
+		FileOutputStream fos = null;
+		try
+		{
+			fos = context.openFileOutput("misc", Context.MODE_PRIVATE);
+			fos.write(secretKey.getBytes());
+			fos.flush();
+			
+			return true;
+		}
+		catch(IOException ioe)
+		{
+			return false;
+		}
+		finally
+		{
+			if(fos != null)
+			{
+				try{fos.close();}catch(Exception e){}
+			}
+		}
 	}
 }
