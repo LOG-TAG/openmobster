@@ -14,11 +14,7 @@ import java.util.ArrayList;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
 
 
 /**
@@ -29,18 +25,6 @@ import android.net.Uri;
  */
 public final class Registry
 {
-	private static final Uri containerUri;
-	
-	static
-	{
-		containerUri = Uri.
-		parse("content://org.openmobster.core.mobileCloud.android.provider.container");
-	}
-	private static String command = "command";
-	private static String status = "status";
-	private static String response = "response";
-	private static String success = "200";
-	
 	private static Registry singleton;
 	
 	private List<Service> services;
@@ -114,10 +98,7 @@ public final class Registry
 	
 	public synchronized void validateCloud()
 	{
-		if(!isContainer)
-		{
-			this.waitForContainer();
-		}
+		//Not Applicable...there just so that the API does not break
 	}
 	
 	/**
@@ -127,12 +108,6 @@ public final class Registry
 	 */
 	public synchronized void start(List<Service> initialServices)
 	{		
-		if(!isContainer)
-		{
-			//Wait for the container on the device to be started
-			this.waitForContainer();
-		}
-		
 		try
 		{	
 			this.services = new ArrayList<Service>();
@@ -143,14 +118,6 @@ public final class Registry
 				{
 					this.registerService(service);
 				}
-			}
-			
-			//Services are started....Make a container footprint so other possible waiting mobile applications
-			//depending on the successful start of this container can continue booting
-			if(isContainer)
-			{
-				//Make a container footprint
-				this.setContainerStatus(true);								
 			}
 			
 			this.isStarted = true;
@@ -196,18 +163,6 @@ public final class Registry
 		}
 		finally
 		{			
-			if(isContainer)
-			{
-				//Cleanup the container footprint on the device
-				try
-				{
-					this.setContainerStatus(false);
-				}
-				catch(Exception e)
-				{
-					//Ignore
-				}
-			}
 			this.isStarted = false;
 			Registry.singleton = null;
 		}
@@ -267,59 +222,6 @@ public final class Registry
 	private synchronized String getRegistrationId()
 	{
 		return String.valueOf(GeneralTools.generateUniqueId());
-	}
-	//---Stub Registry Code------------------------------------------------------------------------------------------------------------------------------------	
-	private void waitForContainer()
-	{	
-		try
-		{
-			ContentResolver resolver = context.getContentResolver();
-			Cursor cursor = resolver.query(containerUri, 
-					null, 
-					null, 
-					null, 
-					null);
-			
-			boolean status = false;
-			if(cursor!=null && cursor.getCount()>0)
-			{
-				cursor.moveToFirst();
-				int statusIndex = cursor.getColumnIndex("status");
-				String statusVal = cursor.getString(statusIndex);
-				status = Boolean.parseBoolean(statusVal);
-			}
-			
-			if(status)
-			{
-				return;
-			}
-			else
-			{
-				throw new SystemException(this.getClass().getName(), "waitForContainer", new Object[]
-	    		{				
-	    			"error=Container is stopped!!!"
-	    		}
-	    		);
-			}
-		}
-		catch(Exception e)
-		{
-			throw new SystemException(this.getClass().getName(), "waitForContainer", new Object[]
-    		{				
-    			"error=Container is stopped!!!"
-    		}
-    		);
-		}
-	}	
-	//------------Container Registry code----------------------------------------------------------------------------------------------------
-	private void setContainerStatus(boolean status) throws Exception
-	{
-		ContentResolver resolver = context.getContentResolver();
-		
-		ContentValues values = new ContentValues();
-		values.put("status", status);
-		
-		resolver.insert(containerUri, values);
 	}
 	
 	private void registerService(Service service)
