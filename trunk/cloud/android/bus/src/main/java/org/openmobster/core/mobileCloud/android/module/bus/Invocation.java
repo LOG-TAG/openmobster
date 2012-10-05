@@ -11,8 +11,6 @@ package org.openmobster.core.mobileCloud.android.module.bus;
 import java.util.Map;
 import java.util.HashMap;
 
-import org.openmobster.core.mobileCloud.android.util.GeneralTools;
-
 /**
  * @author openmobster@gmail.com
  *
@@ -21,8 +19,6 @@ public class Invocation
 {	
 	private String target;
 	private Map<String,Object> input;
-	private Object handshake;
-	private String destinationBus;
 	
 	public Invocation(String target)
 	{
@@ -60,51 +56,11 @@ public class Invocation
 		return this.target;
 	}
 	
-	public void startHandshake() throws Exception
-	{
-		this.handshake = GeneralTools.generateUniqueId();
-		synchronized(this.handshake)
-		{
-			this.handshake.wait();
-		}
-	}
-	
-	public void stopHandshake() throws Exception
-	{
-		synchronized(this.handshake)
-		{
-			this.handshake.notifyAll();
-			this.handshake = null;
-		}
-	}
-	
-	public boolean isHandshakeActivated()
-	{
-		return (this.handshake != null);
-	}
-	//----------------------------------------------------------------------------------------------------------------------------------------
 	public Map<String,Object> getShared()
 	{
 		Map<String,Object> shared = this.getInput();
 		input.put("target", this.target);
 		return shared;
-	}
-	
-	public static Invocation createFromShared(Map<String,Object> shared)
-	{
-		String target = (String)shared.get("target");
-		
-		if(target == null || target.trim().length()==0)
-		{
-			throw new IllegalArgumentException("Invocation Target is missing!!!");
-		}
-		
-		Invocation invocation = new Invocation(target);
-		
-		shared.remove("target");
-		invocation.input = shared;
-		
-		return invocation;
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	private Map<String,Object> getInput() 
@@ -115,21 +71,4 @@ public class Invocation
 		}
 		return this.input;
 	}	
-	//-------------------------------------------------------------------------------------------------------------------
-	public String calculateDestinationBus()
-	{
-		if(this.destinationBus == null)
-		{
-			return Bus.getInstance().findBus(this);
-		}
-		else
-		{
-			return this.destinationBus;
-		}
-	}
-	
-	public void setDestinationBus(String busId)
-	{
-		this.destinationBus = busId;
-	}
 }
