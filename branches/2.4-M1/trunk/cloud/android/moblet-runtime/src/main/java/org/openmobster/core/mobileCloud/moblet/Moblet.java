@@ -19,13 +19,11 @@ import org.openmobster.core.mobileCloud.android.crypto.CryptoManager;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkConnector;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.storage.Database;
-import org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler;
 import org.openmobster.core.mobileCloud.api.ui.framework.state.AppStateManager;
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 import org.openmobster.android.api.d2d.D2DService;
@@ -90,7 +88,6 @@ public final class Moblet
 			List<Service> services = new ArrayList<Service>();
 						
 			services.add(new Bus());
-			services.add(new IBinderManager());
 			
 			services.add(new NetworkConnector());
 			

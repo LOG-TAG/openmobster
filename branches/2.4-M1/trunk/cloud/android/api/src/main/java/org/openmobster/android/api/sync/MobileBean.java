@@ -579,9 +579,7 @@ public final class MobileBean
 	public static boolean isBooted(String channel)
 	{
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		Set<MobileObject> allObjects = deviceDB.readAll(channel);
-		
-		return (allObjects !=null && !allObjects.isEmpty());
+		return deviceDB.isChannelBooted(channel);
 	}
 	/**
 	 * Provides all the instances of Mobile Beans for the specified channel

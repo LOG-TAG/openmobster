@@ -14,7 +14,6 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.rpc.IBinderManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
@@ -134,32 +133,6 @@ public class CloudService
 	private void bootstrapApplication(final Context context) throws Exception
 	{
 		Registry registry = Registry.getActiveInstance();
-		
-		if(registry.isContainer())
-		{
-			return;
-		}
-		
-		registry.validateCloud();
-		
-		//Wait till connected to cloud
-		int waitBeforeAbort = 10;
-		IBinderManager bm = IBinderManager.getInstance();
-		while(!bm.isConnectedToCloud())
-		{
-			if(waitBeforeAbort-- > 0)
-			{
-				Thread.currentThread().sleep(1000);
-			}
-			else
-			{
-				throw new RuntimeException("Cloud Not Found!!");
-			}
-		}
-		
-		Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.RegisterIBinder");
-		invocation.setValue("packageName", Bus.getInstance().getBusId());
-		Bus.getInstance().invokeService(invocation);
 		
     	//Handle auto sync checking upon App launch, only if channels are not
     	//being initialized
