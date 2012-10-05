@@ -9,15 +9,14 @@
 package org.openmobster.core.mobileCloud.android.errors;
 
 import java.util.Date;
+import java.util.Set;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.storage.Database;
+import org.openmobster.core.mobileCloud.android.storage.Record;
 
 /**
  * @author openmobster@gmail.com
@@ -25,14 +24,6 @@ import org.openmobster.core.mobileCloud.android.service.Registry;
  */
 public final class ErrorHandler
 {
-	private static final Uri uri;
-	
-	static
-	{
-		uri = Uri.
-		parse("content://org.openmobster.core.mobileCloud.android.provider.mobile.system.errors");
-	}
-	
 	private static ErrorHandler singleton;
 	
 	private ErrorHandler()
@@ -99,24 +90,16 @@ public final class ErrorHandler
 			StringBuffer buffer = new StringBuffer();
 			
 			Context context = Registry.getActiveInstance().getContext();
-			ContentResolver resolver = context.getContentResolver();
 			
-			Cursor cursor = resolver.query(uri, 
-			null, 
-			null, 
-			null, 
-			null);
-			
-			if(cursor != null && cursor.getCount()>0)
+			Set<Record> all = this.query(context);
+			if(all != null && !all.isEmpty())
 			{
-				int valueIndex = cursor.getColumnIndex("value");
-				cursor.moveToFirst();
-				do
+				for(Record record:all)
 				{
-					buffer.append(cursor.getString(valueIndex));
+					String message = record.getValue("message");
+					buffer.append(message);
 					buffer.append("\n----------------------------------------------\n");
-					cursor.moveToNext();
-				}while(!cursor.isAfterLast());
+				}
 			}
 			
 			return buffer.toString();
@@ -135,8 +118,7 @@ public final class ErrorHandler
 		try
 		{
 			Context context = Registry.getActiveInstance().getContext();
-			ContentResolver resolver = context.getContentResolver();
-			resolver.delete(uri, null, null);
+			this.delete(context);
 		}
 		catch(Exception ex)
 		{
@@ -149,10 +131,29 @@ public final class ErrorHandler
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	private void save(Context context,String message) throws Exception
 	{
-		ContentResolver resolver = context.getContentResolver();
-		ContentValues errorRecord = new ContentValues();
-		errorRecord.put("message", message);
+		Database database = Database.getInstance(context);
 		
-		resolver.insert(uri, errorRecord);
-	}		
+		//insert
+		Record errorRecord = new Record();
+		errorRecord.setValue("message", message);
+		database.insert(Database.system_errors, 
+		errorRecord);
+	}	
+	
+	private void delete(Context context) throws Exception
+	{
+		Database database = Database.getInstance(context);
+		
+		//deleteAll
+		database.deleteAll(Database.system_errors);
+	}
+	
+	private Set<Record> query(Context context) throws Exception
+	{
+		Database database = Database.getInstance(context);
+		
+		Set<Record> all = database.selectAll(Database.system_errors);
+		
+		return all;
+	}
 }
