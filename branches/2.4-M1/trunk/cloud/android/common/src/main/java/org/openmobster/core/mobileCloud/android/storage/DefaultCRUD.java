@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import org.json.JSONObject;
 
 /**
  *
@@ -26,15 +26,21 @@ import android.database.sqlite.SQLiteDatabase;
 public class DefaultCRUD implements CRUDProvider
 {
 	private SQLiteDatabase db;
+	private Cache cache;
 	
 	public void init(SQLiteDatabase db)
 	{
 		this.db = db;
+		this.cache = new Cache();
+		this.cache.start();
 	}
 	
 	public void cleanup()
 	{
 		this.db = null;
+		
+		this.cache.stop();
+		this.cache = null;
 	}
 	
 	public String insert(String table, Record record) throws DBException
@@ -67,6 +73,11 @@ public class DefaultCRUD implements CRUDProvider
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
 			
+			//insert the JSON representation
+			String json = record.toJson();
+			String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+			this.db.execSQL(insert,new Object[]{recordId,"om:json",json});
+			
 			this.db.setTransactionSuccessful();
 			
 			return recordId;
@@ -88,45 +99,66 @@ public class DefaultCRUD implements CRUDProvider
 		return 0;
 	}
 	
-	public synchronized Set<Record> selectAll(String from) throws DBException
+	public Set<Record> selectAll(String from) throws DBException
 	{
 		Cursor cursor = null;
 		try
 		{
 			Set<Record> all = null;
 			
-			Map<String, Record> localCache = new HashMap<String, Record>();
-			cursor = this.db.rawQuery("SELECT * FROM "+from, null);
+			Map<String,Record> cached = this.cache.all(from);
+			
+			cursor = this.db.rawQuery("SELECT recordid,value FROM "+from+" WHERE name=?", new String[]{"om:json"});
 			
 			if(cursor.getCount() > 0)
 			{
 				all = new HashSet<Record>();
 				int recordidIndex = cursor.getColumnIndex("recordid");
-				int nameIndex = cursor.getColumnIndex("name");
 				int valueIndex = cursor.getColumnIndex("value");
 				cursor.moveToFirst();
 				do
 				{
-					String name = cursor.getString(nameIndex);
-					String value = cursor.getString(valueIndex);
 					String recordid = cursor.getString(recordidIndex);
-					
-					Record record = localCache.get(recordid);
-					if(record == null)
+					if(cached.containsKey(recordid))
 					{
-						record = new Record();
-						localCache.put(recordid, record);
-						all.add(record);
+						//object is cached...no need to read from the database
+						all.add(cached.get(recordid));
+						cursor.moveToNext();
+						continue;
 					}
 					
-					record.setRecordId(recordid);
-					record.setValue(name, value);
+					String value = cursor.getString(valueIndex);
+					
+					Map<String,String> state = new HashMap<String,String>();
+					JSONObject json = new JSONObject(value);
+					Iterator keys = json.keys();
+					if(keys != null)
+					{
+						while(keys.hasNext())
+						{
+							String localName = (String)keys.next();
+							String localValue = json.getString(localName);
+							state.put(localName, localValue);
+						}
+					}
+					
+					//setup the Record
+					Record record = new Record(state);
+					all.add(record);
+					
+					this.cache.put(from,record.getRecordId(),value);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
 			}
 			
 			return all;
+		}
+		catch(Exception e)
+		{
+			throw new DBException(DefaultCRUD.class.getName(),"selectAll", new Object[]{
+				"Exception: "+e.getMessage()
+			});
 		}
 		finally
 		{
@@ -137,35 +169,59 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
-	public synchronized Record select(String from, String recordId) throws DBException
+	
+	
+	public Record select(String from, String recordId) throws DBException
 	{
 		Cursor cursor = null;
 		try
 		{
 			Record record = null;
-			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE recordid=?", new String[]{recordId});
+			
+			record = this.cache.get(from, recordId);
+			if(record != null)
+			{
+				return record;
+			}
+			
+			cursor = this.db.rawQuery("SELECT value FROM "+from+" WHERE recordid=? AND name=?", new String[]{recordId,"om:json"});
 			
 			if(cursor.getCount() > 0)
 			{
-				record = new Record();
-				int recordidIndex = cursor.getColumnIndex("recordid");
-				int nameIndex = cursor.getColumnIndex("name");
 				int valueIndex = cursor.getColumnIndex("value");
 				cursor.moveToFirst();
 				do
 				{
-					String name = cursor.getString(nameIndex);
 					String value = cursor.getString(valueIndex);
-					String recordid = cursor.getString(recordidIndex);
 					
-					record.setRecordId(recordid);
-					record.setValue(name, value);
+					Map<String,String> state = new HashMap<String,String>();
+					JSONObject json = new JSONObject(value);
+					Iterator keys = json.keys();
+					if(keys != null)
+					{
+						while(keys.hasNext())
+						{
+							String localName = (String)keys.next();
+							String localValue = json.getString(localName);
+							state.put(localName, localValue);
+						}
+					}
+					
+					record = new Record(state);
+					
+					this.cache.put(from,record.getRecordId(), value);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
 			}
 			
 			return record;
+		}
+		catch(Exception e)
+		{
+			throw new DBException(DefaultCRUD.class.getName(),"select", new Object[]{
+				"Exception: "+e.getMessage()
+			});
 		}
 		finally
 		{
@@ -183,7 +239,7 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			Set<Record> records = null;
 			
-			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
 			
 			if(cursor.getCount() > 0)
 			{
@@ -191,20 +247,12 @@ public class DefaultCRUD implements CRUDProvider
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
 				cursor.moveToFirst();
-				List<String> addedIds = new ArrayList<String>();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
-					if(addedIds.contains(recordid))
-					{
-						cursor.moveToNext();
-						continue;
-					}
-					
 					Record record = this.select(from, recordid);
 					records.add(record);
-					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -228,28 +276,20 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			Set<Record> records = null;
 			
-			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE value=?", new String[]{value});
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE value=?", new String[]{value});
 			
 			if(cursor.getCount() > 0)
 			{
 				records = new HashSet<Record>();
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
-				List<String> addedIds = new ArrayList<String>();
 				cursor.moveToFirst();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
-					if(addedIds.contains(recordid))
-					{
-						cursor.moveToNext();
-						continue;
-					}
-					
 					Record record = this.select(from, recordid);
 					records.add(record);
-					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -268,33 +308,25 @@ public class DefaultCRUD implements CRUDProvider
 	
 	public Set<Record> selectByNotEquals(String from, String value) throws DBException
 	{
-		Cursor cursor = null;
+		/*Cursor cursor = null;
 		try
 		{
 			Set<Record> records = null;
 			
-			cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE value != ? AND name LIKE ?", new String[]{value,"%field%"});
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from,null);
 			
 			if(cursor.getCount() > 0)
 			{
 				records = new HashSet<Record>();
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
-				Set<String> addedIds = new HashSet<String>();
 				cursor.moveToFirst();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
-					if(addedIds.contains(recordid))
-					{
-						cursor.moveToNext();
-						continue;
-					}
-					
 					Record record = this.select(from, recordid);
 					records.add(record);
-					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -308,7 +340,8 @@ public class DefaultCRUD implements CRUDProvider
 			{
 				cursor.close();
 			}
-		}
+		}*/
+		return this.selectAll(from);
 	}
 	
 	public Set<Record> selectByContains(String from, String value) throws DBException
@@ -318,7 +351,7 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			Set<Record> records = null;
 			
-			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE value LIKE ?", new String[]{"%"+value+"%"});
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE value LIKE ?", new String[]{"%"+value+"%"});
 			
 			if(cursor.getCount() > 0)
 			{
@@ -326,20 +359,12 @@ public class DefaultCRUD implements CRUDProvider
 				
 				int recordidIndex = cursor.getColumnIndex("recordid");
 				cursor.moveToFirst();
-				List<String> addedIds = new ArrayList<String>();
 				do
 				{
 					String recordid = cursor.getString(recordidIndex);
 					
-					if(addedIds.contains(recordid))
-					{
-						cursor.moveToNext();
-						continue;
-					}
-					
 					Record record = this.select(from, recordid);
 					records.add(record);
-					addedIds.add(recordid);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -356,13 +381,16 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
-	public synchronized void update(String table, Record record) throws DBException
+	public void update(String table, Record record) throws DBException
 	{
 		try
 		{
 			this.db.beginTransaction();
 			
 			String recordId = record.getRecordId();
+			
+			//invalidate the cacched copy if present
+			this.cache.invalidate(table, recordId);
 			
 			Set<String> names = record.getNames();
 			
@@ -388,6 +416,11 @@ public class DefaultCRUD implements CRUDProvider
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
 			
+			//insert the JSON representation
+			String json = record.toJson();
+			String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+			this.db.execSQL(insert,new Object[]{recordId,"om:json",json});
+			
 			this.db.setTransactionSuccessful();
 		}
 		finally
@@ -401,6 +434,9 @@ public class DefaultCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			
+			//invalidate the cached object 
+			this.cache.invalidate(table, record.getRecordId());
 			
 			//delete this record
 			String delete = "DELETE FROM "+table+" WHERE recordid='"+record.getRecordId()+"'";
@@ -419,6 +455,9 @@ public class DefaultCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			
+			//clear the entire cache
+			this.cache.clear(table);
 			
 			//delete this record
 			String delete = "DELETE FROM "+table;

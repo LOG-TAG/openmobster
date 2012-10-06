@@ -80,6 +80,7 @@ public final class MobileObjectDatabase extends Service
 			//read all the rows
 			Set<Record> all = Database.getInstance(context).
 			selectAll(channel);
+			
 			if(all != null)
 			{
 				objects = this.parse(all);
@@ -286,12 +287,13 @@ public final class MobileObjectDatabase extends Service
 				}
 				if(chain != null)
 				{
+					int expressionCounter = 0;
 					for(LogicExpression courExpr:expressions)
 					{
 						chain.add(courExpr);
 						
 						//get beans that match this expression
-						Set<MobileObject> matchedBeans = this.logicExpressionBeans(channel,courExpr);
+						Set<MobileObject> matchedBeans = this.logicExpressionBeans(channel,courExpr,expressionCounter++);
 						if(matchedBeans != null)
 						{
 							result.addAll(matchedBeans);
@@ -314,6 +316,52 @@ public final class MobileObjectDatabase extends Service
    			}
    			);
 		}	
+	}
+	
+	private Set<MobileObject> logicExpressionBeans(String channel,LogicExpression expression,int expressionCounter)
+	{
+		try
+		{
+			Set<MobileObject> objects = new HashSet<MobileObject>();
+			Context context = Registry.getActiveInstance().getContext();
+			String value = expression.getRhs();
+			Set<Record> records = null;
+			Database database = Database.getInstance(context);
+			
+			switch(expression.getOp())
+			{
+				case LogicExpression.OP_EQUALS:
+					records = database.selectByValue(channel, value);
+				break;
+				
+				case LogicExpression.OP_NOT_EQUALS:
+					if(expressionCounter == 0)
+					{
+						records = database.selectByNotEquals(channel, value);
+					}
+				break;
+				
+				case LogicExpression.OP_CONTAINS:
+					records = database.selectByContains(channel, value);
+				break;
+				
+				default:
+					records = database.selectByValue(channel, value);
+				break;
+			}
+			
+			objects = this.parse(records);
+			
+			return objects;
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "logicExpressionBeans", new Object[]{
+				channel,
+				"Exception="+e.toString(),
+				"Error="+e.getMessage()
+			});
+		}
 	}
 	
 	private Set<MobileObject> queryEncryptedMode(String channel, GenericAttributeManager queryAttributes)
@@ -350,55 +398,13 @@ public final class MobileObjectDatabase extends Service
 				{
 					chain.add(courExpr);
 				}
+				
 				Query query = Query.createInstance(chain);
 				result = query.executeQuery(result);
 			}
 		}
 		
 		return result;
-	}
-	
-	private Set<MobileObject> logicExpressionBeans(String channel,LogicExpression expression)
-	{
-		try
-		{
-			Set<MobileObject> objects = new HashSet<MobileObject>();
-			Context context = Registry.getActiveInstance().getContext();
-			String value = expression.getRhs();
-			Set<Record> records = null;
-			Database database = Database.getInstance(context);
-			
-			switch(expression.getOp())
-			{
-				case LogicExpression.OP_EQUALS:
-					records = database.selectByValue(channel, value);
-				break;
-				
-				case LogicExpression.OP_NOT_EQUALS:
-					records = database.selectByNotEquals(channel, value);
-				break;
-				
-				case LogicExpression.OP_CONTAINS:
-					records = database.selectByContains(channel, value);
-				break;
-				
-				default:
-					records = database.selectByValue(channel, value);
-				break;
-			}
-			
-			objects = this.parse(records);
-			
-			return objects;
-		}
-		catch(Exception e)
-		{
-			throw new SystemException(this.getClass().getName(), "logicExpressionBeans", new Object[]{
-				channel,
-				"Exception="+e.toString(),
-				"Error="+e.getMessage()
-			});
-		}
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	public void syncWithServer(String storageId)
@@ -411,7 +417,7 @@ public final class MobileObjectDatabase extends Service
 		Set<MobileObject> mobileObjects = new HashSet<MobileObject>();
 		
 		if(records != null && !records.isEmpty())
-		{			
+		{
 			for(Record record:records)
 			{
 				mobileObjects.add(new MobileObject(record));
