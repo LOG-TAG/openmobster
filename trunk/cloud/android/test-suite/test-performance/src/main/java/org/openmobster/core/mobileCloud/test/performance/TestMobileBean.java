@@ -80,6 +80,8 @@ public final class TestMobileBean implements RemoteCommand
 				long endTime = System.currentTimeMillis();
 				System.out.println("WriteTime: "+(endTime-startTime));
 			}
+			//Just to load the cache
+			MobileBean.readAll("perfbeans");
 			
 			//read all the beans
 			long readStartTime = System.currentTimeMillis();
@@ -89,8 +91,8 @@ public final class TestMobileBean implements RemoteCommand
 			criteria.setAttribute("title", "title://19");
 			
 			//MobileBean[] all = MobileBean.readAll("perfbeans");
-			MobileBean[] all = MobileBean.queryByEqualsAll("perfbeans", criteria);
-			//MobileBean[] all = MobileBean.queryByNotEqualsAll("perfbeans", criteria);
+			//MobileBean[] all = MobileBean.queryByEqualsAll("perfbeans", criteria);
+			MobileBean[] all = MobileBean.queryByNotEqualsAll("perfbeans", criteria);
 			//MobileBean[] all = MobileBean.queryByContainsAll("perfbeans", criteria);
 			//MobileBean[] all = MobileBean.queryByEqualsAtleastOne("perfbeans", criteria);
 			//MobileBean[] all = MobileBean.queryByNotEqualsAtleastOne("perfbeans", criteria);

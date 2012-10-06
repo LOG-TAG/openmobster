@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 /**
@@ -149,5 +151,11 @@ public final class Record
 			return GeneralTools.generateUniqueId().hashCode();
 		}
 		return recordId.hashCode();
-	}	
+	}
+	
+	public String toJson()
+	{
+		JSONObject object = new JSONObject(this.state);
+		return object.toString();
+	}
 }

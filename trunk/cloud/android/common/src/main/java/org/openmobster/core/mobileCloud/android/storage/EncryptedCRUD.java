@@ -9,9 +9,11 @@ package org.openmobster.core.mobileCloud.android.storage;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.JSONObject;
 import org.openmobster.core.mobileCloud.android.crypto.Cryptographer;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
@@ -25,15 +27,21 @@ import android.database.sqlite.SQLiteDatabase;
 public class EncryptedCRUD implements CRUDProvider
 {
 	private SQLiteDatabase db;
+	private Cache cache;
 	
 	public void init(SQLiteDatabase db)
 	{
 		this.db = db;
+		this.cache = new Cache();
+		this.cache.start();
 	}
 	
 	public void cleanup()
 	{
 		this.db = null;
+		
+		this.cache.stop();
+		this.cache = null;
 	}
 	
 	public String insert(String table, Record record) throws DBException
@@ -57,27 +65,11 @@ public class EncryptedCRUD implements CRUDProvider
 			//Delete a record if one exists by this id...cleanup
 			this.delete(table, record);
 			
-			Set<String> names = record.getNames();
-			for(String name: names)
-			{
-				String value = record.getValue(name);
-				
-				//Encrypt name/value
-				if(name == null)
-				{
-					name = "";
-				}
-				if(value == null)
-				{
-					value = "";
-				}
-				name = crypto.encrypt(name.getBytes());
-				value = crypto.encrypt(value.getBytes());
-				
-				//insert this row
-				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-				this.db.execSQL(insert,new Object[]{recordId,name,value});
-			}
+			//insert the JSON representation
+			String json = record.toJson();
+			String encryptedJson = crypto.encrypt(json.getBytes());
+			String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+			this.db.execSQL(insert,new Object[]{recordId,"om:json",encryptedJson});
 			
 			this.db.setTransactionSuccessful();
 			
@@ -98,37 +90,51 @@ public class EncryptedCRUD implements CRUDProvider
 			
 			Set<Record> all = null;
 			
-			Map<String, Record> localCache = new HashMap<String, Record>();
-			cursor = this.db.rawQuery("SELECT * FROM "+from, null);
+			Map<String,Record> cached = this.cache.all(from);
+			
+			cursor = this.db.rawQuery("SELECT recordid,value FROM "+from, null);
 			
 			if(cursor.getCount() > 0)
 			{
 				all = new HashSet<Record>();
 				int recordidIndex = cursor.getColumnIndex("recordid");
-				int nameIndex = cursor.getColumnIndex("name");
 				int valueIndex = cursor.getColumnIndex("value");
 				cursor.moveToFirst();
 				do
 				{
-					String name = cursor.getString(nameIndex);
-					String value = cursor.getString(valueIndex);
 					String recordid = cursor.getString(recordidIndex);
-					
-					Record record = localCache.get(recordid);
-					if(record == null)
+					if(cached.containsKey(recordid))
 					{
-						record = new Record();
-						localCache.put(recordid, record);
-						all.add(record);
+						//object is cached...no need to read from the database
+						all.add(cached.get(recordid));
+						cursor.moveToNext();
+						continue;
 					}
 					
-					record.setRecordId(recordid);
+					
+					String encryptedJson = cursor.getString(valueIndex);
 					
 					//Decrypt
-					name = crypto.decrypt(name);
-					value = crypto.decrypt(value);
+					String decryptedJson = crypto.decrypt(encryptedJson);
 					
-					record.setValue(name, value);
+					Map<String,String> state = new HashMap<String,String>();
+					JSONObject json = new JSONObject(decryptedJson);
+					Iterator keys = json.keys();
+					if(keys != null)
+					{
+						while(keys.hasNext())
+						{
+							String localName = (String)keys.next();
+							String localValue = json.getString(localName);
+							state.put(localName, localValue);
+						}
+					}
+					
+					//setup the Record
+					Record record = new Record(state);
+					all.add(record);
+					
+					this.cache.put(from,record.getRecordId(),decryptedJson);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -166,29 +172,44 @@ public class EncryptedCRUD implements CRUDProvider
 		try
 		{
 			Cryptographer crypto = Cryptographer.getInstance();
+			
 			Record record = null;
-			cursor = this.db.rawQuery("SELECT * FROM "+from+" WHERE recordid=?", new String[]{recordId});
+			record = this.cache.get(from, recordId);
+			if(record != null)
+			{
+				return record;
+			}
+			
+			cursor = this.db.rawQuery("SELECT value FROM "+from+" WHERE recordid=?", new String[]{recordId});
 			
 			if(cursor.getCount() > 0)
 			{
-				record = new Record();
-				int recordidIndex = cursor.getColumnIndex("recordid");
-				int nameIndex = cursor.getColumnIndex("name");
 				int valueIndex = cursor.getColumnIndex("value");
 				cursor.moveToFirst();
 				do
 				{
-					String name = cursor.getString(nameIndex);
-					String value = cursor.getString(valueIndex);
-					String recordid = cursor.getString(recordidIndex);
-					
-					record.setRecordId(recordid);
+					String encryptedJson = cursor.getString(valueIndex);
 					
 					//Decrypt
-					name = crypto.decrypt(name);
-					value = crypto.decrypt(value);
+					String decryptedJson = crypto.decrypt(encryptedJson);
 					
-					record.setValue(name, value);
+					Map<String,String> state = new HashMap<String,String>();
+					JSONObject json = new JSONObject(decryptedJson);
+					Iterator keys = json.keys();
+					if(keys != null)
+					{
+						while(keys.hasNext())
+						{
+							String localName = (String)keys.next();
+							String localValue = json.getString(localName);
+							state.put(localName, localValue);
+						}
+					}
+					
+					//setup the Record
+					record = new Record(state);
+					
+					this.cache.put(from,record.getRecordId(), decryptedJson);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -240,6 +261,9 @@ public class EncryptedCRUD implements CRUDProvider
 			this.db.beginTransaction();
 			Cryptographer crypto = Cryptographer.getInstance();
 			
+			//invalidate the cacched copy if present
+			this.cache.invalidate(table, record.getRecordId());
+			
 			Set<String> names = record.getNames();
 			String recordId = record.getRecordId();
 			record.setDirtyStatus(GeneralTools.generateUniqueId());
@@ -255,27 +279,12 @@ public class EncryptedCRUD implements CRUDProvider
 			}*/
 			//Delete a record if one exists by this id...cleanup
 			this.delete(table, record);
-			for(String name: names)
-			{
-				String value = record.getValue(name);
-				
-				//Encrypt name/value
-				if(name == null)
-				{
-					name = "";
-				}
-				if(value == null)
-				{
-					value = "";
-				}
-				name = crypto.encrypt(name.getBytes());
-				value = crypto.encrypt(value.getBytes());
-								
-				//insert this row
-				//insert this row
-				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-				this.db.execSQL(insert,new Object[]{recordId,name,value});
-			}
+			
+			//insert the JSON representation
+			String json = record.toJson();
+			String encryptedJson = crypto.encrypt(json.getBytes());
+			String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+			this.db.execSQL(insert,new Object[]{recordId,"om:json",encryptedJson});
 			
 			this.db.setTransactionSuccessful();
 		}
@@ -290,6 +299,9 @@ public class EncryptedCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			
+			//invalidate the cached object 
+			this.cache.invalidate(table, record.getRecordId());
 			
 			//delete this record
 			String delete = "DELETE FROM "+table+" WHERE recordid='"+record.getRecordId()+"'";
@@ -308,6 +320,9 @@ public class EncryptedCRUD implements CRUDProvider
 		try
 		{
 			this.db.beginTransaction();
+			
+			//clear the entire cache
+			this.cache.clear(table);
 			
 			//delete this record
 			String delete = "DELETE FROM "+table;
