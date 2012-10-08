@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 import android.content.Context;
 
+import org.openmobster.android.api.d2d.D2DService;
+import org.openmobster.android.api.rpc.MobileService;
+import org.openmobster.android.api.rpc.Request;
+import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
@@ -104,40 +108,6 @@ public final class DeviceContainer
 									
 			List<Service> services = new ArrayList<Service>();						
 			
-			//Core Low-Level Services																								
-			/*services.addElement(Bus.class);											
-			services.addElement(Daemon.class);	
-			services.addElement(LoadProxyDaemon.class);	
-										
-			//Network/Connection services			
-			services.addElement(NetworkConnector.class);
-												
-			//Synchronization Services					
-			services.addElement(SyncDataSource.class);								
-			services.addElement(SyncObjectGenerator.class);							
-			services.addElement(SyncService.class);									
-						
-			//MobileObject Database services			
-			services.addElement(MobileObjectDatabase.class);						
-			
-			//InvocationHandlers						
-			services.addElement(SyncInvocationHandler.class);							
-			services.addElement("org.openmobster.core.mobileCloud.api.push.AppNotificationInvocationHandler");
-			services.addElement(CometConfigHandler.class);
-			services.addElement(StartCometDaemon.class);
-			services.addElement(SwitchSecurityMode.class);
-			services.addElement(CometRecycleHandler.class);
-			services.addElement(CometStatusHandler.class);
-			services.addElement(ChannelBootupHandler.class);
-			services.addElement(StopCometDaemon.class);
-																											
-			Registry.getInstance().start(services);									
-			
-			this.notifyDeviceActivated();	
-			
-			//Schedules a background task that silently loads proxies from the server
-			LoadProxyDaemon.getInstance().scheduleProxyTask();*/
-			
 			//Core Low-Level Services		
 			services.add(new Bus());			
 			services.add(new Daemon());	
@@ -172,6 +142,9 @@ public final class DeviceContainer
 			
 			//Add the DeviceManager service
 			services.add(new DeviceManager());
+			
+			//Device-To-Device Push service
+			services.add(new D2DService());
 									
 			Registry.getActiveInstance().start(services);
 			
@@ -180,6 +153,8 @@ public final class DeviceContainer
 			
 			//Schedules a background task that silently loads proxies from the server
 			LoadProxyDaemon.getInstance().scheduleProxyTask();
+			
+			this.registerPush();
 		}
 		catch(Exception e)
 		{
@@ -254,5 +229,31 @@ public final class DeviceContainer
 	{
 		this.context = context;
 		Registry.getActiveInstance().setContext(context);
+	}
+	
+	private void registerPush()
+	{
+		Thread t = new Thread(new Runnable()
+		{
+			public void run()
+			{
+				try
+				{
+					//Populate the Cloud Request
+					Request request = new Request("android_push_callback");	
+					request.setAttribute("app-id", Registry.getActiveInstance().getContext().getPackageName());
+					
+					new MobileService().invoke(request);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace(System.out);
+					
+					//Record this error in the Cloud Error Log
+					ErrorHandler.getInstance().handle(e);
+				}
+			}
+		});
+		t.start();
 	}
 }

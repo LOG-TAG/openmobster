@@ -42,7 +42,7 @@ public final class CommandContext
 		return this.attrMgr.getAttribute(name);
 	}
 	
-	void setAppException(AppException commandError)
+	public void setAppException(AppException commandError)
 	{
 		this.attrMgr.setAttribute("error", commandError);
 	}

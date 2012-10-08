@@ -1,0 +1,10 @@
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>org.openmobster.app.MainActivity</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+	
+	<sync-push-message>You have {0} Fuse App Messages</sync-push-message>
+</app-conf>

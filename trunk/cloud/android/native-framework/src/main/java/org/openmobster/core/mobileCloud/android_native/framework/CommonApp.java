@@ -12,6 +12,7 @@ import java.util.Timer;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -125,8 +126,11 @@ public final class CommonApp
 	static void bootstrapContainer(final Activity activity)
 	{
 		//Initialize the kernel
-		Moblet.getInstance(activity.getApplicationContext()).propagateNewContext(activity.getApplicationContext());
-    	Moblet.getInstance(activity.getApplicationContext()).startup(); 
+		DeviceContainer container = DeviceContainer.getInstance(activity.getApplicationContext());
+		
+		//start the kernel
+		container.propagateNewContext(activity.getApplicationContext());
+    	container.startup();
 	}
 	
 	static void bootstrapActivity(final Activity activity)

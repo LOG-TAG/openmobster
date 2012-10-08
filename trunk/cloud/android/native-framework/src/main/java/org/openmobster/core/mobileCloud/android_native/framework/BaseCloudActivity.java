@@ -8,8 +8,7 @@
 
 package org.openmobster.core.mobileCloud.android_native.framework;
 
-import java.lang.reflect.Field;
-
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -19,9 +18,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 /**
  * @author openmobster@gmail.com
@@ -53,6 +49,8 @@ public abstract class BaseCloudActivity extends Activity
 		try
 		{
 			super.onStart();
+			
+			
 			CloudService.getInstance().start(this);
 		}
 		catch (Exception e)
@@ -72,7 +70,16 @@ public abstract class BaseCloudActivity extends Activity
 		try
 		{
 			super.onResume();
+			
 			this.displayMainScreen();
+			
+			//check if App activation is needed
+			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+			if(!conf.isActive())
+			{
+				AppActivation appActivation = AppActivation.getInstance(this);
+				appActivation.start();
+			}
 		}
 		catch(Exception e)
 		{
@@ -90,26 +97,9 @@ public abstract class BaseCloudActivity extends Activity
 	{
 		AlertDialog dialog = null; 
 		
-		switch(id)
-		{
-			case 0:
-			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id,this, 
-			"System Error", 
-			"CloudManager App is either not installed or not running");
-			break;
-			
-			case 1:
-				dialog = ViewHelper.getOkAttachedModalWithCloseApp(id,this, 
+		dialog = ViewHelper.getOkAttachedModalWithCloseApp(id,this, 
 				"System Error", 
 				"CloudService failed to bootstrap...");
-			break;
-			
-			default:
-			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id, this, 
-			"System Error", 
-			"CloudManager App is either not installed or not running");
-			break;
-		}
 		
 		return dialog;
 	}

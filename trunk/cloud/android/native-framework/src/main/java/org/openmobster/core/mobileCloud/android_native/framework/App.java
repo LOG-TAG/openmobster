@@ -17,8 +17,10 @@ import android.app.Dialog;
 import android.view.KeyEvent;
 import android.view.Menu;
 
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 
@@ -57,6 +59,14 @@ public class App extends Activity
 			super.onResume();
 			
 			CommonApp.onResume(this);
+			
+			//check if App activation is needed
+			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+			if(!conf.isActive())
+			{
+				AppActivation appActivation = AppActivation.getInstance(this);
+				appActivation.start();
+			}
 		}
 		catch(Exception e)
 		{
@@ -103,7 +113,7 @@ public class App extends Activity
 			case 0:
 			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id,this, 
 			"System Error", 
-			"CloudManager App is either not installed or not running");
+			"CloudService failed to bootstrap...");
 			break;
 			
 			case 1:
@@ -125,7 +135,7 @@ public class App extends Activity
 			default:
 			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id, this, 
 			"System Error", 
-			"CloudManager App is either not installed or not running");
+			"CloudService failed to bootstrap...");
 			break;
 		}
 		
