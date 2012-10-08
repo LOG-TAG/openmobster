@@ -12,12 +12,9 @@ import java.util.Timer;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
 import android.content.Context;
@@ -58,7 +55,7 @@ public class CloudService
 		try
 		{
 			//short-fast boostrapping of the kernel
-			if(!Moblet.getInstance(context.getApplicationContext()).isContainerActive())
+			if(!DeviceContainer.getInstance(context.getApplicationContext()).isContainerActive())
 			{
 				this.bootstrapContainer(context);
 			}
@@ -102,7 +99,7 @@ public class CloudService
 				"Exception:"+e.toString()
 			}));
 			
-			ViewHelper.getOkModalWithCloseApp(context, "System Error", "CloudManager App is either not installed or not running")
+			ViewHelper.getOkModalWithCloseApp(context, "System Error", e.getMessage())
 			.show();
 		}
 	}
@@ -126,14 +123,15 @@ public class CloudService
 		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
 		
 		//Initialize the kernel
-		Moblet.getInstance(context.getApplicationContext()).propagateNewContext(context.getApplicationContext());
-    	Moblet.getInstance(context.getApplicationContext()).startup(); 
+		DeviceContainer container = DeviceContainer.getInstance(context.getApplicationContext());
+		
+		//start the kernel
+		container.propagateNewContext(context.getApplicationContext());
+    	container.startup();
 	}
 	
 	private void bootstrapApplication(final Context context) throws Exception
 	{
-		Registry registry = Registry.getActiveInstance();
-		
     	//Handle auto sync checking upon App launch, only if channels are not
     	//being initialized
     	Timer timer = new Timer();
@@ -175,7 +173,7 @@ public class CloudService
 		
 		public void run()
 		{
-			ViewHelper.getOkModalWithCloseApp(this.currentActvity, "System Error", "CloudManager App is either not installed or not running")
+			ViewHelper.getOkModalWithCloseApp(this.currentActvity, "System Error", "An unknown error occurred during App startup. Please try again")
 			.show();
 			
 			Looper.myLooper().quit();

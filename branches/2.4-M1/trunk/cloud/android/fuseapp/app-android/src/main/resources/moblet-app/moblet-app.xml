@@ -1,0 +1,11 @@
+<moblet-app>
+    <channels>
+		<channel>fuseapp_channel</channel>
+	</channels>		
+	
+	<!--  
+	<commands>
+		<command id="/channel/bootup/helper">org.testapp.app.ChannelBootupHelper</command>	
+	</commands>
+	-->		
+</moblet-app>

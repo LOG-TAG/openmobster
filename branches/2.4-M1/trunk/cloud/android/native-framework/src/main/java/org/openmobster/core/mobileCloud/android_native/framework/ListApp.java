@@ -19,8 +19,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
 
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
@@ -62,6 +64,14 @@ public class ListApp extends ListActivity
 			super.onResume();
 			
 			CommonApp.onResume(this);
+			
+			//check if App activation is needed
+			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+			if(!conf.isActive())
+			{
+				AppActivation appActivation = AppActivation.getInstance(this);
+				appActivation.start();
+			}
 		}
 		catch(Exception e)
 		{
@@ -116,7 +126,7 @@ public class ListApp extends ListActivity
 			case 0:
 			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id,this, 
 			"System Error", 
-			"CloudManager App is either not installed or not running");
+			"CloudService failed to bootstrap.....");
 			break;
 			
 			case 1:
@@ -138,7 +148,7 @@ public class ListApp extends ListActivity
 			default:
 			dialog = ViewHelper.getOkAttachedModalWithCloseApp(id, this, 
 			"System Error", 
-			"CloudManager App is either not installed or not running");
+			"CloudService failed to bootstrap....");
 			break;
 		}
 		
