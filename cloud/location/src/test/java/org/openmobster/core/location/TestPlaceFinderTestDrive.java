@@ -137,23 +137,19 @@ public class TestPlaceFinderTestDrive extends TestCase
 		assertEquals("94105",address.getZipCode());
 		
 		System.out.println("Postal: "+address.getPostal());
-		//assertEquals("94105-4126",address.getPostal());
-		assertEquals("94105",address.getPostal());
+		assertEquals("94105-4126",address.getPostal());
 		
 		System.out.println("County: "+address.getCounty());
 		assertEquals("San Francisco County",address.getCounty());
 		
 		System.out.println("Latitude: "+address.getLatitude());
-		//assertEquals("37.787082",address.getLatitude());
-		assertEquals("37.787102",address.getLatitude());
+		assertEquals("37.787082",address.getLatitude());
 		
 		System.out.println("Longitude: "+address.getLongitude());
-		//assertEquals("-122.400929",address.getLongitude());
-		assertEquals("-122.400963",address.getLongitude());
+		assertEquals("-122.400929",address.getLongitude());
 		
 		System.out.println("Radius: "+address.getRadius());
-		//assertEquals("500",address.getRadius());
-		assertEquals("400",address.getRadius());
+		assertEquals("500",address.getRadius());
 		
 		System.out.println("woeid: "+address.getWoeid());
 		assertEquals("12797156",address.getWoeid());
