@@ -83,6 +83,8 @@ public final class Bus
 				{
 					sessionFactory = new ClientSessionFactoryImpl (new TransportConfiguration(
 					InVMConnectorFactory.class.getName()));
+					
+					sessionFactory.setMinLargeMessageSize(1000000000); //a gig
 				}
 			}
 			

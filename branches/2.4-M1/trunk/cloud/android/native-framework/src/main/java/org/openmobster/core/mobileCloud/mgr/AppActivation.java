@@ -5,11 +5,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.openmobster.core.mobileCloud.android_native.framework;
+package org.openmobster.core.mobileCloud.mgr;
 
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 
 import android.app.Activity;
@@ -252,14 +253,15 @@ public final class AppActivation
 					
 					CommandContext commandContext = new CommandContext();
 					
-					
+					commandContext.setAttribute("task", new AppActivationTask());
 					commandContext.setAttribute("server", server);
 					commandContext.setAttribute("email", email);
 					commandContext.setAttribute("password", password);
 					commandContext.setAttribute("port", port);
 					
-					AppActivationTask activationTask = new AppActivationTask(currentActivity);
-					activationTask.execute(commandContext);
+					TaskExecutor taskExecutor = new TaskExecutor("App Activation","App Activation in Progress",
+							"App was successfully activated",currentActivity);
+					taskExecutor.execute(commandContext);
 				}
 			}
 		}
