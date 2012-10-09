@@ -27,6 +27,7 @@ import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
+import org.openmobster.core.mobileCloud.mgr.AppActivation;
 
 
 /**

@@ -370,6 +370,21 @@ public class Configuration
 				
 				this.prepareConfiguration(provisioningRecord);
 			}
+			
+			//This is default out-of-the-box server configuration
+			if(this.plainServerPort == null || this.plainServerPort.trim().length() == 0)
+			{
+				this.plainServerPort = "1502"; //non-ssl port for the cloud server
+			}
+			if(this.secureServerPort == null || this.secureServerPort.trim().length() == 0)
+			{
+				this.secureServerPort = "1500"; //ssl port for the cloud server
+			}
+			
+			if(this.httpPort == null || this.httpPort.trim().length() == 0)
+			{
+				this.httpPort = "80"; //http port by default
+			}
 		}
 		catch(Exception e)
 		{

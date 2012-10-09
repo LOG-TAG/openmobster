@@ -17,8 +17,9 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
-import org.openmobster.core.mobileCloud.android_native.framework.AppActivation;
 import org.openmobster.core.mobileCloud.android_native.framework.BaseCloudActivity;
+import org.openmobster.core.mobileCloud.mgr.AppActivation;
+import org.openmobster.core.mobileCloud.mgr.CloudManagerOptions;
 
 /**
  * @author openmobster@gmail.com
@@ -102,6 +103,25 @@ public class MainActivity extends BaseCloudActivity
 					
 					System.out.println("Push Status: "+status);
 					
+					return true;
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace(System.out);
+					return true;
+				}
+			}
+		});
+		
+		MenuItem item4 = menu.add(Menu.NONE, Menu.NONE, 2, "Cloud Manager");
+		item4.setOnMenuItemClickListener(new OnMenuItemClickListener()
+		{
+			public boolean onMenuItemClick(MenuItem clickedItem)
+			{
+				try
+				{
+					CloudManagerOptions cm = CloudManagerOptions.getInstance(MainActivity.this);
+					cm.start();
 					return true;
 				}
 				catch(Exception e)

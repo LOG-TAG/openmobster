@@ -23,6 +23,7 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.IOUtil;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
+import org.openmobster.core.mobileCloud.mgr.AppActivation;
 
 /**
  * @author openmobster@gmail.com
