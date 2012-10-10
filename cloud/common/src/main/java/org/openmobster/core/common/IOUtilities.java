@@ -88,9 +88,11 @@ public class IOUtilities
 			byte[] cour = bos.toByteArray();
 			buffer.append(new String(cour));						
 			data = buffer.toString();
+			long bytesTransferred = cour.length;
 			
 			//log that response is read successfully
 			PerfLogInterceptor.getInstance().logResponseRead();
+			PerfLogInterceptor.getInstance().recordBytesTransferred(bytesTransferred);
 			
 			return data;
 		}
@@ -149,6 +151,7 @@ public class IOUtilities
 			
 			//log that request is successfull
 			PerfLogInterceptor.getInstance().logRequestSent();
+			PerfLogInterceptor.getInstance().recordBytesTransferred(payLoad.length());
 		}
 		catch(Throwable t)
 		{
