@@ -299,7 +299,7 @@ public class SyncEngine
 			if(invocation == null && session.isBackgroundSync())
 			{
 				invocation = new MobilePushInvocation(
-			"org.openmobster.core.mobileCloud.api.ui.framework.push.AppNotificationInvocationHandler");
+			"org.openmobster.core.mobileCloud.api.ui.framework.push.NotifySyncPushInvocationHandler");
 				session.setPushInvocation(invocation);
 			}
 	

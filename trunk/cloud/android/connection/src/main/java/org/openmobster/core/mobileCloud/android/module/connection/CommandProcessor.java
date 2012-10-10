@@ -221,19 +221,18 @@ public final class CommandProcessor extends Service
 					return;
 				}
 								
-				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-				SyncInvocation.twoWay, service);
+				//Prepare the bundle
+				Bundle bundle = new Bundle();
+				bundle.putString("channel", service);
+				bundle.putString("silent", silent);
 				
-				if(silent == null || silent.equals("false"))
-				{
-					syncInvocation.activateBackgroundSync();
-				}
-				else
-				{
-					syncInvocation.deactivateBackgroundSync();
-				}
+				//Prepare the intent
+				Intent intent = new Intent("org.openmobster.sync.start");
+				intent.putExtra("bundle", bundle);
 				
-				Bus.getInstance().invokeService(syncInvocation);
+				//Send the broadcast
+				Context context = Registry.getActiveInstance().getContext();
+				context.sendBroadcast(intent);
 			}
 			catch(Exception e)
 			{

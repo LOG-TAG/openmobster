@@ -9,11 +9,7 @@
 package org.openmobster.app;
 
 import java.lang.reflect.Field;
-import java.util.Set;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -129,7 +125,7 @@ public class MainActivity extends BaseCloudActivity
 				try
 				{
 					Request request = new Request("/fuseapp/push");
-					request.setAttribute("app-id", "com.pushapp.android.app");
+					request.setAttribute("app-id", "com.fuseapp.android.app");
 					
 					new MobileService().invoke(request);
 					
@@ -146,32 +142,6 @@ public class MainActivity extends BaseCloudActivity
 				}
 			}
 		});
-		
-		MenuItem item6 = menu.add(Menu.NONE, Menu.NONE, 4, "Test Sync Push");
-		item6.setOnMenuItemClickListener(new OnMenuItemClickListener()
-		{
-			public boolean onMenuItemClick(MenuItem clickedItem)
-			{
-				try
-				{
-					Request request = new Request("/fuseapp/pushtrigger");
-					
-					new MobileService().invoke(request);
-					
-					ViewHelper.getOkModal(MainActivity.this, "Test Sync Push", 
-							"Push successfully triggered..Push Notification should be received in a bit").
-					show();
-					
-					return true;
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace(System.out);
-					return true;
-				}
-			}
-		});
-		
 		
 		
 		return true;

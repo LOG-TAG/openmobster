@@ -344,26 +344,9 @@ public class SyncAdapter
 		return payload;
 	}
 	
-	private void syncPush(MobilePushInvocation invocation)
+	private void syncPush(MobilePushInvocation invocation) throws BusException
 	{
-		Map<String, Object> shared = invocation.getShared();
-		
-		//Prepare the bundle
-		Bundle bundle = new Bundle();
-		Set<String> keys = shared.keySet();
-		for(String key:keys)
-		{
-			String value = shared.get(key).toString();
-			bundle.putString(key, value);
-		}
-		
-		//Prepare the intent
-		Intent intent = new Intent("org.openmobster.sync.push");
-		intent.putExtra("bundle", bundle);
-		
-		//Send the broadcast
-		Context context = Registry.getActiveInstance().getContext();
-		context.sendBroadcast(intent);
+		Bus.getInstance().invokeService(invocation);
 	}
 	
 	/**
