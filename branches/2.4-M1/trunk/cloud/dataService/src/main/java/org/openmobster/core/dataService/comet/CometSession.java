@@ -87,6 +87,13 @@ public final class CometSession implements Serializable,BusListener
 			throw new IllegalStateException("CometSession cannot be activated. Socket is closed!!");
 		}
 		
+		//make sure multiple sessions from the same device are not active
+		if(this.isActive())
+		{
+			this.deactivate();
+			log.debug("Push Session is deactivated on device: "+this.getUri());
+		}
+		
 		this.activeSession = activeSession;	
 		
 		//restart the BusReader

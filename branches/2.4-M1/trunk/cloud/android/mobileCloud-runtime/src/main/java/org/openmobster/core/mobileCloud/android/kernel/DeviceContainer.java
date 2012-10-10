@@ -139,6 +139,7 @@ public final class DeviceContainer
 			services.add(new ChannelBootupHandler());
 			services.add(new StopCometDaemon());
 			services.add(new PushRPCInvocationHandler());
+			services.add((Service)Thread.currentThread().getContextClassLoader().loadClass("org.openmobster.core.mobileCloud.api.ui.framework.push.NotifySyncPushInvocationHandler").newInstance());
 			
 			//Add the DeviceManager service
 			services.add(new DeviceManager());
@@ -160,6 +161,73 @@ public final class DeviceContainer
 		{
 			e.printStackTrace(System.out);
 			throw new SystemException(this.getClass().getName(), "startup", new Object[]{
+				"Exception="+e.toString(),
+				"Message="+e.getMessage()
+			});
+		}
+	}
+	
+	public synchronized void startupWithoutPush()
+	{
+		try
+		{
+			if(this.isContainerActive())
+			{
+				return;
+			}
+			
+			AppSystemConfig.getInstance().start();
+			CryptoManager.getInstance().start();
+			Registry.getInstance(this.context);
+			Database.getInstance(this.context).connect();
+									
+			List<Service> services = new ArrayList<Service>();						
+			
+			//Core Low-Level Services		
+			services.add(new Bus());			
+			services.add(new Daemon());	
+			services.add(new LoadProxyDaemon());	
+			
+			//Network/Connection services			
+			services.add(new NetworkConnector());
+			
+			//Synchronization Services					
+			services.add(new SyncDataSource());								
+			services.add(new SyncObjectGenerator());							
+			services.add(new SyncService());					
+			
+			//MobileObject Database services			
+			services.add(new MobileObjectDatabase());
+				
+			//Moblet App State management service			
+			services.add(new AppStateManager());
+			
+			//Invocation Handlers
+			services.add(new MockInvocationHandler());
+			services.add(new MockBroadcastInvocationHandler());
+			services.add(new SyncInvocationHandler());									
+			services.add(new CometConfigHandler());
+			services.add(new StartCometDaemon());
+			services.add(new SwitchSecurityMode());
+			services.add(new CometRecycleHandler());
+			services.add(new CometStatusHandler());
+			services.add(new ChannelBootupHandler());
+			services.add(new StopCometDaemon());
+			services.add(new PushRPCInvocationHandler());
+			services.add((Service)Thread.currentThread().getContextClassLoader().loadClass("org.openmobster.core.mobileCloud.api.ui.framework.push.NotifySyncPushInvocationHandler").newInstance());
+			
+			//Add the DeviceManager service
+			services.add(new DeviceManager());
+			
+			//Device-To-Device Push service
+			services.add(new D2DService());
+									
+			Registry.getActiveInstance().start(services);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			throw new SystemException(this.getClass().getName(), "startupWithoutPush", new Object[]{
 				"Exception="+e.toString(),
 				"Message="+e.getMessage()
 			});
