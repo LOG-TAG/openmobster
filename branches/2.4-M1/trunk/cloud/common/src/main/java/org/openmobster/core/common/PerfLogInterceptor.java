@@ -39,6 +39,10 @@ public final class PerfLogInterceptor
 	private FileOutputStream pushFailed;
 	private long pushFailedCtr;
 	
+	private FileOutputStream bytesFile;
+	private long bytesTransferred;
+	
+	
 	public PerfLogInterceptor()
 	{
 		
@@ -95,6 +99,11 @@ public final class PerfLogInterceptor
 			pushFailedFile.delete();
 			this.pushFailed = new FileOutputStream("push-failed.xml",true);
 			this.pushFailedCtr = 0;
+			
+			//Bytes Transferred
+			File bytes = new File("bytes.xml");
+			bytes.delete();
+			this.bytesFile = new FileOutputStream("bytes.xml",true);
 		}
 		catch(Throwable t)
 		{
@@ -139,6 +148,12 @@ public final class PerfLogInterceptor
 			if(this.pushFailed != null)
 			{
 				this.pushFailed.close();
+			}
+			
+			this.logBytesTransferred();
+			if(this.bytesFile != null)
+			{
+				this.bytesFile.close();
 			}
 		}
 		catch(Throwable t)
@@ -355,6 +370,44 @@ public final class PerfLogInterceptor
 		catch(Throwable t)
 		{
 			throw new RuntimeException(t);
+		}
+	}
+	
+	public void logBytesTransferred()
+	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
+		try
+		{
+			synchronized(this.bytesFile)
+			{	
+				StringBuilder buffer = new StringBuilder();
+				
+				buffer.append(""+this.bytesTransferred);
+				
+				this.bytesFile.write(buffer.toString().getBytes());
+				this.bytesFile.flush();
+			}
+		}
+		catch(Throwable t)
+		{
+			throw new RuntimeException(t);
+		}
+	}
+	
+	public void recordBytesTransferred(long bytes)
+	{
+		String perfFramework = System.getProperty("perf-framework");
+		if(perfFramework == null)
+		{
+			return;
+		}
+		synchronized(PerfLogInterceptor.class)
+		{
+			this.bytesTransferred += bytes;
 		}
 	}
 }
