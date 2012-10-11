@@ -8,15 +8,8 @@
 package org.openmobster.core.mobileCloud.mgr;
 
 import java.util.List;
-import java.util.Vector;
 
-import org.openmobster.android.api.rpc.MobileService;
-import org.openmobster.android.api.rpc.Request;
-import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
@@ -91,6 +84,46 @@ public final class ManualSync
 		
 		public void onClick(DialogInterface dialog, int status)
 		{
+			String selectedChannel = items[status];
+			
+			ChannelSyncListener listener = new ChannelSyncListener(currentActivity,selectedChannel);
+			
+			AlertDialog actionDialog = new AlertDialog.Builder(currentActivity).
+			setItems(new String[]{"Reset Channel",
+			"Sync Channel",
+			"Cancel"}, listener).
+	    	setCancelable(false).
+	    	create();
+			
+			actionDialog.setTitle(selectedChannel);
+			
+			actionDialog.show();
+		}
+	}
+	
+	private class ChannelSyncListener implements DialogInterface.OnClickListener
+	{
+		private Activity currentActivity;
+		private String selectedChannel;
+		private ChannelSyncListener(Activity currentActivity,String selectedChannel)
+		{
+			this.currentActivity = currentActivity;
+			this.selectedChannel = selectedChannel;
+		}
+		
+		public void onClick(DialogInterface dialog, int status)
+		{
+			if(status != 2)
+			{
+				CommandContext commandContext = new CommandContext();
+				commandContext.setAttribute("task", new ManualSyncTask());
+				commandContext.setAttribute("syncOption", ""+status);
+				commandContext.setAttribute("channel", selectedChannel);
+				
+				TaskExecutor taskExecutor = new TaskExecutor("Manual Sync","Sync in Progress....",
+						"Sync Completed",currentActivity);
+				taskExecutor.execute(commandContext);
+			}
 		}
 	}
 }

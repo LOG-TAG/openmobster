@@ -69,6 +69,13 @@ public final class CloudManagerOptions
 					PushOptions push = PushOptions.getInstance(CloudManagerOptions.this.currentActivity);
 					push.start();
 				break;
+				
+				case 3:
+					dialog.cancel();
+					
+					ManualSync manualSync = ManualSync.getInstance(CloudManagerOptions.this.currentActivity);
+					manualSync.start();
+				break;
 			}
 		}
 	}
