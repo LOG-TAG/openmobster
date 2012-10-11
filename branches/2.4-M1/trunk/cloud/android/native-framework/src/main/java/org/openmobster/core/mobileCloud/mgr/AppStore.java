@@ -7,20 +7,10 @@
  */
 package org.openmobster.core.mobileCloud.mgr;
 
-import java.util.Vector;
-
-import org.openmobster.android.api.rpc.MobileService;
-import org.openmobster.android.api.rpc.Request;
-import org.openmobster.android.api.rpc.Response;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.InvocationResponse;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 
 /**
  *
