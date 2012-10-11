@@ -8,6 +8,8 @@
 package org.openmobster.core.mobileCloud.mgr;
 
 
+import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -75,6 +77,18 @@ public final class CloudManagerOptions
 					
 					ManualSync manualSync = ManualSync.getInstance(CloudManagerOptions.this.currentActivity);
 					manualSync.start();
+				break;
+				
+				case 4:
+					dialog.cancel();
+					
+					CommandContext commandContext = new CommandContext();
+					commandContext.setAttribute("task", new CheckCloudStatusTask());
+				    commandContext.setAttribute("currentActivity", currentActivity);
+					
+					TaskExecutor taskExecutor = new TaskExecutor("Status","Sync in Progress....",
+					null,currentActivity);
+					taskExecutor.execute(commandContext);
 				break;
 			}
 		}
