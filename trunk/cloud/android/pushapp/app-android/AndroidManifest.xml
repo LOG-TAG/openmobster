@@ -26,11 +26,6 @@
     			<action android:name="org.openmobster.sync.start"/>
     		</intent-filter>
     	</receiver>
-    	<receiver android:name="org.openmobster.core.mobileCloud.api.ui.framework.push.SyncPushBroadcastReceiver">
-    		<intent-filter>
-    			<action android:name="org.openmobster.sync.push"/>
-    		</intent-filter>
-    	</receiver>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest> 
