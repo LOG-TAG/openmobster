@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.HashSet;
 
 import org.json.JSONObject;
 
@@ -132,12 +133,19 @@ final class Cache
 	synchronized void clear(String table) throws DBException
 	{
 		Set<String> keys = this.cache.keySet();
+		Set<String> delete = new HashSet<String>();
 		for(String key:keys)
 		{
 			if(key.startsWith(table+":"))
 			{
-				this.cache.remove(key);
+				delete.add(key);
 			}
+		}
+		
+		//now delete them
+		for(String deleteMe:delete)
+		{
+			this.cache.remove(deleteMe);
 		}
 	}
 }
