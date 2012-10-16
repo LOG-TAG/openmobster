@@ -50,9 +50,12 @@ public class PerfBandwidth extends TestCase
 		
 		Request request = new Request("/perf-framework/bandwidthrunner");
 		StringBuilder buffer = new StringBuilder();
-		for(int i=0; i<1024; i++)
+		for(int i=0;i<1024; i++)
 		{
-			buffer.append("a");
+			for(int j=0; j<1000; j++)
+			{
+				buffer.append("a");
+			}
 		}
 		request.setAttribute("payload", buffer.toString());
 		
