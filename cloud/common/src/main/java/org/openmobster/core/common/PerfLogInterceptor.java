@@ -10,6 +10,8 @@ package org.openmobster.core.common;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Calendar;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusMessage;
@@ -40,7 +42,7 @@ public final class PerfLogInterceptor
 	private long pushFailedCtr;
 	
 	private FileOutputStream bytesFile;
-	private long bytesTransferred;
+	private List<Long> bytesTransferred;
 	
 	
 	public PerfLogInterceptor()
@@ -104,6 +106,7 @@ public final class PerfLogInterceptor
 			File bytes = new File("bytes.xml");
 			bytes.delete();
 			this.bytesFile = new FileOutputStream("bytes.xml",true);
+			this.bytesTransferred = new ArrayList<Long>();
 		}
 		catch(Throwable t)
 		{
@@ -155,6 +158,7 @@ public final class PerfLogInterceptor
 			{
 				this.bytesFile.close();
 			}
+			this.bytesTransferred = null;
 		}
 		catch(Throwable t)
 		{
@@ -386,7 +390,14 @@ public final class PerfLogInterceptor
 			{	
 				StringBuilder buffer = new StringBuilder();
 				
-				buffer.append(""+this.bytesTransferred);
+				//generate the total
+				long total = 0;
+				for(Long local:this.bytesTransferred)
+				{
+					total += local;
+				}
+				
+				buffer.append(""+total);
 				
 				this.bytesFile.write(buffer.toString().getBytes());
 				this.bytesFile.flush();
@@ -405,9 +416,6 @@ public final class PerfLogInterceptor
 		{
 			return;
 		}
-		synchronized(PerfLogInterceptor.class)
-		{
-			this.bytesTransferred += bytes;
-		}
+		this.bytesTransferred.add(new Long(bytes));
 	}
 }
