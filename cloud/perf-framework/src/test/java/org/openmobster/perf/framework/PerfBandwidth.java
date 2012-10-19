@@ -8,15 +8,13 @@
 
 package org.openmobster.perf.framework;
 
-import java.util.List;
 import org.apache.log4j.Logger;
 
 import junit.framework.TestCase;
 
-import org.openmobster.cloudConnector.api.service.MobileService;
-import org.openmobster.cloudConnector.api.service.Request;
-import org.openmobster.cloudConnector.api.service.Response;
-import org.openmobster.device.agent.frameworks.mobileObject.MobileObject;
+import org.openmobster.device.api.service.MobileService;
+import org.openmobster.device.api.service.Request;
+import org.openmobster.device.api.service.Response;
 
 public class PerfBandwidth extends TestCase
 {
@@ -60,11 +58,16 @@ public class PerfBandwidth extends TestCase
 		request.setAttribute("payload", buffer.toString());
 		
 		MobileService service = new MobileService();
-		Response response = service.invoke(request);
+		Response response = service.invoke(this.deviceStack.getRunner(),request);
 		
 		this.assertNotNull(response);
 		
 		String statusCode = response.getStatusCode();
 		this.assertEquals("200", statusCode);
+		
+		if(statusCode.equals("200"))
+		{
+			log.info("Success: PerfBandwith successfully executed");
+		}
 	}
 }
