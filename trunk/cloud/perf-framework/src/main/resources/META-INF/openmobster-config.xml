@@ -7,4 +7,9 @@
    <bean name="/perf/framework/demochannel" class="org.openmobster.perf.framework.channel.DemoChannel">
    		<property name="demoRepository"><inject bean="/perf/framework/demorepo"/></property>
    </bean>
+   
+   <bean name="/perf-framework/bandwidthrunner" class="org.openmobster.perf.framework.rpc.BandwidthRunner">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
 </deployment>
