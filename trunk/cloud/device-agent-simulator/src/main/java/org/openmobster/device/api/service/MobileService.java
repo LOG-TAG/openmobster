@@ -175,9 +175,9 @@ public final class MobileService
 				"</request>";
 			}
 			
-			log.info("--------------------------------------------------");
-			log.info("SessionPayload="+sessionInitPayload);
-			log.info("--------------------------------------------------");
+			//log.info("--------------------------------------------------");
+			//log.info("SessionPayload="+sessionInitPayload);
+			//log.info("--------------------------------------------------");
 			
 			IOUtilities.writePayLoad(sessionInitPayload, os);
 			
@@ -186,9 +186,9 @@ public final class MobileService
 			IOUtilities.writePayLoad(serializedRequest, os);
 			response = IOUtilities.readServerResponse(is);
 			
-			log.info("MobileService Response-------------------------------------------------------");
-			log.info(response);
-			log.info("-----------------------------------------------------------------------------");
+			//log.info("MobileService Response-------------------------------------------------------");
+			//log.info(response);
+			//log.info("-----------------------------------------------------------------------------");
 			
 			beanResponse = parse(response);
 			

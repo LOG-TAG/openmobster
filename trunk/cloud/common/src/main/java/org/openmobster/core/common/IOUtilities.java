@@ -151,7 +151,8 @@ public class IOUtilities
 			
 			//log that request is successfull
 			PerfLogInterceptor.getInstance().logRequestSent();
-			PerfLogInterceptor.getInstance().recordBytesTransferred(payLoad.length());
+			byte[] payloadInBytes = payLoad.getBytes();
+			PerfLogInterceptor.getInstance().recordBytesTransferred(payloadInBytes.length);
 		}
 		catch(Throwable t)
 		{
