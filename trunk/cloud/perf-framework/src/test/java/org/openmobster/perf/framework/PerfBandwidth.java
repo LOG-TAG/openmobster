@@ -8,6 +8,8 @@
 
 package org.openmobster.perf.framework;
 
+import java.util.Random;
+
 import org.apache.log4j.Logger;
 
 import junit.framework.TestCase;
@@ -20,7 +22,13 @@ public class PerfBandwidth extends TestCase
 {
 	private static Logger log = Logger.getLogger(PerfBandwidth.class);
 	
+	private static Random random;
 	private SimulatedDeviceStack deviceStack;
+	
+	static
+	{
+		random = new Random();
+	}
 	
 	public void setUp() throws Exception
 	{
@@ -47,10 +55,14 @@ public class PerfBandwidth extends TestCase
 		this.assertNotNull("Device Not Found for this test case", this.deviceStack);
 		
 		Request request = new Request("/perf-framework/bandwidthrunner");
+		
+		int randomNumber = Math.abs(random.nextInt());
+		int size = randomNumber % 2000;
+		
 		StringBuilder buffer = new StringBuilder();
 		for(int i=0;i<1024; i++)
 		{
-			for(int j=0; j<1000; j++)
+			for(int j=0; j<size; j++)
 			{
 				buffer.append("a");
 			}

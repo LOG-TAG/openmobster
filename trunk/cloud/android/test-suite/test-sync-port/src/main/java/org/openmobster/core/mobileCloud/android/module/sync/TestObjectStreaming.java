@@ -32,11 +32,8 @@ public final class TestObjectStreaming extends AbstractSyncTest
 			this.assertRecordPresence("unique-3", "/TestTwoWaySync/add");
 			this.assertRecordPresence("unique-4", "/TestTwoWaySync/add");
 			
-			MobileObject unique1 = this.getRecord("unique-1");
-			this.assertNull(unique1.getValue("attachment"), "/TestObjectStreaming/NoAttachmentDownloaded");
-			
 			SyncService.getInstance().performStreamSync(service, "unique-1", false);
-			unique1 = this.getRecord("unique-1");
+			MobileObject unique1 = this.getRecord("unique-1");
 			this.assertNotNull(unique1.getValue("attachment"), "/TestObjectStreaming/AttachmentMustBeDownloaded");
 			
 			this.tearDown();
