@@ -35,8 +35,7 @@ public class BandwidthRunner implements MobileServiceBean
 	{
 		Response response = new Response();
 		
-		String payload = request.getAttribute("payload");
-		response.setAttribute("payload", payload);
+		log.info("BandwidthRunner successfully invoked.....");
 		
 		return response;
 	}
