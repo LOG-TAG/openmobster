@@ -10,8 +10,8 @@ package org.openmobster.core.dataService.server;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoFilterAdapter;
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.filterchain.IoFilterAdapter;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.Constants;
 
@@ -32,9 +32,14 @@ public class PayloadFilter extends IoFilterAdapter
 		//log.debug("RAWSocketMsg---------------------------------------------------------------------------");
 		//log.debug(message);
 		//log.debug("---------------------------------------------------------------------------------------");
-		if(this.processPayload(session, (String)message))
+		String payloadMessage = ((String)message).trim();
+		if(this.processPayload(session, payloadMessage))
 		{
 			nextFilter.messageReceived(session, message);
+			session.removeAttribute(Constants.payload);
+			
+			//session.write(Constants.status+"="+200+Constants.endOfStream);
+			//session.removeAttribute(Constants.payload);
 		}
 		else
 		{
@@ -46,25 +51,26 @@ public class PayloadFilter extends IoFilterAdapter
 		
 	private boolean processPayload(IoSession session, String message)
 	{		
-		StringBuilder payLoadBuilder = (StringBuilder)session.getAttribute(Constants.payloadBuilder);
-		if(payLoadBuilder == null)
+		PayloadController payloadController = (PayloadController)session.
+		getAttribute(Constants.payload);
+		
+		if(payloadController == null)
 		{
-			payLoadBuilder = new StringBuilder();
-			session.setAttribute(Constants.payloadBuilder, payLoadBuilder);
+			payloadController = new PayloadController();
+			session.setAttribute(Constants.payload,payloadController);
+			payloadController.openBuffer();
 		}
 		
-		payLoadBuilder.append(message.trim());
-		
-		if(!payLoadBuilder.toString().trim().endsWith(Constants.eof))
+		if(!message.endsWith(Constants.eof))
 		{
+			payloadController.writeBuffer(message.getBytes());
 			return false;
 		}
 		
-		//Payload is fully constructed now, for further processing down the server stack
-		String payload = payLoadBuilder.toString().trim().replace(Constants.eof, "");
-		session.removeAttribute(Constants.payloadBuilder);
-		session.setAttribute(Constants.payload, payload);
+		message = message.replace(Constants.eof, "");
+		payloadController.writeBuffer(message.getBytes());
 		
+		payloadController.closeBuffer();
 		return true;
 	}				
 }

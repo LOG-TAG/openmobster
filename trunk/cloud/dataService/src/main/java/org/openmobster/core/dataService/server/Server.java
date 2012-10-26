@@ -10,8 +10,6 @@ package org.openmobster.core.dataService.server;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
 
 import java.io.FileInputStream;
 
@@ -26,18 +24,13 @@ import javax.net.ssl.SSLContext;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.ByteBuffer;
-import org.apache.mina.common.SimpleByteBufferAllocator;
-import org.apache.mina.common.IoAcceptor;
-import org.apache.mina.common.ThreadModel;
+import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.executor.ExecutorFilter;
-import org.apache.mina.filter.SSLFilter;
+import org.apache.mina.filter.ssl.SslFilter;
 
-import org.apache.mina.transport.socket.nio.SocketAcceptorConfig;
-import org.apache.mina.transport.socket.nio.SocketAcceptor;
-
+import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 /**
  * 
@@ -48,8 +41,6 @@ public class Server
 	private static Logger log = Logger.getLogger(Server.class);
 		
 	private IoAcceptor acceptor = null;
-		
-	private ExecutorService executor = null;
 		
 	private ServerHandler handler = null;
 		
@@ -76,10 +67,9 @@ public class Server
 		
 	public void stop() throws RuntimeException
 	{
-		this.acceptor.unbindAll();
-		this.executor.shutdown();
+		this.acceptor.unbind();
+		
 		this.acceptor = null;
-		this.executor = null;
 		this.handler = null;
 	}
 	
@@ -175,57 +165,54 @@ public class Server
 	protected void startListening(boolean activateSSL)
 	{
 		try
-		{
-			//The following two lines change the default buffer type to 'heap',
-	        // which yields better performance.c
-	        ByteBuffer.setUseDirectBuffers(false);
-	        ByteBuffer.setAllocator(new SimpleByteBufferAllocator());
-	        
-	        this.acceptor = new SocketAcceptor();
-	        this.executor = Executors.newCachedThreadPool();
-	        
-	        SocketAcceptorConfig cfg = new SocketAcceptorConfig();
-	        cfg.setThreadModel(ThreadModel.MANUAL);
+		{   
+	        this.acceptor = new NioSocketAcceptor();
+	        ((NioSocketAcceptor)this.acceptor).setReuseAddress(true);
 	       
 	        if(activateSSL)
 	        {
 	        	//Makes the tcp connection protected with SSL
-	        	SSLFilter sslFilter = new SSLFilter(this.getSSLContext());	        
-	        	cfg.getFilterChain().addLast("ssl", sslFilter);
+	        	SslFilter sslFilter = new SslFilter(this.getSSLContext());	        
+	        	this.acceptor.getFilterChain().addLast("ssl", sslFilter);
 	        }
+	        
 	        
 	        //
 	        TextLineCodecFactory textLine = new TextLineCodecFactory(Charset.forName("UTF-8"));	
 	        textLine.setDecoderMaxLineLength(Integer.MAX_VALUE);
 	        textLine.setEncoderMaxLineLength(Integer.MAX_VALUE);
 	        ProtocolCodecFilter codecFilter = new ProtocolCodecFilter(textLine);
-	        cfg.getFilterChain().addLast( "codec", codecFilter);
+	        this.acceptor.getFilterChain().addLast( "codec", codecFilter);
 	        
 	        //
-	        cfg.getFilterChain().addLast("threadPool", new ExecutorFilter(this.executor));
+	        this.acceptor.getFilterChain().addLast("threadPool", new ExecutorFilter());
 	        
 	        //Add Custom filters here
 	        if(this.payloadFilter != null)
 	        {
-	        	cfg.getFilterChain().addLast("payloadFilter", this.payloadFilter);
+	        	this.acceptor.getFilterChain().addLast("payloadFilter", this.payloadFilter);
 	        }
 	        
 	        if(this.requestFilter != null)
 	        {
-	        	cfg.getFilterChain().addLast("requestFilter", this.requestFilter);
+	        	this.acceptor.getFilterChain().addLast("requestFilter", this.requestFilter);
 	        }
 	        
 	        if(this.transactionFilter != null)
 	        {
-	        	cfg.getFilterChain().addLast("transactionFilter", this.transactionFilter);	   
+	        	this.acceptor.getFilterChain().addLast("transactionFilter", this.transactionFilter);	   
 	        }
 	        
 	        if(this.authenticationFilter != null)
 	        {
-	        	cfg.getFilterChain().addLast("authenticationFilter", this.authenticationFilter);
+	        	this.acceptor.getFilterChain().addLast("authenticationFilter", this.authenticationFilter);
 	        }
 	        
-	        this.acceptor.bind(new InetSocketAddress(this.port), this.handler, cfg);
+	        //session specific configuration
+	        this.acceptor.getSessionConfig().setBothIdleTime(10);
+	        
+	        this.acceptor.setHandler(this.handler);
+	        this.acceptor.bind(new InetSocketAddress(this.port));
 	        
 	        log.info("--------------------------------------------");
 	        log.info("Mobile Data Server successfully loaded on port ("+this.port+").....");

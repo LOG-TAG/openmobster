@@ -10,8 +10,8 @@ package org.openmobster.core.dataService.server;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoFilterAdapter;
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.filterchain.IoFilterAdapter;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.Constants;
 
@@ -29,7 +29,8 @@ public class RequestConstructionFilter extends IoFilterAdapter
 		
 	public void messageReceived(NextFilter nextFilter, IoSession session, Object message)
 	{
-		String payload = (String)session.getAttribute(Constants.payload);
+		PayloadController payloadController = (PayloadController)session.getAttribute(Constants.payload);
+		String payload = payloadController.getPayload();
 		
 		if(payload != null)
 		{

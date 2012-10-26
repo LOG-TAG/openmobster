@@ -85,7 +85,7 @@ public class LocationProcessor implements Processor
 	{
 		try
 		{
-			String payload = input.getMessage().trim();
+			String payload = input.getMessage();
 			Request locationRequest = this.parseRequest(payload);
 			
 			Invocation invocation = Invocation.getInstance();

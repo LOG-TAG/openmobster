@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.common.bus.Bus;
 import org.openmobster.core.common.bus.BusListener;

@@ -10,8 +10,8 @@ package org.openmobster.core.dataService.server;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoFilterAdapter;
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.filterchain.IoFilterAdapter;
+import org.apache.mina.core.session.IoSession;
 
 import java.security.MessageDigest;
 
@@ -85,7 +85,6 @@ public class AuthenticationFilter extends IoFilterAdapter
 	{
 		log.debug("Authorization--------------------------------------------------------------------------");
 		
-		String payload = (String)session.getAttribute(Constants.payload);
 		ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
 		AuthCredential authCredential = this.parseAuthCredential(request);
 		if(authCredential == null)
@@ -156,8 +155,10 @@ public class AuthenticationFilter extends IoFilterAdapter
 	}
 	
 	private boolean skipAuthentication(IoSession session)
-	{		
-		String payload = (String)session.getAttribute(Constants.payload);
+	{
+		PayloadController payloadController = (PayloadController)session.getAttribute(Constants.payload);
+		String payload = payloadController.getPayload();
+		
 		ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
 		
 		if(request == null)

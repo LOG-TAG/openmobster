@@ -8,7 +8,9 @@
 
 package org.openmobster.core.dataService.server;
 
-import org.apache.mina.common.IoSession;
+import org.apache.log4j.Logger;
+
+import org.apache.mina.core.session.IoSession;
 import org.openmobster.core.dataService.processor.Input;
 
 import org.openmobster.core.common.ServiceManager;
@@ -19,7 +21,9 @@ import org.openmobster.core.dataService.processor.Processor;
  * @author openmobster@gmail.com
  */
 public class ProcessorController 
-{		
+{
+	private static Logger log = Logger.getLogger(ProcessorController.class);
+	
 	public ProcessorController()
 	{
 		
@@ -35,7 +39,7 @@ public class ProcessorController
 		
 	}				
 	//---------------------------------------------------------------------------------------------------------------------
-	public void execute(IoSession session, String payload, ConnectionRequest request) throws Exception
+	public void execute(IoSession session, ConnectionRequest request) throws Exception
 	{
 		if(request != null )
 		{
@@ -44,6 +48,9 @@ public class ProcessorController
 		}
 		else
 		{
+			PayloadController payloadController = (PayloadController)session.getAttribute(Constants.payload);
+			String payload = payloadController.getPayload();
+			
 			this.processMessage(session, payload);
 		}
 	}	
@@ -86,16 +93,25 @@ public class ProcessorController
 		if(processor != null)
 		{												
 			Input input = new Input(session, payload);
+			
 			String result = processor.process(input);
-							
-			if(result != null && result.trim().length()!=0)
+			
+			//log.info(result);
+			
+			if(result != null)
 			{
-				session.write(result.trim()+Constants.endOfStream);
+				result = result.trim();
+				if(result.length() == 0)
+				{
+					session.write(Constants.status+"="+200+Constants.endOfStream);
+					return;
+				}
+				
+				session.write(result+Constants.endOfStream);
+				return;
 			}
-			else
-			{
-				session.write(Constants.status+"="+200+Constants.endOfStream);
-			}
+			
+			session.write(Constants.status+"="+200+Constants.endOfStream);
 		}
 		else
 		{
