@@ -10,7 +10,7 @@ package org.openmobster.core.dataService.processor;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.synchronizer.model.SyncAdapterRequest;
 import org.openmobster.core.synchronizer.model.SyncAdapterResponse;
@@ -75,7 +75,7 @@ public class SyncProcessor implements Processor
 		try
 		{
 			//Using the serverside sync
-			String payload = input.getMessage().trim();
+			String payload = input.getMessage();
 			log.debug("Received------------------------------------------------------------------------");
 			log.debug(payload);
 			

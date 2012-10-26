@@ -10,7 +10,7 @@ package org.openmobster.core.dataService.server;
 
 import java.util.StringTokenizer;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.dataService.comet.CometSessionManager;
@@ -62,7 +62,7 @@ public class CommandController
 		this.pulseInterval = pulseInterval;
 	}
 	//---------------------------------------------------------------------------------------------------------------------
-	public void execute(IoSession session, String payload, ConnectionRequest request) throws Exception
+	public void execute(IoSession session, ConnectionRequest request) throws Exception
 	{						
 		String command = request.getCommand();
 		if(command.equals(Constants.notify))

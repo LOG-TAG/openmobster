@@ -69,7 +69,7 @@ public class ServiceInvocationProcessor implements Processor
 	{					
 		try
 		{
-			String payload = input.getMessage().trim();
+			String payload = input.getMessage();
 			
 			//Make a ServiceInvocation into the RestFul Server			
 			Request serviceRequest = this.parseServiceRequest(payload);
