@@ -54,5 +54,11 @@ final class StopPushTask implements Task
 	{
 		// TODO Auto-generated method stub
 		
-	}	
+	}
+	
+	@Override
+	public void postExecuteAppException(CommandContext commandContext) throws AppException
+	{
+		
+	}
 }

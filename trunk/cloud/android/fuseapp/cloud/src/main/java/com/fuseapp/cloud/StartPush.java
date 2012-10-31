@@ -59,6 +59,8 @@ public class StartPush implements MobileServiceBean
 				log.info("Starting the Push..............");
 				
 				pushService.push(device.getIdentity().getPrincipal(), appId, "Hello From Push", "Title", "Details");
+				
+				log.info("Push successfull..............");
 			}
 		});
 		t.start();

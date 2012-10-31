@@ -9,6 +9,7 @@
 package org.openmobster.core.mobileCloud.mgr;
 
 import android.content.Context;
+import android.app.Activity;
 
 import org.openmobster.android.api.rpc.MobileService;
 import org.openmobster.android.api.rpc.Request;
@@ -31,9 +32,12 @@ import org.openmobster.core.mobileCloud.moblet.BootupConfiguration;
  *
  */
 final class AppActivationTask implements Task
-{	
-	AppActivationTask()
+{
+	private Activity activity;
+	
+	AppActivationTask(Activity activity)
 	{
+		this.activity = activity;
 	}
 	
 	public void execute(CommandContext commandContext) throws AppException
@@ -158,7 +162,17 @@ final class AppActivationTask implements Task
 	@Override
 	public void postExecute(CommandContext commandContext) throws AppException
 	{
-		// TODO Auto-generated method stub
 		
-	}	
+	}
+	
+	@Override
+	public void postExecuteAppException(CommandContext commandContext) throws AppException
+	{
+		Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+		if(!conf.isActive())
+		{
+			AppActivation appActivation = AppActivation.getInstance(this.activity);
+			appActivation.start();
+		}
+	}
 }

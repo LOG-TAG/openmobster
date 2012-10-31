@@ -88,10 +88,10 @@ public final class CommandProcessor extends Service
 				{
 					this.sync(input);
 				}
-				else if(inputCommand.equals(Constants.pushrpc))
+				/*else if(inputCommand.equals(Constants.pushrpc))
 				{
 					this.pushrpc(input);
-				}
+				}*/
 				else if(inputCommand.equals(Constants.push))
 				{
 					this.push(input);
@@ -100,10 +100,10 @@ public final class CommandProcessor extends Service
 				{
 					this.deviceManagement(input);
 				}
-				else if(inputCommand.equals(Constants.d2d))
+				/*else if(inputCommand.equals(Constants.d2d))
 				{
 					this.d2d(input);
-				}
+				}*/
 			}
 		}
 	}
@@ -246,6 +246,40 @@ public final class CommandProcessor extends Service
 		}
 	}
 	
+	private static class DeviceManagementCommandHandler implements Runnable
+	{
+		private Map<String,String> input;
+		
+		private DeviceManagementCommandHandler(Map<String,String> input)
+		{
+			this.input = input;
+		}
+		public void run()
+		{
+			try
+			{
+				String action = input.get(Constants.action);
+				
+				//Prepare the intent
+				Intent intent = new Intent("org.openmobster.device.management");
+				intent.putExtra("action", action);
+				
+				//Send the broadcast
+				Context context = Registry.getActiveInstance().getContext();
+				context.sendBroadcast(intent);
+			}
+			catch(Exception e)
+			{
+				SystemException se = new SystemException(this.getClass().getName(),"run", 
+						new Object[]{
+							"Exception="+e.toString(),
+							"Message="+e.getMessage()
+						});
+				ErrorHandler.getInstance().handle(se);
+			}
+		}
+	}
+	
 	private static class PushRPCHandler implements Runnable
 	{
 		private Map<String,String> input;
@@ -270,41 +304,6 @@ public final class CommandProcessor extends Service
 				PushRPCInvocation invocation = new PushRPCInvocation(
 					"org.openmobster.core.mobileCloud.api.ui.framework.push.PushRPCInvocationHandler",payload);
 				Bus.getInstance().broadcast(invocation);
-			}
-			catch(Exception e)
-			{
-				SystemException se = new SystemException(this.getClass().getName(),"run", 
-						new Object[]{
-							"Exception="+e.toString(),
-							"Message="+e.getMessage()
-						});
-				ErrorHandler.getInstance().handle(se);
-			}
-		}
-	}
-	
-	private static class DeviceManagementCommandHandler implements Runnable
-	{
-		private Map<String,String> input;
-		
-		private DeviceManagementCommandHandler(Map<String,String> input)
-		{
-			this.input = input;
-		}
-		public void run()
-		{
-			try
-			{
-				String action = input.get(Constants.action);
-				
-				if(action.equals("lock"))
-				{
-					PolicyManager.getInstance().lock();
-				}
-				else if(action.equals("wipe"))
-				{
-					PolicyManager.getInstance().wipe();
-				}
 			}
 			catch(Exception e)
 			{

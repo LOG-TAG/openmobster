@@ -147,4 +147,10 @@ final class LoadAppStoreTask implements Task
 			}
 		}
 	}
+	
+	@Override
+	public void postExecuteAppException(CommandContext commandContext) throws AppException
+	{
+		
+	}
 }

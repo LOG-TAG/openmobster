@@ -127,6 +127,7 @@ final class TaskExecutor extends AsyncTask<CommandContext,Integer,CommandContext
 			
 			//Show the dialog
 	    	ViewHelper.getOkModal(this.currentActivity, errorTitle, errorMsg).show();
+	    	
 			return;
 		}
 		
@@ -134,6 +135,8 @@ final class TaskExecutor extends AsyncTask<CommandContext,Integer,CommandContext
 		{
 			//Show the dialog
 	    	ViewHelper.getOkModal(this.currentActivity, "App Error", result.getAppException().getMessageKey()).show();
+	    	this.callPostExecuteAppException(result);
+	    	
 			return;
 		}
 		
@@ -143,11 +146,32 @@ final class TaskExecutor extends AsyncTask<CommandContext,Integer,CommandContext
 			ViewHelper.getOkModal(this.currentActivity, this.title, this.successMessage).show();
 		}
 		
+		this.callPostExecute(result);
+	}
+	
+	private void callPostExecute(CommandContext result)
+	{
 		//call the post execute on the task
 		Task task = (Task)result.getAttribute("task");
 		try
 		{
 			task.postExecute(result);
+		}
+		catch(AppException ape)
+		{
+			//Show the dialog
+	    	ViewHelper.getOkModal(this.currentActivity, "App Error", result.getAppException().getMessageKey()).show();
+			return;
+		}
+	}
+	
+	private void callPostExecuteAppException(CommandContext result)
+	{
+		//call the post execute on the task
+		Task task = (Task)result.getAttribute("task");
+		try
+		{
+			task.postExecuteAppException(result);
 		}
 		catch(AppException ape)
 		{
