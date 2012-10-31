@@ -19,4 +19,6 @@ public interface Task
 	public void execute(CommandContext commandContext) throws AppException;
 	
 	public void postExecute(CommandContext commandContext) throws AppException;
+	
+	public void postExecuteAppException(CommandContext commandContext) throws AppException;
 }

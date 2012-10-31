@@ -98,12 +98,15 @@ public final class PolicyManager
 		if (dir.isDirectory())
 		{
 			String[] children = dir.list();
-			for (int i = 0; i < children.length; i++)
+			if(children != null)
 			{
-				boolean success = deleteDir(new File(dir, children[i]));
-				if (!success)
+				for (int i = 0; i < children.length; i++)
 				{
-					return false;
+					boolean success = deleteDir(new File(dir, children[i]));
+					if (!success)
+					{
+						return false;
+					}
 				}
 			}
 		}

@@ -115,5 +115,11 @@ final class CheckCloudStatusTask implements Task
 		ViewHelper.getOkModal(currentActivity, "", 
 		statusOk).
 		show();
-	}	
+	}
+	
+	@Override
+	public void postExecuteAppException(CommandContext commandContext) throws AppException
+	{
+		
+	}
 }

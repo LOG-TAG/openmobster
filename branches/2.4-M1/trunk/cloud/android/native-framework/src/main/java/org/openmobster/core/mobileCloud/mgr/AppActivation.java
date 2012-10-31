@@ -253,7 +253,7 @@ public final class AppActivation
 					
 					CommandContext commandContext = new CommandContext();
 					
-					commandContext.setAttribute("task", new AppActivationTask());
+					commandContext.setAttribute("task", new AppActivationTask(AppActivation.this.activity));
 					commandContext.setAttribute("server", server);
 					commandContext.setAttribute("email", email);
 					commandContext.setAttribute("password", password);
