@@ -12,6 +12,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.Set;
 import java.util.Map;
 
 import org.openmobster.android.api.sync.MobileBeanMetaData;
@@ -78,6 +79,7 @@ public final class NotifySyncPushInvocationHandler extends Service implements In
 			
 			Map<String,Object> shared = invocation.getShared();
 			String pushMetaDataSize = (String)shared.get("pushMetaDataSize");
+			String channel = null;
 			if(pushMetaDataSize != null && pushMetaDataSize.trim().length()>0)
 			{
 				int size = Integer.parseInt(pushMetaDataSize);								
@@ -93,6 +95,7 @@ public final class NotifySyncPushInvocationHandler extends Service implements In
 						continue;
 					}
 					
+					channel = service;
 					String id = (String)shared.get("pushMetaData["+i+"].id");
 					Boolean isDeleted = (Boolean)shared.
 					get("pushMetaData["+i+"].isDeleted");
@@ -111,7 +114,7 @@ public final class NotifySyncPushInvocationHandler extends Service implements In
 					return null;
 				}
 				
-				this.notify(context,beanMetaData);
+				this.notify(context,channel,beanMetaData);
 			}
 			return null;
 		}
@@ -128,7 +131,7 @@ public final class NotifySyncPushInvocationHandler extends Service implements In
 		}
 	}
 	
-	private void notify(Context context,List<MobileBeanMetaData> beanMetaData) throws Exception
+	private void notify(Context context, String channel,List<MobileBeanMetaData> beanMetaData) throws Exception
 	{
 		//This should be part of configuring the Push Service, in openmobster-app.xml 
 		String launchActivity = AppSystemConfig.getInstance().getPushLaunchActivityClassName();
@@ -166,7 +169,7 @@ public final class NotifySyncPushInvocationHandler extends Service implements In
 		Notification notification = new Notification(icon, appName, when);
 		
 		//Setup the intent for this notification
-		String syncPushMessage = AppSystemConfig.getInstance().getSyncPushMessage();
+		String syncPushMessage = AppSystemConfig.getInstance().getSyncPushMessage(channel);
 		CharSequence contentText = null;
 		if(syncPushMessage == null || syncPushMessage.trim().length()==0)
 		{
@@ -199,7 +202,8 @@ public final class NotifySyncPushInvocationHandler extends Service implements In
 	
 	private boolean isMyChannel(String channel)
 	{
-		Vector myChannels = AppConfig.getInstance().getChannels();
+		AppSystemConfig appConfig = AppSystemConfig.getInstance();
+		Set<String> myChannels = appConfig.getChannels();
 		
 		if(myChannels != null && !myChannels.isEmpty())
 		{

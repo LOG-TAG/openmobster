@@ -9,6 +9,10 @@ package org.openmobster.core.mobileCloud.android.configuration;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -116,14 +120,41 @@ public final class AppSystemConfig
 			}
 			
 			/**
-			 * Parse the <sync-push-message>You have {0} ticket Updates</sync-push-message>
+			 * Parse
+			 * 
+			 *<channels>
+			 *		<channel name='fuseapp_channel'>
+			 *			<sync-push-message>You have {0} Fuse App Messages</sync-push-message>
+			 *		</channel>
+			 *		<channel name='one_sync_channel'>
+			 *			<sync-push-message>You have {0} One Sync Channel Messages</sync-push-message>
+			 *		</channel>
+			 *	    <channel name='two_sync_channel'>
+			 *			<sync-push-message>You have {0} Two Sync Channel Messages</sync-push-message>
+			 *		</channel>
+			 *</channels> 
 			 */
-			NodeList syncPush = root.getElementsByTagName("sync-push-message");
-			if(syncPush != null && syncPush.getLength()>0)
+			List<ChannelInfo> channels = new ArrayList<ChannelInfo>();
+			this.attrMgr.setAttribute("channels", channels);
+			NodeList channelsNodes = root.getElementsByTagName("channels");
+			if(channelsNodes != null)
 			{
-				Element syncPushElement = (Element)syncPush.item(0);
-				String syncPushMessage = syncPushElement.getFirstChild().getNodeValue().trim();
-				this.attrMgr.setAttribute("sync-push-message", syncPushMessage);
+				Element channelsElem = (Element)channelsNodes.item(0);
+				NodeList channelNodes = channelsElem.getElementsByTagName("channel");
+				int length = channelNodes.getLength();
+				for(int i=0; i<length; i++)
+				{
+					ChannelInfo channelInfo = new ChannelInfo();
+					Element channelElem = (Element)channelNodes.item(i);
+					channelInfo.channel = channelElem.getAttribute("name");
+					NodeList messageNodes = channelElem.getElementsByTagName("sync-push-message");
+					if(messageNodes != null)
+					{
+						Element messageElem = (Element)messageNodes.item(0);
+						channelInfo.syncPushMessage = messageElem.getTextContent();
+					}
+					channels.add(channelInfo);
+				}
 			}
 			
 			this.isActive = true;
@@ -171,8 +202,35 @@ public final class AppSystemConfig
 		return (String)this.attrMgr.getAttribute("push-icon-name");
 	}
 	
-	public String getSyncPushMessage()
+	public Set<String> getChannels()
 	{
-		return (String)this.attrMgr.getAttribute("sync-push-message");
+		Set<String> registeredChannels = new HashSet<String>();
+		
+		List<ChannelInfo> channelInfo = (List<ChannelInfo>)this.attrMgr.getAttribute("channels");
+		for(ChannelInfo channel:channelInfo)
+		{
+			registeredChannels.add(channel.channel);
+		}
+		
+		return registeredChannels;
+	}
+	
+	public String getSyncPushMessage(String channel)
+	{
+		List<ChannelInfo> channelInfo = (List<ChannelInfo>)this.attrMgr.getAttribute("channels");
+		for(ChannelInfo local:channelInfo)
+		{
+			if(local.channel.equals(channel))
+			{
+				return local.syncPushMessage;
+			}
+		}
+		return null;
+	}
+	
+	private static class ChannelInfo
+	{
+		private String channel;
+		private String syncPushMessage;
 	}
 }

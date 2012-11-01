@@ -7,7 +7,7 @@
  */
 package org.openmobster.core.mobileCloud.push;
 
-import java.util.Vector;
+import java.util.Set;
 
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -100,7 +100,8 @@ public class StartSyncBroadcastReceiver extends BroadcastReceiver
 	
 	private boolean isMyChannel(String channel)
 	{
-		Vector myChannels = AppConfig.getInstance().getChannels();
+		AppSystemConfig appConfig = AppSystemConfig.getInstance();
+		Set<String> myChannels = appConfig.getChannels();
 		
 		if(myChannels != null && !myChannels.isEmpty())
 		{
