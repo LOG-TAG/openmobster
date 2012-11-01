@@ -11,7 +11,6 @@ package org.openmobster.core.mobileCloud.api.ui.framework;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Hashtable;
-import java.util.Vector;
 import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
@@ -80,6 +79,11 @@ public final class AppConfig
 			
 				//parse the /moblet-app/moblet-app.xml
 				InputStream is = AppConfig.class.getResourceAsStream("/moblet-app/moblet-app.xml");
+				if(is == null)
+				{
+					return;
+				}
+				
 				String xml = new String(IOUtil.read(is));
 				
 				
@@ -164,24 +168,6 @@ public final class AppConfig
 				if(this.isMVCBeingUsed() && !screenConfig.containsKey("home"))
 				{
 					throw new IllegalStateException("Home screen is missing!!");
-				}
-				
-				//Parse the channels that this moblet-app is interested in				
-				NodeList channels = root.getElementsByTagName("channel");
-				Vector registeredChannels = new Vector();				
-				if(channels!=null && channels.getLength()>0)
-				{
-					int size = channels.getLength();
-					for(int i=0; i<size; i++)
-					{
-						Element channelElem = (Element)channels.item(i);
-						String channel = channelElem.getFirstChild().getNodeValue().trim();
-						if(!registeredChannels.contains(channel))
-						{
-							registeredChannels.addElement(channel);							
-						}
-					}
-					this.attrMgr.setAttribute("channels", registeredChannels);
 				}
 				
 				//Parse Push-Commands if they are registered
@@ -324,24 +310,6 @@ public final class AppConfig
 			throw new IllegalStateException("Home screen is missing!!");
 		}
 		
-		//Parse the channels that this moblet-app is interested in				
-		NodeList channels = root.getElementsByTagName("channel");
-		Vector registeredChannels = new Vector();				
-		if(channels!=null && channels.getLength()>0)
-		{
-			int size = channels.getLength();
-			for(int i=0; i<size; i++)
-			{
-				Element channelElem = (Element)channels.item(i);
-				String channel = channelElem.getFirstChild().getNodeValue().trim();
-				if(!registeredChannels.contains(channel))
-				{
-					registeredChannels.addElement(channel);							
-				}
-			}
-			this.attrMgr.setAttribute("channels", registeredChannels);
-		}
-		
 		//Parse Push-Commands if they are registered
 		NodeList pNodes = root.getElementsByTagName("push-commands");
 		if(pNodes != null && pNodes.getLength()>0)
@@ -387,12 +355,6 @@ public final class AppConfig
 	{
 		return this.attrMgr.getAttribute("frameworkBootstrapFailure") == null;
 	}	
-	
-	public Vector getChannels()
-	{
-		Vector registeredChannels = (Vector)this.attrMgr.getAttribute("channels");
-		return registeredChannels;
-	}
 	
 	private boolean isMVCBeingUsed()
 	{

@@ -11,6 +11,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.Set;
 
 import org.openmobster.android.api.sync.MobileBeanMetaData;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -52,6 +53,7 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 			
 			Bundle shared = intent.getBundleExtra("bundle");
 			String pushMetaDataSize = (String)shared.get("pushMetaDataSize");
+			String channel = null;
 			if(pushMetaDataSize != null && pushMetaDataSize.trim().length()>0)
 			{
 				int size = Integer.parseInt(pushMetaDataSize);								
@@ -67,6 +69,7 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 						continue;
 					}
 					
+					channel = service;
 					String id = (String)shared.get("pushMetaData["+i+"].id");
 					String isDeleted = (String)shared.
 					get("pushMetaData["+i+"].isDeleted");
@@ -85,7 +88,7 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 					return;
 				}
 				
-				this.notify(context,beanMetaData);
+				this.notify(context,channel,beanMetaData);
 			}
 		}
 		catch(Exception e)
@@ -100,7 +103,7 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 		}
 	}
 	
-	private void notify(Context context,List<MobileBeanMetaData> beanMetaData) throws Exception
+	private void notify(Context context,String channel,List<MobileBeanMetaData> beanMetaData) throws Exception
 	{
 		//This should be part of configuring the Push Service, in openmobster-app.xml 
 		String launchActivity = AppSystemConfig.getInstance().getPushLaunchActivityClassName();
@@ -138,7 +141,7 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 		Notification notification = new Notification(icon, appName, when);
 		
 		//Setup the intent for this notification
-		String syncPushMessage = AppSystemConfig.getInstance().getSyncPushMessage();
+		String syncPushMessage = AppSystemConfig.getInstance().getSyncPushMessage(channel);
 		CharSequence contentText = null;
 		if(syncPushMessage == null || syncPushMessage.trim().length()==0)
 		{
@@ -171,7 +174,8 @@ public class SyncPushBroadcastReceiver extends BroadcastReceiver
 	
 	private boolean isMyChannel(String channel)
 	{
-		Vector myChannels = AppConfig.getInstance().getChannels();
+		AppSystemConfig appConfig = AppSystemConfig.getInstance();
+		Set<String> myChannels = appConfig.getChannels();
 		
 		if(myChannels != null && !myChannels.isEmpty())
 		{

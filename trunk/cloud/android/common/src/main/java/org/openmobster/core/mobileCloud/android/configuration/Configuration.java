@@ -305,6 +305,16 @@ public class Configuration
 		
 		return false;
 	}
+	
+	public synchronized void clearMyChannels()
+	{
+		if(this.myChannels == null)
+		{
+			this.myChannels = new ArrayList<String>();
+		}
+		
+		this.myChannels.clear();
+	}
 		
 	public synchronized void setCometPollInterval(long cometPollInterval) 
 	{

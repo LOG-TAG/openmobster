@@ -1,7 +1,0 @@
-<moblet-app>
-	<channels>
-		<channel>fuseapp_channel</channel>
-		<channel>one_sync_channel</channel>
-		<channel>two_sync_channel</channel>
-	</channels>		
-</moblet-app>

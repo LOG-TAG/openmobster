@@ -10,7 +10,7 @@ package org.openmobster.core.mobileCloud.android_native.framework;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
-import java.util.Vector;
+import java.util.Set;
 
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -18,7 +18,7 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
-import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 
 import system.CometUtil;
 
@@ -81,15 +81,12 @@ public final class BackgroundSync extends TimerTask
 	{
 		List<String> channelsToSync = new ArrayList<String>();
 		
-		AppConfig appConfig = AppConfig.getInstance();
-		Vector appChannels = appConfig.getChannels();
+		AppSystemConfig appConfig = AppSystemConfig.getInstance();
+		Set<String> appChannels = appConfig.getChannels();
 		if(appChannels != null)
 		{
-			int size = appChannels.size();
-			for(int i=0; i<size; i++)
-			{
-				String channel = (String)appChannels.get(i);
-				
+			for(String channel:appChannels)
+			{	
 				if(MobileBean.isBooted(channel))
 				{
 					channelsToSync.add(channel);

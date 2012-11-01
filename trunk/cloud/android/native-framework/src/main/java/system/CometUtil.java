@@ -8,12 +8,11 @@
 
 package system;
 
-import java.util.List;
-import java.util.Vector;
+import java.util.Set;
 
 import android.content.Context;
 
-import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.BusException;
@@ -37,21 +36,28 @@ public final class CometUtil
 			return false;
 		}
 		
-		Vector channels = AppConfig.getInstance().getChannels();
+		AppSystemConfig appConfig = AppSystemConfig.getInstance();
+		Set<String> channels = appConfig.getChannels();
 		boolean newAdded = false;
 		if(channels != null && !channels.isEmpty())
 		{
-			int size = channels.size();
-			for(int i=0; i<size; i++)
+			for(String channel:channels)
 			{				
-				String channel = (String)channels.get(i);
 				boolean cour = configuration.addMyChannel(channel);
 				if(!newAdded && cour)
 				{
 					newAdded = true;
 				}
 			}
+			
+			//refresh the channel list
+			configuration.clearMyChannels();
+			for(String channel:channels)
+			{				
+				configuration.addMyChannel(channel);
+			}
 			configuration.save(context);
+			
 			
 			//If this channel is newly subscribed on this device, then recycle the comet system
 			if(newAdded)
@@ -59,7 +65,12 @@ public final class CometUtil
 				CometUtil.performChannelBootup(configuration);
 				wasChannelBootupStarted = true;
 			}
-		}				
+		}
+		else
+		{
+			configuration.clearMyChannels();
+			configuration.save(context);
+		}
 		
 		return wasChannelBootupStarted;
 	}
