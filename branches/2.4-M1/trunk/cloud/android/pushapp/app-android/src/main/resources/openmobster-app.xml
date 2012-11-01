@@ -6,5 +6,9 @@
 		<icon-name>push</icon-name>
 	</push>
 	
-	<sync-push-message>You have {0} Push App Messages</sync-push-message>
+	<channels>
+		<channel name='fuseapp_channel'>
+			<sync-push-message>You have {0} PushApp Channel Update(s)</sync-push-message>
+		</channel>
+	</channels>
 </app-conf>
