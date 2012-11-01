@@ -125,7 +125,7 @@ public class MainActivity extends BaseCloudActivity
 				try
 				{
 					Request request = new Request("/fuseapp/push");
-					request.setAttribute("app-id", "com.fuseapp.android.app");
+					request.setAttribute("app-id", MainActivity.this.getPackageName());
 					
 					new MobileService().invoke(request);
 					
