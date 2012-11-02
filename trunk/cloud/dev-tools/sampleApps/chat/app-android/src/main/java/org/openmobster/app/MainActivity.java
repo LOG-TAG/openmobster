@@ -24,8 +24,11 @@ import android.widget.Toast;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+import org.openmobster.core.mobileCloud.mgr.AppActivation;
 
 import org.openmobster.android.api.d2d.D2DActivity;
 import org.openmobster.android.api.d2d.D2DMessage;
@@ -62,6 +65,15 @@ public class MainActivity extends D2DActivity
 		try
 		{
 			super.onResume();
+			
+			//check if App activation is needed
+			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+			if(!conf.isActive())
+			{
+				AppActivation appActivation = AppActivation.getInstance(this);
+				appActivation.start();
+				return;
+			}
 			
 			//See intent for message details...This is to read a D2DMessage sent via the Notification system
 			Intent intent = this.getIntent();
