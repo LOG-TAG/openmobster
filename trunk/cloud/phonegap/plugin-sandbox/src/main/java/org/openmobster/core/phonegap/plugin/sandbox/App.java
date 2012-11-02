@@ -7,9 +7,12 @@
  */
 package org.openmobster.core.phonegap.plugin.sandbox;
 
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
+import org.openmobster.core.mobileCloud.mgr.AppActivation;
 
 import android.os.Bundle;
 
@@ -44,6 +47,32 @@ public class App extends DroidGap
 				"Message:"+e.getMessage(),
 				"Exception:"+e.toString()
 			}));
+		}
+	}
+	
+	@Override
+	protected void onResume()
+	{
+		try
+		{
+			super.onResume();
+			
+			//check if App activation is needed
+			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+			if(!conf.isActive())
+			{
+				AppActivation appActivation = AppActivation.getInstance(this);
+				appActivation.start();
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), 
+					"onResume", new Object[]{
+						"Message:"+e.getMessage(),
+						"Exception:"+e.toString()
+					}));
 		}
 	}
 }

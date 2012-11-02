@@ -1,5 +1,2 @@
-<moblet-app>
-	<channels>
-		<channel>plugin_jquery_channel</channel>
-	</channels>					
+<moblet-app>			
 </moblet-app>
