@@ -22,9 +22,5 @@
 		<screen id="/camera/preview">org.openmobster.showcase.app.camera.PreviewScreen</screen>
 		
 		<screen id="/command/framework">org.openmobster.showcase.app.command.framework.MainScreen</screen>
-	</screens>
-	
-	<channels>
-		<channel>showcase_ticket_channel</channel>
-	</channels>		
+	</screens>	
 </moblet-app>
