@@ -42,5 +42,17 @@ android:anyDensity="true"
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        
+        <receiver android:name="org.openmobster.core.mobileCloud.api.ui.framework.push.PushBroadcastReceiver">
+    		<intent-filter>
+    			<action android:name="com.fuseapp.android.app"/>
+    		</intent-filter>
+    	</receiver>
+    	
+        <receiver android:name="org.openmobster.core.mobileCloud.push.StartSyncBroadcastReceiver">
+    		<intent-filter>
+    			<action android:name="org.openmobster.sync.start"/>
+    		</intent-filter>
+    	</receiver>
     </application>
 </manifest> 
