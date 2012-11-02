@@ -3,11 +3,7 @@
     <bootstrap>
     	<screen>org.openmobster.pushmail.app.HomeScreen</screen>
     </bootstrap>
-    
-    <channels>
-    	<channel>pushmail_channel</channel>
-    </channels>
-    
+   
     <commands>
 		<command id="/channel/bootup/helper">org.openmobster.pushmail.app.ChannelBootupHelper</command>	
 	</commands>		
