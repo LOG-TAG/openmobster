@@ -35,9 +35,11 @@ public class ChannelBootupHelper implements RemoteCommand
 	{
 		try
 		{
-			while(!MobileBean.isBooted("crm_ticket_channel"))
+			int counter = 10;
+			while(!MobileBean.isBooted("crm_ticket_channel") && counter>0)
 			{
 				Thread.currentThread().sleep(1000);
+				counter--;
 			}
 		}
 		catch(Exception e)

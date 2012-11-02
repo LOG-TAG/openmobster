@@ -6,5 +6,10 @@
 		<icon-name>push</icon-name>
 	</push>
 	
-	<sync-push-message>You have {0} CRM Ticket Update(s)</sync-push-message>
+	
+	<channels>
+		<channel name='crm_ticket_channel'>
+			<sync-push-message>You have {0} CRM Ticket Update(s)</sync-push-message>
+		</channel>
+	</channels>
 </app-conf>
