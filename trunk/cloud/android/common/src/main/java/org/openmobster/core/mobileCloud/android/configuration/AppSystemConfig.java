@@ -137,7 +137,7 @@ public final class AppSystemConfig
 			List<ChannelInfo> channels = new ArrayList<ChannelInfo>();
 			this.attrMgr.setAttribute("channels", channels);
 			NodeList channelsNodes = root.getElementsByTagName("channels");
-			if(channelsNodes != null)
+			if(channelsNodes != null && channelsNodes.getLength()>0)
 			{
 				Element channelsElem = (Element)channelsNodes.item(0);
 				NodeList channelNodes = channelsElem.getElementsByTagName("channel");
@@ -148,7 +148,7 @@ public final class AppSystemConfig
 					Element channelElem = (Element)channelNodes.item(i);
 					channelInfo.channel = channelElem.getAttribute("name");
 					NodeList messageNodes = channelElem.getElementsByTagName("sync-push-message");
-					if(messageNodes != null)
+					if(messageNodes != null && messageNodes.getLength()>0)
 					{
 						Element messageElem = (Element)messageNodes.item(0);
 						channelInfo.syncPushMessage = messageElem.getTextContent();

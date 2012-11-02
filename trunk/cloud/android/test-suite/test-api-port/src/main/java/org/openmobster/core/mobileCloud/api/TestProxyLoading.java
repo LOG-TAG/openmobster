@@ -62,6 +62,7 @@ public final class TestProxyLoading extends AbstractAPITest
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace(System.out);
 			throw new RuntimeException(e.toString());
 		}
 	}

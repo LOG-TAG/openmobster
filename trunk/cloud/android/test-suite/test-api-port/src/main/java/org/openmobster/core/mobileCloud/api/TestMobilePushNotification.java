@@ -23,6 +23,7 @@ public final class TestMobilePushNotification extends AbstractAPITest
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace(System.out);
 			throw new RuntimeException(e.toString());
 		}
 	}
