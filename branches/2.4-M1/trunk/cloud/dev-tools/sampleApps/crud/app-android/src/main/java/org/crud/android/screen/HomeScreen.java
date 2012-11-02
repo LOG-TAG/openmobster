@@ -91,15 +91,7 @@ public class HomeScreen extends Screen
 		AppResources res = Services.getInstance().getResources();
 		Configuration configuration = Configuration.getInstance(app);
 		
-		if(!configuration.isActive())
-		{
-			ViewHelper.getOkModalWithCloseApp(app, "App Error", res.localize("inactive_message","inactive_message")).
-			show();
-			
-			return;
-		}
-		
-		if(!MobileBean.isBooted("crm_ticket_channel"))
+		if(configuration.isActive() && !MobileBean.isBooted("crm_ticket_channel"))
 		{
 			CommandContext commandContext = new CommandContext();
 			commandContext.setTarget("/channel/bootup/helper");

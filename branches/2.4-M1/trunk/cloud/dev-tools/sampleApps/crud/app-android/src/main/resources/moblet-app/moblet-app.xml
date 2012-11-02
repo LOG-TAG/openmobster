@@ -18,9 +18,5 @@
 	<screens>
 		<screen id="/new/ticket">org.crud.android.screen.NewTicketScreen</screen>
 		<screen id="/update/ticket">org.crud.android.screen.UpdateTicketScreen</screen>
-	</screens>	
-	
-	<channels>
-		<channel>crm_ticket_channel</channel>
-	</channels>					
+	</screens>					
 </moblet-app>
