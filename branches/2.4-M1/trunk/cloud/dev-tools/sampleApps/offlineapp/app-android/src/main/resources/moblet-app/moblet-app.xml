@@ -17,9 +17,5 @@
 		<command id="/offlineapp/pushtrigger">com.offlineApp.android.app.command.PushTrigger</command> 
 		<command id="/offlineapp/reset">com.offlineApp.android.app.command.ResetChannel</command>
 		<command id="/offlineapp/rpc">com.offlineApp.android.app.command.DemoMobileRPC</command>
-	</commands>	
-	
-	<channels>
-		<channel>offlineapp_demochannel</channel>
-	</channels>					
+	</commands>					
 </moblet-app>
