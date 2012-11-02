@@ -39,6 +39,7 @@ public final class TestMobileServiceInvocation extends AbstractAPITest
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace(System.out);
 			throw new RuntimeException(e.toString());
 		}
 	}

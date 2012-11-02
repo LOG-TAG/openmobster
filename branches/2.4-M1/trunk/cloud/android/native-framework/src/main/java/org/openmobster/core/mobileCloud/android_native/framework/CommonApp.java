@@ -13,23 +13,15 @@ import java.util.Timer;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandService;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.moblet.Moblet;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.app.Activity;
-import android.content.Intent;
 
 /**
  * @author openmobster@gmail.com
@@ -39,13 +31,6 @@ public final class CommonApp
 {	
 	static void onStart(final Activity activity)
 	{
-		//Bootstrap the container
-		if(!Registry.isActive())
-		{
-			Registry registry = Registry.getInstance(activity.getApplicationContext());
-			registry.setContainer(false); //This is an App not a Management Service
-		}
-		
 		Services services = Services.getInstance();
 		
 		//Initialize the UI Framework
@@ -55,44 +40,29 @@ public final class CommonApp
 			return;
 		}
 		
-    	//Load API Services
-		services.setResources(new NativeAppResources());
-		services.setCommandService(new NativeCommandService());
-		services.setCurrentActivity(activity);
+		bootstrapContainer(activity);
 		
-		//Load SPI Services
-		SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
-		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
-		
-		Registry registry = Registry.getActiveInstance();
-		if(!registry.isContainer())
+		Thread t = new Thread(new Runnable()
 		{
-			bootstrapContainer(activity);
-			
-			registry.validateCloud();
-			
-			Thread t = new Thread(new Runnable()
+			public void run()
 			{
-				public void run()
+				try
 				{
-					try
-					{
-						bootstrapActivity(activity);
-					}
-					catch(Exception e)
-					{
-						//e.printStackTrace(System.out);
-						ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
-							"Message:"+e.getMessage(),
-							"Exception:"+e.toString()
-						}));
-						activity.showDialog(0);
-					}
+					bootstrapActivity(activity);
+				}
+				catch(Exception e)
+				{
+					//e.printStackTrace(System.out);
+					ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "onStart", new Object[]{
+						"Message:"+e.getMessage(),
+						"Exception:"+e.toString()
+					}));
+					activity.showDialog(0);
 				}
 			}
-			);
-			t.start();
 		}
+		);
+		t.start();
 	}
 	
 	static void onResume(final Activity activity)
@@ -123,30 +93,34 @@ public final class CommonApp
 		return false;
 	}
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	static void bootstrapContainer(final Activity activity)
+	static void bootstrapContainer(final Activity context)
 	{
+		//Initialize some of the higher level services
+		Services services = Services.getInstance();
+		//Load API Services
+		services.setResources(new NativeAppResources());
+		services.setCommandService(new NativeCommandService());
+		services.setCurrentActivity(context);
+		
+		//Load SPI Services
+		SPIServices.getInstance().setNavigationContextSPI(new NativeNavigationContextSPI());
+		SPIServices.getInstance().setEventBusSPI(new NativeEventBusSPI());
+		
 		//Initialize the kernel
-		DeviceContainer container = DeviceContainer.getInstance(activity.getApplicationContext());
+		DeviceContainer container = DeviceContainer.getInstance(context.getApplicationContext());
 		
 		//start the kernel
-		container.propagateNewContext(activity.getApplicationContext());
+		container.propagateNewContext(context.getApplicationContext());
     	container.startup();
 	}
 	
 	static void bootstrapActivity(final Activity activity)
 	{
-		try
-		{
-	    	//Handle auto sync checking upon App launch, only if channels are not
-	    	//being initialized
-	    	Timer timer = new Timer();
-			timer.schedule(new BackgroundSync(), 
-			5000);
-		}
-		catch(Exception e)
-		{
-			throw new RuntimeException(e);
-		}
+		//Handle auto sync checking upon App launch, only if channels are not
+    	//being initialized
+    	Timer timer = new Timer();
+		timer.schedule(new BackgroundSync(), 
+		5000);
 	}
 	
 	static void showError(final Activity activity)

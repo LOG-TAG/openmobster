@@ -13,9 +13,4 @@
 	<push-commands>
 		<command id="/handle/rpc/push">org.openmobster.core.mobileCloud.api.HandleRPCPush</command>
 	</push-commands>
-	
-	<channels>
-		<channel>mockMobileTicket</channel>
-		<channel>testServerBean</channel>
-	</channels>
 </moblet-app>

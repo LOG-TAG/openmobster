@@ -130,7 +130,7 @@
 		</profile>
 		
 		<profile>
-			<id>hot-deploy</id>
+			<id>app-hot-deploy</id>
 			<build>
 				<plugins>
 					<plugin>

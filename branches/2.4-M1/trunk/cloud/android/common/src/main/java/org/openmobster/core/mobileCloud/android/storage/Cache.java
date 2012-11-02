@@ -52,7 +52,7 @@ final class Cache
 		}
 	}
 	
-	Record get(String table,String recordId) throws DBException
+	synchronized Record get(String table,String recordId) throws DBException
 	{
 		try
 		{
@@ -85,7 +85,7 @@ final class Cache
 		}
 	}
 	
-	Map<String,Record> all(String table) throws DBException
+	synchronized Map<String,Record> all(String table) throws DBException
 	{
 		try
 		{
@@ -120,7 +120,8 @@ final class Cache
 		catch(Exception e)
 		{
 			throw new DBException(Cache.class.getName(),"all", new Object[]{
-				"Exception: "+e.getMessage()
+				"Exception: "+e.toString(),
+				"Message: "+e.getMessage()
 			});
 		}
 	}
