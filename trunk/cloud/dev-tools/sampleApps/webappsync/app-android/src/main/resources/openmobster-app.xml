@@ -5,4 +5,8 @@
 		<launch-activity-class>com.webappsync.activity.SyncWebApp</launch-activity-class>
 		<icon-name>push</icon-name>
 	</push>
+	
+	<channels>
+		<channel name='webappsync_ticket_channel'/>
+	</channels>
 </app-conf>
