@@ -260,7 +260,7 @@ public final class AppActivation
 					commandContext.setAttribute("port", port);
 					
 					TaskExecutor taskExecutor = new TaskExecutor("App Activation","App Activation in Progress",
-							"App was successfully activated",currentActivity);
+							null,currentActivity);
 					taskExecutor.execute(commandContext);
 				}
 			}

@@ -59,15 +59,17 @@ public class App extends Activity
 			//Loads the home screen
 			super.onResume();
 			
-			CommonApp.onResume(this);
-			
 			//check if App activation is needed
 			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
 			if(!conf.isActive())
 			{
 				AppActivation appActivation = AppActivation.getInstance(this);
 				appActivation.start();
+				
+				return;
 			}
+			
+			CommonApp.onResume(this);
 		}
 		catch(Exception e)
 		{
