@@ -13,9 +13,5 @@
 		<command id="/reset/channel">org.crud.android.command.ResetChannel</command>
 		<command id="/demo/push">org.crud.android.command.DemoPush</command>	
 		-->
-	</commands>
-	
-	<channels>
-		<channel>cloud_channel</channel>
-	</channels>					
+	</commands>				
 </moblet-app>
