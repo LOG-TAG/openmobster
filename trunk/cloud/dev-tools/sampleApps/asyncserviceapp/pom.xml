@@ -9,7 +9,7 @@
 	<url>http://openmobster.googlecode.com</url>	
 	
 	<properties>
-	<openmobster.version>2.2-SNAPSHOT</openmobster.version>
+	<openmobster.version>2.4-M1</openmobster.version>
 	<version.android.api>12</version.android.api>
 </properties>
 
@@ -98,14 +98,14 @@
 			<dependency>
 				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
 				<artifactId>device-sdk</artifactId>
-				<version>2.2-SNAPSHOT</version>
+				<version>${openmobster.version}</version>
 				<classifier>full</classifier>
 			</dependency>
 			
 			<dependency>
 				<groupId>org.openmobster.core.mobileCloud.android.2_0</groupId>
 				<artifactId>device-sdk</artifactId>
-				<version>2.2-SNAPSHOT</version>
+				<version>${openmobster.version}</version>
 			</dependency>
 			
 						<!--  Android Dependencies -->

@@ -72,15 +72,16 @@ public abstract class BaseCloudActivity extends Activity
 		{
 			super.onResume();
 			
-			this.displayMainScreen();
-			
 			//check if App activation is needed
 			Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
 			if(!conf.isActive())
 			{
 				AppActivation appActivation = AppActivation.getInstance(this);
 				appActivation.start();
+				return;
 			}
+			
+			this.displayMainScreen();
 		}
 		catch(Exception e)
 		{

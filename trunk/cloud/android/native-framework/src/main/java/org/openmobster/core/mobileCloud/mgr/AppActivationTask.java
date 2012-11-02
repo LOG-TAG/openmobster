@@ -23,6 +23,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.BusException;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.dm.DeviceManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.moblet.BootupConfiguration;
@@ -162,7 +163,9 @@ final class AppActivationTask implements Task
 	@Override
 	public void postExecute(CommandContext commandContext) throws AppException
 	{
-		
+		ViewHelper.getOkModalWithCloseApp(this.activity, "Activation", 
+				"Your App is successfully activated with the Cloud. You must restart at this point")
+		.show();
 	}
 	
 	@Override
