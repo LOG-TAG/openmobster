@@ -31,9 +31,4 @@
 		<language-code>en</language-code>
 		<country-code>GB</country-code>	
 	</locale>
-	
-	<!-- channels -->
-	<channels>
-		<channel>offlineapp_demochannel</channel>
-	</channels>
 </moblet-app>

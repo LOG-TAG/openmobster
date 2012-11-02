@@ -42,13 +42,13 @@ public class SyncWebApp extends BaseCloudActivity
     public void displayMainScreen() 
     { 
         //Checks if the sync channel in the Cloud has data loaded on the device
-        if(!MobileBean.isBooted(Constants.channel))
+        /*if(!MobileBean.isBooted(Constants.channel))
         {
             CommandContext commandContext = new CommandContext();
             commandContext.setTarget("/channel/bootup/helper");
             Services.getInstance().getCommandService().execute(commandContext);
             return;
-        }
+        }*/
         
         //Layout the home screen
         setContentView(ViewHelper.findLayoutId(this, "home"));

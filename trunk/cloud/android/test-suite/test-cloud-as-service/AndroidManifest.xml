@@ -18,10 +18,6 @@
         <activity android:name="org.openmobster.android.cloud.app.App2"
                   android:label="app2">
         </activity>
-        
-        <service android:name="org.openmobster.core.mobileCloud.android.module.bus.rpc.BusService"
-        android:exported="true">
-    	</service>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest> 
