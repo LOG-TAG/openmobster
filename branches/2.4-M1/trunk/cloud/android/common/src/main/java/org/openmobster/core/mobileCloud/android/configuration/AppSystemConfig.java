@@ -207,9 +207,12 @@ public final class AppSystemConfig
 		Set<String> registeredChannels = new HashSet<String>();
 		
 		List<ChannelInfo> channelInfo = (List<ChannelInfo>)this.attrMgr.getAttribute("channels");
-		for(ChannelInfo channel:channelInfo)
+		if(channelInfo != null)
 		{
-			registeredChannels.add(channel.channel);
+			for(ChannelInfo channel:channelInfo)
+			{
+				registeredChannels.add(channel.channel);
+			}
 		}
 		
 		return registeredChannels;
