@@ -7,20 +7,10 @@
  */
 package org.openmobster.core.mobileCloud.android_native.framework;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TimerTask;
-import java.util.Set;
 
-import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
-import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
-import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
-
-import system.CometUtil;
 
 /**
  *
@@ -32,35 +22,7 @@ public final class BackgroundSync extends TimerTask
 	{
 		try
 		{
-			//Subscribe to channels
-	    	CometUtil.subscribeChannels();
-	    	
-			//Perfom boot-sync on the unbooted channels....CometUtil.subscribeChannels does this for you
-			Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.ChannelBootupHandler");
-			invocation.setValue("push-restart-cancel", ""+Boolean.FALSE);
-			Bus.getInstance().invokeService(invocation);
-			
-			//Get the non-booted but active channels with a two-way sync
-			List<String> channelsToSync = this.findTwoWaySyncChannels();
-			if(channelsToSync != null && !channelsToSync.isEmpty())
-			{
-				for(String channel:channelsToSync)
-				{
-					//start the app session with a two way sync
-					SyncInvocation syncInvocation = new SyncInvocation(
-					"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-					SyncInvocation.twoWay, channel);
-					syncInvocation.deactivateBackgroundSync(); //so that there are no push notifications...just a quiet sync
-					Bus.getInstance().invokeService(syncInvocation);
-				}
-			}
-			
-			//Do a proxy sync on all the channels
-			SyncInvocation syncInvocation = new SyncInvocation(
-					"org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-			SyncInvocation.proxySync);
-			syncInvocation.deactivateBackgroundSync(); //so that there are no push notifications...just a quiet sync
-			Bus.getInstance().invokeService(syncInvocation);
+			AppStartupSequence.getInstance().execute();
 		}
 		catch(Throwable t)
 		{
@@ -75,25 +37,5 @@ public final class BackgroundSync extends TimerTask
 			//makes sure this task does not execute anymore
 			this.cancel();
 		}
-	}
-	
-	private List<String> findTwoWaySyncChannels()
-	{
-		List<String> channelsToSync = new ArrayList<String>();
-		
-		AppSystemConfig appConfig = AppSystemConfig.getInstance();
-		Set<String> appChannels = appConfig.getChannels();
-		if(appChannels != null)
-		{
-			for(String channel:appChannels)
-			{	
-				if(MobileBean.isBooted(channel))
-				{
-					channelsToSync.add(channel);
-				}
-			}
-		}
-		
-		return channelsToSync;
 	}
 }

@@ -22,12 +22,7 @@
             </intent-filter>
         </service>
         
-        <receiver android:name="org.openmobster.core.mobileCloud.manager.NetworkBroadcastReceiver">
-                <intent-filter>
-                    <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                </intent-filter>
-         </receiver>
-         
+        
         <receiver android:name="org.openmobster.core.mobileCloud.manager.DeviceManagementBroadcastReceiver">
                 <intent-filter>
                     <action android:name="org.openmobster.device.management" />

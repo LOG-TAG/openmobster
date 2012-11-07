@@ -26,6 +26,12 @@
     			<action android:name="org.openmobster.sync.start"/>
     		</intent-filter>
     	</receiver>
+    	
+    	<receiver android:name="org.openmobster.core.mobileCloud.push.NetworkStartupBroadcastReceiver">
+                <intent-filter>
+                    <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                </intent-filter>
+        </receiver>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest> 
