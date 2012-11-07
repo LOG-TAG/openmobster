@@ -94,20 +94,8 @@ public class HomeScreen extends Screen
 		AppResources res = Services.getInstance().getResources();
 		Configuration configuration = Configuration.getInstance(listApp);
 		
-		//Makes sure that the device is activated with the 'Cloud' as a security check. If not, a message is shown and the App is closed
-		//In order to activate the device, use the 'DevCloud' app and the 'Activate' function. You may have to use the 'Change IP' option
-		//from the 'DevCloud' menu to point to the proper IP address of the 'Cloud' instance. By default it uses: 192.168.1.102 
-		//'DevCloud' is automatically installed on the device/emulator when the 'mvn -Phot-deploy install' command is used to deploy this App.
-		if(!configuration.isActive())
-		{
-			ViewHelper.getOkModalWithCloseApp(listApp, "App Error", res.localize("inactive_message","inactive_message")).
-			show();
-			
-			return;
-		}
-		
 		//Check to see if the 'Demo Beans' are synchronized from the 'Cloud'. If not, a 'Boot Sync' is issued.
-		if(!MobileBean.isBooted("offlineapp_demochannel"))
+		if(configuration.isActive() && !MobileBean.isBooted("offlineapp_demochannel"))
 		{
 			//Boots up the 'Demo Bean' sync channel
 			CommandContext commandContext = new CommandContext();
