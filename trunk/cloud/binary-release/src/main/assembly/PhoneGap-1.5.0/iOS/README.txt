@@ -1,5 +1,5 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform (version 2.2-SNAPSHOT)*
+									* OpenMobster - Mobile Cloud Platform
 									*************************************************************
 									
 									
