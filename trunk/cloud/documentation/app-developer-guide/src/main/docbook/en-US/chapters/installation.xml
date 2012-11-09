@@ -62,28 +62,18 @@
 	<sect1>
 		<title>Device-Side: Installation</title>
 		<para>
-			<emphasis role="bold">Mobile Cloud</emphasis>
-			infrastructure runtimes
-			<emphasis>MUST</emphasis>
-			be installed on each device, before the device can integrate with
-			the
-			"Cloud Server". Think of them as bootstrap binaries.
-		</para>
-		<para>
-			Each mobile platform will have its corresponding set of
-			artifacts that must be first installed on the device. 
-       </para>
-		<para>
-			The current version consists of
-			<emphasis role='bold'>Google Android 2.0+ support</emphasis>
+			Starting with OpenMobster 2.4, there is no requirement to install the <emphasis role='bold'>CloudManager App</emphasis>
+			on the device. All you need to do is install your App and it will automatically take care of the <emphasis role='bold'>Activation</emphasis> process.
+			The <emphasis role='bold'>CloudManager App</emphasis> does still serve a purpose. The main purpose is to activate device management features such as: <emphasis role='bold'>Remote Wipe</emphasis> and <emphasis role='bold'>Remote Lock</emphasis>.
+			You also get access to the <emphasis role='bold'>Corporate App Store</emphasis> functionality which makes it easy to download/install apps from the OpenMobster App Store.
 		</para>
 		<sect2>
-			<title>Android Installation</title>
+			<title>CloudManager App Installation</title>
 			<para>
 					If you have a
 					<emphasis>Cloud Server</emphasis>
 					running and accessible from the Internet, you can simply download
-					these binaries from the built-in browser
+					CloudManager App from the built-in browser
 					of the device.
 			</para>
 			<para>
@@ -96,39 +86,6 @@
 						</listitem>
 					</itemizedlist>
 			</para>
-			<sect3>
-				<title>Device Activation</title>
-				<para>
-					<itemizedlist>
-						<listitem>
-							<emphasis role="bold">Step 1:</emphasis>
-							Launch the 'CloudManager' app.
-						</listitem>
-						<listitem>
-							<emphasis role="bold">Step 2:</emphasis>
-							Select the 'Activate' function.
-						</listitem>
-						<listitem>
-							<emphasis role="bold">Step 3:</emphasis>
-							Follow the wizard and provide the appropriate values
-							<itemizedlist>
-								<listitem>
-									<emphasis>Server :</emphasis>
-									IP Address of the Cloud Server
-								</listitem>
-								<listitem>
-									<emphasis>Email :</emphasis>
-									The user id for this user
-								</listitem>
-								<listitem>
-									<emphasis>Password:</emphasis>
-									The password to be used to secure the account
-								</listitem>
-							</itemizedlist>
-						</listitem>
-					</itemizedlist>
-				</para>
-			</sect3>
 			<sect3>
 				<title>Installing the Sample Offline App</title>
 				<para>

@@ -70,7 +70,7 @@
    			<para>
    			The <emphasis>HelloSyncBean</emphasis> is a simple annotated <emphasis>MobileBean</emphasis> that carries the domain level information
    			that will be synchronized with the device. This information is encapsulated inside a <emphasis>MobileBean</emphasis>
-   			instance. It will be used by the native App on the device side. This bean implements the <emphasis>org.openmobster.server.api.model.MobileBean</emphasis> interface.
+   			instance. It will be used by the native App on the device side. This bean implements the <emphasis>org.openmobster.cloud.api.sync.MobileBean</emphasis> interface.
    			This is a simple marker interface. It does not require any methods to be implemented.
    			</para>
    			<para>
@@ -129,10 +129,10 @@ public class HelloSyncBean implements MobileBean
     		not have to worry about any low-level state management, and synchronization issues.
    			</para>
    			<para>
-   			For sake of simplicity, we will only implement a small portion of the <emphasis>org.openmobster.server.api.model.Channel</emphasis> interface. 
+   			For sake of simplicity, we will only implement a small portion of the <emphasis>org.openmobster.cloud.api.sync.Channel</emphasis> interface. 
    			</para>
    			<sect3>
-   				<title>Implement the <emphasis>org.openmobster.server.api.model.Channel</emphasis> interface</title>
+   				<title>Implement the <emphasis>org.openmobster.cloud.api.sync.Channel</emphasis> interface</title>
 <programlisting><![CDATA[
 package com.hello.sync;
 
@@ -151,7 +151,7 @@ public class HelloSyncChannel implements Channel
 ]]>
 </programlisting>
             	<para>
-            		Annotate the channel class with <emphasis>org.openmobster.server.api.model.ChannelInfo</emphasis> annotation.
+            		Annotate the channel class with <emphasis>org.openmobster.cloud.api.sync.ChannelInfo</emphasis> annotation.
             		<itemizedlist>
             			<listitem>
             				<emphasis role='bold'>uri: </emphasis> Unique value for registering the channel with the Channel Framework.
@@ -315,7 +315,26 @@ public void postRender()
    		<sect2>
    			<title>Step 2: Configuration</title>
    			<para>
-   				Configure this App with the on-device OpenMobster runtime using <emphasis role='bold'>app-android/src/resources/moblet-app/moblet-app.xml</emphasis>
+				Configure the Sync and Push systems using <emphasis role='bold'>app-android/src/resources/openmobster-app.xml</emphasis>
+			</para>
+<programlisting><![CDATA[
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>org.openmobster.core.mobileCloud.android_native.framework.ListApp</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+	
+	<!-- Registers the Cloud channels used by the App -->
+	<channels>
+		<channel name='hellosync'/>
+	</channels>
+</app-conf>
+]]>
+</programlisting>
+   			<para>
+   				Configure the OpenMobster MVC Framework used by this App using <emphasis role='bold'>app-android/src/resources/moblet-app/moblet-app.xml</emphasis>
    			</para>
 <programlisting><![CDATA[
 <moblet-app>
@@ -329,12 +348,7 @@ public void postRender()
     -->
     <commands>
     	<command id='/hellosync/reset'>com.hello.sync.app.ResetChannel</command>
-    </commands>
-    
-    <!-- Registers the Cloud channels used by the App -->
-	<channels>
-		<channel>hellosync</channel>
-	</channels>					
+    </commands>					
 </moblet-app>
 ]]>
 </programlisting>
@@ -349,6 +363,10 @@ public void postRender()
    		<title>Running the App</title>
    		<itemizedlist>
    			<listitem>
+   				Build the whole HelloSync project
+   				<programlisting><![CDATA[mvn clean install]]></programlisting>
+   			</listitem>
+   			<listitem>
    				Start the Cloud Server. Under the HelloSync project, go to the <emphasis role='bold'>cloud</emphasis> directory, and type in:
    				<programlisting><![CDATA[				mvn -PrunCloud integration-test]]></programlisting>
    			</listitem>
@@ -359,18 +377,18 @@ public void postRender()
    				<programlisting><![CDATA[				ddms]]></programlisting>
    			</listitem>
    			<listitem>
-   				Once the emulator is started and ddms is connected, install the development mode <emphasis role='bold'>DevCloud CloudManager App</emphasis> and
-   				the <emphasis role='bold'>HelloSync App</emphasis>. Go to the <emphasis role='bold'>app-android</emphasis> directory and type in:
-   				<programlisting><![CDATA[				mvn -Phot-deploy install]]></programlisting>
-   			</listitem>
-   			<listitem>
-   				Activate the emulated device with the Cloud Server by launching the <emphasis role='bold'>DevCloud CloudManager App</emphasis> and clicking the <emphasis>Activate</emphasis> option.
+   				Once the emulator is started and ddms is connected, install the <emphasis role='bold'>HelloSync App</emphasis>. Go to the <emphasis role='bold'>app-android</emphasis> directory and type in:
+   				<programlisting><![CDATA[				mvn -Papp-hot-deploy install]]></programlisting>
    			</listitem>
    			<listitem>
    				Launch the HelloSync App.
    			</listitem>
    			<listitem>
-   				You can download the entire HelloSync App here: <ulink url='http://openmobster.googlecode.com/svn/samples/hellosync.zip'>HelloSyncApp</ulink>
+   				At first launch you will be guided through an <emphasis role='bold'>Activation</emphasis> process of the App with the Cloud Server. This is a security measure to make sure only securely authenticated
+   				users are allowed to access the data in the Cloud.
+   			</listitem>
+   			<listitem>
+   				You can download the entire HelloSync App here: <ulink url='http://openmobster.googlecode.com/svn/samples/hellosync-2.4.zip'>HelloSyncApp</ulink>
    			</listitem>
    		</itemizedlist>
    </sect1>

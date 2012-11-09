@@ -56,10 +56,7 @@
    			</listitem>
    			<listitem>
    				Install the Sample Android Offline App. Go to the <emphasis role='bold'>app-android</emphasis> directory under your project. Type in:
-   				<programlisting><![CDATA[				mvn -Phot-deploy install]]></programlisting>
-   			</listitem>
-   			<listitem>
-   				Activate the emulated device with the Cloud Server by launching the <emphasis role='bold'>DevCloud CloudManager App</emphasis> and clicking the <emphasis>Activate</emphasis> option.
+   				<programlisting><![CDATA[				mvn -Papp-hot-deploy install]]></programlisting>
    			</listitem>
    			<listitem>
    				Launch the Sample Offline App.
