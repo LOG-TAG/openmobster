@@ -1,0 +1,104 @@
+#summary Get Started
+
+*Related Links:* [GetStartedFromSource Get Started From Source], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
+
+----
+
+==System Requirements==
+
+  * Java SE JDK v6.0
+
+  * Apache Maven 2.2.1
+
+  * Android SDK
+
+  * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
+
+----
+
+==Download==
+
+Latest [http://code.google.com/p/openmobster/downloads/list Download]
+
+----
+
+==[WhatNext Test Drive]==
+
+Before you start development, you can take the system for a test drive. Instructions for doing that are [WhatNext2_4 here].
+
+----
+
+==AppCreator==
+
+*AppCreator* is a Maven-based App development tool. It generates a multi-module App project. Along with project/sample code generation it generates the relevant maven poms for each module. This makes sure that all the dependencies are properly satisfied and downloaded from the internet. It produces the following modules:
+
+  * app-android - Contains device side application code based on the Android OS.
+
+  * cloud - Contains the cloud artifacts which will be deployed on the server side.
+
+  * moblet - This aggregates all the artifacts into a single jar file ready for deployment into the _OpenMobster Cloud Server_. Upon deployment, the device side artifacts are registered with the built-in App Store component for OTA deployment on the device 
+
+===Generate an Android Sync App===
+
+  * Go to the AppCreator: *cd AppCreator*
+
+  * Run the AppCreator: *java -jar appCreator.jar*
+
+  * It will start a self-explanatory command line wizard
+
+  * It will ask for the platforms supported by the App. To skip a platform, simply type 'no'. 
+
+===Build the Android Sync App===
+
+The AppCreator generates your app inside a _workspace_ directory. To access and successfully build the project:
+
+  * Go to the root directory of the project: *cd workspace/myapp*
+
+  * Perform a full build: *mvn install* or *mvn package*
+
+Each project has a README.txt file with more details about the project
+
+===Run the Cloud Server===
+
+Every project comes bundled with a fully functional OpenMobster Cloud Server. You can use this server during the development phase to quickly perform unit/integration testing of your Cloud components. It runs on a slim JBoss Microcontainer based kernel. To run this server:
+
+  * Go to the cloud module: *cd cloud*
+
+  * Run the Cloud Server: *mvn -PrunCloud integration-test*
+
+===Run the Android Emulator===
+
+The Android App is tested in an emulator. The emulator comes bundled with the *Android SDK* along with many other useful tools. In order to fire up the emulator use the following commands:
+
+  * Create an avd image: *android create avd --name openmobster --target android-8*
+
+  * *emulator -avd openmobster*
+
+Once the emulator is started, you can start another very useful development tool called the *Dalvik Debug Monitor* as follows:
+
+  * *ddms*
+
+The *Dalvik Debug Monitor* automatically detects the emulator and the system is ready to go
+
+===Install the Android App===
+
+Once the emulator and the debug monitor are ready, its time to build and install the Android Sync App. This is done as follows from inside your maven project
+
+  * Go to the app-android module: *cd app-android*
+
+  * Hot deploy the App artifacts: *mvn -Phot-deploy install*
+
+This installs the Sync App and the _Development Mode_ Cloud Manager App on the emulator. The Cloud Manager App is essential as it provides the device side runtime for the cloud system services that will be used by the Apps.
+
+----
+==Some Tips==
+
+  * When launching the sample offline sync app, if you get a message saying, "Cloud Manager App is not installed or active", simply launch the "DevCloud" app that is installed along with your App. "DevCloud" houses the runtime for the Cloud system services. Without these services, the sync app cannot function. More details are available in the README.txt file generated with the project
+
+  * There is a small bug with AppCreator which leads to the Dev Mode CloudManager App to not be installed on the emulator during *mvn -Phot-deploy install* command. For a workaround until this is fixed, please take a look at: https://groups.google.com/forum/?fromgroups#!topic/openmobster-users/FaBhvejD85w
+
+  * For the build to succeed, you must have an environment variable called *ANDROID_HOME* pointing to the directory where the Android SDK is installed
+
+----
+
+*Related Links:* [GetStartedFromSource Get Started From Source], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
