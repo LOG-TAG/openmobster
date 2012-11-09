@@ -4,6 +4,10 @@
 
 ----
 
+If you using OpenMobster *version 2.4*, please see this [GetStarted2_4 Get Started Document]
+
+----
+
 ==System Requirements==
 
   * Java SE JDK v6.0
@@ -27,10 +31,6 @@ To build from source code, see [http://code.google.com/p/openmobster/wiki/GetSta
 ==[WhatNext Test Drive]==
 
 Before you start development, you can take the system for a test drive. Instructions for doing that are [WhatNext here].
-
-----
-
-If you using OpenMobster *version 2.4*, please see this [GetStarted2_4 Get Started Document]
 
 ----
 
