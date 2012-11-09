@@ -259,9 +259,8 @@ public void delete(MobileBean mobileBean)
    			<sect3>
    				<title>Putting it all together</title>
    				<para>
-   				 	The end-to-end Channel Example is located at : 
-   				 	<emphasis>src/dev-tools/sampleApps/offlineapp/cloud</emphasis> and
-   				 	<emphasis>AppCreator/sampleApps/offlineapp/cloud</emphasis>
+   				 	The end-to-end Channel Example is located in the binary distribution at: 
+   				 	<emphasis role='bold'>Samples/offlineapp/cloud</emphasis>
    				</para>
    			</sect3>
    		</sect2>
@@ -310,9 +309,8 @@ demoBeans[i].setValue("demoString", "new updated value");
    				]]></programlisting>
    				</listitem>
    			</itemizedlist>
-   			For a more detailed coverage of the MobileBean usage, please see some example code located at:
-   			<emphasis>src/dev-tools/sampleApps/offlineapp/app-android</emphasis> and
-   			<emphasis>AppCreator/sampleApps/offlineapp/app-android</emphasis>
+   			For a more detailed coverage of the MobileBean usage, please see some example code in the binary distribution located at:
+   			<emphasis role='bold'>Samples/offlineapp/app-android</emphasis>
    			</para>
    		</sect2>
    </sect1>
