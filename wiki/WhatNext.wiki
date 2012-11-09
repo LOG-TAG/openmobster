@@ -1,6 +1,10 @@
 #summary I downloaded the software. What Next?
 #labels Featured
 
+If you are using OpenMobster *version 2.4* please see this [WhatNext2_4 TestDrive Document]
+
+----
+
 I have always wondered what goes through a user's mind after downloading a big piece of software. Good software comes with *README* files to navigate through the maze. Even though OpenMobster comes with a bunch of *README* files, I want to go a little further in providing more information.
 
 
