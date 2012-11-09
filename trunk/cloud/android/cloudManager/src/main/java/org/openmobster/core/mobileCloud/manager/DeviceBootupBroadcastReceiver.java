@@ -8,39 +8,34 @@
 package org.openmobster.core.mobileCloud.manager;
 
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 /**
  *
  * @author openmobster@gmail.com
  */
-public class NetworkBroadcastReceiver extends BroadcastReceiver
+public class DeviceBootupBroadcastReceiver extends BroadcastReceiver
 {
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
 		try
-		{
-			NetworkInfo info = intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
+		{	
+			Context appContext = context.getApplicationContext();
 			
-			if(info.isConnected())
-			{
-				DeviceContainer container = DeviceContainer.getInstance(context);
-				boolean isActive = container.isContainerActive();
-				
-				if(isActive)
-				{
-					Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.CometRecycleHandler");
-					Bus.getInstance().invokeService(invocation);
-				}
-			}
+			//Initialize the kernel
+			DeviceContainer container = DeviceContainer.getInstance(appContext);
+			
+			//start the kernel
+			container.propagateNewContext(appContext);
+	    	container.startup();
+	    	
+	    	Intent start = new Intent("org.openmobster.core.mobileCloud.manager.KeepAliveService");
+    		start.putExtra("activityClassName", "org.openmobster.core.mobileCloud.manager.CloudManagerApp");
+    		context.startService(start);
 		}
 		catch(Exception e)
 		{

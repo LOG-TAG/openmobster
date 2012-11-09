@@ -29,6 +29,14 @@
                 </intent-filter>
          </receiver>
          
+         <receiver android:name="org.openmobster.core.mobileCloud.manager.DeviceBootupBroadcastReceiver">
+			<intent-filter>
+				<action
+				android:name="android.intent.action.BOOT_COMPLETED" />
+				<category android:name="android.intent.category.HOME" />
+			</intent-filter>
+		 </receiver>
+         
          <receiver android:name="org.openmobster.core.mobileCloud.android.module.connection.PolicyManager$PolicyReceiver"
             android:label="OpenMobster Device Administrator"
             android:permission="android.permission.BIND_DEVICE_ADMIN">

@@ -221,7 +221,8 @@ public final class CometSession implements Serializable,BusListener
 	
 	private boolean allowNotification(BusMessage busMessage)
 	{
-		String notificationType = (String)busMessage.getAttribute(Constants.notification_type);
+		//This implementation is empty now in light of the new Push mechanism on the Android side
+		/*String notificationType = (String)busMessage.getAttribute(Constants.notification_type);
 		if(!notificationType.equals(Constants.channel))
 		{
 			return true;
@@ -234,7 +235,8 @@ public final class CometSession implements Serializable,BusListener
 		{
 			return true;
 		}
-		return false;
+		return false;*/
+		return true;
 	}
 	//--------------iPhone APN integration-----------------------------------------------------------------
 	private synchronized void sendiPhoneNotification(String command, BusMessage busMessage)
