@@ -1,6 +1,4 @@
-#summary Get Started
-
-*Related Links:* [GetStartedFromSource Get Started From Source], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
+#summary Get Started version 2.4
 
 ----
 
@@ -22,7 +20,7 @@ Latest [http://code.google.com/p/openmobster/downloads/list Download]
 
 ----
 
-==[WhatNext Test Drive]==
+==[WhatNext2_4 Test Drive]==
 
 Before you start development, you can take the system for a test drive. Instructions for doing that are [WhatNext2_4 here].
 
@@ -86,19 +84,11 @@ Once the emulator and the debug monitor are ready, its time to build and install
 
   * Go to the app-android module: *cd app-android*
 
-  * Hot deploy the App artifacts: *mvn -Phot-deploy install*
+  * Hot deploy the App artifacts: *mvn -Papp-hot-deploy install*
 
-This installs the Sync App and the _Development Mode_ Cloud Manager App on the emulator. The Cloud Manager App is essential as it provides the device side runtime for the cloud system services that will be used by the Apps.
+This installs the Sync App on the emulator.
 
 ----
 ==Some Tips==
 
-  * When launching the sample offline sync app, if you get a message saying, "Cloud Manager App is not installed or active", simply launch the "DevCloud" app that is installed along with your App. "DevCloud" houses the runtime for the Cloud system services. Without these services, the sync app cannot function. More details are available in the README.txt file generated with the project
-
-  * There is a small bug with AppCreator which leads to the Dev Mode CloudManager App to not be installed on the emulator during *mvn -Phot-deploy install* command. For a workaround until this is fixed, please take a look at: https://groups.google.com/forum/?fromgroups#!topic/openmobster-users/FaBhvejD85w
-
   * For the build to succeed, you must have an environment variable called *ANDROID_HOME* pointing to the directory where the Android SDK is installed
-
-----
-
-*Related Links:* [GetStartedFromSource Get Started From Source], [BeginnerZone Beginner Area], [Concepts Programming Concepts], [Architecture Architecture], [JBossDeployment JBoss Deployment], [roadmap Project Roadmap]
