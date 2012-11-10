@@ -9,7 +9,7 @@
 	<url>http://www.myapp.com</url>	
 	
 	<properties>
-	<openmobster.version>2.4-M1</openmobster.version>
+	<openmobster.version>2.4-SNAPSHOT</openmobster.version>
 	<version.android.api>10</version.android.api>
 </properties>
 

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openmobster.core.android</groupId>
 	<artifactId>2_0</artifactId>
-	<version>2.4-M1</version>
+	<version>2.4-SNAPSHOT</version>
 	<name>android</name>
 	<packaging>pom</packaging>
 	
