@@ -182,6 +182,39 @@
     NSLog(@"%d number of objects found",[beans count]);
     STAssertTrue([beans count]==5,nil);
 }
+
+-(void) testLargeObjects
+{
+    NSLog(@"Starting testLargeObjects.........");
+    
+    CloudService *cloud = [CloudService getInstance];
+    [cloud startup];
+    
+    MobileObjectDatabase *database = [MobileObjectDatabase getInstance];
+    [database deleteAll:@"myChannel"];
+    
+    MobileBean *newBean = [MobileBean newInstance:@"myChannel"];
+    
+    NSMutableString *newAttachment = [NSMutableString string];
+    for(int i=0; i<1024; i++)
+    {
+        for(int j=0; j<10000; j++)
+        {
+            [newAttachment appendString:@"a"];
+        }
+    }
+    
+    NSData *newAttachmentBin = [newAttachment dataUsingEncoding:NSUTF8StringEncoding];
+    [newBean setBinaryValue:@"attachment" :newAttachmentBin];
+    
+    [newBean save];
+    
+    NSString *oid = [newBean getId];
+    NSLog(@"OID: %@",oid);
+    
+    MobileBean *savedBean = [MobileBean readById:@"myChannel" :oid];
+    NSData *attachmentData = [savedBean getBinaryValue:@"attachment"];
+}
 //------------------------------------------------------------------------------------------------
 -(void) seedData
 {
