@@ -25,6 +25,7 @@ import javax.net.ssl.SSLContext;
 import org.apache.log4j.Logger;
 
 import org.apache.mina.core.service.IoAcceptor;
+import org.apache.mina.filter.codec.textline.LineDelimiter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.executor.ExecutorFilter;
@@ -178,7 +179,10 @@ public class Server
 	        
 	        
 	        //
-	        TextLineCodecFactory textLine = new TextLineCodecFactory(Charset.forName("UTF-8"));	
+	        //TextLineCodecFactory textLine = new TextLineCodecFactory(Charset.forName("UTF-8"));	
+	        TextLineCodecFactory textLine = new TextLineCodecFactory(Charset.forName("UTF-8"),
+	    	        LineDelimiter.UNIX.getValue(),
+	    	        "EOF");
 	        textLine.setDecoderMaxLineLength(Integer.MAX_VALUE);
 	        textLine.setEncoderMaxLineLength(Integer.MAX_VALUE);
 	        ProtocolCodecFilter codecFilter = new ProtocolCodecFilter(textLine);
