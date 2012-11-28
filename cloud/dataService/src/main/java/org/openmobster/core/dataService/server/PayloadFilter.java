@@ -29,10 +29,7 @@ public class PayloadFilter extends IoFilterAdapter
 		
 	public void messageReceived(NextFilter nextFilter, IoSession session, Object message)
 	{
-		//log.debug("RAWSocketMsg---------------------------------------------------------------------------");
-		//log.debug(message);
-		//log.debug("---------------------------------------------------------------------------------------");
-		String payloadMessage = ((String)message).trim();
+		/*String payloadMessage = ((String)message).trim();
 		if(this.processPayload(session, payloadMessage))
 		{
 			nextFilter.messageReceived(session, message);
@@ -45,7 +42,29 @@ public class PayloadFilter extends IoFilterAdapter
 		{
 			//payload is still being constructed...no need to go into further processing
 			return;
+		}*/
+		
+		String payloadMessage = ((String)message).trim();
+		if(payloadMessage.length() == 0)
+		{
+			//empty payload
+			return;
 		}
+		
+		PayloadController payloadController = (PayloadController)session.
+				getAttribute(Constants.payload);
+		if(payloadController == null)
+		{
+			payloadController = new PayloadController();
+			session.setAttribute(Constants.payload,payloadController);
+		}
+		
+		payloadController = (PayloadController)session.
+				getAttribute(Constants.payload);
+		payloadController.setPayload(payloadMessage);
+		
+		nextFilter.messageReceived(session, message);
+		session.removeAttribute(Constants.payload);
 	}	
 	
 		

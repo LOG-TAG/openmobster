@@ -31,6 +31,11 @@ public final class PayloadController
 		return this.payload;
 	}
 	
+	public void setPayload(String payload)
+	{
+		this.payload = payload;
+	}
+	
 	public void openBuffer()
 	{
 		try
