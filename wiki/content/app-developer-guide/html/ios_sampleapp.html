@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory">Chapter 11. iOS + OpenMobster Sample App</title><link rel="stylesheet" href="css/seamframework.css" type="text/css"/><meta xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" name="generator" content="DocBook XSL Stylesheets V1.74.0"/><link rel="home" href="index.html" title="OpenMobster - Mobile Cloud Platform"/><link rel="up" href="index.html" title="OpenMobster - Mobile Cloud Platform"/><link rel="prev" href="ios_openmobster.html" title="Chapter 10. iOS + OpenMobster integration"/><link rel="next" href="d2d.html" title="Chapter 12. Device-To-Device Push Framework"/></head><body><p id="title"><a href="http://www.seamframework.org" class="site_href"><strong>SeamFramework.org</strong></a><a href="http://www.seamframework.org/Documentation" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ios_openmobster.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="d2d.html"><strong>Next</strong></a></li></ul><div class="chapter" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="ios_sampleapp"/>Chapter 11. iOS + OpenMobster Sample App</h2></div><div><div class="author"><h3 class="author"><span class="firstname">openmobster</span> <span class="surname">at gmail.com</span></h3><code class="email">&lt;<a class="email" href="mailto:openmobster@gmail.com">openmobster@gmail.com</a>&gt;</code></div></div></div></div><div class="toc"><dl><dt><span class="sect1"><a href="ios_sampleapp.html#d0e1712">11.1. Introduction</a></span></dt><dt><span class="sect1"><a href="ios_sampleapp.html#d0e1717">11.2. Prepare the mobilecloudlib static library</a></span></dt><dt><span class="sect1"><a href="ios_sampleapp.html#d0e1738">11.3. Run the Cloud Server</a></span></dt><dt><span class="sect1"><a href="ios_sampleapp.html#d0e1749">11.4. Run the SampleApp</a></span></dt></dl></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e1712"/>11.1. Introduction</h2></div></div></div><p>
+   			This chapter covers the steps involved in running the iOS + OpenMobster based Sample App
+   		</p></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e1717"/>11.2. Prepare the <span class="bold"><strong>mobilecloudlib</strong></span> static library</h2></div></div></div><p>
+   			</p><div class="itemizedlist"><ul><li>Open the mobilecloudlib XCode project by opening: <span class="bold"><strong>iPhone/mobilecloudlib/mobilecloudlib.xcodeproj</strong></span></li><li>Build the project in XCode</li></ul></div><p>
+   		</p><p>
+   			For some reason, building the mobilecloudlib fail to compile if your XCode code location is set to the recommended setting of "Derived Data". You must change this option to "Location Specified By Targets".
+			Please take a look at this thread for details: <a class="ulink" href="https://groups.google.com/forum/#!searchin/openmobster-users/mobilecloudlib/openmobster-users/zJhJKbFekLs/WiNWtKfG_RcJ">https://groups.google.com/forum/#!searchin/openmobster-users/mobilecloudlib/openmobster-users/zJhJKbFekLs/WiNWtKfG_RcJ</a>
+   		</p></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e1738"/>11.3. Run the Cloud Server</h2></div></div></div><p>
+   		Go to <span class="bold"><strong>iphone/showcase/cloud</strong></span>. Under this directory issue the following command to start the
+   		Cloud Server required by the sample app
+   		</p><pre class="programlisting">
+   		
+   			mvn -PrunCloud integration-test
+   		
+   		</pre><p>
+   		</p></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e1749"/>11.4. Run the SampleApp</h2></div></div></div><p>
+   		Open the XCode project located under <span class="bold"><strong>iphone/SampleApp</strong></span>. Build the project to make sure there are no errors.
+   		Once the Build is successful, Run the project. If this is the first time running the App, it will present a device activation screen.
+   		This is to securely setup your Cloud account so that you can acess the Enterprise resources in the Cloud. It asks the following information
+   		</p><pre class="programlisting">
+   		
+   			Cloud IP: The IP address of the Cloud Server
+   			Port: The port that the Cloud Server is running on (1502, by default)
+   			Email Address: Your email address to uniquely identify you with the Cloud
+   			Password: Your password to authenticate with the Cloud
+   		
+   		</pre><p> 
+   		This is a one time activation across all your apps. 
+   	</p></div></div><ul class="docnav"><li class="previous"><a accesskey="p" href="ios_openmobster.html"><strong>Prev</strong>Chapter 10. iOS + OpenMobster integration</a></li><li class="up"><a accesskey="u" href="#"><strong>Top of page</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Front page</strong></a></li><li class="next"><a accesskey="n" href="d2d.html"><strong>Next</strong>Chapter 12. Device-To-Device Push Framework</a></li></ul></body></html>
