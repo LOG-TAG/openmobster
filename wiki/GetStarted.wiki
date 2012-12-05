@@ -96,6 +96,17 @@ Once the emulator and the debug monitor are ready, its time to build and install
 
 This installs the Sync App and the _Development Mode_ Cloud Manager App on the emulator. The Cloud Manager App is essential as it provides the device side runtime for the cloud system services that will be used by the Apps.
 
+=== JBoss Deployment ===
+Once the App and its corresponding Cloud artifacts are developed and tested end-to-end, you can aggregate all these artifacts into a single jar ready for deployment into a JBoss AS based Cloud Server.
+For instructions on setting up your JBoss instance please see [JBossDeployment JBoss Setup].
+
+This single artifact when deployed into the JBoss AS based Cloud Server performs all necessary registrations with the system and is ready for deploying the app onto a real device via the Internet.
+
+  * Go to the moblet module: *cd moblet*
+  * Generate the app and deploy into the JBoss AS instance: *mvn -Pjboss-install install*
+
+*Note:* Before executing this deployment command you will need to make sure that the *jboss.home* property is properly set to your location of the JBoss 5.1.0.GA AS. You can change this value in the *moblet/pom.xml* file
+
 ----
 ==Some Tips==
 
