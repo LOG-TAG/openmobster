@@ -374,4 +374,21 @@ public void postRender()
    			</listitem>
    		</itemizedlist>
    </sect1>
+   
+   <sect1>
+   		<title>JBoss Deployment</title>
+   		<para>
+   			Once the App and its corresponding Cloud artifacts are developed and tested end-to-end, you can aggregate all these artifacts into a single jar ready for deployment into a JBoss AS based Cloud Server. For instructions on setting up your JBoss instance please see <link linkend='/installation/jboss'>JBoss Setup</link>.
+   		</para>
+   		<para>
+   			This single artifact when deployed into the JBoss AS based Cloud Server performs all necessary registrations with the system and is ready for deploying the app onto a real device via the Internet.
+   			<itemizedlist>
+   				<listitem>Go to the moblet module: <emphasis role='bold'>cd moblet</emphasis></listitem>
+   				<listitem>Generate the app and deploy into the JBoss AS instance: <emphasis role='bold'>mvn -Pjboss-install install</emphasis></listitem>
+   			</itemizedlist>
+   		</para>
+   		<para>
+   			<emphasis role='bold'>Note:</emphasis> Before executing this deployment command you will need to make sure that the <emphasis role='bold'>jboss.home</emphasis> property is properly set to your location of the JBoss 5.1.0.GA AS. You can change this value in the <emphasis role='bold'>moblet/pom.xml</emphasis> file
+   		</para>
+   </sect1>
 </chapter>
