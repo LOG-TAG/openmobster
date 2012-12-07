@@ -83,16 +83,15 @@ public final class ChannelDaemon implements EventListener,ClusterListener
 
 	public void start()
 	{
+		String channel = this.channelRegistration.getUri();
+		Bus.startBus(channel);
+		
 		this.clusterService.register(this);
 	}
 	
 	@Override
 	public void startService(ClusterEvent event) throws Exception
 	{
-		String channel = this.channelRegistration.getUri();
-		
-		Bus.startBus(channel);
-		
 		//load the device cache
 		this.loadDevices();
 		

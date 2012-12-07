@@ -26,12 +26,14 @@ import org.openmobster.core.common.event.Event;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.device.Device;
 import org.openmobster.core.services.subscription.Subscription;
-
+import org.openmobster.core.cluster.ClusterService;
+import org.openmobster.core.cluster.ClusterListener;
+import org.openmobster.core.cluster.ClusterEvent;
 
 /**
  * @author openmobster@gmail.com
  */
-public final class CometSessionManager implements EventListener
+public final class CometSessionManager implements EventListener,ClusterListener
 {
 	private static Logger log = Logger.getLogger(CometSessionManager.class);
 	
@@ -43,6 +45,8 @@ public final class CometSessionManager implements EventListener
 	
 	private DeviceController deviceController;
 	private EventManager eventManager;
+	
+	private ClusterService clusterService;
 				
 	public DeviceController getDeviceController() 
 	{
@@ -68,8 +72,24 @@ public final class CometSessionManager implements EventListener
 	{
 		this.pulseInterval = pulseInterval;
 	}
+	
+	public ClusterService getClusterService()
+	{
+		return clusterService;
+	}
+
+	public void setClusterService(ClusterService clusterService)
+	{
+		this.clusterService = clusterService;
+	}
 
 	public void start()
+	{
+		this.clusterService.register(this);
+	}
+	
+	@Override
+	public void startService(ClusterEvent event) throws Exception
 	{
 		boolean isStartedHere = TransactionHelper.startTx();
 		try
@@ -117,7 +137,7 @@ public final class CometSessionManager implements EventListener
 				TransactionHelper.rollbackTx();
 			}
 			throw new RuntimeException(e);
-		}
+		}	
 	}
 	
 	public void stop()

@@ -13,7 +13,9 @@
 -->        
 <hibernate-mapping>	
 	<class name="org.openmobster.core.security.identity.Identity" table="openmobster_identity">
+	    <!--  
 		<cache usage="read-write"/>
+		-->
 		
         <id name="id" column="identityId">
             <generator class="native"/>
@@ -32,7 +34,10 @@
     	cascade="all-delete-orphan"
     	lazy="false"
     	>
+    		<!--  
     		<cache usage="read-write"/>
+    		-->
+    		
 	        <key column="identityId" not-null="true"/>
 	        <many-to-many class="org.openmobster.core.security.identity.IdentityAttribute" unique="true"/>
     	</set>
@@ -41,7 +46,10 @@
     	<set name="groups" table="openmobster_identity_group"     	
     	lazy="true"    	
     	>
+    		<!--  
     		<cache usage="read-write"/>
+    		-->
+    		
 	        <key column="identityId"/>
 	        <many-to-many class="org.openmobster.core.security.identity.Group" column="groupId"/>
     	</set>
@@ -58,7 +66,10 @@
     	-->
     </class>
     <class name="org.openmobster.core.security.identity.IdentityAttribute" table="openmobster_identity_attribute">
-    	<cache usage="read-write"/>
+    	<!--  
+		<cache usage="read-write"/>
+		-->
+		
         <id name="id" column="attributeId">
             <generator class="native"/>
         </id>
@@ -71,7 +82,10 @@
         />                        
     </class>
     <class name="org.openmobster.core.security.identity.Group" table="openmobster_group">
-    	<cache usage="read-write"/>
+    	<!--  
+		<cache usage="read-write"/>
+		-->
+		
         <id name="id" column="groupId">
             <generator class="native"/>
         </id>
@@ -86,7 +100,10 @@
     	cascade="all-delete-orphan"
     	lazy="false"
     	> 
-    		<cache usage="read-write"/>  
+    		<!--  
+    		<cache usage="read-write"/>
+    		-->
+    		  
 	        <key column="groupId" not-null="true"/>
 	        <many-to-many class="org.openmobster.core.security.identity.GroupAttribute" unique="true"/>
     	</set>
@@ -95,13 +112,19 @@
     	<set name="members" table="openmobster_identity_group"     	
     	lazy="true"
     	>
-    		<cache usage="read-write"/>	    
+    		<!--  
+    		<cache usage="read-write"/>	
+    		-->
+    		    
 	        <key column="groupId"/>
 	        <many-to-many class="org.openmobster.core.security.identity.Identity" column="identityId"/>
     	</set>            
     </class>
     <class name="org.openmobster.core.security.identity.GroupAttribute" table="openmobster_group_attribute">
-    	<cache usage="read-write"/>
+    	<!--  
+		<cache usage="read-write"/>
+		-->
+		
         <id name="id" column="attributeId">
             <generator class="native"/>
         </id>
@@ -114,7 +137,9 @@
         />                        
     </class>   
     <class name="org.openmobster.core.security.device.Device" table="openmobster_device">
-    	<cache usage="read-write"/>
+    	<!--  
+		<cache usage="read-write"/>
+		-->
     	
         <id name="id" column="deviceId">
             <generator class="native"/>
@@ -130,7 +155,10 @@
     	cascade="all-delete-orphan"
     	lazy="false"
     	>
+    		<!--  
     		<cache usage="read-write"/>
+    		-->
+    		
 	        <key column="deviceId" not-null="true"/>
 	        <many-to-many class="org.openmobster.core.security.device.DeviceAttribute" unique="true"/>
     	</set>
@@ -143,7 +171,9 @@
     	/>    	
     </class>
     <class name="org.openmobster.core.security.device.DeviceAttribute" table="openmobster_device_attribute">
-    	<cache usage="read-write"/>
+    	<!--  
+		<cache usage="read-write"/>
+		-->
     	
         <id name="id" column="attributeId">
             <generator class="native"/>
