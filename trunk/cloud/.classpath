@@ -94,11 +94,8 @@
 	<classpathentry kind="src" path="android/location/src/main/java"/>
 	<classpathentry kind="src" path="android/fuseapp/app-android/src/main/java"/>
 	<classpathentry kind="src" path="android/fuseapp/cloud/src/main/java"/>
-	<classpathentry kind="src" path="android/fuseapp/cloud/src/test/java"/>
 	<classpathentry kind="src" path="android/pushapp/app-android/src/main/java"/>
 	<classpathentry kind="src" path="android/pushapp/cloud/src/main/java"/>
-	<classpathentry kind="src" path="android/pushapp/cloud/src/test/java"/>
-	<classpathentry kind="src" path="android/location/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-framework/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-api-port/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-common-port/src/main/java"/>
