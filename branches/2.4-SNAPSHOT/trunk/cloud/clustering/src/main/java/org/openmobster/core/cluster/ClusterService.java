@@ -73,7 +73,10 @@ public final class ClusterService extends ReceiverAdapter
 	
 	public void stop()
 	{
-		this.channel.close();
+		if(this.channel != null)
+		{
+			this.channel.close();
+		}
 		
 		//clear the state
 		this.services = null;
