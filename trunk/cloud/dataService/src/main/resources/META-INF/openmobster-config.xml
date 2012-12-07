@@ -115,6 +115,9 @@
    		<property name="eventManager"><inject bean="common://EventManager"/></property>	
    		<!-- provide a value in milliseconds. Default: 30000 which sends a socket pulse check every 30 seconds -->
    		<property name="pulseInterval">9</property>
+   		<property name="clusterService">
+   			<inject bean="clustering://ClusterService"/>
+   	  </property>
    </bean>  
    
    <!-- Processor that hooks into the data service -->
