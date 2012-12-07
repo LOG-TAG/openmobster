@@ -38,12 +38,16 @@ import org.apache.mina.filter.SSLFilter;
 import org.apache.mina.transport.socket.nio.SocketAcceptorConfig;
 import org.apache.mina.transport.socket.nio.SocketAcceptor;
 
+import org.openmobster.core.cluster.ClusterEvent;
+import org.openmobster.core.cluster.ClusterService;
+import org.openmobster.core.cluster.ClusterListener;
+
 
 /**
  * 
  * @author openmobster@gmail.com
  */
-public class Server
+public class Server implements ClusterListener
 {	
 	private static Logger log = Logger.getLogger(Server.class);
 		
@@ -63,6 +67,8 @@ public class Server
 	private AuthenticationFilter authenticationFilter;
 	private PayloadFilter payloadFilter;
 	private RequestConstructionFilter requestFilter;
+	
+	private ClusterService clusterService;
 		
 	public Server()
 	{
@@ -71,7 +77,7 @@ public class Server
 		
 	public void start() throws RuntimeException
 	{
-		this.startListening(this.isSecure());        
+		this.clusterService.register(this);  
 	}
 		
 	public void stop() throws RuntimeException
@@ -167,6 +173,17 @@ public class Server
 	{
 		this.requestFilter = requestFilter;
 	}
+	
+	public ClusterService getClusterService()
+	{
+		return clusterService;
+	}
+
+	public void setClusterService(ClusterService clusterService)
+	{
+		this.clusterService = clusterService;
+	}
+
 	//---------------------------------------------------------------------------------------------------
 	public boolean isSecure()
 	{
@@ -273,5 +290,18 @@ public class Server
 		sslContext.init(keyManager, trustManager, secureRandom);
 		
 		return sslContext;
+	}
+
+	@Override
+	public void startService(ClusterEvent event) throws Exception
+	{
+		if(this instanceof PlainServer)
+		{
+			this.startListening(false);
+		}
+		else
+		{
+			this.startListening(this.isSecure()); 
+		}
 	}
 }

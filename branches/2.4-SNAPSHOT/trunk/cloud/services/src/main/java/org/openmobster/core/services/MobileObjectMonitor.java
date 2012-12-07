@@ -33,6 +33,7 @@ import org.openmobster.core.services.channel.ChannelBeanMetaData;
 import org.openmobster.core.services.event.ChannelEvent;
 import org.openmobster.core.services.event.NetworkEvent;
 import org.openmobster.core.security.device.DeviceController;
+import org.openmobster.core.cluster.ClusterService;
 
 /**
  * MobileObjectMonitor provides infrastructure/management services for the Mobile Object Framework
@@ -50,6 +51,7 @@ public class MobileObjectMonitor implements BusListener
 	private Map<String, ChannelManager> channelManagers;
 	private HibernateManager hibernateManager;
 	private DeviceController deviceController;
+	private ClusterService clusterService;
 	
 	
 	public MobileObjectMonitor()
@@ -101,6 +103,20 @@ public class MobileObjectMonitor implements BusListener
 	{
 		this.deviceController = deviceController;
 	}
+	
+	
+
+	public ClusterService getClusterService()
+	{
+		return clusterService;
+	}
+
+
+	public void setClusterService(ClusterService clusterService)
+	{
+		this.clusterService = clusterService;
+	}
+
 
 	public void notify(Channel mobileObjectConnector)
 	{
@@ -152,7 +168,7 @@ public class MobileObjectMonitor implements BusListener
 			registration.setUpdateCheckInterval(connectorInfo.updateCheckInterval());
 			
 			ChannelManager channelManager = ChannelManager.createInstance(this.hibernateManager,
-			this.deviceController,registration);			
+			this.deviceController,registration,this.clusterService);			
 			channelManager.start();
 			Bus.addBusListener(channelId, this);
 			this.channelManagers.put(channelId, channelManager);			

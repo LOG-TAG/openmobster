@@ -5,19 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-
-package org.openmobster.core.dataService.server;
+package org.openmobster.core.cluster;
 
 /**
- * 
+ *
  * @author openmobster@gmail.com
  */
-public class PlainServer extends Server
-{	
-	protected int port = 1502; //default port if not overriden from configuration
-	
-	public void start()
-	{
-		this.getClusterService().register(this);
-	}
+public interface ClusterListener
+{
+	public void startService(ClusterEvent event) throws Exception;
 }

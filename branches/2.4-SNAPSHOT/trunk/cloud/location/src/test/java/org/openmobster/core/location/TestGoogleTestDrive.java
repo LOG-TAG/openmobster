@@ -74,8 +74,8 @@ public class TestGoogleTestDrive extends TestCase
 	{
 		log.info("Starting fetchNearbyPlaces....");
 		
-		String latitude = "-33.8670522";
-		String longitude = "151.1957362";
+		String latitude = "35.09315";
+		String longitude = "-89.73365";
 		List<String> types = new ArrayList<String>();
 		types.add("food");
 		types.add("hospital");
