@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import org.openmobster.core.common.database.HibernateManager;
 import org.openmobster.core.security.device.DeviceController;
+import org.openmobster.core.cluster.ClusterService;
 
 /**
  * This manages each registered Channel. There is one Channel Manager per instance of a registered Channel
@@ -34,11 +35,12 @@ public final class ChannelManager
 	
 	public static ChannelManager createInstance(HibernateManager hibernateManager,
 	DeviceController deviceController,
-	ChannelRegistration channelRegistration)
+	ChannelRegistration channelRegistration,
+	ClusterService clusterService)
 	{
 		ChannelManager manager = new ChannelManager();
 		
-		ChannelDaemon daemon = new ChannelDaemon(hibernateManager, deviceController,channelRegistration);				
+		ChannelDaemon daemon = new ChannelDaemon(hibernateManager, deviceController,channelRegistration,clusterService);				
 		manager.setChannelDaemon(daemon);
 		
 		return manager;

@@ -13,6 +13,9 @@
    	  <property name="deviceController">
    	  	<inject bean="security://DeviceController"/>
    	  </property> 
+   	  <property name="clusterService">
+   	  	<inject bean="clustering://ClusterService"/>
+   	  </property>
    	  <depends>HornetQServer</depends>  	 
    	  <depends>common://EventManager</depends>  
    </bean>

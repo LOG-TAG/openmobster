@@ -37,13 +37,17 @@ import org.openmobster.core.security.device.Device;
 import org.openmobster.core.security.device.DeviceController;
 import org.openmobster.core.security.identity.Identity;
 
+import org.openmobster.core.cluster.ClusterService;
+import org.openmobster.core.cluster.ClusterEvent;
+import org.openmobster.core.cluster.ClusterListener;
+
 /**
  * The ChannelDaemon monitors any new data updates on its respective Channel. When an Update is detected, 
  * it sends an Event about this to interested Subscribers
  * 
  * @author openmobster@gmail.com
  */
-public final class ChannelDaemon implements EventListener 
+public final class ChannelDaemon implements EventListener,ClusterListener 
 {
 	private static Logger log = Logger.getLogger(ChannelDaemon.class);
 	
@@ -53,6 +57,7 @@ public final class ChannelDaemon implements EventListener
 	private List<Device> allDevices;
 	private boolean isRegisteredForCacheInvalidationEvent;
 	private Map<String,LastScanTimestamp> lastScanTimestamps;
+	private ClusterService clusterService;
 	
 	/**
 	 * The channel being monitored
@@ -61,12 +66,14 @@ public final class ChannelDaemon implements EventListener
 	
 	public ChannelDaemon(HibernateManager hibernateManager,
 	DeviceController deviceController,
-	ChannelRegistration channelRegistration)
+	ChannelRegistration channelRegistration,
+	ClusterService clusterService)
 	{
 		this.channelRegistration = channelRegistration;
 		this.hibernateManager = hibernateManager;
 		this.deviceController = deviceController;
 		this.lastScanTimestamps = new HashMap<String,LastScanTimestamp>();
+		this.clusterService = clusterService;
 	}
 	
 	public ChannelRegistration getChannelRegistration()
@@ -75,6 +82,12 @@ public final class ChannelDaemon implements EventListener
 	}
 
 	public void start()
+	{
+		this.clusterService.register(this);
+	}
+	
+	@Override
+	public void startService(ClusterEvent event) throws Exception
 	{
 		String channel = this.channelRegistration.getUri();
 		
@@ -96,7 +109,7 @@ public final class ChannelDaemon implements EventListener
 		log.info("-----------------------------------------------------");
 		log.info("Channel Daemon ("+this.channelRegistration.getUri()+") started. Update Interval: "+howOftenShouldICheck+"(ms)");
 		log.info("-----------------------------------------------------");
-	}
+	}	
 	
 	public void stop()
 	{
@@ -426,5 +439,5 @@ public final class ChannelDaemon implements EventListener
 									
 			Bus.sendMessage(message);
 		}
-	}			
+	}		
 }

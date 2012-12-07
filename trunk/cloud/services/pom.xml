@@ -19,7 +19,11 @@
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>security</artifactId>				
-		</dependency>		   						    			
+		</dependency>	
+		<dependency>
+			<groupId>org.openmobster.core</groupId>
+			<artifactId>clustering</artifactId>				
+		</dependency>	   						    			
 	</dependencies>
 	
 	<!-- build configuration -->
