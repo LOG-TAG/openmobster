@@ -10,8 +10,8 @@ package org.openmobster.core.dataService.server;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoFilterAdapter;
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.filterchain.IoFilterAdapter;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.Constants;
 
@@ -32,7 +32,7 @@ public class PayloadFilter extends IoFilterAdapter
 		//log.debug("RAWSocketMsg---------------------------------------------------------------------------");
 		//log.debug(message);
 		//log.debug("---------------------------------------------------------------------------------------");
-		if(this.processPayload(session, (String)message))
+		/*if(this.processPayload(session, (String)message))
 		{
 			nextFilter.messageReceived(session, message);
 		}
@@ -40,7 +40,17 @@ public class PayloadFilter extends IoFilterAdapter
 		{
 			//payload is still being constructed...no need to go into further processing
 			return;
+		}*/
+		String payloadMessage = ((String)message).trim();
+		if(payloadMessage.length() == 0)
+		{
+			//empty payload
+			return;
 		}
+		
+		session.setAttribute(Constants.payload, payloadMessage);
+		nextFilter.messageReceived(session, message);
+		session.removeAttribute(Constants.payload);
 	}	
 	
 		

@@ -9,7 +9,7 @@
 package org.openmobster.core.dataService.processor;
 
 import java.io.Serializable;
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 /**
  * 

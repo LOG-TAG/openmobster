@@ -18,6 +18,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 /**
  * 
@@ -25,7 +26,7 @@ import com.thoughtworks.xstream.XStream;
  */
 public class XMLUtilities
 {
-	private static XStream xstream = new XStream();
+	private static XStream xstream = new XStream(new StaxDriver());
 	private static DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	
 	/**
@@ -213,7 +214,19 @@ public class XMLUtilities
 	 */
 	public static String marshal(Object object)
 	{
-		return xstream.toXML(object);
+		String xml = xstream.toXML(object);
+		
+		if(xml.contains("<?xml version=\"1.0\" ?>"))
+		{
+			xml = xml.replace("<?xml version=\"1.0\" ?>", "");
+		}
+		
+		if(xml.contains("<?xml version='1.0' encoding='UTF-8'?>"))
+		{
+			xml = xml.replace("<?xml version='1.0' encoding='UTF-8'?>","");
+		}
+		
+		return xml.trim();
 	}
 	
 	/**

@@ -65,7 +65,6 @@
 								                <!-- Thirdparty Components -->	
 												<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
 												<fileset file="${settings.localRepository}/org/apache/mina/mina-core/${version.org.apache.mina}/mina-core-${version.org.apache.mina}.jar" />
-												<fileset file="${settings.localRepository}/org/apache/mina/mina-filter-ssl/${version.org.apache.mina}/mina-filter-ssl-${version.org.apache.mina}.jar" />
 												<fileset file="${settings.localRepository}/org/slf4j/slf4j-api/${version.org.slf4j}/slf4j-api-${version.org.slf4j}.jar" />
 												<fileset file="${settings.localRepository}/org/slf4j/slf4j-jdk14/${version.org.slf4j}/slf4j-jdk14-${version.org.slf4j}.jar" />
 												<fileset file="${settings.localRepository}/org/jbpm/jbpm3/jbpm-jpdl/${version.jbpm.jpdl}/jbpm-jpdl-${version.jbpm.jpdl}.jar" />									
@@ -126,7 +125,6 @@
 								                <!-- Thirdparty Components -->	
 												<fileset file="${settings.localRepository}/org/jboss/jboss-common-core/${version.jboss.common.core}/jboss-common-core-${version.jboss.common.core}.jar" />
 												<fileset file="${settings.localRepository}/org/apache/mina/mina-core/${version.org.apache.mina}/mina-core-${version.org.apache.mina}.jar" />
-												<fileset file="${settings.localRepository}/org/apache/mina/mina-filter-ssl/${version.org.apache.mina}/mina-filter-ssl-${version.org.apache.mina}.jar" />
 												<fileset file="${settings.localRepository}/org/slf4j/slf4j-api/${version.org.slf4j}/slf4j-api-${version.org.slf4j}.jar" />
 												<fileset file="${settings.localRepository}/org/slf4j/slf4j-jdk14/${version.org.slf4j}/slf4j-jdk14-${version.org.slf4j}.jar" />
 												<fileset file="${settings.localRepository}/org/jbpm/jbpm3/jbpm-jpdl/${version.jbpm.jpdl}/jbpm-jpdl-${version.jbpm.jpdl}.jar" />									

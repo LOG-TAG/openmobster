@@ -176,8 +176,7 @@
 	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.15/log4j-1.2.15.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/mail/mail/1.4/mail-1.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/mina/mina-core/1.1.5/mina-core-1.1.5.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/mina/mina-filter-ssl/1.1.5/mina-filter-ssl-1.1.5.jar"/>	
+	<classpathentry kind="var" path="M2_REPO/org/apache/mina/mina-core/2.0.7/mina-core-2.0.7.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-validator/commons-validator/1.3.1/commons-validator-1.3.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jbpm/jbpm3/jbpm-jpdl/3.3.1.GA/jbpm-jpdl-3.3.1.GA.jar"/>
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>

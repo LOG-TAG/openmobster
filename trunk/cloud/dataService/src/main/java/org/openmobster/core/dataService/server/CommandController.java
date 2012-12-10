@@ -10,7 +10,7 @@ package org.openmobster.core.dataService.server;
 
 import java.util.StringTokenizer;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.dataService.comet.CometSessionManager;
