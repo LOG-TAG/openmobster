@@ -13,7 +13,7 @@ import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.processor.Input;
 import org.openmobster.core.dataService.processor.Processor;

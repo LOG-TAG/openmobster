@@ -10,11 +10,8 @@ package org.openmobster.core.dataService.server;
 
 import org.apache.log4j.Logger;
 
-import org.apache.mina.common.IdleStatus;
-import org.apache.mina.common.IoHandlerAdapter;
-import org.apache.mina.common.IoSession;
-import org.apache.mina.common.TransportType;
-import org.apache.mina.transport.socket.nio.SocketSessionConfig;
+import org.apache.mina.core.service.IoHandlerAdapter;
+import org.apache.mina.core.session.IoSession;
 
 import org.openmobster.core.dataService.Constants;
 import org.openmobster.core.dataService.processor.ProcessorException;
@@ -70,14 +67,6 @@ public class ServerHandler extends IoHandlerAdapter
 	//---------------------------------------------------------------------------------------------------------	
 	public void sessionCreated(IoSession session) throws Exception 
 	{
-		if( session.getTransportType() == TransportType.SOCKET )
-		{
-			((SocketSessionConfig)session.getConfig()).setReceiveBufferSize(2048);
-			((SocketSessionConfig)session.getConfig()).setSendBufferSize(2048);
-		}
-		session.setIdleTime(IdleStatus.BOTH_IDLE,10);
-		
-		
 		log.debug("------------------------------------");
 		log.debug("Session successfully created...");
 		log.debug("------------------------------------");		
@@ -93,7 +82,7 @@ public class ServerHandler extends IoHandlerAdapter
 	public void exceptionCaught(IoSession session, Throwable t) throws Exception 
 	{
 		//log.error(this, t);
-		session.close();
+		session.close(true);
 	}
 	//------------------------------------------------------------------------------------------------------------------------
 	public void messageReceived(IoSession session, Object message) 
