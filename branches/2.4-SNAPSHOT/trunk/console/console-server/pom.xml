@@ -4,7 +4,7 @@
 
   <groupId>org.openmobster.core.console.server</groupId>
   <artifactId>console-server</artifactId>
-  <version>2.4-M1</version>
+  <version>2.4-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>console-server</name>
@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <openmobster.version>2.4-M1</openmobster.version>
+    <openmobster.version>2.4-SNAPSHOT</openmobster.version>
   </properties>
 
   <dependencies>
