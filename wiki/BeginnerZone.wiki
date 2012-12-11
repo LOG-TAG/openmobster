@@ -58,7 +58,7 @@ This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
 
 ==== Clustering ====
 
-Setup and Configuration for setting up an OpenMobster [Clustering Cluster].
+Setup and Configuration for setting up an [Clustering OpenMobster Cluster].
 
 ----
 
