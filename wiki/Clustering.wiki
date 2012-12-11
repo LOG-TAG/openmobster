@@ -21,4 +21,17 @@ This will cover the steps for setting up an *OpenMobster Cloud* in a clustered e
 
 ===== Configuration =====
 
+In your JBoss server open the following file: *deploy/openmobster.last/clustering-2.4-SNAPSHOT.jar/META-INF/openmobster-config.xml*. Make sure the file looks as the following to activate the node as a Cluster node
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">        
+   <bean name="clustering://ClusterService" class="org.openmobster.core.cluster.ClusterService">
+   	  <!-- Make this value true to activate this node as a Cluster node -->
+   	  <property name="active">true</property>
+   </bean>                       
+</deployment>
+}}}
+
 ===== Starting the Cluster =====
