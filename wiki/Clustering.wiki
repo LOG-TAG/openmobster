@@ -35,3 +35,9 @@ In your JBoss server open the following file: *deploy/openmobster.last/clusterin
 }}}
 
 ===== Starting the Cluster =====
+
+To start the cluster you start one node at a time. The first started node starts off as the Master node. The other nodes remain in standby to become the Master node when/if it goes down. You start the node using the standard JBoss command:
+
+{{{
+./run.sh -c {server-name} -b {node-ipaddress}
+}}}
