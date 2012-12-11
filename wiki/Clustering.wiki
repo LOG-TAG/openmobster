@@ -13,3 +13,12 @@ The *high availability* cluster consists of multiple *JBoss* nodes of the *OpenM
 ==== Load Balancing ====
 
 At this point in time the Master node processes all the incoming requests. It does not delegate any requests to its other nodes to balance the load. This feature will be supported in a future release. This is a challenge because it needs to replicate local state among the cluster members. At this point, the Sync service does not support this replication except data sharing via the shared database. This is not enough and will require some re-architecting to make the service truly stateless. From here on out, all new services developed will support load balancing to get the best out of a clustered setup.
+
+
+==== Setup ====
+
+This will cover the steps for setting up an *OpenMobster Cloud* in a clustered environment
+
+===== Configuration =====
+
+===== Starting the Cluster =====
