@@ -7,4 +7,9 @@ You can setup the OpenMobster Cloud as a highly available Clustered environment.
 
 ==== High Availability ====
 
-The *high availability* cluster consists of multiple JBoss nodes of the OpenMobster Cloud Server. Out of these nodes there is a single node that serves as the *Master node*. All the incoming traffic is directed to this *Master node*. The *Master node* is not a single point of failure because if the *Master node* goes down, one of the other nodes immediately becomes a *Master node*. This process keeps going till all the nodes are used up. This is how you can get a highly available cluster running since at any given time there is always one master node processing requests from the mobile devices.
+The *high availability* cluster consists of multiple *JBoss* nodes of the *OpenMobster Cloud Server*. Out of these nodes there is a single node that serves as the Master node. All the incoming traffic is directed to this Master node. The Master node is not a single point of failure because if the Master node goes down, one of the other nodes immediately becomes a Master node. This process keeps going till all the nodes are used up. This is how you can get a highly available cluster running since at any given time there is always one master node processing requests from the mobile devices.
+
+
+==== Load Balancing ====
+
+At this point in time the Master node processes all the incoming requests. It does not delegate any requests to its other nodes to balance the load. This feature will be supported in a future release. This is a challenge because it needs to replicate local state among the cluster members. At this point, the Sync service does not support this replication except data sharing via the shared database. This is not enough and will require some re-architecting to make the service truly stateless. From here on out, all new services developed will support load balancing to get the best out of a clustered setup.
