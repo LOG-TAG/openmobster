@@ -1,0 +1,10 @@
+#summary OpenMobster Clustering Setup and Configuration
+
+==== Introduction ====
+
+You can setup the OpenMobster Cloud as a highly available Clustered environment.
+
+
+==== High Availability ====
+
+The *high availability* cluster consists of multiple JBoss nodes of the OpenMobster Cloud Server. Out of these nodes there is a single node that serves as the *Master node*. All the incoming traffic is directed to this *Master node*. The *Master node* is not a single point of failure because if the *Master node* goes down, one of the other nodes immediately becomes a *Master node*. This process keeps going till all the nodes are used up. This is how you can get a highly available cluster running since at any given time there is always one master node processing requests from the mobile devices.
