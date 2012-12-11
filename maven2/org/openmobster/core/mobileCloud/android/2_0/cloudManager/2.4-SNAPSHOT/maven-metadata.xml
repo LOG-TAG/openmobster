@@ -20,6 +20,11 @@
         <value>2.4-20121211.231217-1</value>
         <updated>20121211231217</updated>
       </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>2.4-20121211.231217-1</value>
+        <updated>20121211231217</updated>
+      </snapshotVersion>
     </snapshotVersions>
   </versioning>
 </metadata>
