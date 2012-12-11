@@ -56,6 +56,12 @@ This [iPhoneSyncApp tutorial] teaches how to architect a simple Sync App
 
 ----
 
+==== Clustering ====
+
+Setup and Configuration for setting up an OpenMobster [Clustering Cluster].
+
+----
+
 ==== Developing Device-To-Device Push Apps ====
 
 A basic [D2DPushFramework tutorial] on how to develop Device-To-Device apps like chat and instant messaging
