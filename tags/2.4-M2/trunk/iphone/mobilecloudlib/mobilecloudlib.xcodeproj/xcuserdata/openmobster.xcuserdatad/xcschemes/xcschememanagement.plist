@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>iOS Device Release.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>mobilecloudlib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A29D5C281293412A00DAE753</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2BF184C12833C8F00691535</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2DF3E011225C1EF004C908F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2DF3E2A1225C377004C908F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2DF3E531225C60E004C908F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2E557A412F769FB008B3FCE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2AAC07D0554694100DB518D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
