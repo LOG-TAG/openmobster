@@ -1,5 +1,0 @@
-<moblet-app>
-	<commands>
-		<command id="/channel/bootup/helper">com.webappsync.command.ChannelBootupHelper</command>	
-	</commands>		
-</moblet-app>
