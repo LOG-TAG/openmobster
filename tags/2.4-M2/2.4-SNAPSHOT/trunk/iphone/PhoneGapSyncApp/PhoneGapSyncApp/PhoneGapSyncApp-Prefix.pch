@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'PhoneGapSyncApp' target in the 'PhoneGapSyncApp' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

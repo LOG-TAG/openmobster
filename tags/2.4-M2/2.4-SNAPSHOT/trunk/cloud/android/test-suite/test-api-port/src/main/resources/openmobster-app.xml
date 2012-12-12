@@ -1,0 +1,13 @@
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>org.openmobster.core.mobileCloud.android_native.framework.App</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+	
+	<channels>
+		<channel name='mockMobileTicket'/>
+		<channel name='testServerBean'/>
+	</channels>
+</app-conf>

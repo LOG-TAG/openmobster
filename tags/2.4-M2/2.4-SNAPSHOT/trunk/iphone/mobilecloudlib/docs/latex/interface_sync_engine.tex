@@ -1,0 +1,185 @@
+\hypertarget{interface_sync_engine}{
+\section{\-Sync\-Engine \-Class \-Reference}
+\label{interface_sync_engine}\index{\-Sync\-Engine@{\-Sync\-Engine}}
+}
+
+
+{\ttfamily \#include $<$\-Sync\-Engine.\-h$>$}
+
+\-Inheritance diagram for \-Sync\-Engine\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_sync_engine}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_sync_engine_a6e7142c02c950dab0f20aa3df95ee8b3}{
+\-N\-S\-Array $\ast$ {\bfseries get\-Slow\-Sync\-Commands\-:channel\-:} (int message\-Size,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)}
+\label{interface_sync_engine_a6e7142c02c950dab0f20aa3df95ee8b3}
+
+\item 
+\hypertarget{interface_sync_engine_ac60bcac2fe8723bfb8dfa764e4fbccd1}{
+\-N\-S\-Array $\ast$ {\bfseries get\-Add\-Commands\-:channel\-:sync\-Type\-:} (int message\-Size,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}sync\-Type\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$sync\-Type)}
+\label{interface_sync_engine_ac60bcac2fe8723bfb8dfa764e4fbccd1}
+
+\item 
+\hypertarget{interface_sync_engine_a4af882328e810b64b5cd65e2619b57f1}{
+\-N\-S\-Array $\ast$ {\bfseries get\-Replace\-Commands\-:channel\-:sync\-Type\-:} (int message\-Size,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}sync\-Type\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$sync\-Type)}
+\label{interface_sync_engine_a4af882328e810b64b5cd65e2619b57f1}
+
+\item 
+\hypertarget{interface_sync_engine_af39da5ab76c8f3c55c61b36a66f639f2}{
+\-N\-S\-Array $\ast$ {\bfseries get\-Delete\-Commands\-:sync\-Type\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}sync\-Type\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$sync\-Type)}
+\label{interface_sync_engine_af39da5ab76c8f3c55c61b36a66f639f2}
+
+\item 
+\hypertarget{interface_sync_engine_a474e4b85f25287c96e3ae0538824f8e1}{
+\-N\-S\-Array $\ast$ {\bfseries process\-Slow\-Sync\-Command\-:channel\-:sync\-Command\-:} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}sync\-Command\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)}
+\label{interface_sync_engine_a474e4b85f25287c96e3ae0538824f8e1}
+
+\item 
+\hypertarget{interface_sync_engine_ad8be9dec33fb1b34dcbff07a2ae897ff}{
+\-N\-S\-Array $\ast$ {\bfseries process\-Sync\-Command\-:channel\-:sync\-Command\-:} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}sync\-Command\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)}
+\label{interface_sync_engine_ad8be9dec33fb1b34dcbff07a2ae897ff}
+
+\item 
+\hypertarget{interface_sync_engine_a4ebd9b360794be097da8495f07f60fab}{
+void {\bfseries start\-Boot\-Sync\-:channel\-:} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)}
+\label{interface_sync_engine_a4ebd9b360794be097da8495f07f60fab}
+
+\item 
+\hypertarget{interface_sync_engine_a506d4ed2470f7f6654a279ca816480b5}{
+\-N\-S\-Array $\ast$ {\bfseries get\-Change\-Log\-:operation\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}operation\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$operation)}
+\label{interface_sync_engine_a506d4ed2470f7f6654a279ca816480b5}
+
+\item 
+\hypertarget{interface_sync_engine_ae5f3fe9c9d4b58f991a4f13b2d27afb0}{
+void {\bfseries add\-Change\-Log\-Entries\-:} (\-N\-S\-Array $\ast$entries)}
+\label{interface_sync_engine_ae5f3fe9c9d4b58f991a4f13b2d27afb0}
+
+\item 
+\hypertarget{interface_sync_engine_ad60a21dc70c02440080ba17d7973e07a}{
+void {\bfseries clear\-Change\-Log\-Entry\-:} (\hyperlink{interface_change_log_entry}{\-Change\-Log\-Entry} $\ast$log\-Entry)}
+\label{interface_sync_engine_ad60a21dc70c02440080ba17d7973e07a}
+
+\item 
+\hypertarget{interface_sync_engine_aa4e0a5df792b321106e8313cc1d33564}{
+void {\bfseries clear\-Change\-Log} ()}
+\label{interface_sync_engine_aa4e0a5df792b321106e8313cc1d33564}
+
+\item 
+\hypertarget{interface_sync_engine_a9233826cf0626c0dcd4136f93014222d}{
+void {\bfseries clear\-Change\-Log\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)}
+\label{interface_sync_engine_a9233826cf0626c0dcd4136f93014222d}
+
+\item 
+\hypertarget{interface_sync_engine_a011e288426526cef8ddcefc18759065b}{
+\hyperlink{interface_anchor}{\-Anchor} $\ast$ {\bfseries create\-New\-Anchor\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$target)}
+\label{interface_sync_engine_a011e288426526cef8ddcefc18759065b}
+
+\item 
+\hypertarget{interface_sync_engine_a01993c323f1ecb36e42243ac66452110}{
+\hyperlink{interface_sync_error}{\-Sync\-Error} $\ast$ {\bfseries save\-Error\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$source,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$target,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$code)}
+\label{interface_sync_engine_a01993c323f1ecb36e42243ac66452110}
+
+\item 
+\hypertarget{interface_sync_engine_a40449d9ce7ba8e48724cb7afc79bb174}{
+void {\bfseries remove\-Error\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$source,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$target,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$code)}
+\label{interface_sync_engine_a40449d9ce7ba8e48724cb7afc79bb174}
+
+\item 
+\hypertarget{interface_sync_engine_a4e75e7f900781c5c90a5f67363eca491}{
+\-N\-S\-Array $\ast$ {\bfseries read\-Errors} ()}
+\label{interface_sync_engine_a4e75e7f900781c5c90a5f67363eca491}
+
+\item 
+\hypertarget{interface_sync_engine_a8a1caa5be1ad1c062fee5b72808381c8}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries generate\-Sync} ()}
+\label{interface_sync_engine_a8a1caa5be1ad1c062fee5b72808381c8}
+
+\item 
+\hypertarget{interface_sync_engine_a2303b3b9b8aab7e98a20fd328f11eadb}{
+\hyperlink{interface_abstract_operation}{\-Abstract\-Operation} $\ast$ {\bfseries get\-Add\-Command\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)}
+\label{interface_sync_engine_a2303b3b9b8aab7e98a20fd328f11eadb}
+
+\item 
+\hypertarget{interface_sync_engine_aa245f581bbf066c71b1e50f66452ffd3}{
+\hyperlink{interface_abstract_operation}{\-Abstract\-Operation} $\ast$ {\bfseries get\-Replace\-Command\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)}
+\label{interface_sync_engine_aa245f581bbf066c71b1e50f66452ffd3}
+
+\item 
+\hypertarget{interface_sync_engine_aecb9436c683f77dec55a262753a8c8fa}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries marshal\-Id\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$id)}
+\label{interface_sync_engine_aecb9436c683f77dec55a262753a8c8fa}
+
+\item 
+\hypertarget{interface_sync_engine_a130a4d1d4fa66dc5903d50206cd76e6d}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries marshal\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)}
+\label{interface_sync_engine_a130a4d1d4fa66dc5903d50206cd76e6d}
+
+\item 
+\hypertarget{interface_sync_engine_adfd9a58caba17984cf91be19600472e0}{
+\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$ {\bfseries unmarshal\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$xml)}
+\label{interface_sync_engine_adfd9a58caba17984cf91be19600472e0}
+
+\item 
+\hypertarget{interface_sync_engine_a7b568d278b4bc570363f2ca501ed7249}{
+void {\bfseries clear\-All\-::} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)}
+\label{interface_sync_engine_a7b568d278b4bc570363f2ca501ed7249}
+
+\item 
+\hypertarget{interface_sync_engine_a1bb476b1da5d75446d5e5a473c87a214}{
+\hyperlink{interface_status}{\-Status} $\ast$ {\bfseries get\-Status\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$status\-Code,\mbox{[}$\,$\mbox{]} \hyperlink{interface_abstract_operation}{\-Abstract\-Operation} $\ast$operation)}
+\label{interface_sync_engine_a1bb476b1da5d75446d5e5a473c87a214}
+
+\item 
+\hypertarget{interface_sync_engine_ae3461606440d1c189a7fc56b02047aec}{
+void {\bfseries process\-Add\-Commands\-::::} (\-N\-S\-Mutable\-Array $\ast$status,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)}
+\label{interface_sync_engine_ae3461606440d1c189a7fc56b02047aec}
+
+\item 
+\hypertarget{interface_sync_engine_a890c76e116a39f63594f5d29273a54f8}{
+void {\bfseries process\-Replace\-Commands\-::::} (\-N\-S\-Mutable\-Array $\ast$status,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)}
+\label{interface_sync_engine_a890c76e116a39f63594f5d29273a54f8}
+
+\item 
+\hypertarget{interface_sync_engine_a80d225eba8376088611f5503eb0c84cd}{
+void {\bfseries process\-Delete\-Commands\-::::} (\-N\-S\-Mutable\-Array $\ast$status,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)}
+\label{interface_sync_engine_a80d225eba8376088611f5503eb0c84cd}
+
+\item 
+\hypertarget{interface_sync_engine_afaa7aa3a989d16724277843a60e9d54f}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries save\-Record\-::} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)}
+\label{interface_sync_engine_afaa7aa3a989d16724277843a60e9d54f}
+
+\item 
+\hypertarget{interface_sync_engine_a7d102091d243574a3b17d8492b48b9b5}{
+void {\bfseries delete\-Record\-::} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)}
+\label{interface_sync_engine_a7d102091d243574a3b17d8492b48b9b5}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_sync_engine_a67d7d4c91dda712944a025158f34e29b}{
+id {\bfseries with\-Init} ()}
+\label{interface_sync_engine_a67d7d4c91dda712944a025158f34e29b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sync\-Engine.\-h\item 
+\-Sync\-Engine.\-m\end{DoxyCompactItemize}
