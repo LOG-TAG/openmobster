@@ -1,0 +1,17 @@
+<moblet-app>
+    <bootstrap>
+    	<screen>org.openmobster.app.HomeScreen</screen>
+    </bootstrap>
+   
+	<commands>	
+		<command id="/channel/bootup/helper">org.openmobster.app.ChannelBootupHelper</command>	
+		<!--  
+		<command id="/create/ticket">org.crud.android.command.CreateTicket</command>	
+		<command id="/update/ticket">org.crud.android.command.UpdateTicket</command>
+		<command id="/delete/ticket">org.crud.android.command.DeleteTicket</command>	
+		<command id="/async/load/spinners">org.crud.android.command.AsyncLoadSpinners</command>
+		<command id="/reset/channel">org.crud.android.command.ResetChannel</command>
+		<command id="/demo/push">org.crud.android.command.DemoPush</command>	
+		-->
+	</commands>				
+</moblet-app>
