@@ -5,20 +5,20 @@
   <version>2.2-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20121213.170758</timestamp>
-      <buildNumber>3</buildNumber>
+      <timestamp>20121213.171425</timestamp>
+      <buildNumber>4</buildNumber>
     </snapshot>
-    <lastUpdated>20121213170758</lastUpdated>
+    <lastUpdated>20121213171425</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>apk</extension>
-        <value>2.2-20121213.170758-3</value>
-        <updated>20121213170758</updated>
+        <value>2.2-20121213.171425-4</value>
+        <updated>20121213171425</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>2.2-20121213.170758-3</value>
-        <updated>20121213170758</updated>
+        <value>2.2-20121213.171425-4</value>
+        <updated>20121213171425</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>jar</extension>
