@@ -1,0 +1,260 @@
+\hypertarget{interface_location_request}{
+\section{\-Location\-Request \-Class \-Reference}
+\label{interface_location_request}\index{\-Location\-Request@{\-Location\-Request}}
+}
+
+
+{\ttfamily \#include $<$\-Location\-Request.\-h$>$}
+
+\-Inheritance diagram for \-Location\-Request\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_location_request}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_location_request_a14afde39e526e8a3d895f1b67e2d249b}{set\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$value)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_location_request_ae910d9de7dae6c493e3db426d0066df0}{get\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+void \hyperlink{interface_location_request_a63607af36095b555f34fba19ae920ce6}{set\-List\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \-N\-S\-Array $\ast$list)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_location_request_ab5f224effefee6fbf769f769cb387134}{get\-List\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+void \hyperlink{interface_location_request_a17a795ea897ae93b544e8942a65635aa}{set\-Map\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \-N\-S\-Dictionary $\ast$map)
+\item 
+\-N\-S\-Dictionary $\ast$ \hyperlink{interface_location_request_a4f56d4c499ffeb5d7836da4ec286e4a8}{get\-Map\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_location_request_ab92147a7b93b66b607ef51034ccd9710}{get\-Names} ()
+\item 
+void \hyperlink{interface_location_request_aa7193ce2b4e55be1d4f70cceb35ace27}{remove\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+id \hyperlink{interface_location_request_a1bb0d8ea1a074c97deb36d3c2f83aaa2}{get\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_location_request_a30d8cec794183f22633a5e40241a7553}{get\-Service} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_location_request_a81a50039b6ad405612433b6ab53afea1}{with\-Init\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$service)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_location_request_a4a555e19ba8436ba0815b37581fadc28}{
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ {\bfseries service}}
+\label{interface_location_request_a4a555e19ba8436ba0815b37581fadc28}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Represents a \-Location-\/oriented request to be made to the \-Cloud
+
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_location_request_a1bb0d8ea1a074c97deb36d3c2f83aaa2}{
+\index{\-Location\-Request@{\-Location\-Request}!get\-:@{get\-:}}
+\index{get\-:@{get\-:}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{get\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Location\-Request\-::get\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_a1bb0d8ea1a074c97deb36d3c2f83aaa2}
+\-Gets an arbitrary attribute value from the service response
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_request_ae910d9de7dae6c493e3db426d0066df0}{
+\index{\-Location\-Request@{\-Location\-Request}!get\-Attribute\-:@{get\-Attribute\-:}}
+\index{get\-Attribute\-:@{get\-Attribute\-:}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{get\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Location\-Request\-::get\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_ae910d9de7dae6c493e3db426d0066df0}
+\-Gets an arbitrary attribute value from the location request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+value of the attribute 
+\end{DoxyReturn}
+\hypertarget{interface_location_request_ab5f224effefee6fbf769f769cb387134}{
+\index{\-Location\-Request@{\-Location\-Request}!get\-List\-Attribute\-:@{get\-List\-Attribute\-:}}
+\index{get\-List\-Attribute\-:@{get\-List\-Attribute\-:}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{get\-List\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Location\-Request\-::get\-List\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_ab5f224effefee6fbf769f769cb387134}
+\-Gets a related \char`\"{}list\char`\"{} of data representing the contextual data associated with this particular location request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the list associated with this attribute 
+\end{DoxyReturn}
+\hypertarget{interface_location_request_a4f56d4c499ffeb5d7836da4ec286e4a8}{
+\index{\-Location\-Request@{\-Location\-Request}!get\-Map\-Attribute\-:@{get\-Map\-Attribute\-:}}
+\index{get\-Map\-Attribute\-:@{get\-Map\-Attribute\-:}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{get\-Map\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Dictionary $\ast$ \-Location\-Request\-::get\-Map\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_a4f56d4c499ffeb5d7836da4ec286e4a8}
+\-Gets a related \char`\"{}map\char`\"{} of string data representing the contextual data associated with this particular location request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_request_ab92147a7b93b66b607ef51034ccd9710}{
+\index{\-Location\-Request@{\-Location\-Request}!get\-Names@{get\-Names}}
+\index{get\-Names@{get\-Names}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{get\-Names}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Location\-Request\-::get\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_ab92147a7b93b66b607ef51034ccd9710}
+\-Gets all the names that identify values of attributes in the service request
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_request_a30d8cec794183f22633a5e40241a7553}{
+\index{\-Location\-Request@{\-Location\-Request}!get\-Service@{get\-Service}}
+\index{get\-Service@{get\-Service}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{get\-Service}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Location\-Request\-::get\-Service (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_a30d8cec794183f22633a5e40241a7553}
+\-Gets the the unique identifier of the server side \-Mobile \hyperlink{interface_service}{\-Service} \-Bean component
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_request_aa7193ce2b4e55be1d4f70cceb35ace27}{
+\index{\-Location\-Request@{\-Location\-Request}!remove\-Attribute\-:@{remove\-Attribute\-:}}
+\index{remove\-Attribute\-:@{remove\-Attribute\-:}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{remove\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Request\-::remove\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_aa7193ce2b4e55be1d4f70cceb35ace27}
+\-Removes an attribute associated with the service request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_request_a14afde39e526e8a3d895f1b67e2d249b}{
+\index{\-Location\-Request@{\-Location\-Request}!set\-Attribute\-::@{set\-Attribute\-::}}
+\index{set\-Attribute\-::@{set\-Attribute\-::}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{set\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Request\-::set\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_a14afde39e526e8a3d895f1b67e2d249b}
+\-Sets arbitrary attributes representing the contextual data associated with this particular location request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute \\
+\hline
+{\em value} & value of the attribute \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_request_a63607af36095b555f34fba19ae920ce6}{
+\index{\-Location\-Request@{\-Location\-Request}!set\-List\-Attribute\-::@{set\-List\-Attribute\-::}}
+\index{set\-List\-Attribute\-::@{set\-List\-Attribute\-::}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{set\-List\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Request\-::set\-List\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} \-N\-S\-Array $\ast$}]{list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_a63607af36095b555f34fba19ae920ce6}
+\-Sets related \char`\"{}list\char`\"{} of data representing the contextual data associated with this particular location request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of this attribute \\
+\hline
+{\em list} & the list to be set \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_request_a17a795ea897ae93b544e8942a65635aa}{
+\index{\-Location\-Request@{\-Location\-Request}!set\-Map\-Attribute\-::@{set\-Map\-Attribute\-::}}
+\index{set\-Map\-Attribute\-::@{set\-Map\-Attribute\-::}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{set\-Map\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Request\-::set\-Map\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} \-N\-S\-Dictionary $\ast$}]{map}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_request_a17a795ea897ae93b544e8942a65635aa}
+\-Sets related \char`\"{}map\char`\"{} of string data representing the contextual data associated with this particular location request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+{\em map} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_request_a81a50039b6ad405612433b6ab53afea1}{
+\index{\-Location\-Request@{\-Location\-Request}!with\-Init\-:@{with\-Init\-:}}
+\index{with\-Init\-:@{with\-Init\-:}!LocationRequest@{\-Location\-Request}}
+\subsubsection[{with\-Init\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Location\-Request\-::with\-Init\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{service}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_location_request_a81a50039b6ad405612433b6ab53afea1}
+\-Creates an instance of the \-Location \hyperlink{interface_request}{\-Request}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em service} & -\/ unique identifier of the \-Cloud-\/side \-Location \-Bean \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Location\-Request.\-h\item 
+\-Location\-Request.\-m\end{DoxyCompactItemize}

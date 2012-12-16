@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="installation">
+	<chapterinfo>
+		<author>
+			<firstname>openmobster</firstname>
+			<surname>at gmail.com</surname>
+			<email>openmobster@gmail.com</email>
+		</author>
+	</chapterinfo>
+	<title>Production Mode Installation</title>
+	<sect1 id='/installation/jboss'>
+		<title>Cloud-Side: Installation</title>
+		<sect2>
+			<title>Install Cloud Server</title>
+			<para>
+				<itemizedlist>
+					<listitem>
+						<emphasis role="bold">Step 1:</emphasis>
+						Download and install JBoss-5.1.0.GA from
+						<ulink url="http://www.jboss.org/jbossas/downloads/">here</ulink>
+					</listitem>
+					<listitem>
+						<emphasis role="bold">Step 2:</emphasis>
+						Copy
+						<emphasis>openmobster</emphasis>
+						to the JBoss AS
+						<emphasis>server</emphasis>
+						directory.
+						<emphasis>openmobster</emphasis>
+						is a pre-configured/optimized instance for the OpenMobster Cloud
+						Server
+					</listitem>
+					<listitem>
+						<emphasis role="bold">Step 3:</emphasis>
+						In the case of using MySQL5 as the database, modify
+						openmobster-ds.xml according to your own MySql5 instance
+					</listitem>
+					<listitem>
+						<emphasis role="bold">Step 4:</emphasis>
+						Start the JBoss AS instance with the OpenMobster binary installed
+						using: run -c openmobster -b "a real IP address"
+						<para>
+							<emphasis>Note:</emphasis>
+							A real IP address like "192.168.0.1" or something like that is
+							needed for the mobile device to be able to connect to
+							the server.
+							Even in the case of a simulation environment, the device's
+							browser does not connect to a loopback address like
+							"localhost" or
+							"127.0.0.1"
+						</para>
+					</listitem>
+					<listitem>
+						<emphasis role="bold">Step 5:</emphasis>
+						Verify the Cloud Server installation by typing in:
+						http://{cloudserverIp}:{port}/o
+					</listitem>
+				</itemizedlist>
+			</para>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>Device-Side: Installation</title>
+		<para>
+			<emphasis role="bold">Mobile Cloud</emphasis>
+			infrastructure runtimes
+			<emphasis>MUST</emphasis>
+			be installed on each device, before the device can integrate with
+			the
+			"Cloud Server". Think of them as bootstrap binaries.
+		</para>
+		<para>
+			Each mobile platform will have its corresponding set of
+			artifacts that must be first installed on the device. 
+       </para>
+		<para>
+			The current version consists of
+			<emphasis role='bold'>Google Android 2.0+ support</emphasis>
+		</para>
+		<sect2>
+			<title>Android Installation</title>
+			<para>
+					If you have a
+					<emphasis>Cloud Server</emphasis>
+					running and accessible from the Internet, you can simply download
+					these binaries from the built-in browser
+					of the device.
+			</para>
+			<para>
+					Download the following and follow the instructions provided by the
+					device:
+					<itemizedlist>
+						<listitem>
+							http://{cloudServer IP}:{cloudServer
+							port}/o/android/cloudmanager
+						</listitem>
+					</itemizedlist>
+			</para>
+			<sect3>
+				<title>Device Activation</title>
+				<para>
+					<itemizedlist>
+						<listitem>
+							<emphasis role="bold">Step 1:</emphasis>
+							Launch the 'CloudManager' app.
+						</listitem>
+						<listitem>
+							<emphasis role="bold">Step 2:</emphasis>
+							Select the 'Activate' function.
+						</listitem>
+						<listitem>
+							<emphasis role="bold">Step 3:</emphasis>
+							Follow the wizard and provide the appropriate values
+							<itemizedlist>
+								<listitem>
+									<emphasis>Server :</emphasis>
+									IP Address of the Cloud Server
+								</listitem>
+								<listitem>
+									<emphasis>Email :</emphasis>
+									The user id for this user
+								</listitem>
+								<listitem>
+									<emphasis>Password:</emphasis>
+									The password to be used to secure the account
+								</listitem>
+							</itemizedlist>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</sect3>
+			<sect3>
+				<title>Installing the Sample Offline App</title>
+				<para>
+					Using your
+					<emphasis>CloudManager App</emphasis>
+					, install the deployed Apps using the
+					<emphasis>Corporate App Store</emphasis>
+					option
+				</para>
+			</sect3>
+		</sect2>
+	</sect1>
+</chapter>
