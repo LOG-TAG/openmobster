@@ -142,6 +142,7 @@
 		<version.json-simple>1.1</version.json-simple>
 		<version.ehcache>1.2.3</version.ehcache>
 		<version.jgroups>3.2.3.Final</version.jgroups>
+		<version.netty>3.5.10.Final</version.netty>
 
 		<!--
 			runtime low-level dependencies to be deployed within the JBoss
@@ -317,6 +318,11 @@
 			    <artifactId>jgroups</artifactId>
 			    <version>${version.jgroups}</version>
 		    </dependency>
+		    <dependency>
+			    <groupId>io.netty</groupId>
+			    <artifactId>netty</artifactId>
+			    <version>${version.netty}</version>
+		  	</dependency>
 			
 			<!-- XStream and its dependencies -->
 			<dependency>
@@ -416,11 +422,6 @@
 			<dependency>
 				<groupId>org.openmobster.core</groupId>
 				<artifactId>moblet-management</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.openmobster.core</groupId>
-				<artifactId>openmobster-sar</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
