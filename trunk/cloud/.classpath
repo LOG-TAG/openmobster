@@ -234,4 +234,6 @@
     
     <!-- JGroups Dependency -->
     <classpathentry kind="var" path="M2_REPO/org/jgroups/jgroups/3.2.3.Final/jgroups-3.2.3.Final.jar"/>
+    
+    <classpathentry kind="var" path="M2_REPO/io/netty/netty/3.5.10.Final/netty-3.5.10.Final.jar"/>
 </classpath>
