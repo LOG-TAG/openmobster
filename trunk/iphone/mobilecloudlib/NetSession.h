@@ -10,6 +10,7 @@
 #import <CFNetwork/CFNetwork.h>
 #import "StringUtil.h"
 #import "SystemException.h"
+#import "BufferStreamReader.h"
 
 /**
  * 
@@ -30,12 +31,12 @@
 
 //used internally only
 /** throws SystemException */
--(NSString *) read;
+-(NSString *) read:(BufferStreamReader *)reader;
 
 -(void) write:(NSString *)payload;
 
 /** throws SystemException */
 -(void) writeToStream:(NSData *) packet;
 
--(UInt8) readFromStream;
+-(NSData *) readFromStream;
 @end

@@ -55,13 +55,19 @@
 {
 	NSString *handshake = [StringUtil trim:request];
 	[self write:handshake];
-	return [self read];
+    
+    NSData *empty = [NSData data];
+    BufferStreamReader *reader = [BufferStreamReader withInit:empty];
+	return [self read:reader];
 }
 
 -(NSString *) sendPayload:(NSString *) request
 {
 	[self write:request];
-	return [self read];
+    NSData *empty = [NSData data];
+    BufferStreamReader *reader = [BufferStreamReader withInit:empty];
+    NSString *response = [self read:reader];
+	return response;
 }
 
 -(void) close
@@ -78,58 +84,6 @@
 }
 
 //used internally only
--(NSString *) read
-{
-	int received = 0;
-	NSMutableData *bos = [NSMutableData dataWithLength:0];
-	BOOL carriageFound = NO;
-	
-	while(YES)
-	{
-		received = [self readFromStream];
-		
-		if(received == -1)
-		{
-			//throw exeception that input stream is closed
-			NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"inputstream_isclosed",nil];
-			SystemException *se = [SystemException withContext:@"NetSession" method:@"read" parameters:parameters];
-			@throw se;
-		}
-		
-		if(carriageFound)
-		{
-			carriageFound = NO;
-			if(received == '\n')
-			{
-				break;
-			}
-		}
-		
-		if(received == '\r')
-		{
-			carriageFound = YES;
-		}
-		
-		UInt8 bytes[1];
-		bytes[0] = received;
-		[bos appendBytes:bytes length:1];
-	}
-	
-	//Must append a 'null' terminating character since this will be processed as a C-String
-	UInt8 bytes[1];
-	bytes[0] = '\0';
-	[bos appendBytes:bytes length:1];
-	
-	//Debug related
-	//NSLog(@"ByteArray: %d",[bos length]);
-	//NSLog(@"Description: %@",[bos description]);
-	
-	
-	NSString *packet = [NSString stringWithCString:[bos bytes] encoding:NSUTF8StringEncoding];
-	
-	return [StringUtil trim:packet];
-}
-
 -(void) write:(NSString *)payload
 {
 	int startIndex = 0;
@@ -185,19 +139,80 @@
 	}
 }
 
--(UInt8) readFromStream
+-(NSString *) read:(BufferStreamReader *)reader
+{
+	NSData *received = nil;
+	NSMutableString *incomingData = [NSMutableString string];
+    BOOL exit = NO;
+	while(YES)
+	{
+		received = [self readFromStream];
+        
+        if(received == nil)
+        {
+            //no data read this iteration, better luck next iteration
+            continue;
+        }
+		
+		/*if(received == -1)
+		{
+			//throw exeception that input stream is closed
+			NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"inputstream_isclosed",nil];
+			SystemException *se = [SystemException withContext:@"NetSession" method:@"read" parameters:parameters];
+			@throw se;
+		}*/
+        
+        //drop the data into the reader
+        [reader fillBuffer:received];
+		
+        //now read a line
+        NSString *line = nil;
+        
+        while((line=[reader readLine]) != nil)
+        {
+            if([line hasPrefix:@"content-length="])
+            {
+                //Nothing to do yet....
+                continue;
+            }
+        
+            if([line hasSuffix:@"OPENMOBSTER_EOF_\r\n"])
+            {
+                //thats it...end of the line
+                int index = [StringUtil indexOf:line :@"OPENMOBSTER_EOF_\r\n"];
+                NSString *newLine = [StringUtil substring:line :0 :index];
+                [incomingData appendString:newLine];
+                exit = YES;
+                break;
+            }
+        
+            [incomingData appendString:line];
+        }
+        
+        if(exit)
+        {
+            break;
+        }
+	}
+	
+	return [StringUtil trim:incomingData];
+}
+
+
+-(NSData *) readFromStream
 {
 	CFIndex numBytesRead;
-	UInt8 readBuffer[1];
+	UInt8 readBuffer[1024];
 	
 	numBytesRead = CFReadStreamRead(is, readBuffer, sizeof(readBuffer));
 	if(numBytesRead > 0) 
 	{
-		return readBuffer[0];
+		NSData *buffer = [NSData dataWithBytes:readBuffer length:numBytesRead];
+        return buffer;
 	} 
 	else 
 	{
-		return -1;
+		return nil;
 	}	
 }
 @end

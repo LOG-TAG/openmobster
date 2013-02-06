@@ -162,7 +162,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2BF184C12833C8F00691535"
@@ -170,6 +170,23 @@
                BlueprintName = "connectionTests"
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CFNetworkTests/testNetConnector">
+               </Test>
+               <Test
+                  Identifier = "CFNetworkTests/testSecureSocketStream">
+               </Test>
+               <Test
+                  Identifier = "CFNetworkTests/testSimpleHttpGet">
+               </Test>
+               <Test
+                  Identifier = "CFNetworkTests/testSocketStream">
+               </Test>
+               <Test
+                  Identifier = "CFNetworkTests/testNetSession">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

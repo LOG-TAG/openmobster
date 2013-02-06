@@ -1,6 +1,7 @@
 #import "CFNetworkTests.h"
 #import "NetSession.h"
 #import "NetworkConnector.h"
+#import "BufferStreamReader.h"
 
 /**
  * These tests should run on the 'testdrive-server' module on the cloud side
@@ -212,6 +213,51 @@
 	[self runNetworkConnectorTest:NO :payload1 :payload2];
 	[self runNetworkConnectorTest:YES :payload1 :payload2];
 }
+
+-(void) testBufferStreamReaderHelloWorld
+{
+    NSString *dataPacket = @"Hello World\r\n";
+    
+    NSData *data = [dataPacket dataUsingEncoding:NSUTF8StringEncoding];
+    BufferStreamReader *reader = [BufferStreamReader withInit:data];
+    
+    NSString *secondPacket = @"Bye World\r\n";
+    [reader fillBuffer:[secondPacket dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"%d,%d",[dataPacket length],[secondPacket length]);
+    
+    NSString *line = [reader readLine];
+    NSLog(@"%@, length:%d",line,[line length]);
+    STAssertTrue([line isEqualToString:@"Hello World\r\n"],nil);
+    
+    line = [reader readLine];
+    NSLog(@"%@, length:%d",line,[line length]);
+    STAssertTrue([line isEqualToString:@"Bye World\r\n"],nil);
+}
+
+-(void) testBufferStreamReaderComplex1
+{
+    NSString *dataPacket = @"Hello World\n";
+    NSString *secondPacket = @"Bye World ";
+    NSString *thirdPacket = @"Hi World\r\n";
+    
+    NSData *data = [dataPacket dataUsingEncoding:NSUTF8StringEncoding];
+    BufferStreamReader *reader = [BufferStreamReader withInit:data];
+    
+    [reader fillBuffer:[secondPacket dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSString *line = [reader readLine];
+    NSLog(@"%@",line);
+    STAssertTrue([line isEqualToString:@"Hello World\n"],nil);
+    
+    NSLog(@"%@",[reader readLine]);
+    
+    //Add the third packet
+    [reader fillBuffer:[thirdPacket dataUsingEncoding:NSUTF8StringEncoding]];
+    line = [reader readLine];
+    NSLog(@"%@",line);
+    STAssertTrue([line isEqualToString:@"Bye World Hi World\r\n"],nil);
+}
 //----------------------------------------------------------------------------------------------
 -(void) runNetSessionTest:(NSString *)handshake :(NSString *)payload
 {
@@ -226,7 +272,7 @@
 	STAssertTrue([response isEqualToString:@"success"],nil);
 	
 	//close the session
-	[session close];
+    [session close];
 }
 
 -(void) runNetworkConnectorTest:(BOOL) secure :(NSString *)handshake :(NSString *)payload
