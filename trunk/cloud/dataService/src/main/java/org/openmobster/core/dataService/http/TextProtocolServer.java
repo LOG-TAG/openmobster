@@ -32,6 +32,7 @@ public final class TextProtocolServer
 		// Configure the pipeline factory.
 		bootstrap.setPipelineFactory(new TextProtocolPipelineFactory());
 		
+		//some more options
 		bootstrap.setOption("child.tcpNoDelay", true);
         bootstrap.setOption("child.keepAlive", true);
 		

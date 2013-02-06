@@ -90,7 +90,10 @@ public class ProcessorController
 							
 			if(result != null && result.trim().length()!=0)
 			{
-				session.write(result.trim()+Constants.endOfStream);
+				result = result.trim();
+				int contentLength = result.length();
+				session.write("content-length="+contentLength+"\n");
+				session.write(result+Constants.endOfStream);
 			}
 			else
 			{

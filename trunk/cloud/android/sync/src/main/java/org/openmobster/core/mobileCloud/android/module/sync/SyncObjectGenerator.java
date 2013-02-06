@@ -20,6 +20,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
+import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
 
 /**
  * 
@@ -65,10 +66,22 @@ public final class SyncObjectGenerator extends Service
 	{
 		Session session = null;
 		InputStream is = null;
+		boolean mustCleanup = false;
 		try
 		{			
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-			is = new ByteArrayInputStream(xml.getBytes());
+			
+			if(xml.startsWith("file:///"))
+			{
+				is = FileSystem.getInstance().openInputStream(xml);
+				mustCleanup = true;
+			}
+			else
+			{
+				is = new ByteArrayInputStream(xml.getBytes());
+			}
+			
+			
 			SAXHandler handler = new SAXHandler();
 			parser.parse(is, handler);
 			
@@ -83,6 +96,10 @@ public final class SyncObjectGenerator extends Service
 			if(is != null)
 			{
 				try{is.close();}catch(Exception e){}
+			}
+			if(mustCleanup)
+			{
+				FileSystem.getInstance().cleanup(xml);
 			}
 		}
 		return session;

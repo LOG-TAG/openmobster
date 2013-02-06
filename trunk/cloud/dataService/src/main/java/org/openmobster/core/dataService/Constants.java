@@ -22,7 +22,7 @@ public interface Constants
 	public final String processorId = "processorid";
 	public final String processor = "processor";
 	public final String status = "status";
-	public final String endOfStream = "\r\n";
+	public final String endOfStream = "OPENMOBSTER_EOF_\r\n";
 	public final String endOfCommand = "\n";
 	public final String sync = "sync";
 	public final String service = "service";

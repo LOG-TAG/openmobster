@@ -109,6 +109,8 @@
 	<classpathentry kind="src" path="android/test-suite/test-performance/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-location/src/main/java"/>
 	<classpathentry kind="src" path="android/test-suite/test-encryption/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-http/src/main/java"/>
+	<classpathentry kind="src" path="android/test-suite/test-http/src/main/resources"/>
 	<classpathentry kind="src" path="android/ide_hack"/>
 	
 	<!-- PhoneGap plugin -->
@@ -236,4 +238,6 @@
     <classpathentry kind="var" path="M2_REPO/org/jgroups/jgroups/3.2.3.Final/jgroups-3.2.3.Final.jar"/>
     
     <classpathentry kind="var" path="M2_REPO/io/netty/netty/3.5.10.Final/netty-3.5.10.Final.jar"/>
+    
+    <classpathentry kind="var" path="M2_REPO/com/turbomanage/httpclient/basic-http-client-android/0.87/basic-http-client-android-0.87.jar"/>
 </classpath>

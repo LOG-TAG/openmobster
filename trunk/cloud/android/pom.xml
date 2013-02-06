@@ -131,6 +131,13 @@
 			<url>http://download.java.net/maven/2/
 			</url>
 		</repository>
+		
+		<repository>
+			<id>openmobster-maven</id>
+			<name>OpenMobster Maven Repository</name>
+			<url>https://openmobster.googlecode.com/svn/maven2
+			</url>
+		</repository>
 	</repositories>
 	
 	<distributionManagement>
