@@ -13,8 +13,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.io.*;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
+import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
+import org.openmobster.core.mobileCloud.android.filesystem.File;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkException;
 
 /**
@@ -190,53 +193,131 @@ public final class NetSession
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	private String read(InputStream is) throws IOException
 	{
-		String data = null;
-		int received = 0;
-		ByteArrayOutputStream bos = null;
+		byte[] received = null;
+		StringBuilder incomingData = new StringBuilder();
+		boolean exit = false;
+		BufferStreamReader reader = new BufferStreamReader();
+		boolean content_length_processed = false;
+		OutputStream fos = null;
+		File file = null;
 		try
 		{
-			bos = new ByteArrayOutputStream();
-			boolean carriageFound = false;
 			while(true)
-			{			
-				received = is.read();	
+			{
+				received = this.readFromStream(is);
 				
-				if(received == -1)
+				if(received == null)
 				{
-					throw new IOException("InputStream is closed!!");
+					//no data read this iteration, better luck in the next iteration
+					continue;
 				}
 				
-				if(carriageFound)
+				//drop the data into the reader
+				reader.fillBuffer(received);
+				
+				//Now read a line
+				String line = null;
+				while((line=reader.readLine()) != null)
 				{
-					carriageFound = false;
-					if(received == '\n')
+					if(line.startsWith("content-length="))
 					{
+						if(content_length_processed)
+						{
+							continue;
+						}
+						
+						content_length_processed = true;
+						
+						//do stuff here
+						int contentLength = Integer.parseInt(line.substring("content-length=".length()).trim());
+						if(contentLength > 1000000)
+						{
+							file = FileSystem.getInstance().openOutputStream();
+							fos = file.getOutputStream();
+						}
+						
+						continue;
+					}
+					
+					if(line.endsWith("OPENMOBSTER_EOF_\r\n"))
+					{
+						//thats it....end of the line
+						int index = line.indexOf("OPENMOBSTER_EOF_\r\n");
+						String newLine = line.substring(0, index);
+						
+						if(fos == null)
+						{
+							incomingData.append(newLine);
+						}
+						else
+						{
+							fos.write(newLine.getBytes());
+							fos.flush();
+						}
+						
+						exit = true;
 						break;
-					}					
-				}				
-				if(received == '\r')
-				{
-					carriageFound = true;
+					}
+					
+					if(fos == null)
+					{
+						incomingData.append(line);
+					}
+					else
+					{
+						fos.write(line.getBytes());
+						fos.flush();
+					}
 				}
 				
-				bos.write(received);
-			}			
-			bos.flush();
+				if(exit)
+				{
+					break;
+				}
+			}
 			
-			StringBuffer buffer = new StringBuffer();
-			byte[] cour = bos.toByteArray();
-			buffer.append(new String(cour));						
-			data = buffer.toString();
+			String returnValue = null;
+			if(file != null)
+			{
+				returnValue = file.getName();
+			}
+			else
+			{
+				returnValue = incomingData.toString().trim();
+			}
 			
-			return data;
+			return returnValue;
 		}
 		finally
 		{
-			if(bos != null)
+			reader.close();
+			
+			if(fos != null)
 			{
-				try{bos.close();}catch(IOException e){}
+				fos.close();
 			}
 		}
+	}
+	
+	private byte[] readFromStream(InputStream is) throws IOException
+	{
+		byte[] dataPacket = new byte[1024];
+		
+		int numBytesRead = is.read(dataPacket);
+		if(numBytesRead == -1)
+		{
+			throw new IOException("InputStream is closed!!");
+		}
+		
+		if(numBytesRead > 0)
+		{
+			byte[] packet = new byte[numBytesRead];
+			System.arraycopy(dataPacket, 0, packet, 0, numBytesRead);
+			
+			return packet;
+		}
+		
+		return null;
 	}
 	
 	private void writePayLoad(String payLoad, OutputStream os) throws IOException
