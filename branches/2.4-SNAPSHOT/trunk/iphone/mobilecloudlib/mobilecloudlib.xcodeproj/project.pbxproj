@@ -354,6 +354,8 @@
 		A2E557B512F76AE0008B3FCE /* mobileobject.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A28F5C9612469ACD00EA2E90 /* mobileobject.xcdatamodel */; };
 		A2E557D412F76CC5008B3FCE /* AbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E557D312F76CC5008B3FCE /* AbstractIntegrationTest.m */; };
 		A2E557D812F76CEC008B3FCE /* MobileBeanTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E557D712F76CEC008B3FCE /* MobileBeanTestSuite.m */; };
+		A2E9E96216B8778300B886C0 /* BufferStreamReader.h in Headers */ = {isa = PBXBuildFile; fileRef = A2E9E96016B8778300B886C0 /* BufferStreamReader.h */; };
+		A2E9E96316B8778300B886C0 /* BufferStreamReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E9E96116B8778300B886C0 /* BufferStreamReader.m */; };
 		A2FA7F7614379B710054223D /* CommitException.h in Headers */ = {isa = PBXBuildFile; fileRef = A2FA7F7414379B710054223D /* CommitException.h */; };
 		A2FA7F7714379B710054223D /* CommitException.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FA7F7514379B710054223D /* CommitException.m */; };
 		AA747D9F0F9514B9006C5449 /* mobilecloudlib_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* mobilecloudlib_Prefix.pch */; };
@@ -747,6 +749,8 @@
 		A2E557D312F76CC5008B3FCE /* AbstractIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractIntegrationTest.m; sourceTree = "<group>"; };
 		A2E557D612F76CEC008B3FCE /* MobileBeanTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanTestSuite.h; sourceTree = "<group>"; };
 		A2E557D712F76CEC008B3FCE /* MobileBeanTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileBeanTestSuite.m; sourceTree = "<group>"; };
+		A2E9E96016B8778300B886C0 /* BufferStreamReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferStreamReader.h; sourceTree = "<group>"; };
+		A2E9E96116B8778300B886C0 /* BufferStreamReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferStreamReader.m; sourceTree = "<group>"; };
 		A2FA7F7414379B710054223D /* CommitException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitException.h; sourceTree = "<group>"; };
 		A2FA7F7514379B710054223D /* CommitException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitException.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* mobilecloudlib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mobilecloudlib_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -1076,6 +1080,8 @@
 				A29D56FC12849BB000DAE753 /* NetworkConnector.m */,
 				A29D570012849BCE00DAE753 /* NetSession.h */,
 				A29D570112849BCE00DAE753 /* NetSession.m */,
+				A2E9E96016B8778300B886C0 /* BufferStreamReader.h */,
+				A2E9E96116B8778300B886C0 /* BufferStreamReader.m */,
 			);
 			name = connection;
 			sourceTree = "<group>";
@@ -1733,6 +1739,7 @@
 				A242E9A915F0306D0092AFA4 /* BackgroundSyncCommand.h in Headers */,
 				A23A484E16042D13003A32EE /* UIDevice+IdentifierAddition.h in Headers */,
 				A23A485016042D13003A32EE /* NSString+MD5Addition.h in Headers */,
+				A2E9E96216B8778300B886C0 /* BufferStreamReader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2248,6 +2255,7 @@
 				A242E9AA15F0306D0092AFA4 /* BackgroundSyncCommand.m in Sources */,
 				A23A484F16042D13003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
 				A23A485116042D13003A32EE /* NSString+MD5Addition.m in Sources */,
+				A2E9E96316B8778300B886C0 /* BufferStreamReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
