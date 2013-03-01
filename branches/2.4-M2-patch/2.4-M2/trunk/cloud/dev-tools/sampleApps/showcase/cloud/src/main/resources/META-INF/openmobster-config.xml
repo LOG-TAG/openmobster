@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+   <!--  Register the MobileChannel -->
+   <bean name="showcase_ticket_channel" class="org.openmobster.showcase.cloud.channel.TicketChannel">
+   		<property name="ds">
+   	  		<inject bean="/showcase/TicketDS"/>
+   		</property>
+   		<depends>/showcase/bootstrap/data</depends>
+   </bean>
+   
+   <!-- Storage services based on Hibernate -->
+   <bean name="/showcase/HibernateManager" class="org.openmobster.core.common.database.HibernateManager">
+   		<property name="config">showcase.cfg.xml</property>
+   </bean>
+   <bean name="/showcase/TicketDS" class="org.openmobster.showcase.cloud.channel.TicketDS">
+   	  <property name="hibernateManager">
+   	  	<inject bean="/showcase/HibernateManager"/>
+   	  </property>
+   </bean>
+   
+   <!-- Some Cloud Side bootstrappers used to load up test data, and listen for updates to demo "Cloud Push" -->
+   <bean name="/showcase/bootstrap/data" class="org.openmobster.showcase.cloud.channel.BootstrapData">
+   		<property name="ds">
+   	  		<inject bean="/showcase/TicketDS"/>
+   		</property>
+   </bean>
+   
+   <!-- Deploy the UploadPictureCommand -->
+   <bean name="/upload/picture" class="org.openmobster.showcase.cloud.camera.UploadPictureCommand">
+   		<depends>services://CloudCameraService</depends>
+   </bean>
+   
+   <!--  Ajax services -->
+   <bean name="/showcase/getlist" class="org.openmobster.showcase.cloud.ajax.GetList">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+   
+   <bean name="/showcase/getdetails" class="org.openmobster.showcase.cloud.ajax.GetDetails">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+</deployment>
