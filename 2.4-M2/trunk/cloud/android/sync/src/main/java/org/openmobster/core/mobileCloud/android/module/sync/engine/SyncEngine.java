@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.DeviceSerializer;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObject;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
@@ -298,8 +299,7 @@ public class SyncEngine
 			MobilePushInvocation invocation = session.getPushInvocation();
 			if(invocation == null && session.isBackgroundSync())
 			{
-				invocation = new MobilePushInvocation(
-			"org.openmobster.core.mobileCloud.api.ui.framework.push.NotifySyncPushInvocationHandler");
+				invocation = new MobilePushInvocation(AppSystemConfig.getInstance().getCustomPushNotificationHandler());
 				session.setPushInvocation(invocation);
 			}
 	

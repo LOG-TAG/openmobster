@@ -7,8 +7,9 @@
  */
 package org.openmobster.core.mobileCloud.push;
 
+import java.util.Timer;
+
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
-import org.openmobster.core.mobileCloud.android_native.framework.NetworkStartupSequence;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -36,7 +37,8 @@ public class NetworkStartupBroadcastReceiver extends BroadcastReceiver
 				
 				if(isActive)
 				{
-					NetworkStartupSequence.getInstance().execute();
+					Timer timer = new Timer();
+					timer.schedule(new StartNetwork(), 200);
 				}
 			}
 		}
