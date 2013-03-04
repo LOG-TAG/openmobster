@@ -8,6 +8,7 @@
 package org.openmobster.core.mobileCloud.push;
 
 import java.util.Set;
+import java.util.Timer;
 
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
@@ -46,8 +47,8 @@ public class StartSyncBroadcastReceiver extends BroadcastReceiver
 			}
 			
 			Bundle shared = intent.getBundleExtra("bundle");
-			String channel = shared.getString("channel");
-			String silent = shared.getString("silent");
+			final String channel = shared.getString("channel");
+			final String silent = shared.getString("silent");
 			
 			if(!this.isMyChannel(channel))
 			{
@@ -70,20 +71,9 @@ public class StartSyncBroadcastReceiver extends BroadcastReceiver
 				//channel must be booted first before it can respond to sync notifications
 				return;
 			}
-							
-			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-			SyncInvocation.twoWay, channel);
 			
-			if(silent == null || silent.equals("false"))
-			{
-				syncInvocation.activateBackgroundSync();
-			}
-			else
-			{
-				syncInvocation.deactivateBackgroundSync();
-			}
-			
-			Bus.getInstance().invokeService(syncInvocation);
+			Timer timer = new Timer();
+			timer.schedule(new StartSync(channel,silent), 200);
 		}
 		catch(Exception e)
 		{
