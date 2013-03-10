@@ -1,0 +1,15 @@
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>org.openmobster.core.mobileCloud.android_native.framework.App</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+	
+	
+	<channels>
+		<channel name='crm_ticket_channel'>
+			<sync-push-message>You have {0} CRM Ticket Update(s)</sync-push-message>
+		</channel>
+	</channels>
+</app-conf>

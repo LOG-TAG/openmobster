@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6.4//EN" "http://google-web-toolkit.googlecode.com/svn/tags/1.6.4/distro-source/core/src/gwt-module.dtd">
+<module rename-to='app'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <!--  
+  <inherits name='com.google.gwt.user.User'/>
+
+  <inherits name="com.smartgwt.SmartGwt"/>
+
+  <entry-point class='org.openmobster.core.cloud.console.client.HelloWorld'/>
+  -->
+  <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.core.Core"/>
+    <inherits name="com.google.gwt.user.History"/>
+    <inherits name="com.google.gwt.resources.Resources" />
+    
+	<inherits name="com.smartgwt.SmartGwt"/>
+	
+	<entry-point class="org.openmobster.core.cloud.console.client.App"/>
+</module>
