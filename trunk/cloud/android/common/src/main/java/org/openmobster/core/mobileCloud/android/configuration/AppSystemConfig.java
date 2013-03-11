@@ -157,6 +157,31 @@ public final class AppSystemConfig
 				}
 			}
 			
+			/**
+			 * 
+			 * Parse:
+			 * 
+			 *<custom>
+			 *	<push>
+			 *		<notification-handler>custom_class</notification-handler>
+			 *	</push>
+			 *</custom>
+			 * 
+			 * 
+			 */
+			NodeList customNodeList = root.getElementsByTagName("custom");
+			if(customNodeList != null && customNodeList.getLength()>0)
+			{
+				NodeList pushNodeList = ((Element)customNodeList.item(0)).getElementsByTagName("push");
+				if(pushNodeList != null && pushNodeList.getLength()>0)
+				{
+					Element pushElement = (Element)pushNodeList.item(0);
+					Element notificationHandlerElement = (Element)pushElement.getElementsByTagName("notification-handler").item(0);
+					String notificationHandlerClass = notificationHandlerElement.getTextContent();
+					this.attrMgr.setAttribute("/custom/push/notification-handler", notificationHandlerClass);
+				}
+			}
+			
 			this.isActive = true;
 		}
 		catch(Throwable e)
@@ -235,5 +260,16 @@ public final class AppSystemConfig
 	{
 		private String channel;
 		private String syncPushMessage;
+	}
+	
+	public String getCustomPushNotificationHandler()
+	{
+		String customPushNotificationHandler = (String)this.attrMgr.getAttribute("/custom/push/notification-handler");
+		if(customPushNotificationHandler == null)
+		{
+			//use the default one
+			return "org.openmobster.core.mobileCloud.api.ui.framework.push.NotifySyncPushInvocationHandler";
+		}
+		return customPushNotificationHandler;
 	}
 }

@@ -9,6 +9,7 @@ package org.openmobster.core.mobileCloud.android.storage;
 
 import java.util.Set;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 
 /**
  *
@@ -41,4 +42,6 @@ public interface CRUDProvider
 	void delete(String table, Record record) throws DBException;
 	
 	void deleteAll(String table) throws DBException;
+	
+	Cursor testCursor(String table) throws DBException;
 }

@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -405,6 +406,27 @@ public final class MobileObjectDatabase extends Service
 		}
 		
 		return result;
+	}
+	
+	public Cursor testCursor(String channel)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.testCursor(channel);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "testCursor", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	public void syncWithServer(String storageId)

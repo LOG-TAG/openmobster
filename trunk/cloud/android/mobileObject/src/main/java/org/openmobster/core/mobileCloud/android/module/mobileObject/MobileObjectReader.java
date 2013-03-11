@@ -100,7 +100,7 @@ final class MobileObjectReader extends DefaultHandler
 	{
 		String data = new String(ch, start, length);
 		
-		if(data != null && data.trim().length()>0)
+		if(data != null)
 		{
 			this.dataBuffer.append(data);				
 		}
@@ -126,7 +126,7 @@ final class MobileObjectReader extends DefaultHandler
 		{
 			String data = dataBuffer.toString();
 			dataBuffer = new StringBuffer();
-			if(data != null && data.trim().length()>0)
+			if(data != null)
 			{
 				String currentUri = this.fullPath.toString();
 								
@@ -149,7 +149,7 @@ final class MobileObjectReader extends DefaultHandler
 				}
 				else if(currentUri.endsWith("/field/value"))
 				{
-					this.currentField.setValue(data.trim());
+					this.currentField.setValue(data);
 					this.fields.add(this.currentField);
 					
 					this.currentField = new Field();
