@@ -55,6 +55,11 @@ public final class DeviceSerializer
 			xmlBuffer.append("<fields>\n");
 			for(Field field: fields)
 			{
+				if(field.getValue() == null)
+				{
+					continue;
+				}
+				
 				xmlBuffer.append("<field>\n");
 				xmlBuffer.append("<uri>"+field.getUri()+"</uri>\n");
 				xmlBuffer.append("<name>"+field.getName()+"</name>\n");

@@ -64,14 +64,47 @@ public class DefaultCRUD implements CRUDProvider
 			this.delete(table, record);
 			
 			Set<String> names = record.getNames();
+			Map<String,String> nameValuePairs = new HashMap<String,String>();
 			for(String name: names)
 			{
 				String value = record.getValue(name);
+				
+				//check if this is a name
+				if(name.startsWith("field[") && name.endsWith("].name"))
+				{
+					nameValuePairs.put(name, value);
+				}
+				
+				//check fi this is a value
+				if(name.startsWith("field[") && name.endsWith("].value"))
+				{
+					nameValuePairs.put(name, value);
+				}
 				
 				//insert this row
 				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
+			
+			//insert the name value pairs
+			Set<String> keys = nameValuePairs.keySet();
+			for(String key:keys)
+			{
+				if(key.endsWith("].value"))
+				{
+					continue;
+				}
+				
+				String name = nameValuePairs.get(key);
+				
+				//Get the value
+				String value = nameValuePairs.get(key.replace("].name", "].value"));
+				
+				
+				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+				this.db.execSQL(insert,new Object[]{recordId,name,value});
+			}
+			
 			
 			//insert the JSON representation
 			String json = record.toJson();
@@ -406,12 +439,42 @@ public class DefaultCRUD implements CRUDProvider
 			}*/
 			//Delete a record if one exists by this id...cleanup
 			this.delete(table, record);
+			Map<String,String> nameValuePairs = new HashMap<String,String>();
 			for(String name: names)
 			{
 				String value = record.getValue(name);
-								
+				
+				//check if this is a name
+				if(name.startsWith("field[") && name.endsWith("].name"))
+				{
+					nameValuePairs.put(name, value);
+				}
+				
+				//check fi this is a value
+				if(name.startsWith("field[") && name.endsWith("].value"))
+				{
+					nameValuePairs.put(name, value);
+				}
+				
 				//insert this row
-				//insert this row
+				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+				this.db.execSQL(insert,new Object[]{recordId,name,value});
+			}
+			
+			//insert the name value pairs
+			Set<String> keys = nameValuePairs.keySet();
+			for(String key:keys)
+			{
+				if(key.endsWith("].value"))
+				{
+					continue;
+				}
+				
+				String name = nameValuePairs.get(key);
+				
+				//Get the value
+				String value = nameValuePairs.get(key.replace("].name", "].value"));
+				
 				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
@@ -469,5 +532,11 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			this.db.endTransaction();
 		}
+	}
+	
+	public Cursor testCursor(String from) throws DBException
+	{
+		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? ORDER BY value DESC",new String[]{"timestamp"});
+		return cursor;
 	}
 }

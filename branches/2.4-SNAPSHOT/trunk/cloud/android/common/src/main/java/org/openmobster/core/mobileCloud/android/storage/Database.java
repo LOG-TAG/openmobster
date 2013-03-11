@@ -11,6 +11,7 @@ package org.openmobster.core.mobileCloud.android.storage;
 import java.util.Set;
 
 import android.content.Context;
+import android.database.Cursor;
 
 /**
  * Concurrency Marker - Concurrent Component (concurrently used by multiple threads)
@@ -217,6 +218,14 @@ public final class Database
 		this.validateConnection(table, "deleteAll");
 		
 		this.cloudbMetaData.getCRUDProvider().deleteAll(table);
+	}
+	
+	public Cursor testCursor(String from) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "testCursor");
+		
+		return this.cloudbMetaData.getCRUDProvider().testCursor(from);
 	}
 	//--------Validation methods-----------------------------------------------------------------------------------------
 	private void validateConnection(String table, String caller) throws DBException
