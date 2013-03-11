@@ -335,4 +335,9 @@ public class EncryptedCRUD implements CRUDProvider
 			this.db.endTransaction();
 		}
 	}
+	
+	public Cursor testCursor(String table) throws DBException
+	{
+		return null;
+	}
 }
