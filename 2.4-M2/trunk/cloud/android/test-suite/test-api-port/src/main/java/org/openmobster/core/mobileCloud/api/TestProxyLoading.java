@@ -29,7 +29,7 @@ public final class TestProxyLoading extends AbstractAPITest
 			//Download all data associated with the beans (takes care of proxy-lazy loaded beans)						
 			//Wait for proxy loading to load the rest
 			int attempts = 5;
-			while(beans.length < 2 && attempts > 0)
+			while(beans.length < 3 && attempts > 0)
 			{
 				System.out.println("Waiting on background proxy loading.........");
 				Thread.currentThread().sleep(20000);
@@ -37,28 +37,25 @@ public final class TestProxyLoading extends AbstractAPITest
 				attempts--;
 			}
 			
-			if(beans.length < 2)
+			if(beans.length < 3)
 			{
 				throw new IllegalStateException("Background State Management was not able to get the State ready in time...Try again");
 			}
 			
 			//Test Proxy based Loading
-			for(int i=0; i<beans.length; i++)
-			{
-				MobileBean curr = beans[i];
-				
-				assertEquals(curr.getService(), this.service, this.getInfo()+"://Service does not match");
-				
-				String id = curr.getId();
-				assertTrue(id.equals("unique-1") || id.equals("unique-2"), this.getInfo()+"://Id Does not match");
-				
-				assertEquals(curr.getValue("from"), "from@gmail.com", this.getInfo()+"://From does not match");
-				assertEquals(curr.getValue("to"), "to@gmail.com", this.getInfo()+"://To does not match");
-				assertEquals(curr.getValue("subject"), "This is the subject<html><body>"+id+"</body></html>", this.getInfo()+"://Subject does not match");
-				assertEquals(curr.getValue("message"), 
-				"<tag apos='apos' quote=\"quote\" ampersand='&'>"+id+"/Message"+"</tag>",
-				this.getInfo()+"://Message does not match");						
-			}
+			MobileBean curr = MobileBean.readById(service, "unique-2");
+			
+			assertEquals(curr.getService(), this.service, this.getInfo()+"://Service does not match");
+			
+			String id = curr.getId();
+			assertTrue(id.equals("unique-1") || id.equals("unique-2"), this.getInfo()+"://Id Does not match");
+			
+			assertEquals(curr.getValue("from"), "from@gmail.com", this.getInfo()+"://From does not match");
+			assertEquals(curr.getValue("to"), "to@gmail.com", this.getInfo()+"://To does not match");
+			assertEquals(curr.getValue("subject"), "This is the subject<html><body>"+id+"</body></html>", this.getInfo()+"://Subject does not match");
+			assertEquals(curr.getValue("message"), 
+			"<tag apos='apos' quote=\"quote\" ampersand='&'>"+id+"/Message"+"</tag>",
+			this.getInfo()+"://Message does not match");
 		}
 		catch(Exception e)
 		{
