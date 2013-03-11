@@ -71,7 +71,7 @@ public final class Record
 		}
 		if(value == null)
 		{
-			value = "";
+			throw new IllegalArgumentException(name+": Value cannot be Null");
 		}
 		
 		this.getState().put(name, value);
@@ -81,10 +81,10 @@ public final class Record
 	{
 		String value = (String)this.getState().get(name);
 		
-		if(value != null && value.trim().length() == 0)
+		/*if(value != null && value.trim().length() == 0)
 		{
 			value = null;
-		}
+		}*/
 		
 		return value;
 	}

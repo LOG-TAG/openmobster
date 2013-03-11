@@ -28,37 +28,33 @@ public final class TestBeanRead extends AbstractAPITest
 			MobileBean[] beans = MobileBean.readAll(this.service);
 			this.assertNotNull(beans, this.getInfo()+"/MustNotBeNull");
 			
-			for(int i=0; i<beans.length; i++)
-			{
-				MobileBean curr = beans[i];
-				
-				System.out.println("TestBeanRead-------------------------");
-				System.out.println("RecordId: "+curr.getId());				
-				System.out.println("-------------------------");
-				
-				assertEquals(curr.getService(), this.service, this.getInfo()+"://Service does not match");
-				
-				String id = curr.getId();
-				assertTrue(id.equals("unique-1") || id.equals("unique-2"), this.getInfo()+"://Id Does not match");
-				
-				assertEquals(curr.getValue("from"), "from@gmail.com", this.getInfo()+"://From does not match");
-				assertEquals(curr.getValue("to"), "to@gmail.com", this.getInfo()+"://To does not match");
-				assertEquals(curr.getValue("subject"), "This is the subject<html><body>"+id+"</body></html>", this.getInfo()+"://Subject does not match");
-				assertEquals(curr.getValue("message"), 
-				"<tag apos='apos' quote=\"quote\" ampersand='&'>"+id+"/Message"+"</tag>",
-				this.getInfo()+"://Message does not match");
-				
-				//Assert the IndexedProperty emails
-				//this.assertEmails(curr);				
-				
-				//Assert Fruits
-				//this.assertFruits(curr);
-				
-				byte[] attachment = curr.getBinaryValue("attachment");
-				String attachmentValue = new String(attachment);
-				assertEquals(attachmentValue,"blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah",
-						this.getInfo()+"://Attachment Does not match");
-			}
+			MobileBean curr = MobileBean.readById(service, "unique-1");
+			
+			System.out.println("TestBeanRead-------------------------");
+			System.out.println("RecordId: "+curr.getId());				
+			System.out.println("-------------------------");
+			
+			assertEquals(curr.getService(), this.service, this.getInfo()+"://Service does not match");
+			
+			String id = curr.getId();
+			
+			assertEquals(curr.getValue("from"), "from@gmail.com", this.getInfo()+"://From does not match");
+			assertEquals(curr.getValue("to"), "to@gmail.com", this.getInfo()+"://To does not match");
+			assertEquals(curr.getValue("subject"), "This is the subject<html><body>"+id+"</body></html>", this.getInfo()+"://Subject does not match");
+			assertEquals(curr.getValue("message"), 
+			"<tag apos='apos' quote=\"quote\" ampersand='&'>"+id+"/Message"+"</tag>",
+			this.getInfo()+"://Message does not match");
+			
+			//Assert the IndexedProperty emails
+			//this.assertEmails(curr);				
+			
+			//Assert Fruits
+			//this.assertFruits(curr);
+			
+			byte[] attachment = curr.getBinaryValue("attachment");
+			String attachmentValue = new String(attachment);
+			assertEquals(attachmentValue,"blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah",
+					this.getInfo()+"://Attachment Does not match");
 		}
 		catch(Exception e)
 		{

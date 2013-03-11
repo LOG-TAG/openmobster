@@ -163,33 +163,13 @@ public final class MobileObject
 			
 			int index = 0;
 			for(Field field: this.fields)
-			{		
-				if(field.getUri() != null)
-				{
-					record.setValue("field["+index+"].uri", field.getUri());
-				}
-				else
-				{
-					record.setValue("field["+index+"].uri", "");
-				}
+			{	
 				
-				if(field.getName() != null)
-				{
-					record.setValue("field["+index+"].name", field.getName());
-				}
-				else
-				{
-					record.setValue("field["+index+"].name", "");
-				}
+				record.setValue("field["+index+"].uri", field.getUri());
 				
-				if(field.getValue() != null)
-				{
-					record.setValue("field["+index+"].value", field.getValue());
-				}
-				else
-				{
-					record.setValue("field["+index+"].value", "");
-				}								
+				record.setValue("field["+index+"].name", field.getName());
+				
+				record.setValue("field["+index+"].value", field.getValue());							
 				
 				index++;
 			}
@@ -202,23 +182,10 @@ public final class MobileObject
 			int index = 0;
 			for(ArrayMetaData local: this.arrayMetaData)
 			{		
-				if(local.getArrayUri() != null)
-				{
-					record.setValue("arrayMetaData["+index+"].arrayUri", local.getArrayUri());
-				}
-				else
-				{
-					record.setValue("arrayMetaData["+index+"].arrayUri", "");
-				}
+				record.setValue("arrayMetaData["+index+"].arrayUri", local.getArrayUri());
 				
-				if(local.getArrayLength() != null)
-				{
-					record.setValue("arrayMetaData["+index+"].arrayLength", local.getArrayLength());
-				}
-				else
-				{
-					record.setValue("arrayMetaData["+index+"].arrayLength", "");
-				}
+				record.setValue("arrayMetaData["+index+"].arrayLength", local.getArrayLength());
+				
 				
 				if(local.getArrayClass() != null)
 				{
@@ -227,7 +194,7 @@ public final class MobileObject
 				else
 				{
 					record.setValue("arrayMetaData["+index+"].arrayClass", "");
-				}								
+				}									
 				
 				index++;
 			}
@@ -346,32 +313,68 @@ public final class MobileObject
 			uri = StringUtil.replaceAll(uri,".", "/");			
 			
 			boolean createField = true;
+			Field nullField = null;
 			for(Field courField: this.fields)
 			{
 				if(courField.getUri().equals(uri))
 				{
-					courField.setValue(value);
+					if(value != null)
+					{
+						courField.setValue(value);
+					}
+					else
+					{
+						nullField = courField;
+						break;
+					}
 					createField = false;
 				}
 			}
+			if(nullField != null)
+			{
+				this.fields.remove(nullField);
+			}
+			
 			if(createField)
 			{
-				Field field = new Field(uri, fieldUri, value);
-				this.fields.add(field);
+				if(value != null)
+				{
+					Field field = new Field(uri, fieldUri, value);
+					this.fields.add(field);
+				}
 			}			
 			return;
 		}
 		
-		if(!fieldUri.startsWith("/"))
-		{
-			fieldUri = "/"+fieldUri;
-		}
 		
-		Field field = this.findField(StringUtil.replaceAll(fieldUri,".", "/"));
+		String uri = fieldUri;
+		if(!uri.startsWith("/"))
+		{
+			uri = "/"+fieldUri;
+		}
+		uri = StringUtil.replaceAll(uri,".", "/");
+		
+		Field field = this.findField(uri);
 		if(field != null)
 		{
-			field.setValue(value);
-		}			
+			if(value != null)
+			{
+				field.setValue(value);
+			}
+			else
+			{
+				this.fields.remove(field);
+			}
+		}	
+		else
+		{	
+			//create this field
+			if(value != null)
+			{
+				Field newField = new Field(uri, fieldUri, value);
+				this.fields.add(newField);
+			}
+		}
 	}
 	
 	public int getArrayLength(String arrayUri)
