@@ -17,6 +17,9 @@ import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
+import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.storage.Database;
+import org.openmobster.core.mobileCloud.android.storage.DBException;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 
 import android.content.BroadcastReceiver;
@@ -101,9 +104,9 @@ public class StartSyncBroadcastReceiver extends BroadcastReceiver
 		return false;
 	}
 	
-	private boolean isBooted(String channel)
+	private boolean isBooted(String channel) throws DBException
 	{
-		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		return deviceDB.isChannelBooted(channel);
+		return Database.getInstance(Registry.getActiveInstance().getContext()).
+				doesTableExist(channel);
 	}
 }
