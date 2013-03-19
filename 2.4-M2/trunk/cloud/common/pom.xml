@@ -34,6 +34,7 @@
 	          <groupId>org.apache.maven.plugins</groupId>
 	          <artifactId>maven-surefire-plugin</artifactId>
 	          <configuration>
+	                <argLine>-Dfile.encoding=UTF-8</argLine>
 	          		<additionalClasspathElements>
 	                	<additionalClasspathElement>${project.build.directory}/../target/test-classes/bean1.jar</additionalClasspathElement>
 	                	<additionalClasspathElement>${project.build.directory}/../target/test-classes/bean2.jar</additionalClasspathElement>
