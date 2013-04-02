@@ -9,11 +9,11 @@
             <generator class="native"/>
         </id>
         <properties name="changelog_unique_constraint" unique="true">
-	        <property name="target" type="string" column="target" not-null="true"/>
-	        <property name="nodeId" type="string" column="node_id" not-null="true"/>
-	        <property name="recordId" type="string" column="record_id" not-null="true"/>        
-	        <property name="operation" type="string" column="operation" not-null="true"/>  
-	        <property name="app" type="string" column="app" not-null="true"/> 
+	        <property name="target" type="string" column="target" not-null="true" length="100"/>
+	        <property name="nodeId" type="string" column="node_id" not-null="true" length="100"/>
+	        <property name="recordId" type="string" column="record_id" not-null="true" length="100"/>        
+	        <property name="operation" type="string" column="operation" not-null="true" length="100"/>  
+	        <property name="app" type="string" column="app" not-null="true" length="100"/> 
         </properties>     
     </class>
         
