@@ -21,6 +21,7 @@ import org.openmobster.core.mobileCloud.android.module.sync.SyncException;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.Daemon;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
+import org.openmobster.core.mobileCloud.android.module.sync.daemon.SynchronousSync;
 
 /**
  * @author openmobster@gmail.com
@@ -111,6 +112,12 @@ public class SyncInvocationHandler extends Service implements InvocationHandler
 				
 				case SyncInvocation.scheduleSync:
 					Daemon.getInstance().scheduleSyncInitiation();
+				break;
+				
+				case SyncInvocation.synchronousSave:
+					//Schedule device initiated sync session
+					SyncService.getInstance().updateChangeLog(service, invocation.getValue("operation"), recordId);
+					SynchronousSync.getInstance().sync();
 				break;
 			}
 		}
