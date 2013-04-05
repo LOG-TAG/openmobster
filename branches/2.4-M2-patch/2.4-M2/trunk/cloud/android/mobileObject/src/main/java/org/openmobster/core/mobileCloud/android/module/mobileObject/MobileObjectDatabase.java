@@ -428,6 +428,27 @@ public final class MobileObjectDatabase extends Service
    			);
 		}	
 	}
+	
+	public Cursor readProxyCursor(String channel)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.readProxyCursor(channel);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "readAllCursor", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	public void syncWithServer(String storageId)
 	{

@@ -227,6 +227,14 @@ public final class Database
 		
 		return this.cloudbMetaData.getCRUDProvider().testCursor(from);
 	}
+	
+	public Cursor readProxyCursor(String from) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "readProxyCursor");
+		
+		return this.cloudbMetaData.getCRUDProvider().readProxyCursor(from);
+	}
 	//--------Validation methods-----------------------------------------------------------------------------------------
 	private void validateConnection(String table, String caller) throws DBException
 	{

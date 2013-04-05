@@ -539,4 +539,10 @@ public class DefaultCRUD implements CRUDProvider
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? ORDER BY value DESC",new String[]{"timestamp"});
 		return cursor;
 	}
+	
+	public Cursor readProxyCursor(String from) throws DBException
+	{
+		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{"isProxy","true"});
+		return cursor;
+	}
 }

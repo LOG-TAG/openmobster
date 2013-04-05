@@ -10,17 +10,14 @@ package org.openmobster.core.mobileCloud.android.module.sync.daemon;
 
 import java.util.List;
 import java.util.TimerTask;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObject;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncException;
 import org.openmobster.core.mobileCloud.android.module.sync.SyncService;
@@ -76,19 +73,31 @@ final class InitiateProxyTask extends TimerTask
 	private void loadProxies(String channel) throws SyncException
 	{
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
-		Set<MobileObject> allObjects = deviceDB.readAll(channel);
 		
-		if(allObjects != null)
+		Cursor proxies = deviceDB.readProxyCursor(channel);
+		try
 		{
-			for(MobileObject mo:allObjects)
+			if(proxies == null || proxies.getCount() == 0)
 			{
-				if(mo.isProxy())
-				{
-					//false because it does not need to send any push related notifications
-					//just load the data silently and be done with it
-					SyncService.getInstance().performStreamSync(channel, 
-					mo.getRecordId(), false);
-				}
+				return;
+			}
+			
+			proxies.moveToFirst();
+			int recordidIndex = proxies.getColumnIndex("recordid");
+			do
+			{
+				String recordId = proxies.getString(recordidIndex);
+				
+				SyncService.getInstance().performStreamSync(channel, recordId, false);
+				
+				proxies.moveToNext();
+			}while(!proxies.isAfterLast());
+		}
+		finally
+		{
+			if(proxies != null)
+			{
+				proxies.close();
 			}
 		}
 	}
