@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 	
 	<properties>
-		<version.android.api>10</version.android.api>
+		<version.android.api>11</version.android.api>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<android.keystore.location>
 			${env.ANDROID_KEYSTORE}

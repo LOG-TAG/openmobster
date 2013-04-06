@@ -291,7 +291,7 @@ public class SyncAdapter
 			session.getClientSyncPackage().addMessage(syncReply);
 		}
 		
-		payload = this.syncXMLGenerator.generateSyncMessage(session, syncReply);
+		payload = this.syncXMLGenerator.generateSyncMessageStream(session, syncReply);
 		
 		return payload;
 	}

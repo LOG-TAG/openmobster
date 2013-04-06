@@ -152,10 +152,8 @@
 			            	</includes>
 			            	
 			            	<!-- toggle to activate debugger -->  			            			            	            	              
-			            	<forkMode>none</forkMode>
-			            	<!--  	            				            	    			            				            								   	
-			          		<debugForkedProcess>true</debugForkedProcess>
-			          		-->          		          		            	            	          	    	          			          		          				          		
+			            		<forkMode>none</forkMode>            				            								   	
+			          		<!--  <debugForkedProcess>true</debugForkedProcess> -->          		          		            	            	          	    	          			          		          				          		
 			          </configuration>
 			        </plugin> 			        
 			        <plugin>

@@ -8,12 +8,10 @@
 
 package org.openmobster.core.mobileCloud.android.module.connection;
 
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.io.*;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
@@ -322,6 +320,18 @@ public final class NetSession
 	
 	private void writePayLoad(String payLoad, OutputStream os) throws IOException
 	{
+		if(payLoad.startsWith("file:///"))
+		{
+			this.writePayloadStream(payLoad, os);
+		}
+		else
+		{
+			this.writePayloadString(payLoad, os);
+		}
+	}
+	
+	private void writePayloadString(String payLoad,OutputStream os) throws IOException
+	{
 		int startIndex = 0;
 		int endIndex = 0;
 		boolean eofSent = false;
@@ -346,6 +356,38 @@ public final class NetSession
 			String packet = payLoad.substring(startIndex);
 			os.write((packet+"EOF\n").getBytes());
 			os.flush();
+		}
+	}
+	
+	private void writePayloadStream(String payLoad,OutputStream os) throws IOException
+	{
+		InputStream is = null;
+		try
+		{
+			is = FileSystem.getInstance().openInputStream(payLoad);
+			byte[] buffer = new byte[1024];
+			while(true)
+			{
+				int number_of_bytes = is.read(buffer);
+				if(number_of_bytes == -1)
+				{
+					break;
+				}
+				os.write(buffer, 0, number_of_bytes);
+			}
+			
+			os.write("EOF\n".getBytes());
+			os.flush();
+		}
+		finally
+		{
+			if(is != null)
+			{
+				try{is.close();}catch(Exception e){}
+			}
+			
+			//cleanup
+			FileSystem.getInstance().cleanup(payLoad);
 		}
 	}
 }
