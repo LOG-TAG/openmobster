@@ -9,8 +9,12 @@
 package org.openmobster.core.mobileCloud.android.module.sync;
 
 import java.util.List;
+import java.io.OutputStream;
+import java.io.IOException;
 
 import org.openmobster.core.mobileCloud.android.util.XMLUtil;
+import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
+import org.openmobster.core.mobileCloud.android.filesystem.File;
 
 
 /**
@@ -158,6 +162,342 @@ public final class SyncXMLGenerator
 		xml = buffer.toString();
 		
 		return xml;
+	}
+	
+	public String generateSyncMessageStream(Session session,SyncMessage syncMessage)
+	{
+		File file = null;
+		OutputStream os = null;
+		try
+		{
+			file = FileSystem.getInstance().openOutputStream();
+			os = file.getOutputStream();
+			
+			os.write(("<"+SyncXMLTags.SyncML+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.SyncHdr+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.VerDTD+">"+"1.1"+"</"+SyncXMLTags.VerDTD+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.VerProto+">"+"SyncML/1.1"+"</"+SyncXMLTags.VerProto+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.SessionID+">"+XMLUtil.cleanupXML(session.getSessionId())+"</"+SyncXMLTags.SessionID+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.App+">"+XMLUtil.cleanupXML(session.getApp())+"</"+SyncXMLTags.App+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.Source+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(session.getSource())).getBytes());
+			os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+			os.write(("</"+SyncXMLTags.Source+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.Target+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(session.getTarget())).getBytes());
+			os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+			os.write(("</"+SyncXMLTags.Target+">\n").getBytes());
+			
+			os.write(("<"+SyncXMLTags.MsgID+">"+XMLUtil.cleanupXML(syncMessage.getMessageId())+"</"+SyncXMLTags.MsgID+">\n").getBytes());
+			
+			if(syncMessage.isClientInitiated())
+			{
+				int maxMsgSize = session.getClientSyncPackage().findMessage(syncMessage.getMessageId()).getMaxClientSize();
+				if(maxMsgSize > 0)
+				{
+					os.write(("<"+SyncXMLTags.Meta+">\n").getBytes());
+					os.write(("<"+SyncXMLTags.MaxMsgSize+" xmlns='"+SyncXMLTags.sycml_metinf+"'>"+maxMsgSize).getBytes());
+					os.write(("</"+SyncXMLTags.MaxMsgSize+">\n").getBytes());
+					os.write(("</"+SyncXMLTags.Meta+">\n").getBytes());
+				}
+			}		
+			os.write(("</"+SyncXMLTags.SyncHdr+">\n").getBytes());
+			
+			os.write(("<"+SyncXMLTags.SyncBody+">\n").getBytes());
+			
+			this.generateAlertsStream(syncMessage.getAlerts(), os);
+			
+			this.generateStatusStream(syncMessage.getStatus(),os);
+			
+			this.generateCommandsStream(syncMessage.getSyncCommands(),os);
+			
+			if(syncMessage.getRecordMap() != null)
+			{
+				this.generateRecordMapStream(syncMessage.getRecordMap(),os);
+			}
+			
+			if(syncMessage.isFinal())
+			{
+				os.write(("<"+SyncXMLTags.Final+"/>\n").getBytes());
+			}
+			
+			os.write(("</"+SyncXMLTags.SyncBody+">\n").getBytes());
+			os.write(("</"+SyncXMLTags.SyncML+">\n").getBytes());
+			
+			os.flush();
+			
+			return file.getName();
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace(System.out);
+			return null;
+		}
+		finally
+		{
+			if(os != null)
+			{
+				try{os.close();}catch(Exception e){}
+			}
+		}
+	}
+	
+	private void generateAlertsStream(List<Alert> alerts, OutputStream os) throws IOException
+	{
+		for(Alert alert: alerts)
+		{
+			os.write(("<"+SyncXMLTags.Alert+">\n").getBytes());
+			
+			os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(alert.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.Data+">"+alert.getData()+"</"+SyncXMLTags.Data+">\n").getBytes());
+			
+			this.generateItemsStream(alert.getItems(),os);
+						
+			os.write(("</"+SyncXMLTags.Alert+">\n").getBytes());
+		}
+	}
+	
+	private void generateItemsStream(List<Item> items,OutputStream os) throws IOException
+	{
+		for(Item item:items)
+		{			
+			os.write(("<"+SyncXMLTags.Item+">\n").getBytes());
+			
+			if(item.getSource() != null)
+			{
+				os.write(("<"+SyncXMLTags.Source+">\n").getBytes());
+				os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(item.getSource())).getBytes());
+				os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+				os.write(("</"+SyncXMLTags.Source+">\n").getBytes());
+			}
+			
+			if(item.getTarget() != null)
+			{
+				os.write(("<"+SyncXMLTags.Target+">\n").getBytes());
+				os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(item.getTarget())).getBytes());
+				os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+				os.write(("</"+SyncXMLTags.Target+">\n").getBytes());
+			}			
+			
+			if(item.getData() != null)
+			{					
+				os.write(("<"+SyncXMLTags.Data+">"+
+				XMLUtil.addCData(item.getData())+
+				"</"+SyncXMLTags.Data+">\n").getBytes());
+			}
+			
+			if(item.getMeta() != null)
+			{					
+				os.write(("<"+SyncXMLTags.Meta+">"+XMLUtil.cleanupXML(item.getMeta())+"</"+SyncXMLTags.Meta+">\n").getBytes());
+			}
+			
+			if(item.hasMoreData())
+			{					
+				os.write(("<"+SyncXMLTags.MoreData+"/>\n").getBytes());
+			}
+		
+			os.write(("</"+SyncXMLTags.Item+">\n").getBytes());
+		}
+	}
+	
+	private void generateStatusStream(List<Status> status,OutputStream os) throws IOException
+	{
+		for(Status cour:status)
+		{
+			os.write(("<"+SyncXMLTags.Status+">\n").getBytes());
+			
+			os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(cour.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.Data+">"+cour.getData()+"</"+SyncXMLTags.Data+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.MsgRef+">"+cour.getMsgRef()+"</"+SyncXMLTags.MsgRef+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.CmdRef+">"+cour.getCmdRef()+"</"+SyncXMLTags.CmdRef+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.Cmd+">"+cour.getCmd()+"</"+SyncXMLTags.Cmd+">\n").getBytes());
+			
+			List<String> targetRefs = cour.getTargetRefs();
+			for(String ref:targetRefs)
+			{				
+				os.write(("<"+SyncXMLTags.TargetRef+">"+ref+"</"+SyncXMLTags.TargetRef+">\n").getBytes());
+			}
+			
+			List<String> sourceRefs = cour.getSourceRefs();
+			for(String ref:sourceRefs)
+			{
+				os.write(("<"+SyncXMLTags.SourceRef+">"+ref+"</"+SyncXMLTags.SourceRef+">\n").getBytes());
+			}
+			
+			this.generateItemsStream(cour.getItems(),os);
+			
+			os.write(("</"+SyncXMLTags.Status+">\n").getBytes());
+		}
+	}
+	
+	private void generateCommandsStream(List<SyncCommand> syncCommands,OutputStream os) throws IOException
+	{
+		for(SyncCommand command:syncCommands)
+		{
+			os.write(("<"+SyncXMLTags.Sync+">\n").getBytes());
+			
+			//CmdId
+			os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(command.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+			
+			//Source
+			if(command.getSource() != null)
+			{
+				os.write(("<"+SyncXMLTags.Source+">\n").getBytes());
+				os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(command.getSource())).getBytes());
+				os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+				os.write(("</"+SyncXMLTags.Source+">\n").getBytes());
+			}
+			
+			//Target
+			if(command.getTarget() != null)
+			{
+				os.write(("<"+SyncXMLTags.Target+">\n").getBytes());
+				os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(command.getTarget())).getBytes());
+				os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+				os.write(("</"+SyncXMLTags.Target+">\n").getBytes());
+			}
+			
+			//Meta
+			if(command.getMeta() != null)
+			{
+				os.write(("<"+SyncXMLTags.Meta+">"+XMLUtil.cleanupXML(command.getMeta())+"</"+SyncXMLTags.Meta+">\n").getBytes());
+			}
+			
+			//NumberOfChanges
+			if(command.getNumberOfChanges() != null)
+			{
+				os.write(("<"+SyncXMLTags.NumberOfChanges+">"+XMLUtil.cleanupXML(command.getNumberOfChanges())+"</"+SyncXMLTags.NumberOfChanges+">\n").getBytes());
+			}
+			
+			//Add Commands
+			List<Add> commands = command.getAddCommands();
+			for(Add cour:commands)
+			{
+				os.write(("<"+SyncXMLTags.Add+">\n").getBytes());
+				
+				//CmdId
+				os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(cour.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+				
+				//Meta
+				if(cour.getMeta() != null && cour.getMeta().trim().length()>0)
+				{
+					os.write(("<"+SyncXMLTags.Meta+">"+XMLUtil.cleanupXML(cour.getMeta())+"</"+SyncXMLTags.Meta+">\n").getBytes());
+				}
+				
+				//Items
+				if(!cour.getItems().isEmpty())
+				{
+					this.generateItemsStream(cour.getItems(),os);
+				}
+				
+				os.write(("</"+SyncXMLTags.Add+">\n").getBytes());
+			}
+			
+			//Replace Commands
+			List<Replace> replace = command.getReplaceCommands();
+			for(Replace cour:replace)
+			{
+				os.write(("<"+SyncXMLTags.Replace+">\n").getBytes());
+				
+				//CmdId
+				os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(cour.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+				
+				//Meta
+				if(cour.getMeta() != null && cour.getMeta().trim().length()>0)
+				{
+					os.write(("<"+SyncXMLTags.Meta+">"+XMLUtil.cleanupXML(cour.getMeta())+"</"+SyncXMLTags.Meta+">\n").getBytes());
+				}
+				
+				//Items
+				if(!cour.getItems().isEmpty())
+				{
+					this.generateItemsStream(cour.getItems(),os);
+				}
+				
+				os.write(("</"+SyncXMLTags.Replace+">\n").getBytes());
+			}
+			
+			//Delete Commands
+			List<Delete> delete = command.getDeleteCommands();
+			for(Delete cour:delete)
+			{
+				os.write(("<"+SyncXMLTags.Delete+">\n").getBytes());
+				
+				//CmdId
+				os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(cour.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+				
+				//Meta
+				if(cour.getMeta() != null && cour.getMeta().trim().length()>0)
+				{
+					os.write(("<"+SyncXMLTags.Meta+">"+XMLUtil.cleanupXML(cour.getMeta())+"</"+SyncXMLTags.Meta+">\n").getBytes());
+				}
+				
+				//Items
+				if(!cour.getItems().isEmpty())
+				{
+					this.generateItemsStream(cour.getItems(),os);
+				}
+				
+				//Archive
+				if(cour.isArchive())
+				{
+					os.write(("<"+SyncXMLTags.Archive+"/>\n").getBytes());
+				}
+				
+				//SoftDelete
+				if(cour.isSoftDelete())
+				{
+					os.write(("<"+SyncXMLTags.SftDel+"/>\n").getBytes());
+				}
+				
+				os.write(("</"+SyncXMLTags.Delete+">\n").getBytes());
+			}
+			
+			
+			os.write(("</"+SyncXMLTags.Sync+">\n").getBytes());
+		}
+	}
+	
+	private void generateRecordMapStream(RecordMap recordMap,OutputStream os) throws IOException
+	{
+		os.write(("<"+SyncXMLTags.Map+">\n").getBytes());
+		
+		os.write(("<"+SyncXMLTags.CmdID+">"+XMLUtil.cleanupXML(recordMap.getCmdId())+"</"+SyncXMLTags.CmdID+">\n").getBytes());
+		
+		os.write(("<"+SyncXMLTags.Source+">\n").getBytes());
+		os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(recordMap.getSource())).getBytes());
+		os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+		os.write(("</"+SyncXMLTags.Source+">\n").getBytes());
+		
+		os.write(("<"+SyncXMLTags.Target+">\n").getBytes());
+		os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(recordMap.getTarget())).getBytes());
+		os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+		os.write(("</"+SyncXMLTags.Target+">\n").getBytes());
+		
+		if(recordMap.getMeta() != null && recordMap.getMeta().trim().length()>0)
+		{
+			os.write(("<"+SyncXMLTags.Meta+">"+XMLUtil.cleanupXML(recordMap.getMeta())+"</"+SyncXMLTags.Meta+">\n").getBytes());
+		}
+		
+		List<MapItem> mapItems = recordMap.getMapItems();
+		for(MapItem mapItem:mapItems)
+		{
+			os.write(("<"+SyncXMLTags.MapItem+">\n").getBytes());
+			
+			os.write(("<"+SyncXMLTags.Source+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(mapItem.getSource())).getBytes());
+			os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+			os.write(("</"+SyncXMLTags.Source+">\n").getBytes());
+			
+			os.write(("<"+SyncXMLTags.Target+">\n").getBytes());
+			os.write(("<"+SyncXMLTags.LocURI+">"+XMLUtil.cleanupXML(mapItem.getTarget())).getBytes());
+			os.write(("</"+SyncXMLTags.LocURI+">\n").getBytes());
+			os.write(("</"+SyncXMLTags.Target+">\n").getBytes());
+			
+			os.write(("</"+SyncXMLTags.MapItem+">\n").getBytes());
+		}
+				
+		os.write(("</"+SyncXMLTags.Map+">\n").getBytes());
 	}
 	
 	/**
