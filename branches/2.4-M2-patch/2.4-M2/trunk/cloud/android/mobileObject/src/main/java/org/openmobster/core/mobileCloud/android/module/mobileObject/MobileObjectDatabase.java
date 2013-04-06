@@ -441,7 +441,28 @@ public final class MobileObjectDatabase extends Service
 		}
 		catch(Exception e)
 		{
-			throw new SystemException(this.getClass().getName(), "readAllCursor", new Object[]
+			throw new SystemException(this.getClass().getName(), "readProxyCursor", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
+	
+	public Cursor readByNameValuePair(String channel,String name,String value)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.readByNameValuePair(channel,name,value);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "readByNameValuePair", new Object[]
    			{
 				"storageId="+channel,
 				"error="+e.getMessage()

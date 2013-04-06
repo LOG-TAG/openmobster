@@ -235,6 +235,13 @@ public final class Database
 		
 		return this.cloudbMetaData.getCRUDProvider().readProxyCursor(from);
 	}
+	
+	public Cursor readByNameValuePair(String from,String name,String value) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "readByNameValuePair");
+		return this.cloudbMetaData.getCRUDProvider().readByNameValuePair(from,name,value);
+	}
 	//--------Validation methods-----------------------------------------------------------------------------------------
 	private void validateConnection(String table, String caller) throws DBException
 	{
