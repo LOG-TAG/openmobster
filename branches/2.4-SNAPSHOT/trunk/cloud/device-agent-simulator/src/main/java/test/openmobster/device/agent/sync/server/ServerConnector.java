@@ -74,7 +74,12 @@ public class ServerConnector implements Channel
 		List<MobileBean> bootData = new ArrayList<MobileBean>();
 		
 		bootData.add(this.read("unique-1"));
-		bootData.add(this.read("unique-8675309"));
+		
+		MobileBean unique_8675309 = this.read("unique-8675309");
+		if(unique_8675309 != null)
+		{
+			bootData.add(unique_8675309);
+		}
 		
 		return bootData;
 	}
