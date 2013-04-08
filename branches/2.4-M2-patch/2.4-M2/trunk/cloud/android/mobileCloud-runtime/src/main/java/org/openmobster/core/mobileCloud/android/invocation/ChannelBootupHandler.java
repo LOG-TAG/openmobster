@@ -63,7 +63,7 @@ public final class ChannelBootupHandler extends Service implements InvocationHan
 		return this.getClass().getName();
 	}
 	
-	public InvocationResponse handleInvocation(Invocation invocation)
+	public synchronized InvocationResponse handleInvocation(Invocation invocation)
 	{
 		try
 		{			
