@@ -23,7 +23,7 @@ public class TestNullValuesFromCloud extends AbstractAPITest
 			this.startBootSync();
 			this.waitForBeans();
 			
-			MobileBean bean = MobileBean.readById(service, "unique-3");
+			MobileBean bean = MobileBean.readById(service, "unique-8675309");
 			this.assertNotNull(bean, this.getInfo()+"/MustNotBeNull");
 			this.assertNull(bean.getValue("from"), this.getInfo()+"/FromValueMustBeNull");
 			
@@ -35,7 +35,7 @@ public class TestNullValuesFromCloud extends AbstractAPITest
 			this.startBootSync();
 			this.waitForBeans();
 			
-			bean = MobileBean.readById(service, "unique-3");
+			bean = MobileBean.readById(service, "unique-8675309");
 			this.assertNotNull(bean, this.getInfo()+"/MustNotBeNull");
 			
 			this.assertEquals(bean.getValue("from"), "from@gmail.com", this.getInfo()+"/FromValueMustNotBeNull");

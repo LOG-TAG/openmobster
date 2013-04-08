@@ -23,7 +23,7 @@ public class TestSettingNullExistingBean extends AbstractAPITest
 			this.startBootSync();
 			this.waitForBeans();
 			
-			MobileBean bean = MobileBean.readById(service, "unique-3");
+			MobileBean bean = MobileBean.readById(service, "unique-8675309");
 			this.assertNotNull(bean, this.getInfo()+"/MustNotBeNull");
 			
 			bean.setValue("to", null);
@@ -35,7 +35,7 @@ public class TestSettingNullExistingBean extends AbstractAPITest
 			this.startBootSync();
 			this.waitForBeans();
 			
-			bean = MobileBean.readById(service, "unique-3");
+			bean = MobileBean.readById(service, "unique-8675309");
 			this.assertNotNull(bean, this.getInfo()+"/MustNotBeNull");
 			
 			this.assertNull(bean.getValue("to"), this.getInfo()+"/ToValueMustBeNull");
