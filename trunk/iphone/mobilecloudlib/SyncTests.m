@@ -14,7 +14,7 @@
 -(void)testAllSyncTypes 
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.103"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.108"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;
@@ -150,7 +150,7 @@
 -(void)testStreamSync 
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.103"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.108"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;

@@ -80,7 +80,7 @@
 {
 	NSLog(@"Starting testSocketStream......");
 	
-	NSString *host = @"192.168.1.103";
+	NSString *host = @"192.168.1.108";
 	
 	CFReadStreamRef readStream = NULL;
 	CFWriteStreamRef writeStream = NULL;
@@ -125,7 +125,7 @@
 {
 	NSLog(@"Starting testSecureSocketStream......");
 	
-	NSString *host = @"192.168.1.103";
+	NSString *host = @"192.168.1.108";
 	
 	CFReadStreamRef readStream = NULL;
 	CFWriteStreamRef writeStream = NULL;
@@ -201,7 +201,7 @@
 	{
 		configuration.serverId = @"http://openmobster.googlecode.com";
 		configuration.deviceId = @"IMEI:8675309";
-		configuration.serverIp = @"192.168.1.103";
+		configuration.serverIp = @"192.168.1.108";
 		configuration.secureServerPort = @"1500";
 		configuration.plainServerPort = @"1502";
 		configuration.sslActive = [NSNumber numberWithBool:YES];
@@ -261,7 +261,7 @@
 //----------------------------------------------------------------------------------------------
 -(void) runNetSessionTest:(NSString *)handshake :(NSString *)payload
 {
-	NetSession *session = [NetSession withInit:NO :@"192.168.1.103" :1502];
+	NetSession *session = [NetSession withInit:NO :@"192.168.1.108" :1502];
 		
 	NSString *response = [session performHandshake:handshake];
 	NSLog(@"%@",response);

@@ -112,7 +112,7 @@
       buildConfiguration = "Debug">
       <Testables>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E2A1225C377004C908F"
@@ -122,7 +122,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2E557A412F769FB008B3FCE"
@@ -132,7 +132,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A29D5C281293412A00DAE753"
@@ -142,7 +142,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E011225C1EF004C908F"
@@ -152,7 +152,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E531225C60E004C908F"
@@ -172,19 +172,7 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "CFNetworkTests/testNetConnector">
-               </Test>
-               <Test
                   Identifier = "CFNetworkTests/testSecureSocketStream">
-               </Test>
-               <Test
-                  Identifier = "CFNetworkTests/testSimpleHttpGet">
-               </Test>
-               <Test
-                  Identifier = "CFNetworkTests/testSocketStream">
-               </Test>
-               <Test
-                  Identifier = "CFNetworkTests/testNetSession">
                </Test>
             </SkippedTests>
          </TestableReference>
