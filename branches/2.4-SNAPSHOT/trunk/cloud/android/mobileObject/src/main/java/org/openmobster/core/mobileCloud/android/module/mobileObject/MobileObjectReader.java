@@ -149,7 +149,7 @@ final class MobileObjectReader extends DefaultHandler
 				}
 				else if(currentUri.endsWith("/field/value"))
 				{
-					this.currentField.setValue(data);
+					this.currentField.setValue(data.trim());
 					this.fields.add(this.currentField);
 					
 					this.currentField = new Field();
