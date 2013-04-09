@@ -484,6 +484,64 @@ public final class MobileBean
 		}
 	}
 	
+	public synchronized void synchronousSave() throws CommitException
+	{
+		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
+		
+		//If Bean Created on Device
+		if(this.isNew)
+		{
+			String newId = deviceDB.create(this.data);			
+			this.data = deviceDB.read(this.data.getStorageId(), newId);
+			
+			this.isNew = false;
+			this.refresh();
+			
+			//Integration with the SyncService
+			try
+			{
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+				SyncInvocation.synchronousSave, this.getService(), this.getId(), SyncInvocation.OPERATION_ADD);		
+				Bus.getInstance().invokeService(syncInvocation);
+			}
+			catch(Exception e)
+			{
+				SystemException sys = new SystemException(this.getClass().getName(), "save://Create", new Object[]{
+					"Exception="+e.toString(),
+					"Message="+e.getMessage()
+				});
+				ErrorHandler.getInstance().handle(sys);
+				throw new CommitException(sys);
+			}			
+			
+			return;
+		}
+		
+		//If Bean Updated on Device
+		if(this.isDirty)
+		{
+			try
+			{
+				deviceDB.update(this.data);
+				this.clearMetaData();
+			
+				//Integration with the SyncService
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+				SyncInvocation.synchronousSave, this.getService(), this.getId(), SyncInvocation.OPERATION_UPDATE);		
+				Bus.getInstance().invokeService(syncInvocation);
+			}
+			catch(Exception e)
+			{
+				SystemException sys = new SystemException(this.getClass().getName(), "save://Update", new Object[]{
+					"Exception="+e.toString(),
+					"Message="+e.getMessage()
+				});
+				ErrorHandler.getInstance().handle(sys);
+				throw new CommitException(sys);
+			}
+		}
+	}
+	
 	/**
 	 * Deletes the bean from the channel. This also makes sure this action is reflected on the Cloud Side as well
 	 */
