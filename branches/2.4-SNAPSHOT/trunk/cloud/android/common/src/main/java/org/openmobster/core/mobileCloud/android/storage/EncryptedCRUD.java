@@ -340,4 +340,9 @@ public class EncryptedCRUD implements CRUDProvider
 	{
 		return null;
 	}
+	
+	public Cursor readProxyCursor(String from) throws DBException
+	{
+		return null;
+	}
 }

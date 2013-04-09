@@ -44,4 +44,6 @@ public interface CRUDProvider
 	void deleteAll(String table) throws DBException;
 	
 	Cursor testCursor(String table) throws DBException;
+	
+	Cursor readProxyCursor(String table) throws DBException;
 }
