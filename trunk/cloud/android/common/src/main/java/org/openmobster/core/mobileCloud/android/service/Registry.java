@@ -200,7 +200,7 @@ public final class Registry
 	 * @return an instance of the Service registered with the Registry. It returns a null value if the Service is not found
 	 * 
 	 */
-	public Service lookup(Class serviceClass)
+	public synchronized Service lookup(Class serviceClass)
 	{
 		if(this.services == null)
 		{
@@ -224,7 +224,7 @@ public final class Registry
 		return String.valueOf(GeneralTools.generateUniqueId());
 	}
 	
-	private void registerService(Service service)
+	private synchronized void registerService(Service service)
 	{	
 		//Possibly unregister a service if it already exists
 		Service registered = this.lookup(service.getClass());
