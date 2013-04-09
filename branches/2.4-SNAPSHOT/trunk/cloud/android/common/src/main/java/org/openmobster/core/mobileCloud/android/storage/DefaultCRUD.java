@@ -533,7 +533,7 @@ public class DefaultCRUD implements CRUDProvider
 			this.db.endTransaction();
 		}
 	}
-	
+	//-------------------------------------------------------------------------------------------------------------------------------------
 	public Cursor testCursor(String from) throws DBException
 	{
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? ORDER BY value DESC",new String[]{"timestamp"});
@@ -543,6 +543,12 @@ public class DefaultCRUD implements CRUDProvider
 	public Cursor readProxyCursor(String from) throws DBException
 	{
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{"isProxy","true"});
+		return cursor;
+	}
+	
+	public Cursor readByNameValuePair(String from,String name,String value) throws DBException
+	{
+		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
 		return cursor;
 	}
 }

@@ -335,13 +335,18 @@ public class EncryptedCRUD implements CRUDProvider
 			this.db.endTransaction();
 		}
 	}
-	
+	//-----------------------------------------------------------------------------------------------------------------------
 	public Cursor testCursor(String table) throws DBException
 	{
 		return null;
 	}
 	
 	public Cursor readProxyCursor(String from) throws DBException
+	{
+		return null;
+	}
+	
+	public Cursor readByNameValuePair(String from,String name,String value) throws DBException
 	{
 		return null;
 	}

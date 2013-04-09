@@ -43,7 +43,10 @@ public interface CRUDProvider
 	
 	void deleteAll(String table) throws DBException;
 	
+	//---------------------------------------------------------------------------------------------------------------------
 	Cursor testCursor(String table) throws DBException;
 	
 	Cursor readProxyCursor(String table) throws DBException;
+	
+	public Cursor readByNameValuePair(String from,String name,String value) throws DBException;
 }
