@@ -57,66 +57,96 @@ public class IOUtilities
 		
 	public static String readServerResponse(InputStream is) throws IOException
 	{	
-		String data = null;
-		int received = 0;
-		ByteArrayOutputStream bos = null;
+		byte[] received = null;
+		StringBuilder incomingData = new StringBuilder();
+		boolean exit = false;
+		BufferStreamReader reader = new BufferStreamReader();
+		boolean content_length_processed = false;
 		try
 		{
-			bos = new ByteArrayOutputStream();
-			boolean carriageFound = false;
 			while(true)
-			{			
-				received = is.read();				
-				if(carriageFound)
+			{
+				received = readFromStream(is);
+				
+				if(received == null)
 				{
-					carriageFound = false;
-					if(received == '\n')
-					{
-						break;
-					}					
-				}				
-				if(received == '\r')
-				{
-					carriageFound = true;
+					//no data read this iteration, better luck in the next iteration
+					continue;
 				}
 				
-				bos.write(received);
-			}			
-			bos.flush();
+				//drop the data into the reader
+				reader.fillBuffer(received);
+				
+				//Now read a line
+				String line = null;
+				while((line=reader.readLine()) != null)
+				{
+					if(line.startsWith("content-length="))
+					{
+						if(content_length_processed)
+						{
+							continue;
+						}
+						
+						content_length_processed = true;
+						
+						//do stuff here
+						int contentLength = Integer.parseInt(line.substring("content-length=".length()).trim());
 			
-			StringBuffer buffer = new StringBuffer();
-			byte[] cour = bos.toByteArray();
-			buffer.append(new String(cour));						
-			data = buffer.toString();
-			long bytesTransferred = cour.length;
-			
-			//log that response is read successfully
-			PerfLogInterceptor.getInstance().logResponseRead();
-			PerfLogInterceptor.getInstance().recordBytesTransferred(bytesTransferred);
-			
-			return data;
-		}
-		catch(Throwable t)
-		{
-			//log that response is unsuccessful
-			PerfLogInterceptor.getInstance().logResponseFailed();
-			
-			if(t instanceof IOException)
-			{
-				throw (IOException)t;
+						
+						continue;
+					}
+					
+					if(line.endsWith("OPENMOBSTER_EOF_\r\n"))
+					{
+						//thats it....end of the line
+						int index = line.indexOf("OPENMOBSTER_EOF_\r\n");
+						String newLine = line.substring(0, index);
+						
+						incomingData.append(newLine);
+						
+						exit = true;
+						break;
+					}
+					
+					incomingData.append(line);
+				}
+				
+				if(exit)
+				{
+					break;
+				}
 			}
-			else
-			{
-				throw new IOException(t);
-			}
+			
+			String returnValue = incomingData.toString().trim();
+			
+			return returnValue;
 		}
 		finally
 		{
-			if(bos != null)
-			{
-				try{bos.close();}catch(IOException e){}
-			}
+			reader.close();
 		}
+	}
+	
+	private static byte[] readFromStream(InputStream is) throws IOException
+	{
+		byte[] dataPacket = new byte[1024];
+		
+		int numBytesRead = is.read(dataPacket);
+		if(numBytesRead == -1)
+		{
+			throw new IOException("InputStream is closed!!");
+		}
+		
+		if(numBytesRead > 0)
+		{
+			byte[] packet = new byte[numBytesRead];
+			System.arraycopy(dataPacket, 0, packet, 0, numBytesRead);
+			
+			return packet;
+		}
+		
+		return null;
 	}
 	
 	public static void writePayLoad(String payLoad, OutputStream os) throws IOException
