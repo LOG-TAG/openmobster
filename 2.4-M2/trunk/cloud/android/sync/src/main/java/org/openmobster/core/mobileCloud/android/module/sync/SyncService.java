@@ -283,7 +283,7 @@ public final class SyncService extends Service
 		String payLoad = (String)response.getAttribute(SyncAdapter.PAYLOAD);		
 		
 		//Start sync session																		
-		String data = session.sendPayloadTwoWay(payLoad);
+		String data = session.streamPayloadTwoWay(payLoad);
 		
 		
 		
@@ -304,7 +304,7 @@ public final class SyncService extends Service
 			
 			
 			//Send the payload to the server for processing						
-			data = session.sendPayloadTwoWay(payLoad);
+			data = session.streamPayloadTwoWay(payLoad);
 		}
 	}
 	
@@ -337,7 +337,7 @@ public final class SyncService extends Service
 		String payLoad = (String)response.getAttribute(SyncAdapter.PAYLOAD);		
 		
 		//Start sync session
-		String data = session.sendPayloadTwoWay(payLoad);
+		String data = session.streamPayloadTwoWay(payLoad);
 				
 		//Orchestrate the synchronization session until it is successfully finished
 		while(true)
@@ -356,7 +356,7 @@ public final class SyncService extends Service
 			
 			
 			//Send the payload to the server for processing
-			data = session.sendPayloadTwoWay(payLoad);	
+			data = session.streamPayloadTwoWay(payLoad);	
 		}
 	}
 	
