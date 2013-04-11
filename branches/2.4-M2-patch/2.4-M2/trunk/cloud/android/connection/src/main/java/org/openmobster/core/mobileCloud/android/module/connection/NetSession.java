@@ -16,6 +16,8 @@ import java.net.Socket;
 
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.module.connection.NetworkException;
+import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
+import org.openmobster.core.mobileCloud.android.filesystem.File;
 
 /**
  * @author openmobster@gmail.com
@@ -87,6 +89,27 @@ public final class NetSession
 			this.writePayLoad(payload, this.os);
 			
 			response = this.read(this.is);
+			
+			return response;
+		}
+		catch(Exception e)
+		{
+			throw new NetworkException(this.getClass().getName(), "sendPayloadTwoWay", new Object[]{
+				"Payload="+payload,
+				"Message="+e.getMessage()
+			});
+		}
+	}
+	
+	public String streamPayloadTwoWay(String payload) throws NetworkException
+	{
+		try
+		{
+			String response = null;
+			
+			this.writePayLoad(payload, this.os);
+			
+			response = this.stream(this.is);
 			
 			return response;
 		}
@@ -239,7 +262,65 @@ public final class NetSession
 		}
 	}
 	
+	private String stream(InputStream is) throws IOException
+	{
+		int received = 0;
+		File streamFile = null;
+		try
+		{
+			streamFile = FileSystem.getInstance().openOutputStream();
+			OutputStream bos = streamFile.getOutputStream();
+			boolean carriageFound = false;
+			while(true)
+			{			
+				received = is.read();	
+				
+				if(received == -1)
+				{
+					throw new IOException("InputStream is closed!!");
+				}
+				
+				if(carriageFound)
+				{
+					carriageFound = false;
+					if(received == '\n')
+					{
+						break;
+					}					
+				}				
+				if(received == '\r')
+				{
+					carriageFound = true;
+				}
+				
+				bos.write(received);
+			}			
+			bos.flush();
+			
+			return streamFile.getName();
+		}
+		finally
+		{
+			if(streamFile != null)
+			{
+				try{streamFile.getOutputStream().close();}catch(IOException e){}
+			}
+		}
+	}
+	
 	private void writePayLoad(String payLoad, OutputStream os) throws IOException
+	{
+		if(payLoad.startsWith("file:///"))
+		{
+			this.writePayloadStream(payLoad, os);
+		}
+		else
+		{
+			this.writePayloadString(payLoad, os);
+		}
+	}
+	
+	private void writePayloadString(String payLoad,OutputStream os) throws IOException
 	{
 		int startIndex = 0;
 		int endIndex = 0;
@@ -265,6 +346,38 @@ public final class NetSession
 			String packet = payLoad.substring(startIndex);
 			os.write((packet+"EOF\n").getBytes());
 			os.flush();
+		}
+	}
+	
+	private void writePayloadStream(String payLoad,OutputStream os) throws IOException
+	{
+		InputStream is = null;
+		try
+		{
+			is = FileSystem.getInstance().openInputStream(payLoad);
+			byte[] buffer = new byte[1024];
+			while(true)
+			{
+				int number_of_bytes = is.read(buffer);
+				if(number_of_bytes == -1)
+				{
+					break;
+				}
+				os.write(buffer, 0, number_of_bytes);
+			}
+			
+			os.write("EOF\n".getBytes());
+			os.flush();
+		}
+		finally
+		{
+			if(is != null)
+			{
+				try{is.close();}catch(Exception e){}
+			}
+			
+			//cleanup
+			FileSystem.getInstance().cleanup(payLoad);
 		}
 	}
 }
