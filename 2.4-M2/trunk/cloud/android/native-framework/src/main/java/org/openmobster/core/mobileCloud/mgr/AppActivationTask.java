@@ -23,6 +23,7 @@ import org.openmobster.core.mobileCloud.android.module.bus.BusException;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 import org.openmobster.core.mobileCloud.android.module.dm.DeviceManager;
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
@@ -35,10 +36,12 @@ import org.openmobster.core.mobileCloud.moblet.BootupConfiguration;
 final class AppActivationTask implements Task
 {
 	private Activity activity;
+	private AppActivationCallback callback;
 	
-	AppActivationTask(Activity activity)
+	AppActivationTask(Activity activity,AppActivationCallback callback)
 	{
 		this.activity = activity;
+		this.callback = callback;
 	}
 	
 	public void execute(CommandContext commandContext) throws AppException
@@ -163,9 +166,21 @@ final class AppActivationTask implements Task
 	@Override
 	public void postExecute(CommandContext commandContext) throws AppException
 	{
-		ViewHelper.getOkModalWithCloseApp(this.activity, "Activation", 
-				"Your App is successfully activated with the Cloud. You must restart at this point")
-		.show();
+		if(this.callback != null)
+		{
+			ViewHelper.getOkModal(this.activity, "Activation", 
+			"Your App is successfully activated with the Cloud")
+			.show();
+			
+			//Invoke callback on  the invoker of this workflow
+			this.callback.success();
+		}
+		else
+		{
+			ViewHelper.getOkModalWithCloseApp(this.activity, "Activation", 
+					"Your App is successfully activated with the Cloud. You must restart at this point")
+			.show();
+		}
 	}
 	
 	@Override
@@ -174,7 +189,7 @@ final class AppActivationTask implements Task
 		Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
 		if(!conf.isActive())
 		{
-			AppActivation appActivation = AppActivation.getInstance(this.activity);
+			AppActivation appActivation = AppActivation.getInstance(this.activity,this.callback);
 			appActivation.start();
 		}
 	}
