@@ -51,9 +51,12 @@ public final class AppStartupSequence
 	    	
 			//Perfom boot-sync on the unbooted channels....CometUtil.subscribeChannels does this for you
 	    	//....This results in duplicate bootsyncs
-			/*Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.ChannelBootupHandler");
-			invocation.setValue("push-restart-cancel", ""+Boolean.FALSE);
-			Bus.getInstance().invokeService(invocation);*/
+	    	if(!wasBootsyncStarted)
+	    	{
+	    		Invocation invocation = new Invocation("org.openmobster.core.mobileCloud.android.invocation.ChannelBootupHandler");
+	    		invocation.setValue("push-restart-cancel", ""+Boolean.FALSE);
+	    		Bus.getInstance().invokeService(invocation);
+	    	}
 			
 			//Get the non-booted but active channels with a two-way sync
 			List<String> channelsToSync = this.findTwoWaySyncChannels();
