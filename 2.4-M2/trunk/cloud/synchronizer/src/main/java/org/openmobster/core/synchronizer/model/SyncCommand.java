@@ -270,4 +270,11 @@ public class SyncCommand implements Serializable
 		
 		return allCommands;
 	}
+	
+	public void clear()
+	{
+		this.addCommands = null;
+		this.replaceCommands = null;
+		this.deleteCommands = null;
+	}
 }
