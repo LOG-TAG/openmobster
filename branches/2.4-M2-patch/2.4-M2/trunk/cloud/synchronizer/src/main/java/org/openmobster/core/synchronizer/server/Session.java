@@ -96,6 +96,17 @@ public class Session implements Serializable
 	
 	private boolean rollback = false;
 	
+	/**
+	 * BootSync data
+	 */
+	private List<Add> bootupData;
+	
+	/**
+	 * Normal Sync data
+	 */
+	private boolean isMultiSyncActive;
+	private List syncCommands;
+	private SyncCommand syncCommand;
 	
 	/**
 	 * 
@@ -1044,5 +1055,108 @@ public class Session implements Serializable
 	public void setRollback(boolean rollback)
 	{
 		this.rollback = rollback;
+	}
+	//------------------------------------------------------------------------------------------------------------------------
+	public List<Add> getBootupData()
+	{
+		return bootupData;
+	}
+
+	public void setBootupData(List<Add> bootupData)
+	{
+		this.bootupData = bootupData;
+	}
+	
+	public Add getBootupObject()
+	{
+		if(this.bootupData != null && !this.bootupData.isEmpty())
+		{
+			Add object = this.bootupData.get(0);
+			this.bootupData.remove(object);
+			
+			return object;
+		}
+		return null;
+	}
+	
+	public boolean isBootupDataFinished()
+	{
+		if(this.bootupData == null || this.bootupData.isEmpty())
+		{
+			this.bootupData = null;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isBootupDataActive()
+	{
+		if(this.bootupData != null)
+		{
+			return true;
+		}
+		return false;
+	}
+	//------------------------------------------------------------------------------------------------------------------------------
+
+	public boolean isMultiSyncActive()
+	{
+		return isMultiSyncActive;
+	}
+
+	public void setMultiSyncActive(boolean isMultiSyncActive)
+	{
+		this.isMultiSyncActive = isMultiSyncActive;
+	}
+
+	public List getSyncCommands()
+	{
+		return syncCommands;
+	}
+
+	public void setSyncCommands(List syncCommands)
+	{
+		this.syncCommands = syncCommands;
+	}
+	
+	public AbstractOperation getNextOperation()
+	{
+		if(this.syncCommands != null && !this.syncCommands.isEmpty())
+		{
+			AbstractOperation object = (AbstractOperation)this.syncCommands.get(0);
+			this.syncCommands.remove(object);
+			
+			return object;
+		}
+		return null;
+	}
+	
+	public boolean isOperationSyncFinished()
+	{
+		if(this.syncCommands == null || this.syncCommands.isEmpty())
+		{
+			this.syncCommands = null;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isOperationSyncActive()
+	{
+		if(this.syncCommands != null)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public SyncCommand getSyncCommand()
+	{
+		return syncCommand;
+	}
+
+	public void setSyncCommand(SyncCommand syncCommand)
+	{
+		this.syncCommand = syncCommand;
 	}
 }

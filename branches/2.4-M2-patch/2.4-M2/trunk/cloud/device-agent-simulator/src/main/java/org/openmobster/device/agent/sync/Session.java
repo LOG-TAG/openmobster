@@ -74,6 +74,8 @@ public final class Session
 	 */
 	private Hashtable attributes;
 	
+	private boolean hasSyncExecutedOnce;
+	
 	/**
 	 * 
 	 *
@@ -936,6 +938,7 @@ public final class Session
 	{
 		this.getAllOperationCommands().removeAllElements();
 		this.operationCommandIndex = 0;
+		this.operationCommandStateInitiated = false;
 	}
 	
 	/**
@@ -1029,5 +1032,15 @@ public final class Session
 	public void setAttribute(String attribute, Object value)
 	{
 		this.attributes.put(attribute, value);
+	}
+	//-----------------------------------------------------------------------------------------------------------------
+	public boolean hasSyncExecutedOnce()
+	{
+		return hasSyncExecutedOnce;
+	}
+
+	public void setHasSyncExecutedOnce(boolean hasSyncExecutedOnce)
+	{
+		this.hasSyncExecutedOnce = hasSyncExecutedOnce;
 	}
 }

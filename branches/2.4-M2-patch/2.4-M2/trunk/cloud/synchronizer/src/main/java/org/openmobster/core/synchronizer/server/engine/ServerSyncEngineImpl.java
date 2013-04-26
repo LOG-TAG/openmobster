@@ -507,9 +507,18 @@ public class ServerSyncEngineImpl implements ServerSyncEngine
 
 		//Getting selected records from the server since this is a boot sync
 		List<MobileBean> allRecords = this.gateway.bootup(service);
+		if(allRecords == null)
+		{
+			return commands;
+		}
 		for (int i = 0; i < allRecords.size(); i++)
 		{
 			MobileBean record = allRecords.get(i);
+			
+			if(record == null)
+			{
+				continue;
+			}
 
 			// Create a Sync Add Command from this record data				
 			commands.add((Add)this.getCommand(record, session.getMaxClientSize(), 

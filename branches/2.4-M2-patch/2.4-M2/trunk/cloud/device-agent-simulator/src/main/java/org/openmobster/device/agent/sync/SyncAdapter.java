@@ -288,6 +288,8 @@ public class SyncAdapter
 		
 		payload = this.syncXMLGenerator.generateSyncMessage(session, syncReply);
 		
+		session.setHasSyncExecutedOnce(true);
+		
 		return payload;
 	}
 			
@@ -568,6 +570,14 @@ public class SyncAdapter
 		 * be sent by the client or some other criteria
 		 */
 		this.setUpClientSyncFinal(session, reply, syncCommand);
+		if(session.isOperationCommandStateInitiated())
+		{
+			reply.setFinal(false);
+		}
+		else
+		{
+			reply.setFinal(true);
+		}
 
 		return reply;
 	}
@@ -613,6 +623,31 @@ public class SyncAdapter
 	
 	protected SyncMessage processBootSync(Session session) throws SyncException
 	{
+		if(session.hasSyncExecutedOnce())
+		{
+			SyncMessage currentMessage = session.getCurrentMessage();
+			SyncMessage clientSyncMessage = new SyncMessage();
+			int messageId = Integer.parseInt(currentMessage.getMessageId());
+			messageId++;
+			int cmdId = 1; // id for first command in this message...keep
+			// progressing
+			// this as new commands are added to this message
+
+			clientSyncMessage.setMessageId(String.valueOf(messageId));
+
+			/**
+			 * Consume the data changes by passing to the synchronization engine
+			 */
+			this.processSyncCommands(cmdId, session, clientSyncMessage);
+			
+			// Setup Final
+			clientSyncMessage.setFinal(true);
+
+			session.getClientSyncPackage().addMessage(clientSyncMessage);
+			
+			return clientSyncMessage;
+		}
+		
 		int cmdId = 1; //id for first command in this message...keep progressing
 		//this as new commands are added to this message
 		SyncMessage reply = this.setUpReply(session);
@@ -735,7 +770,7 @@ public class SyncAdapter
 		syncCommand.setSource(session.getDataSource(isServer));	
 		syncCommand.setTarget(session.getDataTarget(isServer));
 						
-		if(!session.isOperationCommandStateInitiated())
+		if(!session.isOperationCommandStateInitiated() && !session.hasSyncExecutedOnce())
 		{
 			try
 			{
@@ -792,8 +827,9 @@ public class SyncAdapter
 			}
 		}
 		
-		int numberOfCommands = this.calculateNumberOfCommands(session.getMaxClientSize(), session.
-		getAllOperationCommands()); 
+		//int numberOfCommands = this.calculateNumberOfCommands(session.getMaxClientSize(), session.
+		//getAllOperationCommands());
+		int numberOfCommands = 1;
 						
 		int allSize = session.getAllOperationCommands().size();
 		Vector allCommands = session.getAllOperationCommands();
@@ -823,6 +859,7 @@ public class SyncAdapter
 				if(commandIndex == allSize)
 				{
 					session.clearOperationCommandState();
+					break;
 				}
 			}
 			else

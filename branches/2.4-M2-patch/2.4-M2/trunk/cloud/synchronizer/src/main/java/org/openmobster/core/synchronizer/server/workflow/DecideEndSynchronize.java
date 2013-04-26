@@ -39,10 +39,12 @@ public class DecideEndSynchronize implements DecisionHandler
 		
 		if(!session.isMapExchangeInProgress())
 		{
-			if(Utilities.containsSyncFinal(session.getClientSyncPackage().getMessages()) && 
+			if(
+			   Utilities.containsSyncFinal(session.getClientSyncPackage().getMessages()) && 
 			   Utilities.containsSyncFinal(session.getServerSyncPackage().getMessages()) &&
 			   !Utilities.isChunkOpen(session) && 
-			   !Utilities.hasErrors(session.getCurrentMessage())
+			   !Utilities.hasErrors(session.getCurrentMessage()) &&
+			   !session.isMultiSyncActive()
 			)
 			{
 				result = WorkflowConstants.proceed;

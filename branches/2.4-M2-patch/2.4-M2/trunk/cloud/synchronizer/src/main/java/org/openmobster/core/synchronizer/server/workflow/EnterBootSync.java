@@ -71,16 +71,28 @@ public class EnterBootSync implements ActionHandler
 		String service = dataTarget;
 		try
 		{
-			List<Add> bootSyncCommands = syncEngine.processBootSync(session, service);
+			List<Add> bootSyncCommands = null; 
 			
-			if(bootSyncCommands != null)
+			if(!session.isBootupDataActive())
 			{
-				for(Add object: bootSyncCommands)
+				bootSyncCommands = syncEngine.processBootSync(session, service);
+				session.setBootupData(bootSyncCommands);
+			}
+			
+			if(session.isBootupDataActive())
+			{
+				int numberOfCommands = 1;
+				for(int i=0; i<numberOfCommands; i++)
 				{
+					Add object = session.getBootupObject();
+					if(object == null)
+					{
+						break;
+					}
 					object.setCmdId(String.valueOf(cmdId++));
 					syncCommand.getAddCommands().add(object);
 				}
-			}						
+			}
 		}
 		catch(Throwable t)
 		{
@@ -116,6 +128,7 @@ public class EnterBootSync implements ActionHandler
 		 * can be accepted by the client or some other criteria
 		 */
 		Utilities.setUpSyncFinal(context, reply, syncCommand);
+		reply.setFinal(session.isBootupDataFinished());
 		
 		session.getServerSyncPackage().addMessage(reply);
 		Utilities.preparePayload(context,

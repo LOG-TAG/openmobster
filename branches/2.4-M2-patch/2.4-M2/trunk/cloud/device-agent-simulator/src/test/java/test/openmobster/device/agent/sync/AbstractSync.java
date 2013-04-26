@@ -40,6 +40,7 @@ import org.openmobster.core.synchronizer.server.engine.ServerSyncEngine;
 import org.openmobster.core.synchronizer.server.engine.ChangeLogEntry;
 
 import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.common.Utilities;
 
 import org.openmobster.device.agent.configuration.Configuration;
 import test.openmobster.device.agent.sync.server.ServerRecord;
@@ -369,6 +370,59 @@ public abstract class AbstractSync extends TestCase
 		
 		return mo;
 	}
+	
+	protected void createNewDeviceRecords() throws Exception
+	{
+		//add a new record to the device and make it out-of-sync with the
+		// server
+		for(int i=0; i<5; i++)
+		{
+			MobileObject mo = new MobileObject();
+			mo.setRecordId(Utilities.generateUID());
+			mo.setStorageId(this.service);
+			mo.setValue("from", "from@gmail.com");
+			mo.setValue("to", "to@gmail.com");
+			mo.setValue("subject", MessageFormat.format(this.subject,new Object[]{mo.getRecordId()}));
+			mo.setValue("message", MessageFormat.format(this.message,new Object[]{mo.getRecordId()}));
+			this.deviceDatabase.create(mo);
+			
+			//Update the Client ChangeLog
+			Vector changelog = new Vector();
+			org.openmobster.device.agent.sync.engine.ChangeLogEntry entry = 
+			new org.openmobster.device.agent.sync.engine.ChangeLogEntry();
+			entry.setNodeId(this.service);
+			entry.setOperation(SyncEngine.OPERATION_ADD);
+			entry.setRecordId(mo.getRecordId());
+			changelog.add(entry);
+			this.deviceSyncEngine.addChangeLogEntries(changelog);
+		}
+	}
+	
+	protected void createNewServerRecords()
+	{	
+		for(int i=0; i<10; i++)
+		{
+			//add a new record to the server
+			ServerRecord serverRecord = new ServerRecord();
+			serverRecord.setObjectId(Utilities.generateUID());
+			serverRecord.setFrom("from@gmail.com");
+			serverRecord.setTo("to@gmail.com");
+			serverRecord.setSubject(MessageFormat.format(this.subject,new Object[]{serverRecord.getObjectId()}));
+			serverRecord.setMessage(MessageFormat.format(this.message,new Object[]{serverRecord.getObjectId()}));
+			serverRecord.setAttachment(this.attachment);
+			this.serverController.create(serverRecord);
+	
+			// Update the Server ChangeLog
+			List serverChangeLog = new ArrayList();
+			ChangeLogEntry serverEntry = new ChangeLogEntry();
+			serverEntry.setNodeId(this.service);
+			serverEntry.setOperation(ServerSyncEngine.OPERATION_ADD);
+			serverEntry.setRecordId(serverRecord.getObjectId());
+			serverChangeLog.add(serverEntry);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, this.app, serverChangeLog);
+		}
+	}
+	
 	protected MobileObject createDeviceRecord(String recordId) throws Exception
 	{
 		//add a new record to the device and make it out-of-sync with the
