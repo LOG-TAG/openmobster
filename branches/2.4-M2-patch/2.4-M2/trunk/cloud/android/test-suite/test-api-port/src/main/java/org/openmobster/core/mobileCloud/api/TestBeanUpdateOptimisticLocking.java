@@ -44,7 +44,11 @@ public final class TestBeanUpdateOptimisticLocking extends AbstractAPITest
 			}
 			instance2.refresh();
 			
-			assertEquals(instance2.getValue("from"), "/instance1/from/Updated", this.getInfo()+"://Instance2_not_integral");
+			System.out.println("****************************************************");
+			System.out.println("Instance2: "+instance2.getValue("from"));
+			System.out.println("****************************************************");
+			
+			assertEquals(instance2.getValue("from"), "/instance1/from/Updated", this.getInfo()+"://Instance2_not_integral/"+instance2.getValue("from"));
 			assertTrue(exceptionOccured, this.getInfo()+"://LockingException_Should_Occur");			
 		}
 		catch(Exception e)

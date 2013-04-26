@@ -84,6 +84,8 @@ public final class Session
 	private boolean backgroundSync;
 	private MobilePushInvocation pushInvocation;
 	
+	private boolean hasSyncExecutedOnce;
+	
 	/**
 	 * 
 	 *
@@ -931,6 +933,7 @@ public final class Session
 	{
 		this.getAllOperationCommands().clear();
 		this.operationCommandIndex = 0;
+		this.operationCommandStateInitiated = false;
 	}
 	
 	/**
@@ -1044,5 +1047,16 @@ public final class Session
 	public void setPushInvocation(MobilePushInvocation pushInvocation) 
 	{
 		this.pushInvocation = pushInvocation;
-	}	
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------------
+	public boolean hasSyncExecutedOnce()
+	{
+		return hasSyncExecutedOnce;
+	}
+
+	public void setHasSyncExecutedOnce(boolean hasSyncExecutedOnce)
+	{
+		this.hasSyncExecutedOnce = hasSyncExecutedOnce;
+	}
 }
