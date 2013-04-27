@@ -14,8 +14,10 @@ import org.jbpm.graph.def.ActionHandler;
 import org.jbpm.graph.exe.ExecutionContext;
 
 
+import org.openmobster.core.synchronizer.model.Add;
 import org.openmobster.core.synchronizer.model.SyncCommand;
 import org.openmobster.core.synchronizer.model.SyncMessage;
+import org.openmobster.core.synchronizer.model.AbstractOperation;
 import org.openmobster.core.synchronizer.server.Session;
 import org.openmobster.core.synchronizer.server.SyncXMLGenerator;
 import org.openmobster.core.synchronizer.server.SyncServer;
@@ -46,6 +48,16 @@ public class EnterNormalSync implements ActionHandler
 		int cmdId = 1; //id for first command in this message...keep progressing
 		//this as new commands are added to this message
 		SyncMessage reply = Utilities.setUpReply(context);
+		
+		SyncMessage currentMessage = session.getCurrentMessage();
+		if(!currentMessage.isFinal())
+		{
+			session.setMultiSyncActive(true);
+		}
+		else
+		{
+			session.setMultiSyncActive(false);
+		}
 				
 		//Send status on successfull client modifications synced up with the server
 		/**
@@ -54,7 +66,7 @@ public class EnterNormalSync implements ActionHandler
 		 */
 		Utilities.processSyncCommands(context, cmdId, reply);	
 		
-		SyncCommand syncCommand = null;
+		SyncCommand syncCommand = session.getSyncCommand();
 		if(session.getSyncType().equals(SyncServer.TWO_WAY) || 
 		   session.getSyncType().equals(SyncServer.SLOW_SYNC) ||
 		   session.getSyncType().equals(SyncServer.ONE_WAY_SERVER)
@@ -64,8 +76,39 @@ public class EnterNormalSync implements ActionHandler
 			/**
 			 * get this information by performing synchronization with engine
 			 */
-			syncCommand = Utilities.generateSyncCommand(context,cmdId,reply);
+			int numOfCommands = 1;
+			if(syncCommand == null)
+			{
+				syncCommand = Utilities.generateSyncCommand(context,cmdId,reply);
+				
+				session.setSyncCommands(syncCommand.getAllCommands());
+				syncCommand.clear();
+				session.setSyncCommand(syncCommand);
+			}
+			else
+			{
+				syncCommand.clear();
+			}
+			
+			if(session.isOperationSyncActive())
+			{
+				syncCommand = session.getSyncCommand();
+				syncCommand.clear();
+				for(int i=0; i<numOfCommands; i++)
+				{
+					AbstractOperation object = session.getNextOperation();
+					if(object == null)
+					{
+						break;
+					}
+					syncCommand.addOperationCommand(object);
+				}
+			}
+			
+			reply.getSyncCommands().clear();
+			reply.addSyncCommand(syncCommand);
 		}
+		
 				
 				
 		//Check to see if this is the last message of this phase from server end
@@ -74,6 +117,14 @@ public class EnterNormalSync implements ActionHandler
 		 * can be accepted by the client or some other criteria
 		 */
 		Utilities.setUpSyncFinal(context, reply, syncCommand);
+		if(session.isOperationSyncFinished())
+		{
+			reply.setFinal(true);
+		}
+		else
+		{
+			reply.setFinal(false);
+		}
 		
 		session.getServerSyncPackage().addMessage(reply);
 		Utilities.preparePayload(context,
