@@ -27,15 +27,22 @@ import android.widget.EditText;
 public final class AppActivation
 {
 	private Activity activity;
+	private AppActivationCallback callback;
 	
-	private AppActivation(Activity activity)
+	private AppActivation(Activity activity,AppActivationCallback callback)
 	{
 		this.activity = activity;
+		this.callback = callback;
+	}
+	
+	public static AppActivation getInstance(Activity activity,AppActivationCallback callback)
+	{
+		return new AppActivation(activity,callback);
 	}
 	
 	public static AppActivation getInstance(Activity activity)
 	{
-		return new AppActivation(activity);
+		return new AppActivation(activity,null);
 	}
 	
 	public void start()
@@ -253,7 +260,8 @@ public final class AppActivation
 					
 					CommandContext commandContext = new CommandContext();
 					
-					commandContext.setAttribute("task", new AppActivationTask(AppActivation.this.activity));
+					commandContext.setAttribute("task", new AppActivationTask(AppActivation.this.activity,
+					AppActivation.this.callback));
 					commandContext.setAttribute("server", server);
 					commandContext.setAttribute("email", email);
 					commandContext.setAttribute("password", password);
