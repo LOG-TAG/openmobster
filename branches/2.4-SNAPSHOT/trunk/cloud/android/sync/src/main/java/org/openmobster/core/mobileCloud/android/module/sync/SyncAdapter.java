@@ -95,6 +95,8 @@ public class SyncAdapter
 	public static final int PHASE_CLOSE = 3;
 	public static final int PHASE_END = 4;
 	
+	public static final int SNAPSHOT_SIZE = 1;
+	
 	/**
 	 * object helping out
 	 */
@@ -292,6 +294,8 @@ public class SyncAdapter
 		}
 		
 		payload = this.syncXMLGenerator.generateSyncMessageStream(session, syncReply);
+		
+		session.setHasSyncExecutedOnce(true);
 		
 		return payload;
 	}
@@ -598,6 +602,19 @@ public class SyncAdapter
 		 * be sent by the client or some other criteria
 		 */
 		this.setUpClientSyncFinal(session, reply, syncCommand);
+		if(session.getSyncType().equals(SyncAdapter.TWO_WAY) || 
+				   session.getSyncType().equals(SyncAdapter.ONE_WAY_CLIENT)
+				)
+		{
+			if(session.isOperationCommandStateInitiated())
+			{
+				reply.setFinal(false);
+			}
+			else
+			{
+				reply.setFinal(true);
+			}
+		}
 
 		return reply;
 	}
@@ -643,6 +660,31 @@ public class SyncAdapter
 	
 	protected SyncMessage processBootSync(Session session) throws SyncException
 	{
+		if(session.hasSyncExecutedOnce())
+		{
+			SyncMessage currentMessage = session.getCurrentMessage();
+			SyncMessage clientSyncMessage = new SyncMessage();
+			int messageId = Integer.parseInt(currentMessage.getMessageId());
+			messageId++;
+			int cmdId = 1; // id for first command in this message...keep
+			// progressing
+			// this as new commands are added to this message
+
+			clientSyncMessage.setMessageId(String.valueOf(messageId));
+
+			/**
+			 * Consume the data changes by passing to the synchronization engine
+			 */
+			this.processSyncCommands(cmdId, session, clientSyncMessage);
+			
+			// Setup Final
+			clientSyncMessage.setFinal(true);
+
+			session.getClientSyncPackage().addMessage(clientSyncMessage);
+			
+			return clientSyncMessage;
+		}
+		
 		int cmdId = 1; //id for first command in this message...keep progressing
 		//this as new commands are added to this message
 		SyncMessage reply = this.setUpReply(session);
@@ -825,9 +867,12 @@ public class SyncAdapter
 			}
 		}
 		
-		int numberOfCommands = this.calculateNumberOfCommands(
-		session.getMaxClientSize(), session.
-		getAllOperationCommands()); 
+		int numberOfCommands = this.calculateNumberOfCommands(session.getMaxClientSize(), session.
+				getAllOperationCommands());
+		if(!session.getSyncType().equals(SyncAdapter.SLOW_SYNC))
+		{
+					numberOfCommands = SNAPSHOT_SIZE;
+		}
 						
 		int allSize = session.getAllOperationCommands().size();
 		List<AbstractOperation> allCommands = session.getAllOperationCommands();
@@ -857,6 +902,7 @@ public class SyncAdapter
 				if(commandIndex == allSize)
 				{
 					session.clearOperationCommandState();
+					break;
 				}
 			}
 			else
