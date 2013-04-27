@@ -30,4 +30,6 @@
 -(void) addOperation:(AbstractOperation *) operation;
 -(NSMutableArray *) allOperations;
 
+-(void)clear;
+
 @end

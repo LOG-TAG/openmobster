@@ -72,4 +72,11 @@
 	return all;
 }
 
+-(void)clear
+{
+    self.addCommands = [NSMutableArray array];
+    self.replaceCommands = [NSMutableArray array];
+    self.deleteCommands = [NSMutableArray array];
+}
+
 @end
