@@ -95,7 +95,7 @@ public class SyncAdapter
 	public static final int PHASE_CLOSE = 3;
 	public static final int PHASE_END = 4;
 	
-	public static final int SNAPSHOT_SIZE = 1;
+	public static final int SNAPSHOT_SIZE = 1000;
 	
 	/**
 	 * object helping out
