@@ -13,5 +13,5 @@ package org.openmobster.core.synchronizer.server.workflow;
  */
 public interface SyncConstants
 {
-	public int SNAPSHOT_SIZE = 1;
+	public int SNAPSHOT_SIZE = 1000;
 }
