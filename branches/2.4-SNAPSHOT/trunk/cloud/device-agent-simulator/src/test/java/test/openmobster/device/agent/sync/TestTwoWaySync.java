@@ -22,6 +22,8 @@ public class TestTwoWaySync extends AbstractSync
 	{
 		ServerRecord newServerRecord = this.createNewServerRecord();
 		MobileObject newDeviceRecord = this.createNewDeviceRecord();
+		this.createNewDeviceRecords();
+		this.createNewServerRecords();
 				
 		this.performTwoWaySync();
 		
@@ -36,6 +38,10 @@ public class TestTwoWaySync extends AbstractSync
 		this.assertDevicePresence("unique-2");
 		this.assertDevicePresence(this.newServerRecordId);
 		this.assertDevicePresence(this.newDeviceRecordId);
+		
+		//Assert total # of records on the server
+		this.assertTrue(this.deviceDatabase.readByStorage(this.service).size()==19);
+		this.assertTrue(this.serverController.readAll().size()==19);
 		
 		//TODO: Assert the State of the Server Sync Engine
 		ServerRecord record = this.serverController.readServerRecord(this.newServerRecordId);
