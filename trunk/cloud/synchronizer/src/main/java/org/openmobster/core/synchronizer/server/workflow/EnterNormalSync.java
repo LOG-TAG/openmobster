@@ -68,7 +68,6 @@ public class EnterNormalSync implements ActionHandler
 		
 		SyncCommand syncCommand = session.getSyncCommand();
 		if(session.getSyncType().equals(SyncServer.TWO_WAY) || 
-		   session.getSyncType().equals(SyncServer.SLOW_SYNC) ||
 		   session.getSyncType().equals(SyncServer.ONE_WAY_SERVER)
 		)
 		{
@@ -76,7 +75,7 @@ public class EnterNormalSync implements ActionHandler
 			/**
 			 * get this information by performing synchronization with engine
 			 */
-			int numOfCommands = 1;
+			int numOfCommands = SyncConstants.SNAPSHOT_SIZE;
 			if(syncCommand == null)
 			{
 				syncCommand = Utilities.generateSyncCommand(context,cmdId,reply);
@@ -108,6 +107,10 @@ public class EnterNormalSync implements ActionHandler
 			reply.getSyncCommands().clear();
 			reply.addSyncCommand(syncCommand);
 		}
+		else if(session.getSyncType().equals(SyncServer.SLOW_SYNC))
+		{
+			syncCommand = Utilities.generateSyncCommand(context,cmdId,reply);
+		}
 		
 				
 				
@@ -117,13 +120,18 @@ public class EnterNormalSync implements ActionHandler
 		 * can be accepted by the client or some other criteria
 		 */
 		Utilities.setUpSyncFinal(context, reply, syncCommand);
-		if(session.isOperationSyncFinished())
+		if(session.getSyncType().equals(SyncServer.TWO_WAY) || 
+		   session.getSyncType().equals(SyncServer.ONE_WAY_SERVER)
+		)
 		{
-			reply.setFinal(true);
-		}
-		else
-		{
-			reply.setFinal(false);
+			if(session.isOperationSyncFinished())
+			{
+				reply.setFinal(true);
+			}
+			else
+			{
+				reply.setFinal(false);
+			}
 		}
 		
 		session.getServerSyncPackage().addMessage(reply);

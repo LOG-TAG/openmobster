@@ -84,6 +84,8 @@ public class SyncAdapter
 	public static final int PHASE_CLOSE = 3;
 	public static final int PHASE_END = 4;
 	
+	public static final int SNAPSHOT_SIZE = 1;
+	
 	/**
 	 * object helping out
 	 */
@@ -570,13 +572,18 @@ public class SyncAdapter
 		 * be sent by the client or some other criteria
 		 */
 		this.setUpClientSyncFinal(session, reply, syncCommand);
-		if(session.isOperationCommandStateInitiated())
+		if(session.getSyncType().equals(SyncAdapter.TWO_WAY) || 
+		   session.getSyncType().equals(SyncAdapter.ONE_WAY_CLIENT)
+		)
 		{
-			reply.setFinal(false);
-		}
-		else
-		{
-			reply.setFinal(true);
+			if(session.isOperationCommandStateInitiated())
+			{
+				reply.setFinal(false);
+			}
+			else
+			{
+				reply.setFinal(true);
+			}
 		}
 
 		return reply;
@@ -827,9 +834,12 @@ public class SyncAdapter
 			}
 		}
 		
-		//int numberOfCommands = this.calculateNumberOfCommands(session.getMaxClientSize(), session.
-		//getAllOperationCommands());
-		int numberOfCommands = 1;
+		int numberOfCommands = this.calculateNumberOfCommands(session.getMaxClientSize(), session.
+		getAllOperationCommands());
+		if(!session.getSyncType().equals(SyncAdapter.SLOW_SYNC))
+		{
+			numberOfCommands = SNAPSHOT_SIZE;
+		}
 						
 		int allSize = session.getAllOperationCommands().size();
 		Vector allCommands = session.getAllOperationCommands();
@@ -1397,11 +1407,12 @@ public class SyncAdapter
 													
 							MobileObject mobileObject = DeviceSerializer.getInstance().
 							deserialize(changeLogEntry.getItem().getData());
-							String recordId = mobileObject.getValue("/record/recordId");
+							String recordId = mobileObject.getRecordId();
 							String operation = cour.getCmd();
 							changeLogEntry.setRecordId(recordId);
 							changeLogEntry.setOperation(operation);
 							this.syncEngine.clearChangeLogEntry(changeLogEntry);
+							
 						}
 					}
 				}
