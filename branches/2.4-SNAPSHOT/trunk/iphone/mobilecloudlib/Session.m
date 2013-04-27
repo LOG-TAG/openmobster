@@ -23,6 +23,9 @@
 
 @synthesize state;
 @synthesize backgroundSync;
+@synthesize hasSyncExecutedOnce;
+@synthesize activeCommand;
+@synthesize activeOperations;
 
 +(id) withInit
 {
@@ -281,5 +284,38 @@
 		}
 	}
 	return nil;
+}
+
+-(AbstractOperation *)getNextOperation
+{
+    if(self.activeOperations != nil && [self.activeOperations count]>0)
+    {
+        AbstractOperation *next = (AbstractOperation *)[self.activeOperations objectAtIndex:0]; 
+        
+        //remove this object from the list of active operations
+        [self.activeOperations removeObjectAtIndex:0];
+        
+        return next;
+    }
+    return nil;
+}
+
+-(BOOL)isOperationSyncFinished
+{
+    if(self.activeOperations == nil || [self.activeOperations count]==0)
+    {
+        self.activeOperations = nil;
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isOperationSyncActive
+{
+    if(self.activeOperations != nil)
+    {
+        return YES;
+    }
+    return NO;
 }
 @end

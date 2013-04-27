@@ -83,23 +83,100 @@
 	[SyncHelper processSyncCommands:context :cmdId :session: reply];
 	
 	//Send any sync commands from the device side
-	SyncCommand *syncCommand = nil;
+	SyncCommand *syncCommand = session.activeCommand;
 	if(
 		[syncType isEqualToString:_TWO_WAY] ||
-	    [syncType isEqualToString:_SLOW_SYNC] ||
 	    [syncType isEqualToString:_ONE_WAY_CLIENT]
 	)
 	{
-		syncCommand = [SyncHelper generateSyncCommand:context :cmdId :session :reply];
+        int numOfCommands = 1; //make this link to a constant whose value can be changed
+        
+        if(syncCommand == nil)
+        {
+            syncCommand = [SyncHelper generateSyncCommand:context :cmdId :session :reply];
+            
+            session.activeOperations = [syncCommand allOperations];
+            
+            [syncCommand clear];
+            session.activeCommand = syncCommand;
+        }
+        else
+        {
+            [syncCommand clear];
+        }
+        
+        if([session isOperationSyncActive])
+        {
+            syncCommand = session.activeCommand;
+            [syncCommand clear];
+            for(int i=0; i<numOfCommands; i++)
+            {
+                AbstractOperation *object = [session getNextOperation];
+                if(object == nil)
+                {
+                    break;
+                }
+                [syncCommand addOperation:object];
+            }
+        }
+        
+        [reply.syncCommands removeAllObjects];
+        [reply addCommand:syncCommand];
 	}
+    else if([syncType isEqualToString:_SLOW_SYNC])
+    {
+        syncCommand = [SyncHelper generateSyncCommand:context :cmdId :session :reply];
+    }
 	
 	[SyncHelper setUpClientSyncFinal:session :reply :syncCommand];
+    if([syncType isEqualToString:_TWO_WAY] ||
+       [syncType isEqualToString:_ONE_WAY_CLIENT]
+    )
+    {
+        if([session isOperationSyncFinished])
+        {
+            reply.final = YES;
+        }
+        else
+        {
+            reply.final = NO;
+        }
+    }
 	
 	return reply;
 }
 
 +(SyncMessage *)bootSync:(Context *)context :(Session *)session
 {
+    if(session.hasSyncExecutedOnce)
+    {
+        WorkflowManager *manager = (WorkflowManager *)[context getAttribute:@"manager"];
+        Session *activeSession = [manager activeSession];
+        
+        SyncMessage *incoming = activeSession.currentMessage;
+        SyncMessage *outgoing = [SyncMessage withInit];
+        int messageId = [incoming.messageId intValue];
+        messageId++;
+        outgoing.messageId = [NSString stringWithFormat:@"%d",messageId];
+        
+        int cmdId = 1; //id for the first command in this outgoing message
+        
+        //Consume the domain data by passing to the sync engine
+        [SyncHelper processSyncCommands:context :cmdId :activeSession :outgoing];
+        
+        //ChangeLog Support
+        [SyncHelper cleanupChangeLog:context :activeSession];
+        
+        //TODO: Map Support
+        
+        //Make this the final
+        outgoing.final = YES;
+        
+        return outgoing;
+    }
+    
+    
+    
 	int cmdId = 1; //id for the first command in this message
 	SyncMessage *reply = [SyncHelper setUpReply:session];
 	WorkflowManager *manager = (WorkflowManager *)[context getAttribute:@"manager"];

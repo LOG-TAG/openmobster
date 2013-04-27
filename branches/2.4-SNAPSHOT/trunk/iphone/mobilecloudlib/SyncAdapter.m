@@ -111,6 +111,8 @@
 		[session.clientSyncPackage addMessage:message];
 		
 		xml = [SyncXMLGenerator generateSyncMessage:session :message];
+        
+        session.hasSyncExecutedOnce = YES;
 	}
 	else if([phase isEqualToString:@"start_close"] || 
 			[phase isEqualToString:@"decide_end_close"] ||

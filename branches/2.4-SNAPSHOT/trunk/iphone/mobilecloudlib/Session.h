@@ -47,6 +47,11 @@
 	//MobilePushInvocation pushInvocation; FIXME: integrate this once push stack is ported
 	
 	//TODO: implement Long Object and Map support...not needed for the 2.2-M1 release
+    
+    BOOL hasSyncExecutedOnce;
+    
+    SyncCommand *activeCommand;
+    NSMutableArray *activeOperations;
 }
 
 +(id) withInit;
@@ -71,6 +76,9 @@
 
 @property (assign) GenericAttributeManager *state;
 @property (assign) BOOL backgroundSync;
+@property (assign) BOOL hasSyncExecutedOnce;
+@property (assign) SyncCommand *activeCommand;
+@property (assign) NSMutableArray *activeOperations;
 
 -(NSString *) findDataSource:(SyncMessage *) message;
 -(NSString *) findDataTarget:(SyncMessage *) message;
@@ -84,4 +92,8 @@
 -(void)setAttribute:(NSString *)name :(id)value;
 -(id)getAttribute:(NSString *)name;
 -(void)removeAttribute:(NSString *)name;
+
+-(AbstractOperation *)getNextOperation;
+-(BOOL)isOperationSyncFinished;
+-(BOOL)isOperationSyncActive;
 @end
