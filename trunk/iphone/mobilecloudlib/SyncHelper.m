@@ -89,7 +89,7 @@
 	    [syncType isEqualToString:_ONE_WAY_CLIENT]
 	)
 	{
-        int numOfCommands = 1; //make this link to a constant whose value can be changed
+        int numOfCommands = SNAPSHOT_SIZE;
         
         if(syncCommand == nil)
         {

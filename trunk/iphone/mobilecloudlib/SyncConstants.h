@@ -48,6 +48,7 @@ extern NSString *const _SYNC_XML_GENERATOR;
 extern NSString *const _SYNC_OBJECT_GENERATOR;
 
 extern int const _RESPONSE_CLOSE;
+extern int const SNAPSHOT_SIZE;
 
 @interface SyncConstants : NSObject 
 {

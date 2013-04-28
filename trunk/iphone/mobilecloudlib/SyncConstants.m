@@ -48,6 +48,7 @@ NSString *const _SYNC_XML_GENERATOR = @"sync_xml_generator";
 NSString *const _SYNC_OBJECT_GENERATOR = @"sync_object_generator";
 
 int const _RESPONSE_CLOSE = 1;
+int const SNAPSHOT_SIZE = 1000;
 
 @implementation SyncConstants
 
