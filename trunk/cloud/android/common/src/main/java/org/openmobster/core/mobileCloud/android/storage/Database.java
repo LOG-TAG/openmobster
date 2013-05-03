@@ -10,6 +10,8 @@ package org.openmobster.core.mobileCloud.android.storage;
 
 import java.util.Set;
 
+import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+
 import android.content.Context;
 import android.database.Cursor;
 
@@ -241,6 +243,20 @@ public final class Database
 		//Validate
 		this.validateConnection(from, "readByNameValuePair");
 		return this.cloudbMetaData.getCRUDProvider().readByNameValuePair(from,name,value);
+	}
+	
+	public Cursor searchExactMatchAND(String from, GenericAttributeManager criteria) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "searchExactMatchAND");
+		return this.cloudbMetaData.getCRUDProvider().searchExactMatchAND(from, criteria);
+	}
+	
+	public Cursor searchExactMatchOR(String from, GenericAttributeManager criteria) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "searchExactMatchOR");
+		return this.cloudbMetaData.getCRUDProvider().searchExactMatchOR(from, criteria);
 	}
 	//--------Validation methods-----------------------------------------------------------------------------------------
 	private void validateConnection(String table, String caller) throws DBException

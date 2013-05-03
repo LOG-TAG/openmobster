@@ -12,8 +12,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
+import java.text.MessageFormat;
 
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
+import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -80,14 +84,11 @@ public class DefaultCRUD implements CRUDProvider
 				{
 					nameValuePairs.put(name, value);
 				}
-				
-				//insert this row
-				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
 			
 			//insert the name value pairs
 			Set<String> keys = nameValuePairs.keySet();
+			StringBuilder builder = new StringBuilder();
 			for(String key:keys)
 			{
 				if(key.endsWith("].value"))
@@ -103,8 +104,12 @@ public class DefaultCRUD implements CRUDProvider
 				
 				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
+				
+				builder.append(name+"="+value+"&amp;");
 			}
 			
+			String metaDataInsert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+			this.db.execSQL(metaDataInsert,new Object[]{recordId,"om:search",builder.toString()});
 			
 			//insert the JSON representation
 			String json = record.toJson();
@@ -123,13 +128,32 @@ public class DefaultCRUD implements CRUDProvider
 	
 	public long selectCount(String from) throws DBException
 	{
-		Set<Record> all = this.selectAll(from);
-		if(all != null)
+		Cursor cursor = null;
+		try
 		{
-			return all.size();
+			cursor = this.db.rawQuery("SELECT count(*) FROM "+from+" WHERE name=?", new String[]{"om:json"});
+			if(cursor.getCount()>0)
+			{
+				cursor.moveToFirst();
+				int count = cursor.getInt(0);
+				return count;
+			}
+			
+			return 0;
 		}
-		
-		return 0;
+		catch(Exception e)
+		{
+			throw new DBException(DefaultCRUD.class.getName(),"selectAll", new Object[]{
+				"Exception: "+e.getMessage()
+			});
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
 	}
 	
 	public Set<Record> selectAll(String from) throws DBException
@@ -455,14 +479,11 @@ public class DefaultCRUD implements CRUDProvider
 				{
 					nameValuePairs.put(name, value);
 				}
-				
-				//insert this row
-				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
 			
 			//insert the name value pairs
 			Set<String> keys = nameValuePairs.keySet();
+			StringBuilder builder = new StringBuilder();
 			for(String key:keys)
 			{
 				if(key.endsWith("].value"))
@@ -477,7 +498,12 @@ public class DefaultCRUD implements CRUDProvider
 				
 				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
+				
+				builder.append(name+"="+value+"&amp;");
 			}
+			
+			String metaDataInsert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+			this.db.execSQL(metaDataInsert,new Object[]{recordId,"om:search",builder.toString()});
 			
 			//insert the JSON representation
 			String json = record.toJson();
@@ -549,6 +575,94 @@ public class DefaultCRUD implements CRUDProvider
 	public Cursor readByNameValuePair(String from,String name,String value) throws DBException
 	{
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
+		return cursor;
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------------
+	public Cursor searchExactMatchAND(String from, GenericAttributeManager criteria) throws DBException
+	{
+		if(criteria == null || criteria.isEmpty())
+		{
+			return null;
+		}
+		
+		String fragment = "value LIKE ''%{0}={1}%''";
+		List<String> fragments = new ArrayList<String>();
+		String[] names = criteria.getNames();
+		for(String name:names)
+		{
+			String value = (String)criteria.getAttribute(name);
+			String queryFragment = MessageFormat.format(fragment, name, value);
+			
+			fragments.add(queryFragment);
+		}
+		
+		StringBuilder queryBuffer = new StringBuilder();
+		queryBuffer.append("SELECT recordid FROM "+from+" WHERE name='om:search' AND (");
+		for(int i=0,size=fragments.size();i<size;i++)
+		{
+			String queryFragment = fragments.get(i);
+			queryBuffer.append(queryFragment);
+			
+			if(i==(size-1))
+			{
+				//this is the last fragment
+				queryBuffer.append(")");
+			}
+			else
+			{
+				queryBuffer.append(" AND ");
+			}
+		}
+		
+		
+		String query = queryBuffer.toString();
+		
+		Cursor cursor = this.db.rawQuery(query, new String[]{});
+		
+		return cursor;
+	}
+	
+	public Cursor searchExactMatchOR(String from, GenericAttributeManager criteria) throws DBException
+	{
+		if(criteria == null || criteria.isEmpty())
+		{
+			return null;
+		}
+		
+		String fragment = "value LIKE ''%{0}={1}%''";
+		List<String> fragments = new ArrayList<String>();
+		String[] names = criteria.getNames();
+		for(String name:names)
+		{
+			String value = (String)criteria.getAttribute(name);
+			String queryFragment = MessageFormat.format(fragment, name, value);
+			
+			fragments.add(queryFragment);
+		}
+		
+		StringBuilder queryBuffer = new StringBuilder();
+		queryBuffer.append("SELECT recordid FROM "+from+" WHERE name='om:search' AND (");
+		for(int i=0,size=fragments.size();i<size;i++)
+		{
+			String queryFragment = fragments.get(i);
+			queryBuffer.append(queryFragment);
+			
+			if(i==(size-1))
+			{
+				//this is the last fragment
+				queryBuffer.append(")");
+			}
+			else
+			{
+				queryBuffer.append(" OR ");
+			}
+		}
+		
+		
+		String query = queryBuffer.toString();
+		
+		Cursor cursor = this.db.rawQuery(query, new String[]{});
+		
 		return cursor;
 	}
 }
