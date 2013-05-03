@@ -8,6 +8,9 @@
 package org.openmobster.core.mobileCloud.android.storage;
 
 import java.util.Set;
+
+import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 
@@ -49,4 +52,7 @@ public interface CRUDProvider
 	Cursor readProxyCursor(String table) throws DBException;
 	
 	public Cursor readByNameValuePair(String from,String name,String value) throws DBException;
+	//----------------------------------------------------------------------------------------------------------------------
+	public Cursor searchExactMatchAND(String from, GenericAttributeManager criteria) throws DBException;
+	public Cursor searchExactMatchOR(String from, GenericAttributeManager criteria) throws DBException;
 }
