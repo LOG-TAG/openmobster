@@ -12,9 +12,14 @@ import java.util.Set;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
 
 import org.json.JSONObject;
+import android.util.JsonWriter;
 
+import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
+import org.openmobster.core.mobileCloud.android.filesystem.File;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
 /**
@@ -157,5 +162,26 @@ public final class Record
 	{
 		JSONObject object = new JSONObject(this.state);
 		return object.toString();
+	}
+	
+	public boolean isStoreable()
+	{
+		long size = 0;
+		
+		Set<String> names = this.getNames();
+		for(String name:names)
+		{
+			String value = this.getValue(name);
+			size += name.length();
+			size += value.length();
+		}
+		
+		//Object is too big for local storage
+		if(size > 2000000)
+		{
+			return false;
+		}
+		
+		return true;
 	}
 }
