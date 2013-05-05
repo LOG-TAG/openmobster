@@ -55,8 +55,9 @@ public class TestDatabasePerformance extends Test
 			Context context = (Context)this.getTestSuite().getContext().
 			getAttribute("android:context");
 			
-			this.testSearchExactMatchAND(context);
-			this.testSearchExactMatchOR(context);
+			//this.testSearchExactMatchAND(context);
+			//this.testSearchExactMatchOR(context);
+			this.testStoreLargeJson(context);
 		}
 		catch(Exception e)
 		{
@@ -193,5 +194,47 @@ public class TestDatabasePerformance extends Test
 		}while(!cursor.isAfterLast());
 		
 		this.assertTrue(cursor.getCount()==1, this.getInfo()+"/testSearchExactMatchOR/MustFindOneRow");
+	}
+	
+	private void testStoreLargeJson(Context context) throws DBException
+	{
+		Database db = Database.getInstance(context);
+		db.dropTable("emailChannel");
+		db.createTable("emailChannel");
+		
+		String from = "from@gmail.com";
+		String to = "to@gmail.com";
+		StringBuilder builder = new StringBuilder();
+		
+		StringBuilder packetBuilder = new StringBuilder();
+		for(int i=0; i<1000; i++)
+		{
+			packetBuilder.append("a");
+		}
+		String packet = packetBuilder.toString();
+		for(int i=0;i<1900;i++)
+		{
+			builder.append(packet);
+		}
+		
+		String message = builder.toString();
+		
+		MobileObject mobileObject = new MobileObject();
+		mobileObject.setStorageId("emailChannel");
+		mobileObject.setValue("from", from);
+		mobileObject.setValue("to", to);
+		mobileObject.setValue("message", message);
+		mobileObject.setCreatedOnDevice(false);
+		mobileObject.setLocked(false);
+		mobileObject.setProxy(false);
+		String recordId = MobileObjectDatabase.getInstance().create(mobileObject);
+		
+		Record largeRecord = db.select("emailChannel", recordId);
+		this.assertNotNull(largeRecord, this.getInfo()+"/testStoreLargeJson/MustNotBeNull");
+		
+		mobileObject = new MobileObject(largeRecord);
+		String largeMessage = mobileObject.getValue("message");
+		
+		this.assertEquals(""+largeMessage.length(), "1900000", this.getInfo()+"/testStoreLargeJson/MessageLengthDoesNotMatch");
 	}
 }

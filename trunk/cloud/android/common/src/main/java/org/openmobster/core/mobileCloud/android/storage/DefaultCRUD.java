@@ -19,6 +19,7 @@ import java.text.MessageFormat;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import org.json.JSONObject;
@@ -53,6 +54,13 @@ public class DefaultCRUD implements CRUDProvider
 		{
 			this.db.beginTransaction();
 			
+			if(!record.isStoreable())
+			{
+				throw new DBException(DefaultCRUD.class.getName(),"insert", new Object[]{
+					"Exception: The JSON Object exceeds the maximum size limit"
+				});
+			}
+			
 			//SetUp the RecordId
 			String recordId = record.getRecordId();
 			if(recordId == null || recordId.trim().length() == 0)
@@ -61,64 +69,17 @@ public class DefaultCRUD implements CRUDProvider
 				record.setRecordId(recordId);
 			}
 			
-			//SetUp the DirtyStatus
-			record.setDirtyStatus(GeneralTools.generateUniqueId());
-			
-			//Delete a record if one exists by this id...cleanup
-			this.delete(table, record);
-			
-			Set<String> names = record.getNames();
-			Map<String,String> nameValuePairs = new HashMap<String,String>();
-			for(String name: names)
-			{
-				String value = record.getValue(name);
-				
-				//check if this is a name
-				if(name.startsWith("field[") && name.endsWith("].name"))
-				{
-					nameValuePairs.put(name, value);
-				}
-				
-				//check fi this is a value
-				if(name.startsWith("field[") && name.endsWith("].value"))
-				{
-					nameValuePairs.put(name, value);
-				}
-			}
-			
-			//insert the name value pairs
-			Set<String> keys = nameValuePairs.keySet();
-			StringBuilder builder = new StringBuilder();
-			for(String key:keys)
-			{
-				if(key.endsWith("].value"))
-				{
-					continue;
-				}
-				
-				String name = nameValuePairs.get(key);
-				
-				//Get the value
-				String value = nameValuePairs.get(key.replace("].name", "].value"));
-				
-				
-				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-				this.db.execSQL(insert,new Object[]{recordId,name,value});
-				
-				builder.append(name+"="+value+"&amp;");
-			}
-			
-			String metaDataInsert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-			this.db.execSQL(metaDataInsert,new Object[]{recordId,"om:search",builder.toString()});
-			
-			//insert the JSON representation
-			String json = record.toJson();
-			String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-			this.db.execSQL(insert,new Object[]{recordId,"om:json",json});
+			this.addRecord(table, record);
 			
 			this.db.setTransactionSuccessful();
 			
 			return recordId;
+		}
+		catch(Exception e)
+		{
+			throw new DBException(DefaultCRUD.class.getName(),"insert", new Object[]{
+				"Exception: "+e.getMessage()
+			});
 		}
 		finally
 		{
@@ -202,7 +163,6 @@ public class DefaultCRUD implements CRUDProvider
 					//setup the Record
 					Record record = new Record(state);
 					all.add(record);
-					
 					this.cache.put(from,record.getRecordId(),value);
 					
 					cursor.moveToNext();
@@ -289,228 +249,33 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	
-	public Set<Record> select(String from, String name, String value) throws DBException
-	{
-		Cursor cursor = null;
-		try
-		{
-			Set<Record> records = null;
-			
-			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
-			
-			if(cursor.getCount() > 0)
-			{
-				records = new HashSet<Record>();
-				
-				int recordidIndex = cursor.getColumnIndex("recordid");
-				cursor.moveToFirst();
-				do
-				{
-					String recordid = cursor.getString(recordidIndex);
-					
-					Record record = this.select(from, recordid);
-					records.add(record);
-					
-					cursor.moveToNext();
-				}while(!cursor.isAfterLast());
-			}
-			
-			return records;
-		}
-		finally
-		{
-			if(cursor != null)
-			{
-				cursor.close();
-			}
-		}
-	}
-	
-	public Set<Record> selectByValue(String from, String value) throws DBException
-	{
-		Cursor cursor = null;
-		try
-		{
-			Set<Record> records = null;
-			
-			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE value=?", new String[]{value});
-			
-			if(cursor.getCount() > 0)
-			{
-				records = new HashSet<Record>();
-				
-				int recordidIndex = cursor.getColumnIndex("recordid");
-				cursor.moveToFirst();
-				do
-				{
-					String recordid = cursor.getString(recordidIndex);
-					
-					Record record = this.select(from, recordid);
-					records.add(record);
-					
-					cursor.moveToNext();
-				}while(!cursor.isAfterLast());
-			}
-			
-			return records;
-		}
-		finally
-		{
-			if(cursor != null)
-			{
-				cursor.close();
-			}
-		}
-	}
-	
-	public Set<Record> selectByNotEquals(String from, String value) throws DBException
-	{
-		/*Cursor cursor = null;
-		try
-		{
-			Set<Record> records = null;
-			
-			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from,null);
-			
-			if(cursor.getCount() > 0)
-			{
-				records = new HashSet<Record>();
-				
-				int recordidIndex = cursor.getColumnIndex("recordid");
-				cursor.moveToFirst();
-				do
-				{
-					String recordid = cursor.getString(recordidIndex);
-					
-					Record record = this.select(from, recordid);
-					records.add(record);
-					
-					cursor.moveToNext();
-				}while(!cursor.isAfterLast());
-			}
-			
-			return records;
-		}
-		finally
-		{
-			if(cursor != null)
-			{
-				cursor.close();
-			}
-		}*/
-		return this.selectAll(from);
-	}
-	
-	public Set<Record> selectByContains(String from, String value) throws DBException
-	{
-		Cursor cursor = null;
-		try
-		{
-			Set<Record> records = null;
-			
-			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE value LIKE ?", new String[]{"%"+value+"%"});
-			
-			if(cursor.getCount() > 0)
-			{
-				records = new HashSet<Record>();
-				
-				int recordidIndex = cursor.getColumnIndex("recordid");
-				cursor.moveToFirst();
-				do
-				{
-					String recordid = cursor.getString(recordidIndex);
-					
-					Record record = this.select(from, recordid);
-					records.add(record);
-					
-					cursor.moveToNext();
-				}while(!cursor.isAfterLast());
-			}
-			
-			return records;
-		}
-		finally
-		{
-			if(cursor != null)
-			{
-				cursor.close();
-			}
-		}
-	}
-	
 	public void update(String table, Record record) throws DBException
 	{
 		try
 		{
 			this.db.beginTransaction();
 			
+			if(!record.isStoreable())
+			{
+				throw new DBException(DefaultCRUD.class.getName(),"update", new Object[]{
+					"Exception: The JSON Object exceeds the maximum size limit"
+				});
+			}
+			
 			String recordId = record.getRecordId();
 			
 			//invalidate the cacched copy if present
 			this.cache.invalidate(table, recordId);
 			
-			Set<String> names = record.getNames();
-			
-			record.setDirtyStatus(GeneralTools.generateUniqueId());
-			
-			/*for(String name: names)
-			{
-				String value = record.getValue(name);
-				
-				//update this row
-				String update = "UPDATE "+table+" SET recordid='"+recordId+"',name='"+name+"',value='"+value+"';";
-				this.db.execSQL(update);
-			}*/
-			//Delete a record if one exists by this id...cleanup
-			this.delete(table, record);
-			Map<String,String> nameValuePairs = new HashMap<String,String>();
-			for(String name: names)
-			{
-				String value = record.getValue(name);
-				
-				//check if this is a name
-				if(name.startsWith("field[") && name.endsWith("].name"))
-				{
-					nameValuePairs.put(name, value);
-				}
-				
-				//check fi this is a value
-				if(name.startsWith("field[") && name.endsWith("].value"))
-				{
-					nameValuePairs.put(name, value);
-				}
-			}
-			
-			//insert the name value pairs
-			Set<String> keys = nameValuePairs.keySet();
-			StringBuilder builder = new StringBuilder();
-			for(String key:keys)
-			{
-				if(key.endsWith("].value"))
-				{
-					continue;
-				}
-				
-				String name = nameValuePairs.get(key);
-				
-				//Get the value
-				String value = nameValuePairs.get(key.replace("].name", "].value"));
-				
-				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-				this.db.execSQL(insert,new Object[]{recordId,name,value});
-				
-				builder.append(name+"="+value+"&amp;");
-			}
-			
-			String metaDataInsert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-			this.db.execSQL(metaDataInsert,new Object[]{recordId,"om:search",builder.toString()});
-			
-			//insert the JSON representation
-			String json = record.toJson();
-			String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-			this.db.execSQL(insert,new Object[]{recordId,"om:json",json});
+			this.addRecord(table, record);
 			
 			this.db.setTransactionSuccessful();
+		}
+		catch(Exception e)
+		{
+			throw new DBException(DefaultCRUD.class.getName(),"update", new Object[]{
+				"Exception: "+e.getMessage()
+			});
 		}
 		finally
 		{
@@ -664,5 +429,216 @@ public class DefaultCRUD implements CRUDProvider
 		Cursor cursor = this.db.rawQuery(query, new String[]{});
 		
 		return cursor;
+	}
+	//------------------------------------------------Private Impl-------------------------------------------------------------------------------
+	private void addRecord(String table,Record record) throws DBException
+	{
+		String recordId = record.getRecordId();
+		
+		//SetUp the DirtyStatus
+		record.setDirtyStatus(GeneralTools.generateUniqueId());
+		
+		//Delete a record if one exists by this id...cleanup
+		this.delete(table, record);
+		
+		Set<String> names = record.getNames();
+		Map<String,String> nameValuePairs = new HashMap<String,String>();
+		for(String name: names)
+		{
+			String value = record.getValue(name);
+			
+			//check if this is a name
+			if(name.startsWith("field[") && name.endsWith("].name"))
+			{
+				nameValuePairs.put(name, value);
+			}
+			
+			//check fi this is a value
+			if(name.startsWith("field[") && name.endsWith("].value"))
+			{
+				nameValuePairs.put(name, value);
+			}
+		}
+		
+		//insert the name value pairs
+		Set<String> keys = nameValuePairs.keySet();
+		StringBuilder builder = new StringBuilder();
+		for(String key:keys)
+		{
+			if(key.endsWith("].value"))
+			{
+				continue;
+			}
+			
+			String name = nameValuePairs.get(key);
+			
+			//Get the value
+			String value = nameValuePairs.get(key.replace("].name", "].value"));
+			
+			if(value.length() < 2000000)
+			{
+				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+				this.db.execSQL(insert,new Object[]{recordId,name,value});
+				
+				builder.append(name+"="+value+"&amp;");
+			}
+		}
+		
+		String metaDataInsert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+		this.db.execSQL(metaDataInsert,new Object[]{recordId,"om:search",builder.toString()});
+		
+		//insert the JSON representation
+		String json = record.toJson();
+		String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+		this.db.execSQL(insert,new Object[]{recordId,"om:json",json});
+	}
+	//----------------------------------------------Deprecated------------------------------------------------------------------------
+	public Set<Record> select(String from, String name, String value) throws DBException
+	{
+		Cursor cursor = null;
+		try
+		{
+			Set<Record> records = null;
+			
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
+			
+			if(cursor.getCount() > 0)
+			{
+				records = new HashSet<Record>();
+				
+				int recordidIndex = cursor.getColumnIndex("recordid");
+				cursor.moveToFirst();
+				do
+				{
+					String recordid = cursor.getString(recordidIndex);
+					
+					Record record = this.select(from, recordid);
+					records.add(record);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return records;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
+	}
+	
+	public Set<Record> selectByValue(String from, String value) throws DBException
+	{
+		Cursor cursor = null;
+		try
+		{
+			Set<Record> records = null;
+			
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE value=?", new String[]{value});
+			
+			if(cursor.getCount() > 0)
+			{
+				records = new HashSet<Record>();
+				
+				int recordidIndex = cursor.getColumnIndex("recordid");
+				cursor.moveToFirst();
+				do
+				{
+					String recordid = cursor.getString(recordidIndex);
+					
+					Record record = this.select(from, recordid);
+					records.add(record);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return records;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
+	}
+	
+	public Set<Record> selectByNotEquals(String from, String value) throws DBException
+	{
+		/*Cursor cursor = null;
+		try
+		{
+			Set<Record> records = null;
+			
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from,null);
+			
+			if(cursor.getCount() > 0)
+			{
+				records = new HashSet<Record>();
+				
+				int recordidIndex = cursor.getColumnIndex("recordid");
+				cursor.moveToFirst();
+				do
+				{
+					String recordid = cursor.getString(recordidIndex);
+					
+					Record record = this.select(from, recordid);
+					records.add(record);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return records;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}*/
+		return this.selectAll(from);
+	}
+	
+	public Set<Record> selectByContains(String from, String value) throws DBException
+	{
+		Cursor cursor = null;
+		try
+		{
+			Set<Record> records = null;
+			
+			cursor = this.db.rawQuery("SELECT DISTINCT recordid FROM "+from+" WHERE value LIKE ?", new String[]{"%"+value+"%"});
+			
+			if(cursor.getCount() > 0)
+			{
+				records = new HashSet<Record>();
+				
+				int recordidIndex = cursor.getColumnIndex("recordid");
+				cursor.moveToFirst();
+				do
+				{
+					String recordid = cursor.getString(recordidIndex);
+					
+					Record record = this.select(from, recordid);
+					records.add(record);
+					
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
+			return records;
+		}
+		finally
+		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
+		}
 	}
 }

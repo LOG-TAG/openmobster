@@ -43,12 +43,12 @@ public final class MobileObject
 		this.arrayMetaData = new ArrayList<ArrayMetaData>();
 	}
 		
-	MobileObject(List<Field> fields)
+	public MobileObject(List<Field> fields)
 	{
 		this.fields = fields;		
 	}
 	
-	MobileObject(Record record)
+	public MobileObject(Record record)
 	{		
 		this.storageId = record.getValue("storageId");
 		this.recordId = record.getRecordId();
