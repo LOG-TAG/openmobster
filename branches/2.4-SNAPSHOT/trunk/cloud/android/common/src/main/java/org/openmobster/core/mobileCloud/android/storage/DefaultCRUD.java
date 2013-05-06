@@ -11,18 +11,20 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.text.MessageFormat;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
+import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import org.json.JSONObject;
+import android.util.JsonReader;
 
 /**
  *
@@ -104,7 +106,7 @@ public class DefaultCRUD implements CRUDProvider
 		}
 		catch(Exception e)
 		{
-			throw new DBException(DefaultCRUD.class.getName(),"selectAll", new Object[]{
+			throw new DBException(DefaultCRUD.class.getName(),"selectCount", new Object[]{
 				"Exception: "+e.getMessage()
 			});
 		}
@@ -148,22 +150,27 @@ public class DefaultCRUD implements CRUDProvider
 					String value = cursor.getString(valueIndex);
 					
 					Map<String,String> state = new HashMap<String,String>();
-					JSONObject json = new JSONObject(value);
-					Iterator keys = json.keys();
-					if(keys != null)
+					FileSystem fileSystem = FileSystem.getInstance();
+					InputStream in = fileSystem.openInputStream(value);
+					JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+					try
 					{
-						while(keys.hasNext())
+						reader.beginObject();
+						while(reader.hasNext())
 						{
-							String localName = (String)keys.next();
-							String localValue = json.getString(localName);
+							String localName = reader.nextName();
+							String localValue = reader.nextString();
 							state.put(localName, localValue);
 						}
+						reader.endObject();
 					}
-					
-					//setup the Record
+					finally
+					{
+						reader.close();
+					}
 					Record record = new Record(state);
 					all.add(record);
-					this.cache.put(from,record.getRecordId(),json);
+					this.cache.put(from,record.getRecordId(),record);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -212,21 +219,26 @@ public class DefaultCRUD implements CRUDProvider
 					String value = cursor.getString(valueIndex);
 					
 					Map<String,String> state = new HashMap<String,String>();
-					JSONObject json = new JSONObject(value);
-					Iterator keys = json.keys();
-					if(keys != null)
+					FileSystem fileSystem = FileSystem.getInstance();
+					InputStream in = fileSystem.openInputStream(value);
+					JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+					try
 					{
-						while(keys.hasNext())
+						reader.beginObject();
+						while(reader.hasNext())
 						{
-							String localName = (String)keys.next();
-							String localValue = json.getString(localName);
+							String localName = reader.nextName();
+							String localValue = reader.nextString();
 							state.put(localName, localValue);
 						}
+						reader.endObject();
 					}
-					
+					finally
+					{
+						reader.close();
+					}
 					record = new Record(state);
-					
-					this.cache.put(from,record.getRecordId(), json);
+					this.cache.put(from,record.getRecordId(), record);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -285,27 +297,56 @@ public class DefaultCRUD implements CRUDProvider
 	
 	public void delete(String table, Record record) throws DBException
 	{
+		Cursor cursor = null;
 		try
 		{
 			this.db.beginTransaction();
 			
+			String recordId = record.getRecordId();
+			
 			//invalidate the cached object 
-			this.cache.invalidate(table, record.getRecordId());
+			this.cache.invalidate(table, recordId);
+			
+			//Get the JSonPointer that must be cleaned up along with deleting this record
+			String jsonPointer = null;
+			cursor = this.db.rawQuery("SELECT value FROM "+table+" WHERE recordid=? AND name=?", new String[]{recordId,"om:json"});
+			if(cursor.getCount()>0)
+			{
+				int valueIndex = cursor.getColumnIndex("value");
+				cursor.moveToFirst();
+				do
+				{
+					jsonPointer = cursor.getString(valueIndex);
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
 			
 			//delete this record
-			String delete = "DELETE FROM "+table+" WHERE recordid='"+record.getRecordId()+"'";
+			String delete = "DELETE FROM "+table+" WHERE recordid='"+recordId+"'";
 			this.db.execSQL(delete);
+			
+			//delete the json pointer
+			if(jsonPointer != null)
+			{
+				FileSystem fileSystem = FileSystem.getInstance();
+				fileSystem.cleanup(jsonPointer);
+			}
 			
 			this.db.setTransactionSuccessful();
 		}
 		finally
 		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
 			this.db.endTransaction();
 		}
 	}
 	
 	public void deleteAll(String table) throws DBException
 	{
+		Cursor cursor = null;
 		try
 		{
 			this.db.beginTransaction();
@@ -313,14 +354,40 @@ public class DefaultCRUD implements CRUDProvider
 			//clear the entire cache
 			this.cache.clear(table);
 			
+			//Get JSONPointers that must be deleted for this table
+			Set<String> jsonPointers = new HashSet<String>();
+			cursor = this.db.rawQuery("SELECT value FROM "+table+" WHERE name=?", new String[]{"om:json"});
+			if(cursor.getCount()>0)
+			{
+				int valueIndex = cursor.getColumnIndex("value");
+				cursor.moveToFirst();
+				do
+				{
+					String jsonPointer = cursor.getString(valueIndex);
+					jsonPointers.add(jsonPointer);
+					cursor.moveToNext();
+				}while(!cursor.isAfterLast());
+			}
+			
 			//delete this record
 			String delete = "DELETE FROM "+table;
 			this.db.execSQL(delete);
+			
+			//Cleanup the JSonPointers
+			FileSystem fileSystem = FileSystem.getInstance();
+			for(String jsonPointer:jsonPointers)
+			{
+				fileSystem.cleanup(jsonPointer);
+			}
 			
 			this.db.setTransactionSuccessful();
 		}
 		finally
 		{
+			if(cursor != null)
+			{
+				cursor.close();
+			}
 			this.db.endTransaction();
 		}
 	}
@@ -488,9 +555,9 @@ public class DefaultCRUD implements CRUDProvider
 		this.db.execSQL(metaDataInsert,new Object[]{recordId,"om:search",builder.toString()});
 		
 		//insert the JSON representation
-		String json = record.toJson();
+		String jsonPointer = record.toJson();
 		String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
-		this.db.execSQL(insert,new Object[]{recordId,"om:json",json});
+		this.db.execSQL(insert,new Object[]{recordId,"om:json",jsonPointer});
 	}
 	//----------------------------------------------Deprecated------------------------------------------------------------------------
 	public Set<Record> select(String from, String name, String value) throws DBException
