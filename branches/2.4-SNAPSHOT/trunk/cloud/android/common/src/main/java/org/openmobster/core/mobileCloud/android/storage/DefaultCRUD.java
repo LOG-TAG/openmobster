@@ -163,7 +163,7 @@ public class DefaultCRUD implements CRUDProvider
 					//setup the Record
 					Record record = new Record(state);
 					all.add(record);
-					this.cache.put(from,record.getRecordId(),value);
+					this.cache.put(from,record.getRecordId(),json);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -226,7 +226,7 @@ public class DefaultCRUD implements CRUDProvider
 					
 					record = new Record(state);
 					
-					this.cache.put(from,record.getRecordId(), value);
+					this.cache.put(from,record.getRecordId(), json);
 					
 					cursor.moveToNext();
 				}while(!cursor.isAfterLast());
@@ -475,7 +475,7 @@ public class DefaultCRUD implements CRUDProvider
 			//Get the value
 			String value = nameValuePairs.get(key.replace("].name", "].value"));
 			
-			if(value.length() < 2000000)
+			if(value.length() < 1000)
 			{
 				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
 				this.db.execSQL(insert,new Object[]{recordId,name,value});
