@@ -23,6 +23,8 @@ final class Cache
 {
 	private Map<String,JSONObject> cache;
 	
+	private long size = 10000;
+	
 	Cache()
 	{
 	}
@@ -37,12 +39,17 @@ final class Cache
 		this.cache = null;
 	}
 	//----------------------------------------------------------------------------------------
-	synchronized void put(String table,String recordId,String json) throws DBException
+	synchronized void put(String table,String recordId,JSONObject json) throws DBException
 	{
 		try
 		{
-			JSONObject record = new JSONObject(json);
-			this.cache.put(table+":"+recordId, record);
+			//clear the cache if size limit is reached
+			if(this.cache.size() >= this.size)
+			{
+				this.clear(table);
+			}
+			
+			this.cache.put(table+":"+recordId, json);
 		}
 		catch(Exception e)
 		{
