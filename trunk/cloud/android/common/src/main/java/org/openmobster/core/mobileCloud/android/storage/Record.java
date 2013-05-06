@@ -15,7 +15,6 @@ import java.util.Map;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
 
-import org.json.JSONObject;
 import android.util.JsonWriter;
 
 import org.openmobster.core.mobileCloud.android.filesystem.FileSystem;
@@ -160,8 +159,36 @@ public final class Record
 	
 	public String toJson()
 	{
-		JSONObject object = new JSONObject(this.state);
-		return object.toString();
+		FileSystem fileSystem = FileSystem.getInstance();
+		File file = fileSystem.openOutputStream();
+		JsonWriter writer = new JsonWriter(new OutputStreamWriter(file.getOutputStream()));
+		try
+		{
+			writer.beginObject();
+			
+			Set<String> names = this.getNames();
+			for(String name:names)
+			{
+				String value = this.getValue(name);
+				writer.name(name).value(value);
+			}
+			writer.endObject();
+			writer.flush();
+			
+			return file.getName();
+		}
+		catch(IOException ioe)
+		{
+			throw new RuntimeException(ioe);
+		}
+		finally
+		{
+			try
+			{
+				writer.close();
+				file.getOutputStream().close();
+			}catch(IOException ioe){};
+		}
 	}
 	
 	public boolean isStoreable()

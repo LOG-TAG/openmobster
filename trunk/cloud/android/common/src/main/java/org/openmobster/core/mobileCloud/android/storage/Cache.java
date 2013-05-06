@@ -7,13 +7,10 @@
  */
 package org.openmobster.core.mobileCloud.android.storage;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
-
-import org.json.JSONObject;
 
 /**
  *
@@ -21,7 +18,7 @@ import org.json.JSONObject;
  */
 final class Cache
 {
-	private Map<String,JSONObject> cache;
+	private Map<String,Record> cache;
 	
 	private long size = 10000;
 	
@@ -31,7 +28,7 @@ final class Cache
 	
 	void start()
 	{
-		this.cache = new HashMap<String,JSONObject>();
+		this.cache = new HashMap<String,Record>();
 	}
 	
 	void stop()
@@ -39,7 +36,7 @@ final class Cache
 		this.cache = null;
 	}
 	//----------------------------------------------------------------------------------------
-	synchronized void put(String table,String recordId,JSONObject json) throws DBException
+	synchronized void put(String table,String recordId,Record record) throws DBException
 	{
 		try
 		{
@@ -49,7 +46,7 @@ final class Cache
 				this.clear(table);
 			}
 			
-			this.cache.put(table+":"+recordId, json);
+			this.cache.put(table+":"+recordId, record);
 		}
 		catch(Exception e)
 		{
@@ -63,25 +60,7 @@ final class Cache
 	{
 		try
 		{
-			JSONObject json = this.cache.get(table+":"+recordId);
-			if(json == null)
-			{
-				return null;
-			}
-			
-			Map<String,String> state = new HashMap<String,String>();
-			Iterator keys = json.keys();
-			if(keys != null)
-			{
-				while(keys.hasNext())
-				{
-					String localName = (String)keys.next();
-					String localValue = json.getString(localName);
-					state.put(localName, localValue);
-				}
-			}
-			
-			Record record = new Record(state);
+			Record record = this.cache.get(table+":"+recordId);
 			return record;
 		}
 		catch(Exception e)
@@ -103,21 +82,7 @@ final class Cache
 			{
 				if(key.startsWith(table+":"))
 				{
-					JSONObject json = this.cache.get(key);
-					
-					Map<String,String> state = new HashMap<String,String>();
-					Iterator jsonKeys = json.keys();
-					if(jsonKeys != null)
-					{
-						while(jsonKeys.hasNext())
-						{
-							String localName = (String)jsonKeys.next();
-							String localValue = json.getString(localName);
-							state.put(localName, localValue);
-						}
-					}
-					
-					Record record = new Record(state);
+					Record record = this.cache.get(key);
 					all.put(record.getRecordId(),record);
 				}
 			}

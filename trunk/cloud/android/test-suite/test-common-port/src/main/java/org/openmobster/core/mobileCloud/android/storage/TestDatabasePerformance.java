@@ -55,9 +55,9 @@ public class TestDatabasePerformance extends Test
 			Context context = (Context)this.getTestSuite().getContext().
 			getAttribute("android:context");
 			
-			//this.testSearchExactMatchAND(context);
-			//this.testSearchExactMatchOR(context);
-			//this.testStoreLargeJson(context);
+			this.testSearchExactMatchAND(context);
+			this.testSearchExactMatchOR(context);
+			this.testStoreLargeJson(context);
 			this.testMultipleJson(context);
 		}
 		catch(Exception e)
@@ -130,6 +130,8 @@ public class TestDatabasePerformance extends Test
 		}while(!cursor.isAfterLast());
 		
 		this.assertTrue(cursor.getCount()==1, this.getInfo()+"/testSearchExactMatchAND/MustFindOneRow");
+		
+		db.deleteAll("emailChannel");
 	}
 	
 	private void testSearchExactMatchOR(Context context) throws DBException
@@ -195,6 +197,8 @@ public class TestDatabasePerformance extends Test
 		}while(!cursor.isAfterLast());
 		
 		this.assertTrue(cursor.getCount()==1, this.getInfo()+"/testSearchExactMatchOR/MustFindOneRow");
+		
+		db.deleteAll("emailChannel");
 	}
 	
 	private void testStoreLargeJson(Context context) throws DBException
@@ -231,12 +235,15 @@ public class TestDatabasePerformance extends Test
 		String recordId = MobileObjectDatabase.getInstance().create(mobileObject);
 		
 		Record largeRecord = db.select("emailChannel", recordId);
+		largeRecord = db.select("emailChannel", recordId); //testing cache integrity
 		this.assertNotNull(largeRecord, this.getInfo()+"/testStoreLargeJson/MustNotBeNull");
 		
 		mobileObject = new MobileObject(largeRecord);
 		String largeMessage = mobileObject.getValue("message");
 		
 		this.assertEquals(""+largeMessage.length(), "1900000", this.getInfo()+"/testStoreLargeJson/MessageLengthDoesNotMatch");
+		
+		db.delete("emailChannel",largeRecord);
 	}
 	
 	private void testMultipleJson(Context context) throws DBException
@@ -262,9 +269,10 @@ public class TestDatabasePerformance extends Test
 		
 		String message = builder.toString();
 		
-		for(int i=0; i<1000; i++)
+		for(int i=0; i<5; i++)
 		{
 			System.out.println("Testing Multiple JSON # "+i);
+			
 			MobileObject mobileObject = new MobileObject();
 			mobileObject.setStorageId("emailChannel");
 			mobileObject.setValue("from", from);
@@ -276,14 +284,15 @@ public class TestDatabasePerformance extends Test
 			String recordId = MobileObjectDatabase.getInstance().create(mobileObject);
 			
 			Record largeRecord = db.select("emailChannel", recordId);
+			largeRecord = db.select("emailChannel", recordId); //testing cache integrity
 			this.assertNotNull(largeRecord, this.getInfo()+"/testMultipleJson/MustNotBeNull");
 			
 			mobileObject = new MobileObject(largeRecord);
 			String largeMessage = mobileObject.getValue("message");
 			
 			this.assertEquals(""+largeMessage.length(), "100000", this.getInfo()+"/testMultipleJson/MessageLengthDoesNotMatch");
-			
-			try{Thread.sleep(1000);}catch(Exception e){};
 		}
+		
+		db.deleteAll("emailChannel");
 	}
 }
