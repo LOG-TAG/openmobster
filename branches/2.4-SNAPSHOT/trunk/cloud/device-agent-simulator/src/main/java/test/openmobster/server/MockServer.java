@@ -15,6 +15,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import org.openmobster.core.common.ServiceManager;
+import org.openmobster.core.common.Utilities;
 
 import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.security.device.DeviceController;
@@ -41,6 +42,11 @@ import org.openmobster.core.common.transaction.TransactionHelper;
 
 import test.openmobster.device.agent.sync.server.TXCheckDAO;
 import test.openmobster.device.agent.sync.server.TXBean;
+
+import test.openmobster.device.agent.sync.server.LargeObject;
+import test.openmobster.device.agent.sync.server.LargeObjectChannel;
+
+import org.openmobster.cloud.api.ExecutionContext;
 
 
 /**
@@ -69,6 +75,9 @@ public class MockServer implements Processor
 	private Provisioner provisioner;
 	
 	private TXCheckDAO txCheckDao;
+	
+	private LargeObjectChannel largeObjectChannel;
+	private String largeObjectMessage;
 	
 	
 	public TXCheckDAO getTxCheckDao()
@@ -151,6 +160,18 @@ public class MockServer implements Processor
 	{
 		this.provisioner = provisioner;
 	}
+	
+	
+	public LargeObjectChannel getLargeObjectChannel()
+	{
+		return largeObjectChannel;
+	}
+
+
+	public void setLargeObjectChannel(LargeObjectChannel largeObjectChannel)
+	{
+		this.largeObjectChannel = largeObjectChannel;
+	}
 
 
 	public void start()
@@ -168,6 +189,22 @@ public class MockServer implements Processor
 			log.info("------------------------------------------------------");
 			log.info("MockServer successfully loaded for the server side testsuite.....");			
 			log.info("------------------------------------------------------");
+			
+			StringBuilder messageBuilder = new StringBuilder();
+			
+			StringBuilder packetBuilder = new StringBuilder();
+			for(int i=0; i<1000; i++)
+			{
+				packetBuilder.append("a");
+			}
+			
+			String packet = packetBuilder.toString();
+			for(int i=0; i<100; i++)
+			{
+				messageBuilder.append(packet);
+			}
+			
+			this.largeObjectMessage = messageBuilder.toString();
 			
 			TransactionHelper.commitTx();
 		}
@@ -265,6 +302,12 @@ public class MockServer implements Processor
 		if(info.contains("dumpTXCheck"))
 		{
 			this.dumpTXCheck();
+			return;
+		}
+		
+		if(info.contains("TestLargeObject"))
+		{
+			this.setupLargeObjectChannel(info);
 			return;
 		}
 		
@@ -705,6 +748,29 @@ public class MockServer implements Processor
 			{
 				TransactionHelper.rollbackTx();
 			}
+		}
+	}
+	
+	private void setupLargeObjectChannel(String info)
+	{
+		String testsuiteApp = "org.openmobster.core.mobileCloud.api";
+		
+		for(int i=0; i<3; i++)
+		{
+			String syncId = Utilities.generateUID();
+			LargeObject largeObject = new LargeObject();
+			largeObject.setSyncId(syncId);
+			largeObject.setMessage(this.largeObjectMessage);
+			
+			this.largeObjectChannel.addNewLargeObject(largeObject);
+			
+			List serverChangeLog = new ArrayList();
+			ChangeLogEntry serverEntry = new ChangeLogEntry();
+			serverEntry.setNodeId("large_object_channel");
+			serverEntry.setOperation(ServerSyncEngine.OPERATION_ADD);
+			serverEntry.setRecordId(syncId);
+			serverChangeLog.add(serverEntry);
+			this.serverSyncEngine.addChangeLogEntries(this.deviceId, testsuiteApp, serverChangeLog);
 		}
 	}
 	//------Processor implementation---------------------------------------------------------------------------------------------------------------------------------

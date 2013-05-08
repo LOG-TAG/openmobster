@@ -513,17 +513,27 @@ public class DefaultCRUD implements CRUDProvider
 		for(String name: names)
 		{
 			String value = record.getValue(name);
+			boolean addProperty = true;
 			
 			//check if this is a name
 			if(name.startsWith("field[") && name.endsWith("].name"))
 			{
 				nameValuePairs.put(name, value);
+				addProperty = false;
 			}
 			
 			//check fi this is a value
 			if(name.startsWith("field[") && name.endsWith("].value"))
 			{
 				nameValuePairs.put(name, value);
+				addProperty = false;
+			}
+			
+			//insert this row
+			if(addProperty)
+			{	
+				String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
+				this.db.execSQL(insert,new Object[]{recordId,name,value});
 			}
 		}
 		

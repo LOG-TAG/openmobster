@@ -8,13 +8,14 @@
 
 package org.openmobster.core.synchronizer.server.workflow;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import org.jbpm.graph.def.ActionHandler;
 import org.jbpm.graph.exe.ExecutionContext;
 
 
-import org.openmobster.core.synchronizer.model.Add;
 import org.openmobster.core.synchronizer.model.SyncCommand;
 import org.openmobster.core.synchronizer.model.SyncMessage;
 import org.openmobster.core.synchronizer.model.AbstractOperation;
@@ -75,7 +76,6 @@ public class EnterNormalSync implements ActionHandler
 			/**
 			 * get this information by performing synchronization with engine
 			 */
-			int numOfCommands = SyncConstants.SNAPSHOT_SIZE;
 			if(syncCommand == null)
 			{
 				syncCommand = Utilities.generateSyncCommand(context,cmdId,reply);
@@ -88,6 +88,8 @@ public class EnterNormalSync implements ActionHandler
 			{
 				syncCommand.clear();
 			}
+			
+			int numOfCommands = this.calculateNumberOfCommands(session);
 			
 			if(session.isOperationSyncActive())
 			{
@@ -137,5 +139,35 @@ public class EnterNormalSync implements ActionHandler
 		session.getServerSyncPackage().addMessage(reply);
 		Utilities.preparePayload(context,
 		syncXMLGenerator.generateSyncMessage(session, reply));
+	}
+	
+	private int calculateNumberOfCommands(Session session)
+	{
+		if(session.isSnapShotSizeSet())
+		{
+			return session.getSnapshotSize();
+		}
+		
+		int numberOfCommands = SyncConstants.SNAPSHOT_SIZE;
+		
+		List operations = session.getSyncCommands();
+		if(operations != null)
+		{	
+			int totalSize = 0;
+			for(Object local:operations)
+			{
+				AbstractOperation operation = (AbstractOperation)local;
+				totalSize += operation.totalSize();
+			}
+			
+			if(totalSize > 100000)
+			{
+				numberOfCommands = 1;
+			}
+		}
+		
+		session.setSnapshotSize(numberOfCommands);
+		
+		return numberOfCommands;
 	}
 }

@@ -54,11 +54,10 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
 			
-			boolean isTableEmpty = database.isTableEmpty(channel);
+			boolean doesTableExist = database.doesTableExist(channel);
 			
-			return !(isTableEmpty);
+			return doesTableExist;
 		}
 		catch(Exception e)
 		{
