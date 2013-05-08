@@ -106,6 +106,9 @@
    		<property name="txCheckDao">
    			<inject bean="TXCheckDAO"/>
    		</property>
+   		<property name="largeObjectChannel">
+   			<inject bean="large_object_channel"/>
+   		</property>
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
@@ -153,6 +156,12 @@
    
    <!-- Server Side components for the comet tests -->
    <bean name="testComet://TwitterChannel" class="test.openmobster.device.comet.TwitterChannel">        
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
+   
+   <!-- Cloud Side components for LargeObject tests -->
+   <bean name="large_object_channel" class="test.openmobster.device.agent.sync.server.LargeObjectChannel">
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>

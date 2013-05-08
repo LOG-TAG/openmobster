@@ -82,6 +82,7 @@ public class EnterBootSync implements ActionHandler
 			if(session.isBootupDataActive())
 			{
 				int numberOfCommands = SyncConstants.SNAPSHOT_SIZE;
+				
 				for(int i=0; i<numberOfCommands; i++)
 				{
 					Add object = session.getBootupObject();

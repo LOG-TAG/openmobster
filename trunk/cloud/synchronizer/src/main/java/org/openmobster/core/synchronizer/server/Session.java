@@ -107,6 +107,7 @@ public class Session implements Serializable
 	private boolean isMultiSyncActive;
 	private List syncCommands;
 	private SyncCommand syncCommand;
+	private int snapshotSize = 0;
 	
 	/**
 	 * 
@@ -1158,5 +1159,24 @@ public class Session implements Serializable
 	public void setSyncCommand(SyncCommand syncCommand)
 	{
 		this.syncCommand = syncCommand;
+	}
+	
+	public int getSnapshotSize()
+	{
+		return this.snapshotSize;
+	}
+	
+	public void setSnapshotSize(int snapshotSize)
+	{
+		this.snapshotSize = snapshotSize;
+	}
+	
+	public boolean isSnapShotSizeSet()
+	{
+		if(this.snapshotSize > 0)
+		{
+			return true;
+		}
+		return false;
 	}
 }

@@ -168,4 +168,27 @@ public abstract class AbstractOperation implements Serializable
 		
 		return clone;
 	}	
+	
+	public int totalSize()
+	{
+		int totalSize = 0;
+		
+		List items = this.getItems();
+		if(items == null)
+		{
+			return 0;
+		}
+		for(Object local:items)
+		{
+			Item item = (Item)local;
+			
+			String data = item.getData();
+			if(data != null)
+			{
+				totalSize += data.length();
+			}
+		}
+		
+		return totalSize;
+	}
 }

@@ -9,5 +9,6 @@
 	<channels>
 		<channel name='mockMobileTicket'/>
 		<channel name='testServerBean'/>
+		<channel name='large_object_channel'/>
 	</channels>
 </app-conf>
