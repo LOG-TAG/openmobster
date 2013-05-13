@@ -52,6 +52,8 @@
     
     SyncCommand *activeCommand;
     NSMutableArray *activeOperations;
+    
+    int snapshotSize;
 }
 
 +(id) withInit;
@@ -80,6 +82,8 @@
 @property (assign) SyncCommand *activeCommand;
 @property (assign) NSMutableArray *activeOperations;
 
+@property (assign) int snapshotSize;
+
 -(NSString *) findDataSource:(SyncMessage *) message;
 -(NSString *) findDataTarget:(SyncMessage *) message;
 -(NSString *) findDataSource;
@@ -96,4 +100,6 @@
 -(AbstractOperation *)getNextOperation;
 -(BOOL)isOperationSyncFinished;
 -(BOOL)isOperationSyncActive;
+
+-(BOOL) isSnapshotSizeSet;
 @end

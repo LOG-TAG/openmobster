@@ -125,18 +125,41 @@
 
 -(void) writeToStream:(NSData *) packet
 {
-	UInt8 *buffer = (UInt8 *)[packet bytes];
-	int bufferLen = strlen((char *)buffer);
-	
-	int bytesWritten = CFWriteStreamWrite(os,buffer,bufferLen);
-	
-	if(bytesWritten != bufferLen)
-	{
-		//throw exeception that writing to the outputstream failed
-		NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"outputstream_write_failure",nil];
-		SystemException *se = [SystemException withContext:@"NetSession" method:@"writeToStream" parameters:parameters];
-		@throw se;
-	}
+    UInt8 *buffer = (UInt8 *)[packet bytes];
+    int bufferLen = strlen((char *)buffer);
+    while(YES)
+    {
+        int bytesWritten = CFWriteStreamWrite(os,buffer,bufferLen);
+        if (bytesWritten == 0) 
+        {
+            //throw exeception that writing to the outputstream failed
+            NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"outputstream_write_failure",nil];
+            SystemException *se = [SystemException withContext:@"NetSession" method:@"writeToStream" parameters:parameters];
+            @throw se;
+        } 
+        else if(bytesWritten == bufferLen)
+        {
+            break;
+        }
+        else if (bytesWritten != bufferLen) 
+        {
+            // Determine how much has been written and adjust the buffer
+            bufferLen = bufferLen - bytesWritten;
+            memmove(buffer, buffer + bytesWritten, bufferLen);
+        }
+    }
+    
+    //old implementation....remove later when entire testsuite passes all tests
+    /*UInt8 *buffer = (UInt8 *)[packet bytes];
+    int bufferLen = strlen((char *)buffer);
+    int bytesWritten = CFWriteStreamWrite(os,buffer,bufferLen);
+    if(bytesWritten != bufferLen)
+    {
+        //throw exeception that writing to the outputstream failed
+        NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"outputstream_write_failure",nil];
+        SystemException *se = [SystemException withContext:@"NetSession" method:@"writeToStream" parameters:parameters];
+        @throw se;
+    }*/
 }
 
 -(NSString *) read:(BufferStreamReader *)reader

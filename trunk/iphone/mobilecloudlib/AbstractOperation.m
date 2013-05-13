@@ -40,4 +40,19 @@
 	return NO;
 }
 
+-(int) totalSize
+{
+    int totalSize = 0;
+    
+    for(Item *item in self.items)
+    {
+        NSString *data = item.data;
+        if(data != nil)
+        {
+            totalSize += [data length];
+        }
+    }
+    
+    return totalSize;
+}
 @end

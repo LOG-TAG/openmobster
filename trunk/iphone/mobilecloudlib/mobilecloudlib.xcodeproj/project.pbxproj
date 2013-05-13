@@ -84,6 +84,8 @@
 		A267E58012C5479000693E1A /* ModalViewLauncherDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E57A12C5478F00693E1A /* ModalViewLauncherDelegate.h */; };
 		A267E59312C5484300693E1A /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A267E58E12C5484300693E1A /* ActivityIndicatorView.h */; };
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
+		A279BBD9173FDB9E006A2FFE /* TestLargeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A279BBD7173FDB9E006A2FFE /* TestLargeObject.h */; };
+		A279BBDA173FDB9E006A2FFE /* TestLargeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A279BBD8173FDB9E006A2FFE /* TestLargeObject.m */; };
 		A286951D12F7795D00A4792E /* TestObjectStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = A286951C12F7795D00A4792E /* TestObjectStreaming.m */; };
 		A286957112F77F3B00A4792E /* TestSimpleAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = A286957012F77F3B00A4792E /* TestSimpleAccess.m */; };
 		A286964B12F7CC0300A4792E /* BeanList.h in Headers */ = {isa = PBXBuildFile; fileRef = A286964912F7CC0300A4792E /* BeanList.h */; };
@@ -457,6 +459,8 @@
 		A267E58E12C5484300693E1A /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		A267E58F12C5484300693E1A /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
 		A267E59012C5484300693E1A /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
+		A279BBD7173FDB9E006A2FFE /* TestLargeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLargeObject.h; sourceTree = "<group>"; };
+		A279BBD8173FDB9E006A2FFE /* TestLargeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLargeObject.m; sourceTree = "<group>"; };
 		A286951B12F7795D00A4792E /* TestObjectStreaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjectStreaming.h; sourceTree = "<group>"; };
 		A286951C12F7795D00A4792E /* TestObjectStreaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjectStreaming.m; sourceTree = "<group>"; };
 		A286956F12F77F3B00A4792E /* TestSimpleAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimpleAccess.h; sourceTree = "<group>"; };
@@ -1592,6 +1596,8 @@
 				A2502468130580EC006DC2C8 /* TestReadOnlyChannel.m */,
 				A2A997D2147D47DA00DE13E9 /* TestLocationService.h */,
 				A2A997D3147D47DA00DE13E9 /* TestLocationService.m */,
+				A279BBD7173FDB9E006A2FFE /* TestLargeObject.h */,
+				A279BBD8173FDB9E006A2FFE /* TestLargeObject.m */,
 			);
 			name = "integration-tests";
 			sourceTree = "<group>";
@@ -1740,6 +1746,7 @@
 				A23A484E16042D13003A32EE /* UIDevice+IdentifierAddition.h in Headers */,
 				A23A485016042D13003A32EE /* NSString+MD5Addition.h in Headers */,
 				A2E9E96216B8778300B886C0 /* BufferStreamReader.h in Headers */,
+				A279BBD9173FDB9E006A2FFE /* TestLargeObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2256,6 +2263,7 @@
 				A23A484F16042D13003A32EE /* UIDevice+IdentifierAddition.m in Sources */,
 				A23A485116042D13003A32EE /* NSString+MD5Addition.m in Sources */,
 				A2E9E96316B8778300B886C0 /* BufferStreamReader.m in Sources */,
+				A279BBDA173FDB9E006A2FFE /* TestLargeObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

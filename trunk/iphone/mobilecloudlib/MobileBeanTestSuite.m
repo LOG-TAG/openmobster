@@ -2,6 +2,7 @@
 #import "MobileBeanTestSuite.h"
 #import "TestReadOnlyChannel.h"
 #import "TestLocationService.h"
+#import "TestLargeObject.h"
 
 
 @implementation MobileBeanTestSuite
@@ -19,6 +20,7 @@
 	[suite addTest:[TestSimpleAccess withInit]];
 	[suite addTest:[TestArrayAccess withInit]];
     [suite addTest:[TestCRUD withInit]];
+    [suite addTest:[TestLargeObject withInit]];
     
     
     //[suite addTest:[TestLocationService withInit]];
