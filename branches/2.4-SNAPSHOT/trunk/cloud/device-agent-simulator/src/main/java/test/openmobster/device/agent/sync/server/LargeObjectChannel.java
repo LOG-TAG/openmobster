@@ -42,7 +42,7 @@ public class LargeObjectChannel implements Channel
 	{
 		StringBuilder messageBuilder = new StringBuilder();
 		
-		StringBuilder packetBuilder = new StringBuilder();
+		/*StringBuilder packetBuilder = new StringBuilder();
 		for(int i=0; i<1000; i++)
 		{
 			packetBuilder.append("a");
@@ -52,7 +52,7 @@ public class LargeObjectChannel implements Channel
 		for(int i=0; i<100; i++)
 		{
 			messageBuilder.append(packet);
-		}
+		}*/
 		
 		String message = messageBuilder.toString();
 		for(int i=0; i<2; i++)
@@ -98,7 +98,11 @@ public class LargeObjectChannel implements Channel
 	 */
 	public String create(MobileBean object)
 	{
-		return null;
+		LargeObject newLargeObject = (LargeObject)object;
+		
+		this.addNewLargeObject(newLargeObject);
+		
+		return newLargeObject.getSyncId();
 	}
 	
 	/**

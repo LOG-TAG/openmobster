@@ -86,6 +86,8 @@ public final class Session
 	
 	private boolean hasSyncExecutedOnce;
 	
+	private int snapshotSize = 0;
+	
 	/**
 	 * 
 	 *
@@ -1058,5 +1060,24 @@ public final class Session
 	public void setHasSyncExecutedOnce(boolean hasSyncExecutedOnce)
 	{
 		this.hasSyncExecutedOnce = hasSyncExecutedOnce;
+	}
+	//------------------------------------------------------------------------------------------------------------------
+	public int getSnapshotSize()
+	{
+		return this.snapshotSize;
+	}
+	
+	public void setSnapshotSize(int snapshotSize)
+	{
+		this.snapshotSize = snapshotSize;
+	}
+	
+	public boolean isSnapShotSizeSet()
+	{
+		if(this.snapshotSize > 0)
+		{
+			return true;
+		}
+		return false;
 	}
 }
