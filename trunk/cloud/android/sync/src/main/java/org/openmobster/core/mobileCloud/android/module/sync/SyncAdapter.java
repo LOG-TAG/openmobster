@@ -871,7 +871,7 @@ public class SyncAdapter
 				getAllOperationCommands());
 		if(!session.getSyncType().equals(SyncAdapter.SLOW_SYNC))
 		{
-					numberOfCommands = SNAPSHOT_SIZE;
+					numberOfCommands = this.calculateNumberOfCommands(session);
 		}
 						
 		int allSize = session.getAllOperationCommands().size();
@@ -920,6 +920,36 @@ public class SyncAdapter
 		replyMessage.addSyncCommand(syncCommand);		
 		
 		return syncCommand;
+	}
+	
+	private int calculateNumberOfCommands(Session session)
+	{
+		if(session.isSnapShotSizeSet())
+		{
+			return session.getSnapshotSize();
+		}
+		
+		int numberOfCommands = SNAPSHOT_SIZE;
+		
+		List operations = session.getAllOperationCommands();
+		if(operations != null)
+		{	
+			int totalSize = 0;
+			for(Object local:operations)
+			{
+				AbstractOperation operation = (AbstractOperation)local;
+				totalSize += operation.totalSize();
+			}
+			
+			if(totalSize > 100000)
+			{
+				numberOfCommands = 1;
+			}
+		}
+		
+		session.setSnapshotSize(numberOfCommands);
+		
+		return numberOfCommands;
 	}
 	
 	/**

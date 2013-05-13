@@ -19,7 +19,30 @@ public final class TestLargeObjectSync extends AbstractLargeObjectTest
 	public void runTest()
 	{		
 		try
-		{	
+		{
+			StringBuilder messageBuilder = new StringBuilder();
+			
+			StringBuilder packetBuilder = new StringBuilder();
+			for(int i=0; i<1000; i++)
+			{
+				packetBuilder.append("a");
+			}
+			
+			String packet = packetBuilder.toString();
+			for(int i=0; i<100; i++)
+			{
+				messageBuilder.append(packet);
+			}
+			
+			String largeObjectMessage = messageBuilder.toString();
+			
+			for(int i=0; i<3; i++)
+			{
+				MobileBean largeObject = MobileBean.newInstance("large_object_channel");
+				largeObject.setValue("message", largeObjectMessage);
+				largeObject.saveWithoutSync();
+			}
+			
 			this.startTwoWaySync();
 		}
 		catch(Exception e)
