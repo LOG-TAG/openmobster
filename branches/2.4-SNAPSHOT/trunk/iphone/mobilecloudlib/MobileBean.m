@@ -134,9 +134,7 @@
 +(BOOL)isBooted:(NSString *)channel
 {
 	MobileObjectDatabase *mdb = [MobileObjectDatabase getInstance];
-	NSArray *allObjects = [mdb readAll:channel];
-	
-	return (allObjects != nil && [allObjects count]>0);
+	return [mdb isBooted:channel];
 }
 
 

@@ -917,6 +917,33 @@
         NSLog(@"*******************************");
     }
 }
+
+-(void) testIsBooted
+{
+    NSLog(@"Starting testIsBooted......");
+    
+    MobileObjectDatabase *database = [[MobileObjectDatabase alloc] init];
+	[database autorelease];
+    
+    [database deleteAll:@"myChannel"];
+    
+    BOOL isBooted = [database isBooted:@"myChannel"];
+    STAssertFalse(isBooted,nil);
+    
+    //Add mobile objects to the database
+    for(int i=0; i<1; i++)
+    {
+        MobileObject *mobileObject = [MobileObject withInit];
+        mobileObject.service = @"myChannel";
+        NSString *oid = [database create:mobileObject];
+        NSLog(@"OID (Generated): %@",oid);
+        STAssertTrue(oid != nil,nil);
+    }
+    
+    //Check again
+    isBooted = [database isBooted:@"myChannel"];
+    STAssertTrue(isBooted,nil);
+}
 //-----------------------------------------------------------------------------------------
 -(MobileObject *) createPOJOWithStrings:(NSString *)value
 {

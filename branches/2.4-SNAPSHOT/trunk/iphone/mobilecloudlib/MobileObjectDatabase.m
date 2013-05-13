@@ -40,17 +40,12 @@
 
 -(MobileObject *)read:(NSString *)channel:(NSString *)recordId
 {
-	NSArray *all = [self readAll:channel];
-	if(all != nil)
-	{
-		for(MobileObject *local in all)
-		{
-			if([local.recordId isEqualToString:recordId])
-			{
-				return local;
-			}
-		}
-	}
+    PersistentMobileObject *stored = [PersistentMobileObject findByOID:recordId];
+    if(stored != nil)
+    {
+        MobileObject *mobileObject = [stored parseMobileObject];
+        return mobileObject;
+    }
 	return nil;
 }
 
@@ -222,5 +217,48 @@
     }
 
     return result;
+}
+
+-(BOOL) isBooted:(NSString *)channel
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"oid" ascending:YES];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    //Set the predicate
+    //find by channel
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@)",channel];
+    [request setPredicate:predicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+    managedObjectContext:managedContext sectionNameKeyPath:nil
+    cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    [cursor performFetch:NULL];
+    //NSLog(success ? @"Success: Yes" : @"Success: No");
+    
+    NSArray *results = cursor.fetchedObjects;
+    if(results != nil && [results count]>0)
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 @end

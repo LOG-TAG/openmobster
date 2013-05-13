@@ -40,6 +40,8 @@
 
 -(NSSet *)query:(NSString *)channel:(GenericAttributeManager *)queryAttributes;
 
+-(BOOL) isBooted:(NSString *)channel;
+
 
 //internally used
 -(NSSet *)logicExpressionBeans:(NSString *) channel :(LogicExpression *) expression;
