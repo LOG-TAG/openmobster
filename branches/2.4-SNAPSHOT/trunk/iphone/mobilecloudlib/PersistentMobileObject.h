@@ -36,7 +36,6 @@
 +(PersistentMobileObject *) newInstance:(NSString *)channel;
 +(NSArray *) findByChannel:(NSString *) channel;
 +(PersistentMobileObject *) findByOID:(NSString *)oid;
-+(NSArray *) all;
 +(BOOL) delete:(PersistentMobileObject *)mobileObject;
 +(BOOL) deleteAll:(NSString *)channel;
 -(BOOL) saveInstance;
