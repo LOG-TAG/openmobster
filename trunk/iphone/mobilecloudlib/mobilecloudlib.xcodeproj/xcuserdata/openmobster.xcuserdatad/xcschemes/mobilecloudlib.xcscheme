@@ -140,6 +140,14 @@
                BlueprintName = "apiTests"
                ReferencedContainer = "container:mobilecloudlib.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "MobileServiceTests">
+               </Test>
+               <Test
+                  Identifier = "TestPayloadHandler">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "YES">

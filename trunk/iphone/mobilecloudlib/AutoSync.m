@@ -58,33 +58,8 @@
 		{
 			NSString *name = local.name;
 			
-			//Check if just bootstrapped, so skip the two way sync
-			if([booted objectForKey:name] != nil)
-			{
-				continue;
-			}
-			
 			//NSLog(@"Performing Two Way Sync on: %@",name);
 			[sync performTwoWaySync:name :NO];
-		}
-	}
-	
-	//Get rest of the channels and do a one-way server sync on these
-	NSArray *readonlyChannels = [appService readonlyChannels];
-	if(readonlyChannels != nil && [readonlyChannels count]>0)
-	{
-		for(Channel *local in readonlyChannels)
-		{
-			NSString *name = local.name;
-			
-			//Check if just bootstrapped, so skip the one way sync
-			if([booted objectForKey:name] != nil)
-			{
-				continue;
-			}
-			
-			//NSLog(@"Performing a OneWayServer Sync on: %@",name);
-			[sync performOneWayServerSync:name :NO];
 		}
 	}
 	
@@ -139,33 +114,8 @@
             {
                 NSString *name = local.name;
                 
-                //Check if just bootstrapped, so skip the two way sync
-                if([booted objectForKey:name] != nil)
-                {
-                    continue;
-                }
-                
                 //NSLog(@"Performing Two Way Sync on: %@",name);
                 [sync performTwoWaySync:name :NO];
-            }
-        }
-        
-        //Get rest of the channels and do a one-way server sync on these
-        NSArray *readonlyChannels = [appService readonlyChannels];
-        if(readonlyChannels != nil && [readonlyChannels count]>0)
-        {
-            for(Channel *local in readonlyChannels)
-            {
-                NSString *name = local.name;
-                
-                //Check if just bootstrapped, so skip the one way sync
-                if([booted objectForKey:name] != nil)
-                {
-                    continue;
-                }
-                
-                //NSLog(@"Performing a OneWayServer Sync on: %@",name);
-                [sync performOneWayServerSync:name :NO];
             }
         }
 	}
