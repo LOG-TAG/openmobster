@@ -89,22 +89,6 @@
 	return nil;
 }
 
-+(NSArray *) all
-{
-	//Get the Storage Context
-	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
-											  inManagedObjectContext:managedContext];
-	
-	//Get an instance if its already been provisioned
-	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
-	[request setEntity:entity];
-	
-	NSArray *all = [managedContext executeFetchRequest:request error:NULL];
-	
-	return all;
-}
-
 +(BOOL) delete:(PersistentMobileObject *)mobileObject
 {
 	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
