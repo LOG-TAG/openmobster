@@ -47,5 +47,6 @@
 +(void)processSyncCommands:(Context *) context :(int)cmdId :(Session *)session :(SyncMessage *)replyMessage;
 +(void)processSyncCommands:(Context *) context :(int)cmdId :(Session *)session :(SyncMessage *)replyMessage;
 +(SyncCommand *)generateSyncCommand:(Context *) context :(int)cmdId :(Session *)session :(SyncMessage *)replyMessage;
++(int) calculateNumberOfCommands:(Session *)session;
 
 @end

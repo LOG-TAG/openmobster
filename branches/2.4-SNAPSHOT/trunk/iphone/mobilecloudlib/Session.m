@@ -27,6 +27,8 @@
 @synthesize activeCommand;
 @synthesize activeOperations;
 
+@synthesize snapshotSize;
+
 +(id) withInit
 {
 	Session *session = [[[Session alloc] init] autorelease];
@@ -313,6 +315,16 @@
 -(BOOL)isOperationSyncActive
 {
     if(self.activeOperations != nil)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+
+-(BOOL) isSnapshotSizeSet
+{
+    if(self.snapshotSize > 0)
     {
         return YES;
     }

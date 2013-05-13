@@ -89,8 +89,6 @@
 	    [syncType isEqualToString:_ONE_WAY_CLIENT]
 	)
 	{
-        int numOfCommands = SNAPSHOT_SIZE;
-        
         if(syncCommand == nil)
         {
             syncCommand = [SyncHelper generateSyncCommand:context :cmdId :session :reply];
@@ -104,6 +102,8 @@
         {
             [syncCommand clear];
         }
+        
+        int numOfCommands = [SyncHelper calculateNumberOfCommands:session];
         
         if([session isOperationSyncActive])
         {
@@ -144,6 +144,35 @@
     }
 	
 	return reply;
+}
+
++(int) calculateNumberOfCommands:(Session *)session
+{
+    if([session isSnapshotSizeSet])
+    {
+        return session.snapshotSize;
+    }
+    
+    int numberOfCommands = SNAPSHOT_SIZE;
+    
+    NSArray *operations = session.activeOperations;
+    if(operations != nil)
+    {
+        int totalSize = 0;
+        for(AbstractOperation *local in operations)
+        {
+            totalSize += [local totalSize];
+        }
+        
+        if(totalSize > 100000)
+        {
+            numberOfCommands = 1;
+        }
+    }
+    
+    session.snapshotSize = numberOfCommands;
+    
+    return numberOfCommands;
 }
 
 +(SyncMessage *)bootSync:(Context *)context :(Session *)session

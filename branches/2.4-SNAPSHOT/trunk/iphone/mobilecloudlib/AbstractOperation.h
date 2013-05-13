@@ -18,5 +18,6 @@
 
 -(void) addItem:(Item *) item;
 -(BOOL) isChunked;
+-(int) totalSize;
 
 @end
