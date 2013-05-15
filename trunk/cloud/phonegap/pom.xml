@@ -10,7 +10,8 @@
 	
 	<properties>
 		<version.phonegap>1.5.0</version.phonegap>
-		<version.android.api>10</version.android.api>
+		<version.cordova>2.7.0</version.cordova>
+		<version.android.api>11</version.android.api>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<android.keystore.location>
 			${env.ANDROID_KEYSTORE}
@@ -69,6 +70,8 @@
 		<module>plugin-jquery</module>
 		<module>plugin-sandbox-cloud</module>
 		<module>plugin-jquery-cloud</module>
+		<module>mbaas-plugin</module>
+		<module>mbaas-plugin-sandbox</module>
 	</modules>
 	
 	<build>

@@ -119,6 +119,8 @@
 	<classpathentry kind="src" path="phonegap/plugin-jquery/src/main/java"/>
 	<classpathentry kind="src" path="phonegap/plugin-sandbox-cloud/src/main/java"/>
 	<classpathentry kind="src" path="phonegap/plugin-jquery-cloud/src/main/java"/>
+	<classpathentry kind="src" path="phonegap/mbaas-plugin/src/main/java"/>
+	<classpathentry kind="src" path="phonegap/mbaas-plugin-sandbox/src/main/java"/>
 	
 	<classpathentry kind="src" path="dev-tools/android-devcloud/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/dev-cloudServer/src/main/java"/>
@@ -231,6 +233,7 @@
     
     <!-- PhoneGap Dependecy -->
 	<classpathentry kind="var" path="M2_REPO/com/phonegap/phonegap/1.5.0/phonegap-1.5.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/cordova/cordova/2.7.0/cordova-2.7.0.jar"/>
     
     <classpathentry kind="var" path="M2_REPO/javapns/javapns-jdk15/165/javapns-jdk15-165.jar"/>
     

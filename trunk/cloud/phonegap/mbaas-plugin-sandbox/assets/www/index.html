@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>PhoneGap</title>
+<script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="openmobster-mbaas.js"></script>
+<script type="text/javascript">
+function echo(message)
+{
+	window.sync.echo(message,
+		function(success)
+		{
+			alert(success);
+		},
+		function(error)
+		{
+			alert(error);
+		}
+	);
+}
+
+function json()
+{
+	var input = {"param1":"json","param2":"rocks"};
+	window.sync.json(input,
+		function(json)
+		{
+			console.log("Param1: "+json.param1);
+			console.log("Param2: "+json.param2);
+		},
+		function(error)
+		{
+			alert(error);
+		}
+	);
+}
+
+function addNewBean()
+{
+	var state = {};
+	state.title = "/test/newBean";
+	var channel = "phonegap_channel";
+	window.sync.newBean(channel,state,
+		function(oid)
+		{
+			readBean(oid);
+			alert("OID: "+oid);
+		},
+		function(error)
+		{
+			alert("AddNewBean:"+error);
+		}
+	);
+}
+
+function readall()
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	window.sync.readall(channel,properties,
+		function(beans)
+		{
+			var length = beans.length;
+			for(var i=0; i<length; i++)
+			{
+				var bean = beans[i];
+				console.log("Id: "+bean.id);
+				console.log("Title: "+bean.title);
+				console.log("******************************");
+			}
+		},
+		function(error)
+		{
+			alert("ReadAll: "+error);
+		}
+	);
+}
+
+function readBean(id)
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	
+	window.sync.readBean(channel,id,properties,
+		function(bean)
+		{
+			console.log("Id: "+bean.id);
+			console.log("Title: "+bean.title);
+			console.log("******************************");
+		},
+		function(error)
+		{
+			alert("ReadBean: "+error);
+		}
+	);
+}
+
+function updateBean()
+{
+	var channel = "phonegap_channel";
+	
+	window.sync.readall(channel,[],
+		function(beans)
+		{
+			var length = beans.length;
+			for(var i=0; i<length; i++)
+			{
+				var bean = beans[i];
+				var state = {};
+				state.title = "/test/updateBean/"+bean.id;
+				window.sync.updateBean(channel,bean.id,state,
+					function(beanId)
+					{
+						readBean(beanId);
+					},
+					function(error)
+					{
+						alert("Update Bean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("ReadAll: "+error);
+		}
+	);
+}
+
+function deleteBean()
+{
+	var channel = "phonegap_channel";
+	
+	window.sync.readall(channel,[],
+		function(beans)
+		{
+			var length = beans.length;
+			for(var i=0; i<length; i++)
+			{
+				var bean = beans[i];
+				window.sync.deleteBean(channel,bean.id,
+					function(beanId)
+					{
+						console.log(beanId+" was deleted");
+					},
+					function(error)
+					{
+						alert("Delete Bean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("ReadAll: "+error);
+		}
+	);
+}
+</script>
+</head>
+<body>
+	<h1>PhoneGap/Cordova OpenMobster MBaaS Plugin</h1><br/>
+	<input type='button' value='Echo' onclick="javascript:echo('Hello World');"/><br/>
+	<input type='button' value='Get JSON' onclick="javascript:json();"/><br/>
+	<input type='button' value='Add New Bean' onclick="javascript:addNewBean();"/><br/>
+	<input type='button' value='Read All' onclick="javascript:readall();"/><br/>
+	<input type='button' value='Update Bean' onclick="javascript:updateBean();"/><br/>
+	<input type='button' value='Delete Bean' onclick="javascript:deleteBean();"/><br/>
+</body>
+</html>
