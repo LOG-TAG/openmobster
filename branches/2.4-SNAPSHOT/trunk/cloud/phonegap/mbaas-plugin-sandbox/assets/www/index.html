@@ -35,10 +35,18 @@ function json()
 	);
 }
 
+function nestedJson()
+{
+	var message = {};
+	message['from.value'] = "test";
+	
+	console.log(JSON.stringify(message));
+}
+
 function addNewBean()
 {
 	var state = {};
-	state.title = "/test/newBean";
+	state['title'] = "/test/newBean";
 	var channel = "phonegap_channel";
 	window.sync.newBean(channel,state,
 		function(oid)
@@ -107,7 +115,7 @@ function updateBean()
 			{
 				var bean = beans[i];
 				var state = {};
-				state.title = "/test/updateBean/"+bean.id;
+				state['title'] = "/test/updateBean/"+bean.id;
 				window.sync.updateBean(channel,bean.id,state,
 					function(beanId)
 					{
@@ -156,15 +164,235 @@ function deleteBean()
 		}
 	);
 }
+
+function arrayInsert()
+{
+	var channel = "phonegap_channel";
+	
+	window.sync.readall(channel,[],
+		function(beans)
+		{
+			var length = beans.length;
+			for(var i=0; i<length; i++)
+			{
+				var bean = beans[i];
+				
+				var values = [];
+				for(var j=0; j<5; j++)
+				{
+					values[j] = "customer://"+j;
+				}
+				
+				var messages = [];
+				for(var j=0; j<5; j++)
+				{
+					var message = {};
+					message['from'] = "from://"+j;
+					message['to'] = "to://"+j;
+					message['message'] = "message://"+j;
+					messages[j] = message;
+				}
+				
+				//updating a string array
+				window.sync.arrayInsert(channel,bean.id,"customers",values,
+					function(metadata)
+					{
+						var arrayLength = metadata.arrayLength;
+						var oid = metadata.id;
+						for(var j=0;j<arrayLength; j++)
+						{
+							var customerUri = 'customers['+j+']';
+							window.sync.arrayValue(channel,oid,customerUri,
+								function(value)
+								{
+									console.log(value);
+								},
+								function(error)
+								{
+									alert('StringArray:'+error);
+								}
+							);
+						}
+					},
+					function(error)
+					{
+						alert("ArrayInsert: "+error);
+					}
+				);
+				
+				//updating an object array
+				window.sync.arrayInsert(channel,bean.id,"messages",messages,
+					function(metadata)
+					{
+						var arrayLength = metadata.arrayLength;
+						var oid = metadata.id;
+						for(var j=0;j<arrayLength; j++)
+						{
+							var fromUri = 'messages['+j+'].from';
+							window.sync.arrayValue(channel,oid,fromUri,
+								function(value)
+								{
+									console.log(value);
+								},
+								function(error)
+								{
+									alert('FromUri:'+error);
+								}
+							);
+							
+							var toUri = 'messages['+j+'].to';
+							window.sync.arrayValue(channel,oid,toUri,
+								function(value)
+								{
+									console.log(value);
+								},
+								function(error)
+								{
+									alert('ToUri:'+error);
+								}
+							);
+							
+							var messageUri = 'messages['+j+'].message';
+							window.sync.arrayValue(channel,oid,messageUri,
+								function(value)
+								{
+									console.log(value);
+								},
+								function(error)
+								{
+									alert('MessageUri:'+error);
+								}
+							);
+						}
+					},
+					function(error)
+					{
+						alert("ArrayInsert: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("ReadAll: "+error);
+		}
+	);
+}
+
+function clearArray()
+{
+	var channel = "phonegap_channel";
+	
+	window.sync.readall(channel,[],
+		function(beans)
+		{
+			var length = beans.length;
+			for(var i=0; i<length; i++)
+			{
+				var bean = beans[i];
+				
+				window.sync.clearArray(channel,bean.id,"customers",
+					function(arrayLength)
+					{
+						console.log("Arraylength: "+arrayLength);
+					},
+					function(error)
+					{
+						alert("ClearArray: "+error);
+					}
+				);
+				
+				window.sync.clearArray(channel,bean.id,"messages",
+					function(arrayLength)
+					{
+						console.log("Arraylength: "+arrayLength);
+					},
+					function(error)
+					{
+						alert("ClearArray: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("ReadAll: "+error);
+		}
+	);
+}
+
+function arrayUpdate()
+{
+	var channel = "phonegap_channel";
+	
+	window.sync.readall(channel,[],
+		function(beans)
+		{
+			var length = 1;
+			for(var i=0; i<length; i++)
+			{
+				var bean = beans[i];
+				
+				window.sync.arrayLength(channel,bean.id,"customers",
+					function(arrayLength)
+					{
+						for(var j=0;j<arrayLength;j++)
+						{
+							var fieldUri = "customers["+j+"]";
+							var newValue = "customers["+j+"]/updated";
+							window.sync.arrayUpdate(channel,bean.id,fieldUri,newValue,
+								function(beanId)
+								{
+								},
+								function(error)
+								{
+									alert("ArrayUpdate: "+error);
+								}
+							);
+						}
+						
+						//print the array
+						for(var j=0;j<arrayLength; j++)
+						{
+							var customerUri = 'customers['+j+']';
+							window.sync.arrayValue(channel,bean.id,customerUri,
+								function(value)
+								{
+									console.log(value);
+								},
+								function(error)
+								{
+									alert('StringArray:'+error);
+								}
+							);
+						}
+					},
+					function(error)
+					{
+						alert("ArrayLength: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("ReadAll: "+error);
+		}
+	);
+}
 </script>
 </head>
 <body>
 	<h1>PhoneGap/Cordova OpenMobster MBaaS Plugin</h1><br/>
 	<input type='button' value='Echo' onclick="javascript:echo('Hello World');"/><br/>
 	<input type='button' value='Get JSON' onclick="javascript:json();"/><br/>
+	<input type='button' value='Nested JSON' onclick="javascript:nestedJson();"/><br/>
 	<input type='button' value='Add New Bean' onclick="javascript:addNewBean();"/><br/>
 	<input type='button' value='Read All' onclick="javascript:readall();"/><br/>
 	<input type='button' value='Update Bean' onclick="javascript:updateBean();"/><br/>
 	<input type='button' value='Delete Bean' onclick="javascript:deleteBean();"/><br/>
+	<input type='button' value='Array Insert' onclick="javascript:arrayInsert();"/><br/>
+	<input type='button' value='Array Clear' onclick="javascript:clearArray();"/><br/>
+	<input type='button' value='Array Update' onclick="javascript:arrayUpdate();"/><br/>
 </body>
 </html>

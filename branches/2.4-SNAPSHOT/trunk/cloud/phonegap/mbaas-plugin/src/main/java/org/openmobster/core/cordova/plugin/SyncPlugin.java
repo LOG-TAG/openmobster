@@ -13,10 +13,13 @@ import org.apache.cordova.api.CallbackContext;
 import org.apache.cordova.api.CordovaInterface;
 import org.apache.cordova.api.CordovaPlugin;
 import org.apache.cordova.api.PluginResult;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
+import org.openmobster.android.api.sync.BeanList;
+import org.openmobster.android.api.sync.BeanListEntry;
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 
@@ -80,6 +83,41 @@ public class SyncPlugin extends CordovaPlugin
 		    	
 		    	return true;
 		    }
+		    else if("arrayInsert".equals(action))
+		    {
+		    	JSONObject metadata = this.arrayInsert(args);
+		    	callbackContext.success(metadata);
+		    	
+		    	return true;
+		    }
+		    else if("arrayLength".equals(action))
+		    {
+		    	String arrayLength = this.arrayLength(args);
+		    	callbackContext.success(arrayLength);
+		    	
+		    	return true;
+		    }
+		    else if("clearArray".equals(action))
+		    {
+		    	String arrayLength = this.clearArray(args);
+		    	callbackContext.success(arrayLength);
+		    	
+		    	return true;
+		    }
+		    else if("arrayValue".equals(action))
+		    {
+		    	String arrayValue = this.arrayValue(args);
+		    	callbackContext.success(arrayValue);
+		    	
+		    	return true;
+		    }
+		    else if("arrayUpdate".equals(action))
+		    {
+		    	String id = this.arrayUpdate(args);
+		    	callbackContext.success(id);
+		    	
+		    	return true;
+		    }
 		    
 		    return false;  // Returning false results in a "MethodNotFound" error.
 		}
@@ -90,7 +128,7 @@ public class SyncPlugin extends CordovaPlugin
 			return true;
 		}
 	}
-	
+	//-------------------Test Operations-----------------------------------------------------------------------------------------------------------
 	private String echo(String message)
 	{
 		return "Echo Back: "+message;
@@ -105,7 +143,7 @@ public class SyncPlugin extends CordovaPlugin
 		
 		return json;
 	}
-	
+	//------------------CRUD Operations---------------------------------------------------------------------------------------------------------------
 	private String newBean(JSONArray input) throws Exception
 	{
 		String channel = input.getString(0);
@@ -230,7 +268,7 @@ public class SyncPlugin extends CordovaPlugin
 		if(bean == null)
 		{
 			//do nothing
-			return "";
+			throw new RuntimeException("Bean Not Found");
 		}
 		
 		//Parse the JSON object
@@ -270,12 +308,144 @@ public class SyncPlugin extends CordovaPlugin
 		if(bean == null)
 		{
 			//nothing to do
-			return "";
+			throw new RuntimeException("Bean Not Found");
 		}
 		
     	String deletedBeanId = bean.getId();
     	bean.delete();
     	
     	return deletedBeanId;
+	}
+	//-------------------------------Array related Operations----------------------------------------------------------------------------------------------------
+	private JSONObject arrayInsert(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String oid = input.getString(1);
+		String fieldUri = input.getString(2);
+		JSONArray array = input.getJSONArray(3); 
+		
+		MobileBean bean = MobileBean.readById(channel, oid);
+		if(bean == null)
+		{
+			throw new RuntimeException("Bean Not Found");
+		}
+		
+		int arrayLength = array.length();
+		for(int i=0; i<arrayLength; i++)
+		{
+			Object object = array.get(i);
+			BeanListEntry arrayBean = this.arrayBean(object);
+			bean.addBean(fieldUri, arrayBean);
+		}
+		
+		//Persist the new bean in the local database and queue it for sync
+		bean.save();
+		
+		JSONObject metadata = new JSONObject();
+		metadata.put("id", bean.getId());
+		metadata.put("arrayLength", this.arrayLength(input));
+		
+		return metadata;
+	}
+	
+	private BeanListEntry arrayBean(Object object) throws Exception
+	{
+		BeanListEntry arrayBean = new BeanListEntry();
+		if(object instanceof String)
+		{
+			String value = (String)object;
+			arrayBean.setValue(value);
+		}
+		else if(object instanceof JSONObject)
+		{
+			JSONObject value = (JSONObject)object;
+			
+			//an object array
+			JSONArray names = value.names();
+			int length = names.length();
+			for(int i=0; i<length; i++)
+			{
+				String name = names.getString(i);
+				String element = value.getString(name);	
+				arrayBean.setProperty(name, element);
+			}
+		}
+		
+		return arrayBean;
+	}
+	
+	private String arrayLength(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String oid = input.getString(1);
+		String arrayUri = input.getString(2);
+		
+		MobileBean bean = MobileBean.readById(channel, oid);
+		if(bean == null)
+		{
+			throw new RuntimeException("Bean Not Found");
+		}
+		
+		BeanList array = bean.readList(arrayUri);
+		if(array == null)
+		{
+			return "0";
+		}
+		
+		return ""+array.size();
+	}
+	
+	private String clearArray(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String oid = input.getString(1);
+		String fieldUri = input.getString(2);
+		
+		MobileBean bean = MobileBean.readById(channel, oid);
+		
+		bean.clearList(fieldUri);
+		
+		bean.save();
+		
+		return this.arrayLength(input);
+	}
+	
+	private String arrayValue(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String oid = input.getString(1);
+		String valueUri = input.getString(2);
+		
+		MobileBean bean = MobileBean.readById(channel, oid);
+		if(bean == null)
+		{
+			throw new RuntimeException("Bean Not Found");
+		}
+		
+		String value = bean.getValue(valueUri);
+		
+		return value;
+	}
+	
+	private String arrayUpdate(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String id = input.getString(1);
+		String fieldUri = input.getString(2);
+		String value = input.getString(3);
+		
+		MobileBean bean = MobileBean.readById(channel, id);
+		if(bean == null)
+		{
+			//do nothing
+			throw new RuntimeException("Bean Not Found");
+		}
+		
+		bean.setValue(fieldUri, value);
+		
+		//Persist the new bean in the local database and queue it for sync
+		bean.save();
+		
+		return id;
 	}
 }

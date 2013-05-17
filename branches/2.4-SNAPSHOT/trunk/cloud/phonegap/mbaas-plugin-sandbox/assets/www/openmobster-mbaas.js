@@ -76,3 +76,58 @@ window.sync.deleteBean = function(channel,id,successCallback,errorCallback)
     [channel,id] //Passing a list of arguments to the Plugin
 	);
 };
+
+window.sync.arrayInsert = function(channel,id,arrayProperty,values,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'arrayInsert', //Tell plugin, which action must be performed
+    [channel,id,arrayProperty,values] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.clearArray = function(channel,id,arrayProperty,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'clearArray', //Tell plugin, which action must be performed
+    [channel,id,arrayProperty] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.arrayValue = function(channel,id,valueUri,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'arrayValue', //Tell plugin, which action must be performed
+    [channel,id,valueUri] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.arrayUpdate = function(channel,id,valueUri,value,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'arrayUpdate', //Tell plugin, which action must be performed
+    [channel,id,valueUri,value] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.arrayLength = function(channel,id,arrayProperty,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'arrayLength', //Tell plugin, which action must be performed
+    [channel,id,arrayProperty] //Passing a list of arguments to the Plugin
+	);
+};
