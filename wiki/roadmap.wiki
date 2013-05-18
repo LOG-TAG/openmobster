@@ -88,15 +88,21 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 	
 ----
 
-=== Release 2.4 (Under Active Prototyping) ===
-  * Windows Phone 7 Support
-  * Support for the evolving HTML5 standard
+=== Release 2.4 (Production Quality) ===
+  * Windows Phone 8 Support
+  * Support for Hybrid Native Apps based on HTML5
   * Expand PhoneGap Support to more modules in addition to the already supported Sync Plugin
   * Upgrade to JBoss 7
-  * Developer Framework for Exposing web services using REST/JSON. This will probably replace the use of the RPC module from the end user developer standpoint. The RPC module will still be used internally by the platform since it most likely will give better performance
   * Clustering
-  * BlackBerry Support
-  * Create an Android runtime for Consumer Apps
+  * BlackBerry 10 Support
+  * Remove all dependency on the CloudManager App. This App is not even needed to be installed on the device. This has been transitioned into a DeviceManagement App for doing Remote Lock and Remote Wipe
+  * More iOS Sample Apps based on Push Notifications
+  * Integrate SQLCipher to provide an Encrypted Database Option for Android
+  * Make conflict resolution more robust especially by getting the user involved
+  * Expose a REST-API for the Push service. This will allow applications not installed within the JBoss service to use the Push Notification service
+  * Improve the Android Enterprise App Store Workflow
+  * [https://code.google.com/p/openmobster/issues/detail?id=161&can=1&q=label%3A2.4-M4 Security Integration Framework]
+  * Develop the SalesForce.com SDK. This will provide the infrastructure needed to mobilize an Enterprise's SalesForce.com data to their Mobile Apps. The SDK will be provided Free and Open Source
 
 ----
 
