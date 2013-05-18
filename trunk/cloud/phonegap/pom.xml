@@ -72,6 +72,7 @@
 		<module>plugin-jquery-cloud</module>
 		<module>mbaas-plugin</module>
 		<module>mbaas-plugin-sandbox</module>
+		<module>hybrid-sample</module>
 	</modules>
 	
 	<build>
