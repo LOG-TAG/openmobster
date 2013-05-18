@@ -4,6 +4,20 @@
 <title>PhoneGap</title>
 <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
 <script type="text/javascript" charset="utf-8" src="openmobster-mbaas.js"></script>
+<style>  
+        .pass:before {  
+            content: 'PASS: ';  
+            color:  blue;  
+            font-weight: bold;  
+        }  
+          
+        .fail:before {  
+            content: 'FAIL: ';  
+            color: red;  
+            font-weight: bold;  
+              
+        }  
+</style>  
 <script type="text/javascript">
 function echo(message)
 {
@@ -11,6 +25,7 @@ function echo(message)
 		function(success)
 		{
 			alert(success);
+			assert(message===success, 'Echo Test');
 		},
 		function(error)
 		{
@@ -51,8 +66,21 @@ function addNewBean()
 	window.sync.newBean(channel,state,
 		function(oid)
 		{
-			readBean(oid);
-			alert("OID: "+oid);
+			assert(oid !== null, 'AddNewBean/OID');
+			var properties = ['title'];
+			window.sync.readBean(channel,oid,properties,
+				function(bean)
+				{
+					console.log("Id: "+bean.id);
+					console.log("Title: "+bean.title);
+					console.log("******************************");
+					assert(bean.title === '/test/newBean','AddNewBean/Title');
+				},
+				function(error)
+				{
+					alert("ReadBean: "+error);
+				}
+			);
 		},
 		function(error)
 		{
@@ -384,6 +412,19 @@ function arrayUpdate()
 </head>
 <body>
 	<h1>PhoneGap/Cordova OpenMobster MBaaS Plugin</h1><br/>
+	<ul id="output"></ul><br/>
+	<script type="text/javascript">
+		var output = document.getElementById('output');  
+  
+		function assert( outcome, description ) 
+		{  
+		    var li = document.createElement('li');  
+		    li.className = outcome ? 'pass' : 'fail';  
+		    li.appendChild( document.createTextNode( description ) );  
+		      
+		    output.appendChild(li);  
+		};  
+	</script>
 	<input type='button' value='Echo' onclick="javascript:echo('Hello World');"/><br/>
 	<input type='button' value='Get JSON' onclick="javascript:json();"/><br/>
 	<input type='button' value='Nested JSON' onclick="javascript:nestedJson();"/><br/>
