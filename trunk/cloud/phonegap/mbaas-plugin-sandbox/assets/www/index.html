@@ -104,6 +104,7 @@ function readall()
 				console.log("Title: "+bean.title);
 				console.log("******************************");
 			}
+			assert(true,"ReadAll");
 		},
 		function(error)
 		{
@@ -123,6 +124,7 @@ function readBean(id)
 			console.log("Id: "+bean.id);
 			console.log("Title: "+bean.title);
 			console.log("******************************");
+			assert(true,"ReadBean");
 		},
 		function(error)
 		{
@@ -147,7 +149,19 @@ function updateBean()
 				window.sync.updateBean(channel,bean.id,state,
 					function(beanId)
 					{
-						readBean(beanId);
+						window.sync.readBean(channel,beanId,['title'],
+						function(bean)
+						{
+							var title = bean.title;
+							var id = bean.id;
+							var value = "/test/updateBean/"+bean.id;
+							assert(title === value, "UpdateBean/Title");
+						},
+						function(error)
+						{
+							alert("ReadBean Error: "+error);
+						}
+						);
 					},
 					function(error)
 					{
@@ -178,6 +192,16 @@ function deleteBean()
 					function(beanId)
 					{
 						console.log(beanId+" was deleted");
+						window.sync.readBean(channel,beanId,[],
+							function(bean)
+							{
+								assert(bean.id === undefined, "DeleteBean");
+							},
+							function(error)
+							{
+								alert("ReadBean: "+error);
+							}
+						);
 					},
 					function(error)
 					{
@@ -323,6 +347,7 @@ function clearArray()
 					function(arrayLength)
 					{
 						console.log("Arraylength: "+arrayLength);
+						assert(arrayLength === "0", "ClearArray/customers");
 					},
 					function(error)
 					{
@@ -334,6 +359,7 @@ function clearArray()
 					function(arrayLength)
 					{
 						console.log("Arraylength: "+arrayLength);
+						assert(arrayLength === "0", "ClearArray/messages");
 					},
 					function(error)
 					{
@@ -387,6 +413,7 @@ function arrayUpdate()
 								function(value)
 								{
 									console.log(value);
+									assert(value.indexOf("/updated") !== -1,"ArrayUpdate/customers");
 								},
 								function(error)
 								{
