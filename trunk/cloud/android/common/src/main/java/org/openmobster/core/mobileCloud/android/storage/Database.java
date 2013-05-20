@@ -222,20 +222,26 @@ public final class Database
 		this.cloudbMetaData.getCRUDProvider().deleteAll(table);
 	}
 	
-	public Cursor testCursor(String from) throws DBException
-	{
-		//Validate
-		this.validateConnection(from, "testCursor");
-		
-		return this.cloudbMetaData.getCRUDProvider().testCursor(from);
-	}
-	
 	public Cursor readProxyCursor(String from) throws DBException
 	{
 		//Validate
 		this.validateConnection(from, "readProxyCursor");
 		
 		return this.cloudbMetaData.getCRUDProvider().readProxyCursor(from);
+	}
+	
+	public Cursor readByName(String table,String name) throws DBException
+	{
+		//Validate
+		this.validateConnection(table, "readByName");
+		return this.cloudbMetaData.getCRUDProvider().readByName(table,name);
+	}
+	
+	public Cursor readByName(String table,String name,boolean sortAscending) throws DBException
+	{
+		//Validate
+		this.validateConnection(table, "readByName/sort");
+		return this.cloudbMetaData.getCRUDProvider().readByName(table,name,sortAscending);
 	}
 	
 	public Cursor readByNameValuePair(String from,String name,String value) throws DBException

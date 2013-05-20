@@ -47,12 +47,10 @@ public interface CRUDProvider
 	void deleteAll(String table) throws DBException;
 	
 	//---------------------------------------------------------------------------------------------------------------------
-	Cursor testCursor(String table) throws DBException;
-	
 	Cursor readProxyCursor(String table) throws DBException;
-	
-	public Cursor readByNameValuePair(String from,String name,String value) throws DBException;
-	//----------------------------------------------------------------------------------------------------------------------
-	public Cursor searchExactMatchAND(String from, GenericAttributeManager criteria) throws DBException;
-	public Cursor searchExactMatchOR(String from, GenericAttributeManager criteria) throws DBException;
+	Cursor readByName(String table,String name) throws DBException;
+	Cursor readByName(String table,String name,boolean sortAscending) throws DBException;
+	Cursor readByNameValuePair(String from,String name,String value) throws DBException;
+	Cursor searchExactMatchAND(String from, GenericAttributeManager criteria) throws DBException;
+	Cursor searchExactMatchOR(String from, GenericAttributeManager criteria) throws DBException;
 }

@@ -392,15 +392,29 @@ public class DefaultCRUD implements CRUDProvider
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------
-	public Cursor testCursor(String from) throws DBException
-	{
-		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? ORDER BY value DESC",new String[]{"timestamp"});
-		return cursor;
-	}
-	
 	public Cursor readProxyCursor(String from) throws DBException
 	{
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{"isProxy","true"});
+		return cursor;
+	}
+	
+	public Cursor readByName(String from,String name) throws DBException
+	{
+		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=?",new String[]{name});
+		return cursor;
+	}
+	
+	public Cursor readByName(String from,String name,boolean sortAscending) throws DBException
+	{
+		Cursor cursor = null;
+		if(sortAscending)
+		{
+			cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? ORDER BY value ASC",new String[]{name});
+		}
+		else
+		{
+			cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? ORDER BY value DESC",new String[]{name});
+		}
 		return cursor;
 	}
 	
@@ -409,7 +423,7 @@ public class DefaultCRUD implements CRUDProvider
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
 		return cursor;
 	}
-	//-------------------------------------------------------------------------------------------------------------------------------------
+	
 	public Cursor searchExactMatchAND(String from, GenericAttributeManager criteria) throws DBException
 	{
 		if(criteria == null || criteria.isEmpty())

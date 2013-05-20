@@ -57,6 +57,11 @@ public class TestDatabasePerformance extends Test
 			
 			this.testSearchExactMatchAND(context);
 			this.testSearchExactMatchOR(context);
+			this.testReadByName(context);
+			this.testReadByNameWithSort(context);
+			this.testReadByNameValuePair(context);
+			
+			
 			this.testStoreLargeJson(context);
 			this.testMultipleJson(context);
 		}
@@ -292,6 +297,146 @@ public class TestDatabasePerformance extends Test
 			
 			this.assertEquals(""+largeMessage.length(), "100000", this.getInfo()+"/testMultipleJson/MessageLengthDoesNotMatch");
 		}
+		
+		db.deleteAll("emailChannel");
+	}
+	
+	private void testReadByName(Context context) throws DBException
+	{
+		Database db = Database.getInstance(context);
+		db.dropTable("emailChannel");
+		db.createTable("emailChannel");
+		
+		String from = "from@gmail.com";
+		String to = "to@gmail.com";
+		String message = "message";
+		
+		for(int i=0; i<100; i++)
+		{
+			System.out.println("Testing ReadByName # "+i);
+			
+			MobileObject mobileObject = new MobileObject();
+			mobileObject.setStorageId("emailChannel");
+			mobileObject.setValue("from", from);
+			mobileObject.setValue("to", to);
+			if(i%2 == 0)
+			{
+				mobileObject.setValue("message", message);
+			}
+			mobileObject.setCreatedOnDevice(false);
+			mobileObject.setLocked(false);
+			mobileObject.setProxy(false);
+			MobileObjectDatabase.getInstance().create(mobileObject);
+		}
+		
+		Cursor cursor = MobileObjectDatabase.getInstance().readByName("emailChannel", "message");
+		int count = cursor.getCount();
+		this.assertTrue(50 == count, this.getInfo()+"/testReadByName/CountMustBe50");
+		int columnIndex = cursor.getColumnIndex("recordid");
+		cursor.moveToFirst();
+		do
+		{
+			String recordid = cursor.getString(columnIndex);
+			System.out.println("RecordId: "+recordid);
+			
+			MobileObject cour = MobileObjectDatabase.getInstance().read("emailChannel", recordid);
+			
+			String messageValue = cour.getValue("message");
+			this.assertEquals(messageValue, "message", this.getInfo()+"/testReadByName/MessageValueMisMatch");
+			
+			cursor.moveToNext();
+		}while(!cursor.isAfterLast());
+		
+		db.deleteAll("emailChannel");
+	}
+	
+	private void testReadByNameWithSort(Context context) throws DBException
+	{
+		Database db = Database.getInstance(context);
+		db.dropTable("emailChannel");
+		db.createTable("emailChannel");
+		
+		String from = "from@gmail.com";
+		String to = "to@gmail.com";
+		String message = "message";
+		
+		for(int i=0; i<100; i++)
+		{
+			System.out.println("Testing ReadByNameWithSort # "+i);
+			
+			MobileObject mobileObject = new MobileObject();
+			mobileObject.setStorageId("emailChannel");
+			mobileObject.setValue("from", from);
+			mobileObject.setValue("to", to);
+			if(i%2 == 0)
+			{
+				mobileObject.setValue("message", message+"://"+i);
+			}
+			mobileObject.setCreatedOnDevice(false);
+			mobileObject.setLocked(false);
+			mobileObject.setProxy(false);
+			MobileObjectDatabase.getInstance().create(mobileObject);
+		}
+		
+		Cursor cursor = MobileObjectDatabase.getInstance().readByName("emailChannel", "message", true);
+		this.processReadByNameWithSort(cursor);
+		
+		cursor = MobileObjectDatabase.getInstance().readByName("emailChannel", "message", false);
+		this.processReadByNameWithSort(cursor);
+		
+		db.deleteAll("emailChannel");
+	}
+	
+	private void processReadByNameWithSort(Cursor cursor)
+	{
+		int count = cursor.getCount();
+		this.assertTrue(50 == count, this.getInfo()+"/testReadByNameWithSort/CountMustBe50");
+		
+		int columnIndex = cursor.getColumnIndex("recordid");
+		cursor.moveToFirst();
+		do
+		{
+			String recordid = cursor.getString(columnIndex);
+			
+			MobileObject cour = MobileObjectDatabase.getInstance().read("emailChannel", recordid);
+			String messageValue = cour.getValue("message");
+			System.out.println(messageValue);
+			
+			cursor.moveToNext();
+		}while(!cursor.isAfterLast());
+	}
+	
+	private void testReadByNameValuePair(Context context) throws DBException
+	{
+		Database db = Database.getInstance(context);
+		db.dropTable("emailChannel");
+		db.createTable("emailChannel");
+		
+		String from = "from@gmail.com";
+		String to = "to@gmail.com";
+		String message = "message";
+		
+		for(int i=0; i<100; i++)
+		{
+			System.out.println("Testing ReadByNameValuePair # "+i);
+			
+			MobileObject mobileObject = new MobileObject();
+			mobileObject.setStorageId("emailChannel");
+			mobileObject.setValue("from", from);
+			mobileObject.setValue("to", to);
+			if(i%2 == 0)
+			{
+				mobileObject.setValue("message", message+"://"+i);
+			}
+			mobileObject.setCreatedOnDevice(false);
+			mobileObject.setLocked(false);
+			mobileObject.setProxy(false);
+			MobileObjectDatabase.getInstance().create(mobileObject);
+		}
+		
+		Cursor cursor = MobileObjectDatabase.getInstance().readByNameValuePair("emailChannel", "from", "from@gmail.com");
+		int count = cursor.getCount();
+		this.assertTrue(100 == count, this.getInfo()+"/testReadByNameValuePair/CountMustBe100");
 		
 		db.deleteAll("emailChannel");
 	}

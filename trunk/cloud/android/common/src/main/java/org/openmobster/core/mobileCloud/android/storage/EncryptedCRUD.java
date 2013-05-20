@@ -101,7 +101,12 @@ public class EncryptedCRUD implements CRUDProvider
 	{
 	}
 	//-----------------------------------------------------------------------------------------------------------------------
-	public Cursor testCursor(String table) throws DBException
+	public Cursor readByName(String from,String name) throws DBException
+	{
+		return null;
+	}
+	
+	public Cursor readByName(String from,String name,boolean sortAscending) throws DBException
 	{
 		return null;
 	}
