@@ -407,27 +407,6 @@ public final class MobileObjectDatabase extends Service
 		return result;
 	}
 	
-	public Cursor testCursor(String channel)
-	{
-		try
-		{
-			Context context = Registry.getActiveInstance().getContext();				
-			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
-			
-			return database.testCursor(channel);
-		}
-		catch(Exception e)
-		{
-			throw new SystemException(this.getClass().getName(), "testCursor", new Object[]
-   			{
-				"storageId="+channel,
-				"error="+e.getMessage()
-   			}
-   			);
-		}	
-	}
-	
 	public Cursor readProxyCursor(String channel)
 	{
 		try
@@ -462,6 +441,90 @@ public final class MobileObjectDatabase extends Service
 		catch(Exception e)
 		{
 			throw new SystemException(this.getClass().getName(), "readByNameValuePair", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
+	
+	public Cursor readByName(String channel,String name)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.readByName(channel,name);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "readByName", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
+	
+	public Cursor readByName(String channel,String name,boolean sortAscending)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.readByName(channel,name,sortAscending);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "readByName/sort", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
+	
+	public Cursor searchExactMatchAND(String channel, GenericAttributeManager criteria)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.searchExactMatchAND(channel,criteria);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "searchExactMatchAND", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
+	
+	public Cursor searchExactMatchOR(String channel, GenericAttributeManager criteria)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.searchExactMatchOR(channel,criteria);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "searchExactMatchOR", new Object[]
    			{
 				"storageId="+channel,
 				"error="+e.getMessage()
