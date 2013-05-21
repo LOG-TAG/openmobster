@@ -165,4 +165,9 @@
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
+   
+   <bean name="queryChannel" class="test.openmobster.device.agent.sync.server.QueryChannel">
+   		<depends>services://MobileObjectMonitor</depends>
+   		<depends>services://MobileServiceMonitor</depends>
+   </bean>
 </deployment>

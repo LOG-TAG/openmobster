@@ -26,6 +26,18 @@ public final class TestCreateOfflineBeans extends AbstractAPITest
 	{		
 		try
 		{
+			StringBuilder builder = new StringBuilder();
+			StringBuilder packetBuilder = new StringBuilder();
+			for(int i=0; i<1000; i++)
+			{
+				packetBuilder.append("a");
+			}
+			String packet = packetBuilder.toString();
+			for(int i=0; i<100; i++)
+			{
+				builder.append(packet);
+			}
+			
 			Set<MobileBean> beans = new HashSet<MobileBean>();
 			for(int i=0; i<50; i++)
 			{
@@ -36,14 +48,6 @@ public final class TestCreateOfflineBeans extends AbstractAPITest
 				assertTrue(newBean.getId()==null, this.getInfo()+"://NewBean_id_should_be_null");
 				assertTrue(newBean.getServerId()==null, this.getInfo()+"://NewBean_serverId_should_be_null");
 				
-				StringBuilder builder = new StringBuilder();
-				for(int j=0; j<1024; j++)
-				{
-					for(int k=0; k<100; k++)
-					{
-						builder.append("a");
-					}
-				}
 				newBean.setValue("from", builder.toString());
 			
 				beans.add(newBean);
