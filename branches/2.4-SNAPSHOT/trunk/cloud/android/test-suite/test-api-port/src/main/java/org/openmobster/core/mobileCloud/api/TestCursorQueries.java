@@ -8,6 +8,8 @@
 
 package org.openmobster.core.mobileCloud.api;
 
+import java.util.List;
+
 import org.openmobster.android.api.sync.*;
 import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
@@ -28,6 +30,8 @@ public final class TestCursorQueries extends AbstractAPITest
 			this.testSearchByMatchAll();
 			
 			this.testSearchByMatchAtleastOne();
+			
+			this.testCursorAll();
 		}
 		catch(Exception e)
 		{
@@ -50,6 +54,7 @@ public final class TestCursorQueries extends AbstractAPITest
 			
 			cursor.moveToNext();
 		}while(!cursor.isAfterLast());
+		cursor.close();
 		
 		cursor = MobileBean.sortByProperty("queryChannel", "from", false);
 		cursor.moveToFirst();
@@ -63,6 +68,7 @@ public final class TestCursorQueries extends AbstractAPITest
 			
 			cursor.moveToNext();
 		}while(!cursor.isAfterLast());
+		cursor.close();
 	}
 	
 	private void testQueryByProperty() throws Exception
@@ -85,6 +91,7 @@ public final class TestCursorQueries extends AbstractAPITest
 			counter++;
 			cursor.moveToNext();
 		}while(!cursor.isAfterLast());
+		cursor.close();
 		
 		this.assertTrue(counter==1, this.getInfo()+"/testQueryByProperty/OnlyOneBeanShouldBeFound");
 	}
@@ -112,6 +119,7 @@ public final class TestCursorQueries extends AbstractAPITest
 			counter++;
 			cursor.moveToNext();
 		}while(!cursor.isAfterLast());
+		cursor.close();
 		
 		this.assertTrue(counter==1, this.getInfo()+"/testSearchByMatchAll/OnlyOneBeanShouldBeFound");
 		
@@ -121,6 +129,7 @@ public final class TestCursorQueries extends AbstractAPITest
 		
 		cursor = MobileBean.searchByMatchAll("queryChannel", criteria);
 		this.assertTrue(cursor.count()==0, this.getInfo()+"/testSearchByMatchAll/NothingShouldBeFound");
+		cursor.close();
 	}
 	
 	private void testSearchByMatchAtleastOne() throws Exception
@@ -133,5 +142,38 @@ public final class TestCursorQueries extends AbstractAPITest
 		
 		MobileBeanCursor cursor = MobileBean.searchByMatchAtleastOne("queryChannel", criteria);
 		this.assertTrue(cursor.count()==2, this.getInfo()+"/testSearchByMatchAtleastOne/TwoBeansShouldBeFound");
+		cursor.close();
+	}
+	
+	private void testCursorAll() throws Exception
+	{
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		
+		criteria = new GenericAttributeManager();
+		criteria.setAttribute("to", "0/to");
+		criteria.setAttribute("message.from", "4/message/from");
+		
+		MobileBeanCursor cursor = MobileBean.searchByMatchAtleastOne("queryChannel", criteria);
+		this.assertTrue(cursor.count()==2, this.getInfo()+"/testSearchByMatchAtleastOne/TwoBeansShouldBeFound");
+		
+		cursor.moveToFirst();
+		do
+		{
+			MobileBean bean = cursor.getCurrentBean();
+			
+			System.out.println("Bean Id: "+bean.getId());
+			System.out.println("From: "+bean.getValue("from"));
+			System.out.println("To: "+bean.getValue("to"));
+			System.out.println("Message/To: "+bean.getValue("message.to"));
+			System.out.println("Message/From: "+bean.getValue("message.from"));
+			System.out.println("****************************");
+			
+			cursor.moveToNext();
+		}while(!cursor.isAfterLast());
+		
+		List<MobileBean> all = cursor.all();
+		this.assertTrue(all.size()==2, this.getInfo()+"/testSearchByMatchAtleastOne/all/TwoBeansShouldBeFound");
+		
+		cursor.close();
 	}
 }
