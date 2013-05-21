@@ -530,7 +530,7 @@ public class DefaultCRUD implements CRUDProvider
 			boolean addProperty = true;
 			
 			//check if this is a name
-			if(name.startsWith("field[") && name.endsWith("].name"))
+			if(name.startsWith("field[") && name.endsWith("].uri"))
 			{
 				nameValuePairs.put(name, value);
 				addProperty = false;
@@ -562,9 +562,10 @@ public class DefaultCRUD implements CRUDProvider
 			}
 			
 			String name = nameValuePairs.get(key);
+			name = this.calculatePropertyUri(name);
 			
 			//Get the value
-			String value = nameValuePairs.get(key.replace("].name", "].value"));
+			String value = nameValuePairs.get(key.replace("].uri", "].value"));
 			
 			if(value.length() < 1000)
 			{
@@ -582,6 +583,33 @@ public class DefaultCRUD implements CRUDProvider
 		String jsonPointer = record.toJson();
 		String insert = "INSERT INTO "+table+" (recordid,name,value) VALUES (?,?,?);";
 		this.db.execSQL(insert,new Object[]{recordId,"om:json",jsonPointer});
+	}
+	
+	private String calculatePropertyUri(String uri)
+	{
+		String propertyUri = null;
+		if(uri == null)
+		{
+			return null;
+		}
+		
+		if(uri.startsWith("/"))
+		{
+			if(uri.equals("/"))
+			{
+				return "";
+			}
+			
+			propertyUri = uri.substring(1);
+		}
+		else
+		{
+			propertyUri = uri;
+		}
+		
+		propertyUri = propertyUri.replaceAll("/", ".");
+		
+		return propertyUri;
 	}
 	//----------------------------------------------Deprecated------------------------------------------------------------------------
 	public Set<Record> select(String from, String name, String value) throws DBException

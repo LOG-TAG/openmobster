@@ -16,6 +16,8 @@ import java.util.Hashtable;
 import java.util.HashSet;
 import java.io.IOException;
 
+import android.database.Cursor;
+
 import org.openmobster.core.mobileCloud.android.util.Base64;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -750,6 +752,7 @@ public final class MobileBean
 	 * @param criteria name/value pairs of the data to be matched
 	 * @return an array of beans that match the specified query
 	 */
+	@Deprecated
 	public static MobileBean[] queryByEqualsAll(String service,GenericAttributeManager criteria)
 	{
 		if(service == null)
@@ -805,6 +808,7 @@ public final class MobileBean
 	 * @param criteria name/value pairs of the data to be matched
 	 * @return an array of beans that match the specified query
 	 */
+	@Deprecated
 	public static MobileBean[] queryByEqualsAtleastOne(String service, 
 	GenericAttributeManager criteria)	
 	{
@@ -861,6 +865,7 @@ public final class MobileBean
 	 * @param criteria name/value pairs of the data to be matched
 	 * @return an array of beans that "do not" match the specified query
 	 */
+	@Deprecated
 	public static MobileBean[] queryByNotEqualsAll(String service, 
 	GenericAttributeManager criteria)
 	{
@@ -917,6 +922,7 @@ public final class MobileBean
 	 * @param criteria name/value pairs of the data to be matched
 	 * @return an array of beans that "do not" match the specified query
 	 */
+	@Deprecated
 	public static MobileBean[] queryByNotEqualsAtleastOne(String service, 
 	GenericAttributeManager criteria)	
 	{
@@ -1068,6 +1074,7 @@ public final class MobileBean
 	 * @param criteria name/value pairs of the data to be matched
 	 * @return an array of beans that match the specified query
 	 */
+	@Deprecated
 	public static MobileBean[] queryByContainsAll(String service,
 	GenericAttributeManager criteria)
 	{
@@ -1124,6 +1131,7 @@ public final class MobileBean
 	 * @param criteria name/value pairs of the data to be matched
 	 * @return an array of beans that match the specified query
 	 */
+	@Deprecated
 	public static MobileBean[] queryByContainsAtleastOne(String service, 
 	GenericAttributeManager criteria)	
 	{
@@ -1169,6 +1177,82 @@ public final class MobileBean
 		}
 		
 		return beans;
+	}
+	
+	/**
+	 * Query the channel such the results are sorted by the value of the specified property of the bean
+	 * 
+	 * @param channel
+	 * @param property
+	 * @param ascending
+	 * @return
+	 */
+	public static MobileBeanCursor sortByProperty(String channel, String property, boolean ascending)
+	{
+		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
+		
+		Cursor cursor = db.readByName(channel, property, ascending);
+		
+		MobileBeanCursor mobileBeanCursor = new MobileBeanCursorImpl(channel,cursor);
+		
+		return mobileBeanCursor;
+	}
+	
+	/**
+	 * Query the channel by the value of the specified bean property
+	 * 
+	 * @param channel
+	 * @param property
+	 * @param value
+	 * @return
+	 */
+	public static MobileBeanCursor queryByProperty(String channel, String property, String value)
+	{
+		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
+		
+		Cursor cursor = db.readByNameValuePair(channel, property, value);
+		
+		MobileBeanCursor mobileBeanCursor = new MobileBeanCursorImpl(channel,cursor);
+		
+		return mobileBeanCursor;
+	}
+	
+	/**
+	 * Search beans by criteria made up of name/value pairs to be matched against
+	 * The query uses the 'AND' expression between each name/value pair to make sure the criteria is fully matched
+	 * 
+	 * @param channel
+	 * @param criteria
+	 * @return
+	 */
+	public static MobileBeanCursor searchByMatchAll(String channel, GenericAttributeManager criteria)
+	{
+		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
+		
+		Cursor cursor = db.searchExactMatchAND(channel, criteria);
+		
+		MobileBeanCursor mobileBeanCursor = new MobileBeanCursorImpl(channel,cursor);
+		
+		return mobileBeanCursor;
+	}
+	
+	/**
+	 * Search beans by criteria made up of name/value pairs to be matched against
+	 * The query uses the 'OR' expression between each name/value pair to make sure atleast one name/value pair from the criteria is matched
+	 * 
+	 * @param channel
+	 * @param criteria
+	 * @return
+	 */
+	public static MobileBeanCursor searchByMatchAtleastOne(String channel, GenericAttributeManager criteria)
+	{
+		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
+		
+		Cursor cursor = db.searchExactMatchOR(channel, criteria);
+		
+		MobileBeanCursor mobileBeanCursor = new MobileBeanCursorImpl(channel,cursor);
+		
+		return mobileBeanCursor;
 	}
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 	private synchronized void clearAll()
