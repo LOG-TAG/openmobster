@@ -7,6 +7,8 @@
  */
 package org.openmobster.android.api.sync;
 
+import java.util.List;
+
 /**
  *
  * @author openmobster@gmail.com
@@ -28,6 +30,7 @@ public interface MobileBeanCursor
 	public boolean moveToPrevious();
 	
 	public MobileBean getCurrentBean();
+	public List<MobileBean> all();
 	public int count();
 	
 	//cleanup operations

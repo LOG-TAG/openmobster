@@ -7,6 +7,9 @@
  */
 package org.openmobster.android.api.sync;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import android.database.Cursor;
 
 import org.openmobster.core.mobileCloud.android.util.GeneralTools;
@@ -116,6 +119,22 @@ final class MobileBeanCursorImpl implements MobileBeanCursor
 		MobileBean mobileBean = MobileBean.readById(this.channel, recordid);
 		
 		return mobileBean;
+	}
+	
+	public List<MobileBean> all()
+	{
+		List<MobileBean> all = new ArrayList<MobileBean>();
+		
+		this.cursor.moveToFirst();
+		do
+		{
+			MobileBean local = this.getCurrentBean();
+			all.add(local);
+			
+			this.cursor.moveToNext();
+		}while(!this.cursor.isAfterLast());
+		
+		return all;
 	}
 
 	@Override
