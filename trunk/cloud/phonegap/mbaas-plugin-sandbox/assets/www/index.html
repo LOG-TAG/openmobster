@@ -435,6 +435,259 @@ function arrayUpdate()
 		}
 	);
 }
+
+function sortByProperty()
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	window.sync.sortByProperty(channel,'title',true,
+		function(cursor)
+		{
+			var count = cursor.count;
+			var channel = cursor.channel;
+			var cursorId = cursor.id;
+			
+			console.log("Cursor Count: "+count);
+			console.log("Cursor Channel: "+channel);
+			console.log("Cursor Id: "+cursorId);
+			console.log("******************************");
+			assert(count>0,"SortByProperty/Ascending");
+			
+			for(var i=0;i<count;i++)
+			{
+				window.sync.cursor.currBean(cursorId,properties,
+					function(bean)
+					{
+						console.log("Id: "+bean.id);
+						console.log("Title: "+bean.title);
+						console.log("******************************");
+					},
+					function(error)
+					{
+						alert("CurrBean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("SortByProperty: "+error);
+		}
+	);
+	
+	window.sync.sortByProperty(channel,'title',false,
+		function(cursor)
+		{
+			var count = cursor.count;
+			var channel = cursor.channel;
+			var cursorId = cursor.id;
+			
+			console.log("Cursor Count: "+count);
+			console.log("Cursor Channel: "+channel);
+			console.log("Cursor Id: "+cursorId);
+			console.log("******************************");
+			assert(count>0,"SortByProperty/Descending");
+			
+			for(var i=0;i<count;i++)
+			{
+				window.sync.cursor.currBean(cursorId,properties,
+					function(bean)
+					{
+						console.log("Id: "+bean.id);
+						console.log("Title: "+bean.title);
+						console.log("******************************");
+					},
+					function(error)
+					{
+						alert("CurrBean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("SortByProperty: "+error);
+		}
+	);
+}
+
+function queryByProperty()
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	window.sync.queryByProperty(channel,'title','/test/newBean',
+		function(cursor)
+		{
+			var count = cursor.count;
+			var channel = cursor.channel;
+			var cursorId = cursor.id;
+			
+			console.log("Cursor Count: "+count);
+			console.log("Cursor Channel: "+channel);
+			console.log("Cursor Id: "+cursorId);
+			console.log("******************************");
+			assert(count>0,"QueryByProperty/test/newBean");
+			
+			for(var i=0;i<count;i++)
+			{
+				window.sync.cursor.currBean(cursorId,properties,
+					function(bean)
+					{
+						console.log("Id: "+bean.id);
+						console.log("Title: "+bean.title);
+						console.log("******************************");
+					},
+					function(error)
+					{
+						alert("CurrBean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("QueryByProperty: "+error);
+		}
+	);
+}
+
+function searchByMatchAll()
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	var nameValuePairs = [];
+	nameValuePairs[0] = {};
+	nameValuePairs[0].name = 'title';
+	nameValuePairs[0].value = '/test/newBean';
+	window.sync.searchByMatchAll(channel,nameValuePairs,
+		function(cursor)
+		{
+			var count = cursor.count;
+			var channel = cursor.channel;
+			var cursorId = cursor.id;
+			
+			console.log("Cursor Count: "+count);
+			console.log("Cursor Channel: "+channel);
+			console.log("Cursor Id: "+cursorId);
+			console.log("******************************");
+			assert(count>0,"SearchByMatchAll/test/newBean");
+			
+			for(var i=0;i<count;i++)
+			{
+				window.sync.cursor.currBean(cursorId,properties,
+					function(bean)
+					{
+						console.log("Id: "+bean.id);
+						console.log("Title: "+bean.title);
+						console.log("******************************");
+					},
+					function(error)
+					{
+						alert("CurrBean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("SearchByMatchAll: "+error);
+		}
+	);
+}
+
+function searchByMatchAtleastOne()
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	var nameValuePairs = [];
+	nameValuePairs[0] = {};
+	nameValuePairs[0].name = 'title';
+	nameValuePairs[0].value = '/test/newBean';
+	window.sync.searchByMatchAtleastOne(channel,nameValuePairs,
+		function(cursor)
+		{
+			var count = cursor.count;
+			var channel = cursor.channel;
+			var cursorId = cursor.id;
+			
+			console.log("Cursor Count: "+count);
+			console.log("Cursor Channel: "+channel);
+			console.log("Cursor Id: "+cursorId);
+			console.log("******************************");
+			assert(count>0,"SearchByMatchAtleastOne/test/newBean");
+			
+			for(var i=0;i<count;i++)
+			{
+				window.sync.cursor.currBean(cursorId,properties,
+					function(bean)
+					{
+						console.log("Id: "+bean.id);
+						console.log("Title: "+bean.title);
+						console.log("******************************");
+					},
+					function(error)
+					{
+						alert("CurrBean: "+error);
+					}
+				);
+			}
+		},
+		function(error)
+		{
+			alert("SearchByMatchAtleastOne: "+error);
+		}
+	);
+}
+
+function cursorAllBeans()
+{
+	var channel = "phonegap_channel";
+	var properties = ['title'];
+	var nameValuePairs = [];
+	nameValuePairs[0] = {};
+	nameValuePairs[0].name = 'title';
+	nameValuePairs[0].value = '/test/newBean';
+	window.sync.searchByMatchAtleastOne(channel,nameValuePairs,
+		function(cursor)
+		{
+			var count = cursor.count;
+			var channel = cursor.channel;
+			var cursorId = cursor.id;
+			
+			console.log("Cursor Count: "+count);
+			console.log("Cursor Channel: "+channel);
+			console.log("Cursor Id: "+cursorId);
+			console.log("******************************");
+			assert(count>0,"CursorAllBeans/test/newBean");
+			if(count == 0)
+			{
+				return;
+			}
+			
+			window.sync.cursor.allBeans(cursorId,properties,
+				function(beans)
+				{
+					var length = beans.length;
+					for(var i=0; i<length; i++)
+					{
+						var bean = beans[i];
+						console.log("Id: "+bean.id);
+						console.log("Title: "+bean.title);
+						console.log("******************************");
+					}
+				},
+				function(error)
+				{
+					alert("CursorAllBeans: "+error);
+				}
+			);
+		},
+		function(error)
+		{
+			alert("SearchByMatchAtleastOne: "+error);
+		}
+	);
+}
 </script>
 </head>
 <body>
@@ -462,5 +715,10 @@ function arrayUpdate()
 	<input type='button' value='Array Insert' onclick="javascript:arrayInsert();"/><br/>
 	<input type='button' value='Array Clear' onclick="javascript:clearArray();"/><br/>
 	<input type='button' value='Array Update' onclick="javascript:arrayUpdate();"/><br/>
+	<input type='button' value='SortByProperty' onclick="javascript:sortByProperty();"/><br/>
+	<input type='button' value='QueryByProperty' onclick="javascript:queryByProperty();"/><br/>
+	<input type='button' value='SearchByMatchAll' onclick="javascript:searchByMatchAll();"/><br/>
+	<input type='button' value='SearchByMatchAtleastOne' onclick="javascript:searchByMatchAtleastOne();"/><br/>
+	<input type='button' value='CursorAllBeans' onclick="javascript:cursorAllBeans();"/><br/>
 </body>
 </html>

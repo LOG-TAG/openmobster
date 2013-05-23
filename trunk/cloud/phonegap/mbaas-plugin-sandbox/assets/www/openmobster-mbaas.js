@@ -1,4 +1,5 @@
 window.sync = function(){};
+window.sync.cursor = function(){};
 
 window.sync.echo = function(message,successCallback,errorCallback)
 {
@@ -129,5 +130,71 @@ window.sync.arrayLength = function(channel,id,arrayProperty,successCallback,erro
     'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
     'arrayLength', //Tell plugin, which action must be performed
     [channel,id,arrayProperty] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.sortByProperty = function(channel,property,ascending,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'sortByProperty', //Tell plugin, which action must be performed
+    [channel,property,ascending] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.queryByProperty = function(channel,property,value,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'queryByProperty', //Tell plugin, which action must be performed
+    [channel,property,value] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.searchByMatchAll = function(channel,nameValuePairs,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'searchByMatchAll', //Tell plugin, which action must be performed
+    [channel,nameValuePairs] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.searchByMatchAtleastOne = function(channel,nameValuePairs,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'searchByMatchAtleastOne', //Tell plugin, which action must be performed
+    [channel,nameValuePairs] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.cursor.currBean = function(cursorId,properties,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'cursorCurrBean', //Tell plugin, which action must be performed
+    [cursorId,properties] //Passing a list of arguments to the Plugin
+	);
+};
+
+window.sync.cursor.allBeans = function(cursorId,properties,successCallback,errorCallback)
+{
+	return cordova.exec(
+    successCallback, //Success callback
+    errorCallback, //Failure callback
+    'SyncPlugin', //Tell PhoneGap to run 'HelloPlugin'
+    'cursorAllBeans', //Tell plugin, which action must be performed
+    [cursorId,properties] //Passing a list of arguments to the Plugin
 	);
 };
