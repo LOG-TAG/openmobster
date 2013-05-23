@@ -8,11 +8,10 @@
 package org.openmobster.core.cordova.plugin;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.cordova.api.CallbackContext;
-import org.apache.cordova.api.CordovaInterface;
 import org.apache.cordova.api.CordovaPlugin;
-import org.apache.cordova.api.PluginResult;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,7 +20,8 @@ import org.json.JSONException;
 import org.openmobster.android.api.sync.BeanList;
 import org.openmobster.android.api.sync.BeanListEntry;
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android.util.GeneralTools;
+import org.openmobster.android.api.sync.MobileBeanCursor;
+import org.openmobster.core.mobileCloud.android.util.GenericAttributeManager;
 
 /**
  *
@@ -118,6 +118,49 @@ public class SyncPlugin extends CordovaPlugin
 		    	
 		    	return true;
 		    }
+		    else if("sortByProperty".equals(action))
+		    {
+		    	JSONObject cursorInfo = this.sortByProperty(args);
+		    	callbackContext.success(cursorInfo);
+		    	
+		    	return true;
+		    }
+		    else if("queryByProperty".equals(action))
+		    {
+		    	JSONObject cursorInfo = this.queryByProperty(args);
+		    	callbackContext.success(cursorInfo);
+		    	
+		    	return true;
+		    }
+		    else if("searchByMatchAll".equals(action))
+		    {
+		    	JSONObject cursorInfo = this.searchByMatchAll(args);
+		    	callbackContext.success(cursorInfo);
+		    	
+		    	return true;
+		    }
+		    else if("searchByMatchAtleastOne".equals(action))
+		    {
+		    	JSONObject cursorInfo = this.searchByMatchAtleastOne(args);
+		    	callbackContext.success(cursorInfo);
+		    	
+		    	return true;
+		    }
+		    else if("cursorCurrBean".equals(action))
+		    {
+		    	JSONObject bean = this.cursorCurrBean(args);
+		    	callbackContext.success(bean);
+		    	
+		    	return true;
+		    }
+		    else if("cursorAllBeans".equals(action))
+		    {
+		    	JSONArray all = this.cursorAllBeans(args);
+		    	callbackContext.success(all);
+		    	
+		    	return true;
+		    }
+		    
 		    
 		    return false;  // Returning false results in a "MethodNotFound" error.
 		}
@@ -447,5 +490,181 @@ public class SyncPlugin extends CordovaPlugin
 		bean.save();
 		
 		return id;
+	}
+	//--------------------------Query related operations-------------------------------------------------------------------------------------
+	private JSONObject sortByProperty(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String property = input.getString(1);
+		boolean ascending = input.getBoolean(2);
+		
+		JSONObject cursorInfo = new JSONObject();
+		
+		MobileBeanCursor cursor = MobileBean.sortByProperty(channel, property, ascending);
+		
+		cursorInfo.put("id", cursor.getId());
+		cursorInfo.put("channel", cursor.getChannel());
+		cursorInfo.put("count",cursor.count());
+		
+		//Cache the cursor for reading in later calls
+		CursorCache.getInstance().cache(cursor);
+		
+		return cursorInfo;
+	}
+	
+	private JSONObject queryByProperty(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		String property = input.getString(1);
+		String value = input.getString(2);
+		
+		JSONObject cursorInfo = new JSONObject();
+		
+		MobileBeanCursor cursor = MobileBean.queryByProperty(channel, property, value);
+		
+		cursorInfo.put("id", cursor.getId());
+		cursorInfo.put("channel", cursor.getChannel());
+		cursorInfo.put("count",cursor.count());
+		
+		//Cache the cursor for reading in later calls
+		CursorCache.getInstance().cache(cursor);
+		
+		return cursorInfo;
+	}
+	
+	private JSONObject searchByMatchAll(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		JSONArray nameValuePairs = input.getJSONArray(1);
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		
+		//prepare the criteria
+		int arrayLength = nameValuePairs.length();
+		for(int i=0; i<arrayLength; i++)
+		{
+			JSONObject nameValuePair = nameValuePairs.getJSONObject(i);
+			String name = nameValuePair.getString("name");
+			String value = nameValuePair.getString("value");
+			criteria.setAttribute(name, value);
+		}
+		
+		JSONObject cursorInfo = new JSONObject();
+		
+		MobileBeanCursor cursor = MobileBean.searchByMatchAll(channel, criteria);
+		
+		cursorInfo.put("id", cursor.getId());
+		cursorInfo.put("channel", cursor.getChannel());
+		cursorInfo.put("count",cursor.count());
+		
+		//Cache the cursor for reading in later calls
+		CursorCache.getInstance().cache(cursor);
+		
+		return cursorInfo;
+	}
+	
+	private JSONObject searchByMatchAtleastOne(JSONArray input) throws Exception
+	{
+		String channel = input.getString(0);
+		JSONArray nameValuePairs = input.getJSONArray(1);
+		GenericAttributeManager criteria = new GenericAttributeManager();
+		
+		//prepare the criteria
+		int arrayLength = nameValuePairs.length();
+		for(int i=0; i<arrayLength; i++)
+		{
+			JSONObject nameValuePair = nameValuePairs.getJSONObject(i);
+			String name = nameValuePair.getString("name");
+			String value = nameValuePair.getString("value");
+			criteria.setAttribute(name, value);
+		}
+		
+		JSONObject cursorInfo = new JSONObject();
+		
+		MobileBeanCursor cursor = MobileBean.searchByMatchAtleastOne(channel, criteria);
+		
+		cursorInfo.put("id", cursor.getId());
+		cursorInfo.put("channel", cursor.getChannel());
+		cursorInfo.put("count",cursor.count());
+		
+		//Cache the cursor for reading in later calls
+		CursorCache.getInstance().cache(cursor);
+		
+		return cursorInfo;
+	}
+	
+	private JSONObject cursorCurrBean(JSONArray input) throws Exception
+	{
+		JSONObject bean = new JSONObject();
+		
+		String cursorId = input.getString(0);
+		JSONArray properties = input.getJSONArray(1);
+		
+		MobileBean mobileBean = CursorCache.getInstance().currentBean(cursorId);
+		if(mobileBean == null)
+		{
+			return bean;
+		}
+		
+		bean.put("id", mobileBean.getId());
+		if(properties != null)
+		{
+			for(int i=0,size=properties.length();i<size; i++)
+	        {
+	        	String property = properties.getString(i);
+	        	if(property.indexOf('[') != -1)
+				{
+					continue;
+				}
+	        	
+	        	String value = mobileBean.getValue(property);
+	        	if(value != null)
+	        	{
+	        		bean.put(property, value);
+	        	}
+	        }
+		}
+		
+		return bean;
+	}
+	
+	private JSONArray cursorAllBeans(JSONArray input) throws Exception
+	{
+		JSONArray all = new JSONArray();
+		
+		String cursorId = input.getString(0);
+		JSONArray properties = input.getJSONArray(1);
+		
+		List<MobileBean> beans = CursorCache.getInstance().allBeans(cursorId);
+		if(beans == null || beans.isEmpty())
+		{
+			return all;
+		}
+		
+        for(MobileBean local:beans)
+        {
+            JSONObject jsonBean = new JSONObject();
+        	jsonBean.put("id", local.getId());
+        	
+        	if(properties != null)
+        	{
+	            for(int j=0,size=properties.length();j<size; j++)
+	            {
+	            	String property = properties.getString(j);
+	            	if(property.indexOf('[') != -1)
+					{
+						continue;
+					}
+	            	
+	            	String value = local.getValue(property);
+	            	if(value != null)
+	            	{
+	            		jsonBean.put(property, value);
+	            	}
+	            }
+        	}
+            all.put(jsonBean);
+        }
+        
+        return all;
 	}
 }

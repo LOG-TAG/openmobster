@@ -124,6 +124,10 @@ final class MobileBeanCursorImpl implements MobileBeanCursor
 	public List<MobileBean> all()
 	{
 		List<MobileBean> all = new ArrayList<MobileBean>();
+		if(this.cursor.getCount() == 0)
+		{
+			return all;
+		}
 		
 		this.cursor.moveToFirst();
 		do
