@@ -87,6 +87,7 @@
 												<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
 												<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 												<fileset file="${settings.localRepository}/org/jgroups/jgroups/${version.jgroups}/jgroups-${version.jgroups}.jar" />
+												<fileset file="${settings.localRepository}/io/netty/netty/${version.netty}/netty-${version.netty}.jar" />
 											</copy>
 											
 											<copy tofile="target/mysql5/openmobster-ds.xml" file="${basedir}/src/main/config/mysql5/openmobster-ds.xml" overwrite="true" />
@@ -147,6 +148,7 @@
 												<fileset file="${settings.localRepository}/com/googlecode/json-simple/json-simple/${version.json-simple}/json-simple-${version.json-simple}.jar" />
 												<fileset file="${settings.localRepository}/net/sf/ehcache/ehcache/${version.ehcache}/ehcache-${version.ehcache}.jar" />
 												<fileset file="${settings.localRepository}/org/jgroups/jgroups/${version.jgroups}/jgroups-${version.jgroups}.jar" />
+												<fileset file="${settings.localRepository}/io/netty/netty/${version.netty}/netty-${version.netty}.jar" />
 											</copy>
 											
 											<copy tofile="target/hsqldb/openmobster-ds.xml" file="${basedir}/src/main/config/hsqldb/openmobster-ds.xml" overwrite="true" />																																															       																							
