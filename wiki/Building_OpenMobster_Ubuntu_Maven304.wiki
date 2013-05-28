@@ -13,7 +13,7 @@
 
 1) Checkout the OpenMobster source code to your favorite working directory
 {{{
-  svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
+  svn checkout http://openmobster.googlecode.com/svn/branches/2.4-SNAPSHOT openmobster-read-only
 }}}
 
 2) Install Google Web Toolkit (GWT - I'm using 2.4.0)
