@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+
 /**
  *
  * @author openmobster@gmail.com
@@ -45,8 +46,12 @@ public final class ActivatePushSocket extends BroadcastReceiver
 				return;
 			}
 			
-			BackgroundActivatePushSocket.acquireWakeLock(context.getApplicationContext());
-			BackgroundActivatePushSocket.getInstance().execute();
+			//Grab a WakeLock
+			BackgroundActivatePushSocket.acquireWakeLock(context);
+			
+			//Now invoke the service and leave
+			Intent serviceIntent = new Intent(context,BackgroundActivatePushSocket.class);
+			context.startService(serviceIntent);
 		}
 		catch(Exception e)
 		{

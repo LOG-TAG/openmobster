@@ -7,59 +7,174 @@
  */
 package org.openmobster.core.mobileCloud.push;
 
-import java.util.TimerTask;
-
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
+import org.openmobster.core.mobileCloud.android.service.Registry;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 
 /**
  *
  * @author openmobster@gmail.com
  */
-public final class StartSync extends TimerTask
+public final class StartSync extends Service
 {
-	private String channel;
-	private String silent;
+	private static volatile WakeLock wakeLock;
 	
-	public StartSync(String channel,String silent)
+	private boolean busy = false;
+	
+	public StartSync()
 	{
-		this.channel = channel;
-		this.silent = silent;
 	}
 	
-	public void run()
+	@Override
+	public void onCreate() 
 	{
-		try
+		super.onCreate();
+	}
+
+	@Override
+	public void onDestroy() 
+	{
+		super.onDestroy();
+	}
+
+	@Override
+	public IBinder onBind(Intent intent) 
+	{
+		return null;
+	}
+	
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) 
+	{
+		super.onStartCommand(intent, flags, startId);
+		
+		String channel = intent.getStringExtra("channel");
+		String silent = intent.getStringExtra("silent");
+		if(!busy)
 		{
-			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
-					SyncInvocation.twoWay, channel);
-					
-					if(silent == null || silent.equals("false"))
-					{
-						syncInvocation.activateBackgroundSync();
-					}
-					else
-					{
-						syncInvocation.deactivateBackgroundSync();
-					}
-					
-					Bus.getInstance().invokeService(syncInvocation);
+			busy = true;
+			Thread t = new Thread(new Task(channel,silent));
+			t.start();
 		}
-		catch(Throwable t)
+		else
 		{
-			t.printStackTrace(System.out);
-			SystemException syse = new SystemException(this.getClass().getName(),"run",new Object[]{
-				"Exception: "+t.toString(),
-				"Message: "+t.getMessage()
-			});
-			ErrorHandler.getInstance().handle(syse);
+			//re-broadcast, and leave quickly
+			this.sendSyncBroadcast(channel, silent);
 		}
-		finally
+		
+		return Service.START_STICKY;
+	}
+	
+	private void sendSyncBroadcast(String channel,String silent)
+	{
+		//Prepare the bundle
+		Bundle bundle = new Bundle();
+		bundle.putString("channel", channel);
+		bundle.putString("silent", silent);
+		
+		//Prepare the intent
+		Intent intent = new Intent("org.openmobster.sync.start");
+		intent.putExtra("bundle", bundle);
+		
+		//Send the broadcast
+		//create an alarm pending intent
+		Context context = Registry.getActiveInstance().getContext();
+		PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		
+		AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), alarmIntent);
+	}
+	
+	private class Task implements Runnable
+	{
+		private String channel;
+		private String silent;
+		
+		private Task(String channel,String silent)
 		{
-			//makes sure this task does not execute anymore
-			this.cancel();
+			this.channel = channel;
+			this.silent = silent;
+		}
+		
+		public void run()
+		{
+			try
+			{
+				if(channel == null)
+				{
+					return;
+				}
+				
+				SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
+						SyncInvocation.twoWay, channel);
+								
+				if(silent == null || silent.equals("false"))
+				{
+					syncInvocation.activateBackgroundSync();
+				}
+				else
+				{
+					syncInvocation.deactivateBackgroundSync();
+				}
+				
+				Bus.getInstance().invokeService(syncInvocation);
+			}
+			catch(Throwable t)
+			{
+				t.printStackTrace(System.out);
+				SystemException syse = new SystemException(this.getClass().getName(),"run",new Object[]{
+					"Exception: "+t.toString(),
+					"Message: "+t.getMessage()
+				});
+				ErrorHandler.getInstance().handle(syse);
+			}
+			finally
+			{
+				if(wakeLock != null)
+				{
+					if(wakeLock.isHeld())
+					{
+						wakeLock.release();
+					}
+					wakeLock = null;
+				}
+				StartSync.this.busy = false;
+			}
+		}
+	}
+	//-----------------------------------------------------------------------------------------------------------------------
+	static synchronized void acquireWakeLock(Context context)
+	{
+		if(wakeLock != null)
+		{
+			if(!wakeLock.isHeld())
+			{
+				wakeLock.acquire();
+			}
+			return;
+		}
+		
+		//Setup a WakeLock
+		PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+		wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, StartSync.class.getName());
+		wakeLock.setReferenceCounted(true);
+		
+		//acquire the lock
+		if(!wakeLock.isHeld())
+		{
+			wakeLock.acquire();
 		}
 	}
 }

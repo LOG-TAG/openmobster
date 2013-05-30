@@ -52,8 +52,8 @@
                     <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 </intent-filter>
         </receiver>
-        
-        <receiver android:name="org.openmobster.core.mobileCloud.android.module.connection.ActivatePushSocket"></receiver>
+        <service android:name="org.openmobster.core.mobileCloud.push.StartNetwork" android:exported="false">
+    	</service>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 

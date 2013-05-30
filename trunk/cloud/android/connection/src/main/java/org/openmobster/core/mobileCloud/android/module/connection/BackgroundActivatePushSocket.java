@@ -11,38 +11,43 @@ import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.Invocation;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.app.Service;
 
 /**
  *
  * @author openmobster@gmail.com
  */
-final class BackgroundActivatePushSocket
+public final class BackgroundActivatePushSocket extends Service
 {
-	private static BackgroundActivatePushSocket singleton = null;
 	private static volatile WakeLock wakeLock;
 	
 	private boolean busy = false;
 	
-	private BackgroundActivatePushSocket()
+	public BackgroundActivatePushSocket()
 	{
 		
 	}
 	
-	static BackgroundActivatePushSocket getInstance()
+	@Override
+	public void onCreate() 
 	{
-		if(singleton == null)
-		{
-			synchronized(BackgroundActivatePushSocket.class)
-			{
-				if(singleton == null)
-				{
-					singleton = new BackgroundActivatePushSocket();
-				}
-			}
-		}
-		return singleton;
+		super.onCreate();
+	}
+
+	@Override
+	public void onDestroy() 
+	{
+		super.onDestroy();
+	}
+
+	@Override
+	public IBinder onBind(Intent intent) 
+	{
+		return null;
 	}
 	
 	synchronized void execute()
@@ -53,6 +58,21 @@ final class BackgroundActivatePushSocket
 			Thread t = new Thread(new Task());
 			t.start();
 		}
+	}
+	
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) 
+	{
+		super.onStartCommand(intent, flags, startId);
+		
+		if(!busy)
+		{
+			busy = true;
+			Thread t = new Thread(new Task());
+			t.start();
+		}
+		
+		return Service.START_STICKY;
 	}
 	
 	private class Task implements Runnable
@@ -98,7 +118,7 @@ final class BackgroundActivatePushSocket
 			}
 		}
 	}
-	
+	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	static synchronized void acquireWakeLock(Context context)
 	{
 		if(wakeLock != null)
@@ -112,7 +132,7 @@ final class BackgroundActivatePushSocket
 		
 		//Setup a WakeLock
 		PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-		wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "org.openmobster.core.mobileCloud.android.module.connection.BackgroundActivatePushSocket");
+		wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, BackgroundActivatePushSocket.class.getName());
 		wakeLock.setReferenceCounted(true);
 		
 		//acquire the lock
