@@ -103,6 +103,8 @@ public final class AppSystemConfig
 			 * Parse the <push>
 			 * 				<launch-activity-class></launch-activity-class>
 			 * 				<icon-name></icon-name>
+			 * 				<!-- enable background re-establishment of the Push Socket if its disconnected -->
+			 *				<reconnect/>
 			 * 			 </push>
 			 */
 			NodeList push = root.getElementsByTagName("push");
@@ -111,12 +113,17 @@ public final class AppSystemConfig
 				Element pushElement = (Element)push.item(0);
 				Element launchActivityClass = (Element)pushElement.getElementsByTagName("launch-activity-class").item(0);
 				Element iconName = (Element)pushElement.getElementsByTagName("icon-name").item(0);
+				NodeList reconnect = pushElement.getElementsByTagName("reconnect");
 				
 				String pushActivityClass = launchActivityClass.getFirstChild().getNodeValue().trim();
 				String pushIconName = iconName.getFirstChild().getNodeValue().trim();
 				
 				this.attrMgr.setAttribute("launch-activity-class",pushActivityClass);
 				this.attrMgr.setAttribute("push-icon-name", pushIconName);
+				if(reconnect != null && reconnect.getLength()>0)
+				{
+					this.attrMgr.setAttribute("reconnect", true);
+				}
 			}
 			
 			/**
@@ -271,5 +278,14 @@ public final class AppSystemConfig
 			return "org.openmobster.core.mobileCloud.api.ui.framework.push.NotifySyncPushInvocationHandler";
 		}
 		return customPushNotificationHandler;
+	}
+	
+	public boolean isPushReconnectActivated()
+	{
+		if(this.attrMgr.getAttribute("reconnect")!=null)
+		{
+			return true;
+		}
+		return false;
 	}
 }

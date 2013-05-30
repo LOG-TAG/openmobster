@@ -18,6 +18,7 @@ import android.content.Context;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
+import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 
 /**
  * 
@@ -296,7 +297,11 @@ public final class NotificationListener extends Service
 				}
 				
 				//Set a one time executing AlarmManager with a Partial WakeLock to re-establish the connection, if this is not a network outage
-				ActivatePushSocketScheduler.getInstance().schedule();
+				boolean isReconnectActivated = AppSystemConfig.getInstance().isPushReconnectActivated();
+				if(isReconnectActivated)
+				{
+					ActivatePushSocketScheduler.getInstance().schedule();
+				}
 			}
 		}
 		

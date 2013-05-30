@@ -4,6 +4,8 @@
 	<push>
 		<launch-activity-class>org.openmobster.core.mobileCloud.android_native.framework.App</launch-activity-class>
 		<icon-name>push</icon-name>
+		<!-- enable background re-establishment of the Push Socket if its disconnected -->
+		<reconnect/>
 	</push>
 	
 	
