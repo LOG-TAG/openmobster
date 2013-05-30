@@ -1,0 +1,77 @@
+#summary Building OpenMobster for Development Purposes
+
+== Prepare Environment ==
+
+1) Checkout the OpenMobster source code to your favorite working directory
+{{{
+  svn checkout http://openmobster.googlecode.com/svn/branches/2.4-SNAPSHOT openmobster-read-only
+}}}
+
+2) Install Google Web Toolkit (GWT - I'm using 2.4.0)
+{{{
+  Download from: http://code.google.com/webtoolkit/gettingstarted.html
+  (Just unzip it and point to it with the GWT_HOME env variable outlined below)
+}}}
+
+3) Install the Android SDK
+{{{
+  cd ~
+  wget http://dl.google.com/android/android-sdk_r16-linux.tgz
+  tar xvf android-sdk_r16-linux.tgz
+  cd android-sdks/tools
+  ./android (I installed android-15, android-10 and android-12 SDKs)
+}}}
+
+4) Update your Maven distribution on Ubuntu 10.04 LTS Server
+{{{
+  cd /tmp
+  wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/binaries/apache-maven-3.0.4-bin.tar.gz
+  cd /usr/local
+  tar xvfz /tmp/apache-maven-3.0.4-bin.tar.gz
+}}}
+
+5) Add the following lines to the bottom of ~/.bashrc This puts the new maven path ahead of the old maven path
+{{{
+  export M3_HOME="/usr/local/apache-maven-3.0.4"
+  export MAVEN_HOME="/usr/local/apache-maven-3.0.4"
+  export M3="/usr/local/apache-maven-3.0.4/bin"
+  export ANDROID_HOME="/root/android-sdks"
+  export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
+  export GWT_HOME="/root/gwt-2.4.0"
+  export PATH=/usr/local/apache-maven-3.0.4/bin:/root/android-sdks/platform-tools:$PATH
+  unset M2_HOME
+  export ANDROID_KEYSTORE=/Users/openmobster/projects/openmobster/openmobster-release-key.keystore
+  export ANDROID_STORE_PASS=password
+  export ANDROID_KEY_PASS=password
+  export ANDROID_KEYSTORE_ALIAS=openmobster
+}}}
+
+6) Source ~/.bashrc to enable the new environment settings
+{{{
+  source ~/.bashrc
+}}}
+
+7) Check that maven was totally switched over (you should see something like the following)
+{{{
+  root@vworkz:~#  mvn -version
+  Apache Maven 3.0.4 (r1232337; 2012-01-17 03:44:56-0500)
+  Maven home: /usr/local/apache-maven-3.0.4
+  Java version: 1.6.0_20, vendor: Sun Microsystems Inc.
+  Java home: /usr/lib/jvm/java-6-openjdk/jre
+  Default locale: en_US, platform encoding: UTF-8
+  OS name: "linux", version: "2.6.32-33-server", arch: "amd64", family: "unix"
+}}}  
+
+8) Create a working directory that matches all pom.xml entries in the distro (just easier than changing all the pom's)
+{{{
+  mkdir -p /Users/openmobster/projects/openmobster
+}}}
+
+9) Create a keystore for Android builds and code signing
+{{{
+  cd /Users/openmobster/projects/openmobster
+  keytool -genkey -v -keystore openmobster-release-key.keystore -alias openmobster -keyalg RSA -keysize 2048 -validity 10000
+  (fill out the locale entries and set both the storepass and keypass to: password)
+}}}
+
+== The environment should now be ready to build OpenMobster! ==
