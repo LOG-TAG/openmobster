@@ -75,3 +75,9 @@
 }}}
 
 == The environment should now be ready to build OpenMobster! ==
+1) OK, let's build the whole enchilada (grab a coffee)
+{{{
+  cd ~/openmobster-read-only/cloud
+  mvn -DskipTests -Pbuild-all install
+  (Build should be SUCCESSFUL)
+}}}
