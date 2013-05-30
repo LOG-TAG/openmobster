@@ -8,14 +8,11 @@
 package org.openmobster.core.mobileCloud.push;
 
 import java.util.Set;
-import java.util.Timer;
 
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
-import org.openmobster.core.mobileCloud.android.module.bus.Bus;
-import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
 import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.api.ui.framework.AppConfig;
 
@@ -72,8 +69,14 @@ public class StartSyncBroadcastReceiver extends BroadcastReceiver
 				return;
 			}
 			
-			Timer timer = new Timer();
-			timer.schedule(new StartSync(channel,silent), 200);
+			//Grab a WakeLock
+			StartSync.acquireWakeLock(context);
+			
+			//Now invoke the service and leave
+			Intent serviceIntent = new Intent(context,StartSync.class);
+			serviceIntent.putExtra("channel", channel);
+			serviceIntent.putExtra("silent", silent);
+			context.startService(serviceIntent);
 		}
 		catch(Exception e)
 		{

@@ -12,6 +12,8 @@ import java.util.UUID;
 
 import android.provider.Settings.Secure;
 import android.os.Build;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.content.Context;
 
 /**
@@ -51,5 +53,32 @@ public class GeneralTools
 		deviceIdentifier += knownInput;
 		
 		return deviceIdentifier;
+	}
+	
+	public static WakeLock acquireWakeLock(Context context,String tag)
+	{
+		//Setup a WakeLock
+		PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+		WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, tag);
+		wakeLock.setReferenceCounted(true);
+		
+		//acquire the lock
+		if(!wakeLock.isHeld())
+		{
+			wakeLock.acquire();
+		}
+		
+		return wakeLock;
+	}
+	
+	public static void releaseWakeLock(WakeLock wakeLock)
+	{
+		if(wakeLock != null)
+		{
+			if(wakeLock.isHeld())
+			{
+				wakeLock.release();
+			}
+		}
 	}
 }

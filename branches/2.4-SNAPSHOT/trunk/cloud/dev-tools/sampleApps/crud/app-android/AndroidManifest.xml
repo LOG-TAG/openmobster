@@ -26,12 +26,23 @@
     			<action android:name="org.openmobster.sync.start"/>
     		</intent-filter>
     	</receiver>
+    	<service android:name="org.openmobster.core.mobileCloud.push.StartSync" android:exported="false">
+    	</service>
     	
     	<receiver android:name="org.openmobster.core.mobileCloud.push.NetworkStartupBroadcastReceiver">
                 <intent-filter>
                     <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 </intent-filter>
         </receiver>
+        <service android:name="org.openmobster.core.mobileCloud.push.StartNetwork" android:exported="false">
+    	</service>
+    	
+        <receiver android:name="org.openmobster.core.mobileCloud.android.module.connection.ActivatePushSocket">
+        </receiver>
+        <service android:name="org.openmobster.core.mobileCloud.android.module.connection.BackgroundActivatePushSocket" android:exported="false">
+    	</service>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 </manifest> 
