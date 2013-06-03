@@ -3,6 +3,10 @@
 #import "TestReadOnlyChannel.h"
 #import "TestLocationService.h"
 #import "TestLargeObject.h"
+#import "TestEmptyStringsFromCloud.h"
+#import "TestNullValuesFromCloud.h"
+#import "TestSettingNullExistingBean.h"
+#import "TestSettingNullNewBean.h"
 
 
 @implementation MobileBeanTestSuite
@@ -21,7 +25,10 @@
 	[suite addTest:[TestArrayAccess withInit]];
     [suite addTest:[TestCRUD withInit]];
     [suite addTest:[TestLargeObject withInit]];
-    
+    [suite addTest:[TestEmptyStringsFromCloud withInit]];
+    [suite addTest:[TestNullValuesFromCloud withInit]];
+    [suite addTest:[TestSettingNullExistingBean withInit]];
+    [suite addTest:[TestSettingNullNewBean withInit]];
     
     //[suite addTest:[TestLocationService withInit]];
 	//[suite addTest:[TestReadOnlyChannel withInit]]; @Deprecate:This feature is removed. Channels are not readonly and stuff anymore
