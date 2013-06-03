@@ -304,7 +304,15 @@ public final class MobileObject
 	}
 		
 	public void setValue(String fieldUri, String value)
-	{	
+	{
+		String fieldName = fieldUri;
+		if(fieldUri.indexOf('.') != -1)
+		{
+			int lastIndex = fieldUri.lastIndexOf('.');
+			fieldName = fieldUri.substring(lastIndex+1);
+		}
+		
+		
 		if(this.fields.isEmpty() || this.isCreatedOnDevice)
 		{
 			this.isCreatedOnDevice = true;
@@ -339,7 +347,7 @@ public final class MobileObject
 			{
 				if(value != null)
 				{
-					Field field = new Field(uri, fieldUri, value);
+					Field field = new Field(uri, fieldName, value);
 					this.fields.add(field);
 				}
 			}			
@@ -371,7 +379,7 @@ public final class MobileObject
 			//create this field
 			if(value != null)
 			{
-				Field newField = new Field(uri, fieldUri, value);
+				Field newField = new Field(uri, fieldName, value);
 				this.fields.add(newField);
 			}
 		}
