@@ -8,6 +8,7 @@
 
 #import "MobileObject.h"
 #import "GeneralTools.h"
+#import "StringUtil.h"
 
 
 /**
@@ -68,6 +69,13 @@
 
 -(void) setValue:(NSString *)uri value:(NSString *)value
 {
+    NSString *fieldName = uri;
+    if([StringUtil indexOf:fieldName :@"."] != -1)
+    {
+        int lastIndex = [StringUtil lastIndexOf:fieldName :@"."];
+        fieldName = [StringUtil substring:fieldName :lastIndex];
+    }
+    
 	if([self.fields count]==0 || self.createdOnDevice)
 	{
 		self.createdOnDevice = YES;
@@ -76,19 +84,36 @@
 		localUri = [StringUtil replaceAll:localUri :@"." :@"/"];
 		
 		BOOL createField = YES;
+        Field *nullField = nil;
 		for(Field *localField in self.fields)
 		{
 			if([localField.uri isEqualToString:localUri])
 			{
-				localField.value = value;
-				createField = NO;
+                if(value != nil)
+                {
+                    localField.value = value;
+                }
+                else
+                {
+                    nullField = localField;
+                    break;
+                }
+                createField = NO;
 			}
 		}
+        
+        if(nullField != nil)
+        {
+            [(NSMutableArray *)self.fields removeObject:nullField];
+        }
 		
 		if(createField)
 		{
-			Field *field = [Field withInit:localUri name:uri value:value];
-			[(NSMutableArray *)self.fields addObject:field];
+            if(value != nil)
+            {
+                Field *field = [Field withInit:localUri name:fieldName value:value];
+                [(NSMutableArray *)self.fields addObject:field];
+            }
 		}
 		
 		return;
@@ -103,8 +128,24 @@
 	Field *field = [self findField:fieldUri];
 	if(field != nil)
 	{
-		field.value = value;
+        if(value != nil)
+        {
+            field.value = value;
+        }
+        else
+        {
+           [(NSMutableArray *)self.fields removeObject:field]; 
+        }
 	}
+    else
+    {
+        //create this field
+        if(value != nil)
+        {
+            Field *field = [Field withInit:uri name:fieldName value:value];
+            [(NSMutableArray *)self.fields addObject:field];
+        }
+    }
 }
 
 -(Field *) findField:(NSString *)inputUri

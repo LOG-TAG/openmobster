@@ -86,6 +86,11 @@
 		A267E59412C5484300693E1A /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E58F12C5484300693E1A /* ActivityIndicatorView.m */; };
 		A279BBD9173FDB9E006A2FFE /* TestLargeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A279BBD7173FDB9E006A2FFE /* TestLargeObject.h */; };
 		A279BBDA173FDB9E006A2FFE /* TestLargeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A279BBD8173FDB9E006A2FFE /* TestLargeObject.m */; };
+		A27FD5A917591B82004CC2FD /* TestEmptyStringsFromCloud.h in Headers */ = {isa = PBXBuildFile; fileRef = A27FD5A717591B82004CC2FD /* TestEmptyStringsFromCloud.h */; };
+		A27FD5AA17591B82004CC2FD /* TestEmptyStringsFromCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = A27FD5A817591B82004CC2FD /* TestEmptyStringsFromCloud.m */; };
+		A27FD5AD175D0CC4004CC2FD /* TestNullValuesFromCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = A27FD5AC175D0CC3004CC2FD /* TestNullValuesFromCloud.m */; };
+		A27FD5B0175D127A004CC2FD /* TestSettingNullExistingBean.m in Sources */ = {isa = PBXBuildFile; fileRef = A27FD5AF175D127A004CC2FD /* TestSettingNullExistingBean.m */; };
+		A27FD5B3175D1886004CC2FD /* TestSettingNullNewBean.m in Sources */ = {isa = PBXBuildFile; fileRef = A27FD5B2175D1885004CC2FD /* TestSettingNullNewBean.m */; };
 		A286951D12F7795D00A4792E /* TestObjectStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = A286951C12F7795D00A4792E /* TestObjectStreaming.m */; };
 		A286957112F77F3B00A4792E /* TestSimpleAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = A286957012F77F3B00A4792E /* TestSimpleAccess.m */; };
 		A286964B12F7CC0300A4792E /* BeanList.h in Headers */ = {isa = PBXBuildFile; fileRef = A286964912F7CC0300A4792E /* BeanList.h */; };
@@ -461,6 +466,14 @@
 		A267E59012C5484300693E1A /* ActivityIndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorView.xib; sourceTree = "<group>"; };
 		A279BBD7173FDB9E006A2FFE /* TestLargeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLargeObject.h; sourceTree = "<group>"; };
 		A279BBD8173FDB9E006A2FFE /* TestLargeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLargeObject.m; sourceTree = "<group>"; };
+		A27FD5A717591B82004CC2FD /* TestEmptyStringsFromCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEmptyStringsFromCloud.h; sourceTree = "<group>"; };
+		A27FD5A817591B82004CC2FD /* TestEmptyStringsFromCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEmptyStringsFromCloud.m; sourceTree = "<group>"; };
+		A27FD5AB175D0CC3004CC2FD /* TestNullValuesFromCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNullValuesFromCloud.h; sourceTree = "<group>"; };
+		A27FD5AC175D0CC3004CC2FD /* TestNullValuesFromCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNullValuesFromCloud.m; sourceTree = "<group>"; };
+		A27FD5AE175D1279004CC2FD /* TestSettingNullExistingBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSettingNullExistingBean.h; sourceTree = "<group>"; };
+		A27FD5AF175D127A004CC2FD /* TestSettingNullExistingBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSettingNullExistingBean.m; sourceTree = "<group>"; };
+		A27FD5B1175D1885004CC2FD /* TestSettingNullNewBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSettingNullNewBean.h; sourceTree = "<group>"; };
+		A27FD5B2175D1885004CC2FD /* TestSettingNullNewBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSettingNullNewBean.m; sourceTree = "<group>"; };
 		A286951B12F7795D00A4792E /* TestObjectStreaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjectStreaming.h; sourceTree = "<group>"; };
 		A286951C12F7795D00A4792E /* TestObjectStreaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjectStreaming.m; sourceTree = "<group>"; };
 		A286956F12F77F3B00A4792E /* TestSimpleAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimpleAccess.h; sourceTree = "<group>"; };
@@ -1598,6 +1611,14 @@
 				A2A997D3147D47DA00DE13E9 /* TestLocationService.m */,
 				A279BBD7173FDB9E006A2FFE /* TestLargeObject.h */,
 				A279BBD8173FDB9E006A2FFE /* TestLargeObject.m */,
+				A27FD5A717591B82004CC2FD /* TestEmptyStringsFromCloud.h */,
+				A27FD5A817591B82004CC2FD /* TestEmptyStringsFromCloud.m */,
+				A27FD5AB175D0CC3004CC2FD /* TestNullValuesFromCloud.h */,
+				A27FD5AC175D0CC3004CC2FD /* TestNullValuesFromCloud.m */,
+				A27FD5AE175D1279004CC2FD /* TestSettingNullExistingBean.h */,
+				A27FD5AF175D127A004CC2FD /* TestSettingNullExistingBean.m */,
+				A27FD5B1175D1885004CC2FD /* TestSettingNullNewBean.h */,
+				A27FD5B2175D1885004CC2FD /* TestSettingNullNewBean.m */,
 			);
 			name = "integration-tests";
 			sourceTree = "<group>";
@@ -1747,6 +1768,7 @@
 				A23A485016042D13003A32EE /* NSString+MD5Addition.h in Headers */,
 				A2E9E96216B8778300B886C0 /* BufferStreamReader.h in Headers */,
 				A279BBD9173FDB9E006A2FFE /* TestLargeObject.h in Headers */,
+				A27FD5A917591B82004CC2FD /* TestEmptyStringsFromCloud.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2128,6 +2150,9 @@
 				A286969E12F7DE8300A4792E /* TestArrayAccess.m in Sources */,
 				A286974E12F8697100A4792E /* TestCRUD.m in Sources */,
 				A2502469130580EC006DC2C8 /* TestReadOnlyChannel.m in Sources */,
+				A27FD5AD175D0CC4004CC2FD /* TestNullValuesFromCloud.m in Sources */,
+				A27FD5B0175D127A004CC2FD /* TestSettingNullExistingBean.m in Sources */,
+				A27FD5B3175D1886004CC2FD /* TestSettingNullNewBean.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2264,6 +2289,7 @@
 				A23A485116042D13003A32EE /* NSString+MD5Addition.m in Sources */,
 				A2E9E96316B8778300B886C0 /* BufferStreamReader.m in Sources */,
 				A279BBDA173FDB9E006A2FFE /* TestLargeObject.m in Sources */,
+				A27FD5AA17591B82004CC2FD /* TestEmptyStringsFromCloud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
