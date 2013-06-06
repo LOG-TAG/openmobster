@@ -40,10 +40,6 @@
   export GWT_HOME="/root/gwt-2.4.0"
   export PATH=/usr/local/apache-maven-3.0.4/bin:/root/android-sdks/platform-tools:$PATH
   unset M2_HOME
-  export ANDROID_KEYSTORE=/Users/openmobster/projects/openmobster/openmobster-release-key.keystore
-  export ANDROID_STORE_PASS=password
-  export ANDROID_KEY_PASS=password
-  export ANDROID_KEYSTORE_ALIAS=openmobster
 }}}
 
 6) Source ~/.bashrc to enable the new environment settings
@@ -61,18 +57,6 @@
   Default locale: en_US, platform encoding: UTF-8
   OS name: "linux", version: "2.6.32-33-server", arch: "amd64", family: "unix"
 }}}  
-
-8) Create a working directory that matches all pom.xml entries in the distro (just easier than changing all the pom's)
-{{{
-  mkdir -p /Users/openmobster/projects/openmobster
-}}}
-
-9) Create a keystore for Android builds and code signing
-{{{
-  cd /Users/openmobster/projects/openmobster
-  keytool -genkey -v -keystore openmobster-release-key.keystore -alias openmobster -keyalg RSA -keysize 2048 -validity 10000
-  (fill out the locale entries and set both the storepass and keypass to: password)
-}}}
 
 == The environment should now be ready to build OpenMobster! ==
 1) OK, let's build the whole enchilada (grab a coffee)
