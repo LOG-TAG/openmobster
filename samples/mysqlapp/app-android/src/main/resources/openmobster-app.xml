@@ -1,0 +1,14 @@
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>com.mysqlapp.android.app.MainActivity</launch-activity-class>
+		<icon-name>push</icon-name>
+	</push>
+	
+	<channels>
+		<channel name='data_object_channel'>
+			<sync-push-message>You have {0} MySQL Database Update(s)</sync-push-message>
+		</channel>
+	</channels>
+</app-conf>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">        
+<hibernate-mapping>    
+    <class name="com.mysqlapp.cloud.DataObject" table="data_object">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="syncId" type="string" column="syncId"
+        not-null="true"
+        unique="true"
+        /> 
+        
+        <property name="field1" type="string" column="field1"
+        not-null="true"
+        /> 
+        
+        <property name="field2" type="string" column="field2"
+        not-null="true"
+        />
+        
+        <property name="field3" type="string" column="field3"
+        not-null="true"
+        />
+        
+        <property name="field4" type="string" column="field4"
+        not-null="true"
+        />                                                  
+    </class>
+</hibernate-mapping>
