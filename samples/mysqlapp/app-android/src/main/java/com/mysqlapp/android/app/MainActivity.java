@@ -45,6 +45,7 @@ public class MainActivity extends BaseCloudActivity
 	@Override
 	public void displayMainScreen() 
 	{
+		//Display the main screen
 		this.setContentView(R.layout.main);
 		this.displayDataObjects();
 	}
@@ -59,6 +60,7 @@ public class MainActivity extends BaseCloudActivity
 		{
 			public boolean onMenuItemClick(MenuItem clickedItem)
 			{
+				//Display the Add New Object screen
 				setContentView(R.layout.new_data_object);
 				
 				//Add the Save Event Handler
@@ -245,6 +247,7 @@ public class MainActivity extends BaseCloudActivity
 		}
 		data_object.setValue("field4", field4.getText().toString());
 		
+		//Save the data locally and synchronize with the Cloud
 		data_object.save();
 		
 		this.setContentView(R.layout.main);
@@ -287,6 +290,7 @@ public class MainActivity extends BaseCloudActivity
 		}
 		data_object.setValue("field4", field4.getText().toString());
 		
+		//Save the data locally and synchronize with the Cloud
 		data_object.save();
 		
 		this.setContentView(R.layout.main);
