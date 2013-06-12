@@ -245,12 +245,15 @@ public class DataObjectChannel implements Channel
 	{
 		Session session = null;
 		Transaction tx = null;
+		DataObject updateThis = (DataObject)mobileBean;
+		DataObject stored = (DataObject)this.read(updateThis.getSyncId());
+		updateThis.setId(stored.getId());
 		try
 		{
 			session = this.hibernateManager.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 						
-			session.update((DataObject)mobileBean);
+			session.update(updateThis);
 						
 			tx.commit();
 		}
@@ -275,12 +278,15 @@ public class DataObjectChannel implements Channel
 	{	
 		Session session = null;
 		Transaction tx = null;
+		DataObject deleteThis = (DataObject)mobileBean;
+		DataObject stored = (DataObject)this.read(deleteThis.getSyncId());
+		deleteThis.setId(stored.getId());
 		try
 		{
 			session = this.hibernateManager.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 			
-			session.delete((DataObject)mobileBean);
+			session.delete(deleteThis);
 						
 			tx.commit();
 		}
