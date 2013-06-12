@@ -107,7 +107,7 @@ public class MainActivity extends BaseCloudActivity
 		MobileBean[] dataObjects = MobileBean.readAll("data_object_channel");
 		if(dataObjects == null)
 		{
-			ViewHelper.getOkModal(this, "Data Objects", "Data Objects are not synced yet").show();
+			ViewHelper.getOkModal(this, "Data Objects", "No Data Objects Found!!!").show();
 			return;
 		}
 		
