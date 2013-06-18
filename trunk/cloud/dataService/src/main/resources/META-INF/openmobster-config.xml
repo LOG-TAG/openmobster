@@ -61,10 +61,12 @@
    	  </property>
    </bean>
    
+   <!--  
    <bean name="dataService://http" class="org.openmobster.core.dataService.http.HttpServer">
    		<property name="keyStoreLocation">/Users/openmobster/openmobster.keystore</property> 
    	  	<property name="keyStorePassword">password</property>
    </bean>
+   -->
    
    <!-- Cross Cutting services -->
    <bean name="dataService://PayloadFilter" class="org.openmobster.core.dataService.server.PayloadFilter">    		  		
