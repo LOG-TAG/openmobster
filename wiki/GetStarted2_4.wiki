@@ -93,3 +93,6 @@ This installs the Sync App on the emulator.
 ==Some Tips==
 
   * For the build to succeed, you must have an environment variable called *ANDROID_HOME* pointing to the directory where the Android SDK is installed
+
+  * If you get the platform-tools/aapt not found issue. Please look here for a temporary solution: http://stackoverflow.com/questions/16619143/android-maven-could-not-find-tool-aapt
+This happens due to the 3.0.0 Android Maven Plugin not working with the latest Android SDK since they moved their aapt, aidl, and lib folders to a different place.
