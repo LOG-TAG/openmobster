@@ -6,11 +6,22 @@
 
   * Java SE JDK v6.0
 
-  * Apache Maven 2.2.1
+  * Apache Maven 3.0.4
 
   * Android SDK
 
   * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
+
+----
+
+== Enviroment Variables Setup ==
+
+{{{
+ANDROID_HOME=[Directory where Android SDK is installed]
+
+//Append this value to the PATH variable
+[Directory where Android SDK is installed]/platform-tools
+}}}
 
 ----
 
@@ -66,21 +77,11 @@ Every project comes bundled with a fully functional OpenMobster Cloud Server. Yo
 
 ===Run the Android Emulator===
 
-The Android App is tested in an emulator. The emulator comes bundled with the *Android SDK* along with many other useful tools. In order to fire up the emulator use the following commands:
-
-  * Create an avd image: *android create avd --name openmobster --target android-8*
-
-  * *emulator -avd openmobster*
-
-Once the emulator is started, you can start another very useful development tool called the *Dalvik Debug Monitor* as follows:
-
-  * *ddms*
-
-The *Dalvik Debug Monitor* automatically detects the emulator and the system is ready to go
+The Android App is tested in an emulator. The emulator comes bundled with the *Android SDK* along with many other useful tools. Go ahead and fire up the Emulator.
 
 ===Install the Android App===
 
-Once the emulator and the debug monitor are ready, its time to build and install the Android Sync App. This is done as follows from inside your maven project
+Once the emulator is ready, its time to build and install the Android Sync App. This is done as follows from inside your maven project
 
   * Go to the app-android module: *cd app-android*
 
