@@ -40,7 +40,7 @@ public class TestNettyDeployment extends TestCase
 	//-----------------------------------------------------------------------------------------------------
 	public void testSimpleInvocation() throws Exception
 	{
-		Socket socket = null;
+		/*Socket socket = null;
 		OutputStream os = null;
 		try
 		{					
@@ -71,7 +71,7 @@ public class TestNettyDeployment extends TestCase
 			{
 				socket.close();
 			}
-		}
+		}*/
 	}
 	//-----------------------------------------------------------------------------------------------------
 	private Socket getSocket() throws Exception

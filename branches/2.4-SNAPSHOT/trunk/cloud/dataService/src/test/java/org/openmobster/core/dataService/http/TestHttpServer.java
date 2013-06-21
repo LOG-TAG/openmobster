@@ -102,7 +102,7 @@ public class TestHttpServer extends TestCase
         }*/
 	}
 	
-	public void testHttpPOST() throws Exception
+	/*public void testHttpPOST() throws Exception
 	{
 		// First create a trust manager that won't care.
         X509TrustManager trustManager = new X509TrustManager() 
@@ -202,7 +202,7 @@ public class TestHttpServer extends TestCase
         finally 
         {
         }
-	}
+	}*/
 	
 	/*public void testBasicGET() throws Exception
 	{
