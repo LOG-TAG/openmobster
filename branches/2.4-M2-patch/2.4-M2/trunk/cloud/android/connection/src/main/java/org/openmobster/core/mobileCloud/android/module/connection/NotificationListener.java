@@ -294,6 +294,9 @@ public final class NotificationListener extends Service
 				catch(Exception e)
 				{							
 				}
+				
+				//Set a one time executing AlarmManager with a Partial WakeLock to re-establish the connection, if this is not a network outage
+				ActivatePushSocketScheduler.getInstance().schedule();
 			}
 		}
 		
