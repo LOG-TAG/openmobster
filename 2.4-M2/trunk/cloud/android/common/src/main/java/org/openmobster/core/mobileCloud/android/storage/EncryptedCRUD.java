@@ -350,4 +350,9 @@ public class EncryptedCRUD implements CRUDProvider
 	{
 		return null;
 	}
+	
+	public Cursor getCursor(String from,String name,boolean ascending) throws DBException
+	{
+		return null;
+	}
 }
