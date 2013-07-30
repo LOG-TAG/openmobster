@@ -49,4 +49,6 @@ public interface CRUDProvider
 	Cursor readProxyCursor(String table) throws DBException;
 	
 	public Cursor readByNameValuePair(String from,String name,String value) throws DBException;
+	
+	public Cursor getCursor(String from,String name,boolean ascending) throws DBException;
 }

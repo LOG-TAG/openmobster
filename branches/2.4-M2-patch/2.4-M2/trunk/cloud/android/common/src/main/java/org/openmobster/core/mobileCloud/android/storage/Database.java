@@ -242,6 +242,14 @@ public final class Database
 		this.validateConnection(from, "readByNameValuePair");
 		return this.cloudbMetaData.getCRUDProvider().readByNameValuePair(from,name,value);
 	}
+	
+	public Cursor getCursor(String from,String name,boolean ascending) throws DBException
+	{
+		//Validate
+		this.validateConnection(from, "getCursor");
+		
+		return this.cloudbMetaData.getCRUDProvider().getCursor(from,name,ascending);
+	}
 	//--------Validation methods-----------------------------------------------------------------------------------------
 	private void validateConnection(String table, String caller) throws DBException
 	{

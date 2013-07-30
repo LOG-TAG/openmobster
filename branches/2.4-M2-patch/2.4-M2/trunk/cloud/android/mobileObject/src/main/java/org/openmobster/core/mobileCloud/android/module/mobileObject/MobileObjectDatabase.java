@@ -469,6 +469,27 @@ public final class MobileObjectDatabase extends Service
    			);
 		}	
 	}
+	
+	public Cursor getCursor(String channel,String name,boolean ascending)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
+			this.checkStorage(context, channel);
+			
+			return database.getCursor(channel,name,ascending);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "getCursor", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}	
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	public void syncWithServer(String storageId)
 	{

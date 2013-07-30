@@ -551,4 +551,19 @@ public class DefaultCRUD implements CRUDProvider
 		Cursor cursor = this.db.rawQuery("SELECT recordid FROM "+from+" WHERE name=? AND value=?", new String[]{name,value});
 		return cursor;
 	}
+	
+	public Cursor getCursor(String from,String name,boolean ascending) throws DBException
+	{
+		String query = null;
+		if(ascending)
+		{
+			query = "SELECT recordid FROM "+from+" WHERE name=? ORDER BY value ASC";
+		}
+		else
+		{
+			query = "SELECT recordid FROM "+from+" WHERE name=? ORDER BY value DESC";
+		}
+		Cursor cursor = this.db.rawQuery(query,new String[]{name});
+		return cursor;
+	}
 }
