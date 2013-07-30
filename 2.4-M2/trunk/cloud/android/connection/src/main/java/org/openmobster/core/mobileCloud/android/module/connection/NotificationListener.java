@@ -14,6 +14,10 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
+import android.util.Log;
+
 
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
@@ -172,6 +176,8 @@ public final class NotificationListener extends Service
 		private NetSession notifySession;
 		private boolean isContainerStopping;
 		private boolean isDead;
+		
+		private WifiLock wifiLock;
 				
 		public void run()
 		{
@@ -186,10 +192,32 @@ public final class NotificationListener extends Service
 			}
 		}
 		
+		private void lock()
+		{
+			Context context = Registry.getActiveInstance().getContext();
+			WifiManager wifiManager = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
+			if(wifiManager.isWifiEnabled())
+			{
+				this.wifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "org.openmobster.android");
+				this.wifiLock.acquire();
+			}
+		}
+		
+		private void unlock()
+		{
+			if(this.wifiLock != null && this.wifiLock.isHeld())
+			{
+				this.wifiLock.release();
+			}
+		}
+		
 		private void startPushDaemon()
 		{
 			try
 			{
+				//acquire a wifilock
+				this.lock();
+				
 				Context context = Registry.getActiveInstance().getContext();
 				boolean secure = Configuration.getInstance(context).isSSLActivated();
 				this.notifySession = NetworkConnector.getInstance().openSession(secure);				
@@ -276,13 +304,18 @@ public final class NotificationListener extends Service
 			}			
 			catch(Exception e)
 			{
+				Log.e("org.openmobster.android", "Push Socket Exception", e);
 			}
 			finally
 			{
 				this.isDead = true;
 				//System.out.println("-------------------------------------------------------------");
 				//System.out.println("Stopping the Push Session!!!");
-				//System.out.println("-------------------------------------------------------------");				
+				//System.out.println("-------------------------------------------------------------");	
+				
+				//release the wifilock
+				this.unlock();
+				
 				try
 				{
 					//close the notification net session
