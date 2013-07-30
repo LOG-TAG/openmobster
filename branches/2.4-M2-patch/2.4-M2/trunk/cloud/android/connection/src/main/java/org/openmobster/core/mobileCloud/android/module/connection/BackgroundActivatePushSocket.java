@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.app.Service;
+import android.util.Log;
 
 /**
  *
@@ -92,6 +93,9 @@ public final class BackgroundActivatePushSocket extends Service
 					if(isActive)
 					{
 						//clear the alarm
+						Log.i("org.openmobster.android","********************************************");
+						Log.i("org.openmobster.android", "Push Socket successfully re-established");
+						Log.i("org.openmobster.android","********************************************");
 						ActivatePushSocketScheduler.getInstance().clear();
 						return;
 					}

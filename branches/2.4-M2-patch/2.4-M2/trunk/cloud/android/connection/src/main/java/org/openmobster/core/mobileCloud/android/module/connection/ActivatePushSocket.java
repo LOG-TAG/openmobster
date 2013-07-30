@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 
 /**
@@ -25,15 +26,15 @@ public final class ActivatePushSocket extends BroadcastReceiver
 	{
 		try
 		{
-			System.out.println("********************************************");
-			System.out.println("Trying to establish a Push Socket");
-			System.out.println("********************************************");
+			Log.i("org.openmobster.android","********************************************");
+			Log.i("org.openmobster.android","Trying to establish a Push Socket");
+			Log.i("org.openmobster.android","********************************************");
 			
 			if(NotificationListener.getInstance().isActive())
 			{
-				System.out.println("********************************************");
-				System.out.println("Push Socket is Active!!!!");
-				System.out.println("********************************************");
+				Log.i("org.openmobster.android","********************************************");
+				Log.i("org.openmobster.android","Push Socket is Active");
+				Log.i("org.openmobster.android","********************************************");
 				ActivatePushSocketScheduler.getInstance().clear();
 				return;
 			}
