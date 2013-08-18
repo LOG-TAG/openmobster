@@ -650,6 +650,10 @@ public final class MobileBean
 	public static MobileBean[] readAll(String service)
 	{
 		MobileBean[] all = null;
+		if(!isBooted(service))
+		{
+			return all;
+		}
 		
 		MobileObjectDatabase deviceDB = MobileObjectDatabase.getInstance();
 		
@@ -681,6 +685,10 @@ public final class MobileBean
 	public static MobileBean readById(String service, String id)
 	{
 		MobileBean bean = null;
+		if(!isBooted(service))
+		{
+			return bean;
+		}
 		
 		MobileObject data = MobileObjectDatabase.getInstance().read(service, id);
 		if(data != null && !data.isProxy())
@@ -765,6 +773,10 @@ public final class MobileBean
 		}
 		
 		MobileBean[] beans = null;
+		if(!isBooted(service))
+		{
+			return beans;
+		}
 		
 		GenericAttributeManager input = new GenericAttributeManager();
 		
@@ -822,6 +834,10 @@ public final class MobileBean
 		}
 		
 		MobileBean[] beans = null;
+		if(!isBooted(service))
+		{
+			return beans;
+		}
 		
 		GenericAttributeManager input = new GenericAttributeManager();
 		
@@ -879,6 +895,10 @@ public final class MobileBean
 		}
 		
 		MobileBean[] beans = null;
+		if(!isBooted(service))
+		{
+			return beans;
+		}
 		
 		GenericAttributeManager input = new GenericAttributeManager();
 		
@@ -936,6 +956,10 @@ public final class MobileBean
 		}
 		
 		MobileBean[] beans = null;
+		if(!isBooted(service))
+		{
+			return beans;
+		}
 		
 		GenericAttributeManager input = new GenericAttributeManager();
 		
@@ -1088,6 +1112,10 @@ public final class MobileBean
 		}
 		
 		MobileBean[] beans = null;
+		if(!isBooted(service))
+		{
+			return beans;
+		}
 		
 		GenericAttributeManager input = new GenericAttributeManager();
 		
@@ -1145,6 +1173,10 @@ public final class MobileBean
 		}
 		
 		MobileBean[] beans = null;
+		if(!isBooted(service))
+		{
+			return beans;
+		}
 		
 		GenericAttributeManager input = new GenericAttributeManager();
 		
@@ -1189,6 +1221,11 @@ public final class MobileBean
 	 */
 	public static MobileBeanCursor sortByProperty(String channel, String property, boolean ascending)
 	{
+		if(!isBooted(channel))
+		{
+			return null;
+		}
+		
 		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
 		
 		Cursor cursor = db.readByName(channel, property, ascending);
@@ -1208,6 +1245,11 @@ public final class MobileBean
 	 */
 	public static MobileBeanCursor queryByProperty(String channel, String property, String value)
 	{
+		if(!isBooted(channel))
+		{
+			return null;
+		}
+		
 		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
 		
 		Cursor cursor = db.readByNameValuePair(channel, property, value);
@@ -1227,6 +1269,11 @@ public final class MobileBean
 	 */
 	public static MobileBeanCursor searchByMatchAll(String channel, GenericAttributeManager criteria)
 	{
+		if(!isBooted(channel))
+		{
+			return null;
+		}
+		
 		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
 		
 		Cursor cursor = db.searchExactMatchAND(channel, criteria);
@@ -1246,6 +1293,11 @@ public final class MobileBean
 	 */
 	public static MobileBeanCursor searchByMatchAtleastOne(String channel, GenericAttributeManager criteria)
 	{
+		if(!isBooted(channel))
+		{
+			return null;
+		}
+		
 		MobileObjectDatabase db = MobileObjectDatabase.getInstance();
 		
 		Cursor cursor = db.searchExactMatchOR(channel, criteria);
