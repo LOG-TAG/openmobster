@@ -75,7 +75,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Set<MobileObject> objects = new HashSet<MobileObject>();
 			Context context = Registry.getActiveInstance().getContext();
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return objects;
+			}
 			
 			//read all the rows
 			Set<Record> all = Database.getInstance(context).
@@ -103,7 +107,11 @@ public final class MobileObjectDatabase extends Service
 		try
 		{			
 			Context context = Registry.getActiveInstance().getContext();
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			Record mobileObject = Database.getInstance(context).select(channel, recordId);
 			if(mobileObject == null)
@@ -174,7 +182,11 @@ public final class MobileObjectDatabase extends Service
 			String recordId = mobileObject.getRecordId();
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context,channel);	
+			//this.checkStorage(context,channel);	
+			if(!this.isChannelBooted(channel))
+			{
+				return;
+			}
 			
 			Record recordToBeUpdated = mobileObject.getRecord();
 			
@@ -207,7 +219,11 @@ public final class MobileObjectDatabase extends Service
 			String channel = mobileObject.getStorageId();
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return;
+			}
 			
 			String recordId = mobileObject.getRecordId();
 			
@@ -232,9 +248,35 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return;
+			}
+			
+			database.deleteAll(channel);
+		}
+		catch(Exception e)
+		{
+			throw new SystemException(this.getClass().getName(), "deleteAll", new Object[]
+   			{
+				"storageId="+channel,
+				"error="+e.getMessage()
+   			}
+   			);
+		}		
+	}
+	
+	public void bootup(String channel)
+	{
+		try
+		{
+			Context context = Registry.getActiveInstance().getContext();				
+			Database database = Database.getInstance(context);
 			this.checkStorage(context, channel);
 			
 			database.deleteAll(channel);
+			database.dropTable(channel);
 		}
 		catch(Exception e)
 		{
@@ -252,7 +294,11 @@ public final class MobileObjectDatabase extends Service
 		try
 		{
 			Context context = Registry.getActiveInstance().getContext();
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return new HashSet<MobileObject>();
+			}
 			
 			if(AppSystemConfig.getInstance().isEncryptionActivated())
 			{
@@ -413,7 +459,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			return database.readProxyCursor(channel);
 		}
@@ -434,7 +484,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			return database.readByNameValuePair(channel,name,value);
 		}
@@ -455,7 +509,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			return database.readByName(channel,name);
 		}
@@ -476,7 +534,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			return database.readByName(channel,name,sortAscending);
 		}
@@ -497,7 +559,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			return database.searchExactMatchAND(channel,criteria);
 		}
@@ -518,7 +584,11 @@ public final class MobileObjectDatabase extends Service
 		{
 			Context context = Registry.getActiveInstance().getContext();				
 			Database database = Database.getInstance(context);
-			this.checkStorage(context, channel);
+			//this.checkStorage(context, channel);
+			if(!this.isChannelBooted(channel))
+			{
+				return null;
+			}
 			
 			return database.searchExactMatchOR(channel,criteria);
 		}

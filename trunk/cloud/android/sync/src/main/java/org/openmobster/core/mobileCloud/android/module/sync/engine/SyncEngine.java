@@ -891,7 +891,7 @@ public class SyncEngine
 	{
 		try
 		{
-			MobileObjectDatabase.getInstance().deleteAll(storageId);		
+			MobileObjectDatabase.getInstance().bootup(storageId);	
 			
 			//TODO: cleanup all local mappings....
 			//not urgent...the object sync technology does not use the
