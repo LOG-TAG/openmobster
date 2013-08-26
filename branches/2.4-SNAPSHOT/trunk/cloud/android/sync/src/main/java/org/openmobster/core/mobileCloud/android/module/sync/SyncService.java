@@ -18,6 +18,7 @@ import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
+import org.openmobster.core.mobileCloud.android.module.mobileObject.MobileObjectDatabase;
 import org.openmobster.core.mobileCloud.android.module.sync.engine.ChangeLogEntry;
 import org.openmobster.core.mobileCloud.android.module.sync.engine.SyncEngine;
 import org.openmobster.core.mobileCloud.android.module.sync.daemon.LoadProxyDaemon;
@@ -223,8 +224,11 @@ public final class SyncService extends Service
 			this.startSync(SyncAdapter.BOOT_SYNC, deviceService, serverService, isBackground);
 			LoadProxyDaemon.getInstance().scheduleProxyTask();
 		}
-		catch(NetworkException e)
+		catch(Exception e)
 		{
+			//put the channel in a non-booted state in case of an exception
+			MobileObjectDatabase.getInstance().bootup(deviceService);
+			
 			throw new SyncException(this.getClass().getName(), "performBootSync://IOException", 
 			new Object[]{SyncAdapter.BOOT_SYNC, deviceService, serverService});
 		}

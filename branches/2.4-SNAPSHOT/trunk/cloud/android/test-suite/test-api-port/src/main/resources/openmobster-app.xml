@@ -11,5 +11,6 @@
 		<channel name='testServerBean'/>
 		<channel name='large_object_channel'/>
 		<channel name='queryChannel'/>
+		<channel name='bootChannel'/>
 	</channels>
 </app-conf>
