@@ -104,6 +104,29 @@ public class CloudService
 		}
 	}
 	
+	public void startContainer(final Activity context)
+	{
+		try
+		{
+			//short-fast boostrapping of the kernel
+			if(!DeviceContainer.getInstance(context.getApplicationContext()).isContainerActive())
+			{
+				this.bootstrapContainer(context);
+			}
+		}
+		catch(Throwable e)
+		{
+			e.printStackTrace(System.out);
+			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "start", new Object[]{
+				"Message:"+e.getMessage(),
+				"Exception:"+e.toString()
+			}));
+			
+			ViewHelper.getOkModalWithCloseApp(context, "System Error", e.getMessage())
+			.show();
+		}
+	}
+	
 	public void stop(final Context context)
 	{
 		
