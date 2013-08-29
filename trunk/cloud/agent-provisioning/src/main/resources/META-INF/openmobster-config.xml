@@ -7,7 +7,7 @@
    		<depends>dataService://PlainServer</depends>
    		<property name="customConfig"><inject bean="common://CustomConfig"/></property>
    		<property name="provisioner"><inject bean="security://Provisioner"/></property>
-   		<property name="identityController"><inject bean="security://IdentityController"/></property>   		
+   		<property name="identityController"><inject bean="security://IdentityController"/></property>   	
    </bean>
    <bean name="dm_callback" class="org.openmobster.core.agent.provisioning.DeviceManagementCallback">
    		<depends>services://MobileObjectMonitor</depends>

@@ -15,6 +15,7 @@ import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
+import org.openmobster.core.mobileCloud.mgr.AppActivationService;
 import org.openmobster.core.mobileCloud.spi.ui.framework.SPIServices;
 
 import android.content.Context;
@@ -130,6 +131,18 @@ public class CloudService
 	public void stop(final Context context)
 	{
 		
+	}
+	
+	public void activateDevice(String server,int port, String email, String password) throws ServiceException
+	{
+		ServiceContext serviceContext = new ServiceContext();
+		serviceContext.setAttribute("server", server);
+		serviceContext.setAttribute("port", ""+port);
+		serviceContext.setAttribute("email", email);
+		serviceContext.setAttribute("password", password);
+		
+		
+		AppActivationService.getInstance().activate(serviceContext);
 	}
 	//---------------------------------------------------------------------------------------------------------------------
 	private void bootstrapContainer(final Activity context)
