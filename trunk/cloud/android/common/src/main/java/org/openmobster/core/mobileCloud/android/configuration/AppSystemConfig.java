@@ -190,6 +190,36 @@ public final class AppSystemConfig
 			}
 			
 			this.isActive = true;
+			
+			
+			/**
+			 * 
+			 * Parse
+			 * 
+			 *<device-activation>
+	    	 *	<server>192.168.1.108</server>
+	    	 *	<port>1502</port>
+			 *</device-activation>
+			 * 
+			 * 
+			 */
+			NodeList deviceActivationNodes = root.getElementsByTagName("device-activation");
+			if(deviceActivationNodes != null && deviceActivationNodes.getLength()>0)
+			{
+				Element deviceActivation = (Element)deviceActivationNodes.item(0);
+				Element serverElement = (Element)deviceActivation.getElementsByTagName("server").item(0);
+				NodeList portNodes = deviceActivation.getElementsByTagName("port");
+				String port = "1502"; //default port
+				if(portNodes != null && portNodes.getLength()>0)
+				{
+					Element portElement = (Element)portNodes.item(0);
+					port = portElement.getTextContent();
+				}
+				String server = serverElement.getTextContent();
+				
+				this.attrMgr.setAttribute("device-activation.server", server);
+				this.attrMgr.setAttribute("device-activation.port", port);
+			}
 		}
 		catch(Throwable e)
 		{
@@ -287,5 +317,15 @@ public final class AppSystemConfig
 			return true;
 		}
 		return false;
+	}
+	
+	public String getServer()
+	{
+		return (String)this.attrMgr.getAttribute("device-activation.server");
+	}
+	
+	public String getPort()
+	{
+		return (String)this.attrMgr.getAttribute("device-activation.port");
 	}
 }
