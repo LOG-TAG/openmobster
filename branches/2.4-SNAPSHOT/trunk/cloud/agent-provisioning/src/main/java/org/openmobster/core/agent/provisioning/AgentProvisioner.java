@@ -23,6 +23,10 @@ import org.openmobster.core.security.Provisioner;
 import org.openmobster.core.security.IDMException;
 import org.openmobster.core.security.identity.Identity;
 import org.openmobster.core.security.identity.IdentityController;
+import org.openmobster.security.plugin.AuthPlugin;
+import org.openmobster.security.plugin.PluginContext;
+import org.openmobster.security.plugin.PluginException;
+import org.openmobster.security.plugin.PluginManager;
 
 /**
  * @author openmobster@gmail.com
@@ -97,7 +101,26 @@ public class AgentProvisioner implements MobileServiceBean
 				{
 					throw new IDMException("invalid_input", 
 					IDMException.VALIDATION_ERROR);
-				}								
+				}	
+				
+				//Authenticate with the 3rd party system and make sure everything is on track
+				AuthPlugin authPlugin = PluginManager.getInstance().authPlugin();
+				if(authPlugin != null)
+				{
+					PluginContext pluginContext = new PluginContext();
+					pluginContext.setPrincipal(email);
+					pluginContext.setDeviceId(deviceIdentifier);
+					pluginContext.setPassword(password);
+					try
+					{
+						authPlugin.activateDevice(pluginContext);
+					}
+					catch(PluginException pe)
+					{
+						//Device Activation failed with the 3rd party system
+						throw pe;
+					}
+				}
 				
 				//Make sure the identity is registered
 				if(!this.provisioner.exists(email))
@@ -124,6 +147,11 @@ public class AgentProvisioner implements MobileServiceBean
 		{
 			response.setAttribute("idm-error", idmError.getMessage());
 			response.setAttribute("idm-error-type", ""+idmError.getType());			
+			return response;
+		}
+		catch(PluginException pe)
+		{
+			response.setAttribute("idm-error", "plugin_activation_error");	
 			return response;
 		}
 		catch(Exception e)
