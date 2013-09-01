@@ -9,6 +9,8 @@ package org.openmobster.android.api.sync;
 
 import java.util.List;
 
+import android.database.Cursor;
+
 /**
  *
  * @author openmobster@gmail.com
@@ -38,4 +40,7 @@ public interface MobileBeanCursor
 	
 	public String getChannel();
 	public String getId();
+	
+	//system level operations
+	public Cursor getSystemCursor();
 }
