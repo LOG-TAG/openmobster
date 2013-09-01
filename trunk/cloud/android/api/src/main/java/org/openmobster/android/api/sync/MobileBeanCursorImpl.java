@@ -152,4 +152,10 @@ final class MobileBeanCursorImpl implements MobileBeanCursor
 	{
 		return this.cursor.getCount();
 	}
+
+	@Override
+	public Cursor getSystemCursor()
+	{
+		return this.cursor;
+	}
 }
