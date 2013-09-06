@@ -69,6 +69,8 @@ public final class NetworkConnector extends Service
 		}
 		catch(Exception ioe)
 		{
+			ioe.printStackTrace(System.out);
+			
 			throw new NetworkException(this.getClass().getName(), "openSession", new Object[]{
 				"Secure="+secure,
 				"Message="+ioe.getMessage()

@@ -11,9 +11,11 @@ package org.openmobster.core.mobileCloud.android_native.framework;
 import java.util.Timer;
 
 import org.openmobster.core.mobileCloud.android.configuration.AppSystemConfig;
+import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.kernel.DeviceContainer;
+import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.events.NativeEventBusSPI;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.mgr.AppActivationService;
@@ -154,6 +156,12 @@ public class CloudService
 	public String getPort()
 	{
 		return AppSystemConfig.getInstance().getPort();
+	}
+	
+	public boolean isDeviceActivated()
+	{
+		Configuration conf = Configuration.getInstance(Registry.getActiveInstance().getContext());
+		return conf.isActive();
 	}
 	//---------------------------------------------------------------------------------------------------------------------
 	private void bootstrapContainer(final Activity context)

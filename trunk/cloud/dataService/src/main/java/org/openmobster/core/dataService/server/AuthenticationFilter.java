@@ -57,16 +57,18 @@ public class AuthenticationFilter extends IoFilterAdapter
 			if(session.getAttribute(Constants.subscription) == null &&
 			   session.getAttribute(Constants.consoleSession) == null
 			)
-			{
+			{	
 				//This session is unauthenticated....the payload must have authentication info
 				boolean auth = handleAuth(session);
+				
+				
 				if(!auth)
 				{
 					session.write(Constants.status+"="+401+Constants.endOfStream);			
 					return;
 				}
 			}
-		}		
+		}
 		
 		//connecting device was successfully authenticated...proceed
 		
@@ -149,6 +151,10 @@ public class AuthenticationFilter extends IoFilterAdapter
 	
 	private AuthCredential parseAuthCredential(ConnectionRequest request) throws Exception
 	{
+		if(request == null)
+		{
+			return null;
+		}
 		AuthCredential authCredential = new AuthCredential();
 		authCredential.setDeviceId(request.getDeviceId());
 		authCredential.setNonce(request.getNonce());
@@ -156,62 +162,73 @@ public class AuthenticationFilter extends IoFilterAdapter
 	}
 	
 	private boolean skipAuthentication(IoSession session)
-	{		
-		String payload = (String)session.getAttribute(Constants.payload);
-		ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
-		
-		if(request == null)
+	{	
+		try
 		{
-			//looks like authenticated session is already established...no need for this
-			return true;
-		}
-		
-		String deviceId = null;
-		String processor = null;
-		if(request != null)
-		{
-			deviceId = request.getDeviceId();
-			processor = request.getProcessor();
-		}
-		
-		if(deviceId !=null)
-		{
-			return false;
-		}
-		
-		//If just a processor is being picked for execution, go ahead
-		if(processor != null)
-		{
-			//Allows testsuite requests
-			if(processor.equals("testsuite") || processor.equals("/testdrive/"))
+			String payload = (String)session.getAttribute(Constants.payload);
+			ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
+			String forceAuth = (String)session.getAttribute("force-auth");
+			
+			if(request == null && forceAuth == null)
 			{
-				session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
+				//looks like authenticated session is already established...no need for this
+				return true;
 			}
 			
-			return true;
+			String deviceId = null;
+			String processor = null;
+			if(request != null)
+			{
+				deviceId = request.getDeviceId();
+				processor = request.getProcessor();
+			}
+			
+			if(deviceId !=null)
+			{
+				return false;
+			}
+			
+			//If just a processor is being picked for execution, go ahead
+			if(processor != null)
+			{
+				//Allows testsuite requests
+				if(processor.equals("testsuite") || processor.equals("/testdrive/"))
+				{
+					session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
+				}
+				
+				return true;
+			}
+			
+			
+			if(session.getAttribute(Constants.anonymousMode) != null)
+			{
+				return true;
+			}
+			
+			//Skip based on service in question
+			//Provisioning requests should be skipped...Obviously otherwise
+			//a device can never get activated (chicken/egg issue)
+			//there is no security issue with making this service unprotected
+			//In fact eventually there will be a list of protected and unprotected services
+			//supported
+			if(
+			   ( payload.contains("servicename") && payload.contains("provisioning") ) ||
+			   ( payload.contains("servicename") && payload.contains("/anonymous/") )
+			)
+			{
+				session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
+				
+				return true;
+			}
+					
+			
+			
+			return false;
 		}
-		if(session.getAttribute(Constants.anonymousMode) != null)
+		finally
 		{
-			return true;
+			session.removeAttribute("force-auth");
 		}
-		
-		//Skip based on service in question
-		//Provisioning requests should be skipped...Obviously otherwise
-		//a device can never get activated (chicken/egg issue)
-		//there is no security issue with making this service unprotected
-		//In fact eventually there will be a list of protected and unprotected services
-		//supported
-		String authExceptionMatch1 = 
-		"<entry><string>servicename</string><string>provisioning</string></entry>";	
-		
-		if(
-		   payload.contains(authExceptionMatch1) 
-		)
-		{
-			session.setAttribute(Constants.anonymousMode, Boolean.TRUE);
-			return true;
-		}
-						
-		return false;
 	}
 }
