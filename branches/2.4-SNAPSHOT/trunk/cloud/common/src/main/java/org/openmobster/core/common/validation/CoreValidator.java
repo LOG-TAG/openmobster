@@ -43,6 +43,17 @@ public class CoreValidator
       String value = ValidatorUtils.getValueAsString(bean, field.getProperty());
       return GenericValidator.isEmail(value);
    }
+   
+   /**
+    * Checks if the input value is a valid e-mail address
+    * 
+    * @param email
+    * @return
+    */
+   public static boolean validateEmail(String email) 
+   {
+      return GenericValidator.isEmail(email);
+   }
 
   
   /**

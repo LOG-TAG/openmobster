@@ -70,6 +70,19 @@ public final class ConnectionRequest implements Serializable
 	{
 		return this.getHeader("processor");
 	}
+	
+	public boolean isAnonymous()
+	{
+		String deviceId = this.getDeviceId();
+		String nonce = this.getNonce();
+		
+		if(deviceId == null && nonce == null)
+		{
+			return true;
+		}
+		
+		return false;
+	}
 	//-----------------------------------------------------------------------------------------------------------------------
 	private static AttributeManager parse(String payload)
 	{

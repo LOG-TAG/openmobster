@@ -42,6 +42,11 @@ public class RequestConstructionFilter extends IoFilterAdapter
 			else
 			{
 				//cleanup request if possible
+				ConnectionRequest request = (ConnectionRequest)session.getAttribute(Constants.request);
+				if(request != null && request.isAnonymous())
+				{
+					session.setAttribute("force-auth", "true");
+				}
 				session.removeAttribute(Constants.request);
 			}
 			nextFilter.messageReceived(session, message);
