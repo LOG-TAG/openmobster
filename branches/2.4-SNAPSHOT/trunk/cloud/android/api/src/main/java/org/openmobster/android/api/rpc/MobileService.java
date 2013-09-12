@@ -21,6 +21,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import android.content.Context;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android.util.XMLUtil;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
@@ -178,8 +179,8 @@ public final class MobileService
 				String value = request.getAttribute(names[i]);
 				
 				buffer.append("<entry>\n");
-				buffer.append("<string>"+names[i]+"</string>\n");
-				buffer.append("<string>"+value+"</string>\n");
+				buffer.append("<string>"+XMLUtil.addCData(names[i])+"</string>\n");
+				buffer.append("<string>"+XMLUtil.addCData(value)+"</string>\n");
 				buffer.append("</entry>\n");
 			}
 		}
