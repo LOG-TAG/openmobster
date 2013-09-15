@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimerTask;
 import java.util.Timer;
+import java.io.IOException;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -65,7 +66,9 @@ public final class NotificationListener extends Service
 				//Starting the Push Thread
 				this.worker = new Worker();
 				this.pushThread = new Thread(this.worker);
-				this.pushThread.start();								
+				this.pushThread.start();
+				
+				DeadSocketScheduler.getInstance().schedule();
 			}
 			else
 			{								
@@ -99,7 +102,9 @@ public final class NotificationListener extends Service
 				if(this.worker.notifySession != null)
 				{
 					this.worker.notifySession.close();
-				}								
+				}
+				
+				DeadSocketScheduler.getInstance().clear();
 			}
 			catch(Exception e)
 			{
@@ -170,7 +175,18 @@ public final class NotificationListener extends Service
 	Date getLastNotificationTimestamp()
 	{
 		return this.lastNotification;
-	}		
+	}
+	
+	public void sendKeepAlivePacket() throws NetworkException
+	{
+		Log.d("org.openmobster.android", "Trying to send a keep-alive packet if possible...");
+		NetSession notifySession = this.worker.notifySession;
+		if(notifySession != null)
+		{
+			Log.d("org.openmobster.android", "Keep-Alive packet successfully sent");
+			notifySession.sendOneWay("");
+		}
+	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------
 	private class Worker extends TimerTask
 	{		

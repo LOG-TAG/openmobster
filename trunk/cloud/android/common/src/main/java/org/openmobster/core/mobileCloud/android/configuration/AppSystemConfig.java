@@ -115,11 +115,18 @@ public final class AppSystemConfig
 				Element iconName = (Element)pushElement.getElementsByTagName("icon-name").item(0);
 				NodeList reconnect = pushElement.getElementsByTagName("reconnect");
 				
-				String pushActivityClass = launchActivityClass.getFirstChild().getNodeValue().trim();
-				String pushIconName = iconName.getFirstChild().getNodeValue().trim();
+				if(launchActivityClass != null)
+				{
+					String pushActivityClass = launchActivityClass.getFirstChild().getNodeValue().trim();
+					this.attrMgr.setAttribute("launch-activity-class",pushActivityClass);
+				}
 				
-				this.attrMgr.setAttribute("launch-activity-class",pushActivityClass);
-				this.attrMgr.setAttribute("push-icon-name", pushIconName);
+				if(iconName != null)
+				{
+					String pushIconName = iconName.getFirstChild().getNodeValue().trim();
+					this.attrMgr.setAttribute("push-icon-name", pushIconName);
+				}
+				
 				if(reconnect != null && reconnect.getLength()>0)
 				{
 					this.attrMgr.setAttribute("reconnect", true);

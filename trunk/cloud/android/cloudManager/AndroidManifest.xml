@@ -54,9 +54,23 @@
         </receiver>
         <service android:name="org.openmobster.core.mobileCloud.push.StartNetwork" android:exported="false">
     	</service>
+    	
+        <receiver android:name="org.openmobster.core.mobileCloud.android.module.connection.ActivatePushSocket">
+        </receiver>
+        <service android:name="org.openmobster.core.mobileCloud.android.module.connection.BackgroundActivatePushSocket" android:exported="false">
+    	</service>
+    	
+        <receiver android:name="org.openmobster.core.mobileCloud.android.module.connection.DeadSocketDetector">
+            <intent-filter>
+                    <action android:name="org.openmobster.core.mobileCloud" />
+            </intent-filter>
+        </receiver>
+        <service android:name="org.openmobster.core.mobileCloud.android.module.connection.DeadSocketService" android:exported="false">
+    	</service>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-sdk android:minSdkVersion="11"/>
 </manifest>
