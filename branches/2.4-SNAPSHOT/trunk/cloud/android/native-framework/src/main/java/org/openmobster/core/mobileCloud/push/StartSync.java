@@ -60,18 +60,21 @@ public final class StartSync extends Service
 	{
 		super.onStartCommand(intent, flags, startId);
 		
-		String channel = intent.getStringExtra("channel");
-		String silent = intent.getStringExtra("silent");
-		if(!busy)
+		if(intent != null)
 		{
-			busy = true;
-			Thread t = new Thread(new Task(channel,silent));
-			t.start();
-		}
-		else
-		{
-			//re-broadcast, and leave quickly
-			this.sendSyncBroadcast(channel, silent);
+			String channel = intent.getStringExtra("channel");
+			String silent = intent.getStringExtra("silent");
+			if(!busy)
+			{
+				busy = true;
+				Thread t = new Thread(new Task(channel,silent));
+				t.start();
+			}
+			else
+			{
+				//re-broadcast, and leave quickly
+				this.sendSyncBroadcast(channel, silent);
+			}
 		}
 		
 		return Service.START_STICKY;

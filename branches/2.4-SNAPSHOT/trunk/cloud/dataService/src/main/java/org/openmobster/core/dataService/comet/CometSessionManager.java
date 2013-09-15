@@ -274,6 +274,16 @@ public final class CometSessionManager implements EventListener,ClusterListener
 					log.debug("---------------------------------------------------------------");
 					session.sendHeartBeat();
 				}
+				else
+				{
+					//cleanup
+					log.debug("---------------------------------------------------------------");
+					log.debug("Sender: "+this.hashCode());
+					log.debug("Target Device: "+session.getUri());
+					log.debug("De-activating...................");
+					log.debug("---------------------------------------------------------------");
+					session.deactivate();
+				}
 			}
 		}
 	}
