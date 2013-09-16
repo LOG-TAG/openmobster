@@ -19,6 +19,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.util.XMLUtil;
@@ -70,6 +71,8 @@ public final class MobileService
 		}		
 		catch(Exception e)
 		{
+			Log.e("org.openmobster.android", e.getMessage(), e);
+			
 			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(e);
 			throw new ServiceInvocationException(MobileService.class.getName(), "invoke", new Object[]{
@@ -143,6 +146,8 @@ public final class MobileService
 		}	
 		catch(Exception e)
 		{
+			Log.e("org.openmobster.android", e.getMessage(), e);
+			
 			e.printStackTrace(System.out);
 			ErrorHandler.getInstance().handle(new SystemException(MobileService.class.getName(), "sendRequest", new Object[]{
 				"Request="+beanRequest,
