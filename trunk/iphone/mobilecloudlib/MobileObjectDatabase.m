@@ -10,6 +10,7 @@
 #import "LogicChain.h"
 #import "LogicExpression.h"
 #import "Query.h"
+#import "MetaData.h"
 
 
 /**
@@ -260,5 +261,347 @@
     }
     
     return NO;
+}
+
+-(NSFetchedResultsController *)searchExactMatchAND:(NSString *)channel :(GenericAttributeManager *)criteria
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"service" ascending:NO];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    //Do some predicate magic here
+    NSMutableArray *channelPredicate = [NSMutableArray array];
+    NSMutableArray *criteriaPredicate = [NSMutableArray array];
+    
+    //Channel Predicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@)",channel];
+    [channelPredicate addObject:predicate];
+    
+    if(criteria != nil)
+    {
+        NSArray *names = [criteria getNames];
+        for(NSString *name in names)
+        {
+            NSString *value = [criteria getAttribute:name];
+            NSPredicate *nameValuePredicate = [NSPredicate predicateWithFormat:@"(nameValuePairs contains %@) AND (nameValuePairs contains %@)",name,value];
+            [criteriaPredicate addObject:nameValuePredicate];
+        }
+    }
+    
+    NSPredicate *channelCompound = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithArray:channelPredicate]];
+    NSPredicate *criteriaCompound = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithArray:criteriaPredicate]];
+    
+    NSMutableArray *all = [NSMutableArray array];
+    [all addObject:channelCompound];
+    [all addObject:criteriaCompound];
+    NSArray *allPredicates = [NSArray arrayWithArray:all];
+    NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:allPredicates];
+    
+    [request setPredicate:finalPredicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedContext sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    //Now perform fetch
+    NSError *error;
+    BOOL success = [cursor performFetch:&error];
+    if(success)
+    {
+        return cursor;
+    }
+    else
+    {
+        NSLog(@"SearchExactMatchAND Error: %@",[error userInfo]);
+    }
+
+    return nil;
+}
+
+-(NSFetchedResultsController *)searchExactMatchOR:(NSString *)channel :(GenericAttributeManager *)criteria
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"service" ascending:NO];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    //Do some predicate magic here
+    NSMutableArray *channelPredicate = [NSMutableArray array];
+    NSMutableArray *criteriaPredicate = [NSMutableArray array];
+    
+    //Channel Predicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@)",channel];
+    [channelPredicate addObject:predicate];
+    
+    if(criteria != nil)
+    {
+        NSArray *names = [criteria getNames];
+        for(NSString *name in names)
+        {
+            NSString *value = [criteria getAttribute:name];
+            NSPredicate *nameValuePredicate = [NSPredicate predicateWithFormat:@"(nameValuePairs contains %@) AND (nameValuePairs contains %@)",name,value];
+            [criteriaPredicate addObject:nameValuePredicate];
+        }
+    }
+    
+    NSPredicate *channelCompound = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithArray:channelPredicate]];
+    NSPredicate *criteriaCompound = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithArray:criteriaPredicate]];
+    
+    NSMutableArray *all = [NSMutableArray array];
+    [all addObject:channelCompound];
+    [all addObject:criteriaCompound];
+    NSArray *allPredicates = [NSArray arrayWithArray:all];
+    NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:allPredicates];
+    
+    [request setPredicate:finalPredicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedContext sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    //Now perform fetch
+    NSError *error;
+    BOOL success = [cursor performFetch:&error];
+    if(success)
+    {
+        return cursor;
+    }
+    else
+    {
+        NSLog(@"SearchExactMatchOR Error: %@",[error userInfo]);
+    }
+    
+    return nil;  
+}
+
+-(NSFetchedResultsController *)readByName:(NSString *)channel :(NSString *)name :(BOOL) ascending
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaData" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"value" ascending:ascending];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    NSPredicate *channelPredicate = [NSPredicate predicateWithFormat:@"(parent.service == %@)",channel];
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(name == %@)",name];
+    NSArray *predicates = [NSArray arrayWithObjects:channelPredicate,namePredicate,nil];
+    
+    NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    
+    [request setPredicate:finalPredicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedContext sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    //Now perform fetch
+    NSError *error;
+    BOOL success = [cursor performFetch:&error];
+    if(success)
+    {
+        return cursor;
+    }
+    else
+    {
+        NSLog(@"readByNameAndSort Error: %@",[error userInfo]);
+    }
+
+    
+    return nil;
+}
+
+-(NSFetchedResultsController *)readByName:(NSString *)channel :(NSString *)name
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaData" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    NSPredicate *channelPredicate = [NSPredicate predicateWithFormat:@"(parent.service == %@)",channel];
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(name == %@)",name];
+    NSArray *predicates = [NSArray arrayWithObjects:channelPredicate,namePredicate,nil];
+    
+    NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    
+    [request setPredicate:finalPredicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedContext sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    //Now perform fetch
+    NSError *error;
+    BOOL success = [cursor performFetch:&error];
+    if(success)
+    {
+        return cursor;
+    }
+    else
+    {
+        NSLog(@"readByName Error: %@",[error userInfo]);
+    }
+    
+    
+    return nil;
+}
+
+-(NSFetchedResultsController *)readProxyCursor:(NSString *)channel
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"service" ascending:NO];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    //Channel Predicate
+    NSPredicate *channelPredicate = [NSPredicate predicateWithFormat:@"(service == %@)",channel];
+    NSPredicate *proxyPredicate = [NSPredicate predicateWithFormat:@"(proxy == %@)",[NSNumber numberWithBool:YES]];
+    
+    NSArray *predicates = [NSArray arrayWithObjects:channelPredicate,proxyPredicate,nil];
+    NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    [request setPredicate:finalPredicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedContext sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    //Now perform fetch
+    NSError *error;
+    BOOL success = [cursor performFetch:&error];
+    if(success)
+    {
+        return cursor;
+    }
+    else
+    {
+        NSLog(@"readProxyCursor Error: %@",[error userInfo]);
+    }
+    
+    return nil;
+}
+
+-(NSFetchedResultsController *)readByNameValuePair:(NSString *)channel :(NSString *)name :(NSString *)value
+{
+    //Get the Storage Context
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaData" 
+                                              inManagedObjectContext:managedContext];
+    
+    //Get an instance if its already been provisioned
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:entity];
+    
+    //Set the cursor size
+    [request setFetchBatchSize:1];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    [descriptor release];
+    [descriptors release];
+    
+    NSPredicate *channelPredicate = [NSPredicate predicateWithFormat:@"(parent.service == %@)",channel];
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(name == %@)",name];
+    NSPredicate *valuePredicate = [NSPredicate predicateWithFormat:@"(value == %@)",value];
+    NSArray *predicates = [NSArray arrayWithObjects:channelPredicate,namePredicate,valuePredicate,nil];
+    
+    NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    
+    [request setPredicate:finalPredicate];
+    
+    NSFetchedResultsController *cursor =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:managedContext sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    cursor = [cursor autorelease];
+    
+    //Now perform fetch
+    NSError *error;
+    BOOL success = [cursor performFetch:&error];
+    if(success)
+    {
+        return cursor;
+    }
+    else
+    {
+        NSLog(@"readByNameValuePair Error: %@",[error userInfo]);
+    }
+    
+    
+    return nil; 
 }
 @end

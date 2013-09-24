@@ -42,6 +42,21 @@
 
 -(BOOL) isBooted:(NSString *)channel;
 
+-(NSFetchedResultsController *)searchExactMatchAND:(NSString *)channel :(GenericAttributeManager *)criteria;
+
+-(NSFetchedResultsController *)searchExactMatchOR:(NSString *)channel :(GenericAttributeManager *)criteria;
+
+-(NSFetchedResultsController *)readProxyCursor:(NSString *)channel;
+
+//returns MetaData objects
+-(NSFetchedResultsController *)readByName:(NSString *)channel :(NSString *)name :(BOOL) ascending;
+
+//returns MetaData objects
+-(NSFetchedResultsController *)readByName:(NSString *)channel :(NSString *)name;
+
+//returns MetaData objects
+-(NSFetchedResultsController *)readByNameValuePair:(NSString *)channel :(NSString *)name :(NSString *)value;
+
 
 //internally used
 -(NSSet *)logicExpressionBeans:(NSString *) channel :(LogicExpression *) expression;

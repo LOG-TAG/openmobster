@@ -7,6 +7,7 @@
  */
 
 #import "PersistentMobileObject.h"
+#import "MetaData.h"
 
 
 /**
@@ -25,6 +26,7 @@
 @dynamic locked;
 @dynamic dirtyStatus;
 @dynamic nameValuePairs;
+@dynamic metadata;
 
 
 +(PersistentMobileObject *) newInstance:(NSString *)channel
@@ -191,6 +193,17 @@
     [buffer appendFormat:@"%@%@",nameValue,@"|"];
     
     self.nameValuePairs = [NSString stringWithString:buffer];
+    
+    //Update the metadata associated with this object
+    NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+    MetaData *metadata;
+    metadata = [NSEntityDescription insertNewObjectForEntityForName:@"MetaData" inManagedObjectContext:managedContext];
+    metadata.parent = self;
+    metadata.name = field.name;
+    metadata.value = field.value;
+    
+    NSMutableSet *mutableSet = [self mutableSetValueForKey:@"metadata"];
+    [mutableSet addObject:metadata];
 }
 
 -(NSArray *)parseFields
@@ -332,6 +345,12 @@
 	if(fields != nil)
 	{
 		[(NSMutableArray *)self.fields removeAllObjects];
+        
+        //existing relationship state cleanup
+        self.nameValuePairs = @"";
+        NSMutableSet *mutableSet = [self mutableSetValueForKey:@"metadata"];
+        [mutableSet removeAllObjects];
+        
 		for(Field *field in fields)
 		{
 			[self addField:field];

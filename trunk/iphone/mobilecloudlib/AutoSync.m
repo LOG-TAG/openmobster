@@ -125,6 +125,7 @@
 	}  
 }
 
+//TODO: Re-Implement this using a Cursor approach...better memory usage
 -(void)proxySync:(NSString *)channel
 {
 	SyncService *sync = [SyncService getInstance];
