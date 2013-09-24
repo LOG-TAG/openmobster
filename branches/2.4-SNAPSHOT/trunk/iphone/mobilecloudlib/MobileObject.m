@@ -72,7 +72,7 @@
     NSString *fieldName = uri;
     if([StringUtil indexOf:fieldName :@"."] != -1)
     {
-        int lastIndex = [StringUtil lastIndexOf:fieldName :@"."];
+        int lastIndex = [StringUtil lastIndexOf:fieldName :@"."]+1;
         fieldName = [StringUtil substring:fieldName :lastIndex];
     }
     

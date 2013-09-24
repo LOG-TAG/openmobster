@@ -21,10 +21,10 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E011225C1EF004C908F"
@@ -122,7 +122,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2E557A412F769FB008B3FCE"
@@ -153,16 +153,6 @@
             skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2DF3E011225C1EF004C908F"
-               BuildableName = "mobileObjectTests.octest"
-               BlueprintName = "mobileObjectTests"
-               ReferencedContainer = "container:mobilecloudlib.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2DF3E531225C60E004C908F"
                BuildableName = "syncTests.octest"
                BlueprintName = "syncTests"
@@ -183,6 +173,16 @@
                   Identifier = "CFNetworkTests/testSecureSocketStream">
                </Test>
             </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2DF3E011225C1EF004C908F"
+               BuildableName = "mobileObjectTests.octest"
+               BlueprintName = "mobileObjectTests"
+               ReferencedContainer = "container:mobilecloudlib.xcodeproj">
+            </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
