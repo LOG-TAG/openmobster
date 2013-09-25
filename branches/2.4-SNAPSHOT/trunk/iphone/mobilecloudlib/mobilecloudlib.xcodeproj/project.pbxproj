@@ -94,6 +94,8 @@
 		A27FD5B3175D1886004CC2FD /* TestSettingNullNewBean.m in Sources */ = {isa = PBXBuildFile; fileRef = A27FD5B2175D1885004CC2FD /* TestSettingNullNewBean.m */; };
 		A2855FB417F08F7400BD8022 /* MetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = A2855FB217F08F7400BD8022 /* MetaData.h */; };
 		A2855FB517F08F7400BD8022 /* MetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = A2855FB317F08F7400BD8022 /* MetaData.m */; };
+		A2855FB817F3249900BD8022 /* MobileBeanCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = A2855FB617F3249900BD8022 /* MobileBeanCursor.h */; };
+		A2855FB917F3249900BD8022 /* MobileBeanCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = A2855FB717F3249900BD8022 /* MobileBeanCursor.m */; };
 		A286951D12F7795D00A4792E /* TestObjectStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = A286951C12F7795D00A4792E /* TestObjectStreaming.m */; };
 		A286957112F77F3B00A4792E /* TestSimpleAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = A286957012F77F3B00A4792E /* TestSimpleAccess.m */; };
 		A286964B12F7CC0300A4792E /* BeanList.h in Headers */ = {isa = PBXBuildFile; fileRef = A286964912F7CC0300A4792E /* BeanList.h */; };
@@ -481,6 +483,8 @@
 		A27FD5B2175D1885004CC2FD /* TestSettingNullNewBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSettingNullNewBean.m; sourceTree = "<group>"; };
 		A2855FB217F08F7400BD8022 /* MetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaData.h; sourceTree = "<group>"; };
 		A2855FB317F08F7400BD8022 /* MetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaData.m; sourceTree = "<group>"; };
+		A2855FB617F3249900BD8022 /* MobileBeanCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBeanCursor.h; sourceTree = "<group>"; };
+		A2855FB717F3249900BD8022 /* MobileBeanCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileBeanCursor.m; sourceTree = "<group>"; };
 		A286951B12F7795D00A4792E /* TestObjectStreaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjectStreaming.h; sourceTree = "<group>"; };
 		A286951C12F7795D00A4792E /* TestObjectStreaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjectStreaming.m; sourceTree = "<group>"; };
 		A286956F12F77F3B00A4792E /* TestSimpleAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimpleAccess.h; sourceTree = "<group>"; };
@@ -1599,6 +1603,8 @@
 				A286964A12F7CC0300A4792E /* BeanList.m */,
 				A2FA7F7414379B710054223D /* CommitException.h */,
 				A2FA7F7514379B710054223D /* CommitException.m */,
+				A2855FB617F3249900BD8022 /* MobileBeanCursor.h */,
+				A2855FB717F3249900BD8022 /* MobileBeanCursor.m */,
 			);
 			name = sync;
 			sourceTree = "<group>";
@@ -1781,6 +1787,7 @@
 				A279BBD9173FDB9E006A2FFE /* TestLargeObject.h in Headers */,
 				A27FD5A917591B82004CC2FD /* TestEmptyStringsFromCloud.h in Headers */,
 				A2855FB417F08F7400BD8022 /* MetaData.h in Headers */,
+				A2855FB817F3249900BD8022 /* MobileBeanCursor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2304,6 +2311,7 @@
 				A279BBDA173FDB9E006A2FFE /* TestLargeObject.m in Sources */,
 				A27FD5AA17591B82004CC2FD /* TestEmptyStringsFromCloud.m in Sources */,
 				A2855FB517F08F7400BD8022 /* MetaData.m in Sources */,
+				A2855FB917F3249900BD8022 /* MobileBeanCursor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
