@@ -14,6 +14,7 @@
 @dynamic name;
 @dynamic value;
 
+/*
 -(BOOL) isEqual:(id)obj
 {
     BOOL result = NO;
@@ -35,4 +36,5 @@
     NSString *hashStr = [NSString stringWithFormat:@"%@|%@",self.parent.oid,self.name];
     return [hashStr hash];
 }
+*/
 @end

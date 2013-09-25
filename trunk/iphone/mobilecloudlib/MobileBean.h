@@ -257,6 +257,7 @@
  */
 +(NSArray *) queryByContainsAtleastOne:(NSString *) channel :(GenericAttributeManager *) criteria;
 
+
 /**
  * Persists the state of the Mobile Bean. This also makes sure the consistent bean state is reflected on the Cloud Side as well
  * 
@@ -273,6 +274,8 @@
  *
  */
 -(void)refresh;
+
+
 
 //internal use only
 /**

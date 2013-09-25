@@ -10,6 +10,7 @@
 #import "MobileObjectDatabase.h"
 #import "MobileBean.h"
 #import "CloudService.h"
+#import "MobileBeanCursor.h"
 
 
 @implementation MobileBeanTest
@@ -214,6 +215,128 @@
     
     MobileBean *savedBean = [MobileBean readById:@"myChannel" :oid];
     NSData *attachmentData = [savedBean getBinaryValue:@"attachment"];
+}
+
+-(void) testSortByProperty
+{
+    NSLog(@"Starting testSortByProperty.........");
+    
+    CloudService *cloud = [CloudService getInstance];
+    [cloud startup];
+    
+    [self seedData];
+    
+    MobileBeanCursor *cursor = [MobileBeanCursor sortByProperty:@"myChannel" :@"to" :NO];
+    
+    //iterate one bean at a time
+    int count = [cursor count];
+    STAssertTrue(count==5, nil);
+    for(int i=0; i<count; i++)
+    {
+        MobileBean *bean = [cursor beanAtIndex:i];
+        NSLog(@"To: %@",[bean getValue:@"to"]);
+    }
+    
+    //iterate all
+    NSArray *allBeans = [cursor all];
+    for(MobileBean *bean in allBeans)
+    {
+        NSLog(@"From: %@",[bean getValue:@"from"]);
+    }
+}
+
+-(void) testQueryByProperty
+{
+    NSLog(@"Starting testQueryByProperty.........");
+    
+    CloudService *cloud = [CloudService getInstance];
+    [cloud startup];
+    
+    [self seedData];
+    
+    MobileBeanCursor *cursor = [MobileBeanCursor queryByProperty:@"myChannel" :@"to" :@"3/to/value"];
+    
+    //iterate one bean at a time
+    int count = [cursor count];
+    STAssertTrue(count==1, nil);
+    for(int i=0; i<count; i++)
+    {
+        MobileBean *bean = [cursor beanAtIndex:i];
+        NSLog(@"To: %@",[bean getValue:@"to"]);
+    }
+    
+    //iterate all
+    NSArray *allBeans = [cursor all];
+    for(MobileBean *bean in allBeans)
+    {
+        NSLog(@"From: %@",[bean getValue:@"from"]);
+    }
+}
+
+-(void) testSearchByMatchAll
+{
+    NSLog(@"Starting testSearchByMatchAll.........");
+    
+    CloudService *cloud = [CloudService getInstance];
+    [cloud startup];
+    
+    [self seedData];
+    
+    GenericAttributeManager *criteria = [[GenericAttributeManager alloc] initWithRetention];
+    criteria = [criteria autorelease];
+    [criteria setAttribute:@"to" :@"0/to/value"];
+    [criteria setAttribute:@"from" :@"0/from/value"];
+    
+    MobileBeanCursor *cursor = [MobileBeanCursor searchByMatchAll:@"myChannel" :criteria];
+    
+    //iterate one bean at a time
+    int count = [cursor count];
+    STAssertTrue(count==1, nil);
+    for(int i=0; i<count; i++)
+    {
+        MobileBean *bean = [cursor beanAtIndex:i];
+        NSLog(@"To: %@",[bean getValue:@"to"]);
+    }
+    
+    //iterate all
+    NSArray *allBeans = [cursor all];
+    for(MobileBean *bean in allBeans)
+    {
+        NSLog(@"From: %@",[bean getValue:@"from"]);
+    }
+}
+
+-(void) testSearchByMatchAtleastOne
+{
+    NSLog(@"Starting testSearchByMatchAtleastOne.........");
+    
+    CloudService *cloud = [CloudService getInstance];
+    [cloud startup];
+    
+    [self seedData];
+    
+    GenericAttributeManager *criteria = [[GenericAttributeManager alloc] initWithRetention];
+    criteria = [criteria autorelease];
+    [criteria setAttribute:@"to" :@"0/to/value"];
+    [criteria setAttribute:@"from" :@"1/from/value"];
+    
+    MobileBeanCursor *cursor = [MobileBeanCursor searchByMatchAtleastOne:@"myChannel" :criteria];
+    
+    //iterate one bean at a time
+    int count = [cursor count];
+    STAssertTrue(count==2, nil);
+    for(int i=0; i<count; i++)
+    {
+        MobileBean *bean = [cursor beanAtIndex:i];
+        NSLog(@"To: %@",[bean getValue:@"to"]);
+    }
+    
+    //iterate all
+    NSArray *allBeans = [cursor all];
+    for(MobileBean *bean in allBeans)
+    {
+        NSLog(@"From: %@",[bean getValue:@"from"]);
+    }
 }
 //------------------------------------------------------------------------------------------------
 -(void) seedData
