@@ -138,23 +138,29 @@
 	}  
 }
 
-//TODO: Re-Implement this using a Cursor approach...better memory usage
 -(void)proxySync:(NSString *)channel
 {
 	SyncService *sync = [SyncService getInstance];
 	MobileObjectDatabase *mdb = [MobileObjectDatabase getInstance];
-	NSArray *allObjects = [mdb readAll:channel];
-	if(allObjects != nil)
+    NSFetchedResultsController *cursor = [mdb readProxyCursor:channel];
+    if(cursor == nil)
+    {
+        return;
+    }
+    
+	NSArray *fetchedObjects = [cursor fetchedObjects];
+	if(fetchedObjects != nil)
 	{
-		for(MobileObject *local in allObjects)
-		{
-			if(local.proxy)
-			{
-				NSString *oid = local.recordId;
-				//NSLog(@"Performing Load Proxy sync....");
-				[sync performStreamSync:channel :NO :oid];
-			}
-		}
+        int count = [fetchedObjects count];
+        for(int i=0; i<count; i++)
+        {
+            PersistentMobileObject *pm = (PersistentMobileObject *)[fetchedObjects objectAtIndex:i];
+            MobileObject *local = [pm parseMobileObject];
+            
+            NSString *oid = local.recordId;
+            //NSLog(@"Performing Load Proxy sync....");
+            [sync performStreamSync:channel :NO :oid];
+        }
 	}
 }
 @end
