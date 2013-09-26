@@ -36,7 +36,7 @@
 {
     //OpenMobster bootstrapping
     [self startCloudService];
-    [self sync];
+    //[self sync];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
@@ -107,7 +107,7 @@
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
     //OpenMobster bootstrapping
-    [self sync];
+    //[self sync];
     
     if(!self.pushRegistered)
     {

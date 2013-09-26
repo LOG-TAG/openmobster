@@ -43,6 +43,15 @@
 	//Refresh
 	NSArray *beans = [MobileBean readAll:@"showcase_ticket_channel"];
 	[session setAttribute:@"beans" :beans];
+    
+    NSLog(@"# of beans found: %d",[beans count]);
+    for(MobileBean *local in beans)
+    {
+        NSLog(@"******Delete*****************************************");
+        NSLog(@"Titel: %@",[local getValue:@"title"]);
+        NSLog(@"Comment: %@",[local getValue:@"comment"]);
+        NSLog(@"***********************************************");
+    }
 }
 
 @end
