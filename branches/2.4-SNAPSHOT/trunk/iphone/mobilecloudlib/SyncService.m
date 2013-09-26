@@ -71,8 +71,8 @@
     NSLog(@"Save Success:%d",success);*/
     
 	//Schedule a background sync to sync up the channes at App startup
-	SyncScheduler *backgroudSync = [SyncScheduler getInstance];
-	[backgroudSync startBackgroundSync];
+	//SyncScheduler *backgroudSync = [SyncScheduler getInstance];
+	//[backgroudSync startBackgroundSync];
 }
 
 -(void)performBootSync:(NSString *)channel :(BOOL)isBackground

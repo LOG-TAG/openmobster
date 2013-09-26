@@ -110,7 +110,7 @@
 		return [NSArray arrayWithArray:all];
 	}
 	
-	return nil;
+	return [NSArray array];
 }
 
 +(NSArray *)filterProxies:(NSArray *)mobileObjects
