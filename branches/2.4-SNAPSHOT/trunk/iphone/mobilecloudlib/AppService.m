@@ -93,12 +93,13 @@
 	//NSLog(@"ISActivated: %d",[conf isActivated]);
 	if([conf isActivated])
 	{
-	//	NSLog(@"Starting Sync Daemons...........");
-		//SyncService *sync = [SyncService getInstance];
-		//[sync startDaemons];
+        NSLog(@"Starting Sync Daemons...........");
+		SyncService *sync = [SyncService getInstance];
+		[sync startDaemons];
+        
         //perform a sync operation to get the data up-to-date
-        SyncUtility *syncUtility = [SyncUtility withInit];
-        [syncUtility syncAll];
+        //SyncUtility *syncUtility = [SyncUtility withInit];
+        //[syncUtility syncAll];
 	}
 	
 	//MyChannles
