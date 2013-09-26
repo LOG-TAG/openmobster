@@ -112,14 +112,14 @@ public class ServerHandler extends IoHandlerAdapter
 		}
 		catch(ProcessorException pe)
 		{
-			log.error(this, pe);
+			//log.error(this, pe);
 			session.write(Constants.status+"="+500+Constants.endOfStream);									
 			ErrorHandler.getInstance().handle(pe);
 			session.setAttribute("tx-rollback", Boolean.TRUE);
 		}
 		catch(Exception e)
 		{
-			log.error(this, e);
+			//log.error(this, e);
 			session.write(Constants.status+"="+500+Constants.endOfStream);
 			ErrorHandler.getInstance().handle(e);				
 			session.setAttribute("tx-rollback", Boolean.TRUE);

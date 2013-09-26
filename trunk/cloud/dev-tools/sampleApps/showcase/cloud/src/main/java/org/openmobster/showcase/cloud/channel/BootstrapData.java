@@ -8,6 +8,8 @@
 
 package org.openmobster.showcase.cloud.channel;
 
+import org.openmobster.core.common.Utilities;
+
 /**
  * Loads demo data into the ticket database 
  * 
@@ -48,6 +50,7 @@ public class BootstrapData
 			Ticket local = new Ticket();
 			local.setTitle(titles[i]);
 			local.setComment(comments[i]);
+			local.setTicketId(Utilities.generateUID());
 			
 			this.ds.create(local);
 		}
