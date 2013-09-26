@@ -51,4 +51,7 @@
 -(MobileObject *)parseMobileObject;
 -(void)setState:(MobileObject *)mobileObject;
 
+//use internally only
++(NSArray *) findByChannelForDelete:(NSString *) channel;
+
 @end

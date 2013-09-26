@@ -57,8 +57,17 @@
 	mobileObject.dirtyStatus = [GeneralTools generateUniqueId];
 	
 	[newObject setState:mobileObject];
-	[newObject saveInstance];
-	return newObject.oid;
+    
+	
+    BOOL success = [newObject saveInstance];
+    if(!success)
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"commit_failure",nil];
+        SystemException *ex = [SystemException withContext:@"MobileObjectDatabase" method:@"create" parameters:params];
+        @throw ex; 
+    }
+	
+    return newObject.oid;
 }
 
 -(void)update:(MobileObject *)mobileObject
@@ -82,7 +91,15 @@
 		
 		mobileObject.dirtyStatus = [GeneralTools generateUniqueId];
 		[stored setState:mobileObject];
-		[stored saveInstance];
+        
+        
+		BOOL success = [stored saveInstance];
+        if(!success)
+        {
+            NSMutableArray *params = [NSMutableArray arrayWithObjects:@"commit_failure",nil];
+            SystemException *ex = [SystemException withContext:@"MobileObjectDatabase" method:@"update" parameters:params];
+            @throw ex; 
+        }
 	}
 }
 
@@ -91,13 +108,25 @@
 	PersistentMobileObject *stored = [PersistentMobileObject findByOID:mobileObject.recordId];
 	if(stored != nil)
 	{
-		[PersistentMobileObject delete:stored];
+		BOOL success = [PersistentMobileObject delete:stored];
+        if(!success)
+        {
+            NSMutableArray *params = [NSMutableArray arrayWithObjects:@"commit_failure",nil];
+            SystemException *ex = [SystemException withContext:@"MobileObjectDatabase" method:@"delete" parameters:params];
+            @throw ex; 
+        }
 	}
 }
 
 -(void)deleteAll:(NSString *)channel
 {
-	[PersistentMobileObject deleteAll:channel];
+	BOOL success = [PersistentMobileObject deleteAll:channel];
+    if(!success)
+    {
+        NSMutableArray *params = [NSMutableArray arrayWithObjects:@"commit_failure",nil];
+        SystemException *ex = [SystemException withContext:@"MobileObjectDatabase" method:@"deleteAll" parameters:params];
+        @throw ex; 
+    }
 }
 
 -(NSSet *)query:(NSString *)channel:(GenericAttributeManager *)queryAttributes

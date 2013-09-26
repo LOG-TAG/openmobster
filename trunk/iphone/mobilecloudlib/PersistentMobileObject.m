@@ -65,6 +65,27 @@
 	return [NSArray arrayWithArray:all];
 }
 
++(NSArray *) findByChannelForDelete:(NSString *) channel
+{
+    //Get the Storage Context
+	NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PersistentMobileObject" 
+											  inManagedObjectContext:managedContext];
+	
+	//Get an instance if its already been provisioned
+	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entity];
+    [request setIncludesPropertyValues:NO];
+    
+    //find by channel
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(service == %@)",channel];
+    [request setPredicate:predicate];
+	
+	NSArray *all = [managedContext executeFetchRequest:request error:NULL];
+	
+	return [NSArray arrayWithArray:all];
+}
+
 +(PersistentMobileObject *) findByOID:(NSString *) oid
 {
 	//Get the Storage Context
@@ -102,12 +123,12 @@
 	//Used for debugging
 	/*if(!success)
 	 {
-	 NSLog(@"Error during save!!!");
+	 NSLog(@"Error during delete!!!");
 	 NSLog(@"SaveError: %@, %@", error, [error userInfo]);
 	 }
 	 else 
 	 {
-	 NSLog(@"Save was a success!!!");
+	 NSLog(@"Delete was a success!!!");
 	 }*/
 	
 	return success;
@@ -115,7 +136,7 @@
 
 +(BOOL) deleteAll:(NSString *)channel
 {
-	NSArray *all = [PersistentMobileObject findByChannel:channel];
+	NSArray *all = [PersistentMobileObject findByChannelForDelete:channel];
 	
 	if(all != nil)
 	{
@@ -132,12 +153,12 @@
 		//Used for debugging
 		/*if(!success)
 		 {
-			NSLog(@"Error during save!!!");
+			NSLog(@"Error during deleteAll!!!");
 			NSLog(@"SaveError: %@, %@", error, [error userInfo]);
 		 }
 		 else 
 		 {
-			NSLog(@"Save was a success!!!");
+			NSLog(@"DeleteAll was a success!!!");
 		 }*/
 	
 		return success;
@@ -348,8 +369,18 @@
         
         //existing relationship state cleanup
         self.nameValuePairs = @"";
+        
+        
         NSMutableSet *mutableSet = [self mutableSetValueForKey:@"metadata"];
-        [mutableSet removeAllObjects];
+        if(mutableSet != nil)
+        {
+            NSManagedObjectContext *managedContext = [[CloudDBManager getInstance] storageContext];
+            for(NSManagedObject *instance in mutableSet)
+            {
+                [managedContext deleteObject:instance];
+            }
+            [mutableSet removeAllObjects];
+        }
         
 		for(Field *field in fields)
 		{
