@@ -130,7 +130,8 @@
     while(YES)
     {
         int bytesWritten = CFWriteStreamWrite(os,buffer,bufferLen);
-        if (bytesWritten == 0) 
+        
+        if (bytesWritten == -1) 
         {
             //throw exeception that writing to the outputstream failed
             NSMutableArray *parameters = [NSMutableArray arrayWithObjects:@"outputstream_write_failure",nil];
