@@ -125,6 +125,19 @@
 	}  
 }
 
+-(void)syncDeltasOnly:(NSString *)channel
+{
+    @try 
+	{
+        SyncService *sync = [SyncService getInstance];
+        [sync performTwoWaySync:channel :NO];
+	}
+	@catch(NSException *e)
+	{
+		//saves from a crash...tried to sync
+	}  
+}
+
 //TODO: Re-Implement this using a Cursor approach...better memory usage
 -(void)proxySync:(NSString *)channel
 {

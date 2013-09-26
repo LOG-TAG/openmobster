@@ -18,8 +18,10 @@
 }
 
 +(id)withInit;
+
+
 -(void)sync;
 -(void)proxySync:(NSString *)channel;
-
 -(void)syncWithoutProxy;
+-(void)syncDeltasOnly:(NSString *)channel;
 @end
