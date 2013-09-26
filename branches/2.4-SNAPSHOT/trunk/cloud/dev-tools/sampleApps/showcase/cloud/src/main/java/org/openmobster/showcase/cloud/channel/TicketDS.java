@@ -55,13 +55,9 @@ public class TicketDS
 			session = this.hibernateManager.getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 
-			String ticketId = ticket.getTicketId();
-			if(ticketId == null || ticketId.trim().length() == 0)
-			{
-				ticketId = Utilities.generateUID();
-			}
-			ticket.setTicketId(ticketId);
-			session.save(ticket);
+			long oid = (Long)session.save(ticket);
+			ticket.setTicketId(""+oid);
+			session.update(ticket);
 			
 			session.flush();
 						

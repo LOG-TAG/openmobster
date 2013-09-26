@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import org.openmobster.cloud.api.sync.Channel;
 import org.openmobster.cloud.api.sync.ChannelInfo;
 import org.openmobster.cloud.api.sync.MobileBean;
+import org.openmobster.core.common.Utilities;
 import org.openmobster.core.security.device.Device;
 
 /**
@@ -62,12 +63,16 @@ public class TicketChannel implements Channel
 		List<Ticket> bootup = new ArrayList<Ticket>();
 		
 		List<Ticket> all = this.ds.readAll();
-		if(all != null)
+		if(all != null && all.size() >5)
 		{
 			for(int i=0; i<5; i++)
 			{
 				bootup.add(all.get(i));
 			}
+		}
+		else
+		{
+			return this.readAll();
 		}
 		
 		return bootup; 
@@ -104,6 +109,10 @@ public class TicketChannel implements Channel
 	public void update(MobileBean mobileBean)
 	{
 		Ticket local = (Ticket)mobileBean;
+		Ticket stored = (Ticket)this.read(local.getTicketId());
+		
+		local.setId(stored.getId());
+		
 		this.ds.update(local);
 	}
 	
@@ -129,6 +138,7 @@ public class TicketChannel implements Channel
 		Ticket newTicket = new Ticket();
 		newTicket.setTitle("Pushed Ticket");
 		newTicket.setComment("This Rocks!!!");
+		newTicket.setTicketId(Utilities.generateUID());
 		String ticketId = this.ds.create(newTicket);
 		
 		String[] newoids = new String[]{ticketId};
