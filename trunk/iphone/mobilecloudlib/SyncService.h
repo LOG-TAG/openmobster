@@ -35,6 +35,7 @@
 +(SyncService *) getInstance; 
 
 -(void)startDaemons;
+-(void)startDeltaSync:(NSString *)channel;
 
 -(void)performBootSync:(NSString *)channel :(BOOL)isBackground;
 -(void)performTwoWaySync:(NSString *)channel :(BOOL)isBackground;

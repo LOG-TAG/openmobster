@@ -24,6 +24,7 @@
 +(SyncScheduler *)getInstance;
 
 -(void)startBackgroundSync;
+-(void)startDeltaSync:(NSString *)channel;
 
--(void)run;
+//-(void)run;
 @end

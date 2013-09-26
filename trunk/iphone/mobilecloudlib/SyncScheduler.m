@@ -52,7 +52,17 @@
     //[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];
 }
 
--(void)run
+-(void)startDeltaSync:(NSString *)channel
+{
+    AutoSync *target = [AutoSync withInit];
+	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:target selector:@selector(syncDeltasOnly:) object:channel];	
+	operation = [operation autorelease];
+	
+	//Add the operation to the queue
+	[queue addOperation:operation]; 
+}
+
+/*-(void)run
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
@@ -60,5 +70,5 @@
     [sync sync];
     
     [pool release];
-}
+}*/
 @end
