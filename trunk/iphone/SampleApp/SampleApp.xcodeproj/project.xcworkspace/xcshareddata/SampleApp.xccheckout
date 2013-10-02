@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CEC581BC-AC96-4DAE-9D36-D823F091CB63</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SampleApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>68BC06DD-0AFD-434B-B2D7-8CA25A7E259A</key>
+		<string>https://openmobster.googlecode.com/svn/branches/2.4-SNAPSHOT</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/iphone/SampleApp/SampleApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>68BC06DD-0AFD-434B-B2D7-8CA25A7E259A</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>68BC06DD-0AFD-434B-B2D7-8CA25A7E259A</key>
+		<string>https://openmobster.googlecode.com/svn</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://openmobster.googlecode.com/svn/branches/2.4-SNAPSHOT/trunk/iphone/SampleApp/SampleApp.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>68BC06DD-0AFD-434B-B2D7-8CA25A7E259A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>branches/2.4-SNAPSHOT/trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>68BC06DD-0AFD-434B-B2D7-8CA25A7E259A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>2</string>
+		</dict>
+	</array>
+</dict>
+</plist>
