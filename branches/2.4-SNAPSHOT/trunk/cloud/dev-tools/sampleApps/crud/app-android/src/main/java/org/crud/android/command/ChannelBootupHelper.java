@@ -25,38 +25,38 @@ public class ChannelBootupHelper implements RemoteCommand
 {
 	public void doViewBefore(CommandContext commandContext)
 	{
-		Activity activity = (Activity)commandContext.getAppContext();
-		Toast.makeText(activity, 
-				"Waiting for the 'crm_ticket_channel' to finish bootstrapping....", 
-				Toast.LENGTH_LONG).show();
+//		Activity activity = (Activity)commandContext.getAppContext();
+//		Toast.makeText(activity, 
+//				"Waiting for the 'crm_ticket_channel' to finish bootstrapping....", 
+//				Toast.LENGTH_LONG).show();
 	}
 
 	public void doAction(CommandContext commandContext)
 	{
-		try
-		{
-			int counter = 10;
-			while(!MobileBean.isBooted("crm_ticket_channel") && counter>0)
-			{
-				Thread.currentThread().sleep(1000);
-				counter--;
-			}
-		}
-		catch(Exception e)
-		{
-			throw new RuntimeException(e);
-		}
+//		try
+//		{
+//			int counter = 10;
+//			while(!MobileBean.isBooted("crm_ticket_channel") && counter>0)
+//			{
+//				Thread.currentThread().sleep(1000);
+//				counter--;
+//			}
+//		}
+//		catch(Exception e)
+//		{
+//			throw new RuntimeException(e);
+//		}
 	}
 
 	public void doViewAfter(CommandContext commandContext)
 	{		
-		NavigationContext.getInstance().home();
+		//NavigationContext.getInstance().home();
 	}
 
 	public void doViewError(CommandContext commandContext)
 	{
-		Activity activity = (Activity)commandContext.getAppContext();
-		ViewHelper.getOkModalWithCloseApp(activity, "App Error", "The 'crm_ticket_channel' is not ready. Please launch the App again in a few minutes").
-		show();
+//		Activity activity = (Activity)commandContext.getAppContext();
+//		ViewHelper.getOkModalWithCloseApp(activity, "App Error", "The 'crm_ticket_channel' is not ready. Please launch the App again in a few minutes").
+//		show();
 	}
 }
