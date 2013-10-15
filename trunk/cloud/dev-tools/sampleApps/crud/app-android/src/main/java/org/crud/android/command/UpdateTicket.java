@@ -19,6 +19,11 @@ import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.Toast;
 
 
@@ -26,6 +31,46 @@ import android.widget.Toast;
  * @author openmobster@gmail.com
  *
  */
+
+public class UpdateTicket extends AsyncTask<Void, Void, Void>{
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
+	MobileBean mobileBean;
+	public UpdateTicket(Context context,Handler handler,MobileBean mobileBean){
+		this.context=context;
+		this.handler = handler;
+		this.mobileBean=mobileBean;
+	}
+	@Override
+	protected void onPostExecute(Void result){
+		dialog.dismiss();
+		handler.sendMessage(message);
+	}
+
+	@Override
+	protected void onPreExecute(){
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();		
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0){
+		message = handler.obtainMessage();		
+		try{
+			mobileBean.save();
+			message.what = 1;
+		}catch(Exception ex){
+			
+		}
+		return null;
+	}	
+} 
+
+/*
 public final class UpdateTicket implements AsyncCommand
 {
 	public void doViewBefore(CommandContext commandContext)
@@ -66,3 +111,4 @@ public final class UpdateTicket implements AsyncCommand
 		show();
 	}
 }
+*/

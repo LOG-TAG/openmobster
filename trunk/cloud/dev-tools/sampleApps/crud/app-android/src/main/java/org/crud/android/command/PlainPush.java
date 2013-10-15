@@ -17,11 +17,61 @@ import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * @author openmobster@gmail.com
  *
  */
+
+public class PlainPush extends AsyncTask<Void,Void,Void>{
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
+	
+	public PlainPush(Context context,Handler handler){
+		this.context=context;
+		this.handler = handler;	
+	}
+	
+	@Override
+	protected void onPostExecute(Void result)
+	{
+		dialog.dismiss();
+		handler.sendMessage(message);
+	}
+
+	@Override
+	protected void onPreExecute()
+	{
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0)
+	{
+		message=handler.obtainMessage();
+		try{
+			Request request = new Request("/start/push");
+			request.setAttribute("app-id", Registry.getActiveInstance().getContext().getPackageName());
+			new MobileService().invoke(request);
+			message.what=1;
+		}catch(Exception ex){
+			
+		}
+		return null;
+	}	
+}
+
+/*
 public final class PlainPush implements RemoteCommand
 {
 	public void doViewBefore(CommandContext commandContext)
@@ -60,3 +110,4 @@ public final class PlainPush implements RemoteCommand
 		show();
 	}
 }
+*/

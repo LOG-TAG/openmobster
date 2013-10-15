@@ -9,23 +9,61 @@
 package org.crud.android.command;
 
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-
-import android.app.Activity;
-import android.widget.Toast;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 
 /**
  * @author openmobster@gmail.com
  *
  */
+
+
+public class DeleteTicket extends AsyncTask<Void, Void, Void>{
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
+	MobileBean mobileBean;
+	public DeleteTicket(Context context,Handler handler,MobileBean mobileBean){
+		this.context=context;
+		this.handler = handler;
+		this.mobileBean=mobileBean;
+	}
+	@Override
+	protected void onPostExecute(Void result)
+	{
+		dialog.dismiss();
+		handler.sendMessage(message);
+	}
+
+	@Override
+	protected void onPreExecute()
+	{
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();		
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0)
+	{
+		message = handler.obtainMessage();		
+		try{
+			mobileBean.delete();
+			message.what = 1;
+		}catch(Exception ex){
+			
+		}
+		return null;
+	}	
+}
+
+/*
 public final class DeleteTicket implements AsyncCommand
 {
 	public void doViewBefore(CommandContext commandContext)
@@ -65,4 +103,4 @@ public final class DeleteTicket implements AsyncCommand
 		this.getClass().getName()+" had an error!!\n\n"+commandContext.getAppException().getMessage()).
 		show();
 	}
-}
+}*/
