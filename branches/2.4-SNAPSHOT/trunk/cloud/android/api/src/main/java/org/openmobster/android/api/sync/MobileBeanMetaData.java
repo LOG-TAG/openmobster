@@ -23,6 +23,8 @@ public final class MobileBeanMetaData implements Serializable
 	private String id;
 	
 	private boolean isDeleted;
+	private boolean isAdded;
+	private boolean isUpdated;
 	
 	/**
 	 * 
@@ -73,5 +75,41 @@ public final class MobileBeanMetaData implements Serializable
 	public void setDeleted(boolean isDeleted) 
 	{
 		this.isDeleted = isDeleted;
-	}		
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isAdded()
+	{
+		return isAdded;
+	}
+
+	/**
+	 * 
+	 * @param isAdded
+	 */
+	public void setAdded(boolean isAdded)
+	{
+		this.isAdded = isAdded;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isUpdated()
+	{
+		return isUpdated;
+	}
+
+	/**
+	 * 
+	 * @param isUpdated
+	 */
+	public void setUpdated(boolean isUpdated)
+	{
+		this.isUpdated = isUpdated;
+	}
 }
