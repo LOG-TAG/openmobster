@@ -86,6 +86,13 @@ public class ServiceInvocationProcessor implements Processor
 				throw new ProcessorException("MobileServiceBean Invocation Status="+response.getStatus());
 			}
 			
+			//If an exception occurred during service invocation, make sure the root tx is rolledback
+			if(serviceResponse.getStatusCode().equals("500"))
+			{
+				//an exception occurred during service invocation
+				input.getSession().setAttribute("tx-rollback", Boolean.TRUE);
+			}
+			
 			return this.prepareServiceResponse(serviceResponse);
 		}
 		catch(Exception e)
