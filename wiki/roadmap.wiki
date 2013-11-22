@@ -106,4 +106,19 @@ Timelines are difficult to anticipate, but here is a rolling list of features th
 
 ----
 
+=== Release 2.4-M4 tasks (Planning Stage) ===
+  * Support for Horizontal Scaling via integration with the AWS Elastic Load Balancer
+  * Add Support for Streaming Binary Content to the Sync Engine
+  * Upgrade to JBoss 7
+  * More iOS7 based Sample Apps with Push Notifications
+  * Integrate SQLCipher to provide an Encrypted Database Option for Android
+  * Develop the SalesForce.com SDK. This will provide the infrastructure needed to mobilize an Enterprise's SalesForce.com data to their Mobile Apps. The SDK will be provided Free and Open Source
+
+----
+
+=== Release 2.4-M5 tasks (Planning Stage) ===
+
+  * Add Support for Windows Phone 8 SDK
+
+----
 *Related Links:* [GetStarted Get Started]
