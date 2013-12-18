@@ -2,10 +2,8 @@ package org.crud.android.system;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.moblet.BootupConfiguration;
-
 import android.app.Activity;
 import android.util.Log;
 

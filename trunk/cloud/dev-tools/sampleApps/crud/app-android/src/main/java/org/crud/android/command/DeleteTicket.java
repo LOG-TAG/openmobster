@@ -15,12 +15,10 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 
-
 /**
  * @author openmobster@gmail.com
  *
  */
-
 
 public class DeleteTicket extends AsyncTask<Void, Void, Void>{
 	Context context;
@@ -62,45 +60,3 @@ public class DeleteTicket extends AsyncTask<Void, Void, Void>{
 		return null;
 	}	
 }
-
-/*
-public final class DeleteTicket implements AsyncCommand
-{
-	public void doViewBefore(CommandContext commandContext)
-	{	
-		Activity activity = (Activity)commandContext.getAppContext();
-		Toast.makeText(activity, 
-				"Ticket Delete in progress...", 
-				Toast.LENGTH_LONG).show();
-	}
-
-	public void doAction(CommandContext commandContext) 
-	{
-		try
-		{
-			MobileBean ticketToDelete = (MobileBean)commandContext.getAttribute("ticket");
-			ticketToDelete.delete();
-		}
-		catch(Exception e)
-		{
-			AppException appe = new AppException();
-			appe.setMessage(e.getMessage());
-			ErrorHandler.getInstance().handle(appe);
-			
-			throw appe;
-		}
-	}	
-	
-	public void doViewAfter(CommandContext commandContext)
-	{
-		NavigationContext.getInstance().refresh();
-	}
-	
-	public void doViewError(CommandContext commandContext)
-	{
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "App Error", 
-		this.getClass().getName()+" had an error!!\n\n"+commandContext.getAppException().getMessage()).
-		show();
-	}
-}*/
