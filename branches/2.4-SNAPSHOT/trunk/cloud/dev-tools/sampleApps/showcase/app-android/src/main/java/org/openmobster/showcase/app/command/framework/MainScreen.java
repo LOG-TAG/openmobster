@@ -8,40 +8,19 @@
 
 package org.openmobster.showcase.app.command.framework;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import android.widget.FrameLayout;
-
-import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
-import org.openmobster.showcase.app.AppConstants;
-
+import org.showcase.app.R;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.content.DialogInterface;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -50,56 +29,22 @@ import android.widget.ListView;
  * 
  * @author openmobster@gmail.com
  */
-public class MainScreen extends Screen
-{
-	private Integer screenId;
+
+public class MainScreen extends Activity{
 	
 	@Override
-	public void render()
-	{
-		try
-		{
-			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
-			
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String home = "command_framework_main";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(home);
-		
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
-			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
-		}
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.command_framework_main);
+	
+		show();
 	}
 	
-	@Override
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	public void postRender()
-	{
-		Activity app = Services.getInstance().getCurrentActivity();
-		
-		this.show(app);
-	}
-	
-	private void show(Activity activity)
+	private void show()
 	{
 		//Populate the List View
-		ListView view = (ListView)ViewHelper.findViewById(activity, "list");
-		activity.setTitle("Command Framework Showcase");
-		
+		ListView view = (ListView)findViewById(R.id.list);
+				
 		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
 		
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -117,17 +62,17 @@ public class MainScreen extends Screen
 		map3.put("title", "Fast Command");
 		mylist.add(map3);
 		
-		int rowId = ViewHelper.findLayoutId(activity, "command_framework_row");
+		int rowId = R.layout.command_framework_row;
 		String[] rows = new String[]{"empty","title"};
-		int[] rowUI = new int[] {ViewHelper.findViewId(activity, "empty"), ViewHelper.findViewId(activity, "title")};
-		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, rowId, rows, rowUI);
+		int[] rowUI = new int[] {R.id.empty,R.id.title};
+		SimpleAdapter showcaseAdapter = new SimpleAdapter(MainScreen.this, mylist, rowId, rows, rowUI);
 	    view.setAdapter(showcaseAdapter);
 	    
 	    OnItemClickListener clickListener = new ClickListener();
 		view.setOnItemClickListener(clickListener);
 	}
 	
-	private static class ClickListener implements OnItemClickListener
+	private class ClickListener implements OnItemClickListener
 	{	
 		private ClickListener()
 		{
@@ -138,25 +83,53 @@ public class MainScreen extends Screen
 		{
 			if(position == 0)
 			{
-				//Execute the Ajax Command
-				CommandContext commandContext = new CommandContext();
-		     	commandContext.setTarget("/ajax/command");
-		     	Services.getInstance().getCommandService().execute(commandContext);
+				
+				Handler handler=new Handler(){
+					@Override
+					public void handleMessage(Message msg){
+						int what=msg.what;
+						if(what==1){
+							Toast.makeText(MainScreen.this,"Command Execution Finished!!",1).show();
+						}
+					}
+				};
+				new AjaxCommand(MainScreen.this,handler).execute();
+				
 			}
 			else if(position == 1)
 			{
-				//Execute the Busy Command
-				CommandContext commandContext = new CommandContext();
-		     	commandContext.setTarget("/busy/command");
-		     	Services.getInstance().getCommandService().execute(commandContext);
+				
+				//Command Execution Finished!!
+				
+				Handler handler=new Handler(){
+					@Override
+					public void handleMessage(Message msg){
+						int what=msg.what;
+						if(what==1){
+							Toast.makeText(MainScreen.this,"Command Execution Finished!!",1).show();
+						}
+					}
+				};
+				new BusyCommand(MainScreen.this,handler).execute();
+				
 			}
 			else if(position == 2)
 			{
-				//Execute the Fast Command
-				CommandContext commandContext = new CommandContext();
-		     	commandContext.setTarget("/fast/command");
-		     	Services.getInstance().getCommandService().execute(commandContext);
+				
+				//Command Execution Finished!!
+				
+				Handler handler=new Handler(){
+					@Override
+					public void handleMessage(Message msg){
+						int what=msg.what;
+						if(what==1){
+							Toast.makeText(MainScreen.this,"Command Execution Finished!!",1).show();
+						}
+					}
+				};
+				new FastCommand(MainScreen.this, handler).execute();				
 			}
 		}
 	}
+	
 }

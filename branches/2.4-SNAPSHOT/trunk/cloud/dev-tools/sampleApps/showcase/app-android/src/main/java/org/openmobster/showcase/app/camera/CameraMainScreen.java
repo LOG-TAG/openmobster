@@ -8,40 +8,17 @@
 
 package org.openmobster.showcase.app.camera;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import android.widget.FrameLayout;
-
-import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
-import org.openmobster.showcase.app.AppConstants;
-
+import org.showcase.app.R;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.content.DialogInterface;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -50,54 +27,21 @@ import android.widget.ListView;
  * 
  * @author openmobster@gmail.com
  */
-public class CameraMainScreen extends Screen
-{
-	private Integer screenId;
+
+public class CameraMainScreen extends Activity{
 	
 	@Override
-	public void render()
-	{
-		try
-		{
-			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
-			
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String home = "camera";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(home);
+	protected void onCreate(Bundle savedInstanceState){		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.home);
+		show(this);
 		
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
-			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
-		}
-	}
-	
-	@Override
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	public void postRender()
-	{
-		Activity app = Services.getInstance().getCurrentActivity();
-		
-		this.show(app);
 	}
 	
 	private void show(Activity activity)
 	{
 		//Populate the List View
-		ListView view = (ListView)ViewHelper.findViewById(activity, "list");
+		ListView view = (ListView)findViewById(R.id.list);
 		activity.setTitle("Camera Showcase");
 		
 		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
@@ -107,26 +51,28 @@ public class CameraMainScreen extends Screen
 		map.put("title", "Take a Picture");
 		mylist.add(map);
 		
-		int rowId = ViewHelper.findLayoutId(activity, "camera_row");
+		//int rowId = ViewHelper.findLayoutId(activity, "camera_row");
 		String[] rows = new String[]{"empty","title"};
-		int[] rowUI = new int[] {ViewHelper.findViewId(activity, "empty"), ViewHelper.findViewId(activity, "title")};
-		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, rowId, rows, rowUI);
+		int[] rowUI = new int[] {R.id.empty,R.id.title};
+		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, R.layout.camera_row, rows, rowUI);
 	    view.setAdapter(showcaseAdapter);
 	    
 	    OnItemClickListener clickListener = new ClickListener();
 		view.setOnItemClickListener(clickListener);
 	}
 	
-	private static class ClickListener implements OnItemClickListener
+	private class ClickListener implements OnItemClickListener
 	{	
 		private ClickListener()
 		{
 		}
 		
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id)
+		public void onItemClick(AdapterView<?> parent, View view, int position,	long id)
 		{
-			NavigationContext.getInstance().navigate("/camera/preview");
+			
+			Intent intent=new Intent(CameraMainScreen.this,PreviewScreen.class);
+			startActivity(intent);
+			//NavigationContext.getInstance().navigate("/camera/preview");
 		}
-	}
+	}	
 }

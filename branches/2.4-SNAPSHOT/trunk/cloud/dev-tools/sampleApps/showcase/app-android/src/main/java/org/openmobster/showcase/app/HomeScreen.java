@@ -8,36 +8,38 @@
 
 package org.openmobster.showcase.app;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.service.Registry;
+import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
+import org.openmobster.core.mobileCloud.android_native.framework.ServiceException;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
 import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
-
+import org.openmobster.showcase.app.camera.CameraMainScreen;
+import org.openmobster.showcase.app.command.framework.MainScreen;
+import org.openmobster.showcase.app.crud.CRUDMainScreen;
+import org.openmobster.showcase.app.system.ActivationRequest;
+import org.openmobster.showcase.app.system.MyBootstrapper;
+import org.showcase.app.R;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -46,67 +48,113 @@ import android.widget.ListView;
  * 
  * @author openmobster@gmail.com
  */
-public class HomeScreen extends Screen
-{
-	private Integer screenId;
+
+public class HomeScreen extends Activity{
 	
 	@Override
-	public void render()
-	{
-		try
-		{
-			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
-			
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String home = "home";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(home);
-			
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.home);	
+		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);
+		setupScreen();
+	}
+	
+	@Override
+	protected void onStart(){
+		super.onStart();
+		
+		if(!MyBootstrapper.getInstance().isDeviceActivated()){
+			final AlertDialog builder=new AlertDialog.Builder(HomeScreen.this).create();
+			builder.setTitle("App Activation");
+			View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
+			builder.setView(view);
+			final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
+			final EditText portno_t=(EditText)view.findViewById(R.id.portno);
+			final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
+			final EditText password_t=(EditText)view.findViewById(R.id.password);
+			builder.setButton("Submit",new OnClickListener() {			
+				@Override
+				public void onClick(DialogInterface arg0, int arg1)
+				{
+					Handler handler=new Handler(){
+						@Override
+						public void handleMessage(Message msg)
+						{
+							int what=msg.what;
+							if(what==1){								
+								
+							}
+						}				
+					};
+					String serverip=serverip_t.getText().toString();
+					int portno=Integer.parseInt(portno_t.getText().toString());
+					String emailid=emailid_t.getText().toString();
+					String password=password_t.getText().toString();
+					ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
+					new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();									
+				}
 			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
+			builder.setButton2("Cancel",new OnClickListener() {			
+				@Override
+				public void onClick(DialogInterface arg0, int arg1){
+					finish();
+				}
+			});
+			builder.show();			
+		}				
+	}
+	
+	class ToActivateDevice extends AsyncTask<Void,Void,Void>{
+
+		Context context;
+		ProgressDialog dialog = null;
+		Handler handler;
+		Message message;
+		ActivationRequest activationRequest;
+		public ToActivateDevice(Context context,Handler handler,ActivationRequest activationRequest){
+			this.context=context;
+			this.handler = handler;
+			this.activationRequest=activationRequest;
 		}
-	}
-	
-	@Override
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	public void postRender()
-	{
-		Activity app = Services.getInstance().getCurrentActivity();
 		
-		Configuration conf = Configuration.getInstance(app);
-		if(!conf.isActive())
+		@Override
+		protected void onPostExecute(Void result)
 		{
-			ViewHelper.getOkModalWithCloseApp(app, "App Error", "Device needs to be activated via the Cloud Manager App").
-			show();
-			
-			return;
+			dialog.dismiss();
+			handler.sendMessage(message);
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			dialog = new ProgressDialog(context);		
+			dialog.setMessage("Please wait...");
+			dialog.setCancelable(false);
+			dialog.show();	
 		}
 		
-		//App Title
-		app.setTitle("Showcase App");
-		
-		//List Population
-		this.setupScreen(app);
+		@Override
+		protected Void doInBackground(Void... arg0){		 
+			try
+			{
+				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
+				MyBootstrapper.getInstance().bootstrapUIContainer(HomeScreen.this);
+			}
+			catch(ServiceException se)
+			{
+			
+			}
+			message=handler.obtainMessage();
+			message.what=1;
+			return null;
+		}		
 	}
+
 	
-	private void setupScreen(final Activity activity)
+	private void setupScreen()
 	{
 		//Populate the List View
-		ListView view = (ListView)ViewHelper.findViewById(activity, "list");
+		ListView view = (ListView)findViewById(R.id.list);
 		
 		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
 		
@@ -125,15 +173,14 @@ public class HomeScreen extends Screen
 		map3.put("title", "Camera Showcase");
 		mylist.add(map3);
 		
-		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, ViewHelper.findLayoutId(activity, "home_row"),
-	            new String[] {"empty", "title"}, new int[] {ViewHelper.findViewId(activity, "empty"), ViewHelper.findViewId(activity, "title")});
+		SimpleAdapter showcaseAdapter = new SimpleAdapter(this, mylist,R.layout.home_row,
+	            new String[] {"empty", "title"}, new int[] {ViewHelper.findViewId(this, "empty"), ViewHelper.findViewId(this, "title")});
 	    view.setAdapter(showcaseAdapter);
 	    
 	    OnItemClickListener clickListener = new ClickListener();
 		view.setOnItemClickListener(clickListener);
 	}
-	
-	private static class ClickListener implements OnItemClickListener
+	private class ClickListener implements OnItemClickListener
 	{
 		private ClickListener()
 		{
@@ -150,20 +197,32 @@ public class HomeScreen extends Screen
 					CommandContext commandContext = new CommandContext();
 					commandContext.setTarget("/channel/bootup/helper");
 					Services.getInstance().getCommandService().execute(commandContext);
+										
 				}
 				else
 				{
-					NavigationContext.getInstance().navigate("/crud");
+					
+					Intent intent=new Intent(HomeScreen.this,CRUDMainScreen.class);
+					startActivity(intent);
+								
+					//NavigationContext.getInstance().navigate("/crud");
 				}
 			}
 			else if(selectedIndex == 1)
 			{
-				NavigationContext.getInstance().navigate("/command/framework");
+				
+				Intent intent=new Intent(HomeScreen.this,MainScreen.class);
+				startActivity(intent);
+				
+				//NavigationContext.getInstance().navigate("/command/framework");
 			}
 			else if(selectedIndex == 2)
 			{
-				NavigationContext.getInstance().navigate("/camera");
+				Intent intent=new Intent(HomeScreen.this,CameraMainScreen.class);
+				startActivity(intent);				
+				
+				//NavigationContext.getInstance().navigate("/camera");
 			}
 		}
-	}
+	}	
 }

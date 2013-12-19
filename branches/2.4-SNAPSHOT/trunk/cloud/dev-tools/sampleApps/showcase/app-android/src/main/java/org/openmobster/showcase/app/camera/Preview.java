@@ -8,11 +8,9 @@
 package org.openmobster.showcase.app.camera;
 
 import java.io.IOException;
-
 import android.graphics.Paint;
 import android.graphics.Canvas;
 import android.graphics.Color;
-
 import android.app.Activity;
 import android.hardware.Camera;
 import android.view.SurfaceHolder;
@@ -22,6 +20,7 @@ import android.view.SurfaceView;
  * 
  * @author openmobster@gmail.com
  */
+
 public class Preview extends SurfaceView implements SurfaceHolder.Callback
 {
 	private SurfaceHolder mHolder;

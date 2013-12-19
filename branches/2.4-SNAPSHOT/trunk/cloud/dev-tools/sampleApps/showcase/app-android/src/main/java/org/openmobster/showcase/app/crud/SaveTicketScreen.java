@@ -8,28 +8,19 @@
 
 package org.openmobster.showcase.app.crud;
 
-import java.lang.reflect.Field;
-
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
 import org.openmobster.showcase.app.AppConstants;
-
+import org.showcase.app.R;
 import android.app.Activity;
-import android.app.ListActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.view.View.OnClickListener;
 
 /**
  * Controls the 'Save Ticket' screen. 
@@ -39,64 +30,33 @@ import android.view.View.OnClickListener;
  * 
  * @author openmobster@gmail.com
  */
-public class SaveTicketScreen extends Screen
-{
-	private Integer screenId;
+
+
+public class SaveTicketScreen extends Activity{
 	
 	@Override
-	public void render()
-	{
+	protected void onCreate(Bundle savedInstanceState){		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.save_ticket);
+		
 		try
 		{
-			//lays out the UI specified in res/layout/new_ticket.xml
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
-			
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField("save_ticket");
-			
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
-			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
-		}
-	}
-	
-	@Override
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	public void postRender()
-	{
-		NavigationContext navContext = NavigationContext.getInstance();
-		try
-		{
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
 			
 			//Populate the screen with existing ticket instance state
-			final MobileBean activeBean = (MobileBean)navContext.getAttribute(this.getId(),"active-bean");
+			final MobileBean activeBean = CRUDMainScreen.myActiveBean;
 			
 			//If update, then populate the fields with selected ticket information
 			if(activeBean != null)
 			{
-				EditText title = (EditText)ViewHelper.findViewById(currentActivity, "title");
+				EditText title = (EditText)findViewById(R.id.title);
 				title.setText(activeBean.getValue("title"));
 				
-				EditText comments = (EditText)ViewHelper.findViewById(currentActivity, "comments");
+				EditText comments = (EditText)findViewById(R.id.comments);
 				comments.setText(activeBean.getValue("comment"));
 			}
 			
 			//Add Event Handlers
-			Button save = (Button)ViewHelper.findViewById(currentActivity, "save");
+			Button save = (Button)findViewById(R.id.save);
 			save.setOnClickListener(new OnClickListener(){
 				public void onClick(View button)
 				{
@@ -104,11 +64,11 @@ public class SaveTicketScreen extends Screen
 				}
 			});
 			
-			Button cancel = (Button)ViewHelper.findViewById(currentActivity, "cancel");
+			Button cancel = (Button)findViewById(R.id.cancel);
 			cancel.setOnClickListener(new OnClickListener(){
 				public void onClick(View button)
 				{
-					Toast.makeText(currentActivity, 
+					Toast.makeText(SaveTicketScreen.this, 
 							"Save was cancelled!!", 
 							Toast.LENGTH_LONG).show();
 					NavigationContext.getInstance().back();
@@ -117,10 +77,17 @@ public class SaveTicketScreen extends Screen
 		}
 		finally
 		{
-			navContext.removeAttribute(this.getId(), "active-bean");
+			CRUDMainScreen.myActiveBean=null;
 		}
+		
 	}
-	//--------------------------------------------------------------------------------------------------------------------------------------
+	
+	@Override
+	protected void onStart(){
+
+		super.onStart();
+	}
+	
 	private void save(MobileBean activeBean)
 	{
 		if(activeBean != null)
@@ -134,43 +101,62 @@ public class SaveTicketScreen extends Screen
 			this.add();
 		}
 	}
+	
 	private void add()
 	{
-		final Activity currentActivity = Services.getInstance().getCurrentActivity();
+		
 		
 		//Creates a new ticket instance on the device. Once 'saved', it will be seamlessly synchronized with the Cloud
 		MobileBean activeBean = MobileBean.newInstance(AppConstants.channel);
 		
-		EditText title = (EditText)ViewHelper.findViewById(currentActivity, "title");
+		EditText title = (EditText)findViewById(R.id.title);
 		activeBean.setValue("title", title.getText().toString());
 		
-		EditText comments = (EditText)ViewHelper.findViewById(currentActivity, "comments");
+		EditText comments = (EditText)findViewById(R.id.comments);
 		activeBean.setValue("comment", comments.getText().toString());
 		
 		//execute the create ticket usecase. It creates a new ticket in the on-device db and
 		//its synchronized automagically with the Cloud
-		CommandContext commandContext = new CommandContext();
-		commandContext.setTarget("/save/ticket");
-		commandContext.setAttribute("active-bean", activeBean);
-		Services.getInstance().getCommandService().execute(commandContext);
+		
+		Handler handler=new Handler(){
+			@Override
+			public void handleMessage(Message msg){
+				int what=msg.what;
+				if(what==1){
+					Toast.makeText(SaveTicketScreen.this,"Record successfully saved",1).show();
+				}
+			}
+		};
+		
+		new SaveTicket(SaveTicketScreen.this,handler,activeBean).execute();
+		
 	}
 	
 	private void update(MobileBean activeBean)
 	{
-		final Activity currentActivity = Services.getInstance().getCurrentActivity();
 		
-		EditText title = (EditText)ViewHelper.findViewById(currentActivity, "title");
+		
+		EditText title = (EditText)findViewById(R.id.title);
 		activeBean.setValue("title", title.getText().toString());
 		
-		EditText comments = (EditText)ViewHelper.findViewById(currentActivity, "comments");
+		EditText comments = (EditText)findViewById(R.id.comments);
 		activeBean.setValue("comment", comments.getText().toString());
 		
 		
 		//execute the create ticket usecase. It creates a new ticket in the on-device db and
 		//its synchronized automagically with the Cloud
-		CommandContext commandContext = new CommandContext();
-		commandContext.setTarget("/save/ticket");
-		commandContext.setAttribute("active-bean", activeBean);
-		Services.getInstance().getCommandService().execute(commandContext);
+		
+		
+		Handler handler=new Handler(){
+			@Override
+			public void handleMessage(Message msg){
+				int what=msg.what;
+				if(what==1){
+					Toast.makeText(SaveTicketScreen.this,"Record successfully saved",1).show();
+				}
+			}
+		};
+		
+		new SaveTicket(SaveTicketScreen.this,handler,activeBean).execute();
 	}
 }
