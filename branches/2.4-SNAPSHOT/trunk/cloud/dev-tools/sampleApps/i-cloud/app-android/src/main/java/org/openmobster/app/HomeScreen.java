@@ -8,34 +8,35 @@
 
 package org.openmobster.app;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.android.api.sync.CommitException;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-
+import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
+import org.openmobster.core.mobileCloud.android_native.framework.ServiceException;
+import org.openmobster.system.ActivationRequest;
+import org.openmobster.system.MyBootstrapper;
 import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView;
-import android.widget.SimpleAdapter;
-import android.widget.ListView;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.widget.EditText;
+import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+import com.icloud.android.app.R;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -47,69 +48,123 @@ import android.view.LayoutInflater;
  * The screen menu provides the following functions, 'New Ticket', 'Reset Channel', and 'Demo Push'
  * @author openmobster@gmail.com
  */
-public class HomeScreen extends Screen
-{
-	private Integer screenId;
+
+public class HomeScreen extends Activity{
 	
 	@Override
-	public void render()
-	{
-		try
-		{
-			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.home);
+		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);
+		
+	}
+	
+	@Override
+	protected void onStart(){
+		super.onStart();
+		
+		boolean isDeviceActivated = MyBootstrapper.getInstance().isDeviceActivated();
+		if(!isDeviceActivated)
+		{						
+			final AlertDialog builder=new AlertDialog.Builder(HomeScreen.this).create();
+			builder.setTitle("App Activation");
+			View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
+			builder.setView(view);
+			final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
+			final EditText portno_t=(EditText)view.findViewById(R.id.portno);
+			final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
+			final EditText password_t=(EditText)view.findViewById(R.id.password);
 			
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String home = "home";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(home);
-			
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
+			builder.setButton("Submit",new OnClickListener() {			
+				@Override
+				public void onClick(DialogInterface arg0, int arg1)
+				{
+					Handler handler=new Handler(){
+						@Override
+						public void handleMessage(Message msg)
+						{
+							int what=msg.what;
+							if(what==1){								
+								showBeans();
+							}
+						}				
+					};
+					String serverip=serverip_t.getText().toString();
+					int portno=Integer.parseInt(portno_t.getText().toString());
+					String emailid=emailid_t.getText().toString();
+					String password=password_t.getText().toString();
+					ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
+					new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();									
+				}
+			});		
+		
+			builder.setButton2("Cancel",new OnClickListener() {			
+				@Override
+				public void onClick(DialogInterface arg0, int arg1){
+					finish();
+				}
 			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
-		}
+			builder.show();			
+		}else{
+			showBeans();
+		}		
 	}
 	
-	@Override
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	public void postRender()
-	{
-		Activity app = Services.getInstance().getCurrentActivity();
+	class ToActivateDevice extends AsyncTask<Void,Void,Void>{
+
+		Context context;
+		ProgressDialog dialog = null;
+		Handler handler;
+		Message message;
+		ActivationRequest activationRequest;		
 		
-		if(!MobileBean.isBooted("cloud_channel"))
+		public ToActivateDevice(Context context,Handler handler,ActivationRequest activationRequest){
+			this.context=context;
+			this.handler = handler;	
+			this.activationRequest=activationRequest;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result)
 		{
-			CommandContext commandContext = new CommandContext();
-			commandContext.setTarget("/channel/bootup/helper");
-			Services.getInstance().getCommandService().execute(commandContext);
+			dialog.dismiss();
+			handler.sendMessage(message);
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			dialog = new ProgressDialog(context);		
+			dialog.setMessage("Please wait...");
+			dialog.setCancelable(false);
+			dialog.show();	
 		}
 		
-		//Setup the App Menu
-		this.setupMenu(app);
-		
-		//Display the beans
-		this.showBeans(app);
+		@Override
+		protected Void doInBackground(Void... arg0){			
+			try
+			{
+				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
+				MyBootstrapper.getInstance().bootstrapUIContainer(HomeScreen.this);
+			}
+			catch(ServiceException se)
+			{
+			
+			}
+			message=handler.obtainMessage();
+			message.what=1;
+			return null;
+		}		
 	}
-	//------------------------------------------------------------------------------------------------------------------
-	private void showBeans(Activity app)
+	
+	private void showBeans()
 	{
 		//Read all the beans from the channel
 		MobileBean[] beans = MobileBean.readAll("cloud_channel");
 		if(beans != null && beans.length > 0)
 		{
 			//Populate the List View
-			ListView view = (ListView)ViewHelper.findViewById(app, "list");
+			ListView view = (ListView)findViewById(R.id.list);
 			
 			//Prepare the data for the adapter. Data is read from the ticket bean instances
 			ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
@@ -135,8 +190,8 @@ public class HomeScreen extends Screen
 				mylist.add(map);
 			}
 			
-			SimpleAdapter beanAdapter = new SimpleAdapter(app, mylist, ViewHelper.findLayoutId(app, "bean_row"),
-		            new String[] {"name", "value"}, new int[] {ViewHelper.findViewId(app, "name"), ViewHelper.findViewId(app, "value")});
+			SimpleAdapter beanAdapter = new SimpleAdapter(this, mylist,R.layout.bean_row,
+		            new String[] {"name", "value"}, new int[] {R.id.name, R.id.value});
 		    view.setAdapter(beanAdapter);
 		    
 		    //List Listener...used to respond to selecting a ticket instance
@@ -146,100 +201,16 @@ public class HomeScreen extends Screen
 		else
 		{
 			//Populate the List View
-			ListView view = (ListView)ViewHelper.findViewById(app, "list");
+			ListView view = (ListView)findViewById(R.id.list);
 			
 			//Prepare the data for the adapter. Data is read from the ticket bean instances
 			ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
 			
-			SimpleAdapter beanAdapter = new SimpleAdapter(app, mylist, ViewHelper.findLayoutId(app, "bean_row"),
-		            new String[] {"name", "value"}, new int[] {ViewHelper.findViewId(app, "name"), ViewHelper.findViewId(app, "value")});
+			SimpleAdapter beanAdapter = new SimpleAdapter(this, mylist, R.layout.bean_row,
+		            new String[] {"name", "value"}, new int[] {R.id.name,R.id.value});
 		    view.setAdapter(beanAdapter);
 		}
 	}
-	
-	private void setupMenu(final Activity app)
-	{
-		//Get the menu associated with this screen
-		Menu menu = (Menu)NavigationContext.getInstance().
-		getAttribute("options-menu");
-		
-		if(menu != null)
-		{
-			//Add the 'New Ticket' Menu Item
-			MenuItem newTicket = menu.add(Menu.NONE, Menu.NONE, 0, "New Ticket");
-			newTicket.setOnMenuItemClickListener(new OnMenuItemClickListener()
-			{
-				public boolean onMenuItemClick(MenuItem clickedItem)
-				{
-					AlertDialog.Builder builder = new AlertDialog.Builder(app).setCancelable(false);
-					LayoutInflater inflater = (LayoutInflater)app.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-					int dialogLayout = ViewHelper.findLayoutId(app, "dialog");
-					View dialogView = inflater.inflate(dialogLayout, null);
-					
-					//Setup the Name Value
-					int nameEditPointer = ViewHelper.findViewId(app, "nameEdit"); 
-					final EditText nameEdit = (EditText)dialogView.findViewById(nameEditPointer);
-					nameEdit.setText("");
-					
-					//Setup the Value Value
-					int valueEditPointer = ViewHelper.findViewId(app, "valueEdit");
-					final EditText valueEdit = (EditText)dialogView.findViewById(valueEditPointer);
-					valueEdit.setText("");
-					
-					//Setup the buttons on the dialog box
-					builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-						public void onClick(DialogInterface dialog, int id)
-						{
-							String name = nameEdit.getText().toString();
-							String value = valueEdit.getText().toString();
-							
-							if(name == null || name.trim().length()==0)
-							{
-								ViewHelper.getOkModal(app, "Validation Error", "'Name' is required").
-								show();
-								return;
-							}
-							if(value == null || value.trim().length()==0)
-							{
-								ViewHelper.getOkModal(app, "Validation Error", "'Value' is required").
-								show();
-								return;
-							}
-							
-							MobileBean newBean = MobileBean.newInstance("cloud_channel");
-							newBean.setValue("name", name);
-							newBean.setValue("value", value);
-							try
-							{
-								newBean.save();
-							}
-							catch(CommitException se)
-							{
-								ViewHelper.getOkModal(app, "Error", se.getMessage());
-								return;
-							}
-							
-							NavigationContext.getInstance().refresh();
-						}
-					});
-					
-					builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
-						public void onClick(DialogInterface dialog, int id)
-						{
-							NavigationContext.getInstance().refresh();
-						}
-					});
-					
-					AlertDialog beanDialog = builder.create();
-					beanDialog.setView(dialogView);
-					beanDialog.show();
-					
-					return true;
-				}
-			});
-		}
-	}
-	
 	private class ClickListener implements OnItemClickListener
 	{
 		private MobileBean[] activeBeans;
@@ -249,11 +220,8 @@ public class HomeScreen extends Screen
 			this.activeBeans = activeBeans;
 		}
 		
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id)
-		{
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
-			
+		public void onItemClick(AdapterView<?> parent, View view, int position,	long id){
+						
 			//Get the ticket bean selected by the user
 			int selectedIndex = position;
 			final MobileBean selectedBean = activeBeans[selectedIndex];
@@ -261,19 +229,16 @@ public class HomeScreen extends Screen
 			String name = selectedBean.getValue("name");
 			String value = selectedBean.getValue("value");
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity).setCancelable(false);
-			
-			LayoutInflater inflater = (LayoutInflater)currentActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			int dialogLayout = ViewHelper.findLayoutId(currentActivity, "dialog");
-			View dialogView = inflater.inflate(dialogLayout, null);
+			AlertDialog.Builder builder = new AlertDialog.Builder(HomeScreen.this).setCancelable(false);
+			View dialogView=LayoutInflater.from(HomeScreen.this).inflate(R.layout.dialog,null);
 			
 			//Setup the Name Value
-			int nameEditPointer = ViewHelper.findViewId(currentActivity, "nameEdit"); 
+			int nameEditPointer = R.id.nameEdit; 
 			final EditText nameEdit = (EditText)dialogView.findViewById(nameEditPointer);
 			nameEdit.setText(name);
 			
 			//Setup the Value Value
-			int valueEditPointer = ViewHelper.findViewId(currentActivity, "valueEdit");
+			int valueEditPointer = R.id.valueEdit;
 			final EditText valueEdit = (EditText)dialogView.findViewById(valueEditPointer);
 			valueEdit.setText(value);
 			
@@ -286,14 +251,12 @@ public class HomeScreen extends Screen
 					
 					if(name == null || name.trim().length()==0)
 					{
-						ViewHelper.getOkModal(currentActivity, "Validation Error", "'Name' is required").
-						show();
+						Toast.makeText(HomeScreen.this,"'Name' is required",1).show();
 						return;
 					}
 					if(value == null || value.trim().length()==0)
 					{
-						ViewHelper.getOkModal(currentActivity, "Validation Error", "'Value' is required").
-						show();
+						Toast.makeText(HomeScreen.this,"'Value' is required",1).show();
 						return;
 					}
 					
@@ -315,11 +278,11 @@ public class HomeScreen extends Screen
 						catch(Exception e)
 						{
 							//we tried, put up an error message
-							ViewHelper.getOkModal(currentActivity, "Error", se.getMessage());
+							Toast.makeText(HomeScreen.this,"Error",1).show();							
 						}
 					}
 					
-					NavigationContext.getInstance().refresh();
+					showBeans();
 				}
 			});
 			
@@ -332,17 +295,17 @@ public class HomeScreen extends Screen
 					}
 					catch(CommitException se)
 					{
-						ViewHelper.getOkModal(currentActivity, "Error", se.getMessage());
+						Toast.makeText(HomeScreen.this,"Error : "+se.getMessage(),1).show();						
 						return;
 					}
-					NavigationContext.getInstance().refresh();
+					showBeans();
 				}
 			});
 			
 			builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int id)
 				{
-					NavigationContext.getInstance().refresh();
+					showBeans();
 				}
 			});
 			
@@ -351,4 +314,81 @@ public class HomeScreen extends Screen
 			beanDialog.show();
 		}
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		
+		menu.add("New Ticket");
+		
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		String action=item.getTitle().toString();
+		if(action.equalsIgnoreCase("New Ticket")){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this).setCancelable(false);
+			LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			int dialogLayout = R.layout.dialog;
+			View dialogView = inflater.inflate(dialogLayout, null);
+			
+			//Setup the Name Value
+			int nameEditPointer = R.id.nameEdit; 
+			final EditText nameEdit = (EditText)dialogView.findViewById(nameEditPointer);
+			nameEdit.setText("");
+			
+			//Setup the Value Value
+			int valueEditPointer = R.id.valueEdit;
+			final EditText valueEdit = (EditText)dialogView.findViewById(valueEditPointer);
+			valueEdit.setText("");
+			
+			//Setup the buttons on the dialog box
+			builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int id)
+				{
+					String name = nameEdit.getText().toString();
+					String value = valueEdit.getText().toString();
+					
+					if(name == null || name.trim().length()==0)
+					{
+						Toast.makeText(HomeScreen.this,"'Name' is required",0).show();
+						return;
+					}
+					if(value == null || value.trim().length()==0)
+					{
+						Toast.makeText(HomeScreen.this,"'Value' is required",0).show();						
+						return;
+					}
+					
+					MobileBean newBean = MobileBean.newInstance("cloud_channel");
+					newBean.setValue("name", name);
+					newBean.setValue("value", value);
+					try
+					{
+						newBean.save();
+					}
+					catch(CommitException se){
+						Toast.makeText(HomeScreen.this,"Error",0).show();						
+						return;
+					}
+					
+					showBeans();
+					
+				}
+			});
+			
+			builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int id)
+				{
+					showBeans();
+				}
+			});
+			
+			AlertDialog beanDialog = builder.create();
+			beanDialog.setView(dialogView);
+			beanDialog.show();	
+			
+		}		
+		return super.onOptionsItemSelected(item);
+	}	
 }
