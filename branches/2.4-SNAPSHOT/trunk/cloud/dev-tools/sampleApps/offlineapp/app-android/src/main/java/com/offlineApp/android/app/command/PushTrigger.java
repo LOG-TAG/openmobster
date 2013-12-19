@@ -10,51 +10,57 @@ package com.offlineApp.android.app.command;
 
 import org.openmobster.android.api.rpc.MobileService;
 import org.openmobster.android.api.rpc.Request;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
-
-import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * @author openmobster@gmail.com
  *
  */
-public final class PushTrigger implements RemoteCommand
-{
-	public void doViewBefore(CommandContext commandContext)
-	{		
+
+public class PushTrigger extends AsyncTask<Void,Void,Void>{
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
+	
+	public PushTrigger(Context context,Handler handler){
+		this.context=context;
+		this.handler=handler;
+	}
+	@Override
+	protected void onPostExecute(Void result)
+	{
+		dialog.dismiss();
+		handler.sendMessage(message);
 	}
 
-	public void doAction(CommandContext commandContext) 
+	@Override
+	protected void onPreExecute()
 	{
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0){
 		try
 		{
 			Request request = new Request("/offlineapp/pushtrigger");	
 			new MobileService().invoke(request);
+			message=handler.obtainMessage();
+			message.what=1;
 			
 		}
 		catch(Exception e)
 		{
 			throw new RuntimeException(e.toString());
-		}
+		}		
+		return null;
 	}	
-	
-	public void doViewAfter(CommandContext commandContext)
-	{
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "Push Trigger", 
-				"Push successfully triggered!!").
-		show();
-	}
-	
-	public void doViewError(CommandContext commandContext)
-	{
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "App Error", 
-		this.getClass().getName()+" had an error!!").
-		show();
-	}
 }

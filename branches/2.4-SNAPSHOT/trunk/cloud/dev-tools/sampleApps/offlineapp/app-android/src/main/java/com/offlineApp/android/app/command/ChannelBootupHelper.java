@@ -9,41 +9,46 @@
 package com.offlineApp.android.app.command;
 
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
-
-import android.app.Activity;
-import android.widget.Toast;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * This 'RemoteCommand' is executed during App startup from the 'HomeScreen'. It is used to start a 'Boot Sync' of the 'offlineapp_demochannel'
  * 
  * @author openmobster@gmail.com
  */
-public class ChannelBootupHelper implements RemoteCommand
-{
-	/**
-	 * Invoked on the UI thread prior to the core execution to do some pre-UI work.
-	 * 
-	 * In this case, it displays a message saying, the Channel is being bootstrapped
-	 */
-	public void doViewBefore(CommandContext commandContext)
+
+public class ChannelBootupHelper extends AsyncTask<Void,Void,Void>{
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
+	public ChannelBootupHelper(Context context,Handler handler){
+		this.context=context;
+		this.handler = handler;		
+	}
+	@Override
+	protected void onPostExecute(Void result)
 	{
-		Activity activity = (Activity)commandContext.getAppContext();
-		Toast.makeText(activity, 
-				"Waiting for the sync channel 'offlineapp_demochannel' to finish bootstrapping....", 
-				Toast.LENGTH_LONG).show();
+		dialog.dismiss();
+		handler.sendMessage(message);
 	}
 
-	/**
-	 * Core execution happens on this invocation.
-	 * 
-	 * In this case, the 'offlineapp_demochannel' is bootstrapped
-	 */
-	public void doAction(CommandContext commandContext)
+	@Override
+	protected void onPreExecute()
+	{
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();	
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0)
 	{
 		try
 		{
@@ -59,6 +64,8 @@ public class ChannelBootupHelper implements RemoteCommand
 					throw new AppException();
 				}
 			}
+			message=handler.obtainMessage();
+			message.what=1;
 		}
 		catch(Exception e)
 		{
@@ -68,25 +75,6 @@ public class ChannelBootupHelper implements RemoteCommand
 			}
 			throw new RuntimeException(e);
 		}
-	}
-
-	/**
-	 * Invokes on the UI thread to display the after the execution of the command
-	 * 
-	 * In this case, it just refreshes the 'HomeScreen' to display the synchronized "Demo Beans"
-	 */
-	public void doViewAfter(CommandContext commandContext)
-	{		
-		NavigationContext.getInstance().home();
-	}
-
-	/**
-	 * Invoked on the UI thread in the case of an "Application Error" to show a proper message to the user
-	 */
-	public void doViewError(CommandContext commandContext)
-	{
-		Activity activity = (Activity)commandContext.getAppContext();
-		ViewHelper.getOkModalWithCloseApp(activity, "App Error", "The 'offlineapp_demochannel' is not ready. Please launch the App again in a few minutes").
-		show();
+		return null;
 	}
 }

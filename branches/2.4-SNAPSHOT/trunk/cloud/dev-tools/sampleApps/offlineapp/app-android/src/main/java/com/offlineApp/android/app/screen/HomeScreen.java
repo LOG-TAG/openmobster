@@ -8,221 +8,268 @@
 
 package com.offlineApp.android.app.screen;
 
-import java.lang.reflect.Field;
-
+import java.util.Map;
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
-
+import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
+import org.openmobster.core.mobileCloud.android_native.framework.ServiceException;
 import android.app.Activity;
-import android.app.ListActivity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+import com.offlineApp.android.app.R;
+import com.offlineApp.android.app.command.ChannelBootupHelper;
+import com.offlineApp.android.app.command.DemoDetails;
+import com.offlineApp.android.app.command.DemoMobileRPC;
+import com.offlineApp.android.app.command.PushTrigger;
+import com.offlineApp.android.app.command.ResetChannel;
+import com.offlineApp.android.app.system.ActivationRequest;
+import com.offlineApp.android.app.system.MyBootstrapper;
 
 /**
  * This is the home screen of the App. It displays the 'List' of data synchronized with the Cloud. It also presents a 'Menu' for displaying other functions of the App
  * 
  * @author openmobster@gmail.com
  */
-public class HomeScreen extends Screen
-{
-	private Integer screenId;
-	
+
+public class HomeScreen extends Activity{
+	ListView listView=null;
+	MobileBean activeBeans[]=null;
 	@Override
-	/**
-	 * Invoked by the MVC runtime so that the screen can perform its layout and obtain a screen id
-	 */
-	public void render()
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.home);
+		listView=(ListView)findViewById(R.id.list);
+		
+		
+		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);
+		
+	}
+	@Override
+	protected void onStart()
 	{
-		try
-		{
-			System.out.println("****************************");
-			System.out.println("Launching the Offline App...");
-			System.out.println("****************************");
-			//Gets the currently active 'Activity' instance
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
+		
+		super.onStart();
+		
+		if(!MyBootstrapper.getInstance().isDeviceActivated()){
 			
-			//Gets the layout for this screen
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String home = "home";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(home);
-			
-			//Obtains a screen Id
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
+			final AlertDialog builder=new AlertDialog.Builder(HomeScreen.this).create();
+			builder.setTitle("App Activation");
+			View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
+			builder.setView(view);
+			final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
+			final EditText portno_t=(EditText)view.findViewById(R.id.portno);
+			final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
+			final EditText password_t=(EditText)view.findViewById(R.id.password);
+			builder.setButton("Submit",new OnClickListener() {			
+				@Override
+				public void onClick(DialogInterface arg0, int arg1)
+				{
+					Handler handler=new Handler(){
+						@Override
+						public void handleMessage(Message msg)
+						{
+							int what=msg.what;
+							if(what==1){								
+								showList();
+							}
+						}				
+					};
+					String serverip=serverip_t.getText().toString();
+					int portno=Integer.parseInt(portno_t.getText().toString());
+					String emailid=emailid_t.getText().toString();
+					String password=password_t.getText().toString();
+					ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
+					new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();									
+				}
 			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
+			builder.setButton2("Cancel",new OnClickListener() {			
+				@Override
+				public void onClick(DialogInterface arg0, int arg1){
+					finish();
+				}
+			});
+			builder.show();
+		}else{
+			showList();
 		}
-	}
-	
-	@Override
-	/**
-	 * Invoked by the MVC runtime to get the unique screen Id for displaying the screen
-	 */
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	/**
-	 * Invoked by the MVC runtime once the screen is rendered. This callback allows the screen setup the business state of the screen
-	 * and update the UI to show this information
-	 */
-	public void postRender()
-	{
-		//Gets the currently active 'Activity' instance
-		ListActivity listApp = (ListActivity)Services.getInstance().getCurrentActivity();
 		
-		//Gets the 'Cloud' configuration
-		AppResources res = Services.getInstance().getResources();
-		Configuration configuration = Configuration.getInstance(listApp);
-		
+		Configuration configuration = Configuration.getInstance(this);		
 		//Check to see if the 'Demo Beans' are synchronized from the 'Cloud'. If not, a 'Boot Sync' is issued.
 		if(configuration.isActive() && !MobileBean.isBooted("offlineapp_demochannel"))
 		{
-			//Boots up the 'Demo Bean' sync channel
-			CommandContext commandContext = new CommandContext();
-			commandContext.setTarget("/channel/bootup/helper");
-			Services.getInstance().getCommandService().execute(commandContext);
-			
+			Handler handler=new Handler(){
+				@Override
+				public void handleMessage(Message msg){
+					int what=msg.what;
+					if(what==1){
+						showList();						
+					}					
+				}
+			};
+			new ChannelBootupHelper(HomeScreen.this,handler).execute();
 			return;
+		}		
+		//Show the List of "Demo Beans" synchronized from the 'Cloud'. 
+		this.showList();		
+		
+	}
+	
+	class ToActivateDevice extends AsyncTask<Void,Void,Void>{
+
+		Context context;
+		ProgressDialog dialog = null;
+		Handler handler;
+		Message message;
+		ActivationRequest activationRequest;
+				
+		public ToActivateDevice(Context context,Handler handler,ActivationRequest activationRequest){
+			this.context=context;
+			this.handler = handler;	
+			this.activationRequest=activationRequest;
 		}
 		
-		//Show the List of "Demo Beans" synchronized from the 'Cloud'. 
-		this.showList(listApp);
+		@Override
+		protected void onPostExecute(Void result)
+		{
+			dialog.dismiss();
+			handler.sendMessage(message);
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			dialog = new ProgressDialog(context);		
+			dialog.setMessage("Please wait...");
+			dialog.setCancelable(false);
+			dialog.show();	
+		}
 		
-		//Setup the App Menu
-		this.setMenuItems();
+		@Override
+		protected Void doInBackground(Void... arg0){			
+			try
+			{
+				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
+				MyBootstrapper.getInstance().bootstrapUIContainer(HomeScreen.this);
+			}
+			catch(ServiceException se)
+			{
+			
+			}
+			message=handler.obtainMessage();
+			message.what=1;
+			return null;
+		}		
 	}
-	//-------------------------------------------------------------------------------------------------------------------------------
-	/**
-	 * Displays a 'List' of 'Demo Beans'
-	 */
-	private void showList(ListActivity listApp)
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		menu.add("Reset Channel");
+		menu.add("Push Trigger");
+		menu.add("Make RPC Invocation");		
+		return super.onCreateOptionsMenu(menu);
+	}
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item){	
+		String action=item.getTitle().toString();
+		if(action.equalsIgnoreCase("Reset Channel")){
+			Handler handler=new Handler(){
+				@Override
+				public void handleMessage(Message msg){
+					int what=msg.what;
+					if(what==1){
+						
+						Toast.makeText(HomeScreen.this,"Reset success", 1).show();
+						showList();
+					}					
+				}
+			};
+			new ResetChannel(HomeScreen.this,handler).execute();			
+		}
+		else if(action.equalsIgnoreCase("Push Trigger")){
+			Handler handler=new Handler(){
+				@Override
+				public void handleMessage(Message msg){
+					int what=msg.what;
+					if(what==1){
+						Toast.makeText(HomeScreen.this,"Push trigger success", 1).show();
+						showList();
+					}
+				}
+			};
+			new PushTrigger(HomeScreen.this,handler).execute();			
+		}
+		else if(action.equalsIgnoreCase("Make RPC Invocation")){
+			
+			Handler handler=new Handler(){
+				@Override
+				public void handleMessage(Message msg){
+					int what=msg.what;
+					if(what==1){
+						Map map=(Map) msg.obj;
+						String param1=map.get("param1").toString();
+						String param2=map.get("param1").toString();
+						
+						Toast.makeText(HomeScreen.this,"Param1 : "+param1+"\nParam2 : "+param2,1).show();
+						
+					}					
+				}
+			};
+			new DemoMobileRPC(HomeScreen.this,handler).execute();			
+		}
+		return super.onMenuItemSelected(featureId, item);
+	}
+	
+	private void showList()
 	{
 		//Reads the synchronized/locally stored demo beans from the 'offlineapp_demochannel' channel on the device
-		MobileBean[] demoBeans = MobileBean.readAll("offlineapp_demochannel");
+		activeBeans = MobileBean.readAll("offlineapp_demochannel");
 		
 		//Shows these beans in a List
-		if(demoBeans != null && demoBeans.length >0)
+		if(activeBeans != null && activeBeans.length >0)
 		{
-			String[] ui = new String[demoBeans.length];
+			String[] ui = new String[activeBeans.length];
 			for(int i=0,size=ui.length;i<size;i++)
 			{
-				ui[i] = demoBeans[i].getValue("demoString");
+				ui[i] = activeBeans[i].getValue("demoString");
 			}
-			listApp.setListAdapter(new ArrayAdapter(listApp, 
-		    android.R.layout.simple_list_item_1, 
-		    ui));
-			
+			listView.setAdapter(new ArrayAdapter(HomeScreen.this,android.R.layout.simple_list_item_1,ui));
 			//List Listener
-			ListItemClickListener clickListener = new ClickListener(demoBeans);
-			NavigationContext.getInstance().addClickListener(clickListener);
-		}
-	}
-	
-	/**
-	 * Sets up the Menu for this App
-	 */
-	private void setMenuItems()
-	{
-		//Get an instance of the 'Options Menu' from the MVC runtime
-		Menu menu = (Menu)NavigationContext.getInstance().
-		getAttribute("options-menu");
-		
-		
-		if(menu != null)
-		{
-			//Reset Channel: This resets the 'offlineapp_demochannel' by issuing a 'Boot Sync'
-			MenuItem resetChannel = menu.add(Menu.NONE, Menu.NONE, 0, "Reset Channel");
-			resetChannel.setOnMenuItemClickListener(new OnMenuItemClickListener()
-			{
-				public boolean onMenuItemClick(MenuItem clickedItem)
-				{
-					//UserInteraction/Event Processing...this is where the Commands can be executed
-					CommandContext commandContext = new CommandContext();
-					commandContext.setTarget("/offlineapp/reset");
-					Services.getInstance().getCommandService().execute(commandContext);
-					return true;
-				}
+			listView.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,	int selectedIndex, long arg3){
+					MobileBean selectedBean = activeBeans[selectedIndex];
+					Handler handler=new Handler(){
+						@Override
+						public void handleMessage(Message msg){
+							int what=msg.what;
+							if(what==1){
+								String response=msg.obj.toString();
+								Toast.makeText(HomeScreen.this,response, 1).show();
+							}
+						}
+					};	
+					String demoString=selectedBean.getValue("demoString");
+					new DemoDetails(HomeScreen.this, handler,demoString).execute();										
+				}				
 			});
-			
-			//Push Trigger: This issues a 'Push Trigger' to demonstrate 'Cloud Push' capabilities. This is for demo only.
-			//In an actual app, the data state changes on the 'Cloud' serve as the trigger to initiate the Push
-			MenuItem pushTrigger = menu.add(Menu.NONE, Menu.NONE, 1, "Push Trigger");
-			pushTrigger.setOnMenuItemClickListener(new OnMenuItemClickListener()
-			{
-				public boolean onMenuItemClick(MenuItem clickedItem)
-				{
-					//UserInteraction/Event Processing...this is where the Commands can be executed
-					CommandContext commandContext = new CommandContext();
-					commandContext.setTarget("/offlineapp/pushtrigger");
-					Services.getInstance().getCommandService().execute(commandContext);
-					return true;
-				}
-			});
-			
-			//Make an RPC invocation: Demonstrates an RPC invocation to a service in the 'Cloud'
-			MenuItem rpc = menu.add(Menu.NONE, Menu.NONE, 0, "Make RPC Invocation");
-			rpc.setOnMenuItemClickListener(new OnMenuItemClickListener()
-			{
-				public boolean onMenuItemClick(MenuItem clickedItem)
-				{
-					//UserInteraction/Event Processing...this is where the Commands can be executed
-					CommandContext commandContext = new CommandContext();
-					commandContext.setTarget("/offlineapp/rpc");
-					Services.getInstance().getCommandService().execute(commandContext);
-					return true;
-				}
-			});
-		}
-	}
-	
-	/**
-	 * ClickListener for the 'Demo Beans' list
-	 * 
-	 * @author openmobster@gmail.com
-	 */
-	private static class ClickListener implements ListItemClickListener
-	{
-		private MobileBean[] activeBeans;
-		
-		private ClickListener(MobileBean[] activeBeans)
-		{
-			this.activeBeans = activeBeans;
-		}
-		
-		public void onClick(ListItemClickEvent clickEvent)
-		{
-			//Gets the "Demo Bean" in question
-			int selectedIndex = clickEvent.getPosition();
-			MobileBean selectedBean = activeBeans[selectedIndex];
-			
-			//Issues a request to show the details associated with this bean
-			CommandContext commandContext = new CommandContext();
-			commandContext.setTarget("/demo/details");
-			commandContext.setAttribute("selectedBean", selectedBean.getValue("demoString"));
-			Services.getInstance().getCommandService().execute(commandContext);
 		}
 	}
 }
