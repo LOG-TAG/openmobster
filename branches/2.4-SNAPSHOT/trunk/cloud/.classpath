@@ -134,6 +134,7 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/crud/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/crud/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/crud/app-android/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/crud/app-android/target/generated-sources/r" />
 	
 	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/asyncserviceapp/cloud/src/test/java" />
