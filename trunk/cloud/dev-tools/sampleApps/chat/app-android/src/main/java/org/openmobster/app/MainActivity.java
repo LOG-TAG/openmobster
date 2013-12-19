@@ -8,36 +8,34 @@
 
 package org.openmobster.app;
 
-import java.lang.reflect.Field;
-import java.util.List;
 import java.util.ArrayList;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.view.View;
-import android.view.View.OnClickListener;
-
+import java.util.List;
+import org.openmobster.android.api.d2d.D2DActivity;
+import org.openmobster.android.api.d2d.D2DMessage;
+import org.openmobster.android.api.d2d.D2DService;
 import org.openmobster.core.mobileCloud.android.configuration.Configuration;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.core.mobileCloud.mgr.AppActivation;
-
-import org.openmobster.android.api.d2d.D2DActivity;
-import org.openmobster.android.api.d2d.D2DMessage;
-import org.openmobster.android.api.d2d.D2DService;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.chat.android.app.R;
 
 /**
  * @author openmobster@gmail.com
  * 
  */
+
 public class MainActivity extends D2DActivity
 {
 	public static MainActivity mainActivity;
@@ -93,17 +91,11 @@ public class MainActivity extends D2DActivity
 				}
 			}
 			
-			//render the main screen
-			String layoutClass = this.getPackageName()+".R$layout";
-			String main = "main";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(main);
-			int screenId = field.getInt(clazz);
-			this.setContentView(screenId);
+			this.setContentView(R.layout.main);
 			
 			//Send Button
-			final Button send = (Button)ViewHelper.findViewById(this, "send");
-			final EditText message = (EditText)ViewHelper.findViewById(this, "message");
+			final Button send = (Button)findViewById(R.id.send);
+			final EditText message = (EditText)findViewById(R.id.message);
 			send.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View button) 
@@ -129,7 +121,7 @@ public class MainActivity extends D2DActivity
 			});
 			
 			//Users button. Displays a list of activated users on the system with whom a chat session can be established
-			final Button users = (Button)ViewHelper.findViewById(this, "users");
+			final Button users = (Button)findViewById(R.id.users);
 			users.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View button) 
@@ -164,7 +156,7 @@ public class MainActivity extends D2DActivity
 			
 			if(this.to != null)
 			{
-				TextView user = (TextView)ViewHelper.findViewById(this, "user");
+				TextView user = (TextView)findViewById(R.id.user);
 				user.setText(this.to);
 			}
 		}
@@ -178,14 +170,14 @@ public class MainActivity extends D2DActivity
 	public void callback(D2DMessage message)
 	{
 		//Append a newly received message from the chat system
-		LinearLayout layout = (LinearLayout)ViewHelper.findViewById(MainActivity.this, "layout");
+		LinearLayout layout = (LinearLayout)findViewById(R.id.layout);
 		TextView chatView = new TextView(MainActivity.this);
 		chatView.setText(message.getMessage());
 		layout.addView(chatView);
 		
 		Toast.makeText(MainActivity.this, message.getMessage(), Toast.LENGTH_SHORT).show();
 		
-		TextView user = (TextView)ViewHelper.findViewById(this, "user");
+		TextView user = (TextView)findViewById(R.id.user);
 		user.setText(message.getFrom());
 		this.to = message.getFrom();
 	}
