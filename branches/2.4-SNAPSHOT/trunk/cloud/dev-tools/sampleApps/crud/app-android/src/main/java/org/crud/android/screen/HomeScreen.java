@@ -49,6 +49,8 @@ public class HomeScreen extends Activity{
 	public static MobileBean[] activeBeans;
 	ListView listView=null;
 	
+	private static boolean syncInProgress=false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -320,8 +322,12 @@ public class HomeScreen extends Activity{
 		{
 			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
 			//from the Backend
-			SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
-			task.execute();
+			if(!HomeScreen.syncInProgress)
+			{
+				HomeScreen.syncInProgress = true;
+				SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
+				task.execute();
+			}
 		}
 	}
 	
@@ -350,7 +356,7 @@ public class HomeScreen extends Activity{
 			{
 				//Check if the CRM Ticket channel has data to be read
 				boolean isBooted = MobileBean.isBooted("crm_ticket_channel");
-				int counter = 30;
+				int counter = 20;
 				while(!isBooted)
 				{
 					Thread.sleep(2000);
@@ -381,15 +387,23 @@ public class HomeScreen extends Activity{
 			
 			if(result.equals(Boolean.TRUE.toString()))
 			{
+				HomeScreen.syncInProgress = false;
 				showTicket();
-			}
-			else if(result.equals(Boolean.FALSE.toString()))
-			{
-				ViewHelper.getOkModalWithCloseApp(HomeScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App").show();
 			}
 			else
 			{
-				ViewHelper.getOkModalWithCloseApp(HomeScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App").show();
+				final AlertDialog dialog = ViewHelper.getOkModalWithCloseApp(HomeScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App");
+				dialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int status)
+							{
+								dialog.dismiss();
+								HomeScreen.syncInProgress = false;
+								HomeScreen.this.finish();
+							}
+				});
+				dialog.show();
 			}
 		}
 	}
