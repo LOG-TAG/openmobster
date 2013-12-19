@@ -2,7 +2,10 @@
 	<encryption>false</encryption>
 	
 	<push>
-		<launch-activity-class>org.openmobster.core.mobileCloud.android_native.framework.ListApp</launch-activity-class>
+		<launch-activity-class>org.async.service.app.cloud.app.screen.HomeScreen</launch-activity-class>
 		<icon-name>push</icon-name>
 	</push>
+	
+	
+	
 </app-conf>

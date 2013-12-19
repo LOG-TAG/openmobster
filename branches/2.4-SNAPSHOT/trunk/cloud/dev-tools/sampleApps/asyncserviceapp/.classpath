@@ -3,6 +3,8 @@
 	<classpathentry kind="src" path="cloud/src/main/java" />
 	<classpathentry kind="src" path="cloud/src/test/java" />
 	<classpathentry kind="src" path="app-android/src/main/java" />
+	<classpathentry kind="src" path="app-android/target/generated-sources/r" />
+	
 	<classpathentry kind="src" path="app-rimos/src/main/java" />
 	<classpathentry kind="con"
 		path="org.eclipse.jdt.launching.JRE_CONTAINER" />
