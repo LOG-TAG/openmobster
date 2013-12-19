@@ -10,16 +10,18 @@ package org.crud.android.screen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.crud.android.screen.R;
 import org.crud.android.command.DeleteTicket;
 import org.crud.android.command.DemoPush;
 import org.crud.android.command.PlainPush;
 import org.crud.android.command.ResetChannel;
 import org.crud.android.system.ActivationRequest;
-import org.crud.android.system.MyBootstrapper;
+
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
-import org.openmobster.core.mobileCloud.android_native.framework.ServiceException;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -41,6 +43,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import android.widget.Button;
 
 public class HomeScreen extends Activity{
 	public static MobileBean[] activeBeans;
@@ -51,61 +54,107 @@ public class HomeScreen extends Activity{
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		listView=(ListView) findViewById(R.id.list);				
-		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);				
+		listView=(ListView) findViewById(R.id.list);							
 	}
+	
 	@Override
 	protected void onStart()
 	{
-		boolean isDeviceActivated = MyBootstrapper.getInstance().isDeviceActivated();
-		if(!isDeviceActivated)
-		{						
-			final AlertDialog builder=new AlertDialog.Builder(HomeScreen.this).create();
-			builder.setTitle("App Activation");
-			View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
-			builder.setView(view);
-			final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
-			final EditText portno_t=(EditText)view.findViewById(R.id.portno);
-			final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
-			final EditText password_t=(EditText)view.findViewById(R.id.password);
-			
-			builder.setButton("Submit",new OnClickListener() {			
-				@Override
-				public void onClick(DialogInterface arg0, int arg1)
-				{
-					Handler handler=new Handler(){
-						@Override
-						public void handleMessage(Message msg)
-						{
-							int what=msg.what;
-							if(what==1){								
-								showTicket();
-							}
-						}				
-					};
-					String serverip=serverip_t.getText().toString();
-					int portno=Integer.parseInt(portno_t.getText().toString());
-					String emailid=emailid_t.getText().toString();
-					String password=password_t.getText().toString();
-					ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
-					new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();									
-				}
-			});		
-		
-			builder.setButton2("Cancel",new OnClickListener() {			
-				@Override
-				public void onClick(DialogInterface arg0, int arg1){
-					finish();
-				}
-			});
-			builder.show();		
-		}else{
-			showTicket();
-		}
 		super.onStart();
+		
+		//Bootstrap the OpenMobster Service in the main activity of your App
+		CloudService.getInstance().start(this);
 	}
 	
-	class ToActivateDevice extends AsyncTask<Void,Void,Void>{
+	
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		
+		//Check to make sure the App is activated with the OpenMobster Backend
+		boolean isDeviceActivated = CloudService.getInstance().isDeviceActivated();
+		if(!isDeviceActivated)
+		{						
+			this.startDeviceActivation();
+			return;
+		}
+		
+		this.showTicket();
+	}
+
+	private void startDeviceActivation()
+	{
+		final AlertDialog activationDialog = new AlertDialog.Builder(HomeScreen.this).create();
+		activationDialog.setTitle("App Activation");
+		
+		View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
+		activationDialog.setView(view);
+		final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
+		final EditText portno_t=(EditText)view.findViewById(R.id.portno);
+		final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
+		final EditText password_t=(EditText)view.findViewById(R.id.password);
+		activationDialog.setCancelable(false);
+		
+		activationDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Submit", (DialogInterface.OnClickListener)null);		
+	
+		activationDialog.setButton2("Cancel",new OnClickListener() {			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1){
+				finish();
+			}
+		});
+		
+		activationDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+			
+			@Override
+			public void onShow(DialogInterface d)
+			{
+				Button submit = activationDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+				submit.setOnClickListener(new View.OnClickListener(){
+					@Override
+					public void onClick(View view)
+					{
+						String serverip=serverip_t.getText().toString();
+						String portnoStr=portno_t.getText().toString();
+						String emailid=emailid_t.getText().toString();
+						String password=password_t.getText().toString();
+						if(serverip == null || serverip.trim().length()==0 ||
+						   portnoStr == null || portnoStr.trim().length()==0 ||
+						   emailid == null || emailid.trim().length()==0 ||
+						   password == null || password.trim().length()==0
+						)
+						{
+							ViewHelper.getOkModal(HomeScreen.this, "App Activation Failure", "All the fields are required for a successful activation").show();
+							return;
+						}
+						
+						Handler handler=new Handler(){
+							@Override
+							public void handleMessage(Message msg)
+							{
+								int what=msg.what;
+								if(what==1)
+								{
+									activationDialog.dismiss();
+									showTicket();
+								}
+							}				
+						};
+						
+						int portno = Integer.parseInt(portnoStr);
+						ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
+						new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();
+					}
+				});
+			}
+		});
+		
+		activationDialog.show();
+	}
+	
+	private class ToActivateDevice extends AsyncTask<Void,Void,String>
+	{
 
 		Context context;
 		ProgressDialog dialog = null;
@@ -120,10 +169,18 @@ public class HomeScreen extends Activity{
 		}
 		
 		@Override
-		protected void onPostExecute(Void result)
+		protected void onPostExecute(String result)
 		{
 			dialog.dismiss();
-			handler.sendMessage(message);
+			
+			if(result != null)
+			{
+				ViewHelper.getOkModal(HomeScreen.this, "App Activation Failure", result).show();
+			}
+			else
+			{
+				handler.sendMessage(message);
+			}
 		}
 
 		@Override
@@ -136,29 +193,37 @@ public class HomeScreen extends Activity{
 		}
 		
 		@Override
-		protected Void doInBackground(Void... arg0){			 
+		protected String doInBackground(Void... arg0){			 
 			try
 			{
-				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
-				MyBootstrapper.getInstance().bootstrapUIContainer(HomeScreen.this);
+				//Start device activation
+				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),
+				activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
+				
+				//Start the local OpenMobster service after a successful activation
+				CloudService.getInstance().start(HomeScreen.this);
+				
+				message=handler.obtainMessage();
+				message.what=1;
+				
+				return null;
 			}
-			catch(ServiceException se)
+			catch(Exception se)
 			{
-			
+				
+				return se.getMessage();
 			}
-			message=handler.obtainMessage();
-			message.what=1;
-			return null;
 		}		
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		menu.add("New Ticket");
-		menu.add("Reset Channel");		
-		menu.add("Demo Push");
-		menu.add("Plain Push");		
+		menu.add("New Ticket");	
+		menu.add("Refresh Screen");	
+		menu.add("Test Ticket Push");
+		menu.add("Test Push Notification");
+		menu.add("Re-download Tickets");
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -170,43 +235,46 @@ public class HomeScreen extends Activity{
 			Intent intent=new Intent(HomeScreen.this,NewTicketScreen.class);
 			startActivity(intent);
 			finish();
-		}		
-		else if(title.equalsIgnoreCase("Reset Channel")){
+		}
+		else if(title.equalsIgnoreCase("Refresh Screen")){
+			this.showTicket();
+		}
+		else if(title.equalsIgnoreCase("Re-download Tickets")){
 			Handler handler=new Handler(){
 				@Override
 				public void handleMessage(Message msg)
 				{
 					int what=msg.what;
 					if(what==1){
-						Toast.makeText(HomeScreen.this,"Reset success",1).show();
+						Toast.makeText(HomeScreen.this,"Re-downloading Tickets",1).show();
 						showTicket();
 					}
 				}				
 			};
 			new ResetChannel(HomeScreen.this,handler).execute();			
 		}				
-		else if(title.equalsIgnoreCase("Demo Push")){
+		else if(title.equalsIgnoreCase("Test Ticket Push")){
 			Handler handler=new Handler(){
 				@Override
 				public void handleMessage(Message msg)
 				{
 					int what=msg.what;
 					if(what==1){
-						Toast.makeText(HomeScreen.this,"Demo push success",1).show();
+						Toast.makeText(HomeScreen.this,"Ticket successfully pushed",1).show();
 						showTicket();
 					}
 				}				
 			};
 			new DemoPush(HomeScreen.this,handler).execute();			
 		}		
-		else if(title.equalsIgnoreCase("Plain Push")){
+		else if(title.equalsIgnoreCase("Test Push Notification")){
 			Handler handler=new Handler(){
 				@Override
 				public void handleMessage(Message msg)
 				{
 					int what=msg.what;
 					if(what==1){
-						Toast.makeText(HomeScreen.this,"Plain push success",1).show();
+						Toast.makeText(HomeScreen.this,"Push Notification successfully triggered",1).show();
 						showTicket();
 					}
 				}				
@@ -215,7 +283,10 @@ public class HomeScreen extends Activity{
 		}				
 		return super.onMenuItemSelected(featureId, item);
 	}
-	public void showTicket(){		
+	
+	public void showTicket()
+	{
+		//Read all the CRM Ticket instances synced locally with the device
 		activeBeans = MobileBean.readAll("crm_ticket_channel");
 		if(activeBeans != null && activeBeans.length > 0)
 		{			
@@ -245,8 +316,86 @@ public class HomeScreen extends Activity{
 		    listView.setAdapter(ticketAdapter);		 
 		    listView.setOnItemClickListener(new MyItemClickListener(activeBeans));
 		}
+		else
+		{
+			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
+			//from the Backend
+			SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
+			task.execute();
+		}
 	}
-	class MyItemClickListener implements OnItemClickListener{
+	
+	private class SyncInProgressAsyncTask extends AsyncTask<Void,Void,String>
+	{
+		private ProgressDialog dialog = null;
+		
+		private SyncInProgressAsyncTask()
+		{
+			
+		}
+		
+		@Override
+		protected void onPreExecute()
+		{
+			dialog = new ProgressDialog(HomeScreen.this);		
+			dialog.setMessage("Sync in Progress....");
+			dialog.setCancelable(false);
+			dialog.show();
+		}
+
+		@Override
+		protected String doInBackground(Void... arg0)
+		{
+			try
+			{
+				//Check if the CRM Ticket channel has data to be read
+				boolean isBooted = MobileBean.isBooted("crm_ticket_channel");
+				int counter = 30;
+				while(!isBooted)
+				{
+					Thread.sleep(2000);
+					
+					if(counter > 0)
+					{
+						isBooted = MobileBean.isBooted("crm_ticket_channel");
+						counter--;
+					}
+					else
+					{
+						break;
+					}
+				}
+				
+				return ""+isBooted;
+			}
+			catch(Exception e)
+			{
+				return "failure";
+			}
+		}
+		
+		@Override
+		protected void onPostExecute(String result)
+		{
+			this.dialog.dismiss();
+			
+			if(result.equals(Boolean.TRUE.toString()))
+			{
+				showTicket();
+			}
+			else if(result.equals(Boolean.FALSE.toString()))
+			{
+				ViewHelper.getOkModalWithCloseApp(HomeScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App").show();
+			}
+			else
+			{
+				ViewHelper.getOkModalWithCloseApp(HomeScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App").show();
+			}
+		}
+	}
+	
+	private class MyItemClickListener implements OnItemClickListener
+	{
 		private MobileBean[] activeBeans;
 		MyItemClickListener(MobileBean[] activeBeans){
 			this.activeBeans=activeBeans;
