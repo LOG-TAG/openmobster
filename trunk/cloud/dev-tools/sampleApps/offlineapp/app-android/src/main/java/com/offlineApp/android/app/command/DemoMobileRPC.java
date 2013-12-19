@@ -8,18 +8,18 @@
 
 package com.offlineApp.android.app.command;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.openmobster.android.api.rpc.MobileService;
 import org.openmobster.android.api.rpc.Request;
 import org.openmobster.android.api.rpc.Response;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
-
-import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * Demonstrates an 'Asynchronous' RPC invocation on the '/demo/mobile-rpc' service in the Cloud
@@ -27,19 +27,21 @@ import android.app.Activity;
  * @author openmobster@gmail.com
  *
  */
-public final class DemoMobileRPC implements AsyncCommand
-{
-	/**
-	 * pre-action UI invocation
-	 */
-	public void doViewBefore(CommandContext commandContext)
-	{		
-	}
 
-	/**
-	 * Action invocation
-	 */
-	public void doAction(CommandContext commandContext) 
+public class DemoMobileRPC extends AsyncTask<Void,Void,Void>{
+
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
+	
+	public DemoMobileRPC(Context context,Handler handler){
+		this.context=context;
+		this.handler=handler;
+	}
+	
+	@Override
+	protected Void doInBackground(Void... arg0)
 	{
 		try
 		{
@@ -50,10 +52,14 @@ public final class DemoMobileRPC implements AsyncCommand
 			
 			//Making the RPC call
 			Response response = new MobileService().invoke(request);
+			message=handler.obtainMessage();
 			
-			//Setting up the results for display
-			commandContext.setAttribute("param1", response.getAttribute("param1"));
-			commandContext.setAttribute("param2", response.getAttribute("param2"));
+			Map map=new HashMap();
+			map.put("param1",response.getAttribute("param1"));
+			map.put("param2",response.getAttribute("param2"));			
+			message.obj=map;
+			message.what=1;
+						
 		}
 		catch(Exception e)
 		{
@@ -63,35 +69,22 @@ public final class DemoMobileRPC implements AsyncCommand
 			
 			throw appe;
 		}
+		return null;
+	}
+
+	@Override
+	protected void onPostExecute(Void result)
+	{
+		dialog.dismiss();
+		handler.sendMessage(message);
+	}
+
+	@Override
+	protected void onPreExecute()
+	{
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();
 	}	
-	
-	/**
-	 * post-action UI invocation
-	 */
-	public void doViewAfter(CommandContext commandContext)
-	{
-		String param1 = (String)commandContext.getAttribute("param1");
-		String param2 = (String)commandContext.getAttribute("param2");
-		
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("Param1: "+param1+"\n\n\n");
-		buffer.append("Param2: "+param2);
-		
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "RPC Invocation", 
-		buffer.toString()).
-		show();
-	}
-	
-	/**
-	 * UI invocation in case of an error
-	 */
-	public void doViewError(CommandContext commandContext)
-	{
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		
-		ViewHelper.getOkModal(currentActivity, "App Error", 
-		commandContext.getAppException().getMessage()).
-		show();
-	}
 }

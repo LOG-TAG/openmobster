@@ -11,4 +11,5 @@
 			<sync-push-message>You have {0} Demo Channel Update(s)</sync-push-message>
 		</channel>
 	</channels>
+		
 </app-conf>

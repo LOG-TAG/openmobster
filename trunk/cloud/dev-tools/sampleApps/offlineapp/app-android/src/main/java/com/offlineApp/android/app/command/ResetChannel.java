@@ -8,63 +8,59 @@
 
 package com.offlineApp.android.app.command;
 
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.module.bus.Bus;
 import org.openmobster.core.mobileCloud.android.module.bus.SyncInvocation;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-
-import android.app.Activity;
-
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * @author openmobster@gmail.com
  */
-public class ResetChannel implements RemoteCommand
-{
-	public void doViewBefore(CommandContext commandContext) 
-	{		
-	}
+
+public class ResetChannel extends AsyncTask<Void,Void,Void>{
+	Context context;
+	ProgressDialog dialog = null;
+	Handler handler;
+	Message message;
 	
-	public void doAction(CommandContext commandContext) 
-	{		
+	public ResetChannel(Context context,Handler handler){
+		this.context=context;
+		this.handler=handler;
+	}
+			
+	@Override
+	protected void onPostExecute(Void result)
+	{
+		dialog.dismiss();
+		handler.sendMessage(message);		
+	}
+
+	@Override
+	protected void onPreExecute()
+	{
+		dialog = new ProgressDialog(context);		
+		dialog.setMessage("Please wait...");
+		dialog.setCancelable(false);
+		dialog.show();	
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0){		
 		try
 		{			
 			SyncInvocation syncInvocation = new SyncInvocation("org.openmobster.core.mobileCloud.android.invocation.SyncInvocationHandler", 
 			SyncInvocation.bootSync, "offlineapp_demochannel");		
 			Bus.getInstance().invokeService(syncInvocation);
+			message=handler.obtainMessage();
+			message.what=1;
 		}		
 		catch(Exception be)
 		{
-			ErrorHandler.getInstance().handle(new SystemException(this.getClass().getName(), "doAction", new Object[]{
-				"Manually Synchronizing (offlineapp_demochannel)",
-				"Target Command:"+commandContext.getTarget()				
-			}));
-			throw new RuntimeException(be.toString());
-		}
-	}
-
-	public void doViewAfter(CommandContext commandContext) 
-	{				
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "Reset Channel", 
-				"Channel is succesfully reset!!").
-		show();
-		
-		NavigationContext.getInstance().refresh();
-	}
-
-	public void doViewError(CommandContext commandContext) 
-	{
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "App Error", 
-		this.getClass().getName()+" had an error!!").
-		show();
-	}					
+			
+		}		
+		return null;
+	}	
 }
