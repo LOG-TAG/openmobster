@@ -8,38 +8,27 @@
 
 package org.openmobster.showcase.app.crud;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android.configuration.Configuration;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.errors.SystemException;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickEvent;
-import org.openmobster.core.mobileCloud.android_native.framework.events.ListItemClickListener;
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.Screen;
-import org.openmobster.core.mobileCloud.api.ui.framework.resources.AppResources;
 import org.openmobster.showcase.app.AppConstants;
-
+import org.openmobster.showcase.app.system.MyBootstrapper;
+import org.showcase.app.R;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -48,59 +37,35 @@ import android.widget.ListView;
  * 
  * @author openmobster@gmail.com
  */
-public class CRUDMainScreen extends Screen
-{
-	private Integer screenId;
+
+public class CRUDMainScreen extends Activity{
+	
+	public static MobileBean myActiveBean=null;
 	
 	@Override
-	public void render()
-	{
-		try
-		{
-			//Lays out the screen based on configuration in res/layout/home.xml
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
-			
-			String layoutClass = currentActivity.getPackageName()+".R$layout";
-			String home = "crud";
-			Class clazz = Class.forName(layoutClass);
-			Field field = clazz.getField(home);
-			
-			this.screenId = field.getInt(clazz);						
-		}
-		catch(Exception e)
-		{
-			SystemException se = new SystemException(this.getClass().getName(), "render", new Object[]{
-				"Message:"+e.getMessage(),
-				"Exception:"+e.toString()
-			});
-			ErrorHandler.getInstance().handle(se);
-			throw se;
-		}
-	}
-	
-	@Override
-	public Object getContentPane()
-	{
-		return this.screenId;
-	}
-	
-	@Override
-	public void postRender()
-	{
-		Activity app = Services.getInstance().getCurrentActivity();
+	protected void onCreate(Bundle savedInstanceState){		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.crud);
+		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);
 		
-		Configuration conf = Configuration.getInstance(app);
 		
-		this.showTickets(app);
-		this.setupMenu(app);
 	}
 	
-	private void showTickets(Activity activity)
+	@Override
+	protected void onStart(){		
+		super.onStart();
+		if(MyBootstrapper.getInstance().isDeviceActivated()){
+			showTickets();
+		}else{
+			Toast.makeText(this,"Record not found try again later.", 1).show();			
+		}		
+	}
+	
+	private void showTickets()
 	{
 		//Populate the List View
-		ListView view = (ListView)ViewHelper.findViewById(activity, "list");
-		activity.setTitle("CRUD");
-		
+		ListView view = (ListView)findViewById(R.id.list);
+				
 		MobileBean[] beans = MobileBean.readAll(AppConstants.channel);
 		
 		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
@@ -112,39 +77,17 @@ public class CRUDMainScreen extends Screen
 			mylist.add(map);
 		}
 		
-		int rowId = ViewHelper.findLayoutId(activity, "crud_row");
+		int rowId = R.layout.crud_row;
 		String[] rows = new String[]{"empty","title"};
-		int[] rowUI = new int[] {ViewHelper.findViewId(activity, "empty"), ViewHelper.findViewId(activity, "title")};
-		SimpleAdapter showcaseAdapter = new SimpleAdapter(activity, mylist, rowId, rows, rowUI);
+		int[] rowUI = new int[] {R.id.empty,R.id.title};
+		SimpleAdapter showcaseAdapter = new SimpleAdapter(this, mylist, rowId, rows, rowUI);
 	    view.setAdapter(showcaseAdapter);
 	    
 	    OnItemClickListener clickListener = new ClickListener(beans);
 		view.setOnItemClickListener(clickListener);
 	}
 	
-	private void setupMenu(Activity app)
-	{
-		//Get the menu associated with this screen
-		Menu menu = (Menu)NavigationContext.getInstance().
-		getAttribute("options-menu");
-		
-		if(menu != null)
-		{
-			//Add the 'New Ticket' Menu Item
-			MenuItem newTicket = menu.add(Menu.NONE, Menu.NONE, 0, "New Ticket");
-			newTicket.setOnMenuItemClickListener(new OnMenuItemClickListener()
-			{
-				public boolean onMenuItemClick(MenuItem clickedItem)
-				{
-					//UserInteraction/Event Processing...This will navigate to the NewTicket Screen
-					NavigationContext.getInstance().navigate("/save/ticket");
-					return true;
-				}
-			});
-		}
-	}
-	
-	private static class ClickListener implements OnItemClickListener
+	private class ClickListener implements OnItemClickListener
 	{
 		private MobileBean[] activeBeans;
 		
@@ -156,7 +99,7 @@ public class CRUDMainScreen extends Screen
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id)
 		{
-			final Activity currentActivity = Services.getInstance().getCurrentActivity();
+			
 			
 			//Get the ticket bean selected by the user
 			int selectedIndex = position;
@@ -167,19 +110,20 @@ public class CRUDMainScreen extends Screen
 			
 			//Show the details of the ticket in an AlertDialog with three possible actions
 			//'Update', 'Close' (does nothing), and 'Delete'
-			AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
+			AlertDialog.Builder builder = new AlertDialog.Builder(CRUDMainScreen.this);
 			builder.setMessage(comment)
 			       .setCancelable(false).setTitle(title).
 			       setPositiveButton("Update", new DialogInterface.OnClickListener() 
 			       {
 			           public void onClick(DialogInterface dialog, int id) 
 			           {
-			        	   //navigate to the Update screen
-			        	   NavigationContext navContext = NavigationContext.getInstance();
-			        	   navContext.setAttribute("/save/ticket","active-bean", selectedBean);
-			        	   NavigationContext.getInstance().navigate("/save/ticket");
 			        	   
 			        	   dialog.dismiss();
+			        	   
+			        	   myActiveBean=selectedBean;
+			        	   
+			        	   Intent intent=new Intent(CRUDMainScreen.this,SaveTicketScreen.class);
+			        	   startActivity(intent);
 			           }
 			       })
 			       .setNegativeButton("Delete", new DialogInterface.OnClickListener() 
@@ -187,13 +131,17 @@ public class CRUDMainScreen extends Screen
 			           public void onClick(DialogInterface dialog, int id) 
 			           {
 			        	   dialog.dismiss();
-			        	   
-			        	   //Delete this ticket instance. This CRUD operation is then seamlessly
-			        	   //synchronized back with the Cloud
-			        	   CommandContext commandContext = new CommandContext();
-			        	   commandContext.setTarget("/delete/ticket");
-			        	   commandContext.setAttribute("active-bean", selectedBean);
-			        	   Services.getInstance().getCommandService().execute(commandContext);
+			        	
+			        	   Handler handler=new Handler(){
+			        		   @Override
+			        		   public void handleMessage(Message msg){
+			        			   int what=msg.what;
+			        			   if(what==1){
+			        				   Toast.makeText(CRUDMainScreen.this,"Delete success",1).show();
+			        			   }		        			
+			        		   }
+			        	   };
+			        	   new DeleteTicket(CRUDMainScreen.this,handler,selectedBean).execute();
 			           }
 			       })
 			       .setNeutralButton("Close", new DialogInterface.OnClickListener() 
@@ -207,5 +155,22 @@ public class CRUDMainScreen extends Screen
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		menu.add("New Ticket");
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		
+		String action=item.getTitle().toString();
+		if(action.equalsIgnoreCase("New Ticket")){
+			Intent intent=new Intent(CRUDMainScreen.this,SaveTicketScreen.class);
+			startActivity(intent);
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

@@ -8,64 +8,47 @@
 
 package org.openmobster.showcase.app.command.framework;
 
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AsyncCommand;
-import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-
-import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.Toast;
-
 
 /**
  * @author openmobster@gmail.com
  *
  */
-public final class AjaxCommand implements AsyncCommand
-{
-	public void doViewBefore(CommandContext commandContext)
-	{
-		//Show a message before Action phase
-		Activity activity = (Activity)commandContext.getAppContext();
-		Toast.makeText(activity, 
-				"Pre-Action Processing in progess", 
-				Toast.LENGTH_LONG).show();
+
+public class AjaxCommand extends AsyncTask<Void,Void,Void>{
+
+	Context context;
+	Handler handler;
+	Message message;
+			
+	public AjaxCommand(Context context,Handler handler){
+		this.handler=handler;
+		this.context=context;
+	}
+	
+	@Override
+	protected void onPostExecute(Void result){		
+		handler.sendMessage(message);		
 	}
 
-	public void doAction(CommandContext commandContext) 
-	{
-		try
-		{
-			//sleep for 5 seconds simulating an operational delay
-			Thread.currentThread().sleep(5000); 
-		}
-		catch(Exception e)
-		{
-			AppException appe = new AppException();
-			appe.setMessage(e.getMessage());
-			ErrorHandler.getInstance().handle(appe);
+	@Override
+	protected void onPreExecute(){
+		Toast.makeText(context,"Pre-Action Processing in progess", 1).show();
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0){		
+		message = handler.obtainMessage();		
+		try{
+			Thread.sleep(1000);
+			message.what = 1;
+		}catch(Exception ex){
 			
-			throw appe;
-		}
+		}		
+		return null;
 	}	
-	
-	public void doViewAfter(CommandContext commandContext)
-	{
-		//Show message upon successful completion
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "Ajax Command", "Command Execution Finished!!").
-		show();
-	}
-	
-	public void doViewError(CommandContext commandContext)
-	{
-		//Show message upon App Exception
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "App Error", 
-		this.getClass().getName()+" had an error!!\n\n"+commandContext.getAppException().getMessage()).
-		show();
-	}
 }

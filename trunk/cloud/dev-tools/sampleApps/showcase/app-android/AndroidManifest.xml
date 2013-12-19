@@ -5,7 +5,7 @@
       android:versionName="1.0">
     <application android:label="@string/app_name" android:icon="@drawable/icon">
     
-        <activity android:name="org.openmobster.core.mobileCloud.android_native.framework.App"
+        <activity android:name="org.openmobster.showcase.app.HomeScreen"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,7 +15,23 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-    	
+		<activity android:name="org.openmobster.showcase.app.camera.CameraMainScreen">
+		    
+		</activity>
+		<activity android:name="org.openmobster.showcase.app.camera.PreviewScreen">
+		    
+		</activity>
+		<activity android:name="org.openmobster.showcase.app.crud.CRUDMainScreen">
+		    
+		</activity>
+		<activity android:name="org.openmobster.showcase.app.crud.SaveTicketScreen">
+		    
+		</activity>
+		<activity android:name="org.openmobster.showcase.app.command.framework.MainScreen">
+		    
+		</activity>
+		
+        	
     	<receiver android:name="org.openmobster.core.mobileCloud.api.ui.framework.push.PushBroadcastReceiver">
     		<intent-filter>
     			<action android:name="org.showcase.app"/>

@@ -8,41 +8,55 @@
 
 package org.openmobster.showcase.app.command.framework;
 
-import org.openmobster.core.mobileCloud.api.ui.framework.Services;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.LocalCommand;
 import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
-import org.openmobster.core.mobileCloud.android.service.Registry;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-
-import android.app.Activity;
+import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.Toast;
-
 
 /**
  * @author openmobster@gmail.com
  *
  */
-public final class FastCommand implements LocalCommand
-{
-	public void doViewBefore(CommandContext commandContext)
-	{
-		//Show a message before Action phase
-		Activity activity = (Activity)commandContext.getAppContext();
-		Toast.makeText(activity, 
-				"Pre-Action Processing in progess", 
-				Toast.LENGTH_LONG).show();
+
+public class FastCommand extends AsyncTask<Void,Void,Void>{
+
+	Context context;
+	Handler handler;
+	Message message;
+	
+	public FastCommand(Context context,Handler handler){
+		this.handler=handler;
+		this.context=context;
+	}
+	
+	
+	@Override
+	protected void onPostExecute(Void result){
+
+		handler.sendMessage(message);
+		
 	}
 
-	public void doAction(CommandContext commandContext) 
-	{
+	@Override
+	protected void onPreExecute(){
+		Toast.makeText(context,"Pre-Action Processing in progess",1).show();
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0){
+		
 		try
 		{
 			//There should be no delay in execution here
 			//Fast command must execute fast so that UI is not frozen
 			//for too long
-			Thread.currentThread().sleep(500);
+			Thread.sleep(1000);
+			message=handler.obtainMessage();
+			message.what=1;
+			
 		}
 		catch(Exception e)
 		{
@@ -52,22 +66,7 @@ public final class FastCommand implements LocalCommand
 			
 			throw appe;
 		}
+		
+		return null;
 	}	
-	
-	public void doViewAfter(CommandContext commandContext)
-	{
-		//Show message upon successful completion
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "Fast Command", "Command Execution Finished!!").
-		show();
-	}
-	
-	public void doViewError(CommandContext commandContext)
-	{
-		//Show message upon App Exception
-		Activity currentActivity = Services.getInstance().getCurrentActivity();
-		ViewHelper.getOkModal(currentActivity, "App Error", 
-		this.getClass().getName()+" had an error!!\n\n"+commandContext.getAppException().getMessage()).
-		show();
-	}
 }
