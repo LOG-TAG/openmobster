@@ -8,32 +8,49 @@
 
 package com.webappsync.command;
 
-import android.app.Activity;
-import android.widget.Toast;
-
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.CommandContext;
-import org.openmobster.core.mobileCloud.api.ui.framework.command.RemoteCommand;
 import org.openmobster.core.mobileCloud.api.ui.framework.command.AppException;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
 /**
  * Checks to make sure that the data is loaded in the sync channel used by the App
  * 
  * @author openmobster@gmail.com
  */
-public class ChannelBootupHelper implements RemoteCommand
-{
-	public void doViewBefore(CommandContext commandContext)
-	{
-		Activity activity = (Activity)commandContext.getAppContext();
-		Toast.makeText(activity, 
-				"Waiting for the 'webappsync_ticket_channel' to finish bootstrapping....", 
-				Toast.LENGTH_LONG).show();
+
+public class ChannelBootupHelper extends AsyncTask<Void,Void,Void>{
+
+	Context context;
+	Handler handler;
+	ProgressDialog progressDialog;
+	Message message;
+	public ChannelBootupHelper(Context context,Handler handler){
+		this.handler=handler;
+		this.context=context;
+		
+	}
+	
+	@Override
+	protected void onPostExecute(Void result){
+		progressDialog.dismiss();
+		handler.sendMessage(message);
 	}
 
-	public void doAction(CommandContext commandContext)
-	{
+	@Override
+	protected void onPreExecute(){
+		progressDialog=new ProgressDialog(context);
+		progressDialog.setMessage("Please wait...");
+		progressDialog.setCancelable(false);
+		progressDialog.show();
+	}
+
+	@Override
+	protected Void doInBackground(Void... arg0){
+		
 		try
 		{
 		    int counter = 5;
@@ -50,16 +67,10 @@ public class ChannelBootupHelper implements RemoteCommand
 		{
 			throw new AppException();
 		}
-	}
-
-	public void doViewAfter(CommandContext commandContext)
-	{		
-	}
-
-	public void doViewError(CommandContext commandContext)
-	{
-		Activity activity = (Activity)commandContext.getAppContext();
-		ViewHelper.getOkModalWithCloseApp(activity, "App Error", "The 'webappsync_ticket_channel' is not ready. Please launch the App again in a few minutes").
-		show();
-	}
+		
+		message=handler.obtainMessage();
+		message.what=1;
+		
+		return null;
+	}	
 }
