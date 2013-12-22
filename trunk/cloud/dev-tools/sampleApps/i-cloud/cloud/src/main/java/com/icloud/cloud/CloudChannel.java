@@ -39,12 +39,12 @@ public final class CloudChannel implements Channel
 		CloudBean bean = new CloudBean();
 		bean.setBeanId(Utilities.generateUID());
 		bean.setName("Sync Apps");
-		bean.setValue("Rock!!!");
+		bean.setValue("Rock");
 		
 		CloudBean bean2 = new CloudBean();
 		bean2.setBeanId(Utilities.generateUID());
 		bean2.setName("OpenMobster");
-		bean2.setValue("Just Works!!");
+		bean2.setValue("Just Works");
 		
 		this.beans.put(bean.getBeanId(), bean);
 		this.beans.put(bean2.getBeanId(), bean2);
