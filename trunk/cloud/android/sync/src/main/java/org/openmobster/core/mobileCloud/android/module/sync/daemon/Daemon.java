@@ -65,7 +65,8 @@ public final class Daemon extends Service
 			//will make the CPU utilization better
 			//timer.schedule(this.syncTask, 120000);
 			
-			timer.schedule(this.syncTask,10000);
+			//timer.schedule(this.syncTask,10000);
+			timer.schedule(this.syncTask, 500);
 		}
 	}
 	

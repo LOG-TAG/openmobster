@@ -38,8 +38,8 @@ public final class CloudChannel implements Channel
 	{
 		CloudBean bean = new CloudBean();
 		bean.setBeanId(Utilities.generateUID());
-		bean.setName("Titanium");
-		bean.setValue("Rocks!!!");
+		bean.setName("Sync Apps");
+		bean.setValue("Rock!!!");
 		
 		CloudBean bean2 = new CloudBean();
 		bean2.setBeanId(Utilities.generateUID());

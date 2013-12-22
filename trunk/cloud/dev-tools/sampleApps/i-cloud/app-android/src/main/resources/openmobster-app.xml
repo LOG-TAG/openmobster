@@ -4,10 +4,13 @@
 	<push>
 		<launch-activity-class>org.openmobster.app.HomeScreen</launch-activity-class>
 		<icon-name>push</icon-name>
+		<!-- enable background re-establishment of the Push Socket if its disconnected -->
+		<reconnect/>
 	</push>
 	
 	<channels>
-		<channel name='cloud_channel' />
+		<channel name='cloud_channel'>
+		    <sync-push-message></sync-push-message>
+		</channel>
 	</channels>
-		
 </app-conf>
