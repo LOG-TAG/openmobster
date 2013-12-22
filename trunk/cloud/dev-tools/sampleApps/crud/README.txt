@@ -1,16 +1,14 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform
+									* OpenMobster - Mobile Backend as a Service Platform
 									*************************************************************
 
 ********************									
 Project Layout:    *
 ********************									
 
-Each generated project has the following 4 maven modules:
+Each generated project has the following 3 maven modules:
 
-* app-android - Contains the App for the Android OS - version 2.0 and higher
-
-* app-rimos - Contains the App for the Blackberry OS - version 4.3.0 and higher
+* app-android - Contains the App for the Android OS
 
 * cloud - Contains the "OpenMobster Cloud Server" based artifacts which will be deployed on the server side
 
@@ -31,28 +29,13 @@ mvn install
 This command builds all the artifacts. 
 
 
-**********************************************									
-Developer Productivity Improvement:          *
-**********************************************
-BlackBerry Development:
-
-To improve development productivity "mvn package or mvn install" command installs the required "OpenMobster MobileCloud" 
-into the specified Blackeberry Simulator. 
-
-The location of the simulator is specified in the "RIM_JDE_HOME" environment variable.
+Build and Deploy the Android App on a device
+---------------------------------------------
+To hot deploy your Android App, use the following command:
+cd app-android
+mvn -Papp-hot-deploy install
 
 
-Android Development:
-
-For Android, the development mode Mobile Cloud is installed using the android-devcloud module using the following maven command:
-
-cd dev-tools/android-devcloud: mvn package com.jayway.maven.plugins.android.generation2:maven-android-plugin:deploy
-
-
-This Development Mode Mobile Cloud binary improves developer productivity by automating the manual provisioning 
-processes by automatically provisioning a Cloud account under the name: "blah2@gmail.com".
-
-Note: This is a strict development stage only optimization and should not be used in a real world setting.
 
 **********************************************									
 Standalone "Development Mode" Cloud Server:  *
@@ -69,3 +52,20 @@ mvn -PrunCloud integration-test
 Command to run the standalone "Development Mode" Cloud Server in *debug mode*:
 -------------------------------------------------------------------------------
 mvn -PdebugCloud integration-test
+
+
+************************************
+JBoss AS Deployment				   *
+************************************
+
+Once the App and its corresponding Cloud artifacts are developed and tested end-to-end, you can aggregate all these artifacts into
+a single moblet jar ready for deployment into a JBoss AS based Cloud Server.
+
+This single artifact when deployed into the JBoss AS based Cloud Server performs all necessary registrations with the system
+and is ready for deploying the app onto a real phone via the Internet.
+
+Commands:
+
+	* Generate an the app and deploy into the JBoss AS instance:
+		cd moblet
+		mvn -Pjboss-install install

@@ -1,5 +1,5 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform 
+									* OpenMobster - Mobile Backend as a Service Platform 
 									*************************************************************
 									
 									

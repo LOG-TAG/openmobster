@@ -1,16 +1,14 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform
+									* OpenMobster - Mobile Backend as a Service Platform
 									*************************************************************
 
 ********************									
 Project Layout:    *
 ********************									
 
-Each generated project has the following 4 maven modules:
+Each generated project has the following 3 maven modules:
 
 * app-android - Contains the App for the Android OS
-
-* app-rimos - Contains the App for the Blackberry OS - version 4.3.0 and higher
 
 * cloud - Contains the "OpenMobster Cloud Server" based artifacts which will be deployed on the server side
 
@@ -31,36 +29,12 @@ mvn install
 This command builds all the artifacts. 
 
 
-**********************************************									
-Developer Productivity Improvement:          *
-**********************************************
-Android Development:
-
-For Android, the development mode Cloud Manager app is installed on the simulator.
-
-This Development Mode Cloud Manager app improves developer productivity by automating the manual provisioning/security 
-processes by automatically provisioning a Cloud account under the name: "blah2@gmail.com".
-
-Note: This is a strict development stage only optimization and should not be used in a real world setting.
-
-To hot deploy your Android App and Cloud Manager app, use the following command:
-cd app-android
-mvn -Phot-deploy install
-
-Once the Cloud Manager app is deployed, only the Android App needs to be deployed as development progresses.
-
-To hot deploy just your Android App, use the following command:
+Build and Deploy the Android App on a device
+---------------------------------------------
+To hot deploy your Android App, use the following command:
 cd app-android
 mvn -Papp-hot-deploy install
 
-
-
-BlackBerry Development:
-
-To improve development productivity "mvn package or mvn install" command installs the required "OpenMobster MobileCloud" 
-into the specified Blackeberry Simulator. 
-
-The location of the simulator is specified in the "RIM_JDE_HOME" environment variable.
 
 
 **********************************************									

@@ -1,5 +1,5 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform
+									* OpenMobster - Mobile Backend as a Service Platform
 									*************************************************************
 									
 									
@@ -12,10 +12,12 @@ console - Contains the GWT/SmartGWT based "Management Console"
 
 Android - Contains the binaries to be installed on the Android Platform.
 
-iPhone - Contains the XCode projects used to compile and create a Showcase App. 'mobilecloudlib' is the static library implementing the OpenMobster infrastructure. 
-'CloudManager' is the Showcase App.
+iPhone - Contains the XCode projects used to compile and create a Sample App. 'mobilecloudlib' is the static library implementing the OpenMobster infrastructure. 
+'SampleApp' is the Sample App.
 
 AppCreator - A Maven-based Mobile App Development Tool along with some sample apps
+
+Samples - Contains Sample Apps to learn how to use the OpenMobster Platform
 
 docs - App Developer Guide and API documentation
 
@@ -36,18 +38,23 @@ Install and Run the "cloudServer" instance on the JBoss AS 5.1.0.GA server. Deta
 Step 2:
 ------------
 
-Install the "MobileCloud" binaries, (CloudManager.apk) on the actual device or device simulator.
-Fire up the device browser and goto: http://<cloudserverip>/o/android/cloudmanager
+Install the CRUD Sample App on your Android device or simulator. Go to "Samples" directory and type in
+
+adb install -r crud.apk
+
 
 Step 3:
 -------------
 
-Activate your device "real" or "simulator" using the "CloudManager" app.
+Install the CRUD Sample App on another device using the Step2 instructions. This will help you to see multi-device sync and replication
+in action.
+
 
 Step 4:
 -----------
 
-Install the "sample applications" via the "CloudManager" Corporate App Store option
+Run the Sample App. At startup you will be asked to activate the App with the Cloud Server. Provide the necessary information 
+and activate the App with the Cloud Server.
 
 
 Step 5:
