@@ -1,11 +1,11 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform
+									* OpenMobster - Mobile Backend as a Service Platform
 									*************************************************************
 									
 									
 You can get the full source code for OpenMobster at:
 
-svn checkout http://openmobster.googlecode.com/svn/trunk/ openmobster-read-only
+svn checkout http://openmobster.googlecode.com/svn/branches/2.4-SNAPSHOT openmobster-read-only
 
 or
 

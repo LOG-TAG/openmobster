@@ -1,5 +1,5 @@
 									*************************************************************
-									* OpenMobster - Mobile Cloud Platform
+									* OpenMobster - Mobile Backend as a Service Platform
 									*************************************************************
 									
 ******************************									
@@ -16,9 +16,7 @@ appcreator.sh
 
 This will generate a Maven-based skeleton for the Mobile App. Each generated project has the following maven modules:
 
-* app-android - Contains the device side application code for the Android OS - version 2.0 and higher
-
-* app-rimos - Contains the device side application code for the Blackberry OS - version 4.3.0 and higher
+* app-android - Contains the device side application code for the Android OS - version 3.0 and higher
 
 * cloud - Contains the "OpenMobster Cloud Server" based artifacts which will be deployed on the server side
 
