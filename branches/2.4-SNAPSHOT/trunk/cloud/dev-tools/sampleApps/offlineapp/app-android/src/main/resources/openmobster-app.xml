@@ -2,8 +2,10 @@
 	<encryption>false</encryption>
 	
 	<push>
-		<launch-activity-class>org.openmobster.core.mobileCloud.android_native.framework.ListApp</launch-activity-class>
+		<launch-activity-class>com.offlineApp.android.app.screen.HomeScreen</launch-activity-class>
 		<icon-name>push</icon-name>
+		<!-- enable background re-establishment of the Push Socket if its disconnected -->
+		<reconnect/>
 	</push>
 	
 	<channels>
@@ -11,5 +13,4 @@
 			<sync-push-message>You have {0} Demo Channel Update(s)</sync-push-message>
 		</channel>
 	</channels>
-		
 </app-conf>

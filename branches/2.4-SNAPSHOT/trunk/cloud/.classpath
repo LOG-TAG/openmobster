@@ -126,9 +126,12 @@
 	<classpathentry kind="src" path="dev-tools/android-devcloud/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/dev-cloudServer/src/main/java"/>
 	<classpathentry kind="src" path="dev-tools/appCreator/src/main/java"/>
+	
+	
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-android/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/offlineapp/app-android/target/generated-sources/r" />
 	
 	
 	<classpathentry kind="src" path="dev-tools/sampleApps/crud/cloud/src/main/java" />
@@ -155,6 +158,7 @@
 	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/cloud/src/test/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/app-android/src/main/java" />
+	<classpathentry kind="src" path="dev-tools/sampleApps/i-cloud/app-android/target/generated-sources/r" />
 	
 	<classpathentry kind="src" path="dev-tools/sampleApps/locationapp/cloud/src/main/java" />
 	<classpathentry kind="src" path="dev-tools/sampleApps/locationapp/app-android/src/main/java" />

@@ -10,12 +10,14 @@ package org.openmobster.app;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.openmobster.android.api.sync.CommitException;
 import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
-import org.openmobster.core.mobileCloud.android_native.framework.ServiceException;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.system.ActivationRequest;
-import org.openmobster.system.MyBootstrapper;
+import org.openmobster.core.mobileCloud.android.service.Registry;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -32,11 +34,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.icloud.android.app.R;
+import android.util.Log;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -49,68 +53,115 @@ import com.icloud.android.app.R;
  * @author openmobster@gmail.com
  */
 
-public class HomeScreen extends Activity{
+public class HomeScreen extends Activity
+{
+	public static final String LOG_TAG = "com.icloud.android.app";
+	private static boolean syncInProgress=false;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState){
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);
-		
 	}
 	
 	@Override
-	protected void onStart(){
+	protected void onStart()
+	{
 		super.onStart();
 		
-		boolean isDeviceActivated = MyBootstrapper.getInstance().isDeviceActivated();
-		if(!isDeviceActivated)
-		{						
-			final AlertDialog builder=new AlertDialog.Builder(HomeScreen.this).create();
-			builder.setTitle("App Activation");
-			View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
-			builder.setView(view);
-			final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
-			final EditText portno_t=(EditText)view.findViewById(R.id.portno);
-			final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
-			final EditText password_t=(EditText)view.findViewById(R.id.password);
-			
-			builder.setButton("Submit",new OnClickListener() {			
-				@Override
-				public void onClick(DialogInterface arg0, int arg1)
-				{
-					Handler handler=new Handler(){
-						@Override
-						public void handleMessage(Message msg)
-						{
-							int what=msg.what;
-							if(what==1){								
-								showBeans();
-							}
-						}				
-					};
-					String serverip=serverip_t.getText().toString();
-					int portno=Integer.parseInt(portno_t.getText().toString());
-					String emailid=emailid_t.getText().toString();
-					String password=password_t.getText().toString();
-					ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
-					new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();									
-				}
-			});		
-		
-			builder.setButton2("Cancel",new OnClickListener() {			
-				@Override
-				public void onClick(DialogInterface arg0, int arg1){
-					finish();
-				}
-			});
-			builder.show();			
-		}else{
-			showBeans();
-		}		
+		//Bootstrap the OpenMobster Service in the main activity of your App
+		CloudService.getInstance().start(this);
 	}
 	
-	class ToActivateDevice extends AsyncTask<Void,Void,Void>{
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		
+		//Check to make sure the App is activated with the OpenMobster Backend
+		boolean isDeviceActivated = CloudService.getInstance().isDeviceActivated();
+		if(!isDeviceActivated)
+		{						
+			this.startDeviceActivation();
+			return;
+		}
+		
+		this.showBeans();
+	}
+	
+	private void startDeviceActivation()
+	{
+		final AlertDialog activationDialog = new AlertDialog.Builder(HomeScreen.this).create();
+		activationDialog.setTitle("App Activation");
+		
+		View view=LayoutInflater.from(this).inflate(R.layout.appactivation,null);
+		activationDialog.setView(view);
+		final EditText serverip_t=(EditText)view.findViewById(R.id.serverip);
+		final EditText portno_t=(EditText)view.findViewById(R.id.portno);
+		final EditText emailid_t=(EditText)view.findViewById(R.id.emailid);
+		final EditText password_t=(EditText)view.findViewById(R.id.password);
+		activationDialog.setCancelable(false);
+		
+		activationDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Submit", (DialogInterface.OnClickListener)null);		
+	
+		activationDialog.setButton2("Cancel",new OnClickListener() {			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1){
+				finish();
+			}
+		});
+		
+		activationDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+			
+			@Override
+			public void onShow(DialogInterface d)
+			{
+				Button submit = activationDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+				submit.setOnClickListener(new View.OnClickListener(){
+					@Override
+					public void onClick(View view)
+					{
+						String serverip=serverip_t.getText().toString();
+						String portnoStr=portno_t.getText().toString();
+						String emailid=emailid_t.getText().toString();
+						String password=password_t.getText().toString();
+						if(serverip == null || serverip.trim().length()==0 ||
+						   portnoStr == null || portnoStr.trim().length()==0 ||
+						   emailid == null || emailid.trim().length()==0 ||
+						   password == null || password.trim().length()==0
+						)
+						{
+							ViewHelper.getOkModal(HomeScreen.this, "App Activation Failure", "All the fields are required for a successful activation").show();
+							return;
+						}
+						
+						Handler handler=new Handler(){
+							@Override
+							public void handleMessage(Message msg)
+							{
+								int what=msg.what;
+								if(what==1)
+								{
+									activationDialog.dismiss();
+									showBeans();
+								}
+							}				
+						};
+						
+						int portno = Integer.parseInt(portnoStr);
+						ActivationRequest activationRequest=new ActivationRequest(serverip,portno,emailid,password);
+						new ToActivateDevice(HomeScreen.this,handler,activationRequest).execute();
+					}
+				});
+			}
+		});
+		
+		activationDialog.show();
+	}
+	
+	private class ToActivateDevice extends AsyncTask<Void,Void,String>
+	{
 
 		Context context;
 		ProgressDialog dialog = null;
@@ -125,10 +176,18 @@ public class HomeScreen extends Activity{
 		}
 		
 		@Override
-		protected void onPostExecute(Void result)
+		protected void onPostExecute(String result)
 		{
 			dialog.dismiss();
-			handler.sendMessage(message);
+			
+			if(result != null)
+			{
+				ViewHelper.getOkModal(HomeScreen.this, "App Activation Failure", result).show();
+			}
+			else
+			{
+				handler.sendMessage(message);
+			}
 		}
 
 		@Override
@@ -141,53 +200,63 @@ public class HomeScreen extends Activity{
 		}
 		
 		@Override
-		protected Void doInBackground(Void... arg0){			
+		protected String doInBackground(Void... arg0){			 
 			try
 			{
-				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
-				MyBootstrapper.getInstance().bootstrapUIContainer(HomeScreen.this);
+				//Start device activation
+				CloudService.getInstance().activateDevice(activationRequest.getServerIP(),
+				activationRequest.getPortNo(),activationRequest.getEmailId(),activationRequest.getPassword());
+				
+				//Start the local OpenMobster service after a successful activation
+				CloudService.getInstance().start(HomeScreen.this);
+				
+				message=handler.obtainMessage();
+				message.what=1;
+				
+				return null;
 			}
-			catch(ServiceException se)
+			catch(Exception se)
 			{
-			
+				
+				return se.getMessage();
 			}
-			message=handler.obtainMessage();
-			message.what=1;
-			return null;
 		}		
 	}
-	
+	//--------------------------------------------------------------------------------------------------------------------------
 	private void showBeans()
 	{
 		//Read all the beans from the channel
 		MobileBean[] beans = MobileBean.readAll("cloud_channel");
-		if(beans != null && beans.length > 0)
+		if(MobileBean.isBooted("cloud_channel"))
 		{
 			//Populate the List View
 			ListView view = (ListView)findViewById(R.id.list);
 			
 			//Prepare the data for the adapter. Data is read from the ticket bean instances
 			ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
-			for(MobileBean local:beans)
+			if(beans != null && beans.length>0)
 			{
-				HashMap<String, String> map = new HashMap<String, String>();
-				
-				String name = local.getValue("name");
-				String value = local.getValue("value");
-				
-				if(name.length() > 25)
+				for(MobileBean local:beans)
 				{
-					name = name.substring(0, 22)+"...";
+					HashMap<String, String> map = new HashMap<String, String>();
+					
+					String name = local.getValue("name");
+					String value = local.getValue("value");
+					
+					if(name.length() > 25)
+					{
+						name = name.substring(0, 22)+"...";
+					}
+					
+					if(value.length() > 25)
+					{
+						value = value.substring(0, 22)+"...";
+					}
+					
+					map.put("name", name);
+					map.put("value", value);
+					mylist.add(map);
 				}
-				
-				if(value.length() > 25)
-				{
-					value = value.substring(0, 22)+"...";
-				}
-				
-				map.put("name", name);
-				map.put("value", value);
-				mylist.add(map);
 			}
 			
 			SimpleAdapter beanAdapter = new SimpleAdapter(this, mylist,R.layout.bean_row,
@@ -200,17 +269,94 @@ public class HomeScreen extends Activity{
 		}	
 		else
 		{
-			//Populate the List View
-			ListView view = (ListView)findViewById(R.id.list);
-			
-			//Prepare the data for the adapter. Data is read from the ticket bean instances
-			ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
-			
-			SimpleAdapter beanAdapter = new SimpleAdapter(this, mylist, R.layout.bean_row,
-		            new String[] {"name", "value"}, new int[] {R.id.name,R.id.value});
-		    view.setAdapter(beanAdapter);
+			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
+			//from the Backend
+			if(!HomeScreen.syncInProgress)
+			{
+				HomeScreen.syncInProgress = true;
+				SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
+				task.execute();
+			}
 		}
 	}
+	
+	private class SyncInProgressAsyncTask extends AsyncTask<Void,Void,String>
+	{
+		private ProgressDialog dialog = null;
+		
+		private SyncInProgressAsyncTask()
+		{
+			
+		}
+		
+		@Override
+		protected void onPreExecute()
+		{
+			dialog = new ProgressDialog(HomeScreen.this);		
+			dialog.setMessage("Sync in Progress....");
+			dialog.setCancelable(false);
+			dialog.show();
+		}
+
+		@Override
+		protected String doInBackground(Void... arg0)
+		{
+			try
+			{
+				//Check if the CRM Ticket channel has data to be read
+				boolean isBooted = MobileBean.isBooted("cloud_channel");
+				int counter = 20;
+				while(!isBooted)
+				{
+					Thread.sleep(2000);
+					
+					if(counter > 0)
+					{
+						isBooted = MobileBean.isBooted("cloud_channel");
+						counter--;
+					}
+					else
+					{
+						break;
+					}
+				}
+				
+				return ""+isBooted;
+			}
+			catch(Exception e)
+			{
+				return "failure";
+			}
+		}
+		
+		@Override
+		protected void onPostExecute(String result)
+		{
+			this.dialog.dismiss();
+			
+			if(result.equals(Boolean.TRUE.toString()))
+			{
+				HomeScreen.syncInProgress = false;
+				showBeans();
+			}
+			else
+			{
+				final AlertDialog dialog = ViewHelper.getOkModalWithCloseApp(HomeScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App");
+				dialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int status)
+							{
+								dialog.dismiss();
+								HomeScreen.syncInProgress = false;
+								HomeScreen.this.finish();
+							}
+				});
+				dialog.show();
+			}
+		}
+	}
+	
 	private class ClickListener implements OnItemClickListener
 	{
 		private MobileBean[] activeBeans;
@@ -319,6 +465,7 @@ public class HomeScreen extends Activity{
 	public boolean onCreateOptionsMenu(Menu menu){
 		
 		menu.add("New Ticket");
+		menu.add("Refresh");
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -388,7 +535,11 @@ public class HomeScreen extends Activity{
 			beanDialog.setView(dialogView);
 			beanDialog.show();	
 			
-		}		
+		}	
+		else if(action.equalsIgnoreCase("Refresh"))
+		{
+			showBeans();
+		}
 		return super.onOptionsItemSelected(item);
-	}	
+	}
 }
