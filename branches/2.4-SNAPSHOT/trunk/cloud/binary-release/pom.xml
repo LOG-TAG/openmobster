@@ -284,8 +284,6 @@
 										
 
 										<!-- Pre-Installed Sample Apps -->
-										<unjar src="${basedir}/../dev-tools/sampleApps/offlineapp/moblet/target/offlineapp-1.0-moblet.jar" dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/offlineapp" overwrite="true">
-										</unjar>
 										<unjar src="${basedir}/../dev-tools/sampleApps/crud/moblet/target/crud-1.0-moblet.jar" dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/crud" overwrite="true">
 										</unjar>
 										<unjar src="${basedir}/../dev-tools/sampleApps/asyncserviceapp/moblet/target/asyncserviceapp-1.0-moblet.jar" dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/asyncserviceapp" overwrite="true">
@@ -306,15 +304,6 @@
 										</copy>
 
 										<!--  Deploying the SampleApps into the App Server -->
-										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/hsqldb/openmobster/deploy/offlineapp.jar" overwrite="true">
-											<fileset dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/offlineapp">
-											</fileset>
-										</copy>
-										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/mysql5/openmobster/deploy/offlineapp.jar" overwrite="true">
-											<fileset dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/offlineapp">
-											</fileset>
-										</copy>
-										
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/hsqldb/openmobster/deploy/crud.jar" overwrite="true">
 											<fileset dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/crud">
 											</fileset>
