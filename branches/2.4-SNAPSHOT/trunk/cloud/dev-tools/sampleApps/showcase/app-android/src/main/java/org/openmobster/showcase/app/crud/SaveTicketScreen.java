@@ -9,9 +9,9 @@
 package org.openmobster.showcase.app.crud;
 
 import org.openmobster.android.api.sync.MobileBean;
-import org.openmobster.core.mobileCloud.api.ui.framework.navigation.NavigationContext;
 import org.openmobster.showcase.app.AppConstants;
 import org.showcase.app.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,7 +71,7 @@ public class SaveTicketScreen extends Activity{
 					Toast.makeText(SaveTicketScreen.this, 
 							"Save was cancelled!!", 
 							Toast.LENGTH_LONG).show();
-					NavigationContext.getInstance().back();
+					SaveTicketScreen.this.finish();
 				}
 			});
 		}
@@ -124,6 +124,7 @@ public class SaveTicketScreen extends Activity{
 				int what=msg.what;
 				if(what==1){
 					Toast.makeText(SaveTicketScreen.this,"Record successfully saved",1).show();
+					SaveTicketScreen.this.finish();
 				}
 			}
 		};
@@ -153,6 +154,7 @@ public class SaveTicketScreen extends Activity{
 				int what=msg.what;
 				if(what==1){
 					Toast.makeText(SaveTicketScreen.this,"Record successfully saved",1).show();
+					SaveTicketScreen.this.finish();
 				}
 			}
 		};
