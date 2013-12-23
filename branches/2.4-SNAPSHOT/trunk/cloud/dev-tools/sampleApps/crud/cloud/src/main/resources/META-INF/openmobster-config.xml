@@ -9,6 +9,9 @@
    		<property name="pushListener">
    	  		<inject bean="/listen/push"/>
    		</property>
+   		<property name="deviceController">
+   	  		<inject bean="security://DeviceController"/>
+   		</property>
    		<depends>/crm/bootstrap/data</depends>
    </bean>
    
