@@ -10,14 +10,18 @@ package org.openmobster.showcase.app.crud;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.openmobster.android.api.sync.MobileBean;
+import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.showcase.app.AppConstants;
-import org.openmobster.showcase.app.system.MyBootstrapper;
 import org.showcase.app.R;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,53 +42,68 @@ import android.widget.Toast;
  * @author openmobster@gmail.com
  */
 
-public class CRUDMainScreen extends Activity{
+public class CRUDMainScreen extends Activity
+{
 	
 	public static MobileBean myActiveBean=null;
 	
+	private static boolean syncInProgress=false;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState){		
+	protected void onCreate(Bundle savedInstanceState)
+	{		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.crud);
-		MyBootstrapper.getInstance().bootstrapUIContainerOnly(this);
-		
-		
 	}
 	
 	@Override
-	protected void onStart(){		
+	protected void onStart()
+	{		
 		super.onStart();
-		if(MyBootstrapper.getInstance().isDeviceActivated()){
-			showTickets();
-		}else{
-			Toast.makeText(this,"Record not found try again later.", 1).show();			
-		}		
+		
+		showTickets();		
 	}
 	
 	private void showTickets()
 	{
-		//Populate the List View
-		ListView view = (ListView)findViewById(R.id.list);
-				
-		MobileBean[] beans = MobileBean.readAll(AppConstants.channel);
-		
-		ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
-		for(MobileBean local:beans)
+		if(MobileBean.isBooted(AppConstants.channel))
 		{
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("empty", "");
-			map.put("title", local.getValue("title"));
-			mylist.add(map);
+			//Populate the List View
+			ListView view = (ListView)findViewById(R.id.list);		
+			MobileBean[] beans = MobileBean.readAll(AppConstants.channel);
+			
+			ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+			if(beans != null && beans.length>0)
+			{
+				for(MobileBean local:beans)
+				{
+					HashMap<String, String> map = new HashMap<String, String>();
+					map.put("empty", "");
+					map.put("title", local.getValue("title"));
+					mylist.add(map);
+				}
+			}
+			
+			int rowId = R.layout.crud_row;
+			String[] rows = new String[]{"empty","title"};
+			int[] rowUI = new int[] {R.id.empty,R.id.title};
+			SimpleAdapter showcaseAdapter = new SimpleAdapter(this, mylist, rowId, rows, rowUI);
+		    view.setAdapter(showcaseAdapter);
+		    
+		    OnItemClickListener clickListener = new ClickListener(beans);
+			view.setOnItemClickListener(clickListener);
 		}
-		
-		int rowId = R.layout.crud_row;
-		String[] rows = new String[]{"empty","title"};
-		int[] rowUI = new int[] {R.id.empty,R.id.title};
-		SimpleAdapter showcaseAdapter = new SimpleAdapter(this, mylist, rowId, rows, rowUI);
-	    view.setAdapter(showcaseAdapter);
-	    
-	    OnItemClickListener clickListener = new ClickListener(beans);
-		view.setOnItemClickListener(clickListener);
+		else
+		{
+			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
+			//from the Backend
+			if(!CRUDMainScreen.syncInProgress)
+			{
+				CRUDMainScreen.syncInProgress = true;
+				SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
+				task.execute();
+			}
+		}
 	}
 	
 	private class ClickListener implements OnItemClickListener
@@ -98,9 +117,7 @@ public class CRUDMainScreen extends Activity{
 		
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id)
-		{
-			
-			
+		{		
 			//Get the ticket bean selected by the user
 			int selectedIndex = position;
 			final MobileBean selectedBean = activeBeans[selectedIndex];
@@ -138,6 +155,7 @@ public class CRUDMainScreen extends Activity{
 			        			   int what=msg.what;
 			        			   if(what==1){
 			        				   Toast.makeText(CRUDMainScreen.this,"Delete success",1).show();
+			        				   showTickets();
 			        			   }		        			
 			        		   }
 			        	   };
@@ -172,5 +190,82 @@ public class CRUDMainScreen extends Activity{
 			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	//-------------------------------------------------------------------------------------------------------------------------
+	private class SyncInProgressAsyncTask extends AsyncTask<Void,Void,String>
+	{
+		private ProgressDialog dialog = null;
+		
+		private SyncInProgressAsyncTask()
+		{
+			
+		}
+		
+		@Override
+		protected void onPreExecute()
+		{
+			dialog = new ProgressDialog(CRUDMainScreen.this);		
+			dialog.setMessage("Sync in Progress....");
+			dialog.setCancelable(false);
+			dialog.show();
+		}
+
+		@Override
+		protected String doInBackground(Void... arg0)
+		{
+			try
+			{
+				//Check if the CRM Ticket channel has data to be read
+				boolean isBooted = MobileBean.isBooted(AppConstants.channel);
+				int counter = 20;
+				while(!isBooted)
+				{
+					Thread.sleep(2000);
+					
+					if(counter > 0)
+					{
+						isBooted = MobileBean.isBooted(AppConstants.channel);
+						counter--;
+					}
+					else
+					{
+						break;
+					}
+				}
+				
+				return ""+isBooted;
+			}
+			catch(Exception e)
+			{
+				return "failure";
+			}
+		}
+		
+		@Override
+		protected void onPostExecute(String result)
+		{
+			this.dialog.dismiss();
+			
+			if(result.equals(Boolean.TRUE.toString()))
+			{
+				CRUDMainScreen.syncInProgress = false;
+				showTickets();
+			}
+			else
+			{
+				final AlertDialog dialog = ViewHelper.getOkModalWithCloseApp(CRUDMainScreen.this, "Sync Failure", "Data Sync Failed. Please restart the App");
+				dialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog, int status)
+							{
+								dialog.dismiss();
+								CRUDMainScreen.syncInProgress = false;
+								CRUDMainScreen.this.finish();
+							}
+				});
+				dialog.show();
+			}
+		}
 	}
 }
