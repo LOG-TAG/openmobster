@@ -13,9 +13,7 @@ import java.util.HashMap;
 
 import org.crud.android.screen.R;
 import org.crud.android.command.DeleteTicket;
-import org.crud.android.command.DemoPush;
 import org.crud.android.command.PlainPush;
-import org.crud.android.command.ResetChannel;
 import org.crud.android.system.ActivationRequest;
 
 import org.openmobster.android.api.sync.MobileBean;
@@ -50,6 +48,7 @@ public class HomeScreen extends Activity{
 	ListView listView=null;
 	
 	private static boolean syncInProgress=false;
+	private static boolean syncComplete = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -223,9 +222,7 @@ public class HomeScreen extends Activity{
 	{
 		menu.add("New Ticket");	
 		menu.add("Refresh Screen");	
-		menu.add("Test Ticket Push");
 		menu.add("Test Push Notification");
-		menu.add("Re-download Tickets");
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -240,35 +237,7 @@ public class HomeScreen extends Activity{
 		}
 		else if(title.equalsIgnoreCase("Refresh Screen")){
 			this.showTicket();
-		}
-		else if(title.equalsIgnoreCase("Re-download Tickets")){
-			Handler handler=new Handler(){
-				@Override
-				public void handleMessage(Message msg)
-				{
-					int what=msg.what;
-					if(what==1){
-						Toast.makeText(HomeScreen.this,"Re-downloading Tickets",1).show();
-						showTicket();
-					}
-				}				
-			};
-			new ResetChannel(HomeScreen.this,handler).execute();			
-		}				
-		else if(title.equalsIgnoreCase("Test Ticket Push")){
-			Handler handler=new Handler(){
-				@Override
-				public void handleMessage(Message msg)
-				{
-					int what=msg.what;
-					if(what==1){
-						Toast.makeText(HomeScreen.this,"Ticket successfully pushed",1).show();
-						showTicket();
-					}
-				}				
-			};
-			new DemoPush(HomeScreen.this,handler).execute();			
-		}		
+		}						
 		else if(title.equalsIgnoreCase("Test Push Notification")){
 			Handler handler=new Handler(){
 				@Override
@@ -326,7 +295,7 @@ public class HomeScreen extends Activity{
 		{
 			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
 			//from the Backend
-			if(!HomeScreen.syncInProgress)
+			if(!HomeScreen.syncInProgress && !HomeScreen.syncComplete)
 			{
 				HomeScreen.syncInProgress = true;
 				SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
@@ -392,6 +361,13 @@ public class HomeScreen extends Activity{
 			if(result.equals(Boolean.TRUE.toString()))
 			{
 				HomeScreen.syncInProgress = false;
+				HomeScreen.syncComplete = true;
+				showTicket();
+			}
+			else if(result.equals(Boolean.FALSE.toString()))
+			{
+				HomeScreen.syncInProgress = false;
+				HomeScreen.syncComplete = true;
 				showTicket();
 			}
 			else
@@ -404,6 +380,7 @@ public class HomeScreen extends Activity{
 							{
 								dialog.dismiss();
 								HomeScreen.syncInProgress = false;
+								HomeScreen.syncComplete = false;
 								HomeScreen.this.finish();
 							}
 				});
