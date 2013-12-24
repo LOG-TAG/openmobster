@@ -6,9 +6,6 @@
    		<property name="ds">
    	  		<inject bean="/crm/TicketDS"/>
    		</property>
-   		<property name="deviceController">
-   	  		<inject bean="security://DeviceController"/>
-   		</property>
    		<depends>/crm/bootstrap/data</depends>
    </bean>
    

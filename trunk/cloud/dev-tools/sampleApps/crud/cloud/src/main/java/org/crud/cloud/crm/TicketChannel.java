@@ -35,21 +35,10 @@ public class TicketChannel implements Channel
 {
 	private TicketDS ds;
 	private NewTicketDetector newTicketDetector;
-	private DeviceController deviceController;
 		
 	public TicketChannel()
 	{
 		newTicketDetector=new NewTicketDetector();
-	}
-	
-	public DeviceController getDeviceController() 
-	{
-		return deviceController;
-	}
-	
-	public void setDeviceController(DeviceController deviceController) 
-	{
-		this.deviceController = deviceController;
 	}
 	
 	public TicketDS getDs()
@@ -80,18 +69,17 @@ public class TicketChannel implements Channel
 	 */
 	public List<? extends MobileBean> bootup()
 	{
+		//Register this device with the NewTicketDetector
+		ExecutionContext context = ExecutionContext.getInstance();
+		Device device = context.getDevice();
+		this.newTicketDetector.load(device);
+				
 		List<Ticket> bootup = new ArrayList<Ticket>();
 		
 		List<Ticket> all = this.ds.readAll();
 		if(all != null && !all.isEmpty())
 		{
 			bootup.add(all.get(0));
-		}
-		
-		List <Device>allRegisteredDeviceList = deviceController.readAll();
-		for(Device device:allRegisteredDeviceList)
-		{
-			this.newTicketDetector.load(device);
 		}
 		
 		return bootup; 
