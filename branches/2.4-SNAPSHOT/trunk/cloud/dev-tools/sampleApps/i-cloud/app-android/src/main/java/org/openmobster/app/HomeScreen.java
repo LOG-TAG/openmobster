@@ -334,13 +334,7 @@ public class HomeScreen extends Activity
 		{
 			this.dialog.dismiss();
 			
-			if(result.equals(Boolean.TRUE.toString()))
-			{
-				HomeScreen.syncInProgress = false;
-				HomeScreen.syncComplete = true;
-				showBeans();
-			}
-			else if(result.equals(Boolean.FALSE.toString()))
+			if(result.equals(Boolean.TRUE.toString()) || result.equals(Boolean.FALSE.toString()))
 			{
 				HomeScreen.syncInProgress = false;
 				HomeScreen.syncComplete = true;

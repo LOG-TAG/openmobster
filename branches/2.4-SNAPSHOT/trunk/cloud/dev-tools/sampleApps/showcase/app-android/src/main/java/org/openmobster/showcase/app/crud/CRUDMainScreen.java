@@ -48,6 +48,7 @@ public class CRUDMainScreen extends Activity
 	public static MobileBean myActiveBean=null;
 	
 	private static boolean syncInProgress=false;
+	private static boolean syncComplete = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -97,7 +98,7 @@ public class CRUDMainScreen extends Activity
 		{
 			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
 			//from the Backend
-			if(!CRUDMainScreen.syncInProgress)
+			if(!CRUDMainScreen.syncInProgress && !CRUDMainScreen.syncComplete)
 			{
 				CRUDMainScreen.syncInProgress = true;
 				SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
@@ -178,6 +179,7 @@ public class CRUDMainScreen extends Activity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		menu.add("New Ticket");
+		menu.add("Refresh Screen");
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -188,6 +190,9 @@ public class CRUDMainScreen extends Activity
 		if(action.equalsIgnoreCase("New Ticket")){
 			Intent intent=new Intent(CRUDMainScreen.this,SaveTicketScreen.class);
 			startActivity(intent);
+		}
+		else if(action.equalsIgnoreCase("Refresh Screen")){
+			this.showTickets();
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -246,9 +251,10 @@ public class CRUDMainScreen extends Activity
 		{
 			this.dialog.dismiss();
 			
-			if(result.equals(Boolean.TRUE.toString()))
+			if(result.equals(Boolean.TRUE.toString()) || result.equals(Boolean.FALSE.toString()))
 			{
 				CRUDMainScreen.syncInProgress = false;
+				CRUDMainScreen.syncComplete = true;
 				showTickets();
 			}
 			else
@@ -261,6 +267,7 @@ public class CRUDMainScreen extends Activity
 							{
 								dialog.dismiss();
 								CRUDMainScreen.syncInProgress = false;
+								CRUDMainScreen.syncComplete = false;
 								CRUDMainScreen.this.finish();
 							}
 				});

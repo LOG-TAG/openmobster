@@ -9,13 +9,17 @@
 package org.openmobster.showcase.cloud.channel;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
+import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.cloud.api.sync.Channel;
 import org.openmobster.cloud.api.sync.ChannelInfo;
 import org.openmobster.cloud.api.sync.MobileBean;
-import org.openmobster.core.common.Utilities;
 import org.openmobster.core.security.device.Device;
 
 /**
@@ -28,9 +32,12 @@ import org.openmobster.core.security.device.Device;
 public class TicketChannel implements Channel
 {
 	private TicketDS ds;
+	private NewTicketDetector newTicketDetector;
 	
-	private boolean newDataPushed;
-	
+	public TicketChannel()
+	{
+		this.newTicketDetector = new NewTicketDetector();
+	}
 		
 	public TicketDS getDs()
 	{
@@ -60,6 +67,11 @@ public class TicketChannel implements Channel
 	 */
 	public List<? extends MobileBean> bootup()
 	{
+		//Register this device with the NewTicketDetector
+		ExecutionContext context = ExecutionContext.getInstance();
+		Device device = context.getDevice();
+		this.newTicketDetector.load(device);
+				
 		List<Ticket> bootup = new ArrayList<Ticket>();
 		
 		List<Ticket> all = this.ds.readAll();
@@ -99,8 +111,15 @@ public class TicketChannel implements Channel
 	 */
 	public String create(MobileBean mobileBean)
 	{
+		ExecutionContext context = ExecutionContext.getInstance();
+		Device device = context.getDevice();
+		
 		Ticket local = (Ticket)mobileBean;
-		return this.ds.create(local);
+		String syncId = this.ds.create(local);
+		
+		this.newTicketDetector.addSyncId(device, syncId);
+		
+		return syncId;
 	}
 
 	/**
@@ -130,22 +149,12 @@ public class TicketChannel implements Channel
 	 */
 	public String[] scanForNew(Device device, Date lastScanTimestamp)
 	{
-		if(this.newDataPushed)
+		Set<String> newBeans = newTicketDetector.scan(device);
+		if(newBeans != null && !newBeans.isEmpty())
 		{
-			return null;
-		}
-		
-		Ticket newTicket = new Ticket();
-		newTicket.setTitle("Pushed Ticket");
-		newTicket.setComment("This Rocks!!!");
-		newTicket.setTicketId(Utilities.generateUID());
-		String ticketId = this.ds.create(newTicket);
-		
-		String[] newoids = new String[]{ticketId};
-		
-		this.newDataPushed = true;
-		
-		return newoids;
+			return newBeans.toArray(new String[0]); 
+		}		
+		return null;
 	}
 	
 	/**
@@ -162,5 +171,67 @@ public class TicketChannel implements Channel
 	public String[] scanForDeletions(Device device, Date lastScanTimestamp)
 	{
 		return null;
+	}
+	//------------------------------------------------------------------------------------------------------------------------
+	private class NewTicketDetector 
+	{
+		private Map<String,Set<String>> device_to_ticket_bean_map;
+		
+		public NewTicketDetector()
+		{		
+			this.device_to_ticket_bean_map = new HashMap<String,Set<String>>();		
+		}
+		
+		public void load(Device device)
+		{
+			String identifier=device.getIdentifier();
+			Set<String> allticketBean = this.readAll();
+			device_to_ticket_bean_map.put(identifier,allticketBean);
+		}
+		
+		public Set<String> readAll()
+		{
+			Set <String>allticketSyncId=new HashSet<String>();
+			List <Ticket>allticketBeanList=ds.readAll();
+			for(Ticket ticketBean:allticketBeanList){
+				String syncid=ticketBean.getTicketId();
+				allticketSyncId.add(syncid);			
+			}		
+			return allticketSyncId;
+		}
+		
+		public Set<String> scan(Device device)
+		{
+			Set <String>newBeanSyncIdSet=new HashSet<String>();
+			String deviceIdentifier=device.getIdentifier();
+			Set<String> allticketBeanIdentifier = this.readAll();
+			Set <String>ticketBeanIdentifierListForDevice=device_to_ticket_bean_map.get(deviceIdentifier);
+			if(ticketBeanIdentifierListForDevice==null)
+			{
+				device_to_ticket_bean_map.put(deviceIdentifier,allticketBeanIdentifier);
+			}
+			else
+			{
+				for(String syncid:allticketBeanIdentifier){
+					if(!ticketBeanIdentifierListForDevice.contains(syncid)){
+						newBeanSyncIdSet.add(syncid);
+						ticketBeanIdentifierListForDevice.add(syncid);
+					}				
+				}			
+			}
+			return newBeanSyncIdSet;
+		}
+		
+		public void addSyncId(Device device,String syncId){		
+			String identifier=device.getIdentifier();
+			Set <String>ticketBeanSet=device_to_ticket_bean_map.get(identifier);
+			if(ticketBeanSet==null)
+			{
+				Set <String>syncIdSet=new HashSet<String>();
+				syncIdSet.add(syncId);		
+				device_to_ticket_bean_map.put(identifier,syncIdSet);
+			}
+			ticketBeanSet.add(syncId);
+		}	
 	}
 }
