@@ -242,6 +242,14 @@
 												<exclude name="**/build/**" />
 											</fileset>
 										</copy>
+										
+										<!-- Package the APKs under the Samples Directory -->
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/Samples/CRUD.apk" overwrite="true" 
+										 file="${basedir}/../dev-tools/sampleApps/crud/app-android/target/crud-1.0.apk" />
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/Samples/AsyncService.apk" overwrite="true" 
+										 file="${basedir}/../dev-tools/sampleApps/asyncserviceapp/app-android/target/asyncserviceapp-1.0.apk" />
+										<copy tofile="target/openmobster-${project.version}/openmobster-${project.version}-android/Samples/I-Cloud.apk" overwrite="true" 
+										 file="${basedir}/../dev-tools/sampleApps/i-cloud/app-android/target/i-cloud-1.0.apk" />
 
 										<!--  Cloud Server -->
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/mysql5" overwrite="true">
@@ -288,6 +296,8 @@
 										</unjar>
 										<unjar src="${basedir}/../dev-tools/sampleApps/asyncserviceapp/moblet/target/asyncserviceapp-1.0-moblet.jar" dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/asyncserviceapp" overwrite="true">
 										</unjar>
+										<unjar src="${basedir}/../dev-tools/sampleApps/i-cloud/moblet/target/i-cloud-1.0-moblet.jar" dest="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/i-cloud" overwrite="true">
+										</unjar>
 										
 										<!--  Copy CloudManager binaries to the App Server (HSQLDB version) -->
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/hsqldb/openmobster/deploy/openmobster.last/moblets.jar/android/20" overwrite="true">
@@ -319,6 +329,15 @@
 										</copy>
 										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/mysql5/openmobster/deploy/asyncserviceapp.jar" overwrite="true">
 											<fileset dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/asyncserviceapp">
+											</fileset>
+										</copy>
+										
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/hsqldb/openmobster/deploy/i-cloud.jar" overwrite="true">
+											<fileset dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/i-cloud">
+											</fileset>
+										</copy>
+										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/cloudServer/mysql5/openmobster/deploy/i-cloud.jar" overwrite="true">
+											<fileset dir="target/openmobster-${project.version}/openmobster-${project.version}-android/SampleApps/i-cloud">
 											</fileset>
 										</copy>
 										
