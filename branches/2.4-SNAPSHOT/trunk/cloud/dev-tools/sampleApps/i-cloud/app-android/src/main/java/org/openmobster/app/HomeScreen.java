@@ -16,7 +16,6 @@ import org.openmobster.android.api.sync.MobileBean;
 import org.openmobster.core.mobileCloud.android_native.framework.CloudService;
 import org.openmobster.core.mobileCloud.android_native.framework.ViewHelper;
 import org.openmobster.system.ActivationRequest;
-import org.openmobster.core.mobileCloud.android.service.Registry;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,7 +39,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import com.icloud.android.app.R;
-import android.util.Log;
 
 /**
  * Controls the 'home' screen that is displayed when the App is first launched.
@@ -56,7 +54,9 @@ import android.util.Log;
 public class HomeScreen extends Activity
 {
 	public static final String LOG_TAG = "com.icloud.android.app";
+	
 	private static boolean syncInProgress=false;
+	private static boolean syncComplete = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -271,7 +271,7 @@ public class HomeScreen extends Activity
 		{
 			//Tickets not found...put up a Sync in progress message and wait for data to be downloaded 
 			//from the Backend
-			if(!HomeScreen.syncInProgress)
+			if(!HomeScreen.syncInProgress && !HomeScreen.syncComplete)
 			{
 				HomeScreen.syncInProgress = true;
 				SyncInProgressAsyncTask task = new SyncInProgressAsyncTask();
@@ -337,6 +337,13 @@ public class HomeScreen extends Activity
 			if(result.equals(Boolean.TRUE.toString()))
 			{
 				HomeScreen.syncInProgress = false;
+				HomeScreen.syncComplete = true;
+				showBeans();
+			}
+			else if(result.equals(Boolean.FALSE.toString()))
+			{
+				HomeScreen.syncInProgress = false;
+				HomeScreen.syncComplete = true;
 				showBeans();
 			}
 			else
@@ -349,6 +356,7 @@ public class HomeScreen extends Activity
 							{
 								dialog.dismiss();
 								HomeScreen.syncInProgress = false;
+								HomeScreen.syncComplete = false;
 								HomeScreen.this.finish();
 							}
 				});

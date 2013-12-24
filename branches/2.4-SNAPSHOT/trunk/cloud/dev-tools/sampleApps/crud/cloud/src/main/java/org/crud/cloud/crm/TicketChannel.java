@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.crud.cloud.crm.bootstrap.PushListener;
 import org.crud.cloud.crm.hibernate.TicketDS;
 import org.openmobster.cloud.api.ExecutionContext;
 import org.openmobster.cloud.api.sync.Channel;
@@ -35,19 +34,24 @@ import org.openmobster.core.security.device.DeviceController;
 public class TicketChannel implements Channel
 {
 	private TicketDS ds;
-	private PushListener pushListener;
-	NewTicketDetector newTicketDetector;
-	DeviceController deviceController;
+	private NewTicketDetector newTicketDetector;
+	private DeviceController deviceController;
 		
-	public TicketChannel(){
+	public TicketChannel()
+	{
 		newTicketDetector=new NewTicketDetector();
 	}
-	public DeviceController getDeviceController() {
+	
+	public DeviceController getDeviceController() 
+	{
 		return deviceController;
 	}
-	public void setDeviceController(DeviceController deviceController) {
+	
+	public void setDeviceController(DeviceController deviceController) 
+	{
 		this.deviceController = deviceController;
 	}
+	
 	public TicketDS getDs()
 	{
 		return ds;
@@ -58,16 +62,6 @@ public class TicketChannel implements Channel
 		this.ds = ds;
 	}
 	
-	public PushListener getPushListener()
-	{
-		return pushListener;
-	}
-
-	public void setPushListener(PushListener pushListener)
-	{
-		this.pushListener = pushListener;
-	}
-
 	public void start()
 	{
 		
@@ -89,17 +83,17 @@ public class TicketChannel implements Channel
 		List<Ticket> bootup = new ArrayList<Ticket>();
 		
 		List<Ticket> all = this.ds.readAll();
-		if(all != null)
+		if(all != null && !all.isEmpty())
 		{
-			for(int i=0; i<5; i++)
-			{
-				bootup.add(all.get(i));
-			}
+			bootup.add(all.get(0));
 		}
+		
 		List <Device>allRegisteredDeviceList = deviceController.readAll();
-		for(Device device:allRegisteredDeviceList){
+		for(Device device:allRegisteredDeviceList)
+		{
 			this.newTicketDetector.load(device);
 		}
+		
 		return bootup; 
 	}
 	
@@ -165,7 +159,6 @@ public class TicketChannel implements Channel
 			return newBeans.toArray(new String[0]); 
 		}		
 		return null;
-		//return this.pushListener.checkUpdates();
 	}
 	
 	/**
@@ -183,18 +176,26 @@ public class TicketChannel implements Channel
 	{
 		return null;
 	}
-	class NewTicketDetector {
+	
+	//--------------------------------------------------------------------------------------------------------------------
+	private class NewTicketDetector 
+	{
 		private Map<String,Set<String>> device_to_ticket_bean_map;
 		
-		public NewTicketDetector(){		
+		public NewTicketDetector()
+		{		
 			this.device_to_ticket_bean_map = new HashMap<String,Set<String>>();		
 		}
-		public void load(Device device){
+		
+		public void load(Device device)
+		{
 			String identifier=device.getIdentifier();
 			Set<String> allticketBean = this.readAll();
 			device_to_ticket_bean_map.put(identifier,allticketBean);
 		}
-		public Set<String> readAll(){
+		
+		public Set<String> readAll()
+		{
 			Set <String>allticketSyncId=new HashSet<String>();
 			List <Ticket>allticketBeanList=ds.readAll();
 			for(Ticket ticketBean:allticketBeanList){
@@ -203,16 +204,19 @@ public class TicketChannel implements Channel
 			}		
 			return allticketSyncId;
 		}
+		
 		public Set<String> scan(Device device)
 		{
 			Set <String>newBeanSyncIdSet=new HashSet<String>();
 			String deviceIdentifier=device.getIdentifier();
 			Set<String> allticketBeanIdentifier = this.readAll();
 			Set <String>ticketBeanIdentifierListForDevice=device_to_ticket_bean_map.get(deviceIdentifier);
-			if(ticketBeanIdentifierListForDevice==null){
+			if(ticketBeanIdentifierListForDevice==null)
+			{
 				device_to_ticket_bean_map.put(deviceIdentifier,allticketBeanIdentifier);
 			}
-			else{
+			else
+			{
 				for(String syncid:allticketBeanIdentifier){
 					if(!ticketBeanIdentifierListForDevice.contains(syncid)){
 						newBeanSyncIdSet.add(syncid);
@@ -222,10 +226,12 @@ public class TicketChannel implements Channel
 			}
 			return newBeanSyncIdSet;
 		}
+		
 		public void addSyncId(Device device,String syncId){		
 			String identifier=device.getIdentifier();
 			Set <String>ticketBeanSet=device_to_ticket_bean_map.get(identifier);
-			if(ticketBeanSet==null){
+			if(ticketBeanSet==null)
+			{
 				Set <String>syncIdSet=new HashSet<String>();
 				syncIdSet.add(syncId);		
 				device_to_ticket_bean_map.put(identifier,syncIdSet);
