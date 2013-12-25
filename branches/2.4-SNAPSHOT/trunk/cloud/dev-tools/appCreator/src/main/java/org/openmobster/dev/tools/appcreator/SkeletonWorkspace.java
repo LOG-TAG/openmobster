@@ -39,13 +39,13 @@ public final class SkeletonWorkspace
 		srcRes.mkdirs();
 		
 		//Create the moblet tree
-		File moblet = new File(projectDir, "moblet/src/assemble");
+		/*File moblet = new File(projectDir, "moblet/src/assemble");
 		File moblet_res = new File(projectDir, "moblet/src/main/resources/META-INF");
 		moblet.mkdirs();
-		moblet_res.mkdirs();
+		moblet_res.mkdirs();*/
 		
 		this.generateCloudApp(new File(projectDir, "cloud"), userValues);
-		this.generateMoblet(supportedPlatforms,new File(projectDir, "moblet"), userValues);
+		//this.generateMoblet(supportedPlatforms,new File(projectDir, "moblet"), userValues);
 		
 		if(supportedPlatforms.contains("android"))
 		{
@@ -178,12 +178,23 @@ public final class SkeletonWorkspace
 		File androidManifestFile = new File(directory, "AndroidManifest.xml");
 		this.generateFile(androidManifestFile, androidManifest);
 		
+		
 		//Adding files verbatim
 //		this.generateFile(new File(directory, "local.properties"),
 //		this.readTemplateBinaryResource("/skeleton/app-android/local.properties"));
 //		
 //		this.generateFile(new File(directory, "default.properties"),
 //		this.readTemplateBinaryResource("/skeleton/app-android/default.properties"));
+		
+		//libs
+		this.generateFile(new File(directory, "/libs/device-sdk-2.4-SNAPSHOT-full.jar"),
+		this.readTemplateBinaryResource("/skeleton/app-android/libs/device-sdk-2.4-SNAPSHOT-full.jar"));
+				
+		//openmobster-app.xml
+		String openmobsterAppXml = this.readTemplateResource("/skeleton/app-android/src/main/resources/openmobster-app.xml");
+		openmobsterAppXml = openmobsterAppXml.replaceAll("<appCreator.android.main.groupId>", userValues.get("appCreator.android.main.groupId"));
+		this.generateFile(new File(new File(directory,"src"), "openmobster-app.xml"),
+		openmobsterAppXml);
 		
 		//res folder
 		this.generateFile(new File(directory, "res/drawable-hdpi/icon.png"),
@@ -370,7 +381,7 @@ public final class SkeletonWorkspace
 	
 	private String generateProjectModules(List<String> supportedPlatforms) throws Exception
 	{
-		if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		/*if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
 		{
 			return this.readTemplateResource("/skeleton/modules.all.xml");
 		}
@@ -381,9 +392,9 @@ public final class SkeletonWorkspace
 		else if(!supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
 		{
 			return this.readTemplateResource("/skeleton/modules.blackberry.xml");
-		}
+		}*/
 		
-		return null;
+		return "";
 	}
 	
 	private String generateSystemDependencies(List<String> supportedPlatforms) throws Exception

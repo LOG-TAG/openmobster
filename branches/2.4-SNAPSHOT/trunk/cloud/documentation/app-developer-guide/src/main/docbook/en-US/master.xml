@@ -3,7 +3,7 @@
       "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <book lang="en">
    <bookinfo>
-      <title>OpenMobster - Mobile Cloud Platform</title>
+      <title>OpenMobster - Mobile Backend as a Service Platform</title>
       <subtitle>App Developer Guide</subtitle>
       <releaseinfo>2.4</releaseinfo>
       <author>
@@ -14,7 +14,6 @@
    </bookinfo>
    <toc/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/introduction.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/programmerdilemma.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/concepts.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/architecture.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/hellomobster.xml"/> 

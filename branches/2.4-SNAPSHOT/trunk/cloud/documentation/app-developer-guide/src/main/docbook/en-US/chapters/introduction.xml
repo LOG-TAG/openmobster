@@ -7,11 +7,11 @@
          <email>openmobster@gmail.com</email>
       </author>
    </chapterinfo>
-   <title>Introduction to OpenMobster - Mobile Cloud Platform</title>
-   <para><emphasis role="bold">OpenMobster</emphasis> is an <emphasis>open source</emphasis> platform for integrating native Mobile Apps with <emphasis>"Cloud"</emphasis> services</para> 
+   <title>Introduction to OpenMobster - Mobile Backend as a Service Platform</title>
+   <para><emphasis role="bold">OpenMobster</emphasis> is an <emphasis>Open Source</emphasis> Mobile Backend Platform for mobilizing/integrating <emphasis>Enterprise</emphasis> services with Mobile Apps</para> 
    <para>It provides the following features:</para>
    <sect1>
-   		<title>Data Synchronization</title>
+   		<title>Enterprise Data Sync</title>
    		<para>
    		 Cloud data is made available to an App's <emphasis>local storage</emphasis>. It is available via a simple API. This allows the App
    		 to function seamlessly in both <emphasis>online</emphasis> as well as <emphasis>offline</emphasis> modes.    		  

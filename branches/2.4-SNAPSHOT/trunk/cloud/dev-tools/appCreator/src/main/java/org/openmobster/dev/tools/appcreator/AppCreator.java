@@ -81,7 +81,7 @@ public class AppCreator
 		groupId = this.askUser("Group Id", groupId);
 		projectVersion = this.askUser("Project Version", projectVersion);
 		projectUrl = this.askUser("Project Url", projectUrl);
-		openMobsterVersion = this.askUser("Version of the OpenMobster Platform", openMobsterVersion);
+		//openMobsterVersion = this.askUser("Version of the OpenMobster Platform", openMobsterVersion);
 		
 		//Decide if sample workspace or sketelon (hello world) workspace
 		String sampleCode = this.askUser("Generate Sample Code", "yes/no [default:yes]");
@@ -100,14 +100,16 @@ public class AppCreator
 		String[] platformTokens = platforms.split(",");
 		for(String token:platformTokens)
 		{
-			String selection = this.askUser("Support Mobile Platform: "+token, "yes");
+			//String selection = this.askUser("Support Mobile Platform: "+token, "yes");
+			String selection = "yes";
 			if(selection != null && selection.trim().equalsIgnoreCase("yes"))
 			{
 				supportedPlatforms.add(token.toLowerCase());
 				
 				if(token.equalsIgnoreCase("android"))
 				{
-					String androidApi = this.askUser("Android API Version", config.getProperty("version.android.api"));
+					//String androidApi = this.askUser("Android API Version", config.getProperty("version.android.api"));
+					String androidApi = config.getProperty("version.android.api");
 					userValues.put("version.android.api.value", androidApi);
 				}
 			}
