@@ -1,17 +1,17 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
 	<!-- User Provided -->
 	<parent>
-		<groupId><appCreator.project.groupId></groupId>
-		<artifactId><appCreator.project.artifactId></artifactId>
-		<version><appCreator.project.version></version>
+		<groupId>org.crud</groupId>
+		<artifactId>crud</artifactId>
+		<version>1.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<groupId><appCreator.cloud.app.groupId></groupId>
-	<name><appCreator.cloud.app.name></name>
-	<artifactId><appCreator.cloud.app.artifactId></artifactId>
+	<groupId>org.crud.cloud.app</groupId>
+	<name>crud-cloud</name>
+	<artifactId>crud-cloud</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -123,7 +123,7 @@
 							<arguments>
 								<argument>-Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y</argument>
 								<argument>-classpath</argument> 
-								<classpath/>
+								<classpath />
 								<argument>org.openmobster.dev.tools.server.RunCloudServer
 								</argument>
 							</arguments>

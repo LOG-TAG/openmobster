@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="<appCreator.android.app.groupId>"
+      package="<appCreator.android.main.groupId>"
       android:versionCode="<appCreator.android.app.versionCode>"
       android:versionName="<appCreator.project.version>">
     <application android:label="@string/app_name" android:icon="@drawable/icon">
-        <activity android:name="org.openmobster.app.MainActivity"
+        <activity android:name="<appCreator.android.main.groupId>.MainActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <deployment xmlns="urn:jboss:bean-deployer:2.0">
-   <bean name="/offlineapp/demorepo" class="com.offlineApp.cloud.sync.DemoDataRepository"/>
-    
-   <bean name="offlineapp_demochannel" class="com.offlineApp.cloud.sync.DemoChannel">
-   		<property name="demoRepository"><inject bean="/offlineapp/demorepo"/></property>
-   </bean>  
+   <!--  Register the MobileChannel -->
+   <bean name="crm_ticket_channel" class="org.crud.cloud.crm.TicketChannel">
+   		<property name="ds">
+   	  		<inject bean="/crm/TicketDS"/>
+   		</property>
+   		
+   		<depends>/crm/bootstrap/data</depends>
+   </bean>
    
-   <bean name="/offlineapp/pushtrigger" class="com.offlineApp.cloud.sync.PushTriggerService">
-   		<property name="demoRepository"><inject bean="/offlineapp/demorepo"/></property>
+   <!-- Storage services based on Hibernate -->
+   <bean name="/crm/HibernateManager" class="org.openmobster.core.common.database.HibernateManager">
+   		<property name="config">crud.cfg.xml</property>
+   </bean>
+   <bean name="/crm/TicketDS" class="org.crud.cloud.crm.hibernate.TicketDS">
+   	  <property name="hibernateManager">
+   	  	<inject bean="/crm/HibernateManager"/>
+   	  </property>
+   </bean>
+   
+   <!-- Some Cloud Side bootstrappers used to load up test data, and listen for updates to demo "Cloud Push" -->
+   <bean name="/crm/bootstrap/data" class="org.crud.cloud.crm.bootstrap.BootstrapData">
+   		<property name="ds">
+   	  		<inject bean="/crm/TicketDS"/>
+   		</property>
+   </bean>
+   
+   <bean name="/asyc/load/spinners" class="org.crud.cloud.crm.bootstrap.AsyncLoadSpinners">
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
    
-   <bean name="/demo/mobile-rpc" class="com.offlineApp.cloud.rpc.DemoMobileBeanService">
+  
+   
+   <bean name="/start/push" class="org.crud.cloud.crm.bootstrap.StartPush">
    		<depends>services://MobileObjectMonitor</depends>
    		<depends>services://MobileServiceMonitor</depends>
    </bean>
+   
 </deployment>
