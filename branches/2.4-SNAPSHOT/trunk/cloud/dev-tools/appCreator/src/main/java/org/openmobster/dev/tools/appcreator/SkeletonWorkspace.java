@@ -1,10 +1,3 @@
-/**
- * Copyright (c) {2003,2011} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- */
 package org.openmobster.dev.tools.appcreator;
 
 import java.io.File;
@@ -56,18 +49,37 @@ public final class SkeletonWorkspace
 		
 		if(supportedPlatforms.contains("android"))
 		{
-			File main = new File(projectDir, "app-android/src/main/java/org/openmobster/app"); 
+			
+			String packageName=userValues.get("appCreator.android.main.groupId");
+			packageName=packageName.replace('.','/');	
+			File main = new File(projectDir, "app-android/src/"+packageName); 
+			
+			File drawable_xhdpi = new File(projectDir, "app-android/res/drawable-xhdpi");
 			File drawable_hdpi = new File(projectDir, "app-android/res/drawable-hdpi");
 			File drawable_ldpi = new File(projectDir, "app-android/res/drawable-ldpi");
 			File drawable_mdpi = new File(projectDir, "app-android/res/drawable-mdpi");
+			
 			File layout = new File(projectDir, "app-android/res/layout");
+			
 			File values = new File(projectDir, "app-android/res/values");
+			
+			File assets=new File(projectDir,"app-android/assets");
+			File bin=new File(projectDir,"app-android/bin");
+			File gen=new File(projectDir,"app-android/gen");
+			File libs=new File(projectDir,"app-android/libs");
+			
 			main.mkdirs();
+			drawable_xhdpi.mkdirs();
 			drawable_hdpi.mkdirs();
 			drawable_ldpi.mkdirs();
 			drawable_mdpi.mkdirs();
 			layout.mkdirs();
 			values.mkdirs();
+			assets.mkdirs();
+			bin.mkdirs();
+			gen.mkdirs();
+			libs.mkdirs();
+			
 		}
 		
 		this.generateProject(supportedPlatforms,projectDir, userValues);
@@ -116,6 +128,8 @@ public final class SkeletonWorkspace
 		File parentPomFile = new File(directory, "pom.xml");
 		this.generateFile(parentPomFile, parentPom);
 		
+		
+		
 		//.classpath for Eclipse 
 		this.generateFile(new File(directory, ".classpath"), 
 		this.readTemplateResource("/skeleton/.classpath"));
@@ -128,37 +142,34 @@ public final class SkeletonWorkspace
 	private void generateAndroidOsApp(File directory, Map<String, String> userValues) throws Exception
 	{
 		//app pom
-		String pom = this.readTemplateResource("/skeleton/app-android/pom.xml");
 		
-		pom = pom.replaceAll("<appCreator.project.version>", 
-				userValues.get("appCreator.project.version"));
 		
-		pom = pom.replaceAll("<appCreator.project.groupId>", 
-				userValues.get("appCreator.project.groupId"));
-		
-		pom = pom.replaceAll("<appCreator.project.artifactId>", 
+		//.project for Eclipse
+
+		String dot_project = this.readTemplateResource("/skeleton/app-android/.project");
+		dot_project = dot_project.replaceAll("<appCreator.project.artifactId>", 
 				userValues.get("appCreator.project.artifactId"));
+		File dot_project_file = new File(directory, ".project");
+		this.generateFile(dot_project_file,dot_project);
 		
-		pom = pom.replaceAll("<appCreator.android.app.groupId>", 
-				userValues.get("appCreator.android.app.groupId"));
+		//.classpath for Eclipse 
+		this.generateFile(new File(directory, "/.classpath"), 
+		this.readTemplateResource("/skeleton/app-android/.classpath"));
 		
-		pom = pom.replaceAll("<appCreator.android.app.name>", 
-				userValues.get("appCreator.android.app.name"));
+		//proguard-project.txt
+		this.generateFile(new File(directory, "/proguard-project.txt"), 
+		this.readTemplateResource("/skeleton/app-android/proguard-project.txt"));
 		
-		pom = pom.replaceAll("<appCreator.android.app.artifactId>", 
-				userValues.get("appCreator.android.app.artifactId"));
+		//project.properties
+		this.generateFile(new File(directory, "/project.properties"), 
+		this.readTemplateResource("/skeleton/app-android/project.properties"));
 		
-		String appGroupPath = userValues.get("appCreator.android.app.groupId").replace('.', '/');
-		pom = pom.replaceAll("<appCreator.android.app.groupId.path>", appGroupPath);
-		
-		File pomFile = new File(directory, "pom.xml");
-		this.generateFile(pomFile, pom);
 		
 		//Android Manifest
 		String androidManifest = this.readTemplateResource("/skeleton/app-android/AndroidManifest.xml");
 		
-		androidManifest = androidManifest.replaceAll("<appCreator.android.app.groupId>", 
-				userValues.get("appCreator.android.app.groupId"));
+		androidManifest = androidManifest.replaceAll("<appCreator.android.main.groupId>", 
+				userValues.get("appCreator.android.main.groupId"));
 		androidManifest = androidManifest.replaceAll("<appCreator.project.version>", 
 				userValues.get("appCreator.project.version"));
 		androidManifest = androidManifest.replaceAll("<appCreator.android.app.versionCode>", 
@@ -168,11 +179,11 @@ public final class SkeletonWorkspace
 		this.generateFile(androidManifestFile, androidManifest);
 		
 		//Adding files verbatim
-		this.generateFile(new File(directory, "local.properties"),
-		this.readTemplateBinaryResource("/skeleton/app-android/local.properties"));
-		
-		this.generateFile(new File(directory, "default.properties"),
-		this.readTemplateBinaryResource("/skeleton/app-android/default.properties"));
+//		this.generateFile(new File(directory, "local.properties"),
+//		this.readTemplateBinaryResource("/skeleton/app-android/local.properties"));
+//		
+//		this.generateFile(new File(directory, "default.properties"),
+//		this.readTemplateBinaryResource("/skeleton/app-android/default.properties"));
 		
 		//res folder
 		this.generateFile(new File(directory, "res/drawable-hdpi/icon.png"),
@@ -200,8 +211,23 @@ public final class SkeletonWorkspace
 		this.readTemplateBinaryResource("/skeleton/app-android/res/values/strings.xml"));
 		
 		//src/main/java
-		this.generateFile(new File(directory, "src/main/java/org/openmobster/app/MainActivity.java"),
-		this.readTemplateBinaryResource("/skeleton/app-android/src/main/java/org/openmobster/app/MainActivity.java"));
+		
+		String mainActivity = this.readTemplateResource("/skeleton/app-android/src/org/openmobster/app/MainActivity.java");
+		
+		mainActivity = mainActivity.replaceAll("<appCreator.android.main.groupId>", 
+				userValues.get("appCreator.android.main.groupId"));
+		
+		
+		
+		
+		
+		String packageName=userValues.get("appCreator.android.main.groupId");
+		packageName=packageName.replace('.','/');			
+		//this.generateFile(new File(directory, "src/"+packageName+"/MainActivity.java"),
+		//this.readTemplateBinaryResource("/skeleton/app-android/src/org/openmobster/app/MainActivity.java"));
+		
+		File mainActivityFile = new File(directory, "src/"+packageName+"/MainActivity.java");
+		this.generateFile(mainActivityFile, mainActivity);
 	}
 	
 	private void generateCloudApp(File directory, Map<String, String> userValues) throws Exception

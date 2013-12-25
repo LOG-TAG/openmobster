@@ -1,30 +1,39 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- User Provided -->
 	<parent>
 		<groupId>
-			<appCreator.project.groupId>
+			org.crud
 		</groupId>
 		<artifactId>
-			<appCreator.project.artifactId>
+			crud
 		</artifactId>
 		<version>
-			<appCreator.project.version>
+			1.0
 		</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<groupId>
-		<appCreator.android.app.groupId>
+		org.crud.android.app
 	</groupId>
 	<name>
-		<appCreator.android.app.name>
+		crud
 	</name>
 	<artifactId>
-		<appCreator.android.app.artifactId>
+		crud
 	</artifactId>
 	<packaging>apk</packaging>
+	
+	<properties>
+		<android.keystore.location>
+			${env.ANDROID_KEYSTORE}
+		</android.keystore.location>
+		<storepass>${env.ANDROID_STORE_PASS}</storepass>
+		<keypass>${env.ANDROID_KEY_PASS}</keypass>
+		<alias>${env.ANDROID_KEYSTORE_ALIAS}</alias>
+	</properties>
 
 	<dependencies>
 		<!--
@@ -89,8 +98,7 @@
 							<tasks>
 								<echo>Assembling Android App
 								</echo>
-								<jar
-									file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 									<fileset dir="${basedir}/target">
 										<include name="**/*.apk" />
 									</fileset>
@@ -108,8 +116,7 @@
 							<tasks>
 								<echo>Installing Android App
 								</echo>
-								<copy todir="${settings.localRepository}/<appCreator.android.app.groupId.path>/${project.artifactId}/${project.version}" overwrite="true"
-								file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+								<copy todir="${settings.localRepository}/org/crud/android/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 								</copy>
 							</tasks>
 						</configuration>
@@ -153,15 +160,15 @@
 								<phase>package</phase>
 								<inherited>false</inherited>
 								<configuration>
-									<archiveDirectory></archiveDirectory>
+									<archiveDirectory />
 									<includes>
 										<include>target/*.apk</include>
 									</includes>
 									<keystore>${android.keystore.location}
 									</keystore>
-									<storepass>${your.keystore.pass}</storepass>
-									<keypass>${your.cert.pass}</keypass>
-									<alias>${your.cert.alias}</alias>
+									<storepass>${storepass}</storepass>
+									<keypass>${keypass}</keypass>
+									<alias>${alias}</alias>
 								</configuration>
 							</execution>
 						</executions>
@@ -227,8 +234,7 @@
 									<tasks>
 										<echo>Assembling Android App
 								</echo>
-										<jar
-											file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+										<jar file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 											<fileset dir="${basedir}/target">
 												<include name="**/*.apk" />
 											</fileset>
@@ -246,8 +252,7 @@
 									<tasks>
 										<echo>Installing Android App
 								</echo>
-										<copy todir="${settings.localRepository}/<appCreator.android.app.groupId.path>/${project.artifactId}/${project.version}" overwrite="true"
-										file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
+										<copy todir="${settings.localRepository}/org/crud/android/app/${project.artifactId}/${project.version}" overwrite="true" file="${basedir}/target/${project.artifactId}-${project.version}-bin.jar">
 										</copy>
 									</tasks>
 								</configuration>
@@ -300,9 +305,7 @@
 								<tasks> 
 									<echo>Hot Deploying the Android App....</echo>
 									<exec dir="." executable="${env.ANDROID_HOME}/platform-tools/adb">
-										<arg
-										line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" 
-										/>
+										<arg line="install -r ${basedir}/target/${project.artifactId}-${project.version}.apk" />
 									</exec>
 								</tasks>
 							</configuration>

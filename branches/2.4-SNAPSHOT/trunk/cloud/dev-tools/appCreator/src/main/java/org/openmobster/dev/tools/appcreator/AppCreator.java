@@ -1,11 +1,3 @@
-/**
- * Copyright (c) {2003,2011} {openmobster@gmail.com} {individual contributors as indicated by the @authors tag}.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- */
-
 package org.openmobster.dev.tools.appcreator;
 
 import java.io.BufferedReader;
@@ -13,7 +5,6 @@ import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Properties;
@@ -129,6 +120,7 @@ public class AppCreator
 		String mobletName = projectName;
 		String mobletArtifactId = mobletName.toLowerCase();
 		String androidAppGroupId = groupId+".android.app"; //derived
+		String androidMainGroupId=groupId;
 		String androidAppName = projectName; //derived
 		int androidAppVersionCode = 1; //derived
 		try
@@ -161,6 +153,7 @@ public class AppCreator
 		userValues.put("appCreator.moblet.name", mobletName);
 		userValues.put("appCreator.moblet.artifactId", mobletArtifactId);
 		
+		userValues.put("appCreator.android.main.groupId", androidMainGroupId);
 		userValues.put("appCreator.android.app.groupId", androidAppGroupId);
 		userValues.put("appCreator.android.app.name", androidAppName);
 		userValues.put("appCreator.android.app.artifactId", androidAppName.toLowerCase());
@@ -235,19 +228,18 @@ public class AppCreator
 		}
 		
 		//Create the cloud tree
-		File src = new File(projectDir, "cloud/src/main/java/com/offlineApp/cloud/rpc");
-		File sync_src = new File(projectDir, "cloud/src/main/java/com/offlineApp/cloud/sync");
+		
+		File src_bootstrap = new File(projectDir, "cloud/src/main/java/org/crud/cloud/crm/bootstrap");
+		File src_hibernate = new File(projectDir, "cloud/src/main/java/org/crud/cloud/crm/hibernate");
 		File srcRes = new File(projectDir, "cloud/src/main/resources/META-INF");
-		File test = new File(projectDir, "cloud/src/test/java/com/offlineApp/cloud/rpc");
-		File sync_test = new File(projectDir, "cloud/src/test/java/com/offlineApp/cloud/sync");
+		File test = new File(projectDir, "cloud/src/test/java/org/crud/cloud/crm");
 		File testRes = new File(projectDir, "cloud/src/test/resources/META-INF");
-		src.mkdirs();
+		src_bootstrap.mkdirs();
+		src_hibernate.mkdirs();
 		srcRes.mkdirs();
 		test.mkdirs();
 		testRes.mkdirs();
-		sync_src.mkdirs();
-		sync_test.mkdirs();
-		
+
 		//Create the moblet tree
 		File moblet = new File(projectDir, "moblet/src/assemble");
 		File moblet_res = new File(projectDir, "moblet/src/main/resources/META-INF");
@@ -257,25 +249,36 @@ public class AppCreator
 		//Create the app-android tree
 		if(supportedPlatforms.contains("android"))
 		{
-			File android_command = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/command"); 
-			File android_screen = new File(projectDir, "app-android/src/main/java/com/offlineApp/android/app/screen");
+			
+			String packageName=userValues.get("appCreator.android.main.groupId");
+			packageName=packageName.replace('.','/');	
+			
+			File android_command = new File(projectDir, "app-android/src/"+packageName+"/command");
+			File android_screen = new File(projectDir, "app-android/src/"+packageName+"/screen");
+			File android_system = new File(projectDir, "app-android/src/"+packageName+"/system");
+			
 			File drawable_hdpi = new File(projectDir, "app-android/res/drawable-hdpi");
 			File drawable_ldpi = new File(projectDir, "app-android/res/drawable-ldpi");
 			File drawable_mdpi = new File(projectDir, "app-android/res/drawable-mdpi");
+			
 			File layout = new File(projectDir, "app-android/res/layout");
 			File values = new File(projectDir, "app-android/res/values");
-			File android_appicon = new File(projectDir, "app-android/src/main/resources/moblet-app/icon");
+			File libs = new File(projectDir, "app-android/libs");
+			
 			android_command.mkdirs();
 			android_screen.mkdirs();
-			android_appicon.mkdirs();
+			android_system.mkdirs();
+			
 			drawable_hdpi.mkdirs();
 			drawable_ldpi.mkdirs();
 			drawable_mdpi.mkdirs();
 			layout.mkdirs();
 			values.mkdirs();
+			libs.mkdirs();
 		}
 		
 		//Copy project-level files
+		
 		this.generateProject(supportedPlatforms,projectDir, userValues);
 		
 		if(supportedPlatforms.contains("blackberry"))
@@ -592,36 +595,38 @@ public class AppCreator
 	
 	private void generateAndroidOsApp(File directory, Map<String, String> userValues) throws Exception
 	{
-		//app pom
-		String pom = this.readTemplateResource("/template/app-android/pom.xml");
 		
-		pom = pom.replaceAll("<appCreator.project.version>", 
-				userValues.get("appCreator.project.version"));
+		// .project for Eclipse
+
+		String dot_project = this.readTemplateResource("/template/app-android/.project");
+		dot_project = dot_project.replaceAll("<appCreator.project.artifactId>",userValues.get("appCreator.project.artifactId"));
+		File dot_project_file = new File(directory, ".project");
+		this.generateFile(dot_project_file, dot_project);
+
+		// .classpath for Eclipse
+		this.generateFile(new File(directory, "/.classpath"),
+		this.readTemplateResource("/template/app-android/.classpath"));
+
+		// proguard-project.txt
+		this.generateFile(new File(directory, "/proguard-project.txt"),
+		this.readTemplateResource("/template/app-android/proguard-project.txt"));
+
+		// project.properties
+		this.generateFile(new File(directory, "/project.properties"),
+		this.readTemplateResource("/template/app-android/project.properties"));
 		
-		pom = pom.replaceAll("<appCreator.project.groupId>", 
-				userValues.get("appCreator.project.groupId"));
+		//libs
+		this.generateFile(new File(directory, "/libs/device-sdk-2.4-SNAPSHOT-full.jar"),
+		this.readTemplateBinaryResource("/template/app-android/libs/device-sdk-2.4-SNAPSHOT-full.jar"));
 		
-		pom = pom.replaceAll("<appCreator.project.artifactId>", 
-				userValues.get("appCreator.project.artifactId"));
-		
-		pom = pom.replaceAll("<appCreator.android.app.groupId>", 
-				userValues.get("appCreator.android.app.groupId"));
-		
-		pom = pom.replaceAll("<appCreator.android.app.name>", 
-				userValues.get("appCreator.android.app.name"));
-		
-		pom = pom.replaceAll("<appCreator.android.app.artifactId>", 
-				userValues.get("appCreator.android.app.artifactId"));
-		
-		String appGroupPath = userValues.get("appCreator.android.app.groupId").replace('.', '/');
-		pom = pom.replaceAll("<appCreator.android.app.groupId.path>", appGroupPath);
-		
-		File pomFile = new File(directory, "pom.xml");
-		this.generateFile(pomFile, pom);
+		//openmobster-app.xml
+		this.generateFile(new File(new File(directory,"src"), "openmobster-app.xml"),
+		this.readTemplateResource("/template/app-android/src/main/resources/openmobster-app.xml"));
 		
 		//Android Manifest
 		String androidManifest = this.readTemplateResource("/template/app-android/AndroidManifest.xml");
-		
+		androidManifest = androidManifest.replaceAll("<appCreator.android.main.groupId>", 
+				userValues.get("appCreator.android.main.groupId"));
 		androidManifest = androidManifest.replaceAll("<appCreator.android.app.groupId>", 
 				userValues.get("appCreator.android.app.groupId"));
 		androidManifest = androidManifest.replaceAll("<appCreator.project.version>", 
@@ -633,11 +638,11 @@ public class AppCreator
 		this.generateFile(androidManifestFile, androidManifest);
 		
 		//Adding files verbatim
-		this.generateFile(new File(directory, "local.properties"),
-		this.readTemplateBinaryResource("/template/app-android/local.properties"));
-		
-		this.generateFile(new File(directory, "default.properties"),
-		this.readTemplateBinaryResource("/template/app-android/default.properties"));
+//		this.generateFile(new File(directory, "local.properties"),
+//		this.readTemplateBinaryResource("/template/app-android/local.properties"));
+//		
+//		this.generateFile(new File(directory, "default.properties"),
+//		this.readTemplateBinaryResource("/template/app-android/default.properties"));
 		
 		//res folder
 		this.generateFile(new File(directory, "res/drawable-hdpi/icon.png"),
@@ -660,44 +665,84 @@ public class AppCreator
 		
 		this.generateFile(new File(directory, "res/layout/home.xml"),
 		this.readTemplateBinaryResource("/template/app-android/res/layout/home.xml"));
+		this.generateFile(new File(directory, "res/layout/appactivation.xml"),
+		this.readTemplateBinaryResource("/template/app-android/res/layout/appactivation.xml"));
+		this.generateFile(new File(directory, "res/layout/new_ticket.xml"),
+		this.readTemplateBinaryResource("/template/app-android/res/layout/new_ticket.xml"));
+		this.generateFile(new File(directory, "res/layout/ticket_row.xml"),
+		this.readTemplateBinaryResource("/template/app-android/res/layout/ticket_row.xml"));
+		this.generateFile(new File(directory, "res/layout/update_ticket.xml"),
+		this.readTemplateBinaryResource("/template/app-android/res/layout/update_ticket.xml"));
 		
 		this.generateFile(new File(directory, "res/values/strings.xml"),
 		this.readTemplateBinaryResource("/template/app-android/res/values/strings.xml"));
 		
-		//src/main/resources
-		this.generateFile(new File(directory, "src/main/resources/moblet-app/icon/icon.png"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/icon/icon.png"));
-		
-		this.generateFile(new File(directory, "src/main/resources/moblet-app/localize_en_GB.properties"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/localize_en_GB.properties"));
-		
-		this.generateFile(new File(directory, "src/main/resources/moblet-app/localize.properties"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/localize.properties"));
-		
-		this.generateFile(new File(directory, "src/main/resources/moblet-app/moblet-app.xml"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/resources/moblet-app/moblet-app.xml"));
-		
-		this.generateFile(new File(directory, "src/main/resources/openmobster-app.xml"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/resources/openmobster-app.xml"));
-		
 		//src/main/java
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/DemoDetails.java"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/DemoDetails.java"));
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/DemoMobileRPC.java"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/DemoMobileRPC.java"));
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/PushTrigger.java"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/PushTrigger.java"));
+		String packageName=userValues.get("appCreator.android.main.groupId");
+		packageName="src/"+packageName.replace('.','/');
+		packageName=new File(directory,packageName).toString();
+		String asyncLoadSpinners = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/AsyncLoadSpinners.java");
+		asyncLoadSpinners = asyncLoadSpinners.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File asyncLoadSpinnersFile = new File(new File(packageName,"command"),"AsyncLoadSpinners.java");
+		this.generateFile(asyncLoadSpinnersFile, asyncLoadSpinners);
+				
+		String createTicket = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/CreateTicket.java");
+		createTicket = createTicket.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File createTicketFile = new File(new File(packageName,"command"),"CreateTicket.java");
+		this.generateFile(createTicketFile, createTicket);
+				
+		String deleteTicket = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/DeleteTicket.java");
+		deleteTicket = deleteTicket.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File deleteTicketFile = new File(new File(packageName,"command"),"DeleteTicket.java");
+		this.generateFile(deleteTicketFile, deleteTicket);
+				
+		String demoPush = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/DemoPush.java");
+		demoPush = demoPush.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File demoPushFile = new File(new File(packageName,"command"),"DemoPush.java");
+		this.generateFile(demoPushFile, demoPush);
+				
+		String plainPush = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/PlainPush.java");
+		plainPush = plainPush.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File plainPushFile = new File(new File(packageName,"command"),"PlainPush.java");
+		this.generateFile(plainPushFile, plainPush);
+
+		String resetChannel = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/ResetChannel.java");
+		resetChannel = resetChannel.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File resetChannelFile = new File(new File(packageName,"command"),"ResetChannel.java");
+		this.generateFile(resetChannelFile, resetChannel);
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/ResetChannel.java"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/ResetChannel.java"));
+		String updateTicket = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/command/UpdateTicket.java");
+		updateTicket = updateTicket.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File updateTicketFile = new File(new File(packageName,"command"),"UpdateTicket.java");
+		this.generateFile(updateTicketFile, updateTicket);
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/screen/HomeScreen.java"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/screen/HomeScreen.java"));
+		String homeScreen = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/screen/HomeScreen.java");
+		homeScreen = homeScreen.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File homeScreenFile = new File(new File(packageName,"screen"),"HomeScreen.java");
+		this.generateFile(homeScreenFile, homeScreen);
+				
+		String newTicketScreen = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/screen/NewTicketScreen.java");
+		newTicketScreen = newTicketScreen.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File newTicketScreenFile = new File(new File(packageName,"screen"),"NewTicketScreen.java");
+		this.generateFile(newTicketScreenFile, newTicketScreen);
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/android/app/command/ChannelBootupHelper.java"),
-		this.readTemplateBinaryResource("/template/app-android/src/main/java/com/offlineApp/android/app/command/ChannelBootupHelper.java"));
+		String updateTicketScreen = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/screen/UpdateTicketScreen.java");
+		updateTicketScreen = updateTicketScreen.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File updateTicketScreenFile = new File(new File(packageName,"screen"),"UpdateTicketScreen.java");
+		this.generateFile(updateTicketScreenFile, updateTicketScreen);
+				
+		String activationRequest = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/system/ActivationRequest.java");
+		activationRequest = activationRequest.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File activationRequestFile = new File(new File(packageName,"system"),"ActivationRequest.java");
+		this.generateFile(activationRequestFile, activationRequest);
+
+		String checkConnection = this.readTemplateResource("/template/app-android/src/main/java/org/crud/android/system/CheckConnection.java");
+		checkConnection = checkConnection.replaceAll("<appCreator.android.main.groupId>",userValues.get("appCreator.android.main.groupId"));
+		File checkConnectionFile = new File(new File(packageName,"system"),"CheckConnection.java");
+		this.generateFile(checkConnectionFile,checkConnection);
+		
 	}
 	
 	private void generateCloudApp(File directory, Map<String, String> userValues) throws Exception
@@ -726,31 +771,34 @@ public class AppCreator
 		this.generateFile(pomFile, pom);
 		
 		//DemoMobileBeanService
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/rpc/DemoMobileBeanService.java"), 
-		this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/rpc/DemoMobileBeanService.java"));
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/DemoBean.java"), 
-		this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/DemoBean.java"));
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/DemoChannel.java"), 
-				this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/DemoChannel.java"));
+		this.generateFile(new File(directory, "src/main/java/org/crud/cloud/crm/bootstrap/AsyncLoadSpinners.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/org/crud/cloud/crm/bootstrap/AsyncLoadSpinners.java"));
+		this.generateFile(new File(directory, "src/main/java/org/crud/cloud/crm/bootstrap/BootstrapData.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/org/crud/cloud/crm/bootstrap/BootstrapData.java"));
+		this.generateFile(new File(directory, "src/main/java/org/crud/cloud/crm/bootstrap/StartPush.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/org/crud/cloud/crm/bootstrap/StartPush.java"));
+		this.generateFile(new File(directory, "src/main/java/org/crud/cloud/crm/hibernate/TicketDS.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/org/crud/cloud/crm/hibernate/TicketDS.java"));
 		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/DemoDataRepository.java"), 
-				this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/DemoDataRepository.java"));
-		
-		this.generateFile(new File(directory, "src/main/java/com/offlineApp/cloud/sync/PushTriggerService.java"), 
-				this.readTemplateResource("/template/cloud/src/main/java/com/offlineApp/cloud/sync/PushTriggerService.java"));
+		this.generateFile(new File(directory, "src/main/java/org/crud/cloud/crm/Ticket.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/org/crud/cloud/crm/Ticket.java"));
+		this.generateFile(new File(directory, "src/main/java/org/crud/cloud/crm/TicketChannel.java"), 
+		this.readTemplateResource("/template/cloud/src/main/java/org/crud/cloud/crm/TicketChannel.java"));
 		
 		//openmobster-config.xml
 		this.generateFile(new File(directory, "src/main/resources/META-INF/openmobster-config.xml"), 
 		this.readTemplateResource("/template/cloud/src/main/resources/META-INF/openmobster-config.xml"));
+		this.generateFile(new File(directory, "src/main/resources/crm.hbm.xml"), 
+		this.readTemplateResource("/template/cloud/src/main/resources/crm.hbm.xml"));
+		this.generateFile(new File(directory, "src/main/resources/crud.cfg.xml"), 
+		this.readTemplateResource("/template/cloud/src/main/resources/crud.cfg.xml"));
+			
 		
 		//TestDemoRPC
-		this.generateFile(new File(directory, "src/test/java/com/offlineApp/cloud/rpc/TestDemoRPC.java"), 
-		this.readTemplateResource("/template/cloud/src/test/java/com/offlineApp/cloud/rpc/TestDemoRPC.java"));
-		
-		this.generateFile(new File(directory, "src/test/java/com/offlineApp/cloud/sync/TestDemoChannel.java"), 
-				this.readTemplateResource("/template/cloud/src/test/java/com/offlineApp/cloud/sync/TestDemoChannel.java"));
+		this.generateFile(new File(directory, "src/test/java/org/crud/cloud/crm/TestTicketChannel.java"), 
+		this.readTemplateResource("/template/cloud/src/test/java/org/crud/cloud/crm/TestTicketChannel.java"));
 		
 		//openmobster-config.xml
 		this.generateFile(new File(directory, "src/test/resources/META-INF/openmobster-config.xml"), 

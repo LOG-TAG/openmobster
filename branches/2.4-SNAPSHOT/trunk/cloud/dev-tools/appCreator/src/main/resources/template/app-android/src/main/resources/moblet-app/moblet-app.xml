@@ -1,21 +1,22 @@
 <moblet-app>
     <bootstrap>
-    	<screen>com.offlineApp.android.app.screen.HomeScreen</screen>
+    	<screen>org.crud.android.screen.HomeScreen</screen>
     </bootstrap>
     
-    <!--  
-       In Android's case this is not needed for this App...The Android core + OpenMobster core framework gives everything you need for the usecase on this App..
-       I stand corrected...Android is actually superior to BlackBerry Platform (atleast upto 4.0.x...have not used 5.0.x yet to have an opinion)
-    <push>
-    	<command>org.openmobster.core.examples.offline.command.PushHandler</command>
-    </push>
-	-->
+	<commands>	
+		<command id="/create/ticket">org.crud.android.command.CreateTicket</command>	
+		<command id="/update/ticket">org.crud.android.command.UpdateTicket</command>
+		<command id="/delete/ticket">org.crud.android.command.DeleteTicket</command>
+		
+		<command id="/channel/bootup/helper">org.crud.android.command.ChannelBootupHelper</command>		
+		<command id="/async/load/spinners">org.crud.android.command.AsyncLoadSpinners</command>
+		<command id="/reset/channel">org.crud.android.command.ResetChannel</command>
+		<command id="/demo/push">org.crud.android.command.DemoPush</command>
+		<command id="/plain/push">org.crud.android.command.PlainPush</command>	
+	</commands>
 	
-	<commands>				
-	    <command id="/channel/bootup/helper">com.offlineApp.android.app.command.ChannelBootupHelper</command>	
-		<command id="/demo/details">com.offlineApp.android.app.command.DemoDetails</command>
-		<command id="/offlineapp/pushtrigger">com.offlineApp.android.app.command.PushTrigger</command> 
-		<command id="/offlineapp/reset">com.offlineApp.android.app.command.ResetChannel</command>
-		<command id="/offlineapp/rpc">com.offlineApp.android.app.command.DemoMobileRPC</command>
-	</commands>						
+	<screens>
+		<screen id="/new/ticket">org.crud.android.screen.NewTicketScreen</screen>
+		<screen id="/update/ticket">org.crud.android.screen.UpdateTicketScreen</screen>
+	</screens>					
 </moblet-app>
