@@ -281,7 +281,7 @@ public class AppCreator
 		
 		//Copy project-level files
 		
-		//this.generateProject(supportedPlatforms,projectDir, userValues);
+		this.generateProject(supportedPlatforms,projectDir, userValues);
 		
 		if(supportedPlatforms.contains("blackberry"))
 		{
@@ -348,7 +348,7 @@ public class AppCreator
 	
 	private void generateProject(List<String> supportedPlatforms,File directory,Map<String, String> userValues) throws Exception
 	{
-		String parentPom = this.readTemplateResource("/template/pom.xml");
+		/*String parentPom = this.readTemplateResource("/template/pom.xml");
 		
 		parentPom = parentPom.replaceAll("<appCreator.project.name>", 
 		userValues.get("appCreator.project.name"));
@@ -388,7 +388,7 @@ public class AppCreator
 		
 		//.classpath for Eclipse 
 		this.generateFile(new File(directory, ".classpath"), 
-		this.readTemplateResource("/template/.classpath"));
+		this.readTemplateResource("/template/.classpath"));*/
 		
 		//README.txt file to help developer
 		this.generateFile(new File(directory, "README.txt"), 

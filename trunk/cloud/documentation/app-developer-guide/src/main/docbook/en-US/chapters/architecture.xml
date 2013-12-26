@@ -15,13 +15,13 @@
 		</imageobject>
    </sect1>
    <sect1>
-   		<title>Mobile Cloud Stack</title>
+   		<title>Device SDK Stack</title>
 		<para>
 		    <imageobject>
 				<imagedata fileref="images/mobileCloud.png" format="png" align="center"/>
 			</imageobject>
 		    This is a software stack that is installed on the mobile device. It provides the following services to Mobile Apps:
-		    <emphasis>Sync</emphasis>, <emphasis>Push</emphasis>, <emphasis>OfflineApp</emphasis>, <emphasis>Mobile RPC</emphasis>, <emphasis>Network</emphasis>, <emphasis>Database</emphasis>, <emphasis>Inter-App Bus</emphasis>.
+		    <emphasis>Sync</emphasis>, <emphasis>Push</emphasis>, <emphasis>OfflineApp</emphasis>, <emphasis>Mobile RPC</emphasis>, <emphasis>Network</emphasis>, <emphasis>Local Storage</emphasis>.
 		</para>
 		<sect2>
 			<title>Sync</title>
@@ -69,16 +69,11 @@
 			by using the higher level <emphasis>Mobile Data Framework</emphasis> components.
 		</sect2>
 		<sect2>
-			<title>Database</title>
-			<emphasis>Database</emphasis> service manages local data storage details for Apps. Depending on the platform in question it uses 
+			<title>Local Storage</title>
+			<emphasis>Local Storage</emphasis> service manages local data storage details for Apps. Depending on the platform in question it uses 
 			the corresponding storage facilities. It is designed to coordinate storage among the suite of Apps/Moblets installed on the device.
 			It provides thread-safe concurrent access to the Apps. Just like the Network service, its a low-level service used by the 
 			<emphasis>Mobile Data Framework</emphasis> components.
-		</sect2>
-		<sect2>
-			<title>Inter-App Bus</title>
-			<emphasis>Inter-App Bus</emphasis> service provides low-level coordination/communication between the suite of Apps/Moblets
-			installed on the device.
 		</sect2>
 	</sect1>
 	<sect1>

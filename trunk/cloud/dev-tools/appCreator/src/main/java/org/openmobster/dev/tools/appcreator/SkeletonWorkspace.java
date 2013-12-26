@@ -82,7 +82,7 @@ public final class SkeletonWorkspace
 			
 		}
 		
-		//this.generateProject(supportedPlatforms,projectDir, userValues);
+		this.generateProject(supportedPlatforms,projectDir, userValues);
 		this.generateAndroidOsApp(new File(projectDir,"app-android"), userValues);
 		
 		return projectDir;
@@ -90,7 +90,7 @@ public final class SkeletonWorkspace
 	
 	private void generateProject(List<String> supportedPlatforms,File directory,Map<String, String> userValues) throws Exception
 	{
-		String parentPom = this.readTemplateResource("/skeleton/pom.xml");
+		/*String parentPom = this.readTemplateResource("/skeleton/pom.xml");
 		
 		parentPom = parentPom.replaceAll("<appCreator.project.name>", 
 		userValues.get("appCreator.project.name"));
@@ -132,7 +132,7 @@ public final class SkeletonWorkspace
 		
 		//.classpath for Eclipse 
 		this.generateFile(new File(directory, ".classpath"), 
-		this.readTemplateResource("/skeleton/.classpath"));
+		this.readTemplateResource("/skeleton/.classpath"));*/
 		
 		//README.txt file to help developer
 		this.generateFile(new File(directory, "README.txt"), 

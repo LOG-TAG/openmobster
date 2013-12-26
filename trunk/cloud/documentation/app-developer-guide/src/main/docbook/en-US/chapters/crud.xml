@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="crud">
+	<chapterinfo>
+		<author>
+			<firstname>openmobster</firstname>
+			<surname>at gmail.com</surname>
+			<email>openmobster@gmail.com</email>
+		</author>
+	</chapterinfo>
+	<title>Get Started: CRUD App in Action</title>
+	<sect1>
+		<para>
+			In the spirit of confidence building when using a new technology,
+			lets start with seeing a sample app in action. We will
+			call it the
+			<emphasis role='bold'>CRUD</emphasis> (Create/Read/Update/Delete) App.
+		</para>
+		<sect2>
+			<title>System Requirements</title>
+			<sect3>
+				<title>Cloud Server</title>
+				<para>
+					<itemizedlist>
+						<listitem>Java SE JDK v6.0</listitem>
+					</itemizedlist>
+				</para>
+			</sect3>
+			<sect3>
+				<title>Android Device</title>
+				<para>
+					<itemizedlist>
+						<listitem>API Level 11 and higher</listitem>
+					</itemizedlist>
+				</para>
+			</sect3>
+		</sect2>
+	</sect1>
+	
+</chapter>
