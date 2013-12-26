@@ -243,10 +243,10 @@ public class AppCreator
 		testRes.mkdirs();
 
 		//Create the moblet tree
-		File moblet = new File(projectDir, "moblet/src/assemble");
+		/*File moblet = new File(projectDir, "moblet/src/assemble");
 		File moblet_res = new File(projectDir, "moblet/src/main/resources/META-INF");
 		moblet.mkdirs();
-		moblet_res.mkdirs();
+		moblet_res.mkdirs();*/
 		
 		//Create the app-android tree
 		if(supportedPlatforms.contains("android"))
@@ -281,7 +281,7 @@ public class AppCreator
 		
 		//Copy project-level files
 		
-		this.generateProject(supportedPlatforms,projectDir, userValues);
+		//this.generateProject(supportedPlatforms,projectDir, userValues);
 		
 		if(supportedPlatforms.contains("blackberry"))
 		{
@@ -289,7 +289,7 @@ public class AppCreator
 		}
 		
 		this.generateCloudApp(new File(projectDir, "cloud"), userValues);
-		this.generateMoblet(supportedPlatforms,new File(projectDir, "moblet"), userValues);
+		//this.generateMoblet(supportedPlatforms,new File(projectDir, "moblet"), userValues);
 		
 		if(supportedPlatforms.contains("android"))
 		{
@@ -311,7 +311,7 @@ public class AppCreator
 	
 	private String generateProjectModules(List<String> supportedPlatforms) throws Exception
 	{
-		if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
+		/*if(supportedPlatforms.contains("android") && supportedPlatforms.contains("blackberry"))
 		{
 			return this.readTemplateResource("/template/modules.all.xml");
 		}
@@ -324,7 +324,8 @@ public class AppCreator
 			return this.readTemplateResource("/template/modules.blackberry.xml");
 		}
 		
-		return null;
+		return null;*/
+		return "";
 	}
 	
 	private String generateSystemDependencies(List<String> supportedPlatforms) throws Exception
@@ -622,8 +623,10 @@ public class AppCreator
 		this.readTemplateBinaryResource("/template/app-android/libs/device-sdk-2.4-SNAPSHOT-full.jar"));
 		
 		//openmobster-app.xml
+		String openmobsterAppXml = this.readTemplateResource("/template/app-android/src/main/resources/openmobster-app.xml");
+		openmobsterAppXml = openmobsterAppXml.replaceAll("<appCreator.android.main.groupId>", userValues.get("appCreator.android.main.groupId"));
 		this.generateFile(new File(new File(directory,"src"), "openmobster-app.xml"),
-		this.readTemplateResource("/template/app-android/src/main/resources/openmobster-app.xml"));
+		openmobsterAppXml);
 		
 		//Android Manifest
 		String androidManifest = this.readTemplateResource("/template/app-android/AndroidManifest.xml");
@@ -768,6 +771,10 @@ public class AppCreator
 		
 		pom = pom.replaceAll("<appCreator.cloud.app.artifactId>", 
 				userValues.get("appCreator.cloud.app.artifactId"));
+		
+		String propertyXml = this.generateProjectProperties(userValues);
+		pom = pom.replaceAll("<appCreator.properties>", 
+		propertyXml);
 	
 		File pomFile = new File(directory, "pom.xml");
 		this.generateFile(pomFile, pom);

@@ -82,7 +82,7 @@ public final class SkeletonWorkspace
 			
 		}
 		
-		this.generateProject(supportedPlatforms,projectDir, userValues);
+		//this.generateProject(supportedPlatforms,projectDir, userValues);
 		this.generateAndroidOsApp(new File(projectDir,"app-android"), userValues);
 		
 		return projectDir;
@@ -262,6 +262,10 @@ public final class SkeletonWorkspace
 		
 		pom = pom.replaceAll("<appCreator.cloud.app.artifactId>", 
 				userValues.get("appCreator.cloud.app.artifactId"));
+		
+		String propertyXml = this.generateProjectProperties(userValues);
+		pom = pom.replaceAll("<appCreator.properties>", 
+		propertyXml);
 	
 		File pomFile = new File(directory, "pom.xml");
 		this.generateFile(pomFile, pom);
