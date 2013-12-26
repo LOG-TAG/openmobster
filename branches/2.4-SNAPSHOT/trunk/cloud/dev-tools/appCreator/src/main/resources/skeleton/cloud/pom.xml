@@ -1,18 +1,13 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
-	
-	<!-- User Provided -->
-	<parent>
-		<groupId><appCreator.project.groupId></groupId>
-		<artifactId><appCreator.project.artifactId></artifactId>
-		<version><appCreator.project.version></version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
 
 	<groupId><appCreator.cloud.app.groupId></groupId>
 	<name><appCreator.cloud.app.name></name>
 	<artifactId><appCreator.cloud.app.artifactId></artifactId>
+	<version><appCreator.project.version></version>
 	<packaging>jar</packaging>
+	<appCreator.properties>
+	
 
 	<dependencies>
 		<!--
@@ -21,6 +16,7 @@
 		<dependency>
 			<groupId>org.openmobster.core</groupId>
 			<artifactId>cloud-sdk</artifactId>
+			<version>${openmobster.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -28,6 +24,7 @@
 			</groupId>
 			<artifactId>dev-cloudServer
 				</artifactId>
+			<version>${openmobster.version}</version>
 		</dependency>
 
 		<dependency>
@@ -35,6 +32,7 @@
 			<artifactId>device-agent-simulator
 				</artifactId>
 			<scope>test</scope>
+			<version>${openmobster.version}</version>
 		</dependency>
 		
 		<!--
@@ -51,8 +49,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>
