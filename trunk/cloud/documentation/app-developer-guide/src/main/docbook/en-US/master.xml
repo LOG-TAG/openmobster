@@ -17,7 +17,8 @@
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/concepts.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/architecture.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/crud.xml"/> 
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/crudcode.xml"/> 
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/crudcode.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/appcreator.xml"/> 
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilebean.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/push.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/ios_openmobster.xml"/>
