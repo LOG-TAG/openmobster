@@ -1,0 +1,32 @@
+#summary OpenMobster, Mobile Backend as a Service Platform
+
+----
+
+==System Requirements==
+
+  * Java SE JDK v6.0
+
+  * Apache Maven 3.0.4
+
+  * Android SDK
+
+  * OS can be Mac OSX, Windows, or Linux. (Tested on Mac OSX, and Linux)
+
+----
+
+== Enviroment Variables Setup ==
+
+{{{
+ANDROID_HOME=[Directory where Android SDK is installed]
+
+//Append this value to the PATH variable
+[Directory where Android SDK is installed]/platform-tools
+}}}
+
+----
+
+==Download==
+
+Latest [http://code.google.com/p/openmobster/downloads/list Download]
+
+----
