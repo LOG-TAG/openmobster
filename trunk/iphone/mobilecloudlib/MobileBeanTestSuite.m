@@ -14,7 +14,7 @@
 -(void) testAll 
 {
 	Bootstrapper *bootstrap = [Bootstrapper withInit];
-	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.108"];
+	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
 	
 	//Prepare the TestContext
 	TestContext *context = suite.context;

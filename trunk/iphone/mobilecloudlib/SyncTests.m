@@ -14,7 +14,7 @@
 -(void)testAllSyncTypes 
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.108"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;
@@ -60,7 +60,7 @@
 -(void)testBootSync 
 {
     Bootstrapper *bootstrap = [Bootstrapper withInit];
-	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.107"];
+	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
 	
 	//Prepare the TestContext
 	TestContext *context = suite.context;
@@ -78,7 +78,7 @@
 -(void)testTwoWaySync 
 {
     Bootstrapper *bootstrap = [Bootstrapper withInit];
-	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.101"];
+	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
 	
 	//Prepare the TestContext
 	TestContext *context = suite.context;
@@ -96,7 +96,7 @@
 -(void)testOneWayClientSync 
 {
     Bootstrapper *bootstrap = [Bootstrapper withInit];
-	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.107"];
+	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
 	
 	//Prepare the TestContext
 	TestContext *context = suite.context;
@@ -114,7 +114,7 @@
 -(void)testOneWayServerSync 
 {
     Bootstrapper *bootstrap = [Bootstrapper withInit];
-	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.107"];
+	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
 	
 	//Prepare the TestContext
 	TestContext *context = suite.context;
@@ -132,7 +132,7 @@
 -(void)testSlowSync 
 {
     Bootstrapper *bootstrap = [Bootstrapper withInit];
-	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.107"];
+	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
 	
 	//Prepare the TestContext
 	TestContext *context = suite.context;
@@ -150,7 +150,7 @@
 -(void)testStreamSync 
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.108"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;
