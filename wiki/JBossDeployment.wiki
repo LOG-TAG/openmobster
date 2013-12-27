@@ -1,3 +1,0 @@
-#summary JBoss Deployment Instructions
-
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/installation-gadget.xml" width="1640" height="2440"/>
