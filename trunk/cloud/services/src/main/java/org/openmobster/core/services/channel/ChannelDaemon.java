@@ -126,12 +126,26 @@ public final class ChannelDaemon implements EventListener,ClusterListener
 		if(device != null)
 		{
 			log.debug("***************************************************************");
-			log.debug("Invalidating the device cache: "+this.channelRegistration.getUri());
+			log.debug("Updating the device cache with a new device: "+this.channelRegistration.getUri());
 			log.debug("***************************************************************");
 			
 			//add this device to the cache
 			device = this.deviceController.read(device.getIdentifier());
 			this.allDevices.add(device);
+		}
+		else
+		{
+			//Check for a device-cache-invalidation event
+			Boolean invalidateDeviceCache = (Boolean)event.getAttribute("invalidate-device-cache");
+			if(invalidateDeviceCache != null)
+			{
+				//A device cache invalidation event received
+				log.debug("***************************************************************");
+				log.debug("Invalidating the device cache: "+this.channelRegistration.getUri());
+				log.debug("***************************************************************");
+		
+				this.loadDevices();
+			}
 		}
 	}
 	
