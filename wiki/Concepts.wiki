@@ -1,7 +1,0 @@
-#summary Programming Concepts
-
-*Related Links*: [GetStarted Get Started], [Architecture Architecture]
-
-<wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/wikigadgets/concepts-gadget.xml" width="1640" height="2200"/>
-
-*Related Links*: [GetStarted Get Started], [Architecture Architecture]
