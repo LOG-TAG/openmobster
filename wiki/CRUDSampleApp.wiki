@@ -3,3 +3,40 @@
 == Introduction ==
 In the spirit of confidence building when using a new technology, lets start with seeing a sample app in action. We will call it the CRUD (Create/Read/Update/Delete) App.
 
+----
+==System Requirements ==
+
+====Cloud Server====
+
+  * Java SE JDK v6.0
+  * JBoss AS version 5.1.0.GA
+
+
+====Android Device====
+
+  * API Level 11 and higher
+  * 2 Devices
+----
+
+== Installation ==
+
+==== Download OpenMobster====
+
+  * Download [https://code.google.com/p/openmobster/downloads/list OpenMobster Binary Distribution]
+  * Unzip the distribution
+  * Check the Cloud Server is found under *cloudServer/hsqldb* and *cloudServer/mysql5*
+  * Check that the CRUD Sample App is found under: *Samples/CRUD.apk*
+
+====Install Cloud Server ====
+
+  * *Step 1:* Download and install JBoss-5.1.0.GA from [http://www.jboss.org/jbossas/downloads/ here]
+  * *Step 2:* Copy *cloudServer/hsqdb/openmobster* to the JBoss AS server directory. *cloudServer/hsqldb/openmobster* is a pre-configured/optimized instance for the OpenMobster Cloud Server
+  * *Step 3:* Start the JBoss AS instance with the OpenMobster binary installed using: *run -c openmobster -b "a real IP address"*
+Note: A real IP address like "192.168.0.1" or something like that is needed for the mobile device to be able to connect to the server. Even in the case of a simulation environment, the device's browser does not connect to a loopback address like "localhost" or "127.0.0.1"
+  * *Step 5:* Verify the Cloud Server installation by typing in: http://{cloudserverIp}/o
+
+====Install CRUD App on 2 devices====
+
+  * *Step 1:* Locate the CRUD App in the OpenMobster distribution under: *Samples/CRUD.apk*
+  * *Step 2:* Install the CRUD App on the device connected to your computer using: *adb install -r CRUD.apk*
+  * *Step 3:* Repeat Step 2 on the other device as well
