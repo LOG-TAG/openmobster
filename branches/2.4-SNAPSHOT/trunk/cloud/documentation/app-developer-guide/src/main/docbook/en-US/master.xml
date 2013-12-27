@@ -17,19 +17,12 @@
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/concepts.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/architecture.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/crud.xml"/> 
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/hellomobster.xml"/> 
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/installation.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/offlineapp.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/crudcode.xml"/> 
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilebean.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/push.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/ios_openmobster.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/ios_sampleapp.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/pg_sample.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/pg_ios.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/pg_reference.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/locationapp.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobilerpc.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/clustering.xml"/>
    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/managementConsole.xml"/>
-   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapters/mobletmvc.xml"/>
 </book>
