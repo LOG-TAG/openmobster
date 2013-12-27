@@ -52,3 +52,9 @@ Eclipse Project Setup
   {{{
        mvn eclipse:eclipse
   }}}
+
+----
+
+== JBoss AS Deployment ==
+
+Once your *cloud* jar file is tested end-to-end in the Maven based Cloud Server, you must deploy the jar file into a JBoss 5.1.0.GA App Server. The deployment is quite simple. You just copy the *cloud* jar file from the *cloud/target* folder into the *JBOSS_HOME/server/openmobster/deploy* folder.
