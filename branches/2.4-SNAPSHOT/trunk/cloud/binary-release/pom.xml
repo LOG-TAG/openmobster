@@ -59,10 +59,6 @@
 											<fileset dir="${basedir}/../documentation/app-developer-guide/target/docbook/publish/en-US">
 											</fileset>
 										</copy>
-										<copy todir="target/openmobster-${project.version}/openmobster-${project.version}-android/docs/android-developer-guide/en-US" overwrite="true">
-											<fileset dir="${basedir}/../documentation/android-developer-guide/target/docbook/publish/en-US">
-											</fileset>
-										</copy>
 										
 										
 										<!--  source code -->

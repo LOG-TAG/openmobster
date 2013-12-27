@@ -16,8 +16,7 @@
    <description>OpenMobster Documentation</description>   
    
    <modules> 
-      <module>app-developer-guide</module>
-      <module>android-developer-guide</module>          
+      <module>app-developer-guide</module>          
    </modules> 
    
    <build>
