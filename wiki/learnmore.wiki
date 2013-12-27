@@ -1,17 +1,17 @@
-#summary OpenMobster - Open Source Mobile Cloud Platform - Overview
+#summary OpenMobster - Open Source Mobile Backend as a Service Platform - Overview
 
-*Related Links:* [GetStarted Get Started]
+*Related Links:* [GetStartedLatest Get Started]
 
 === Introduction ===
 *OpenMobster* is an open source platform for integrating Mobile Apps (on-device apps) with _Cloud_ services. Its goal is to provide the infrastructure for the Mobile App developer
-to productively build apps that consume information that resides in the Cloud. It provides seamless application state/data synchronization, comet-style push notifications, 
+to productively build apps that consume information that resides in the Cloud. It provides seamless application state/data synchronization, Push notifications, 
 consistent server-side API/frameworks to expose Cloud services, and consistent device-side API/frameworks to productively develop native mobile apps across multiple platforms.  
 
 ----
 
 === What services are provided by the platform? ===
 
-==== Sync Platform ====
+==== Enterprise Sync Platform ====
 
 Cloud data is made available inside an App's _local storage_. This allows the App
 to function seamlessly in both _online_ as well as _offline_ modes. The data is automatically synchronized with the Cloud service based on local state changes. These state changes are auto detected and does not require any device-side sync-related programming on the part of the developer.
@@ -21,9 +21,6 @@ to function seamlessly in both _online_ as well as _offline_ modes. The data is 
 
 App state changes are proactively pushed to an App from the Cloud server. The _Push_ mechanism uses pure network/socket based approach instead of clunky methodologies like sending sms alerts or email alerts. The Push notifications happen inside the App's execution environment. 
 
-==== Location Aware Apps ====
-
-A framework for creating Location Aware Apps. The App components are encapsulated by Location specific information. The components can then combine their business data with location data to build some compelling location apps.
 
 ==== Simple Mobile RPC (Remote Procedure Call) ====
 
@@ -33,8 +30,6 @@ Exposes your server-side coarse grained business services. These services are in
 ==== Management Console ====
 
 A _Management Console_ is provided to administrate the Cloud Server. It provides security, and account provisioning features. Over time the _Management Console_ will carry device management features like remote wipe, remote tracking, remote lock-down, etc.
-
-Please see [Architecture Platform Architecture] for more details.
 
 ----
 
@@ -54,24 +49,16 @@ The *Service Framework* is used to expose coarse grained business processes to t
 
 ==== Mobile Data Framework ====
 
-The *Mobile Data Framework* provides Cloud data-oriented services like seamless offline data synchronization, comet-style push notifications, and simple RPC (Remote Procedure Call) mechanism. 
-
-==== Mobile MVC Framework ====
-
-This is a thick client MVC (Model-View-Controller) framework. It is based on a Rich Internet Application design principle. At this point in time of evolution of the mobile space, there isn't a commonly adopted GUI development standard across various mobile platforms. This results in a lot of App porting activity across platforms. Although this framework is not designed for (Write Once, Run Anywhere) approach, it abstracts out a lot of the UI Framework plumbing that would otherwise need to be written, ported and maintained by the developer. The framework abstracts out some of the low level services into the container such as App bootstrapping, screen navigation, graceful error handling, and internationalization.
-
-Please see [Concepts Programming Concepts] for more details.
+The *Mobile Data Framework* provides Cloud data-oriented services like seamless offline data synchronization, Push notifications, and simple RPC (Remote Procedure Call) mechanism. 
 
 ----
 
 === What mobile platforms are supported? ===
 
-The project is evolving at a rapid pace. The platform supports Android (version 2.0 and above), and iPhone. 
+The project is evolving at a rapid pace. The platform supports Android (API Level 11 and above), and iOS (version 5 and higher)
 More details can be found on our [roadmap project roadmap].
 
 ----
 
 === Ready to write your first Mobile Cloud App? ===
 [http://code.google.com/p/openmobster/downloads/list Download] the latest stable release.
-
-*Related Links:* [GetStarted Get Started]
