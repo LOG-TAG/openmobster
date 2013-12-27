@@ -1,1 +1,16 @@
 #summary AppCreator
+
+
+== Start Writing your Own App ==
+
+In your binary distribution, go to the directory *AppCreator*. Inside the directory, use a tool called the _appcreator.bat_ (Windows), _appcreator.sh_ (Linux and Mac) to generate a skeleton project.
+
+{{{
+appcreator.bat
+}}}
+
+This will generate a skeleton for the Mobile App. Each generated project has the following modules:
+
+  * *cloud:* Contains the src for the Cloud-side components. Java code is located under *src/main/java*, and configuration is located under *src/main/resources*.
+
+  * *app-android:* Contains the src for the Android App. Java code is located under *src*, Configuration is located under *src/openmobster-app.xml*. Besides the OpenMobster component setup, the Android SDK specific setup is located under *AndroidManifest.xml*. This is an Eclipse ADT project and can be smoothly imported into your Eclipse Workspace.
