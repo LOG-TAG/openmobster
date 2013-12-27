@@ -1,0 +1,177 @@
+\hypertarget{interface_change_log_entry}{
+\section{\-Change\-Log\-Entry \-Class \-Reference}
+\label{interface_change_log_entry}\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}}
+}
+
+
+{\ttfamily \#include $<$\-Change\-Log\-Entry.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_change_log_entry_a9395625a4d521e17efb8ca46669d50c1}{save\-Instance} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_a7c7d145fda130fbddf245d5de3b2b7d5}{description} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_change_log_entry_a727fd3f9e2c54e11ccb89aaa54b90a2c}{with\-Init} ()
+\item 
+\hyperlink{interface_change_log_entry}{\-Change\-Log\-Entry} $\ast$ \hyperlink{interface_change_log_entry_a76b9984ca6098087fd398687faefddc6}{get\-Instance\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$node\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$operation,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_change_log_entry_a27479d2824c718b9cfb1e403aa65c8a6}{all} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_change_log_entry_ad378791d9950baa91456636934577045}{delete\-:} (\hyperlink{interface_change_log_entry}{\-Change\-Log\-Entry} $\ast$entry)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_change_log_entry_a2dc7605fbe40f13d81d928476b58a1b7}{delete\-Entries\-:} (\-N\-S\-Array $\ast$entries)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_change_log_entry_a30c171361954d538145de4756f4351be}{delete\-All} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_acce3a7447e5dd680cf737498f6f33a5b}{node\-Id}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_acac7f186263ef0506e163b7a39c56a20}{operation}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_aaee4caa1d7dc9d8facf2babcd498fbbc}{record\-Id}
+\item 
+\hyperlink{interface_item}{\-Item} $\ast$ \hyperlink{interface_change_log_entry_a1f6df0c1b0e8520df285a0db6f65bff2}{item}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_a6c9aaabba3901d8deadaeac3b32eaa34}{temp\-Node\-Id}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_ad66e615443cd07dbe88b2d6e56d63258}{temp\-Operation}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_change_log_entry_a6f640615260a2047d74e4c35e005a5c8}{temp\-Record\-Id}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_change_log_entry_a27479d2824c718b9cfb1e403aa65c8a6}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!all@{all}}
+\index{all@{all}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{all}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Change\-Log\-Entry\-::all (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_change_log_entry_a27479d2824c718b9cfb1e403aa65c8a6}
+\hypertarget{interface_change_log_entry_ad378791d9950baa91456636934577045}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!delete\-:@{delete\-:}}
+\index{delete\-:@{delete\-:}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{delete\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Change\-Log\-Entry\-::delete\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Change\-Log\-Entry} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_change_log_entry_ad378791d9950baa91456636934577045}
+\hypertarget{interface_change_log_entry_a30c171361954d538145de4756f4351be}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!delete\-All@{delete\-All}}
+\index{delete\-All@{delete\-All}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{delete\-All}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Change\-Log\-Entry\-::delete\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_change_log_entry_a30c171361954d538145de4756f4351be}
+\hypertarget{interface_change_log_entry_a2dc7605fbe40f13d81d928476b58a1b7}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!delete\-Entries\-:@{delete\-Entries\-:}}
+\index{delete\-Entries\-:@{delete\-Entries\-:}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{delete\-Entries\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Change\-Log\-Entry\-::delete\-Entries\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Array $\ast$}]{entries}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_change_log_entry_a2dc7605fbe40f13d81d928476b58a1b7}
+\hypertarget{interface_change_log_entry_a7c7d145fda130fbddf245d5de3b2b7d5}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!description@{description}}
+\index{description@{description}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{description}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Change\-Log\-Entry\-::description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_change_log_entry_a7c7d145fda130fbddf245d5de3b2b7d5}
+\hypertarget{interface_change_log_entry_a76b9984ca6098087fd398687faefddc6}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!get\-Instance\-:::@{get\-Instance\-:::}}
+\index{get\-Instance\-:::@{get\-Instance\-:::}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{get\-Instance\-:::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Change\-Log\-Entry} $\ast$ \-Change\-Log\-Entry\-::get\-Instance\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{node\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{operation, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{record\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_change_log_entry_a76b9984ca6098087fd398687faefddc6}
+\hypertarget{interface_change_log_entry_a9395625a4d521e17efb8ca46669d50c1}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!save\-Instance@{save\-Instance}}
+\index{save\-Instance@{save\-Instance}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{save\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Change\-Log\-Entry\-::save\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_change_log_entry_a9395625a4d521e17efb8ca46669d50c1}
+\hypertarget{interface_change_log_entry_a727fd3f9e2c54e11ccb89aaa54b90a2c}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Change\-Log\-Entry\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_change_log_entry_a727fd3f9e2c54e11ccb89aaa54b90a2c}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_change_log_entry_a1f6df0c1b0e8520df285a0db6f65bff2}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!item@{item}}
+\index{item@{item}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Item} $\ast$ \-Change\-Log\-Entry\-::item\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_change_log_entry_a1f6df0c1b0e8520df285a0db6f65bff2}
+\hypertarget{interface_change_log_entry_acce3a7447e5dd680cf737498f6f33a5b}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!node\-Id@{node\-Id}}
+\index{node\-Id@{node\-Id}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{node\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Change\-Log\-Entry\-::node\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_change_log_entry_acce3a7447e5dd680cf737498f6f33a5b}
+\hypertarget{interface_change_log_entry_acac7f186263ef0506e163b7a39c56a20}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!operation@{operation}}
+\index{operation@{operation}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{operation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Change\-Log\-Entry\-::operation\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_change_log_entry_acac7f186263ef0506e163b7a39c56a20}
+\hypertarget{interface_change_log_entry_aaee4caa1d7dc9d8facf2babcd498fbbc}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!record\-Id@{record\-Id}}
+\index{record\-Id@{record\-Id}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{record\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Change\-Log\-Entry\-::record\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_change_log_entry_aaee4caa1d7dc9d8facf2babcd498fbbc}
+\hypertarget{interface_change_log_entry_a6c9aaabba3901d8deadaeac3b32eaa34}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!temp\-Node\-Id@{temp\-Node\-Id}}
+\index{temp\-Node\-Id@{temp\-Node\-Id}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{temp\-Node\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Change\-Log\-Entry\-::temp\-Node\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_change_log_entry_a6c9aaabba3901d8deadaeac3b32eaa34}
+\hypertarget{interface_change_log_entry_ad66e615443cd07dbe88b2d6e56d63258}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!temp\-Operation@{temp\-Operation}}
+\index{temp\-Operation@{temp\-Operation}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{temp\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Change\-Log\-Entry\-::temp\-Operation\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_change_log_entry_ad66e615443cd07dbe88b2d6e56d63258}
+\hypertarget{interface_change_log_entry_a6f640615260a2047d74e4c35e005a5c8}{
+\index{\-Change\-Log\-Entry@{\-Change\-Log\-Entry}!temp\-Record\-Id@{temp\-Record\-Id}}
+\index{temp\-Record\-Id@{temp\-Record\-Id}!ChangeLogEntry@{\-Change\-Log\-Entry}}
+\subsubsection[{temp\-Record\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Change\-Log\-Entry\-::temp\-Record\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_change_log_entry_a6f640615260a2047d74e4c35e005a5c8}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_change_log_entry_8h}{\-Change\-Log\-Entry.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_change_log_entry_8m}{\-Change\-Log\-Entry.\-m}\end{DoxyCompactItemize}

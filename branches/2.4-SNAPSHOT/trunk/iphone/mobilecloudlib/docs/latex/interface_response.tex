@@ -1,0 +1,257 @@
+\hypertarget{interface_response}{
+\section{\-Response \-Class \-Reference}
+\label{interface_response}\index{\-Response@{\-Response}}
+}
+
+
+{\ttfamily \#include $<$\-Response.\-h$>$}
+
+\-Inheritance diagram for \-Response\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_response}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_response_a9890a2f471885d62a31e6372b81fc37f}{set\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$value)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_response_ae44af1331d621bc51f6357abb1ea2be6}{get\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_response_af3e5d6eea119a75d78e51ebd6a4108d7}{get\-Names} ()
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_response_ae1a591f26856392400f7f1e54871cc2c}{get\-Values} ()
+\item 
+void \hyperlink{interface_response_a124952fcaeb24a4bcd64b09f4565676a}{remove\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+void \hyperlink{interface_response_a6fbc71653294356c5695845659dd07e9}{set\-List\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \-N\-S\-Array $\ast$list)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_response_a5e02762120601f571e5dc045ba9b76c3}{get\-List\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_response_a63c6f112b03ef7f9ef3877e7589e847e}{get\-Status\-Code} ()
+\item 
+void \hyperlink{interface_response_aab6f0cd88485533738c69e814ba1604f}{set\-Status\-Code\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$status\-Code)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_response_a804fe331490212fdd70e04d3e340282b}{get\-Status\-Msg} ()
+\item 
+void \hyperlink{interface_response_aec33ce853e7d84ef9996fe86f02fa0da}{set\-Status\-Msg\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$status\-Msg)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_response_a01cf61daa4f9129750ddee661717884f}{with\-Init} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html} \-Represents a \hyperlink{interface_response}{\-Response} sent back by an invocation of the server side \-Mobile \hyperlink{interface_service}{\-Service} \-Bean component
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}
+\end{DoxyAuthor}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_response_ae44af1331d621bc51f6357abb1ea2be6}{
+\index{\-Response@{\-Response}!get\-Attribute\-:@{get\-Attribute\-:}}
+\index{get\-Attribute\-:@{get\-Attribute\-:}!Response@{\-Response}}
+\subsubsection[{get\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Response\-::get\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_ae44af1331d621bc51f6357abb1ea2be6}
+\-Gets an arbitrary attribute value from the service response
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+value of the attribute 
+\end{DoxyReturn}
+\hypertarget{interface_response_a5e02762120601f571e5dc045ba9b76c3}{
+\index{\-Response@{\-Response}!get\-List\-Attribute\-:@{get\-List\-Attribute\-:}}
+\index{get\-List\-Attribute\-:@{get\-List\-Attribute\-:}!Response@{\-Response}}
+\subsubsection[{get\-List\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Response\-::get\-List\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_a5e02762120601f571e5dc045ba9b76c3}
+\-Gets a related \char`\"{}list\char`\"{} of data representing the contextual data associated with this particular service request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the list attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the list associated with this attribute 
+\end{DoxyReturn}
+\hypertarget{interface_response_af3e5d6eea119a75d78e51ebd6a4108d7}{
+\index{\-Response@{\-Response}!get\-Names@{get\-Names}}
+\index{get\-Names@{get\-Names}!Response@{\-Response}}
+\subsubsection[{get\-Names}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Response\-::get\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_af3e5d6eea119a75d78e51ebd6a4108d7}
+\-Gets all the names that identify values of attributes in the service response
+
+\begin{DoxyReturn}{\-Returns}
+all the attribute names of the response 
+\end{DoxyReturn}
+\hypertarget{interface_response_a63c6f112b03ef7f9ef3877e7589e847e}{
+\index{\-Response@{\-Response}!get\-Status\-Code@{get\-Status\-Code}}
+\index{get\-Status\-Code@{get\-Status\-Code}!Response@{\-Response}}
+\subsubsection[{get\-Status\-Code}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Response\-::get\-Status\-Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_a63c6f112b03ef7f9ef3877e7589e847e}
+\-Gets the status code of the response
+
+\begin{DoxyReturn}{\-Returns}
+the status code 
+\end{DoxyReturn}
+\hypertarget{interface_response_a804fe331490212fdd70e04d3e340282b}{
+\index{\-Response@{\-Response}!get\-Status\-Msg@{get\-Status\-Msg}}
+\index{get\-Status\-Msg@{get\-Status\-Msg}!Response@{\-Response}}
+\subsubsection[{get\-Status\-Msg}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Response\-::get\-Status\-Msg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_a804fe331490212fdd70e04d3e340282b}
+\-Get the status message set on the response
+
+\begin{DoxyReturn}{\-Returns}
+the status message 
+\end{DoxyReturn}
+\hypertarget{interface_response_ae1a591f26856392400f7f1e54871cc2c}{
+\index{\-Response@{\-Response}!get\-Values@{get\-Values}}
+\index{get\-Values@{get\-Values}!Response@{\-Response}}
+\subsubsection[{get\-Values}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Response\-::get\-Values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_ae1a591f26856392400f7f1e54871cc2c}
+\-Gets all the values of attributes in the service response
+
+\begin{DoxyReturn}{\-Returns}
+all the values of attributes 
+\end{DoxyReturn}
+\hypertarget{interface_response_a124952fcaeb24a4bcd64b09f4565676a}{
+\index{\-Response@{\-Response}!remove\-Attribute\-:@{remove\-Attribute\-:}}
+\index{remove\-Attribute\-:@{remove\-Attribute\-:}!Response@{\-Response}}
+\subsubsection[{remove\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Response\-::remove\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_a124952fcaeb24a4bcd64b09f4565676a}
+\-Removes an attribute associated with the service response
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute to be removed \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_response_a9890a2f471885d62a31e6372b81fc37f}{
+\index{\-Response@{\-Response}!set\-Attribute\-::@{set\-Attribute\-::}}
+\index{set\-Attribute\-::@{set\-Attribute\-::}!Response@{\-Response}}
+\subsubsection[{set\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Response\-::set\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_a9890a2f471885d62a31e6372b81fc37f}
+\-Sets arbitrary attributes representing the contextual data associated with this particular service response
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute \\
+\hline
+{\em value} & value of the attribute \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_response_a6fbc71653294356c5695845659dd07e9}{
+\index{\-Response@{\-Response}!set\-List\-Attribute\-::@{set\-List\-Attribute\-::}}
+\index{set\-List\-Attribute\-::@{set\-List\-Attribute\-::}!Response@{\-Response}}
+\subsubsection[{set\-List\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Response\-::set\-List\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} \-N\-S\-Array $\ast$}]{list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_a6fbc71653294356c5695845659dd07e9}
+\-Sets related \char`\"{}list\char`\"{} of data representing the contextual data associated with this particular service request
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & name of the attribute \\
+\hline
+{\em list} & list to be set as value \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_response_aab6f0cd88485533738c69e814ba1604f}{
+\index{\-Response@{\-Response}!set\-Status\-Code\-:@{set\-Status\-Code\-:}}
+\index{set\-Status\-Code\-:@{set\-Status\-Code\-:}!Response@{\-Response}}
+\subsubsection[{set\-Status\-Code\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Response\-::set\-Status\-Code\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{status\-Code}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_aab6f0cd88485533738c69e814ba1604f}
+\-Sets the status code of the response
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em status\-Code} & the status code \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_response_aec33ce853e7d84ef9996fe86f02fa0da}{
+\index{\-Response@{\-Response}!set\-Status\-Msg\-:@{set\-Status\-Msg\-:}}
+\index{set\-Status\-Msg\-:@{set\-Status\-Msg\-:}!Response@{\-Response}}
+\subsubsection[{set\-Status\-Msg\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Response\-::set\-Status\-Msg\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{status\-Msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_response_aec33ce853e7d84ef9996fe86f02fa0da}
+\-Sets the status message of the response
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em status\-Msg} & the status message \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_response_a01cf61daa4f9129750ddee661717884f}{
+\index{\-Response@{\-Response}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!Response@{\-Response}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Response\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_response_a01cf61daa4f9129750ddee661717884f}
+\-Creates an instance of the \hyperlink{interface_response}{\-Response} 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_response_8h}{\-Response.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_response_8m}{\-Response.\-m}\end{DoxyCompactItemize}

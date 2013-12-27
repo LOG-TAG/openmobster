@@ -1,0 +1,196 @@
+\hypertarget{interface_mobile_bean_cursor}{
+\section{\-Mobile\-Bean\-Cursor \-Class \-Reference}
+\label{interface_mobile_bean_cursor}\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}}
+}
+
+
+{\ttfamily \#include $<$\-Mobile\-Bean\-Cursor.\-h$>$}
+
+\-Inheritance diagram for \-Mobile\-Bean\-Cursor\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_mobile_bean_cursor}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{interface_mobile_bean_cursor_a9783023b782efa5e966b04e74ff264d0}{count} ()
+\item 
+\hyperlink{interface_mobile_bean}{\-Mobile\-Bean} $\ast$ \hyperlink{interface_mobile_bean_cursor_aaa6fce80414c8811140613b436b5c856}{bean\-At\-Index\-:} (int index)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_cursor_a7b4f5eda9d1d51af1afd8fb86f9b2698}{all} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_mobile_bean_cursor}{\-Mobile\-Bean\-Cursor} $\ast$ \hyperlink{interface_mobile_bean_cursor_a43107ebeaa16a92f24bf0052487b1272}{with\-Init\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-N\-S\-Fetched\-Results\-Controller $\ast$cursor)
+\item 
+\hyperlink{interface_mobile_bean_cursor}{\-Mobile\-Bean\-Cursor} $\ast$ \hyperlink{interface_mobile_bean_cursor_aab6cf942b25387e564c2eacfc001f3cf}{sort\-By\-Property\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$property,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L ascending)
+\item 
+\hyperlink{interface_mobile_bean_cursor}{\-Mobile\-Bean\-Cursor} $\ast$ \hyperlink{interface_mobile_bean_cursor_abce262ad65c0f4ba2a1cb4a17b6d69f5}{query\-By\-Property\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$property,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$value)
+\item 
+\hyperlink{interface_mobile_bean_cursor}{\-Mobile\-Bean\-Cursor} $\ast$ \hyperlink{interface_mobile_bean_cursor_ae454a3d5744b51e344ddd2f5da6deae7}{search\-By\-Match\-All\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\hyperlink{interface_mobile_bean_cursor}{\-Mobile\-Bean\-Cursor} $\ast$ \hyperlink{interface_mobile_bean_cursor_a5ba5e2857b1db075172f89558ff67eb9}{search\-By\-Match\-Atleast\-One\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_bean_cursor_ad75afcd00b815239375451381137afc1}{cursor}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_mobile_bean_cursor_a692379f0fc80b2ebad054c538e5d7159}{channel}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_mobile_bean_cursor_a7b4f5eda9d1d51af1afd8fb86f9b2698}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!all@{all}}
+\index{all@{all}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{all}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-Cursor\-::all (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_a7b4f5eda9d1d51af1afd8fb86f9b2698}
+\hypertarget{interface_mobile_bean_cursor_aaa6fce80414c8811140613b436b5c856}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!bean\-At\-Index\-:@{bean\-At\-Index\-:}}
+\index{bean\-At\-Index\-:@{bean\-At\-Index\-:}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{bean\-At\-Index\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean} $\ast$ \-Mobile\-Bean\-Cursor\-::bean\-At\-Index\-: (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_aaa6fce80414c8811140613b436b5c856}
+\hypertarget{interface_mobile_bean_cursor_a9783023b782efa5e966b04e74ff264d0}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!count@{count}}
+\index{count@{count}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int \-Mobile\-Bean\-Cursor\-::count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_a9783023b782efa5e966b04e74ff264d0}
+\hypertarget{interface_mobile_bean_cursor_abce262ad65c0f4ba2a1cb4a17b6d69f5}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!query\-By\-Property\-:::@{query\-By\-Property\-:::}}
+\index{query\-By\-Property\-:::@{query\-By\-Property\-:::}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{query\-By\-Property\-:::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean\-Cursor} $\ast$ \-Mobile\-Bean\-Cursor\-::query\-By\-Property\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{property, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_abce262ad65c0f4ba2a1cb4a17b6d69f5}
+\hyperlink{interface_query}{\-Query} the channel by the value of the specified bean property
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \\
+\hline
+{\em property} & \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_cursor_ae454a3d5744b51e344ddd2f5da6deae7}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!search\-By\-Match\-All\-::@{search\-By\-Match\-All\-::}}
+\index{search\-By\-Match\-All\-::@{search\-By\-Match\-All\-::}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{search\-By\-Match\-All\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean\-Cursor} $\ast$ \-Mobile\-Bean\-Cursor\-::search\-By\-Match\-All\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_ae454a3d5744b51e344ddd2f5da6deae7}
+\-Search beans by criteria made up of name/value pairs to be matched against \-The query uses the '\-A\-N\-D' expression between each name/value pair to make sure the criteria is fully matched
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \\
+\hline
+{\em criteria} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_cursor_a5ba5e2857b1db075172f89558ff67eb9}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!search\-By\-Match\-Atleast\-One\-::@{search\-By\-Match\-Atleast\-One\-::}}
+\index{search\-By\-Match\-Atleast\-One\-::@{search\-By\-Match\-Atleast\-One\-::}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{search\-By\-Match\-Atleast\-One\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean\-Cursor} $\ast$ \-Mobile\-Bean\-Cursor\-::search\-By\-Match\-Atleast\-One\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_a5ba5e2857b1db075172f89558ff67eb9}
+\-Search beans by criteria made up of name/value pairs to be matched against \-The query uses the '\-O\-R' expression between each name/value pair to make sure atleast one name/value pair from the criteria is matched
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \\
+\hline
+{\em criteria} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_cursor_aab6cf942b25387e564c2eacfc001f3cf}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!sort\-By\-Property\-:::@{sort\-By\-Property\-:::}}
+\index{sort\-By\-Property\-:::@{sort\-By\-Property\-:::}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{sort\-By\-Property\-:::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean\-Cursor} $\ast$ \-Mobile\-Bean\-Cursor\-::sort\-By\-Property\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{property, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{ascending}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_aab6cf942b25387e564c2eacfc001f3cf}
+\hyperlink{interface_query}{\-Query} the channel such the results are sorted by the value of the specified property of the bean
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \\
+\hline
+{\em property} & \\
+\hline
+{\em ascending} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_cursor_a43107ebeaa16a92f24bf0052487b1272}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!with\-Init\-::@{with\-Init\-::}}
+\index{with\-Init\-::@{with\-Init\-::}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{with\-Init\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean\-Cursor} $\ast$ \-Mobile\-Bean\-Cursor\-::with\-Init\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-N\-S\-Fetched\-Results\-Controller $\ast$}]{cursor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_cursor_a43107ebeaa16a92f24bf0052487b1272}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_mobile_bean_cursor_a692379f0fc80b2ebad054c538e5d7159}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!channel@{channel}}
+\index{channel@{channel}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{channel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Mobile\-Bean\-Cursor\-::channel\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_mobile_bean_cursor_a692379f0fc80b2ebad054c538e5d7159}
+\hypertarget{interface_mobile_bean_cursor_ad75afcd00b815239375451381137afc1}{
+\index{\-Mobile\-Bean\-Cursor@{\-Mobile\-Bean\-Cursor}!cursor@{cursor}}
+\index{cursor@{cursor}!MobileBeanCursor@{\-Mobile\-Bean\-Cursor}}
+\subsubsection[{cursor}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Bean\-Cursor\-::cursor\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_mobile_bean_cursor_ad75afcd00b815239375451381137afc1}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_mobile_bean_cursor_8h}{\-Mobile\-Bean\-Cursor.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_mobile_bean_cursor_8m}{\-Mobile\-Bean\-Cursor.\-m}\end{DoxyCompactItemize}

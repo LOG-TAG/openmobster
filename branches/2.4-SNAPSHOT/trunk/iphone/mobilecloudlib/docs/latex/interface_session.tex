@@ -1,0 +1,337 @@
+\hypertarget{interface_session}{
+\section{\-Session \-Class \-Reference}
+\label{interface_session}\index{\-Session@{\-Session}}
+}
+
+
+{\ttfamily \#include $<$\-Session.\-h$>$}
+
+\-Inheritance diagram for \-Session\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_session}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_ad0d93bd00c6a7ba4c95257571886423c}{find\-Data\-Source\-:} (\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$message)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_af0cb145bf4a3db91991bb348bff540e2}{find\-Data\-Target\-:} (\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$message)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_a21da035a25ad0292ca1517acd008ec33}{find\-Data\-Source} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_a01ae9d91dde11dc0842a94a16db723cd}{find\-Data\-Target} ()
+\item 
+\hyperlink{interface_abstract_operation}{\-Abstract\-Operation} $\ast$ \hyperlink{interface_session_a46def7766c05ca82f5ff6c5aa9b55be6}{find\-Operation\-Command\-:} (\hyperlink{interface_status}{\-Status} $\ast$status)
+\item 
+\hyperlink{interface_change_log_entry}{\-Change\-Log\-Entry} $\ast$ \hyperlink{interface_session_ad174f6009629ba580d236c4d97126e71}{find\-Client\-Log\-Entry\-:} (\hyperlink{interface_status}{\-Status} $\ast$status)
+\item 
+void \hyperlink{interface_session_aaa98df920a79a516f65453f1316fe291}{set\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} id value)
+\item 
+id \hyperlink{interface_session_a6ded3ac7939359bddc5717e624af015f}{get\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+void \hyperlink{interface_session_a1493466538c27b3cb6624e5be1f9a9bf}{remove\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\hyperlink{interface_abstract_operation}{\-Abstract\-Operation} $\ast$ \hyperlink{interface_session_ac8e3971996a916c58893bd82c98e649b}{get\-Next\-Operation} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_session_a09eabaf2b36cbd3400b614fafb670b4e}{is\-Operation\-Sync\-Finished} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_session_ad052defed1527189d4af34d795e21db2}{is\-Operation\-Sync\-Active} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_session_a5bc34d4770498a53b74e455e7fcc09ba}{is\-Snapshot\-Size\-Set} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_session_a35fc96f2e86052070152638b1f4a1af1}{with\-Init} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_a6d5756ab4187b004fdf35fec171d9cd6}{session\-Id}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_ac083c319c715c0109b43548677889524}{target}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_aa5b52d84401afe540434bd1b284919dc}{source}
+\item 
+\hyperlink{interface_anchor}{\-Anchor} $\ast$ \hyperlink{interface_session_aa00ac4bd991eccfa1e7326deaeb7986b}{anchor}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_ac5daf9d3a0d566f529feeacf34783d56}{app}
+\item 
+\hyperlink{interface_sync_package}{\-Sync\-Package} $\ast$ \hyperlink{interface_session_a2e518aa45a8fa466ab2ec6ec85f3bb3c}{client\-Init\-Package}
+\item 
+\hyperlink{interface_sync_package}{\-Sync\-Package} $\ast$ \hyperlink{interface_session_a2bdb51676f7a0c30a1387410ec359d08}{server\-Init\-Package}
+\item 
+\hyperlink{interface_sync_package}{\-Sync\-Package} $\ast$ \hyperlink{interface_session_a675633bbcd3aa99bdf612afc32c11c3e}{client\-Sync\-Package}
+\item 
+\hyperlink{interface_sync_package}{\-Sync\-Package} $\ast$ \hyperlink{interface_session_abbb4409f891ca061a101a5b63e08614c}{server\-Sync\-Package}
+\item 
+\hyperlink{interface_sync_package}{\-Sync\-Package} $\ast$ \hyperlink{interface_session_abfb958d97d222447044fb08a6b2361ad}{client\-Close\-Package}
+\item 
+\hyperlink{interface_sync_package}{\-Sync\-Package} $\ast$ \hyperlink{interface_session_a421b6163f73cb82d5bfdb89bc10cdbca}{server\-Close\-Package}
+\item 
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ \hyperlink{interface_session_ae5be82b6c94b660f60d51b63a6f8354c}{current\-Message}
+\item 
+int \hyperlink{interface_session_abb209f2ab1b3091ca060c6b64b1e4295}{phase\-Code}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_session_a9659360ee94959338599cfbd6047f49b}{sync\-Type}
+\item 
+int \hyperlink{interface_session_abca6af77c0fea1ffad7112f4864d8421}{max\-Client\-Size}
+\item 
+\hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$ \hyperlink{interface_session_a13a11a06d1a740d32fdcfb1c40175678}{state}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_session_a84f69a053d96ee772bc190bc5772ddc7}{background\-Sync}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_session_a5232b2992884ad0658da406d91b78cc8}{has\-Sync\-Executed\-Once}
+\item 
+\hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$ \hyperlink{interface_session_acb8b815de9ee21d93f6844ebb4477f64}{active\-Command}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_session_a38dc8bbf3fe4bf8496f09986d969f3de}{active\-Operations}
+\item 
+int \hyperlink{interface_session_a9bf309393d95f16171d611050e5432b5}{snapshot\-Size}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_session_ad174f6009629ba580d236c4d97126e71}{
+\index{\-Session@{\-Session}!find\-Client\-Log\-Entry\-:@{find\-Client\-Log\-Entry\-:}}
+\index{find\-Client\-Log\-Entry\-:@{find\-Client\-Log\-Entry\-:}!Session@{\-Session}}
+\subsubsection[{find\-Client\-Log\-Entry\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Change\-Log\-Entry} $\ast$ \-Session\-::find\-Client\-Log\-Entry\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Status} $\ast$}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_ad174f6009629ba580d236c4d97126e71}
+\hypertarget{interface_session_a21da035a25ad0292ca1517acd008ec33}{
+\index{\-Session@{\-Session}!find\-Data\-Source@{find\-Data\-Source}}
+\index{find\-Data\-Source@{find\-Data\-Source}!Session@{\-Session}}
+\subsubsection[{find\-Data\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::find\-Data\-Source (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a21da035a25ad0292ca1517acd008ec33}
+\hypertarget{interface_session_ad0d93bd00c6a7ba4c95257571886423c}{
+\index{\-Session@{\-Session}!find\-Data\-Source\-:@{find\-Data\-Source\-:}}
+\index{find\-Data\-Source\-:@{find\-Data\-Source\-:}!Session@{\-Session}}
+\subsubsection[{find\-Data\-Source\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::find\-Data\-Source\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sync\-Message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_ad0d93bd00c6a7ba4c95257571886423c}
+\hypertarget{interface_session_a01ae9d91dde11dc0842a94a16db723cd}{
+\index{\-Session@{\-Session}!find\-Data\-Target@{find\-Data\-Target}}
+\index{find\-Data\-Target@{find\-Data\-Target}!Session@{\-Session}}
+\subsubsection[{find\-Data\-Target}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::find\-Data\-Target (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a01ae9d91dde11dc0842a94a16db723cd}
+\hypertarget{interface_session_af0cb145bf4a3db91991bb348bff540e2}{
+\index{\-Session@{\-Session}!find\-Data\-Target\-:@{find\-Data\-Target\-:}}
+\index{find\-Data\-Target\-:@{find\-Data\-Target\-:}!Session@{\-Session}}
+\subsubsection[{find\-Data\-Target\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::find\-Data\-Target\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sync\-Message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_af0cb145bf4a3db91991bb348bff540e2}
+\hypertarget{interface_session_a46def7766c05ca82f5ff6c5aa9b55be6}{
+\index{\-Session@{\-Session}!find\-Operation\-Command\-:@{find\-Operation\-Command\-:}}
+\index{find\-Operation\-Command\-:@{find\-Operation\-Command\-:}!Session@{\-Session}}
+\subsubsection[{find\-Operation\-Command\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Abstract\-Operation} $\ast$ \-Session\-::find\-Operation\-Command\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Status} $\ast$}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a46def7766c05ca82f5ff6c5aa9b55be6}
+\hypertarget{interface_session_a6ded3ac7939359bddc5717e624af015f}{
+\index{\-Session@{\-Session}!get\-Attribute\-:@{get\-Attribute\-:}}
+\index{get\-Attribute\-:@{get\-Attribute\-:}!Session@{\-Session}}
+\subsubsection[{get\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Session\-::get\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a6ded3ac7939359bddc5717e624af015f}
+\hypertarget{interface_session_ac8e3971996a916c58893bd82c98e649b}{
+\index{\-Session@{\-Session}!get\-Next\-Operation@{get\-Next\-Operation}}
+\index{get\-Next\-Operation@{get\-Next\-Operation}!Session@{\-Session}}
+\subsubsection[{get\-Next\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Abstract\-Operation} $\ast$ \-Session\-::get\-Next\-Operation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_ac8e3971996a916c58893bd82c98e649b}
+\hypertarget{interface_session_ad052defed1527189d4af34d795e21db2}{
+\index{\-Session@{\-Session}!is\-Operation\-Sync\-Active@{is\-Operation\-Sync\-Active}}
+\index{is\-Operation\-Sync\-Active@{is\-Operation\-Sync\-Active}!Session@{\-Session}}
+\subsubsection[{is\-Operation\-Sync\-Active}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Session\-::is\-Operation\-Sync\-Active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_ad052defed1527189d4af34d795e21db2}
+\hypertarget{interface_session_a09eabaf2b36cbd3400b614fafb670b4e}{
+\index{\-Session@{\-Session}!is\-Operation\-Sync\-Finished@{is\-Operation\-Sync\-Finished}}
+\index{is\-Operation\-Sync\-Finished@{is\-Operation\-Sync\-Finished}!Session@{\-Session}}
+\subsubsection[{is\-Operation\-Sync\-Finished}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Session\-::is\-Operation\-Sync\-Finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a09eabaf2b36cbd3400b614fafb670b4e}
+\hypertarget{interface_session_a5bc34d4770498a53b74e455e7fcc09ba}{
+\index{\-Session@{\-Session}!is\-Snapshot\-Size\-Set@{is\-Snapshot\-Size\-Set}}
+\index{is\-Snapshot\-Size\-Set@{is\-Snapshot\-Size\-Set}!Session@{\-Session}}
+\subsubsection[{is\-Snapshot\-Size\-Set}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Session\-::is\-Snapshot\-Size\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a5bc34d4770498a53b74e455e7fcc09ba}
+\hypertarget{interface_session_a1493466538c27b3cb6624e5be1f9a9bf}{
+\index{\-Session@{\-Session}!remove\-Attribute\-:@{remove\-Attribute\-:}}
+\index{remove\-Attribute\-:@{remove\-Attribute\-:}!Session@{\-Session}}
+\subsubsection[{remove\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Session\-::remove\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_a1493466538c27b3cb6624e5be1f9a9bf}
+\hypertarget{interface_session_aaa98df920a79a516f65453f1316fe291}{
+\index{\-Session@{\-Session}!set\-Attribute\-::@{set\-Attribute\-::}}
+\index{set\-Attribute\-::@{set\-Attribute\-::}!Session@{\-Session}}
+\subsubsection[{set\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Session\-::set\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} id}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_session_aaa98df920a79a516f65453f1316fe291}
+\hypertarget{interface_session_a35fc96f2e86052070152638b1f4a1af1}{
+\index{\-Session@{\-Session}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!Session@{\-Session}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Session\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_session_a35fc96f2e86052070152638b1f4a1af1}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_session_acb8b815de9ee21d93f6844ebb4477f64}{
+\index{\-Session@{\-Session}!active\-Command@{active\-Command}}
+\index{active\-Command@{active\-Command}!Session@{\-Session}}
+\subsubsection[{active\-Command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Command} $\ast$ \-Session\-::active\-Command\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_acb8b815de9ee21d93f6844ebb4477f64}
+\hypertarget{interface_session_a38dc8bbf3fe4bf8496f09986d969f3de}{
+\index{\-Session@{\-Session}!active\-Operations@{active\-Operations}}
+\index{active\-Operations@{active\-Operations}!Session@{\-Session}}
+\subsubsection[{active\-Operations}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Array $\ast$ \-Session\-::active\-Operations\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a38dc8bbf3fe4bf8496f09986d969f3de}
+\hypertarget{interface_session_aa00ac4bd991eccfa1e7326deaeb7986b}{
+\index{\-Session@{\-Session}!anchor@{anchor}}
+\index{anchor@{anchor}!Session@{\-Session}}
+\subsubsection[{anchor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Anchor} $\ast$ \-Session\-::anchor\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_aa00ac4bd991eccfa1e7326deaeb7986b}
+\hypertarget{interface_session_ac5daf9d3a0d566f529feeacf34783d56}{
+\index{\-Session@{\-Session}!app@{app}}
+\index{app@{app}!Session@{\-Session}}
+\subsubsection[{app}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::app\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_ac5daf9d3a0d566f529feeacf34783d56}
+\hypertarget{interface_session_a84f69a053d96ee772bc190bc5772ddc7}{
+\index{\-Session@{\-Session}!background\-Sync@{background\-Sync}}
+\index{background\-Sync@{background\-Sync}!Session@{\-Session}}
+\subsubsection[{background\-Sync}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Session\-::background\-Sync\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a84f69a053d96ee772bc190bc5772ddc7}
+\-Specify if this is a background/push based sync \hypertarget{interface_session_abfb958d97d222447044fb08a6b2361ad}{
+\index{\-Session@{\-Session}!client\-Close\-Package@{client\-Close\-Package}}
+\index{client\-Close\-Package@{client\-Close\-Package}!Session@{\-Session}}
+\subsubsection[{client\-Close\-Package}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Package} $\ast$ \-Session\-::client\-Close\-Package\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_abfb958d97d222447044fb08a6b2361ad}
+\hypertarget{interface_session_a2e518aa45a8fa466ab2ec6ec85f3bb3c}{
+\index{\-Session@{\-Session}!client\-Init\-Package@{client\-Init\-Package}}
+\index{client\-Init\-Package@{client\-Init\-Package}!Session@{\-Session}}
+\subsubsection[{client\-Init\-Package}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Package} $\ast$ \-Session\-::client\-Init\-Package\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a2e518aa45a8fa466ab2ec6ec85f3bb3c}
+\hypertarget{interface_session_a675633bbcd3aa99bdf612afc32c11c3e}{
+\index{\-Session@{\-Session}!client\-Sync\-Package@{client\-Sync\-Package}}
+\index{client\-Sync\-Package@{client\-Sync\-Package}!Session@{\-Session}}
+\subsubsection[{client\-Sync\-Package}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Package} $\ast$ \-Session\-::client\-Sync\-Package\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a675633bbcd3aa99bdf612afc32c11c3e}
+\hypertarget{interface_session_ae5be82b6c94b660f60d51b63a6f8354c}{
+\index{\-Session@{\-Session}!current\-Message@{current\-Message}}
+\index{current\-Message@{current\-Message}!Session@{\-Session}}
+\subsubsection[{current\-Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Message} $\ast$ \-Session\-::current\-Message\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_ae5be82b6c94b660f60d51b63a6f8354c}
+some session related meta data \hypertarget{interface_session_a5232b2992884ad0658da406d91b78cc8}{
+\index{\-Session@{\-Session}!has\-Sync\-Executed\-Once@{has\-Sync\-Executed\-Once}}
+\index{has\-Sync\-Executed\-Once@{has\-Sync\-Executed\-Once}!Session@{\-Session}}
+\subsubsection[{has\-Sync\-Executed\-Once}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Session\-::has\-Sync\-Executed\-Once\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a5232b2992884ad0658da406d91b78cc8}
+\hypertarget{interface_session_abca6af77c0fea1ffad7112f4864d8421}{
+\index{\-Session@{\-Session}!max\-Client\-Size@{max\-Client\-Size}}
+\index{max\-Client\-Size@{max\-Client\-Size}!Session@{\-Session}}
+\subsubsection[{max\-Client\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int \-Session\-::max\-Client\-Size\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_abca6af77c0fea1ffad7112f4864d8421}
+\hypertarget{interface_session_abb209f2ab1b3091ca060c6b64b1e4295}{
+\index{\-Session@{\-Session}!phase\-Code@{phase\-Code}}
+\index{phase\-Code@{phase\-Code}!Session@{\-Session}}
+\subsubsection[{phase\-Code}]{\setlength{\rightskip}{0pt plus 5cm}int \-Session\-::phase\-Code\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_abb209f2ab1b3091ca060c6b64b1e4295}
+\hypertarget{interface_session_a421b6163f73cb82d5bfdb89bc10cdbca}{
+\index{\-Session@{\-Session}!server\-Close\-Package@{server\-Close\-Package}}
+\index{server\-Close\-Package@{server\-Close\-Package}!Session@{\-Session}}
+\subsubsection[{server\-Close\-Package}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Package} $\ast$ \-Session\-::server\-Close\-Package\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a421b6163f73cb82d5bfdb89bc10cdbca}
+\hypertarget{interface_session_a2bdb51676f7a0c30a1387410ec359d08}{
+\index{\-Session@{\-Session}!server\-Init\-Package@{server\-Init\-Package}}
+\index{server\-Init\-Package@{server\-Init\-Package}!Session@{\-Session}}
+\subsubsection[{server\-Init\-Package}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Package} $\ast$ \-Session\-::server\-Init\-Package\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a2bdb51676f7a0c30a1387410ec359d08}
+\hypertarget{interface_session_abbb4409f891ca061a101a5b63e08614c}{
+\index{\-Session@{\-Session}!server\-Sync\-Package@{server\-Sync\-Package}}
+\index{server\-Sync\-Package@{server\-Sync\-Package}!Session@{\-Session}}
+\subsubsection[{server\-Sync\-Package}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Package} $\ast$ \-Session\-::server\-Sync\-Package\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_abbb4409f891ca061a101a5b63e08614c}
+\hypertarget{interface_session_a6d5756ab4187b004fdf35fec171d9cd6}{
+\index{\-Session@{\-Session}!session\-Id@{session\-Id}}
+\index{session\-Id@{session\-Id}!Session@{\-Session}}
+\subsubsection[{session\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::session\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a6d5756ab4187b004fdf35fec171d9cd6}
+\hypertarget{interface_session_a9bf309393d95f16171d611050e5432b5}{
+\index{\-Session@{\-Session}!snapshot\-Size@{snapshot\-Size}}
+\index{snapshot\-Size@{snapshot\-Size}!Session@{\-Session}}
+\subsubsection[{snapshot\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int \-Session\-::snapshot\-Size\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a9bf309393d95f16171d611050e5432b5}
+\hypertarget{interface_session_aa5b52d84401afe540434bd1b284919dc}{
+\index{\-Session@{\-Session}!source@{source}}
+\index{source@{source}!Session@{\-Session}}
+\subsubsection[{source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::source\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_aa5b52d84401afe540434bd1b284919dc}
+\hypertarget{interface_session_a13a11a06d1a740d32fdcfb1c40175678}{
+\index{\-Session@{\-Session}!state@{state}}
+\index{state@{state}!Session@{\-Session}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Generic\-Attribute\-Manager} $\ast$ \-Session\-::state\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a13a11a06d1a740d32fdcfb1c40175678}
+\hypertarget{interface_session_a9659360ee94959338599cfbd6047f49b}{
+\index{\-Session@{\-Session}!sync\-Type@{sync\-Type}}
+\index{sync\-Type@{sync\-Type}!Session@{\-Session}}
+\subsubsection[{sync\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::sync\-Type\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_a9659360ee94959338599cfbd6047f49b}
+\hypertarget{interface_session_ac083c319c715c0109b43548677889524}{
+\index{\-Session@{\-Session}!target@{target}}
+\index{target@{target}!Session@{\-Session}}
+\subsubsection[{target}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Session\-::target\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_session_ac083c319c715c0109b43548677889524}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_session_8h}{\-Session.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_session_8m}{\-Session.\-m}\end{DoxyCompactItemize}

@@ -1,0 +1,497 @@
+\hypertarget{interface_location_context}{
+\section{\-Location\-Context \-Class \-Reference}
+\label{interface_location_context}\index{\-Location\-Context@{\-Location\-Context}}
+}
+
+
+{\ttfamily \#include $<$\-Location\-Context.\-h$>$}
+
+\-Inheritance diagram for \-Location\-Context\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_location_context}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_location_context_a725cebb7c2bd6677244c20d99579b032}{set\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} id value)
+\item 
+id \hyperlink{interface_location_context_ad318dfcbe51a10e0178717a5c836fdfe}{get\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_location_context_a388d22c37b5b0456c72fac7805406d4a}{get\-Names} ()
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_location_context_af0c9729fa5e345f77019410a02f0c134}{get\-Values} ()
+\item 
+void \hyperlink{interface_location_context_a0b9927043af28b5f4a3e5da7dc293311}{remove\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_location_context_a4bb850c18e5e860b4fcee22d4f7f3a27}{get\-Latitude} ()
+\item 
+void \hyperlink{interface_location_context_ab02eaba1550c9c3ff0eb20e7505ede83}{set\-Latitude\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$latitude)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_location_context_a66768bffca9946732cda71adb657ead0}{get\-Longitude} ()
+\item 
+void \hyperlink{interface_location_context_af2f0949ef70cebabfc09f55f74e100fc}{set\-Longitude\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$longitude)
+\item 
+\hyperlink{interface_address}{\-Address} $\ast$ \hyperlink{interface_location_context_a2a5deb24e8e0f157154a58aaef90a395}{get\-Address} ()
+\item 
+void \hyperlink{interface_location_context_aab4a3460ecd379896f5d56b889354e3d}{set\-Address\-:} (\hyperlink{interface_address}{\-Address} $\ast$address)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_location_context_adb866eee7574669f0c671a60e6f77fd5}{get\-Nearby\-Places} ()
+\item 
+void \hyperlink{interface_location_context_afdb96c229e1c3bf7702a9f31602c6261}{set\-Nearby\-Places\-:} (\-N\-S\-Array $\ast$places)
+\item 
+\hyperlink{interface_place}{\-Place} $\ast$ \hyperlink{interface_location_context_a5f22efdc21c51fa5dcc4c98fbd3fb883}{get\-Place\-Details} ()
+\item 
+void \hyperlink{interface_location_context_afd2b7fc1ba46b0485cecfcc43b3e4729}{set\-Place\-Details\-:} (\hyperlink{interface_place}{\-Place} $\ast$place\-Details)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_location_context_a5a269f2f04867ef5fec1df57bceaac84}{get\-Place\-Types} ()
+\item 
+void \hyperlink{interface_location_context_a675a298663caea4a803557eb3422c7db}{set\-Place\-Types\-:} (\-N\-S\-Array $\ast$place\-Types)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_location_context_a73af3714a342eb9735b61e260ad863c0}{get\-Place\-Reference} ()
+\item 
+void \hyperlink{interface_location_context_aa67689e3e0347de7b85b981eff2881c4}{set\-Place\-Reference\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$place\-Reference)
+\item 
+void \hyperlink{interface_location_context_ab5a769b585be87e139d43217e84b7420}{set\-Request\-:} (\hyperlink{interface_location_request}{\-Location\-Request} $\ast$request)
+\item 
+\hyperlink{interface_location_request}{\-Location\-Request} $\ast$ \hyperlink{interface_location_context_af712d940aa850e84265c21bed3c45b2c}{get\-Request} ()
+\item 
+void \hyperlink{interface_location_context_a037ae44df4082eeb0b4236006c599f50}{set\-Response\-:} (\hyperlink{interface_location_response}{\-Location\-Response} $\ast$response)
+\item 
+\hyperlink{interface_location_response}{\-Location\-Response} $\ast$ \hyperlink{interface_location_context_a95d5bbf759ad443a929382c47e91ed27}{get\-Response} ()
+\item 
+int \hyperlink{interface_location_context_a88b1c04e5982eb5e678305130b3059ed}{get\-Radius} ()
+\item 
+void \hyperlink{interface_location_context_a99b9402e9d734b76e4c10466deea24b5}{set\-Radius\-:} (int radius)
+\item 
+void \hyperlink{interface_location_context_aae4d2ef6c38c06217a989262c4544c0f}{set\-Search\-Name\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$search\-Name)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_location_context_ae9a58e3182279173534a5c098f780466}{get\-Search\-Name} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_location_context_a28b83bc40f969f06f889f92d80ac2fa5}{with\-Init} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_location_context_a2a5deb24e8e0f157154a58aaef90a395}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Address@{get\-Address}}
+\index{get\-Address@{get\-Address}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Address}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Address} $\ast$ \-Location\-Context\-::get\-Address (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a2a5deb24e8e0f157154a58aaef90a395}
+\-Gets the \hyperlink{interface_address}{\-Address} associated with this context
+
+\begin{DoxyReturn}{\-Returns}
+address 
+\end{DoxyReturn}
+\hypertarget{interface_location_context_ad318dfcbe51a10e0178717a5c836fdfe}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Attribute\-:@{get\-Attribute\-:}}
+\index{get\-Attribute\-:@{get\-Attribute\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Location\-Context\-::get\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_ad318dfcbe51a10e0178717a5c836fdfe}
+\-Gets an arbitrary attribute value from the context
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a4bb850c18e5e860b4fcee22d4f7f3a27}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Latitude@{get\-Latitude}}
+\index{get\-Latitude@{get\-Latitude}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Latitude}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Location\-Context\-::get\-Latitude (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a4bb850c18e5e860b4fcee22d4f7f3a27}
+\-Returns the \-Latitude of the address associated with this context
+
+\begin{DoxyReturn}{\-Returns}
+latitude 
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a66768bffca9946732cda71adb657ead0}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Longitude@{get\-Longitude}}
+\index{get\-Longitude@{get\-Longitude}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Longitude}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Location\-Context\-::get\-Longitude (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a66768bffca9946732cda71adb657ead0}
+\-Gets the \-Longitude of the address associated with this context
+
+\begin{DoxyReturn}{\-Returns}
+longitude 
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a388d22c37b5b0456c72fac7805406d4a}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Names@{get\-Names}}
+\index{get\-Names@{get\-Names}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Names}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Location\-Context\-::get\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a388d22c37b5b0456c72fac7805406d4a}
+\-Gets all the names that identify values of attributes in the context
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_adb866eee7574669f0c671a60e6f77fd5}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Nearby\-Places@{get\-Nearby\-Places}}
+\index{get\-Nearby\-Places@{get\-Nearby\-Places}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Nearby\-Places}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Location\-Context\-::get\-Nearby\-Places (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_adb866eee7574669f0c671a60e6f77fd5}
+\-Gets a list of places near the address associated with the context
+
+\begin{DoxyReturn}{\-Returns}
+places 
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a5f22efdc21c51fa5dcc4c98fbd3fb883}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Place\-Details@{get\-Place\-Details}}
+\index{get\-Place\-Details@{get\-Place\-Details}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Place\-Details}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Place} $\ast$ \-Location\-Context\-::get\-Place\-Details (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a5f22efdc21c51fa5dcc4c98fbd3fb883}
+\-Get the details associated with a place
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a73af3714a342eb9735b61e260ad863c0}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Place\-Reference@{get\-Place\-Reference}}
+\index{get\-Place\-Reference@{get\-Place\-Reference}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Place\-Reference}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Location\-Context\-::get\-Place\-Reference (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a73af3714a342eb9735b61e260ad863c0}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a5a269f2f04867ef5fec1df57bceaac84}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Place\-Types@{get\-Place\-Types}}
+\index{get\-Place\-Types@{get\-Place\-Types}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Place\-Types}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Location\-Context\-::get\-Place\-Types (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a5a269f2f04867ef5fec1df57bceaac84}
+\-Set the type of places to search for
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a88b1c04e5982eb5e678305130b3059ed}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Radius@{get\-Radius}}
+\index{get\-Radius@{get\-Radius}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Radius}]{\setlength{\rightskip}{0pt plus 5cm}int \-Location\-Context\-::get\-Radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a88b1c04e5982eb5e678305130b3059ed}
+\-Get the radius on how far to look for nearby places
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_af712d940aa850e84265c21bed3c45b2c}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Request@{get\-Request}}
+\index{get\-Request@{get\-Request}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Location\-Request} $\ast$ \-Location\-Context\-::get\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_af712d940aa850e84265c21bed3c45b2c}
+\-Get the active request that will be sent with a cloud invocation
+
+\begin{DoxyReturn}{\-Returns}
+the request 
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a95d5bbf759ad443a929382c47e91ed27}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Response@{get\-Response}}
+\index{get\-Response@{get\-Response}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Response}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Location\-Response} $\ast$ \-Location\-Context\-::get\-Response (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a95d5bbf759ad443a929382c47e91ed27}
+\-Get the active response received as a result of cloud invocation
+
+\begin{DoxyReturn}{\-Returns}
+the response 
+\end{DoxyReturn}
+\hypertarget{interface_location_context_ae9a58e3182279173534a5c098f780466}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Search\-Name@{get\-Search\-Name}}
+\index{get\-Search\-Name@{get\-Search\-Name}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Search\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Location\-Context\-::get\-Search\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_ae9a58e3182279173534a5c098f780466}
+\-Get the name of the place to search for \hypertarget{interface_location_context_af0c9729fa5e345f77019410a02f0c134}{
+\index{\-Location\-Context@{\-Location\-Context}!get\-Values@{get\-Values}}
+\index{get\-Values@{get\-Values}!LocationContext@{\-Location\-Context}}
+\subsubsection[{get\-Values}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Location\-Context\-::get\-Values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_af0c9729fa5e345f77019410a02f0c134}
+\-Gets all the values of attributes in the context
+
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_location_context_a0b9927043af28b5f4a3e5da7dc293311}{
+\index{\-Location\-Context@{\-Location\-Context}!remove\-Attribute\-:@{remove\-Attribute\-:}}
+\index{remove\-Attribute\-:@{remove\-Attribute\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{remove\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::remove\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a0b9927043af28b5f4a3e5da7dc293311}
+\-Removes an attribute
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_aab4a3460ecd379896f5d56b889354e3d}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Address\-:@{set\-Address\-:}}
+\index{set\-Address\-:@{set\-Address\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Address\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Address\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Address} $\ast$}]{address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_aab4a3460ecd379896f5d56b889354e3d}
+\-Sets the \hyperlink{interface_address}{\-Address} associated with this context
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em address} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_a725cebb7c2bd6677244c20d99579b032}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Attribute\-::@{set\-Attribute\-::}}
+\index{set\-Attribute\-::@{set\-Attribute\-::}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} id}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a725cebb7c2bd6677244c20d99579b032}
+\-Sets arbitrary attributes representing the contextual data associated with this context
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em name} & \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_ab02eaba1550c9c3ff0eb20e7505ede83}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Latitude\-:@{set\-Latitude\-:}}
+\index{set\-Latitude\-:@{set\-Latitude\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Latitude\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Latitude\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{latitude}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_ab02eaba1550c9c3ff0eb20e7505ede83}
+\-Sets the \-Latitude of the address associated with this context
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em latitude} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_af2f0949ef70cebabfc09f55f74e100fc}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Longitude\-:@{set\-Longitude\-:}}
+\index{set\-Longitude\-:@{set\-Longitude\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Longitude\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Longitude\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{longitude}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_af2f0949ef70cebabfc09f55f74e100fc}
+\-Sets the \-Longitude of the address associated with this context
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em longitude} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_afdb96c229e1c3bf7702a9f31602c6261}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Nearby\-Places\-:@{set\-Nearby\-Places\-:}}
+\index{set\-Nearby\-Places\-:@{set\-Nearby\-Places\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Nearby\-Places\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Nearby\-Places\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Array $\ast$}]{places}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_afdb96c229e1c3bf7702a9f31602c6261}
+\-Sets the list of places near the address associated with the context
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em places} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_afd2b7fc1ba46b0485cecfcc43b3e4729}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Place\-Details\-:@{set\-Place\-Details\-:}}
+\index{set\-Place\-Details\-:@{set\-Place\-Details\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Place\-Details\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Place\-Details\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Place} $\ast$}]{place\-Details}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_afd2b7fc1ba46b0485cecfcc43b3e4729}
+\-Set the details associated with a place
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em place\-Details} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_aa67689e3e0347de7b85b981eff2881c4}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Place\-Reference\-:@{set\-Place\-Reference\-:}}
+\index{set\-Place\-Reference\-:@{set\-Place\-Reference\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Place\-Reference\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Place\-Reference\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{place\-Reference}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_aa67689e3e0347de7b85b981eff2881c4}
+
+\begin{DoxyParams}{\-Parameters}
+{\em place\-Reference} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_a675a298663caea4a803557eb3422c7db}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Place\-Types\-:@{set\-Place\-Types\-:}}
+\index{set\-Place\-Types\-:@{set\-Place\-Types\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Place\-Types\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Place\-Types\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Array $\ast$}]{place\-Types}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a675a298663caea4a803557eb3422c7db}
+\-Get the type of places to be searched for
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em place\-Types} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_a99b9402e9d734b76e4c10466deea24b5}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Radius\-:@{set\-Radius\-:}}
+\index{set\-Radius\-:@{set\-Radius\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Radius\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Radius\-: (
+\begin{DoxyParamCaption}
+\item[{int}]{radius}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a99b9402e9d734b76e4c10466deea24b5}
+\-Set the radius of how far to look for nearby places
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em radius} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_ab5a769b585be87e139d43217e84b7420}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Request\-:@{set\-Request\-:}}
+\index{set\-Request\-:@{set\-Request\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Request\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Request\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Location\-Request} $\ast$}]{request}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_ab5a769b585be87e139d43217e84b7420}
+\-Set the active request to be sent with a cloud invocation
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em request} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_a037ae44df4082eeb0b4236006c599f50}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Response\-:@{set\-Response\-:}}
+\index{set\-Response\-:@{set\-Response\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Response\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Response\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Location\-Response} $\ast$}]{response}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_a037ae44df4082eeb0b4236006c599f50}
+\-Set the active response received as a result of cloud invocation
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em response} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_aae4d2ef6c38c06217a989262c4544c0f}{
+\index{\-Location\-Context@{\-Location\-Context}!set\-Search\-Name\-:@{set\-Search\-Name\-:}}
+\index{set\-Search\-Name\-:@{set\-Search\-Name\-:}!LocationContext@{\-Location\-Context}}
+\subsubsection[{set\-Search\-Name\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Location\-Context\-::set\-Search\-Name\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{search\-Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_location_context_aae4d2ef6c38c06217a989262c4544c0f}
+\-Set the name of the place to search for
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em search\-Name} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_location_context_a28b83bc40f969f06f889f92d80ac2fa5}{
+\index{\-Location\-Context@{\-Location\-Context}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!LocationContext@{\-Location\-Context}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Location\-Context\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_location_context_a28b83bc40f969f06f889f92d80ac2fa5}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_location_context_8h}{\-Location\-Context.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_location_context_8m}{\-Location\-Context.\-m}\end{DoxyCompactItemize}

@@ -1,0 +1,258 @@
+\hypertarget{interface_persistent_mobile_object}{
+\section{\-Persistent\-Mobile\-Object \-Class \-Reference}
+\label{interface_persistent_mobile_object}\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}}
+}
+
+
+{\ttfamily \#include $<$\-Persistent\-Mobile\-Object.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_persistent_mobile_object_a725c72be55d2f166c4e297c1932e83fe}{save\-Instance} ()
+\item 
+void \hyperlink{interface_persistent_mobile_object_a8364caa2eec8a3f23b4d0342ec669838}{add\-Field\-:} (\hyperlink{interface_field}{\-Field} $\ast$field)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_persistent_mobile_object_aea1bb63fa2ce9ef1b13d19a254cfa9a7}{parse\-Fields} ()
+\item 
+void \hyperlink{interface_persistent_mobile_object_af43783dcae0a163e816737123c1c454d}{add\-Array\-Meta\-Data\-:} (\hyperlink{interface_array_meta_data}{\-Array\-Meta\-Data} $\ast$array\-Meta\-Data)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_persistent_mobile_object_ad2b2551f4e477956e02fbaf8d9412946}{parse\-Array\-Meta\-Data} ()
+\item 
+\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$ \hyperlink{interface_persistent_mobile_object_a8116e82d5200e2d452d6a3cf7e06f2e2}{parse\-Mobile\-Object} ()
+\item 
+void \hyperlink{interface_persistent_mobile_object_a7ef49dc59ef03e4a259914cbc63844b2}{set\-State\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_persistent_mobile_object}{\-Persistent\-Mobile\-Object} $\ast$ \hyperlink{interface_persistent_mobile_object_afadae5d933027b94bd6a38aa96e4c412}{new\-Instance\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_persistent_mobile_object_a23e6a6e92e496fb23b7fdd5fd4c68f62}{find\-By\-Channel\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\hyperlink{interface_persistent_mobile_object}{\-Persistent\-Mobile\-Object} $\ast$ \hyperlink{interface_persistent_mobile_object_abaa5de2bf0ecd420000d4579621ee671}{find\-By\-O\-I\-D\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$oid)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_persistent_mobile_object_a2d1750b3c5f21f200106b653f203fc65}{delete\-:} (\hyperlink{interface_persistent_mobile_object}{\-Persistent\-Mobile\-Object} $\ast$mobile\-Object)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_persistent_mobile_object_a014364a8615fd8e40062c6a57fa147a7}{delete\-All\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_persistent_mobile_object_ac9ee4a5d2f50cad16ea9a6fe7579e66d}{find\-By\-Channel\-For\-Delete\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_persistent_mobile_object_afa80219f03e1f03aac075e51137ad17f}{oid}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_persistent_mobile_object_a51ce80ff0ce56b4db78017219f35786d}{service}
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_persistent_mobile_object_a84c99514fbe622c90ef5d38fdf498ef5}{fields}
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_persistent_mobile_object_a79247e2f78737421ccb41edb6ee91156}{array\-Meta\-Data}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_persistent_mobile_object_aec81aad76e60d28de01d234960ec5344}{server\-Record\-Id}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_persistent_mobile_object_a9ed51cfff2cf5faa1f68f844986fd182}{proxy}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_persistent_mobile_object_a57725176a7a5b8700c9a521a5f674fa8}{created\-On\-Device}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_persistent_mobile_object_a0c2d480a46fc2950670dd8f21bedcd13}{locked}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_persistent_mobile_object_a6db24dda0c235dc2fd0a0cda855203e1}{dirty\-Status}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_persistent_mobile_object_afdc8d7311db83999ec7c68a62eeda85f}{name\-Value\-Pairs}
+\item 
+\-N\-S\-Set $\ast$ \hyperlink{interface_persistent_mobile_object_a1c7639572e2cfa2125c161a055b5aab8}{metadata}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_persistent_mobile_object_af43783dcae0a163e816737123c1c454d}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!add\-Array\-Meta\-Data\-:@{add\-Array\-Meta\-Data\-:}}
+\index{add\-Array\-Meta\-Data\-:@{add\-Array\-Meta\-Data\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{add\-Array\-Meta\-Data\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Persistent\-Mobile\-Object\-::add\-Array\-Meta\-Data\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Array\-Meta\-Data} $\ast$}]{array\-Meta\-Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_af43783dcae0a163e816737123c1c454d}
+\hypertarget{interface_persistent_mobile_object_a8364caa2eec8a3f23b4d0342ec669838}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!add\-Field\-:@{add\-Field\-:}}
+\index{add\-Field\-:@{add\-Field\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{add\-Field\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Persistent\-Mobile\-Object\-::add\-Field\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Field} $\ast$}]{field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a8364caa2eec8a3f23b4d0342ec669838}
+\hypertarget{interface_persistent_mobile_object_a2d1750b3c5f21f200106b653f203fc65}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!delete\-:@{delete\-:}}
+\index{delete\-:@{delete\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{delete\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Persistent\-Mobile\-Object\-::delete\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Persistent\-Mobile\-Object} $\ast$}]{mobile\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a2d1750b3c5f21f200106b653f203fc65}
+\hypertarget{interface_persistent_mobile_object_a014364a8615fd8e40062c6a57fa147a7}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!delete\-All\-:@{delete\-All\-:}}
+\index{delete\-All\-:@{delete\-All\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{delete\-All\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Persistent\-Mobile\-Object\-::delete\-All\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a014364a8615fd8e40062c6a57fa147a7}
+\hypertarget{interface_persistent_mobile_object_a23e6a6e92e496fb23b7fdd5fd4c68f62}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!find\-By\-Channel\-:@{find\-By\-Channel\-:}}
+\index{find\-By\-Channel\-:@{find\-By\-Channel\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{find\-By\-Channel\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Persistent\-Mobile\-Object\-::find\-By\-Channel\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a23e6a6e92e496fb23b7fdd5fd4c68f62}
+\hypertarget{interface_persistent_mobile_object_ac9ee4a5d2f50cad16ea9a6fe7579e66d}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!find\-By\-Channel\-For\-Delete\-:@{find\-By\-Channel\-For\-Delete\-:}}
+\index{find\-By\-Channel\-For\-Delete\-:@{find\-By\-Channel\-For\-Delete\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{find\-By\-Channel\-For\-Delete\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Persistent\-Mobile\-Object\-::find\-By\-Channel\-For\-Delete\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_ac9ee4a5d2f50cad16ea9a6fe7579e66d}
+\hypertarget{interface_persistent_mobile_object_abaa5de2bf0ecd420000d4579621ee671}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!find\-By\-O\-I\-D\-:@{find\-By\-O\-I\-D\-:}}
+\index{find\-By\-O\-I\-D\-:@{find\-By\-O\-I\-D\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{find\-By\-O\-I\-D\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Persistent\-Mobile\-Object} $\ast$ \-Persistent\-Mobile\-Object\-::find\-By\-O\-I\-D\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{oid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_abaa5de2bf0ecd420000d4579621ee671}
+\hypertarget{interface_persistent_mobile_object_afadae5d933027b94bd6a38aa96e4c412}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!new\-Instance\-:@{new\-Instance\-:}}
+\index{new\-Instance\-:@{new\-Instance\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{new\-Instance\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Persistent\-Mobile\-Object} $\ast$ \-Persistent\-Mobile\-Object\-::new\-Instance\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_afadae5d933027b94bd6a38aa96e4c412}
+\hypertarget{interface_persistent_mobile_object_ad2b2551f4e477956e02fbaf8d9412946}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!parse\-Array\-Meta\-Data@{parse\-Array\-Meta\-Data}}
+\index{parse\-Array\-Meta\-Data@{parse\-Array\-Meta\-Data}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{parse\-Array\-Meta\-Data}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Persistent\-Mobile\-Object\-::parse\-Array\-Meta\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_ad2b2551f4e477956e02fbaf8d9412946}
+\hypertarget{interface_persistent_mobile_object_aea1bb63fa2ce9ef1b13d19a254cfa9a7}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!parse\-Fields@{parse\-Fields}}
+\index{parse\-Fields@{parse\-Fields}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{parse\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Persistent\-Mobile\-Object\-::parse\-Fields (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_aea1bb63fa2ce9ef1b13d19a254cfa9a7}
+\hypertarget{interface_persistent_mobile_object_a8116e82d5200e2d452d6a3cf7e06f2e2}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!parse\-Mobile\-Object@{parse\-Mobile\-Object}}
+\index{parse\-Mobile\-Object@{parse\-Mobile\-Object}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{parse\-Mobile\-Object}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Object} $\ast$ \-Persistent\-Mobile\-Object\-::parse\-Mobile\-Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a8116e82d5200e2d452d6a3cf7e06f2e2}
+\hypertarget{interface_persistent_mobile_object_a725c72be55d2f166c4e297c1932e83fe}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!save\-Instance@{save\-Instance}}
+\index{save\-Instance@{save\-Instance}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{save\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Persistent\-Mobile\-Object\-::save\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a725c72be55d2f166c4e297c1932e83fe}
+\hypertarget{interface_persistent_mobile_object_a7ef49dc59ef03e4a259914cbc63844b2}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!set\-State\-:@{set\-State\-:}}
+\index{set\-State\-:@{set\-State\-:}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{set\-State\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Persistent\-Mobile\-Object\-::set\-State\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Mobile\-Object} $\ast$}]{mobile\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_persistent_mobile_object_a7ef49dc59ef03e4a259914cbc63844b2}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_persistent_mobile_object_a79247e2f78737421ccb41edb6ee91156}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!array\-Meta\-Data@{array\-Meta\-Data}}
+\index{array\-Meta\-Data@{array\-Meta\-Data}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{array\-Meta\-Data}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array$\ast$ \-Persistent\-Mobile\-Object\-::array\-Meta\-Data\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a79247e2f78737421ccb41edb6ee91156}
+\hypertarget{interface_persistent_mobile_object_a57725176a7a5b8700c9a521a5f674fa8}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!created\-On\-Device@{created\-On\-Device}}
+\index{created\-On\-Device@{created\-On\-Device}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{created\-On\-Device}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Persistent\-Mobile\-Object\-::created\-On\-Device\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a57725176a7a5b8700c9a521a5f674fa8}
+\hypertarget{interface_persistent_mobile_object_a6db24dda0c235dc2fd0a0cda855203e1}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!dirty\-Status@{dirty\-Status}}
+\index{dirty\-Status@{dirty\-Status}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{dirty\-Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Persistent\-Mobile\-Object\-::dirty\-Status\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a6db24dda0c235dc2fd0a0cda855203e1}
+\hypertarget{interface_persistent_mobile_object_a84c99514fbe622c90ef5d38fdf498ef5}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!fields@{fields}}
+\index{fields@{fields}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{fields}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array$\ast$ \-Persistent\-Mobile\-Object\-::fields\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a84c99514fbe622c90ef5d38fdf498ef5}
+\hypertarget{interface_persistent_mobile_object_a0c2d480a46fc2950670dd8f21bedcd13}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!locked@{locked}}
+\index{locked@{locked}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{locked}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Persistent\-Mobile\-Object\-::locked\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a0c2d480a46fc2950670dd8f21bedcd13}
+\hypertarget{interface_persistent_mobile_object_a1c7639572e2cfa2125c161a055b5aab8}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!metadata@{metadata}}
+\index{metadata@{metadata}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{metadata}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Set$\ast$ \-Persistent\-Mobile\-Object\-::metadata\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a1c7639572e2cfa2125c161a055b5aab8}
+\hypertarget{interface_persistent_mobile_object_afdc8d7311db83999ec7c68a62eeda85f}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!name\-Value\-Pairs@{name\-Value\-Pairs}}
+\index{name\-Value\-Pairs@{name\-Value\-Pairs}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{name\-Value\-Pairs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Persistent\-Mobile\-Object\-::name\-Value\-Pairs\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_afdc8d7311db83999ec7c68a62eeda85f}
+\hypertarget{interface_persistent_mobile_object_afa80219f03e1f03aac075e51137ad17f}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!oid@{oid}}
+\index{oid@{oid}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{oid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Persistent\-Mobile\-Object\-::oid\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_afa80219f03e1f03aac075e51137ad17f}
+\hypertarget{interface_persistent_mobile_object_a9ed51cfff2cf5faa1f68f844986fd182}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!proxy@{proxy}}
+\index{proxy@{proxy}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{proxy}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Persistent\-Mobile\-Object\-::proxy\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a9ed51cfff2cf5faa1f68f844986fd182}
+\hypertarget{interface_persistent_mobile_object_aec81aad76e60d28de01d234960ec5344}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!server\-Record\-Id@{server\-Record\-Id}}
+\index{server\-Record\-Id@{server\-Record\-Id}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{server\-Record\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Persistent\-Mobile\-Object\-::server\-Record\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_aec81aad76e60d28de01d234960ec5344}
+\hypertarget{interface_persistent_mobile_object_a51ce80ff0ce56b4db78017219f35786d}{
+\index{\-Persistent\-Mobile\-Object@{\-Persistent\-Mobile\-Object}!service@{service}}
+\index{service@{service}!PersistentMobileObject@{\-Persistent\-Mobile\-Object}}
+\subsubsection[{service}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Persistent\-Mobile\-Object\-::service\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_persistent_mobile_object_a51ce80ff0ce56b4db78017219f35786d}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_persistent_mobile_object_8h}{\-Persistent\-Mobile\-Object.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_persistent_mobile_object_8m}{\-Persistent\-Mobile\-Object.\-m}\end{DoxyCompactItemize}

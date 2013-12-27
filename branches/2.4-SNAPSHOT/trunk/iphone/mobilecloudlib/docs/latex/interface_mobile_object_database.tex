@@ -1,0 +1,224 @@
+\hypertarget{interface_mobile_object_database}{
+\section{\-Mobile\-Object\-Database \-Class \-Reference}
+\label{interface_mobile_object_database}\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}}
+}
+
+
+{\ttfamily \#include $<$\-Mobile\-Object\-Database.\-h$>$}
+
+\-Inheritance diagram for \-Mobile\-Object\-Database\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_mobile_object_database}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_object_database_a4fbb5cddb8146e261cc2212c8d90debb}{read\-All\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$ \hyperlink{interface_mobile_object_database_a10cf83decc48908861d17d9f0141ab18}{read\-:channel\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$,\mbox{[}channel\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_mobile_object_database_aeefe5c8508be5e856f06fe8226c44904}{create\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)
+\item 
+void \hyperlink{interface_mobile_object_database_a4018487d7568877e05d30503528867b0}{update\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)
+\item 
+void \hyperlink{interface_mobile_object_database_ae94e66a2126bb5fd86f15b378a2a2f08}{delete\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$mobile\-Object)
+\item 
+void \hyperlink{interface_mobile_object_database_aa48df42f15b752f96c70061ff587b793}{delete\-All\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-N\-S\-Set $\ast$ \hyperlink{interface_mobile_object_database_a7cfe2fde7fad0c56172554905c73915d}{query\-:channel\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$,\mbox{[}channel\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$query\-Attributes)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_object_database_a1315f90285e14cb44723fb58009da920}{is\-Booted\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_object_database_ab373b1d44e71739b9eb0009f9a91b693}{search\-Exact\-Match\-A\-N\-D\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_object_database_a427dc39763560db3e0454b4f869b7db5}{search\-Exact\-Match\-O\-R\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_object_database_abb4f7fad13bb9a926b4b3e24592cd51f}{read\-Proxy\-Cursor\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_object_database_af0607b668f81cc5cecc3e0cd4c7945fb}{read\-By\-Name\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L ascending)
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_object_database_a483d87e18973500ec8de956d4c1e8e2e}{read\-By\-Name\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+\-N\-S\-Fetched\-Results\-Controller $\ast$ \hyperlink{interface_mobile_object_database_a003645b13f7729af95b6d164bacde50d}{read\-By\-Name\-Value\-Pair\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$value)
+\item 
+\-N\-S\-Set $\ast$ \hyperlink{interface_mobile_object_database_abcac5c4b6d52a4652dc0cb34f2e9db15}{logic\-Expression\-Beans\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_logic_expression}{\-Logic\-Expression} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_mobile_object_database}{\-Mobile\-Object\-Database} $\ast$ \hyperlink{interface_mobile_object_database_a036cb43860fccda307c79ed4b1ec73dc}{get\-Instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_mobile_object_database_aeefe5c8508be5e856f06fe8226c44904}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!create\-:@{create\-:}}
+\index{create\-:@{create\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{create\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Mobile\-Object\-Database\-::create\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Mobile\-Object} $\ast$}]{mobile\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_aeefe5c8508be5e856f06fe8226c44904}
+\hypertarget{interface_mobile_object_database_ae94e66a2126bb5fd86f15b378a2a2f08}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!delete\-:@{delete\-:}}
+\index{delete\-:@{delete\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{delete\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Object\-Database\-::delete\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Mobile\-Object} $\ast$}]{mobile\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_ae94e66a2126bb5fd86f15b378a2a2f08}
+\hypertarget{interface_mobile_object_database_aa48df42f15b752f96c70061ff587b793}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!delete\-All\-:@{delete\-All\-:}}
+\index{delete\-All\-:@{delete\-All\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{delete\-All\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Object\-Database\-::delete\-All\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_aa48df42f15b752f96c70061ff587b793}
+\hypertarget{interface_mobile_object_database_a036cb43860fccda307c79ed4b1ec73dc}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Object\-Database} $\ast$ \-Mobile\-Object\-Database\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a036cb43860fccda307c79ed4b1ec73dc}
+\hypertarget{interface_mobile_object_database_a1315f90285e14cb44723fb58009da920}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!is\-Booted\-:@{is\-Booted\-:}}
+\index{is\-Booted\-:@{is\-Booted\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{is\-Booted\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Object\-Database\-::is\-Booted\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a1315f90285e14cb44723fb58009da920}
+\hypertarget{interface_mobile_object_database_abcac5c4b6d52a4652dc0cb34f2e9db15}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!logic\-Expression\-Beans\-::@{logic\-Expression\-Beans\-::}}
+\index{logic\-Expression\-Beans\-::@{logic\-Expression\-Beans\-::}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{logic\-Expression\-Beans\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Set $\ast$ \-Mobile\-Object\-Database\-::logic\-Expression\-Beans\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Logic\-Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_abcac5c4b6d52a4652dc0cb34f2e9db15}
+\hypertarget{interface_mobile_object_database_a7cfe2fde7fad0c56172554905c73915d}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!query\-:channel\-:@{query\-:channel\-:}}
+\index{query\-:channel\-:@{query\-:channel\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{query\-:channel\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Set $\ast$ \-Mobile\-Object\-Database\-::query\-:channel\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{, }
+\item[{\mbox{[}channel\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{query\-Attributes}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a7cfe2fde7fad0c56172554905c73915d}
+\hypertarget{interface_mobile_object_database_a10cf83decc48908861d17d9f0141ab18}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!read\-:channel\-:@{read\-:channel\-:}}
+\index{read\-:channel\-:@{read\-:channel\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{read\-:channel\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Object} $\ast$ \-Mobile\-Object\-Database\-::read\-:channel\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{, }
+\item[{\mbox{[}channel\mbox{]} {\bf \-N\-S\-String} $\ast$}]{record\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a10cf83decc48908861d17d9f0141ab18}
+\hypertarget{interface_mobile_object_database_a4fbb5cddb8146e261cc2212c8d90debb}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!read\-All\-:@{read\-All\-:}}
+\index{read\-All\-:@{read\-All\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{read\-All\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Object\-Database\-::read\-All\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a4fbb5cddb8146e261cc2212c8d90debb}
+\hypertarget{interface_mobile_object_database_a483d87e18973500ec8de956d4c1e8e2e}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!read\-By\-Name\-::@{read\-By\-Name\-::}}
+\index{read\-By\-Name\-::@{read\-By\-Name\-::}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{read\-By\-Name\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Object\-Database\-::read\-By\-Name\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a483d87e18973500ec8de956d4c1e8e2e}
+\hypertarget{interface_mobile_object_database_af0607b668f81cc5cecc3e0cd4c7945fb}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!read\-By\-Name\-:::@{read\-By\-Name\-:::}}
+\index{read\-By\-Name\-:::@{read\-By\-Name\-:::}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{read\-By\-Name\-:::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Object\-Database\-::read\-By\-Name\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{ascending}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_af0607b668f81cc5cecc3e0cd4c7945fb}
+\hypertarget{interface_mobile_object_database_a003645b13f7729af95b6d164bacde50d}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!read\-By\-Name\-Value\-Pair\-:::@{read\-By\-Name\-Value\-Pair\-:::}}
+\index{read\-By\-Name\-Value\-Pair\-:::@{read\-By\-Name\-Value\-Pair\-:::}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{read\-By\-Name\-Value\-Pair\-:::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Object\-Database\-::read\-By\-Name\-Value\-Pair\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a003645b13f7729af95b6d164bacde50d}
+\hypertarget{interface_mobile_object_database_abb4f7fad13bb9a926b4b3e24592cd51f}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!read\-Proxy\-Cursor\-:@{read\-Proxy\-Cursor\-:}}
+\index{read\-Proxy\-Cursor\-:@{read\-Proxy\-Cursor\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{read\-Proxy\-Cursor\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Object\-Database\-::read\-Proxy\-Cursor\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_abb4f7fad13bb9a926b4b3e24592cd51f}
+\hypertarget{interface_mobile_object_database_ab373b1d44e71739b9eb0009f9a91b693}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!search\-Exact\-Match\-A\-N\-D\-::@{search\-Exact\-Match\-A\-N\-D\-::}}
+\index{search\-Exact\-Match\-A\-N\-D\-::@{search\-Exact\-Match\-A\-N\-D\-::}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{search\-Exact\-Match\-A\-N\-D\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Object\-Database\-::search\-Exact\-Match\-A\-N\-D\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_ab373b1d44e71739b9eb0009f9a91b693}
+\hypertarget{interface_mobile_object_database_a427dc39763560db3e0454b4f869b7db5}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!search\-Exact\-Match\-O\-R\-::@{search\-Exact\-Match\-O\-R\-::}}
+\index{search\-Exact\-Match\-O\-R\-::@{search\-Exact\-Match\-O\-R\-::}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{search\-Exact\-Match\-O\-R\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Fetched\-Results\-Controller $\ast$ \-Mobile\-Object\-Database\-::search\-Exact\-Match\-O\-R\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a427dc39763560db3e0454b4f869b7db5}
+\hypertarget{interface_mobile_object_database_a4018487d7568877e05d30503528867b0}{
+\index{\-Mobile\-Object\-Database@{\-Mobile\-Object\-Database}!update\-:@{update\-:}}
+\index{update\-:@{update\-:}!MobileObjectDatabase@{\-Mobile\-Object\-Database}}
+\subsubsection[{update\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Object\-Database\-::update\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Mobile\-Object} $\ast$}]{mobile\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_object_database_a4018487d7568877e05d30503528867b0}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_mobile_object_database_8h}{\-Mobile\-Object\-Database.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_mobile_object_database_8m}{\-Mobile\-Object\-Database.\-m}\end{DoxyCompactItemize}
