@@ -63,3 +63,19 @@ Here is a list of what to expect from the CRUD App functionality
   * *Enteprise Data Sync:* On the Cloud Side, data stored in a HSQDLB database is mobilized and synced with the App. All the CRUD (Create/Read/Update/Delete) operations on the App data is synced back to the Cloud database.
   * *Enteprise Data Push:* In case of multi-device access, data changes made on one device are automatically and silently pushed to other devices.
   * *Offline Workflow Support:* The App Data is fully available even when a network connection is not available between the device and the Cloud Server. All the CRUD (Create/Read/Update/Delete) functions are available when the device is offline. In case, the device is disconnected, the Sync Engine queues all data changes to be synchronized back with the Cloud database as soon as a network connection is established with the Cloud Server.
+
+----
+
+== CRUD App Help ==
+
+  * The data was pushed from one device to another, but the new data is not showing up? 
+    This is a screen refresh issue. The App does not refresh the screen automatically to keep the coding simple to follow. You can refresh your screen manually from the Option in the App Menu.
+
+  * How do I 'Create' a new ticket? 
+    The "New Ticket" option is available in the App Menu.
+
+  * How do I 'Update' a ticket? 
+    The "Update" option is available when you click the ticket to be updated in the list
+
+  * How do I 'Delete' a ticket? 
+    The "Delete" option is available when you click the ticket to be deleted from the list
