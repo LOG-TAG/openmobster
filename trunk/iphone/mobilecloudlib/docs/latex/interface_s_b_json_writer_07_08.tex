@@ -1,0 +1,74 @@
+\hypertarget{interface_s_b_json_writer_07_08}{
+\section{\-S\-B\-Json\-Writer() \-Interface \-Reference}
+\label{interface_s_b_json_writer_07_08}\index{\-S\-B\-Json\-Writer()@{\-S\-B\-Json\-Writer()}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_s_b_json_writer_07_08_a4364dcbbe231d0fcd36e12efaf107f51}{append\-Value\-:into\-:} (id fragment,\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$json)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_s_b_json_writer_07_08_a5d28358c936d8c3325add8b9cf9c11f2}{append\-Array\-:into\-:} (\-N\-S\-Array $\ast$fragment,\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$json)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_s_b_json_writer_07_08_ae7b697af01ff6197a5bf1f1cc5eba887}{append\-Dictionary\-:into\-:} (\-N\-S\-Dictionary $\ast$fragment,\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$json)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_s_b_json_writer_07_08_aa3803962660a20ecec9f100bbd393ff6}{append\-String\-:into\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$fragment,\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$json)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_s_b_json_writer_07_08_aff5108b4c65eb132d710db30ca1a3d03}{indent} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_s_b_json_writer_07_08_a5d28358c936d8c3325add8b9cf9c11f2}{
+\index{\-S\-B\-Json\-Writer()@{\-S\-B\-Json\-Writer()}!append\-Array\-:into\-:@{append\-Array\-:into\-:}}
+\index{append\-Array\-:into\-:@{append\-Array\-:into\-:}!SBJsonWriter()@{\-S\-B\-Json\-Writer()}}
+\subsubsection[{append\-Array\-:into\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L {\bf \-S\-B\-Json\-Writer}()\-::append\-Array\-:into\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Array $\ast$}]{fragment, }
+\item[{\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$}]{json}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_writer_07_08_a5d28358c936d8c3325add8b9cf9c11f2}
+\hypertarget{interface_s_b_json_writer_07_08_ae7b697af01ff6197a5bf1f1cc5eba887}{
+\index{\-S\-B\-Json\-Writer()@{\-S\-B\-Json\-Writer()}!append\-Dictionary\-:into\-:@{append\-Dictionary\-:into\-:}}
+\index{append\-Dictionary\-:into\-:@{append\-Dictionary\-:into\-:}!SBJsonWriter()@{\-S\-B\-Json\-Writer()}}
+\subsubsection[{append\-Dictionary\-:into\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L {\bf \-S\-B\-Json\-Writer}()\-::append\-Dictionary\-:into\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Dictionary $\ast$}]{fragment, }
+\item[{\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$}]{json}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_writer_07_08_ae7b697af01ff6197a5bf1f1cc5eba887}
+\hypertarget{interface_s_b_json_writer_07_08_aa3803962660a20ecec9f100bbd393ff6}{
+\index{\-S\-B\-Json\-Writer()@{\-S\-B\-Json\-Writer()}!append\-String\-:into\-:@{append\-String\-:into\-:}}
+\index{append\-String\-:into\-:@{append\-String\-:into\-:}!SBJsonWriter()@{\-S\-B\-Json\-Writer()}}
+\subsubsection[{append\-String\-:into\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L {\bf \-S\-B\-Json\-Writer}()\-::append\-String\-:into\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{fragment, }
+\item[{\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$}]{json}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_writer_07_08_aa3803962660a20ecec9f100bbd393ff6}
+\hypertarget{interface_s_b_json_writer_07_08_a4364dcbbe231d0fcd36e12efaf107f51}{
+\index{\-S\-B\-Json\-Writer()@{\-S\-B\-Json\-Writer()}!append\-Value\-:into\-:@{append\-Value\-:into\-:}}
+\index{append\-Value\-:into\-:@{append\-Value\-:into\-:}!SBJsonWriter()@{\-S\-B\-Json\-Writer()}}
+\subsubsection[{append\-Value\-:into\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L {\bf \-S\-B\-Json\-Writer}()\-::append\-Value\-:into\-: (
+\begin{DoxyParamCaption}
+\item[{id}]{fragment, }
+\item[{\mbox{[}into\mbox{]} \-N\-S\-Mutable\-String $\ast$}]{json}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_writer_07_08_a4364dcbbe231d0fcd36e12efaf107f51}
+\hypertarget{interface_s_b_json_writer_07_08_aff5108b4c65eb132d710db30ca1a3d03}{
+\index{\-S\-B\-Json\-Writer()@{\-S\-B\-Json\-Writer()}!indent@{indent}}
+\index{indent@{indent}!SBJsonWriter()@{\-S\-B\-Json\-Writer()}}
+\subsubsection[{indent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ {\bf \-S\-B\-Json\-Writer}()\-::indent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_writer_07_08_aff5108b4c65eb132d710db30ca1a3d03}
+
+
+\-The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_s_b_json_writer_8m}{\-S\-B\-Json\-Writer.\-m}\end{DoxyCompactItemize}

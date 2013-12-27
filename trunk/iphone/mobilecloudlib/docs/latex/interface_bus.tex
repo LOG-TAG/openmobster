@@ -1,0 +1,104 @@
+\hypertarget{interface_bus}{
+\section{\-Bus \-Class \-Reference}
+\label{interface_bus}\index{\-Bus@{\-Bus}}
+}
+
+
+{\ttfamily \#include $<$\-Bus.\-h$>$}
+
+\-Inheritance diagram for \-Bus\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_bus}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_bus_a2d05e4d7022dfc1c451e91cf5a8853ed}{synchronize\-Conf} ()
+\item 
+void \hyperlink{interface_bus_a4e17c6b0a85578165ff2501fd0df8414}{replace\-With\-Shared\-Conf\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$conf\-Xml)
+\item 
+void \hyperlink{interface_bus_a01836e96c51b2e55e9a13b9be33f23a6}{post\-Shared\-Conf\-:} (\hyperlink{interface_configuration}{\-Configuration} $\ast$conf)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_bus_a81b470da7a3d41a40778e12d25368457}{conf\-To\-Xml\-:} (\hyperlink{interface_configuration}{\-Configuration} $\ast$conf)
+\item 
+void \hyperlink{interface_bus_ae53fc8898a64e84bee2c1502633443e2}{xml\-To\-Conf\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$xml)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_bus}{\-Bus} $\ast$ \hyperlink{interface_bus_a0cc500e1b89b361e1b3b37f679071ac3}{get\-Instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_bus_a81b470da7a3d41a40778e12d25368457}{
+\index{\-Bus@{\-Bus}!conf\-To\-Xml\-:@{conf\-To\-Xml\-:}}
+\index{conf\-To\-Xml\-:@{conf\-To\-Xml\-:}!Bus@{\-Bus}}
+\subsubsection[{conf\-To\-Xml\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Bus\-::conf\-To\-Xml\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Configuration} $\ast$}]{conf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_bus_a81b470da7a3d41a40778e12d25368457}
+\hypertarget{interface_bus_a0cc500e1b89b361e1b3b37f679071ac3}{
+\index{\-Bus@{\-Bus}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!Bus@{\-Bus}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Bus} $\ast$ \-Bus\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_bus_a0cc500e1b89b361e1b3b37f679071ac3}
+\hypertarget{interface_bus_a01836e96c51b2e55e9a13b9be33f23a6}{
+\index{\-Bus@{\-Bus}!post\-Shared\-Conf\-:@{post\-Shared\-Conf\-:}}
+\index{post\-Shared\-Conf\-:@{post\-Shared\-Conf\-:}!Bus@{\-Bus}}
+\subsubsection[{post\-Shared\-Conf\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Bus\-::post\-Shared\-Conf\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Configuration} $\ast$}]{conf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_bus_a01836e96c51b2e55e9a13b9be33f23a6}
+\hypertarget{interface_bus_a4e17c6b0a85578165ff2501fd0df8414}{
+\index{\-Bus@{\-Bus}!replace\-With\-Shared\-Conf\-:@{replace\-With\-Shared\-Conf\-:}}
+\index{replace\-With\-Shared\-Conf\-:@{replace\-With\-Shared\-Conf\-:}!Bus@{\-Bus}}
+\subsubsection[{replace\-With\-Shared\-Conf\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Bus\-::replace\-With\-Shared\-Conf\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{conf\-Xml}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_bus_a4e17c6b0a85578165ff2501fd0df8414}
+\hypertarget{interface_bus_a2d05e4d7022dfc1c451e91cf5a8853ed}{
+\index{\-Bus@{\-Bus}!synchronize\-Conf@{synchronize\-Conf}}
+\index{synchronize\-Conf@{synchronize\-Conf}!Bus@{\-Bus}}
+\subsubsection[{synchronize\-Conf}]{\setlength{\rightskip}{0pt plus 5cm}void \-Bus\-::synchronize\-Conf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_bus_a2d05e4d7022dfc1c451e91cf5a8853ed}
+\hypertarget{interface_bus_ae53fc8898a64e84bee2c1502633443e2}{
+\index{\-Bus@{\-Bus}!xml\-To\-Conf\-:@{xml\-To\-Conf\-:}}
+\index{xml\-To\-Conf\-:@{xml\-To\-Conf\-:}!Bus@{\-Bus}}
+\subsubsection[{xml\-To\-Conf\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Bus\-::xml\-To\-Conf\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{xml}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_bus_ae53fc8898a64e84bee2c1502633443e2}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_bus_8h}{\-Bus.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_bus_8m}{\-Bus.\-m}\end{DoxyCompactItemize}

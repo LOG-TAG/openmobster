@@ -1,0 +1,104 @@
+\hypertarget{interface_process}{
+\section{\-Process \-Class \-Reference}
+\label{interface_process}\index{\-Process@{\-Process}}
+}
+
+
+{\ttfamily \#include $<$\-Process.\-h$>$}
+
+\-Inheritance diagram for \-Process\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_process}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_process_a796babc99f80a32ff985bfcc5c6ad899}{signal} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_process_a2f155879cd902ed79d682daa867425db}{current\-Node\-Name} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_process_a7a3fb567a502a7b3ea44f867bc213450}{with\-Configuration\-:end\-Node\-:other\-Nodes\-:} (\hyperlink{interface_node}{\-Node} $\ast$start\-Node,\mbox{[}end\-Node\mbox{]} \hyperlink{interface_node}{\-Node} $\ast$end\-Node,\mbox{[}other\-Nodes\mbox{]} \-N\-S\-Array $\ast$other\-Nodes)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$ \hyperlink{interface_process_a19c15a1a025bc71b2402e86c43607321}{states}
+\item 
+\hyperlink{interface_context}{\-Context} $\ast$ \hyperlink{interface_process_aba0365db90cfa5758c64250c794c67e3}{active\-Context}
+\item 
+\hyperlink{interface_node}{\-Node} $\ast$ \hyperlink{interface_process_a947149552b6df6c25dd37a8ec5c947be}{start\-State}
+\item 
+\hyperlink{interface_node}{\-Node} $\ast$ \hyperlink{interface_process_a7b2577186857e729cad7d09d2b7ae7fe}{end\-State}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_process_a2f155879cd902ed79d682daa867425db}{
+\index{\-Process@{\-Process}!current\-Node\-Name@{current\-Node\-Name}}
+\index{current\-Node\-Name@{current\-Node\-Name}!Process@{\-Process}}
+\subsubsection[{current\-Node\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Process\-::current\-Node\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_process_a2f155879cd902ed79d682daa867425db}
+\hypertarget{interface_process_a796babc99f80a32ff985bfcc5c6ad899}{
+\index{\-Process@{\-Process}!signal@{signal}}
+\index{signal@{signal}!Process@{\-Process}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Process\-::signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_process_a796babc99f80a32ff985bfcc5c6ad899}
+\hypertarget{interface_process_a7a3fb567a502a7b3ea44f867bc213450}{
+\index{\-Process@{\-Process}!with\-Configuration\-:end\-Node\-:other\-Nodes\-:@{with\-Configuration\-:end\-Node\-:other\-Nodes\-:}}
+\index{with\-Configuration\-:end\-Node\-:other\-Nodes\-:@{with\-Configuration\-:end\-Node\-:other\-Nodes\-:}!Process@{\-Process}}
+\subsubsection[{with\-Configuration\-:end\-Node\-:other\-Nodes\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Process\-::with\-Configuration\-:end\-Node\-:other\-Nodes\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Node} $\ast$}]{start\-Node, }
+\item[{\mbox{[}end\-Node\mbox{]} {\bf \-Node} $\ast$}]{end\-Node, }
+\item[{\mbox{[}other\-Nodes\mbox{]} \-N\-S\-Array $\ast$}]{other\-Nodes}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_process_a7a3fb567a502a7b3ea44f867bc213450}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_process_aba0365db90cfa5758c64250c794c67e3}{
+\index{\-Process@{\-Process}!active\-Context@{active\-Context}}
+\index{active\-Context@{active\-Context}!Process@{\-Process}}
+\subsubsection[{active\-Context}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Context} $\ast$ \-Process\-::active\-Context\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_process_aba0365db90cfa5758c64250c794c67e3}
+\hypertarget{interface_process_a7b2577186857e729cad7d09d2b7ae7fe}{
+\index{\-Process@{\-Process}!end\-State@{end\-State}}
+\index{end\-State@{end\-State}!Process@{\-Process}}
+\subsubsection[{end\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Node} $\ast$ \-Process\-::end\-State\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_process_a7b2577186857e729cad7d09d2b7ae7fe}
+\hypertarget{interface_process_a947149552b6df6c25dd37a8ec5c947be}{
+\index{\-Process@{\-Process}!start\-State@{start\-State}}
+\index{start\-State@{start\-State}!Process@{\-Process}}
+\subsubsection[{start\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Node} $\ast$ \-Process\-::start\-State\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_process_a947149552b6df6c25dd37a8ec5c947be}
+\hypertarget{interface_process_a19c15a1a025bc71b2402e86c43607321}{
+\index{\-Process@{\-Process}!states@{states}}
+\index{states@{states}!Process@{\-Process}}
+\subsubsection[{states}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Generic\-Attribute\-Manager} $\ast$ \-Process\-::states\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_process_a19c15a1a025bc71b2402e86c43607321}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_process_8h}{\-Process.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_process_8m}{\-Process.\-m}\end{DoxyCompactItemize}

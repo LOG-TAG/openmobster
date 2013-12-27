@@ -1,0 +1,106 @@
+\hypertarget{interface_registry}{
+\section{\-Registry \-Class \-Reference}
+\label{interface_registry}\index{\-Registry@{\-Registry}}
+}
+
+
+{\ttfamily \#include $<$\-Registry.\-h$>$}
+
+\-Inheritance diagram for \-Registry\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_registry}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_registry_a9eadfdd03b5ac06e06350a38b45666f6}{is\-Started} ()
+\item 
+void \hyperlink{interface_registry_add5d8bc56a289702c7199f3a7eb21046}{start} ()
+\item 
+void \hyperlink{interface_registry_addacc2224aa460a2572a2cd3f34b9d8e}{stop} ()
+\item 
+\hyperlink{interface_service}{\-Service} $\ast$ \hyperlink{interface_registry_a4d2df3454428a85aab21df6bb9dd7ca3}{lookup\-:} (\-Class service\-Class)
+\item 
+void \hyperlink{interface_registry_a978978b4278b57e9f53bd51305d44dce}{add\-Service\-:} (\hyperlink{interface_service}{\-Service} $\ast$service)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_registry}{\-Registry} $\ast$ \hyperlink{interface_registry_ad01a89fc6097d3a71f5ed5fbae0e038e}{get\-Instance} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_registry_a2d16855f6989111b6119c0827d0a3a4e}{is\-Active} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_registry_a978978b4278b57e9f53bd51305d44dce}{
+\index{\-Registry@{\-Registry}!add\-Service\-:@{add\-Service\-:}}
+\index{add\-Service\-:@{add\-Service\-:}!Registry@{\-Registry}}
+\subsubsection[{add\-Service\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Registry\-::add\-Service\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Service} $\ast$}]{service}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_registry_a978978b4278b57e9f53bd51305d44dce}
+\hypertarget{interface_registry_ad01a89fc6097d3a71f5ed5fbae0e038e}{
+\index{\-Registry@{\-Registry}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!Registry@{\-Registry}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Registry} $\ast$ \-Registry\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_registry_ad01a89fc6097d3a71f5ed5fbae0e038e}
+\hypertarget{interface_registry_a2d16855f6989111b6119c0827d0a3a4e}{
+\index{\-Registry@{\-Registry}!is\-Active@{is\-Active}}
+\index{is\-Active@{is\-Active}!Registry@{\-Registry}}
+\subsubsection[{is\-Active}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Registry\-::is\-Active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_registry_a2d16855f6989111b6119c0827d0a3a4e}
+\hypertarget{interface_registry_a9eadfdd03b5ac06e06350a38b45666f6}{
+\index{\-Registry@{\-Registry}!is\-Started@{is\-Started}}
+\index{is\-Started@{is\-Started}!Registry@{\-Registry}}
+\subsubsection[{is\-Started}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Registry\-::is\-Started (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_registry_a9eadfdd03b5ac06e06350a38b45666f6}
+\hypertarget{interface_registry_a4d2df3454428a85aab21df6bb9dd7ca3}{
+\index{\-Registry@{\-Registry}!lookup\-:@{lookup\-:}}
+\index{lookup\-:@{lookup\-:}!Registry@{\-Registry}}
+\subsubsection[{lookup\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Service} $\ast$ \-Registry\-::lookup\-: (
+\begin{DoxyParamCaption}
+\item[{\-Class}]{service\-Class}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_registry_a4d2df3454428a85aab21df6bb9dd7ca3}
+\hypertarget{interface_registry_add5d8bc56a289702c7199f3a7eb21046}{
+\index{\-Registry@{\-Registry}!start@{start}}
+\index{start@{start}!Registry@{\-Registry}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void \-Registry\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_registry_add5d8bc56a289702c7199f3a7eb21046}
+\hypertarget{interface_registry_addacc2224aa460a2572a2cd3f34b9d8e}{
+\index{\-Registry@{\-Registry}!stop@{stop}}
+\index{stop@{stop}!Registry@{\-Registry}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void \-Registry\-::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_registry_addacc2224aa460a2572a2cd3f34b9d8e}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_registry_8h}{\-Registry.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_registry_8m}{\-Registry.\-m}\end{DoxyCompactItemize}

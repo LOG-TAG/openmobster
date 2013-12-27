@@ -1,0 +1,113 @@
+\hypertarget{interface_cloud_service}{
+\section{\-Cloud\-Service \-Class \-Reference}
+\label{interface_cloud_service}\index{\-Cloud\-Service@{\-Cloud\-Service}}
+}
+
+
+{\ttfamily \#include $<$\-Cloud\-Service.\-h$>$}
+
+\-Inheritance diagram for \-Cloud\-Service\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_cloud_service}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_cloud_service_aff6031f833c1fb320f87426fca9e11eb}{startup} ()
+\item 
+void \hyperlink{interface_cloud_service_ad3ebffc5f1cddabf2480d14d987de69f}{shutdown} ()
+\item 
+void \hyperlink{interface_cloud_service_a59f48bd9bd6a06315ec5f1e946cfb1c1}{force\-Activation\-:} (\-U\-I\-View\-Controller $\ast$caller)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_cloud_service}{\-Cloud\-Service} $\ast$ \hyperlink{interface_cloud_service_ac78380c69d50df0d62403cbb74e3567f}{get\-Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_kernel}{\-Kernel} $\ast$ \hyperlink{interface_cloud_service_a7f7e9e2447b17386b0feaeffefa7feb1}{kernel}
+\item 
+\hyperlink{interface_bootup_kernel}{\-Bootup\-Kernel} $\ast$ \hyperlink{interface_cloud_service_a5536a0a403267123daf2f067c4bf1a0c}{bootup\-Kernel}
+\item 
+\hyperlink{interface_u_i_kernel}{\-U\-I\-Kernel} $\ast$ \hyperlink{interface_cloud_service_ae5dd6329209934db41aedacffb209663}{ui\-Kernel}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{interface_cloud_service}{\-Cloud\-Service} must be started and stopped to access any services of the system. \-It controls all the kernels and must be started before any requests can be made to the \-Open\-Mobster service on the device
+
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_cloud_service_a59f48bd9bd6a06315ec5f1e946cfb1c1}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!force\-Activation\-:@{force\-Activation\-:}}
+\index{force\-Activation\-:@{force\-Activation\-:}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{force\-Activation\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Cloud\-Service\-::force\-Activation\-: (
+\begin{DoxyParamCaption}
+\item[{\-U\-I\-View\-Controller $\ast$}]{caller}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_service_a59f48bd9bd6a06315ec5f1e946cfb1c1}
+\hypertarget{interface_cloud_service_ac78380c69d50df0d62403cbb74e3567f}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Cloud\-Service} $\ast$ \-Cloud\-Service\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_cloud_service_ac78380c69d50df0d62403cbb74e3567f}
+\-Gets a service that will be used in a non-\/gui environment
+
+\begin{DoxyReturn}{\-Returns}
+the \hyperlink{interface_cloud_service}{\-Cloud\-Service} 
+\end{DoxyReturn}
+\hypertarget{interface_cloud_service_ad3ebffc5f1cddabf2480d14d987de69f}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void \-Cloud\-Service\-::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_service_ad3ebffc5f1cddabf2480d14d987de69f}
+\-Shuts down the \-Cloud \hyperlink{interface_service}{\-Service} and all its kernels \hypertarget{interface_cloud_service_aff6031f833c1fb320f87426fca9e11eb}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!startup@{startup}}
+\index{startup@{startup}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{startup}]{\setlength{\rightskip}{0pt plus 5cm}void \-Cloud\-Service\-::startup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_service_aff6031f833c1fb320f87426fca9e11eb}
+\-Start the \-Cloud \hyperlink{interface_service}{\-Service}. \-This starts all the kernels. \-This must be called before \-Open\-Mobster services can be accessed 
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_cloud_service_a5536a0a403267123daf2f067c4bf1a0c}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!bootup\-Kernel@{bootup\-Kernel}}
+\index{bootup\-Kernel@{bootup\-Kernel}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{bootup\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Bootup\-Kernel} $\ast$ \-Cloud\-Service\-::bootup\-Kernel\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_cloud_service_a5536a0a403267123daf2f067c4bf1a0c}
+\hypertarget{interface_cloud_service_a7f7e9e2447b17386b0feaeffefa7feb1}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!kernel@{kernel}}
+\index{kernel@{kernel}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{kernel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Kernel} $\ast$ \-Cloud\-Service\-::kernel\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_cloud_service_a7f7e9e2447b17386b0feaeffefa7feb1}
+\hypertarget{interface_cloud_service_ae5dd6329209934db41aedacffb209663}{
+\index{\-Cloud\-Service@{\-Cloud\-Service}!ui\-Kernel@{ui\-Kernel}}
+\index{ui\-Kernel@{ui\-Kernel}!CloudService@{\-Cloud\-Service}}
+\subsubsection[{ui\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-U\-I\-Kernel} $\ast$ \-Cloud\-Service\-::ui\-Kernel\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_cloud_service_ae5dd6329209934db41aedacffb209663}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_cloud_service_8h}{\-Cloud\-Service.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_cloud_service_8m}{\-Cloud\-Service.\-m}\end{DoxyCompactItemize}

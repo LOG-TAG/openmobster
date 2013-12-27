@@ -1,0 +1,274 @@
+\hypertarget{interface_configuration}{
+\section{\-Configuration \-Class \-Reference}
+\label{interface_configuration}\index{\-Configuration@{\-Configuration}}
+}
+
+
+{\ttfamily \#include $<$\-Configuration.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_a7b324d3fea494b260da6d774acc9d2d9}{save\-Instance} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a428a8a5436830caf8a7037bd56e885b7}{auth\-Hash} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_ac03256ca40f4ddabe04e0fa59a0c5cd1}{server\-Port} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_ab164cd44c779f937c2e4f58bd9afc58c}{is\-In\-Push\-Mode} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_a8e2c52e56f93e780dc65b2f27d6d2898}{is\-Activated} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_a042798cb371b1e2f5a5bc56222bd66f1}{establish\-Ownership\-::} (\hyperlink{interface_channel}{\-Channel} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L force)
+\item 
+\-N\-S\-Dictionary $\ast$ \hyperlink{interface_configuration_aef095a42f68f9b9f684dd6e5e89d8eef}{get\-Channel\-Registry} ()
+\item 
+void \hyperlink{interface_configuration_a25bf46b6993ec0f082b7825fb5687095}{add\-App\-Channel\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$app\-Channel)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_a542a733714b57631b04eae33aef00e4c}{is\-Channel\-Writable\-:} (\hyperlink{interface_channel}{\-Channel} $\ast$app\-Channel)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_ac618686ff2d1745b70a8ae44046a04ee}{is\-Channel\-Registered\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$app\-Channel)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_configuration}{\-Configuration} $\ast$ \hyperlink{interface_configuration_ae327d26e81014cf46b25802478fe9b8e}{get\-Instance} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_configuration_a2870ffed6b7b5ec09c37a9d1701ed9f2}{clear} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a5cdad07812622699acf6d5269279d6ee}{device\-Id}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_ad0ebc152d01a04f7614a99bd21a5ff30}{server\-Id}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a55deb1b66cb33d0b1496856317859f09}{server\-Ip}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a0d39b490d3a26de60f5d0f73288c983e}{plain\-Server\-Port}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a9f6c8951287d30dbdbf11ebf35164cc7}{secure\-Server\-Port}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_aba7ae65686a7d0251f7dbf717fd3b8a1}{http\-Port}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a5ecbb1cd4602effac37ff4e0cd541128}{authentication\-Hash}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_a9d8bc45f27a900cacadd114ace33993c}{authentication\-Nonce}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_configuration_ae4d52b4b96f3eb24c64c278a81195e5d}{email}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_configuration_ac70e8b8f296c2a1980e2905f0b090f8c}{active}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_configuration_a13631f1d7b87922819aaaf457aa004b5}{ssl\-Active}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_configuration_a3663b860903a375dde1f331e06fa2700}{max\-Packet\-Size}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_configuration_a40b7ff06c325a79d01a9c90d5f679a0b}{poll\-Interval}
+\item 
+\-N\-S\-Number $\ast$ \hyperlink{interface_configuration_a8c8d5a663a660ea7f8f330b918136190}{push\-Mode}
+\item 
+\-N\-S\-Mutable\-Dictionary $\ast$ \hyperlink{interface_configuration_ab9e05a79bd581c3e24503b8036c484e9}{channels}
+\item 
+\-N\-S\-Mutable\-Set $\ast$ \hyperlink{interface_configuration_a021ae22c9e69b44971b61e293b179c38}{app\-Channels}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_configuration_a25bf46b6993ec0f082b7825fb5687095}{
+\index{\-Configuration@{\-Configuration}!add\-App\-Channel\-:@{add\-App\-Channel\-:}}
+\index{add\-App\-Channel\-:@{add\-App\-Channel\-:}!Configuration@{\-Configuration}}
+\subsubsection[{add\-App\-Channel\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Configuration\-::add\-App\-Channel\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{app\-Channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_a25bf46b6993ec0f082b7825fb5687095}
+\hypertarget{interface_configuration_a428a8a5436830caf8a7037bd56e885b7}{
+\index{\-Configuration@{\-Configuration}!auth\-Hash@{auth\-Hash}}
+\index{auth\-Hash@{auth\-Hash}!Configuration@{\-Configuration}}
+\subsubsection[{auth\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Configuration\-::auth\-Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_a428a8a5436830caf8a7037bd56e885b7}
+\hypertarget{interface_configuration_a2870ffed6b7b5ec09c37a9d1701ed9f2}{
+\index{\-Configuration@{\-Configuration}!clear@{clear}}
+\index{clear@{clear}!Configuration@{\-Configuration}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_configuration_a2870ffed6b7b5ec09c37a9d1701ed9f2}
+\hypertarget{interface_configuration_a042798cb371b1e2f5a5bc56222bd66f1}{
+\index{\-Configuration@{\-Configuration}!establish\-Ownership\-::@{establish\-Ownership\-::}}
+\index{establish\-Ownership\-::@{establish\-Ownership\-::}!Configuration@{\-Configuration}}
+\subsubsection[{establish\-Ownership\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::establish\-Ownership\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Channel} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{force}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_a042798cb371b1e2f5a5bc56222bd66f1}
+\hypertarget{interface_configuration_aef095a42f68f9b9f684dd6e5e89d8eef}{
+\index{\-Configuration@{\-Configuration}!get\-Channel\-Registry@{get\-Channel\-Registry}}
+\index{get\-Channel\-Registry@{get\-Channel\-Registry}!Configuration@{\-Configuration}}
+\subsubsection[{get\-Channel\-Registry}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Dictionary $\ast$ \-Configuration\-::get\-Channel\-Registry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_aef095a42f68f9b9f684dd6e5e89d8eef}
+\hypertarget{interface_configuration_ae327d26e81014cf46b25802478fe9b8e}{
+\index{\-Configuration@{\-Configuration}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!Configuration@{\-Configuration}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Configuration} $\ast$ \-Configuration\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_configuration_ae327d26e81014cf46b25802478fe9b8e}
+\hypertarget{interface_configuration_a8e2c52e56f93e780dc65b2f27d6d2898}{
+\index{\-Configuration@{\-Configuration}!is\-Activated@{is\-Activated}}
+\index{is\-Activated@{is\-Activated}!Configuration@{\-Configuration}}
+\subsubsection[{is\-Activated}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::is\-Activated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_a8e2c52e56f93e780dc65b2f27d6d2898}
+\hypertarget{interface_configuration_ac618686ff2d1745b70a8ae44046a04ee}{
+\index{\-Configuration@{\-Configuration}!is\-Channel\-Registered\-:@{is\-Channel\-Registered\-:}}
+\index{is\-Channel\-Registered\-:@{is\-Channel\-Registered\-:}!Configuration@{\-Configuration}}
+\subsubsection[{is\-Channel\-Registered\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::is\-Channel\-Registered\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{app\-Channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_ac618686ff2d1745b70a8ae44046a04ee}
+\hypertarget{interface_configuration_a542a733714b57631b04eae33aef00e4c}{
+\index{\-Configuration@{\-Configuration}!is\-Channel\-Writable\-:@{is\-Channel\-Writable\-:}}
+\index{is\-Channel\-Writable\-:@{is\-Channel\-Writable\-:}!Configuration@{\-Configuration}}
+\subsubsection[{is\-Channel\-Writable\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::is\-Channel\-Writable\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Channel} $\ast$}]{app\-Channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_a542a733714b57631b04eae33aef00e4c}
+\hypertarget{interface_configuration_ab164cd44c779f937c2e4f58bd9afc58c}{
+\index{\-Configuration@{\-Configuration}!is\-In\-Push\-Mode@{is\-In\-Push\-Mode}}
+\index{is\-In\-Push\-Mode@{is\-In\-Push\-Mode}!Configuration@{\-Configuration}}
+\subsubsection[{is\-In\-Push\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::is\-In\-Push\-Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_ab164cd44c779f937c2e4f58bd9afc58c}
+\hypertarget{interface_configuration_a7b324d3fea494b260da6d774acc9d2d9}{
+\index{\-Configuration@{\-Configuration}!save\-Instance@{save\-Instance}}
+\index{save\-Instance@{save\-Instance}!Configuration@{\-Configuration}}
+\subsubsection[{save\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Configuration\-::save\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_a7b324d3fea494b260da6d774acc9d2d9}
+\hypertarget{interface_configuration_ac03256ca40f4ddabe04e0fa59a0c5cd1}{
+\index{\-Configuration@{\-Configuration}!server\-Port@{server\-Port}}
+\index{server\-Port@{server\-Port}!Configuration@{\-Configuration}}
+\subsubsection[{server\-Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Configuration\-::server\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_configuration_ac03256ca40f4ddabe04e0fa59a0c5cd1}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_configuration_ac70e8b8f296c2a1980e2905f0b090f8c}{
+\index{\-Configuration@{\-Configuration}!active@{active}}
+\index{active@{active}!Configuration@{\-Configuration}}
+\subsubsection[{active}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Configuration\-::active\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_ac70e8b8f296c2a1980e2905f0b090f8c}
+\hypertarget{interface_configuration_a021ae22c9e69b44971b61e293b179c38}{
+\index{\-Configuration@{\-Configuration}!app\-Channels@{app\-Channels}}
+\index{app\-Channels@{app\-Channels}!Configuration@{\-Configuration}}
+\subsubsection[{app\-Channels}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Set$\ast$ \-Configuration\-::app\-Channels\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a021ae22c9e69b44971b61e293b179c38}
+\hypertarget{interface_configuration_a5ecbb1cd4602effac37ff4e0cd541128}{
+\index{\-Configuration@{\-Configuration}!authentication\-Hash@{authentication\-Hash}}
+\index{authentication\-Hash@{authentication\-Hash}!Configuration@{\-Configuration}}
+\subsubsection[{authentication\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::authentication\-Hash\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a5ecbb1cd4602effac37ff4e0cd541128}
+\hypertarget{interface_configuration_a9d8bc45f27a900cacadd114ace33993c}{
+\index{\-Configuration@{\-Configuration}!authentication\-Nonce@{authentication\-Nonce}}
+\index{authentication\-Nonce@{authentication\-Nonce}!Configuration@{\-Configuration}}
+\subsubsection[{authentication\-Nonce}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::authentication\-Nonce\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a9d8bc45f27a900cacadd114ace33993c}
+\hypertarget{interface_configuration_ab9e05a79bd581c3e24503b8036c484e9}{
+\index{\-Configuration@{\-Configuration}!channels@{channels}}
+\index{channels@{channels}!Configuration@{\-Configuration}}
+\subsubsection[{channels}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Dictionary$\ast$ \-Configuration\-::channels\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_ab9e05a79bd581c3e24503b8036c484e9}
+\hypertarget{interface_configuration_a5cdad07812622699acf6d5269279d6ee}{
+\index{\-Configuration@{\-Configuration}!device\-Id@{device\-Id}}
+\index{device\-Id@{device\-Id}!Configuration@{\-Configuration}}
+\subsubsection[{device\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::device\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a5cdad07812622699acf6d5269279d6ee}
+\hypertarget{interface_configuration_ae4d52b4b96f3eb24c64c278a81195e5d}{
+\index{\-Configuration@{\-Configuration}!email@{email}}
+\index{email@{email}!Configuration@{\-Configuration}}
+\subsubsection[{email}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::email\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_ae4d52b4b96f3eb24c64c278a81195e5d}
+\hypertarget{interface_configuration_aba7ae65686a7d0251f7dbf717fd3b8a1}{
+\index{\-Configuration@{\-Configuration}!http\-Port@{http\-Port}}
+\index{http\-Port@{http\-Port}!Configuration@{\-Configuration}}
+\subsubsection[{http\-Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::http\-Port\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_aba7ae65686a7d0251f7dbf717fd3b8a1}
+\hypertarget{interface_configuration_a3663b860903a375dde1f331e06fa2700}{
+\index{\-Configuration@{\-Configuration}!max\-Packet\-Size@{max\-Packet\-Size}}
+\index{max\-Packet\-Size@{max\-Packet\-Size}!Configuration@{\-Configuration}}
+\subsubsection[{max\-Packet\-Size}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Configuration\-::max\-Packet\-Size\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a3663b860903a375dde1f331e06fa2700}
+\hypertarget{interface_configuration_a0d39b490d3a26de60f5d0f73288c983e}{
+\index{\-Configuration@{\-Configuration}!plain\-Server\-Port@{plain\-Server\-Port}}
+\index{plain\-Server\-Port@{plain\-Server\-Port}!Configuration@{\-Configuration}}
+\subsubsection[{plain\-Server\-Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::plain\-Server\-Port\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a0d39b490d3a26de60f5d0f73288c983e}
+\hypertarget{interface_configuration_a40b7ff06c325a79d01a9c90d5f679a0b}{
+\index{\-Configuration@{\-Configuration}!poll\-Interval@{poll\-Interval}}
+\index{poll\-Interval@{poll\-Interval}!Configuration@{\-Configuration}}
+\subsubsection[{poll\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Configuration\-::poll\-Interval\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a40b7ff06c325a79d01a9c90d5f679a0b}
+\hypertarget{interface_configuration_a8c8d5a663a660ea7f8f330b918136190}{
+\index{\-Configuration@{\-Configuration}!push\-Mode@{push\-Mode}}
+\index{push\-Mode@{push\-Mode}!Configuration@{\-Configuration}}
+\subsubsection[{push\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Configuration\-::push\-Mode\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a8c8d5a663a660ea7f8f330b918136190}
+\hypertarget{interface_configuration_a9f6c8951287d30dbdbf11ebf35164cc7}{
+\index{\-Configuration@{\-Configuration}!secure\-Server\-Port@{secure\-Server\-Port}}
+\index{secure\-Server\-Port@{secure\-Server\-Port}!Configuration@{\-Configuration}}
+\subsubsection[{secure\-Server\-Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::secure\-Server\-Port\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a9f6c8951287d30dbdbf11ebf35164cc7}
+\hypertarget{interface_configuration_ad0ebc152d01a04f7614a99bd21a5ff30}{
+\index{\-Configuration@{\-Configuration}!server\-Id@{server\-Id}}
+\index{server\-Id@{server\-Id}!Configuration@{\-Configuration}}
+\subsubsection[{server\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::server\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_ad0ebc152d01a04f7614a99bd21a5ff30}
+\hypertarget{interface_configuration_a55deb1b66cb33d0b1496856317859f09}{
+\index{\-Configuration@{\-Configuration}!server\-Ip@{server\-Ip}}
+\index{server\-Ip@{server\-Ip}!Configuration@{\-Configuration}}
+\subsubsection[{server\-Ip}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ \-Configuration\-::server\-Ip\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a55deb1b66cb33d0b1496856317859f09}
+\hypertarget{interface_configuration_a13631f1d7b87922819aaaf457aa004b5}{
+\index{\-Configuration@{\-Configuration}!ssl\-Active@{ssl\-Active}}
+\index{ssl\-Active@{ssl\-Active}!Configuration@{\-Configuration}}
+\subsubsection[{ssl\-Active}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Number$\ast$ \-Configuration\-::ssl\-Active\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_configuration_a13631f1d7b87922819aaaf457aa004b5}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_configuration_8h}{\-Configuration.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_configuration_8m}{\-Configuration.\-m}\end{DoxyCompactItemize}

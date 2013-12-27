@@ -1,0 +1,147 @@
+\hypertarget{interface_string_util}{
+\section{\-String\-Util \-Class \-Reference}
+\label{interface_string_util}\index{\-String\-Util@{\-String\-Util}}
+}
+
+
+{\ttfamily \#include $<$\-String\-Util.\-h$>$}
+
+\-Inheritance diagram for \-String\-Util\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_string_util}
+\end{center}
+\end{figure}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_string_util_a40083507052fd562a1a256bbd3744d1f}{is\-Empty\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$str)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_string_util_add1b89265fef6ea0863897267096657c}{trim\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$me)
+\item 
+int \hyperlink{interface_string_util_a49957101b9646c548bae488c065d91af}{last\-Index\-Of\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$search)
+\item 
+int \hyperlink{interface_string_util_a77634d6fd6126b5f3b2cb85412f3f004}{index\-Of\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$search)
+\item 
+int \hyperlink{interface_string_util_a27c8ab20cf07adc4d69e7c6e16ba7c85}{index\-Of\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$search,\mbox{[}$\,$\mbox{]} int start\-Index)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_string_util_ad64882b6b8f2cab34d303cf781fca08b}{replace\-All\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$replace,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$with)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_string_util_a71301e03736decc69065fc6e3dbf71d4}{tokenize\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$separator)
+\item 
+\-N\-S\-Range \hyperlink{interface_string_util_a84a04a7b62773715e56d33d94df8b360}{last\-Range\-Of\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$search)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_string_util_a0b8779d7bf0ce60fab42056925e09177}{substring\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} int from,\mbox{[}$\,$\mbox{]} int to)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_string_util_a0c689e7fdd9f1d79e2b69af0f40e1a4f}{substring\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$parent,\mbox{[}$\,$\mbox{]} int from)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_string_util_a77634d6fd6126b5f3b2cb85412f3f004}{
+\index{\-String\-Util@{\-String\-Util}!index\-Of\-::@{index\-Of\-::}}
+\index{index\-Of\-::@{index\-Of\-::}!StringUtil@{\-String\-Util}}
+\subsubsection[{index\-Of\-::}]{\setlength{\rightskip}{0pt plus 5cm}int \-String\-Util\-::index\-Of\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{search}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a77634d6fd6126b5f3b2cb85412f3f004}
+\hypertarget{interface_string_util_a27c8ab20cf07adc4d69e7c6e16ba7c85}{
+\index{\-String\-Util@{\-String\-Util}!index\-Of\-:::@{index\-Of\-:::}}
+\index{index\-Of\-:::@{index\-Of\-:::}!StringUtil@{\-String\-Util}}
+\subsubsection[{index\-Of\-:::}]{\setlength{\rightskip}{0pt plus 5cm}int \-String\-Util\-::index\-Of\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{search, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{start\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a27c8ab20cf07adc4d69e7c6e16ba7c85}
+\hypertarget{interface_string_util_a40083507052fd562a1a256bbd3744d1f}{
+\index{\-String\-Util@{\-String\-Util}!is\-Empty\-:@{is\-Empty\-:}}
+\index{is\-Empty\-:@{is\-Empty\-:}!StringUtil@{\-String\-Util}}
+\subsubsection[{is\-Empty\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-String\-Util\-::is\-Empty\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a40083507052fd562a1a256bbd3744d1f}
+\hypertarget{interface_string_util_a49957101b9646c548bae488c065d91af}{
+\index{\-String\-Util@{\-String\-Util}!last\-Index\-Of\-::@{last\-Index\-Of\-::}}
+\index{last\-Index\-Of\-::@{last\-Index\-Of\-::}!StringUtil@{\-String\-Util}}
+\subsubsection[{last\-Index\-Of\-::}]{\setlength{\rightskip}{0pt plus 5cm}int \-String\-Util\-::last\-Index\-Of\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{search}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a49957101b9646c548bae488c065d91af}
+\hypertarget{interface_string_util_a84a04a7b62773715e56d33d94df8b360}{
+\index{\-String\-Util@{\-String\-Util}!last\-Range\-Of\-::@{last\-Range\-Of\-::}}
+\index{last\-Range\-Of\-::@{last\-Range\-Of\-::}!StringUtil@{\-String\-Util}}
+\subsubsection[{last\-Range\-Of\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Range \-String\-Util\-::last\-Range\-Of\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{search}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a84a04a7b62773715e56d33d94df8b360}
+\hypertarget{interface_string_util_ad64882b6b8f2cab34d303cf781fca08b}{
+\index{\-String\-Util@{\-String\-Util}!replace\-All\-:::@{replace\-All\-:::}}
+\index{replace\-All\-:::@{replace\-All\-:::}!StringUtil@{\-String\-Util}}
+\subsubsection[{replace\-All\-:::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-String\-Util\-::replace\-All\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{replace, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{with}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_ad64882b6b8f2cab34d303cf781fca08b}
+\hypertarget{interface_string_util_a0c689e7fdd9f1d79e2b69af0f40e1a4f}{
+\index{\-String\-Util@{\-String\-Util}!substring\-::@{substring\-::}}
+\index{substring\-::@{substring\-::}!StringUtil@{\-String\-Util}}
+\subsubsection[{substring\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-String\-Util\-::substring\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a0c689e7fdd9f1d79e2b69af0f40e1a4f}
+\hypertarget{interface_string_util_a0b8779d7bf0ce60fab42056925e09177}{
+\index{\-String\-Util@{\-String\-Util}!substring\-:::@{substring\-:::}}
+\index{substring\-:::@{substring\-:::}!StringUtil@{\-String\-Util}}
+\subsubsection[{substring\-:::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-String\-Util\-::substring\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{from, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{to}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a0b8779d7bf0ce60fab42056925e09177}
+\hypertarget{interface_string_util_a71301e03736decc69065fc6e3dbf71d4}{
+\index{\-String\-Util@{\-String\-Util}!tokenize\-::@{tokenize\-::}}
+\index{tokenize\-::@{tokenize\-::}!StringUtil@{\-String\-Util}}
+\subsubsection[{tokenize\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-String\-Util\-::tokenize\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{parent, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{separator}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_a71301e03736decc69065fc6e3dbf71d4}
+\hypertarget{interface_string_util_add1b89265fef6ea0863897267096657c}{
+\index{\-String\-Util@{\-String\-Util}!trim\-:@{trim\-:}}
+\index{trim\-:@{trim\-:}!StringUtil@{\-String\-Util}}
+\subsubsection[{trim\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-String\-Util\-::trim\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_string_util_add1b89265fef6ea0863897267096657c}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_string_util_8h}{\-String\-Util.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_string_util_8m}{\-String\-Util.\-m}\end{DoxyCompactItemize}

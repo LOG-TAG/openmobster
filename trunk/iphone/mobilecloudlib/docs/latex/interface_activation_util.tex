@@ -1,0 +1,87 @@
+\hypertarget{interface_activation_util}{
+\section{\-Activation\-Util \-Class \-Reference}
+\label{interface_activation_util}\index{\-Activation\-Util@{\-Activation\-Util}}
+}
+
+
+{\ttfamily \#include $<$\-Activation\-Util.\-h$>$}
+
+\-Inheritance diagram for \-Activation\-Util\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_activation_util}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_activation_util_ab29ad171327263ac5eb0d706e51277e8}{activate\-Device\-:} (\hyperlink{interface_test_suite}{\-Test\-Suite} $\ast$test\-Suite)
+\item 
+void \hyperlink{interface_activation_util_a850a35be430a608b4eaf83c5b9ce348f}{process\-Provisioning\-Success\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$email,\mbox{[}$\,$\mbox{]} \hyperlink{interface_response}{\-Response} $\ast$response)
+\item 
+void \hyperlink{interface_activation_util_ad68ac1f345e6c2573b40cba871cf64a0}{bootup\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$\hyperlink{_activation_util_8m_a3a7765336d2edc6b3dce304e4f59c2ce}{device\-Identifier},\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$server\-Ip,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$port)
+\item 
+void \hyperlink{interface_activation_util_a932cc9f75e48c2e95cc4deb7464d75a9}{handle\-Post\-Activation} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_activation_util_a0b581e52b17371988c290d8caafe28d8}{with\-Init} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_activation_util_ab29ad171327263ac5eb0d706e51277e8}{
+\index{\-Activation\-Util@{\-Activation\-Util}!activate\-Device\-:@{activate\-Device\-:}}
+\index{activate\-Device\-:@{activate\-Device\-:}!ActivationUtil@{\-Activation\-Util}}
+\subsubsection[{activate\-Device\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Activation\-Util\-::activate\-Device\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Test\-Suite} $\ast$}]{test\-Suite}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_activation_util_ab29ad171327263ac5eb0d706e51277e8}
+throws \hyperlink{interface_system_exception}{\-System\-Exception} \hypertarget{interface_activation_util_ad68ac1f345e6c2573b40cba871cf64a0}{
+\index{\-Activation\-Util@{\-Activation\-Util}!bootup\-:::@{bootup\-:::}}
+\index{bootup\-:::@{bootup\-:::}!ActivationUtil@{\-Activation\-Util}}
+\subsubsection[{bootup\-:::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Activation\-Util\-::bootup\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{device\-Identifier, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{server\-Ip, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_activation_util_ad68ac1f345e6c2573b40cba871cf64a0}
+\hypertarget{interface_activation_util_a932cc9f75e48c2e95cc4deb7464d75a9}{
+\index{\-Activation\-Util@{\-Activation\-Util}!handle\-Post\-Activation@{handle\-Post\-Activation}}
+\index{handle\-Post\-Activation@{handle\-Post\-Activation}!ActivationUtil@{\-Activation\-Util}}
+\subsubsection[{handle\-Post\-Activation}]{\setlength{\rightskip}{0pt plus 5cm}void \-Activation\-Util\-::handle\-Post\-Activation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_activation_util_a932cc9f75e48c2e95cc4deb7464d75a9}
+\hypertarget{interface_activation_util_a850a35be430a608b4eaf83c5b9ce348f}{
+\index{\-Activation\-Util@{\-Activation\-Util}!process\-Provisioning\-Success\-::@{process\-Provisioning\-Success\-::}}
+\index{process\-Provisioning\-Success\-::@{process\-Provisioning\-Success\-::}!ActivationUtil@{\-Activation\-Util}}
+\subsubsection[{process\-Provisioning\-Success\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Activation\-Util\-::process\-Provisioning\-Success\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{email, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Response} $\ast$}]{response}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_activation_util_a850a35be430a608b4eaf83c5b9ce348f}
+\hypertarget{interface_activation_util_a0b581e52b17371988c290d8caafe28d8}{
+\index{\-Activation\-Util@{\-Activation\-Util}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!ActivationUtil@{\-Activation\-Util}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Activation\-Util\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_activation_util_a0b581e52b17371988c290d8caafe28d8}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_activation_util_8h}{\-Activation\-Util.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_activation_util_8m}{\-Activation\-Util.\-m}\end{DoxyCompactItemize}
