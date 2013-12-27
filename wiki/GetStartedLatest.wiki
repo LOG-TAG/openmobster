@@ -14,6 +14,16 @@
 
 ----
 
+== Platforms Supported ==
+
+  * Android (API Level 11 and higher)
+
+  * iOS (version 5 and higher)
+
+  * Windows 8 (On the roadmap. SDK not yet implemented)
+
+----
+
 == Enviroment Variables Setup ==
 
 {{{
