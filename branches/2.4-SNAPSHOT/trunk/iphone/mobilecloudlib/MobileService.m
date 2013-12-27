@@ -117,8 +117,8 @@
 			NSString *localValue = [request getAttribute:local];
 			
 			[buffer appendString:@"<entry>\n"];
-			[buffer appendFormat:@"<string>%@</string>\n",local];
-			[buffer appendFormat:@"<string>%@</string>\n",localValue];
+			[buffer appendFormat:@"<string><![CDATA[%@]]></string>\n",local];
+			[buffer appendFormat:@"<string><![CDATA[%@]]></string>\n",localValue];
 			[buffer appendString:@"</entry>\n"];
 		}
 	}
