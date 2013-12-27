@@ -1,0 +1,5 @@
+#summary Running the CRUD Sample App
+
+== Introduction ==
+In the spirit of confidence building when using a new technology, lets start with seeing a sample app in action. We will call it the CRUD (Create/Read/Update/Delete) App.
+
