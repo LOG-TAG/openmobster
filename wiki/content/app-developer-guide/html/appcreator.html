@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory">Chapter 6. AppCreator</title><link rel="stylesheet" href="css/seamframework.css" type="text/css"/><meta xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" name="generator" content="DocBook XSL Stylesheets V1.74.0"/><link rel="home" href="index.html" title="OpenMobster - Mobile Backend as a Service Platform"/><link rel="up" href="index.html" title="OpenMobster - Mobile Backend as a Service Platform"/><link rel="prev" href="crudcode.html" title="Chapter 5. Show me the Code"/><link rel="next" href="mobilebean.html" title="Chapter 7. MobileBean"/></head><body><p id="title"><a href="http://www.seamframework.org" class="site_href"><strong>SeamFramework.org</strong></a><a href="http://www.seamframework.org/Documentation" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="crudcode.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="mobilebean.html"><strong>Next</strong></a></li></ul><div class="chapter" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="appcreator"/>Chapter 6. AppCreator</h2></div><div><div class="author"><h3 class="author"><span class="firstname">openmobster</span> <span class="surname">at gmail.com</span></h3><code class="email">&lt;<a class="email" href="mailto:openmobster@gmail.com">openmobster@gmail.com</a>&gt;</code></div></div></div></div><div class="toc"><dl><dt><span class="sect1"><a href="appcreator.html#d0e817">6.1. Start writing your own App</a></span></dt><dt><span class="sect1"><a href="appcreator.html#d0e855">6.2. app-android</a></span></dt><dt><span class="sect1"><a href="appcreator.html#d0e875">6.3. cloud</a></span></dt><dt><span class="sect1"><a href="appcreator.html#d0e906">6.4. JBoss AS Deployment</a></span></dt></dl></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e817"/>6.1. Start writing your own App</h2></div></div></div><p>
+			Download an OpenMobster distribution from here:
+			<a class="ulink" href="http://code.google.com/p/openmobster/downloads/list">Downloads</a>
+			.
+		</p><p>
+			In your distribution, go to the directory AppCreator. Inside the
+			directory, use a tool called the
+			'appcreator.bat' (Windows), 'appcreator.sh' (Linux and Mac) to generate a skeleton
+			project
+			</p><pre class="programlisting">
+				
+		appcreator.bat		
+		</pre><p>
+			This will generate a skeleton for the Mobile App. Each
+			generated project has the following modules:
+			</p><div class="itemizedlist"><ul><li><span class="bold"><strong>cloud:</strong></span> Contains the src for the Cloud-side components. Java code is located under <span class="emphasis"><em>src/main/java</em></span>, 
+   					and configuration is located under <span class="emphasis"><em>src/main/resources</em></span>.
+   				</li><li><span class="bold"><strong>app-android:</strong></span> Contains the src for the Android App. Java code is located under <span class="emphasis"><em>src</em></span>,
+   					Configuration is located under <span class="emphasis"><em>src/openmobster-app.xml</em></span>. Besides the OpenMobster component setup, the Android SDK specific setup is located under
+   					<span class="emphasis"><em>AndroidManifest.xml</em></span>. This is an Eclipse project and can be smoothly imported into your Eclipse Workspace.
+   				</li></ul></div><p>
+		</p></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e855"/>6.2. app-android</h2></div></div></div><p>
+	        </p><div class="itemizedlist"><ul><li><span class="bold"><strong>Step 1: </strong></span>Import the Android Project stored under "app-android" into your Eclipse workspace.
+					Make sure you select, <span class="bold"><strong>Import &gt; Existing Android Code into Workspace</strong></span>. Rest of the instructions should be self-explanatory
+	            </li><li><span class="bold"><strong>Step 2: </strong></span><span class="bold"><strong>Run As</strong></span> Android Application from Eclipse. This will compile and install the Android App on the connected device or simulator.
+	            </li></ul></div><p>
+	    </p></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e875"/>6.3. cloud</h2></div></div></div><p>
+	        On the Cloud-side of things, there is a fully functional Standalone "Development Mode" Cloud Server provided 
+			that you can run right inside your Maven environment. Here are some of the Maven commands that are used during development
+	        </p><div class="itemizedlist"><ul><li>
+	                Build All including testsuite execution
+	                <pre class="programlisting">
+mvn clean install
+	                </pre></li><li>
+	                Command to run the standalone "Development Mode" Cloud Server
+	                <pre class="programlisting">
+mvn -PrunCloud integration-test
+	                </pre></li><li>
+	                Command to run the standalone "Development Mode" Cloud Server in *debug mode*
+	                <pre class="programlisting">
+mvn -PdebugCloud integration-test
+	                </pre></li></ul></div><p>
+	    </p><p>
+	        Eclipse Project Setup
+	        </p><div class="itemizedlist"><ul><li>
+	                Import the Cloud project stored under "cloud" into your Eclipse workspace.
+					Make sure you select, <span class="bold"><strong>Import &gt; Maven &gt; Existing Maven Projects</strong></span></li><li>
+	                In case, you do not have the Eclipse Maven Plugin installed, you can open the "cloud" project as a regular Java Project.
+But, before you do that, you execute the following command from the commandline:
+					<pre class="programlisting">
+mvn eclipse:eclipse
+	                </pre></li></ul></div><p>
+	    </p></div><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d0e906"/>6.4. JBoss AS Deployment</h2></div></div></div><p>
+	        Once your "cloud" jar file is tested end-to-end in the Maven based Cloud Server, you must deploy the jar file into a JBoss 5.1.0.GA App Server.
+			The deployment is quite simple. You just copy the "cloud" jar file from the "cloud/target" folder into the <span class="bold"><strong>JBOSS_HOME/server/openmobster/deploy"</strong></span> folder.
+	    </p></div></div><ul class="docnav"><li class="previous"><a accesskey="p" href="crudcode.html"><strong>Prev</strong>Chapter 5. Show me the Code</a></li><li class="up"><a accesskey="u" href="#"><strong>Top of page</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Front page</strong></a></li><li class="next"><a accesskey="n" href="mobilebean.html"><strong>Next</strong>Chapter 7. MobileBean</a></li></ul></body></html>
