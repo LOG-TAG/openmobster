@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.openmobster.core.common.event.Event;
+import org.openmobster.core.common.event.EventManager;
 import org.openmobster.core.common.transaction.TransactionHelper;
 import org.openmobster.core.console.server.Server;
 import org.openmobster.core.push.notification.Notification;
@@ -183,6 +185,11 @@ public final class ManageDevice
 			{
 				deviceController.delete(device);
 			}
+			
+			//Send a device cache invalidation event
+			Event event = new Event();
+			event.setAttribute("invalidate-device-cache", Boolean.TRUE);
+			EventManager.getInstance().fire(event);
 			
 			if(startedHere)
 			{
