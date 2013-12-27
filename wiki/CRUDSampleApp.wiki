@@ -40,3 +40,26 @@ Note: A real IP address like "192.168.0.1" or something like that is needed for 
   * *Step 1:* Locate the CRUD App in the OpenMobster distribution under: *Samples/CRUD.apk*
   * *Step 2:* Install the CRUD App on the device connected to your computer using: *adb install -r CRUD.apk*
   * *Step 3:* Repeat Step 2 on the other device as well
+
+----
+
+== App Activation ==
+
+For security purposes, every OpenMobster based App must be first activated successfully with the Cloud Server. When the CRUD App is started on each device, it brings up the App Activation Dialog. You must provide the following information:
+
+  * *Server:* The IP or Domain name of the Cloud Server
+  * *Port:* Port of the Cloud Server. *[Default: 1502]*
+  * *Email:* The email address you want to associate to uniquely identify you with the system
+  * *Password:* A password to be used for authentication with the system
+
+In case of two devices, you will do an activation on both devices. You can use the same email address on both devices, or you can input a different email address for each device. Either way, your data will be replicated across both devices.
+
+----
+
+== CRUD App Features ==
+
+Here is a list of what to expect from the CRUD App functionality
+
+  * *Enteprise Data Sync:* On the Cloud Side, data stored in a HSQDLB database is mobilized and synced with the App. All the CRUD (Create/Read/Update/Delete) operations on the App data is synced back to the Cloud database.
+  * *Enteprise Data Push:* In case of multi-device access, data changes made on one device are automatically and silently pushed to other devices.
+  * *Offline Workflow Support:* The App Data is fully available even when a network connection is not available between the device and the Cloud Server. All the CRUD (Create/Read/Update/Delete) functions are available when the device is offline. In case, the device is disconnected, the Sync Engine queues all data changes to be synchronized back with the Cloud database as soon as a network connection is established with the Cloud Server.
