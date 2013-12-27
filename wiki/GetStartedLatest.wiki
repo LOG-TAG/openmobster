@@ -14,7 +14,7 @@
 
 ----
 
-== Platforms Supported ==
+== Mobile Platforms Supported ==
 
   * Android (API Level 11 and higher)
 
