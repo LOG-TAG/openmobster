@@ -40,3 +40,9 @@ Latest [http://code.google.com/p/openmobster/downloads/list Download]
 ==CRUD Sample App in Action ==
 
 [CRUDSampleApp Instructions]
+
+----
+
+== AppCreator ==
+
+[AppCreator Start] writing your own App
