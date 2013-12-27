@@ -30,3 +30,7 @@ ANDROID_HOME=[Directory where Android SDK is installed]
 Latest [http://code.google.com/p/openmobster/downloads/list Download]
 
 ----
+
+==Build OpenMobster Source Code ==
+
+[BuildOpenMobster Build Instructions]
