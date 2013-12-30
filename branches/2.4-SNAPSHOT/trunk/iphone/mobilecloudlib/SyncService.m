@@ -150,6 +150,24 @@
 	}
 }
 
+-(void)updateChangeLogForTests:(NSString *)channel :(NSString *) operation :(NSString *) objectId
+{
+	@synchronized(self)
+	{
+		NSMutableArray *entries = [NSMutableArray array];
+        
+		GenericAttributeManager *attr = [GenericAttributeManager withInit];
+		[attr setAttribute:@"nodeId" :channel];
+		[attr setAttribute:@"operation" :operation];
+		[attr setAttribute:@"recordId" :objectId];
+        
+		[entries addObject:attr];
+        
+		[engine addChangeLogEntries:entries];
+	}
+}
+
+
 
 //Used internally
 -(void)performSync:(NetSession *)session :(NSString *)syncType :(NSString *)channel :(BOOL)isBackground :(NSString *)oid

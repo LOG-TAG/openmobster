@@ -80,7 +80,7 @@
 {
 	NSLog(@"Starting testSocketStream......");
 	
-	NSString *host = @"192.168.1.104";
+	NSString *host = @"192.168.1.100";
 	
 	CFReadStreamRef readStream = NULL;
 	CFWriteStreamRef writeStream = NULL;
@@ -121,11 +121,13 @@
 	CFRelease(writeStream);
 	writeStream = NULL;
 }
+
+/*
 -(void) testSecureSocketStream
 {
 	NSLog(@"Starting testSecureSocketStream......");
 	
-	NSString *host = @"192.168.1.104";
+	NSString *host = @"192.168.1.100";
 	
 	CFReadStreamRef readStream = NULL;
 	CFWriteStreamRef writeStream = NULL;
@@ -176,6 +178,7 @@
 	CFRelease(writeStream);
 	writeStream = NULL;
 }
+*/
 
 -(void) testNetSession
 {
@@ -194,24 +197,31 @@
 
 -(void) testNetConnector
 {
-	NSLog(@"Starting testNetConnector.....");
+    @try
+    {
+        NSLog(@"Starting testNetConnector.....");
 	
-	Configuration *configuration = [Configuration getInstance];
-	if(!configuration.serverIp)
-	{
+        Configuration *configuration = [Configuration getInstance];
+        if(!configuration.serverIp)
+        {
 		configuration.serverId = @"http://openmobster.googlecode.com";
 		configuration.deviceId = @"IMEI:8675309";
-		configuration.serverIp = @"192.168.1.104";
+		configuration.serverIp = @"192.168.1.100";
 		configuration.secureServerPort = @"1500";
 		configuration.plainServerPort = @"1502";
 		configuration.sslActive = [NSNumber numberWithBool:YES];
 		[configuration saveInstance];
-	}
+        }
 	
-	NSString *payload1 = @"<request>\n<header>\n<name>processor</name>\n<value>/testdrive/pull</value>\n</header>\n</request>";
-	NSString *payload2 = @"<pull>\n<caller name='iphone'/>\n</pull>";
-	[self runNetworkConnectorTest:NO :payload1 :payload2];
-	[self runNetworkConnectorTest:YES :payload1 :payload2];
+        NSString *payload1 = @"<request>\n<header>\n<name>processor</name>\n<value>/testdrive/pull</value>\n</header>\n</request>";
+        NSString *payload2 = @"<pull>\n<caller name='iphone'/>\n</pull>";
+        [self runNetworkConnectorTest:NO :payload1 :payload2];
+        [self runNetworkConnectorTest:YES :payload1 :payload2];
+    }
+    @catch (SystemException *se)
+    {
+        STAssertFalse(YES, [se getMessage]);
+    }
 }
 
 -(void) testBufferStreamReaderHelloWorld
@@ -261,7 +271,7 @@
 //----------------------------------------------------------------------------------------------
 -(void) runNetSessionTest:(NSString *)handshake :(NSString *)payload
 {
-	NetSession *session = [NetSession withInit:NO :@"192.168.1.104" :1502];
+	NetSession *session = [NetSession withInit:NO :@"192.168.1.100" :1502];
 		
 	NSString *response = [session performHandshake:handshake];
 	NSLog(@"%@",response);

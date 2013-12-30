@@ -11,10 +11,10 @@
 
 @implementation SyncTests
 
--(void)testAllSyncTypes 
+-(void)testAllSyncTypes
 {
  Bootstrapper *bootstrap = [Bootstrapper withInit];
- TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
+ TestSuite *suite = [bootstrap bootstrap:@"192.168.1.100"];
  
  //Prepare the TestContext
  TestContext *context = suite.context;
@@ -35,6 +35,7 @@
  [suite execute];
 }
 
+/*
 -(void)testSyncScheduler
 {
 	NSLog(@"Executing testSyncScheduler.....");
@@ -55,9 +56,9 @@
 	
 	[kernel shutdown];
 }
+*/
 
-/*
--(void)testBootSync 
+/*-(void)testBootSync
 {
     Bootstrapper *bootstrap = [Bootstrapper withInit];
 	TestSuite *suite = [bootstrap bootstrap:@"192.168.1.104"];
@@ -72,8 +73,8 @@
 	
 	//Start test execution
 	[suite execute];
-}
-*/
+}*/
+
 /*
 -(void)testTwoWaySync 
 {
@@ -92,6 +93,7 @@
 	[suite execute];
 }
 */
+
 /*
 -(void)testOneWayClientSync 
 {
