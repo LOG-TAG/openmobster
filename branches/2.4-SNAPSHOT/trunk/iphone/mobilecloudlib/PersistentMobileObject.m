@@ -126,10 +126,10 @@
 	 NSLog(@"Error during delete!!!");
 	 NSLog(@"SaveError: %@, %@", error, [error userInfo]);
 	 }
-	 else 
+	 /*else
 	 {
 	 NSLog(@"Delete was a success!!!");
-	 }
+	 }*/
 	
 	return success;
 }
@@ -156,10 +156,10 @@
 			NSLog(@"Error during deleteAll!!!");
 			NSLog(@"SaveError: %@, %@", error, [error userInfo]);
 		 }
-		 else 
+		 /*else
 		 {
 			NSLog(@"DeleteAll was a success!!!");
-		 }
+		 }*/
 	
 		return success;
 	}
@@ -181,10 +181,10 @@
 	 NSLog(@"Error during save!!!");
 	 NSLog(@"SaveError: %@, %@", error, [error userInfo]);
 	}
-	else 
+	/*else
 	{
 	 NSLog(@"Save was a success!!!");
-	}
+	}*/
 	
 	return success;
 }
