@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.openmobster.hybrid.sandbox</groupId>
+  <artifactId>mbaas-plugin-sandbox</artifactId>
+  <versioning>
+    <versions>
+      <version>2.4-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20131230225623</lastUpdated>
+  </versioning>
+</metadata>
