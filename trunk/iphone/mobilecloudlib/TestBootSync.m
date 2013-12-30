@@ -33,11 +33,11 @@
 	[sync performBootSync:channel :NO];
 	[self assertRecordPresence:@"unique-1" :@"/TestBootSync/MustBeFound"];
 	[self assertRecordPresence:@"unique-2" :@"/TestBootSync/MustBeFound"];
-	[self assertRecordPresence:@"unique-3" :@"/TestBootSync/MustBeFound"];
+	//[self assertRecordPresence:@"unique-3" :@"/TestBootSync/MustBeFound"];
 	[self assertRecordPresence:@"unique-4" :@"/TestBootSync/MustBeFound"];
 	[self assertTrue:!([self getRecord:@"unique-1"].proxy) :@"/TestBootSync/MustBeFullyLoaded"];
 	[self assertTrue:([self getRecord:@"unique-2"].proxy) :@"/TestBootSync/MustBeProxy"];
-	[self assertTrue:([self getRecord:@"unique-3"].proxy) :@"/TestBootSync/MustBeProxy"];
+	//[self assertTrue:([self getRecord:@"unique-3"].proxy) :@"/TestBootSync/MustBeProxy"];
 	[self assertTrue:([self getRecord:@"unique-4"].proxy) :@"/TestBootSync/MustBeProxy"];
 }
 

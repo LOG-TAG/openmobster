@@ -49,5 +49,6 @@
 //Used internally
 -(void)startSync:(NSString *)syncType :(NSString *)channel :(BOOL)isBackground :(NSString *)oid;
 -(void)performSync:(NetSession *)session :(NSString *)syncType :(NSString *)channel :(BOOL)isBackground :(NSString *)oid;
+-(void)updateChangeLogForTests:(NSString *)channel :(NSString *) operation :(NSString *) objectId;
 
 @end

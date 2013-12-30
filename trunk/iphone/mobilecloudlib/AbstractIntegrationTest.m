@@ -97,7 +97,7 @@
 				
 				[mdb create:local];
 				
-				[sync updateChangeLog:service :_Add :uniqueId];
+				[sync updateChangeLogForTests:service :_Add :uniqueId];
 			}
 		}
 		else if([operation caseInsensitiveCompare:@"replace"] == NSOrderedSame ||
@@ -118,7 +118,7 @@
 				if(i == 2)
 				{
 					[local setValue:@"message" value:[NSString stringWithFormat:@"<tag apos='apos' quote=\"quote\" ampersand='&'>%@/Updated/Client</tag>",uniqueId]];
-					[sync updateChangeLog:service :_Replace :uniqueId];
+					[sync updateChangeLogForTests:service :_Replace :uniqueId];
 				}
 				else 
 				{
@@ -146,7 +146,7 @@
 				if(i == 1)
 				{
 					[local setValue:@"message" value:[NSString stringWithFormat:@"<tag apos='apos' quote=\"quote\" ampersand='&'>%@/Updated/Client</tag>",uniqueId]];
-					[sync updateChangeLog:service :_Replace :uniqueId];
+					[sync updateChangeLogForTests:service :_Replace :uniqueId];
 				}
 				
 				[mdb create:local];
@@ -165,7 +165,7 @@
 			[local setValue:@"message" value:[NSString stringWithFormat:@"<tag apos='apos' quote=\"quote\" ampersand='&'>%@/Message</tag>",uniqueId]];
 			[mdb create:local];
 			
-			[sync updateChangeLog:service :_Delete :@"unique-2"];
+			[sync updateChangeLogForTests:service :_Delete :@"unique-2"];
 		}
 	}
 	@finally 

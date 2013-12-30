@@ -86,11 +86,12 @@ static CloudDBManager *singleton = nil;
 	context = [[[NSManagedObjectContext alloc] init] autorelease];
 	[context setPersistentStoreCoordinator: self.coordinator];
     [context processPendingChanges];
-
     [currentThread.threadDictionary setObject:context forKey:@"context"];
+    [context setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
     
     if([NSThread isMainThread])
     {
+        NSLog(@"Running on Main Thread!!!!!!");
         self.mainContext = context;
     }
     /*else
@@ -99,18 +100,22 @@ static CloudDBManager *singleton = nil;
         NSNotificationCenter *defaultCenter = (NSNotificationCenter *)[NSNotificationCenter defaultCenter];
         [defaultCenter addObserver:self selector:@selector(contextDidSave:) name:NSManagedObjectContextDidSaveNotification object:context];
     }*/
+    else
+    {
+        NSLog(@"*NOT* Running on Main Thread!!!!!!");
+    }
 	
 	return context;
 }
 
 -(void) contextDidSave:(NSNotification *)saveNotification
 {
-    //NSLog(@"Merge Notification on the Main Thread received!!!!!");
-    //[self.mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
-      //                    withObject:saveNotification
-      //                 waitUntilDone:YES];
+    /*NSLog(@"Merge Notification on the Main Thread received!!!!!");
+    [self.mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+                          withObject:saveNotification
+                       waitUntilDone:YES];
     
-    //[self.mainContext mergeChangesFromContextDidSaveNotification:saveNotification];
+    [self.mainContext mergeChangesFromContextDidSaveNotification:saveNotification];*/
 }
 
 //For the classes internal-use only

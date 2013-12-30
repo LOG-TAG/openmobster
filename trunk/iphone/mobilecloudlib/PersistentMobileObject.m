@@ -121,7 +121,7 @@
 	BOOL success = [managedContext save:&error];
 	
 	//Used for debugging
-	/*if(!success)
+	if(!success)
 	 {
 	 NSLog(@"Error during delete!!!");
 	 NSLog(@"SaveError: %@, %@", error, [error userInfo]);
@@ -129,7 +129,7 @@
 	 else 
 	 {
 	 NSLog(@"Delete was a success!!!");
-	 }*/
+	 }
 	
 	return success;
 }
@@ -151,7 +151,7 @@
 		BOOL success = [managedContext save:&error];
 	
 		//Used for debugging
-		/*if(!success)
+		if(!success)
 		 {
 			NSLog(@"Error during deleteAll!!!");
 			NSLog(@"SaveError: %@, %@", error, [error userInfo]);
@@ -159,7 +159,7 @@
 		 else 
 		 {
 			NSLog(@"DeleteAll was a success!!!");
-		 }*/
+		 }
 	
 		return success;
 	}
@@ -176,7 +176,7 @@
 	BOOL success = [managedContext save:&error];
 	
 	//Used for debugging
-	/*if(!success)
+	if(!success)
 	{
 	 NSLog(@"Error during save!!!");
 	 NSLog(@"SaveError: %@, %@", error, [error userInfo]);
@@ -184,7 +184,7 @@
 	else 
 	{
 	 NSLog(@"Save was a success!!!");
-	}*/
+	}
 	
 	return success;
 }
