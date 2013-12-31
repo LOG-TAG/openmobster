@@ -1,0 +1,10 @@
+<app-conf>
+	<encryption>false</encryption>
+	
+	<push>
+		<launch-activity-class>org.async.service.app.cloud.app.screen.HomeScreen</launch-activity-class>
+		<icon-name>push</icon-name>
+		<!-- enable background re-establishment of the Push Socket if its disconnected -->
+		<reconnect/>
+	</push>
+</app-conf>

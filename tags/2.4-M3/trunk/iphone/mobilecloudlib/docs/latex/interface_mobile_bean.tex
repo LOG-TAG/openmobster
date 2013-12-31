@@ -1,0 +1,666 @@
+\hypertarget{interface_mobile_bean}{
+\section{\-Mobile\-Bean \-Class \-Reference}
+\label{interface_mobile_bean}\index{\-Mobile\-Bean@{\-Mobile\-Bean}}
+}
+
+
+{\ttfamily \#include $<$\-Mobile\-Bean.\-h$>$}
+
+\-Inheritance diagram for \-Mobile\-Bean\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_mobile_bean}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_mobile_bean_ae44c212a23234c2d150f5b5308da06c0}{get\-Channel} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_mobile_bean_a5b46efc0a2f36f7adacbb4110a12db9c}{get\-Id} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_mobile_bean_a0f8fe95a97c391a12de36c2f72357a77}{get\-Cloud\-Id} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_adf324a1d195f07535650a2f9c4e72c2e}{is\-Initialized} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_a5ef8e84a0ccc61f65913e6e83dd1d907}{is\-Created\-On\-Device} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_a9c4154a3d86f842bb03cf4053d78bd40}{is\-Proxy} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_mobile_bean_a5ac15c5323dd5de0be89a24be9d9bc4f}{get\-Value\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$field\-Uri)
+\item 
+void \hyperlink{interface_mobile_bean_aa2e9dee169619a886bfbf64533fd4b10}{set\-Value\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$field\-Uri,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$value)
+\item 
+\-N\-S\-Data $\ast$ \hyperlink{interface_mobile_bean_a26cddbd6c474ad63e57251ea9aad6950}{get\-Binary\-Value\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$field\-Uri)
+\item 
+void \hyperlink{interface_mobile_bean_a8a3f847eb9b5195056471188e0bd7c41}{set\-Binary\-Value\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$field\-Uri,\mbox{[}$\,$\mbox{]} \-N\-S\-Data $\ast$value)
+\item 
+\hyperlink{interface_bean_list}{\-Bean\-List} $\ast$ \hyperlink{interface_mobile_bean_a1f36e2a5b9ecb363c38973df1618e237}{read\-List\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$list\-Property)
+\item 
+void \hyperlink{interface_mobile_bean_af59eea7c76a2397dbe4e5c44a8cb5275}{save\-List\-:} (\hyperlink{interface_bean_list}{\-Bean\-List} $\ast$list)
+\item 
+void \hyperlink{interface_mobile_bean_a9431c353027aa9660a8f8eeb894cc1e8}{clear\-List\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$list\-Property)
+\item 
+void \hyperlink{interface_mobile_bean_a08c5cfccb1ef6baa7a1884fe711e359f}{add\-Bean\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$list\-Property,\mbox{[}$\,$\mbox{]} \hyperlink{interface_bean_list_entry}{\-Bean\-List\-Entry} $\ast$bean)
+\item 
+void \hyperlink{interface_mobile_bean_a6b6e69fbbc584d74a4b41c8f943405ee}{remove\-Bean\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$list\-Property,\mbox{[}$\,$\mbox{]} int element\-At)
+\item 
+void \hyperlink{interface_mobile_bean_a45d21ce70f94a528516ab2a2d260c45e}{save} ()
+\item 
+void \hyperlink{interface_mobile_bean_a5ab770172226f0ac753ab6a77e86dacd}{delete} ()
+\item 
+void \hyperlink{interface_mobile_bean_aee22e60620f8758015733b09bdbd2ef6}{refresh} ()
+\item 
+void \hyperlink{interface_mobile_bean_a61c19b6207e6bff785cd64f28fa54204}{clear\-All} ()
+\item 
+void \hyperlink{interface_mobile_bean_a79f8ab8f6fc21f3724c2460b9298bb93}{clear\-Meta\-Data} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_mobile_bean_a603748158f929bb1d2ba503996bf19c6}{with\-Init\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$data)
+\item 
+\hyperlink{interface_mobile_bean}{\-Mobile\-Bean} $\ast$ \hyperlink{interface_mobile_bean_a057a773dfb42af5bba5b4d66906c02d6}{new\-Instance\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\hyperlink{interface_mobile_bean}{\-Mobile\-Bean} $\ast$ \hyperlink{interface_mobile_bean_add178c1be67319073729cbde05fdd7d6}{read\-By\-Id\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$oid)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_a124a6d20066ae3827f392f6be18ef68e}{read\-All\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_a2497377110c750f933d89cfdc05ac34e}{is\-Booted\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_a41627ec92b2469c6d90d8770b4a7143f}{query\-By\-Equals\-All\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_a6d08a46f238b32c0371bbf61726e35d0}{query\-By\-Equals\-Atleast\-One\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_aa5161717f1beb0e558b99757431b8d55}{query\-By\-Not\-Equals\-All\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_ac9e76ed3e5b926cbcdfb278c3137d7a9}{query\-By\-Not\-Equals\-Atleast\-One\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_aeeb2ead229395df6dd1f7ba197352856}{query\-By\-Contains\-All\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_a8eaecfd835a3424471964b88e12b9b95}{query\-By\-Contains\-Atleast\-One\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{interface_generic_attribute_manager}{\-Generic\-Attribute\-Manager} $\ast$criteria)
+\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_mobile_bean_a9fb574b192ae78c2a18f24701b997a32}{filter\-Proxies\-:} (\-N\-S\-Array $\ast$mobile\-Objects)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$ \hyperlink{interface_mobile_bean_afbb725368f73fc95c7896c466e6ab913}{data}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_a13520d7327987f517659625a25290036}{is\-Dirty}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_adfb5677488f58845e4873d8b1edfe15d}{is\-New}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_mobile_bean_a9d7d56a7ab0d2e868ebd251fd1582861}{readonly}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\hyperlink{interface_mobile_bean}{\-Mobile\-Bean} is a managed \-Mobile \-Component which is an extension of its corresponding \-Mobile \-Component in the \-Cloud.
+
+\hyperlink{interface_mobile_bean}{\-Mobile\-Bean} provides seamless access to the synchronized data. \-This data is used in a \-Mobile application in various contexts like showing reports, \-G\-U\-I for the service etc
+
+\-It is designed to shield the \-Mobile \-Developer from low-\/level services like \-Offline \-Access, \-Receiving \-Notifications related to data changes on the server, synchronizing modified beans back with the server, etc. \-This helps the developer to focus on the business logic for their applications without having to worry about low level synchronization details
+
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}
+\end{DoxyAuthor}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_mobile_bean_a08c5cfccb1ef6baa7a1884fe711e359f}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!add\-Bean\-::@{add\-Bean\-::}}
+\index{add\-Bean\-::@{add\-Bean\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{add\-Bean\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::add\-Bean\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{list\-Property, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Bean\-List\-Entry} $\ast$}]{bean}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a08c5cfccb1ef6baa7a1884fe711e359f}
+\hyperlink{interface_add}{\-Add} a \-Bean to the \-List of \-Beans under the \-Mobile \-Bean \char`\"{}parent\char`\"{} \-Object
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em expression} & of the list property in question \\
+\hline
+{\em bean} & a \hyperlink{interface_bean_list_entry}{\-Bean\-List\-Entry} instance to be added to the list property \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_mobile_bean_a61c19b6207e6bff785cd64f28fa54204}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!clear\-All@{clear\-All}}
+\index{clear\-All@{clear\-All}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{clear\-All}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::clear\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a61c19b6207e6bff785cd64f28fa54204}
+\-This method is for internal use only \hypertarget{interface_mobile_bean_a9431c353027aa9660a8f8eeb894cc1e8}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!clear\-List\-:@{clear\-List\-:}}
+\index{clear\-List\-:@{clear\-List\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{clear\-List\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::clear\-List\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{list\-Property}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a9431c353027aa9660a8f8eeb894cc1e8}
+\-Clears the \-List of \-Beans under the \-Mobile \-Bean \char`\"{}parent\char`\"{} \-Object
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em list\-Property} & expression of the list property to be cleared \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_mobile_bean_a79f8ab8f6fc21f3724c2460b9298bb93}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!clear\-Meta\-Data@{clear\-Meta\-Data}}
+\index{clear\-Meta\-Data@{clear\-Meta\-Data}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{clear\-Meta\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::clear\-Meta\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a79f8ab8f6fc21f3724c2460b9298bb93}
+\-This method is for internal use only \hypertarget{interface_mobile_bean_a5ab770172226f0ac753ab6a77e86dacd}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!delete@{delete}}
+\index{delete@{delete}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{delete}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::delete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a5ab770172226f0ac753ab6a77e86dacd}
+\-Deletes the bean from the channel. \-This also makes sure this action is reflected on the \-Cloud \-Side as well \hypertarget{interface_mobile_bean_a9fb574b192ae78c2a18f24701b997a32}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!filter\-Proxies\-:@{filter\-Proxies\-:}}
+\index{filter\-Proxies\-:@{filter\-Proxies\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{filter\-Proxies\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::filter\-Proxies\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Array $\ast$}]{mobile\-Objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a9fb574b192ae78c2a18f24701b997a32}
+\-This method is for internal use only \hypertarget{interface_mobile_bean_a26cddbd6c474ad63e57251ea9aad6950}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!get\-Binary\-Value\-:@{get\-Binary\-Value\-:}}
+\index{get\-Binary\-Value\-:@{get\-Binary\-Value\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{get\-Binary\-Value\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Data $\ast$ \-Mobile\-Bean\-::get\-Binary\-Value\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{field\-Uri}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a26cddbd6c474ad63e57251ea9aad6950}
+\-Gets the \-Binary \-Value of a \hyperlink{interface_field}{\-Field} of the bean
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em field\-Uri} & expression identifying the field on the bean \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the \-Value value of the field on the bean 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_ae44c212a23234c2d150f5b5308da06c0}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!get\-Channel@{get\-Channel}}
+\index{get\-Channel@{get\-Channel}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{get\-Channel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Mobile\-Bean\-::get\-Channel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_ae44c212a23234c2d150f5b5308da06c0}
+\-Returns the \hyperlink{interface_channel}{\-Channel} associated with this bean
+
+\begin{DoxyReturn}{\-Returns}
+the name of the channel 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a0f8fe95a97c391a12de36c2f72357a77}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!get\-Cloud\-Id@{get\-Cloud\-Id}}
+\index{get\-Cloud\-Id@{get\-Cloud\-Id}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{get\-Cloud\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Mobile\-Bean\-::get\-Cloud\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a0f8fe95a97c391a12de36c2f72357a77}
+\-Gets the unique identifier of this bean on the \-Cloud \-Side. 99\% of the times this is same as the one on the \-Device \-Side.
+
+\begin{DoxyReturn}{\-Returns}
+the unique identifier for this bean on the cloud side 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a5b46efc0a2f36f7adacbb4110a12db9c}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Mobile\-Bean\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a5b46efc0a2f36f7adacbb4110a12db9c}
+\-Gets the unique identifier of the bean
+
+\begin{DoxyReturn}{\-Returns}
+the unique identifier of this \-Mobile \-Bean 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a5ac15c5323dd5de0be89a24be9d9bc4f}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!get\-Value\-:@{get\-Value\-:}}
+\index{get\-Value\-:@{get\-Value\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{get\-Value\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Mobile\-Bean\-::get\-Value\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{field\-Uri}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a5ac15c5323dd5de0be89a24be9d9bc4f}
+\-Gets the \-Value of a \hyperlink{interface_field}{\-Field} of the bean
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em field\-Uri} & expression identifying the field on the bean \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the \-Value value of the field on the bean 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a2497377110c750f933d89cfdc05ac34e}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!is\-Booted\-:@{is\-Booted\-:}}
+\index{is\-Booted\-:@{is\-Booted\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{is\-Booted\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::is\-Booted\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a2497377110c750f933d89cfdc05ac34e}
+\-Checks if the \hyperlink{interface_channel}{\-Channel} has been booted up on the device with initial data or not
+
+\begin{DoxyReturn}{\-Returns}
+true if the channel has been booted up 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a5ef8e84a0ccc61f65913e6e83dd1d907}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!is\-Created\-On\-Device@{is\-Created\-On\-Device}}
+\index{is\-Created\-On\-Device@{is\-Created\-On\-Device}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{is\-Created\-On\-Device}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::is\-Created\-On\-Device (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a5ef8e84a0ccc61f65913e6e83dd1d907}
+\-Checks if this bean was originally created on the device
+
+\begin{DoxyReturn}{\-Returns}
+true if the bean is originated on the device 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_adf324a1d195f07535650a2f9c4e72c2e}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!is\-Initialized@{is\-Initialized}}
+\index{is\-Initialized@{is\-Initialized}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{is\-Initialized}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::is\-Initialized (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_adf324a1d195f07535650a2f9c4e72c2e}
+\-Checks if the bean instance is properly initialized
+
+\begin{DoxyReturn}{\-Returns}
+true if it is initialized 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a9c4154a3d86f842bb03cf4053d78bd40}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!is\-Proxy@{is\-Proxy}}
+\index{is\-Proxy@{is\-Proxy}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{is\-Proxy}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::is\-Proxy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a9c4154a3d86f842bb03cf4053d78bd40}
+\-Checks if the particular instance is in proxy state or its state is fully downloaded from the server
+
+\begin{DoxyReturn}{\-Returns}
+true if it is not fully loaded from the \-Cloud 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a057a773dfb42af5bba5b4d66906c02d6}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!new\-Instance\-:@{new\-Instance\-:}}
+\index{new\-Instance\-:@{new\-Instance\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{new\-Instance\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean} $\ast$ \-Mobile\-Bean\-::new\-Instance\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a057a773dfb42af5bba5b4d66906c02d6}
+\-Create a new transient instance of a \-Mobile \-Bean. \-The \-Mobile \-Bean has to be explicitly saved in order to persist it on the device and have it reflect on the server. \-In this case, when the bean is persisted the \-Id will be generated by the device since its not explicitly specified
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & channel of the bean \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an instance of the \hyperlink{interface_mobile_bean}{\-Mobile\-Bean} originated from the device (does not have a \-Cloud counterpart yet, until synchronized) 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_aeeb2ead229395df6dd1f7ba197352856}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!query\-By\-Contains\-All\-::@{query\-By\-Contains\-All\-::}}
+\index{query\-By\-Contains\-All\-::@{query\-By\-Contains\-All\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{query\-By\-Contains\-All\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::query\-By\-Contains\-All\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_aeeb2ead229395df6dd1f7ba197352856}
+\hyperlink{interface_query}{\-Query} the \hyperlink{interface_channel}{\-Channel} such that the criteria provided is separated by an \-A\-N\-D in the \-W\-H\-E\-R\-E clause. \-The criteria consists of name/value pairs of the data to be matched. \-The matching is done using the \-L\-I\-K\-E clause to check if the specified criteria is contained within the data
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \hyperlink{interface_channel}{\-Channel} being queried \\
+\hline
+{\em criteria} & name/value pairs of the data to be matched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an array of beans that match the specified query 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a8eaecfd835a3424471964b88e12b9b95}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!query\-By\-Contains\-Atleast\-One\-::@{query\-By\-Contains\-Atleast\-One\-::}}
+\index{query\-By\-Contains\-Atleast\-One\-::@{query\-By\-Contains\-Atleast\-One\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{query\-By\-Contains\-Atleast\-One\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::query\-By\-Contains\-Atleast\-One\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a8eaecfd835a3424471964b88e12b9b95}
+\hyperlink{interface_query}{\-Query} the \hyperlink{interface_channel}{\-Channel} such that the criteria provided is separated by an \-O\-R in the \-W\-H\-E\-R\-E clause. \-The criteria consists of name/value pairs of the data to be matched. \-The matching is done using the \-L\-I\-K\-E clause to check if the specified criteria is contained within the data
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \hyperlink{interface_channel}{\-Channel} being queried \\
+\hline
+{\em criteria} & name/value pairs of the data to be matched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an array of beans that match the specified query 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a41627ec92b2469c6d90d8770b4a7143f}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!query\-By\-Equals\-All\-::@{query\-By\-Equals\-All\-::}}
+\index{query\-By\-Equals\-All\-::@{query\-By\-Equals\-All\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{query\-By\-Equals\-All\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::query\-By\-Equals\-All\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a41627ec92b2469c6d90d8770b4a7143f}
+\hyperlink{interface_query}{\-Query} the \hyperlink{interface_channel}{\-Channel} such that the criteria provided is separated by \-A\-N\-D in the \-W\-H\-E\-R\-E clause. \-The criteria consists of name/value pairs of the data to be matched
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \hyperlink{interface_channel}{\-Channel} being queried \\
+\hline
+{\em criteria} & name/value pairs of the data to be matched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an array of beans that match the specified query 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a6d08a46f238b32c0371bbf61726e35d0}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!query\-By\-Equals\-Atleast\-One\-::@{query\-By\-Equals\-Atleast\-One\-::}}
+\index{query\-By\-Equals\-Atleast\-One\-::@{query\-By\-Equals\-Atleast\-One\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{query\-By\-Equals\-Atleast\-One\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::query\-By\-Equals\-Atleast\-One\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a6d08a46f238b32c0371bbf61726e35d0}
+\hyperlink{interface_query}{\-Query} the \hyperlink{interface_channel}{\-Channel} such that the criteria provided is separated by an \-O\-R in the \-W\-H\-E\-R\-E clause. \-The criteria consists of name/value pairs of the data to be matched
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \hyperlink{interface_channel}{\-Channel} being queried \\
+\hline
+{\em criteria} & name/value pairs of the data to be matched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an array of beans that match the specified query 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_aa5161717f1beb0e558b99757431b8d55}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!query\-By\-Not\-Equals\-All\-::@{query\-By\-Not\-Equals\-All\-::}}
+\index{query\-By\-Not\-Equals\-All\-::@{query\-By\-Not\-Equals\-All\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{query\-By\-Not\-Equals\-All\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::query\-By\-Not\-Equals\-All\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_aa5161717f1beb0e558b99757431b8d55}
+\hyperlink{interface_query}{\-Query} the \hyperlink{interface_channel}{\-Channel} such that the criteria provided is separated by a \-A\-N\-D in the \-W\-H\-E\-R\-E clause. \-The criteria consists of name/value pairs of the data to be matched. \-In this case, it returns rows that \char`\"{}do not\char`\"{} match the specified criteria
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \hyperlink{interface_channel}{\-Channel} being queried \\
+\hline
+{\em criteria} & name/value pairs of the data to be matched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an array of beans that \char`\"{}do not\char`\"{} match the specified query 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_ac9e76ed3e5b926cbcdfb278c3137d7a9}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!query\-By\-Not\-Equals\-Atleast\-One\-::@{query\-By\-Not\-Equals\-Atleast\-One\-::}}
+\index{query\-By\-Not\-Equals\-Atleast\-One\-::@{query\-By\-Not\-Equals\-Atleast\-One\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{query\-By\-Not\-Equals\-Atleast\-One\-::}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::query\-By\-Not\-Equals\-Atleast\-One\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Generic\-Attribute\-Manager} $\ast$}]{criteria}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_ac9e76ed3e5b926cbcdfb278c3137d7a9}
+\hyperlink{interface_query}{\-Query} the \hyperlink{interface_channel}{\-Channel} such that the criteria provided is separated by a \-O\-R in the \-W\-H\-E\-R\-E clause. \-The criteria consists of name/value pairs of the data to be matched. \-In this case, it returns rows that \char`\"{}do not\char`\"{} match the specified criteria
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \hyperlink{interface_channel}{\-Channel} being queried \\
+\hline
+{\em criteria} & name/value pairs of the data to be matched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an array of beans that \char`\"{}do not\char`\"{} match the specified query 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a124a6d20066ae3827f392f6be18ef68e}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!read\-All\-:@{read\-All\-:}}
+\index{read\-All\-:@{read\-All\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{read\-All\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array $\ast$ \-Mobile\-Bean\-::read\-All\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a124a6d20066ae3827f392f6be18ef68e}
+\-Provides all the instances of \-Mobile \-Beans for the specified channel
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em the} & channel to read the beans from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+all the beans stored in the channel 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_add178c1be67319073729cbde05fdd7d6}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!read\-By\-Id\-::@{read\-By\-Id\-::}}
+\index{read\-By\-Id\-::@{read\-By\-Id\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{read\-By\-Id\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Bean} $\ast$ \-Mobile\-Bean\-::read\-By\-Id\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{oid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_add178c1be67319073729cbde05fdd7d6}
+\-Provides an instance of a \-Mobile \-Bean
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & channel of the bean \\
+\hline
+{\em id} & id of the bean \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+an instance of the \hyperlink{interface_mobile_bean}{\-Mobile\-Bean} from the channel 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_a1f36e2a5b9ecb363c38973df1618e237}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!read\-List\-:@{read\-List\-:}}
+\index{read\-List\-:@{read\-List\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{read\-List\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Bean\-List} $\ast$ \-Mobile\-Bean\-::read\-List\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{list\-Property}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a1f36e2a5b9ecb363c38973df1618e237}
+\-Reads a \-List of \-Beans under the \-Mobile \-Bean \char`\"{}parent\char`\"{} \-Object
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em list\-Property} & expression to specify the \-List \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the list\-Property 
+\end{DoxyReturn}
+\hypertarget{interface_mobile_bean_aee22e60620f8758015733b09bdbd2ef6}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!refresh@{refresh}}
+\index{refresh@{refresh}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{refresh}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::refresh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_aee22e60620f8758015733b09bdbd2ef6}
+\-Re-\/\-Read the state of the \hyperlink{interface_mobile_bean}{\-Mobile\-Bean} from the database \hypertarget{interface_mobile_bean_a6b6e69fbbc584d74a4b41c8f943405ee}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!remove\-Bean\-::@{remove\-Bean\-::}}
+\index{remove\-Bean\-::@{remove\-Bean\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{remove\-Bean\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::remove\-Bean\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{list\-Property, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{element\-At}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a6b6e69fbbc584d74a4b41c8f943405ee}
+\-Remove the \-Bean present at the specified index from the \-List of \-Beans under the \-Mobile \-Bean \char`\"{}parent\char`\"{} \-Object
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em list\-Property} & expression representing the list property \\
+\hline
+{\em element\-At} & index of the element to be removed from the list property \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_mobile_bean_a45d21ce70f94a528516ab2a2d260c45e}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!save@{save}}
+\index{save@{save}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a45d21ce70f94a528516ab2a2d260c45e}
+\-Persists the state of the \-Mobile \-Bean. \-This also makes sure the consistent bean state is reflected on the \-Cloud \-Side as well \hypertarget{interface_mobile_bean_af59eea7c76a2397dbe4e5c44a8cb5275}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!save\-List\-:@{save\-List\-:}}
+\index{save\-List\-:@{save\-List\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{save\-List\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::save\-List\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Bean\-List} $\ast$}]{list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_af59eea7c76a2397dbe4e5c44a8cb5275}
+\-Saves the \-List of \-Beans under the \-Mobile \-Bean \char`\"{}parent\char`\"{} \-Object \-If the list is null, a new list is created. \-If the list exists, then this list replaces the old list
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em list} & expression of the list property of the bean \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_mobile_bean_a8a3f847eb9b5195056471188e0bd7c41}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!set\-Binary\-Value\-::@{set\-Binary\-Value\-::}}
+\index{set\-Binary\-Value\-::@{set\-Binary\-Value\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{set\-Binary\-Value\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::set\-Binary\-Value\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{field\-Uri, }
+\item[{\mbox{[}$\,$\mbox{]} \-N\-S\-Data $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_a8a3f847eb9b5195056471188e0bd7c41}
+\-Sets the \-Binary \-Value of a \hyperlink{interface_field}{\-Field} of the bean
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em field\-Uri} & expression identifying the field on the bean \\
+\hline
+{\em value} & value to be set \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_mobile_bean_aa2e9dee169619a886bfbf64533fd4b10}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!set\-Value\-::@{set\-Value\-::}}
+\index{set\-Value\-::@{set\-Value\-::}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{set\-Value\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Mobile\-Bean\-::set\-Value\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{field\-Uri, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_mobile_bean_aa2e9dee169619a886bfbf64533fd4b10}
+\-Sets the \-Value of a \hyperlink{interface_field}{\-Field} of the bean
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em field\-Uri} & expression identifying the field on the bean \\
+\hline
+{\em value} & value to be set \\
+\hline
+\end{DoxyParams}
+\hypertarget{interface_mobile_bean_a603748158f929bb1d2ba503996bf19c6}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!with\-Init\-:@{with\-Init\-:}}
+\index{with\-Init\-:@{with\-Init\-:}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{with\-Init\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Mobile\-Bean\-::with\-Init\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Mobile\-Object} $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_mobile_bean_a603748158f929bb1d2ba503996bf19c6}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_mobile_bean_afbb725368f73fc95c7896c466e6ab913}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!data@{data}}
+\index{data@{data}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Object} $\ast$ \-Mobile\-Bean\-::data\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_mobile_bean_afbb725368f73fc95c7896c466e6ab913}
+\hypertarget{interface_mobile_bean_a13520d7327987f517659625a25290036}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!is\-Dirty@{is\-Dirty}}
+\index{is\-Dirty@{is\-Dirty}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{is\-Dirty}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::is\-Dirty\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_mobile_bean_a13520d7327987f517659625a25290036}
+\hypertarget{interface_mobile_bean_adfb5677488f58845e4873d8b1edfe15d}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!is\-New@{is\-New}}
+\index{is\-New@{is\-New}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{is\-New}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::is\-New\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_mobile_bean_adfb5677488f58845e4873d8b1edfe15d}
+\hypertarget{interface_mobile_bean_a9d7d56a7ab0d2e868ebd251fd1582861}{
+\index{\-Mobile\-Bean@{\-Mobile\-Bean}!readonly@{readonly}}
+\index{readonly@{readonly}!MobileBean@{\-Mobile\-Bean}}
+\subsubsection[{readonly}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Mobile\-Bean\-::readonly\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_mobile_bean_a9d7d56a7ab0d2e868ebd251fd1582861}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_mobile_bean_8h}{\-Mobile\-Bean.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_mobile_bean_8m}{\-Mobile\-Bean.\-m}\end{DoxyCompactItemize}

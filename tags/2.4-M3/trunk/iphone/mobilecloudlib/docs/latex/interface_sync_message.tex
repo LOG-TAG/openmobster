@@ -1,0 +1,142 @@
+\hypertarget{interface_sync_message}{
+\section{\-Sync\-Message \-Class \-Reference}
+\label{interface_sync_message}\index{\-Sync\-Message@{\-Sync\-Message}}
+}
+
+
+{\ttfamily \#include $<$\-Sync\-Message.\-h$>$}
+
+\-Inheritance diagram for \-Sync\-Message\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_sync_message}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_sync_message_a7ae4a9827fe02f11d1c0c1b19ca4ac28}{add\-Alert\-:} (\hyperlink{interface_alert}{\-Alert} $\ast$alert)
+\item 
+void \hyperlink{interface_sync_message_ac72485612a6f8e5012c6bd37b235d7be}{add\-Status\-:} (\hyperlink{interface_status}{\-Status} $\ast$incoming)
+\item 
+void \hyperlink{interface_sync_message_a8360483ce017b3636854d32de7be4199}{add\-Command\-:} (\hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$command)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_sync_message_aeee6e93df685f35c19dd1517311b082a}{with\-Init} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_sync_message_ad0b78ee61dac9c1c6cff05d3780c366f}{message\-Id}
+\item 
+int \hyperlink{interface_sync_message_ab2f9b90e643a621ba75e0cb084cfb4d5}{max\-Client\-Size}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_sync_message_a8e550097797eafe27d811883bfb50d63}{final}
+\item 
+\-B\-O\-O\-L \hyperlink{interface_sync_message_af94a7474e3e3fcefb700ab32711376bd}{client\-Initiated}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_sync_message_a298c7c8fa93597484aa05023bab3e328}{alerts}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_sync_message_a8b3f2df455e9e7f88c6826ebcb0caa7d}{status}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_sync_message_a022ca7fd27c57d2f473f4a80b201b1ee}{sync\-Commands}
+\item 
+\hyperlink{interface_record_map}{\-Record\-Map} $\ast$ \hyperlink{interface_sync_message_ad74bd9818d32261c89c69825adb793f3}{record\-Map}
+\item 
+\hyperlink{interface_credential}{\-Credential} $\ast$ \hyperlink{interface_sync_message_a3a818b8e15c1cfca6fe31e4c95c04694}{credential}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_sync_message_a7ae4a9827fe02f11d1c0c1b19ca4ac28}{
+\index{\-Sync\-Message@{\-Sync\-Message}!add\-Alert\-:@{add\-Alert\-:}}
+\index{add\-Alert\-:@{add\-Alert\-:}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{add\-Alert\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Message\-::add\-Alert\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Alert} $\ast$}]{alert}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_message_a7ae4a9827fe02f11d1c0c1b19ca4ac28}
+\hypertarget{interface_sync_message_a8360483ce017b3636854d32de7be4199}{
+\index{\-Sync\-Message@{\-Sync\-Message}!add\-Command\-:@{add\-Command\-:}}
+\index{add\-Command\-:@{add\-Command\-:}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{add\-Command\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Message\-::add\-Command\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sync\-Command} $\ast$}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_message_a8360483ce017b3636854d32de7be4199}
+\hypertarget{interface_sync_message_ac72485612a6f8e5012c6bd37b235d7be}{
+\index{\-Sync\-Message@{\-Sync\-Message}!add\-Status\-:@{add\-Status\-:}}
+\index{add\-Status\-:@{add\-Status\-:}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{add\-Status\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Message\-::add\-Status\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Status} $\ast$}]{incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_message_ac72485612a6f8e5012c6bd37b235d7be}
+\hypertarget{interface_sync_message_aeee6e93df685f35c19dd1517311b082a}{
+\index{\-Sync\-Message@{\-Sync\-Message}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Sync\-Message\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_message_aeee6e93df685f35c19dd1517311b082a}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_sync_message_a298c7c8fa93597484aa05023bab3e328}{
+\index{\-Sync\-Message@{\-Sync\-Message}!alerts@{alerts}}
+\index{alerts@{alerts}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{alerts}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Array $\ast$ \-Sync\-Message\-::alerts\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_a298c7c8fa93597484aa05023bab3e328}
+\hypertarget{interface_sync_message_af94a7474e3e3fcefb700ab32711376bd}{
+\index{\-Sync\-Message@{\-Sync\-Message}!client\-Initiated@{client\-Initiated}}
+\index{client\-Initiated@{client\-Initiated}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{client\-Initiated}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Sync\-Message\-::client\-Initiated\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_af94a7474e3e3fcefb700ab32711376bd}
+\hypertarget{interface_sync_message_a3a818b8e15c1cfca6fe31e4c95c04694}{
+\index{\-Sync\-Message@{\-Sync\-Message}!credential@{credential}}
+\index{credential@{credential}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{credential}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Credential} $\ast$ \-Sync\-Message\-::credential\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_a3a818b8e15c1cfca6fe31e4c95c04694}
+\hypertarget{interface_sync_message_a8e550097797eafe27d811883bfb50d63}{
+\index{\-Sync\-Message@{\-Sync\-Message}!final@{final}}
+\index{final@{final}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{final}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Sync\-Message\-::final\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_a8e550097797eafe27d811883bfb50d63}
+\hypertarget{interface_sync_message_ab2f9b90e643a621ba75e0cb084cfb4d5}{
+\index{\-Sync\-Message@{\-Sync\-Message}!max\-Client\-Size@{max\-Client\-Size}}
+\index{max\-Client\-Size@{max\-Client\-Size}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{max\-Client\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int \-Sync\-Message\-::max\-Client\-Size\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_ab2f9b90e643a621ba75e0cb084cfb4d5}
+\hypertarget{interface_sync_message_ad0b78ee61dac9c1c6cff05d3780c366f}{
+\index{\-Sync\-Message@{\-Sync\-Message}!message\-Id@{message\-Id}}
+\index{message\-Id@{message\-Id}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{message\-Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Sync\-Message\-::message\-Id\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_ad0b78ee61dac9c1c6cff05d3780c366f}
+\hypertarget{interface_sync_message_ad74bd9818d32261c89c69825adb793f3}{
+\index{\-Sync\-Message@{\-Sync\-Message}!record\-Map@{record\-Map}}
+\index{record\-Map@{record\-Map}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{record\-Map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Record\-Map} $\ast$ \-Sync\-Message\-::record\-Map\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_ad74bd9818d32261c89c69825adb793f3}
+\hypertarget{interface_sync_message_a8b3f2df455e9e7f88c6826ebcb0caa7d}{
+\index{\-Sync\-Message@{\-Sync\-Message}!status@{status}}
+\index{status@{status}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{status}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Array $\ast$ \-Sync\-Message\-::status\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_a8b3f2df455e9e7f88c6826ebcb0caa7d}
+\hypertarget{interface_sync_message_a022ca7fd27c57d2f473f4a80b201b1ee}{
+\index{\-Sync\-Message@{\-Sync\-Message}!sync\-Commands@{sync\-Commands}}
+\index{sync\-Commands@{sync\-Commands}!SyncMessage@{\-Sync\-Message}}
+\subsubsection[{sync\-Commands}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Array $\ast$ \-Sync\-Message\-::sync\-Commands\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_sync_message_a022ca7fd27c57d2f473f4a80b201b1ee}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_sync_message_8h}{\-Sync\-Message.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_sync_message_8m}{\-Sync\-Message.\-m}\end{DoxyCompactItemize}

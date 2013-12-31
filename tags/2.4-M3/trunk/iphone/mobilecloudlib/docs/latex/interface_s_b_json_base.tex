@@ -1,0 +1,107 @@
+\hypertarget{interface_s_b_json_base}{
+\section{\-S\-B\-Json\-Base \-Class \-Reference}
+\label{interface_s_b_json_base}\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}}
+}
+
+
+\-Common base class for parsing \& writing.  
+
+
+
+
+{\ttfamily \#include $<$\-S\-B\-Json\-Base.\-h$>$}
+
+\-Inheritance diagram for \-S\-B\-Json\-Base\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_s_b_json_base}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_s_b_json_base_af6fc685c386c1c4528bd30b2bd630d56}{add\-Error\-With\-Code\-:description\-:} (\-N\-S\-U\-Integer code,\mbox{[}description\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$str)
+\item 
+void \hyperlink{interface_s_b_json_base_a6a429d6db2149fea7435b9e0aac5d3fa}{clear\-Error\-Trace} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Mutable\-Array $\ast$ \hyperlink{interface_s_b_json_base_a9fd64724d5da34a0f9842cee3d14620c}{error\-Trace}
+\item 
+\-N\-S\-U\-Integer \hyperlink{interface_s_b_json_base_a5e80155581d240f565ec4149ad812e03}{depth}
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-U\-Integer \hyperlink{interface_s_b_json_base_abe3e47517711570a9a57e2d92a15055b}{max\-Depth}
+\begin{DoxyCompactList}\small\item\em \-The maximum recursing depth. \end{DoxyCompactList}\item 
+\-N\-S\-Array $\ast$ \hyperlink{interface_s_b_json_base_aa83f0ee5efade2fd26ddf6591ffd8dc0}{error\-Trace}
+\begin{DoxyCompactList}\small\item\em \-Return an error trace, or nil if there was no errors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Common base class for parsing \& writing. 
+
+\-This class contains the common error-\/handling code and option between the parser/writer. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_s_b_json_base_af6fc685c386c1c4528bd30b2bd630d56}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!add\-Error\-With\-Code\-:description\-:@{add\-Error\-With\-Code\-:description\-:}}
+\index{add\-Error\-With\-Code\-:description\-:@{add\-Error\-With\-Code\-:description\-:}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{add\-Error\-With\-Code\-:description\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-S\-B\-Json\-Base\-::add\-Error\-With\-Code\-:description\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-U\-Integer}]{code, }
+\item[{\mbox{[}description\mbox{]} {\bf \-N\-S\-String}$\ast$}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_base_af6fc685c386c1c4528bd30b2bd630d56}
+\hypertarget{interface_s_b_json_base_a6a429d6db2149fea7435b9e0aac5d3fa}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!clear\-Error\-Trace@{clear\-Error\-Trace}}
+\index{clear\-Error\-Trace@{clear\-Error\-Trace}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{clear\-Error\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}void \-S\-B\-Json\-Base\-::clear\-Error\-Trace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_s_b_json_base_a6a429d6db2149fea7435b9e0aac5d3fa}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{interface_s_b_json_base_a5e80155581d240f565ec4149ad812e03}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!depth@{depth}}
+\index{depth@{depth}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{depth}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-U\-Integer {\bf \-S\-B\-Json\-Base\-::depth}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{interface_s_b_json_base_a5e80155581d240f565ec4149ad812e03}
+\hypertarget{interface_s_b_json_base_a9fd64724d5da34a0f9842cee3d14620c}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!error\-Trace@{error\-Trace}}
+\index{error\-Trace@{error\-Trace}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{error\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-Array$\ast$ {\bf \-S\-B\-Json\-Base\-::error\-Trace}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{interface_s_b_json_base_a9fd64724d5da34a0f9842cee3d14620c}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_s_b_json_base_aa83f0ee5efade2fd26ddf6591ffd8dc0}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!error\-Trace@{error\-Trace}}
+\index{error\-Trace@{error\-Trace}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{error\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Array$\ast$ {\bf \-S\-B\-Json\-Base\-::error\-Trace}\hspace{0.3cm}{\ttfamily  \mbox{[}read, copy\mbox{]}}}}
+\label{interface_s_b_json_base_aa83f0ee5efade2fd26ddf6591ffd8dc0}
+
+
+\-Return an error trace, or nil if there was no errors. 
+
+\-Note that this method returns the trace of the last method that failed. \-You need to check the return value of the call you're making to figure out if the call actually failed, before you know call this method. \hypertarget{interface_s_b_json_base_abe3e47517711570a9a57e2d92a15055b}{
+\index{\-S\-B\-Json\-Base@{\-S\-B\-Json\-Base}!max\-Depth@{max\-Depth}}
+\index{max\-Depth@{max\-Depth}!SBJsonBase@{\-S\-B\-Json\-Base}}
+\subsubsection[{max\-Depth}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-U\-Integer \-S\-B\-Json\-Base\-::max\-Depth\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_s_b_json_base_abe3e47517711570a9a57e2d92a15055b}
+
+
+\-The maximum recursing depth. 
+
+\-Defaults to 512. \-If the input is nested deeper than this the input will be deemed to be malicious and the parser returns nil, signalling an error. (\char`\"{}\-Nested too deep\char`\"{}.) \-You can turn off this security feature by setting the max\-Depth value to 0. 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_s_b_json_base_8h}{\-S\-B\-Json\-Base.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_s_b_json_base_8m}{\-S\-B\-Json\-Base.\-m}\end{DoxyCompactItemize}

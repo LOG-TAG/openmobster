@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><title></title>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="search.css"/>
+<script type="text/javascript" src="search.js"></script>
+</head>
+<body class="SRPage">
+<div id="SRIndex">
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRResult" id="SR_website">
+ <div class="SREntry">
+  <a id="Item0" onkeydown="return searchResults.Nav(event,0)" onkeypress="return searchResults.Nav(event,0)" onkeyup="return searchResults.Nav(event,0)" class="SRSymbol" href="../interface_place.html#ae95d94e85f00267531f3c2e9f8fcb2e6" target="_parent">website</a>
+  <span class="SRScope">Place</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_woeid">
+ <div class="SREntry">
+  <a id="Item1" onkeydown="return searchResults.Nav(event,1)" onkeypress="return searchResults.Nav(event,1)" onkeyup="return searchResults.Nav(event,1)" class="SRSymbol" href="../interface_address.html#a0d5eea8ea063877691868ba2912ea792" target="_parent">woeid</a>
+  <span class="SRScope">Address</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_woetype">
+ <div class="SREntry">
+  <a id="Item2" onkeydown="return searchResults.Nav(event,2)" onkeypress="return searchResults.Nav(event,2)" onkeyup="return searchResults.Nav(event,2)" class="SRSymbol" href="../interface_address.html#a6a0eb464fe79e147e913afa187992780" target="_parent">woetype</a>
+  <span class="SRScope">Address</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_writable">
+ <div class="SREntry">
+  <a id="Item3" onkeydown="return searchResults.Nav(event,3)" onkeypress="return searchResults.Nav(event,3)" onkeyup="return searchResults.Nav(event,3)" class="SRSymbol" href="../interface_channel.html#a02fc37595d44aa104f9d26c9e5786f74" target="_parent">writable</a>
+  <span class="SRScope">Channel</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_writablechannels">
+ <div class="SREntry">
+  <a id="Item4" onkeydown="return searchResults.Nav(event,4)" onkeypress="return searchResults.Nav(event,4)" onkeyup="return searchResults.Nav(event,4)" class="SRSymbol" href="../interface_app_service.html#a3c6ebf6a086faf3a74b8ada51d594a50" target="_parent">writableChannels</a>
+  <span class="SRScope">AppService</span>
+ </div>
+</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+<script type="text/javascript"><!--
+document.getElementById("Loading").style.display="none";
+document.getElementById("NoMatches").style.display="none";
+var searchResults = new SearchResults("searchResults");
+searchResults.Search();
+--></script>
+</div>
+</body>
+</html>

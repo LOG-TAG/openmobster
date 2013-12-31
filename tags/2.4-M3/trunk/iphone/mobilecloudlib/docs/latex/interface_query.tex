@@ -1,0 +1,101 @@
+\hypertarget{interface_query}{
+\section{\-Query \-Class \-Reference}
+\label{interface_query}\index{\-Query@{\-Query}}
+}
+
+
+{\ttfamily \#include $<$\-Query.\-h$>$}
+
+\-Inheritance diagram for \-Query\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_query}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Set $\ast$ \hyperlink{interface_query_ae447cab5f85a009fb85e4ddb6e947250}{execute\-Query\-:} (\-N\-S\-Set $\ast$mobile\-Objects)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_query_a425e041301937559713ac183ad50277f}{is\-Matched\-:} (\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$object)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_query_ad602c4a9cc9d2400c4750e44095003a4}{eval\-Expression\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$lhs\-Value,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$rhs\-Value,\mbox{[}$\,$\mbox{]} int op)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_query_a54504edb7dfa29de7509b1f7688fd1fc}{eval\-Logic\-Chain\-:::} (int logic\-Link,\mbox{[}$\,$\mbox{]} int expr\-Match\-Count,\mbox{[}$\,$\mbox{]} int total\-Expr\-Count)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_query}{\-Query} $\ast$ \hyperlink{interface_query_a8ea9b77831256192ac7c7a123ef3f9f8}{create\-Instance\-:} (\hyperlink{interface_logic_chain}{\-Logic\-Chain} $\ast$logic)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_logic_chain}{\-Logic\-Chain} $\ast$ \hyperlink{interface_query_a1e3bd8d36bf4fada56b77376532f1f4f}{logic}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_query_a8ea9b77831256192ac7c7a123ef3f9f8}{
+\index{\-Query@{\-Query}!create\-Instance\-:@{create\-Instance\-:}}
+\index{create\-Instance\-:@{create\-Instance\-:}!Query@{\-Query}}
+\subsubsection[{create\-Instance\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Query} $\ast$ \-Query\-::create\-Instance\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Logic\-Chain} $\ast$}]{logic}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_query_a8ea9b77831256192ac7c7a123ef3f9f8}
+\hypertarget{interface_query_ad602c4a9cc9d2400c4750e44095003a4}{
+\index{\-Query@{\-Query}!eval\-Expression\-:::@{eval\-Expression\-:::}}
+\index{eval\-Expression\-:::@{eval\-Expression\-:::}!Query@{\-Query}}
+\subsubsection[{eval\-Expression\-:::}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Query\-::eval\-Expression\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{lhs\-Value, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{rhs\-Value, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_query_ad602c4a9cc9d2400c4750e44095003a4}
+\hypertarget{interface_query_a54504edb7dfa29de7509b1f7688fd1fc}{
+\index{\-Query@{\-Query}!eval\-Logic\-Chain\-:::@{eval\-Logic\-Chain\-:::}}
+\index{eval\-Logic\-Chain\-:::@{eval\-Logic\-Chain\-:::}!Query@{\-Query}}
+\subsubsection[{eval\-Logic\-Chain\-:::}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Query\-::eval\-Logic\-Chain\-::: (
+\begin{DoxyParamCaption}
+\item[{int}]{logic\-Link, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{expr\-Match\-Count, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{total\-Expr\-Count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_query_a54504edb7dfa29de7509b1f7688fd1fc}
+\hypertarget{interface_query_ae447cab5f85a009fb85e4ddb6e947250}{
+\index{\-Query@{\-Query}!execute\-Query\-:@{execute\-Query\-:}}
+\index{execute\-Query\-:@{execute\-Query\-:}!Query@{\-Query}}
+\subsubsection[{execute\-Query\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Set $\ast$ \-Query\-::execute\-Query\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Set $\ast$}]{mobile\-Objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_query_ae447cab5f85a009fb85e4ddb6e947250}
+\hypertarget{interface_query_a425e041301937559713ac183ad50277f}{
+\index{\-Query@{\-Query}!is\-Matched\-:@{is\-Matched\-:}}
+\index{is\-Matched\-:@{is\-Matched\-:}!Query@{\-Query}}
+\subsubsection[{is\-Matched\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Query\-::is\-Matched\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Mobile\-Object} $\ast$}]{object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_query_a425e041301937559713ac183ad50277f}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_query_a1e3bd8d36bf4fada56b77376532f1f4f}{
+\index{\-Query@{\-Query}!logic@{logic}}
+\index{logic@{logic}!Query@{\-Query}}
+\subsubsection[{logic}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Logic\-Chain} $\ast$ \-Query\-::logic\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_query_a1e3bd8d36bf4fada56b77376532f1f4f}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_query_8h}{\-Query.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_query_8m}{\-Query.\-m}\end{DoxyCompactItemize}

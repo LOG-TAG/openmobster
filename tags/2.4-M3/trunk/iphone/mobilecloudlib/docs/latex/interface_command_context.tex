@@ -1,0 +1,218 @@
+\hypertarget{interface_command_context}{
+\section{\-Command\-Context \-Class \-Reference}
+\label{interface_command_context}\index{\-Command\-Context@{\-Command\-Context}}
+}
+
+
+{\ttfamily \#include $<$\-Command\-Context.\-h$>$}
+
+\-Inheritance diagram for \-Command\-Context\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_command_context}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_command_context_a0b8bd20fcb252ddf29e9d9dae283c74c}{set\-Attribute\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name,\mbox{[}$\,$\mbox{]} id value)
+\item 
+id \hyperlink{interface_command_context_a3a47d7b68985f7fef98aad713daa5d6f}{get\-Attribute\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$name)
+\item 
+void \hyperlink{interface_command_context_a4843201ab3232a624cc001600d9dd551}{set\-Target\-:} (id target)
+\item 
+id \hyperlink{interface_command_context_a0a098f39f68014cb11a72a838e5f6f81}{get\-Target} ()
+\item 
+void \hyperlink{interface_command_context_aa62fb99118c778cc08c7b72b27d77647}{set\-Error\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$code,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$message)
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_command_context_aa2a78fb1ffdb86f1037426f7e570ed76}{get\-Error\-Code} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_command_context_aa553ae8eb3a85f7cfc5756866ced48a5}{get\-Error\-Message} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_command_context_afb6922cbed9d44144ccfc5755b8add65}{has\-Errors} ()
+\item 
+void \hyperlink{interface_command_context_a825e3480a67375607d283ee875199745}{clear\-Errors} ()
+\item 
+void \hyperlink{interface_command_context_a2c6073266e4ec22ac6b6227ce56e2bd6}{activate\-Timeout} ()
+\item 
+void \hyperlink{interface_command_context_a7c19633dd9421913e6a63078150583c8}{deactivate\-Timeout} ()
+\item 
+\-B\-O\-O\-L \hyperlink{interface_command_context_a5f72d0c0ca42b8502fa2580acbf62204}{is\-Timeout\-Activated} ()
+\item 
+void \hyperlink{interface_command_context_a489082496684047d76503079a74eac3e}{set\-App\-Exception\-:} (\hyperlink{interface_app_exception}{\-App\-Exception} $\ast$appe)
+\item 
+\hyperlink{interface_app_exception}{\-App\-Exception} $\ast$ \hyperlink{interface_command_context_a384335d72d424590c7e98f23b97bcc00}{get\-App\-Exception} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_command_context_a7e3659ae01648b7db18812a2b1e4cf5c}{with\-Init\-:} (\-U\-I\-View\-Controller $\ast$caller)
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-U\-I\-View\-Controller $\ast$ \hyperlink{interface_command_context_a3da5c5d788e8d7402907548f7725614c}{caller}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_command_context_a2c6073266e4ec22ac6b6227ce56e2bd6}{
+\index{\-Command\-Context@{\-Command\-Context}!activate\-Timeout@{activate\-Timeout}}
+\index{activate\-Timeout@{activate\-Timeout}!CommandContext@{\-Command\-Context}}
+\subsubsection[{activate\-Timeout}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::activate\-Timeout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a2c6073266e4ec22ac6b6227ce56e2bd6}
+\hypertarget{interface_command_context_a825e3480a67375607d283ee875199745}{
+\index{\-Command\-Context@{\-Command\-Context}!clear\-Errors@{clear\-Errors}}
+\index{clear\-Errors@{clear\-Errors}!CommandContext@{\-Command\-Context}}
+\subsubsection[{clear\-Errors}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::clear\-Errors (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a825e3480a67375607d283ee875199745}
+\hypertarget{interface_command_context_a7c19633dd9421913e6a63078150583c8}{
+\index{\-Command\-Context@{\-Command\-Context}!deactivate\-Timeout@{deactivate\-Timeout}}
+\index{deactivate\-Timeout@{deactivate\-Timeout}!CommandContext@{\-Command\-Context}}
+\subsubsection[{deactivate\-Timeout}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::deactivate\-Timeout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a7c19633dd9421913e6a63078150583c8}
+\hypertarget{interface_command_context_a384335d72d424590c7e98f23b97bcc00}{
+\index{\-Command\-Context@{\-Command\-Context}!get\-App\-Exception@{get\-App\-Exception}}
+\index{get\-App\-Exception@{get\-App\-Exception}!CommandContext@{\-Command\-Context}}
+\subsubsection[{get\-App\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-App\-Exception} $\ast$ \-Command\-Context\-::get\-App\-Exception (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a384335d72d424590c7e98f23b97bcc00}
+\hypertarget{interface_command_context_a3a47d7b68985f7fef98aad713daa5d6f}{
+\index{\-Command\-Context@{\-Command\-Context}!get\-Attribute\-:@{get\-Attribute\-:}}
+\index{get\-Attribute\-:@{get\-Attribute\-:}!CommandContext@{\-Command\-Context}}
+\subsubsection[{get\-Attribute\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Command\-Context\-::get\-Attribute\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a3a47d7b68985f7fef98aad713daa5d6f}
+\hypertarget{interface_command_context_aa2a78fb1ffdb86f1037426f7e570ed76}{
+\index{\-Command\-Context@{\-Command\-Context}!get\-Error\-Code@{get\-Error\-Code}}
+\index{get\-Error\-Code@{get\-Error\-Code}!CommandContext@{\-Command\-Context}}
+\subsubsection[{get\-Error\-Code}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Command\-Context\-::get\-Error\-Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_aa2a78fb1ffdb86f1037426f7e570ed76}
+\hypertarget{interface_command_context_aa553ae8eb3a85f7cfc5756866ced48a5}{
+\index{\-Command\-Context@{\-Command\-Context}!get\-Error\-Message@{get\-Error\-Message}}
+\index{get\-Error\-Message@{get\-Error\-Message}!CommandContext@{\-Command\-Context}}
+\subsubsection[{get\-Error\-Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Command\-Context\-::get\-Error\-Message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_aa553ae8eb3a85f7cfc5756866ced48a5}
+\hypertarget{interface_command_context_a0a098f39f68014cb11a72a838e5f6f81}{
+\index{\-Command\-Context@{\-Command\-Context}!get\-Target@{get\-Target}}
+\index{get\-Target@{get\-Target}!CommandContext@{\-Command\-Context}}
+\subsubsection[{get\-Target}]{\setlength{\rightskip}{0pt plus 5cm}id \-Command\-Context\-::get\-Target (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a0a098f39f68014cb11a72a838e5f6f81}
+\hypertarget{interface_command_context_afb6922cbed9d44144ccfc5755b8add65}{
+\index{\-Command\-Context@{\-Command\-Context}!has\-Errors@{has\-Errors}}
+\index{has\-Errors@{has\-Errors}!CommandContext@{\-Command\-Context}}
+\subsubsection[{has\-Errors}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Command\-Context\-::has\-Errors (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_afb6922cbed9d44144ccfc5755b8add65}
+\hypertarget{interface_command_context_a5f72d0c0ca42b8502fa2580acbf62204}{
+\index{\-Command\-Context@{\-Command\-Context}!is\-Timeout\-Activated@{is\-Timeout\-Activated}}
+\index{is\-Timeout\-Activated@{is\-Timeout\-Activated}!CommandContext@{\-Command\-Context}}
+\subsubsection[{is\-Timeout\-Activated}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Command\-Context\-::is\-Timeout\-Activated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a5f72d0c0ca42b8502fa2580acbf62204}
+\hypertarget{interface_command_context_a489082496684047d76503079a74eac3e}{
+\index{\-Command\-Context@{\-Command\-Context}!set\-App\-Exception\-:@{set\-App\-Exception\-:}}
+\index{set\-App\-Exception\-:@{set\-App\-Exception\-:}!CommandContext@{\-Command\-Context}}
+\subsubsection[{set\-App\-Exception\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::set\-App\-Exception\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-App\-Exception} $\ast$}]{appe}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a489082496684047d76503079a74eac3e}
+\hypertarget{interface_command_context_a0b8bd20fcb252ddf29e9d9dae283c74c}{
+\index{\-Command\-Context@{\-Command\-Context}!set\-Attribute\-::@{set\-Attribute\-::}}
+\index{set\-Attribute\-::@{set\-Attribute\-::}!CommandContext@{\-Command\-Context}}
+\subsubsection[{set\-Attribute\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::set\-Attribute\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{name, }
+\item[{\mbox{[}$\,$\mbox{]} id}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a0b8bd20fcb252ddf29e9d9dae283c74c}
+\hypertarget{interface_command_context_aa62fb99118c778cc08c7b72b27d77647}{
+\index{\-Command\-Context@{\-Command\-Context}!set\-Error\-::@{set\-Error\-::}}
+\index{set\-Error\-::@{set\-Error\-::}!CommandContext@{\-Command\-Context}}
+\subsubsection[{set\-Error\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::set\-Error\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{code, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_aa62fb99118c778cc08c7b72b27d77647}
+\hypertarget{interface_command_context_a4843201ab3232a624cc001600d9dd551}{
+\index{\-Command\-Context@{\-Command\-Context}!set\-Target\-:@{set\-Target\-:}}
+\index{set\-Target\-:@{set\-Target\-:}!CommandContext@{\-Command\-Context}}
+\subsubsection[{set\-Target\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Command\-Context\-::set\-Target\-: (
+\begin{DoxyParamCaption}
+\item[{id}]{target}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_command_context_a4843201ab3232a624cc001600d9dd551}
+\hypertarget{interface_command_context_a7e3659ae01648b7db18812a2b1e4cf5c}{
+\index{\-Command\-Context@{\-Command\-Context}!with\-Init\-:@{with\-Init\-:}}
+\index{with\-Init\-:@{with\-Init\-:}!CommandContext@{\-Command\-Context}}
+\subsubsection[{with\-Init\-:}]{\setlength{\rightskip}{0pt plus 5cm}id \-Command\-Context\-::with\-Init\-: (
+\begin{DoxyParamCaption}
+\item[{\-U\-I\-View\-Controller $\ast$}]{caller}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_command_context_a7e3659ae01648b7db18812a2b1e4cf5c}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_command_context_a3da5c5d788e8d7402907548f7725614c}{
+\index{\-Command\-Context@{\-Command\-Context}!caller@{caller}}
+\index{caller@{caller}!CommandContext@{\-Command\-Context}}
+\subsubsection[{caller}]{\setlength{\rightskip}{0pt plus 5cm}\-U\-I\-View\-Controller $\ast$ \-Command\-Context\-::caller\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_command_context_a3da5c5d788e8d7402907548f7725614c}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_command_context_8h}{\-Command\-Context.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_command_context_8m}{\-Command\-Context.\-m}\end{DoxyCompactItemize}

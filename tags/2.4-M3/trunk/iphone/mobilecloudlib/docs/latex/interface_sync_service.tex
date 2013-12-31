@@ -1,0 +1,192 @@
+\hypertarget{interface_sync_service}{
+\section{\-Sync\-Service \-Class \-Reference}
+\label{interface_sync_service}\index{\-Sync\-Service@{\-Sync\-Service}}
+}
+
+
+{\ttfamily \#include $<$\-Sync\-Service.\-h$>$}
+
+\-Inheritance diagram for \-Sync\-Service\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_sync_service}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_sync_service_a62662a7e0d0489b0e3da8ded6e9ed1dc}{start\-Daemons} ()
+\item 
+void \hyperlink{interface_sync_service_a8c3a6c6399abb48758f373db82920184}{start\-Delta\-Sync\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel)
+\item 
+void \hyperlink{interface_sync_service_aed9eb7063f95dad45602035e12c4c507}{perform\-Boot\-Sync\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background)
+\item 
+void \hyperlink{interface_sync_service_aa36781d8c95512e8d3739276ad519795}{perform\-Two\-Way\-Sync\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background)
+\item 
+void \hyperlink{interface_sync_service_acc6039404459752f3b81b1e07adb72c8}{perform\-One\-Way\-Server\-Sync\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background)
+\item 
+void \hyperlink{interface_sync_service_a746882bfd7e306c87a4f9dc90cf1f43a}{perform\-One\-Way\-Client\-Sync\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background)
+\item 
+void \hyperlink{interface_sync_service_addd2e2179ad10b5286a53e7bc0b413c8}{perform\-Slow\-Sync\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background)
+\item 
+void \hyperlink{interface_sync_service_ae3812ed2d5ecf3da914949ca38465380}{perform\-Stream\-Sync\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$oid)
+\item 
+void \hyperlink{interface_sync_service_add4957596a4168c39fcc68b3fe4eb71e}{update\-Change\-Log\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$operation,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$object\-Id)
+\item 
+void \hyperlink{interface_sync_service_a40d8e1ec9d776105bbcd2287c04ef381}{start\-Sync\-::::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$sync\-Type,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$oid)
+\item 
+void \hyperlink{interface_sync_service_ae984191c3468f7007e27258a4146b488}{perform\-Sync\-:::::} (\hyperlink{interface_net_session}{\-Net\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$sync\-Type,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$channel,\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L is\-Background,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$oid)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_sync_service}{\-Sync\-Service} $\ast$ \hyperlink{interface_sync_service_a7bad0b15f1fe729e341e332046f6ff3d}{get\-Instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}
+\end{DoxyAuthor}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html} \-F\-I\-X\-M\-E\-: \-Implement proper synchronization strategy when \hyperlink{interface_channel}{\-Channel} \-Locking is figured out
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_sync_service_a7bad0b15f1fe729e341e332046f6ff3d}{
+\index{\-Sync\-Service@{\-Sync\-Service}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!SyncService@{\-Sync\-Service}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Service} $\ast$ \-Sync\-Service\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_service_a7bad0b15f1fe729e341e332046f6ff3d}
+\hypertarget{interface_sync_service_aed9eb7063f95dad45602035e12c4c507}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-Boot\-Sync\-::@{perform\-Boot\-Sync\-::}}
+\index{perform\-Boot\-Sync\-::@{perform\-Boot\-Sync\-::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-Boot\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-Boot\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_aed9eb7063f95dad45602035e12c4c507}
+\hypertarget{interface_sync_service_a746882bfd7e306c87a4f9dc90cf1f43a}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-One\-Way\-Client\-Sync\-::@{perform\-One\-Way\-Client\-Sync\-::}}
+\index{perform\-One\-Way\-Client\-Sync\-::@{perform\-One\-Way\-Client\-Sync\-::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-One\-Way\-Client\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-One\-Way\-Client\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_a746882bfd7e306c87a4f9dc90cf1f43a}
+\hypertarget{interface_sync_service_acc6039404459752f3b81b1e07adb72c8}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-One\-Way\-Server\-Sync\-::@{perform\-One\-Way\-Server\-Sync\-::}}
+\index{perform\-One\-Way\-Server\-Sync\-::@{perform\-One\-Way\-Server\-Sync\-::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-One\-Way\-Server\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-One\-Way\-Server\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_acc6039404459752f3b81b1e07adb72c8}
+\hypertarget{interface_sync_service_addd2e2179ad10b5286a53e7bc0b413c8}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-Slow\-Sync\-::@{perform\-Slow\-Sync\-::}}
+\index{perform\-Slow\-Sync\-::@{perform\-Slow\-Sync\-::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-Slow\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-Slow\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_addd2e2179ad10b5286a53e7bc0b413c8}
+\hypertarget{interface_sync_service_ae3812ed2d5ecf3da914949ca38465380}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-Stream\-Sync\-:::@{perform\-Stream\-Sync\-:::}}
+\index{perform\-Stream\-Sync\-:::@{perform\-Stream\-Sync\-:::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-Stream\-Sync\-:::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-Stream\-Sync\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{oid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_ae3812ed2d5ecf3da914949ca38465380}
+\hypertarget{interface_sync_service_ae984191c3468f7007e27258a4146b488}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-Sync\-:::::@{perform\-Sync\-:::::}}
+\index{perform\-Sync\-:::::@{perform\-Sync\-:::::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-Sync\-:::::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-Sync\-::::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Net\-Session} $\ast$}]{session, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{sync\-Type, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{oid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_ae984191c3468f7007e27258a4146b488}
+\hypertarget{interface_sync_service_aa36781d8c95512e8d3739276ad519795}{
+\index{\-Sync\-Service@{\-Sync\-Service}!perform\-Two\-Way\-Sync\-::@{perform\-Two\-Way\-Sync\-::}}
+\index{perform\-Two\-Way\-Sync\-::@{perform\-Two\-Way\-Sync\-::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{perform\-Two\-Way\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::perform\-Two\-Way\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_aa36781d8c95512e8d3739276ad519795}
+\hypertarget{interface_sync_service_a62662a7e0d0489b0e3da8ded6e9ed1dc}{
+\index{\-Sync\-Service@{\-Sync\-Service}!start\-Daemons@{start\-Daemons}}
+\index{start\-Daemons@{start\-Daemons}!SyncService@{\-Sync\-Service}}
+\subsubsection[{start\-Daemons}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::start\-Daemons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_a62662a7e0d0489b0e3da8ded6e9ed1dc}
+\hypertarget{interface_sync_service_a8c3a6c6399abb48758f373db82920184}{
+\index{\-Sync\-Service@{\-Sync\-Service}!start\-Delta\-Sync\-:@{start\-Delta\-Sync\-:}}
+\index{start\-Delta\-Sync\-:@{start\-Delta\-Sync\-:}!SyncService@{\-Sync\-Service}}
+\subsubsection[{start\-Delta\-Sync\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::start\-Delta\-Sync\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_a8c3a6c6399abb48758f373db82920184}
+\hypertarget{interface_sync_service_a40d8e1ec9d776105bbcd2287c04ef381}{
+\index{\-Sync\-Service@{\-Sync\-Service}!start\-Sync\-::::@{start\-Sync\-::::}}
+\index{start\-Sync\-::::@{start\-Sync\-::::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{start\-Sync\-::::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::start\-Sync\-:::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{sync\-Type, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} \-B\-O\-O\-L}]{is\-Background, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{oid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_a40d8e1ec9d776105bbcd2287c04ef381}
+\hypertarget{interface_sync_service_add4957596a4168c39fcc68b3fe4eb71e}{
+\index{\-Sync\-Service@{\-Sync\-Service}!update\-Change\-Log\-:::@{update\-Change\-Log\-:::}}
+\index{update\-Change\-Log\-:::@{update\-Change\-Log\-:::}!SyncService@{\-Sync\-Service}}
+\subsubsection[{update\-Change\-Log\-:::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Service\-::update\-Change\-Log\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{operation, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{object\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_sync_service_add4957596a4168c39fcc68b3fe4eb71e}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_sync_service_8h}{\-Sync\-Service.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_sync_service_8m}{\-Sync\-Service.\-m}\end{DoxyCompactItemize}

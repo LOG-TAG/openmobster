@@ -1,0 +1,126 @@
+\hypertarget{interface_cloud_d_b_manager}{
+\section{\-Cloud\-D\-B\-Manager \-Class \-Reference}
+\label{interface_cloud_d_b_manager}\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}}
+}
+
+
+{\ttfamily \#include $<$\-Cloud\-D\-B\-Manager.\-h$>$}
+
+\-Inheritance diagram for \-Cloud\-D\-B\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_cloud_d_b_manager}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Managed\-Object\-Context $\ast$ \hyperlink{interface_cloud_d_b_manager_aa507224186092847810e4eafbc32f4f8}{storage\-Context} ()
+\item 
+\-N\-S\-Persistent\-Store\-Coordinator $\ast$ \hyperlink{interface_cloud_d_b_manager_a6cd9c78a9538f72c2a5948939c737094}{persistent\-Store\-Coordinator} ()
+\item 
+\-N\-S\-Managed\-Object\-Model $\ast$ \hyperlink{interface_cloud_d_b_manager_abbab662a92defb3dce9caed61b819bd0}{managed\-Model} ()
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_cloud_d_b_manager_a56d373e0130a6dafe8f6c35488c7a15d}{application\-Documents\-Directory} ()
+\item 
+void \hyperlink{interface_cloud_d_b_manager_a676333ea588abc2e27d2960ce7be920b}{context\-Did\-Save\-:} (\-N\-S\-Notification $\ast$save\-Notification)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface_cloud_d_b_manager}{\-Cloud\-D\-B\-Manager} $\ast$ \hyperlink{interface_cloud_d_b_manager_a53b92ff0a2cc27e6185d08a7137fd260}{get\-Instance} ()
+\item 
+void \hyperlink{interface_cloud_d_b_manager_a2801eda75d1a0b653d16fab81e7076b2}{stop} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Persistent\-Store\-Coordinator $\ast$ \hyperlink{interface_cloud_d_b_manager_ae746e4050924c592224c40ad70de04c5}{coordinator}
+\item 
+\-N\-S\-Managed\-Object\-Context $\ast$ \hyperlink{interface_cloud_d_b_manager_a9c6d73a6c2cf4a6adb6235779cbc4aac}{main\-Context}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_cloud_d_b_manager_a56d373e0130a6dafe8f6c35488c7a15d}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!application\-Documents\-Directory@{application\-Documents\-Directory}}
+\index{application\-Documents\-Directory@{application\-Documents\-Directory}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{application\-Documents\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Cloud\-D\-B\-Manager\-::application\-Documents\-Directory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_a56d373e0130a6dafe8f6c35488c7a15d}
+\hypertarget{interface_cloud_d_b_manager_a676333ea588abc2e27d2960ce7be920b}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!context\-Did\-Save\-:@{context\-Did\-Save\-:}}
+\index{context\-Did\-Save\-:@{context\-Did\-Save\-:}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{context\-Did\-Save\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Cloud\-D\-B\-Manager\-::context\-Did\-Save\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Notification $\ast$}]{save\-Notification}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_a676333ea588abc2e27d2960ce7be920b}
+\hypertarget{interface_cloud_d_b_manager_a53b92ff0a2cc27e6185d08a7137fd260}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Cloud\-D\-B\-Manager} $\ast$ \-Cloud\-D\-B\-Manager\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_a53b92ff0a2cc27e6185d08a7137fd260}
+\hypertarget{interface_cloud_d_b_manager_abbab662a92defb3dce9caed61b819bd0}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!managed\-Model@{managed\-Model}}
+\index{managed\-Model@{managed\-Model}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{managed\-Model}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Managed\-Object\-Model $\ast$ \-Cloud\-D\-B\-Manager\-::managed\-Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_abbab662a92defb3dce9caed61b819bd0}
+\hypertarget{interface_cloud_d_b_manager_a6cd9c78a9538f72c2a5948939c737094}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!persistent\-Store\-Coordinator@{persistent\-Store\-Coordinator}}
+\index{persistent\-Store\-Coordinator@{persistent\-Store\-Coordinator}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{persistent\-Store\-Coordinator}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Persistent\-Store\-Coordinator $\ast$ \-Cloud\-D\-B\-Manager\-::persistent\-Store\-Coordinator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_a6cd9c78a9538f72c2a5948939c737094}
+\hypertarget{interface_cloud_d_b_manager_a2801eda75d1a0b653d16fab81e7076b2}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!stop@{stop}}
+\index{stop@{stop}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void \-Cloud\-D\-B\-Manager\-::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_a2801eda75d1a0b653d16fab81e7076b2}
+\hypertarget{interface_cloud_d_b_manager_aa507224186092847810e4eafbc32f4f8}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!storage\-Context@{storage\-Context}}
+\index{storage\-Context@{storage\-Context}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{storage\-Context}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Managed\-Object\-Context $\ast$ \-Cloud\-D\-B\-Manager\-::storage\-Context (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_cloud_d_b_manager_aa507224186092847810e4eafbc32f4f8}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_cloud_d_b_manager_ae746e4050924c592224c40ad70de04c5}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!coordinator@{coordinator}}
+\index{coordinator@{coordinator}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{coordinator}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Persistent\-Store\-Coordinator $\ast$ \-Cloud\-D\-B\-Manager\-::coordinator\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_cloud_d_b_manager_ae746e4050924c592224c40ad70de04c5}
+\hypertarget{interface_cloud_d_b_manager_a9c6d73a6c2cf4a6adb6235779cbc4aac}{
+\index{\-Cloud\-D\-B\-Manager@{\-Cloud\-D\-B\-Manager}!main\-Context@{main\-Context}}
+\index{main\-Context@{main\-Context}!CloudDBManager@{\-Cloud\-D\-B\-Manager}}
+\subsubsection[{main\-Context}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Managed\-Object\-Context $\ast$ \-Cloud\-D\-B\-Manager\-::main\-Context\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_cloud_d_b_manager_a9c6d73a6c2cf4a6adb6235779cbc4aac}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_cloud_d_b_manager_8h}{\-Cloud\-D\-B\-Manager.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_cloud_d_b_manager_8m}{\-Cloud\-D\-B\-Manager.\-m}\end{DoxyCompactItemize}

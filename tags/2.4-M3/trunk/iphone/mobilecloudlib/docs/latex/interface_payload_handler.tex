@@ -1,0 +1,122 @@
+\hypertarget{interface_payload_handler}{
+\section{\-Payload\-Handler \-Class \-Reference}
+\label{interface_payload_handler}\index{\-Payload\-Handler@{\-Payload\-Handler}}
+}
+
+
+{\ttfamily \#include $<$\-Payload\-Handler.\-h$>$}
+
+\-Inheritance diagram for \-Payload\-Handler\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_payload_handler}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_payload_handler_aae7823911df4810cfcad6d492399d10b}{serialize\-Request\-:} (\hyperlink{interface_location_context}{\-Location\-Context} $\ast$location\-Context)
+\item 
+\hyperlink{interface_location_context}{\-Location\-Context} $\ast$ \hyperlink{interface_payload_handler_afe934ee604d56ecb57fbfc8daf701c16}{deserialize\-Response\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$xml)
+\item 
+\hyperlink{interface_place}{\-Place} $\ast$ \hyperlink{interface_payload_handler_a70ad2aafbaf50649c9b481c88a31fe45}{deserialize\-Place\-:} (\-N\-S\-Dictionary $\ast$place\-Obj)
+\item 
+\hyperlink{interface_address}{\-Address} $\ast$ \hyperlink{interface_payload_handler_a0285bc55790dd82c21d5ca1c0fc6b9ec}{deserialize\-Address\-:} (\-N\-S\-Dictionary $\ast$address\-Obj)
+\item 
+\-N\-S\-Dictionary $\ast$ \hyperlink{interface_payload_handler_a77b5df6ee5e93902de11add7feb9256e}{serialize\-Address\-:} (\hyperlink{interface_address}{\-Address} $\ast$address)
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{interface_payload_handler_a56bbc7ba0b29185d7e9a31e5b6cc04ce}{with\-Init} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Properties}
+\begin{DoxyCompactItemize}
+\item 
+\-N\-S\-Mutable\-String $\ast$ \hyperlink{interface_payload_handler_a3d4fd27fea084503a212b0a0da04b6d2}{data\-Buffer}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_payload_handler_a9fceda7756e28f9bf6be362a12446960}{response\-Payload}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_payload_handler_a95790d2ec2ddc1b57ad86baf343ab0da}{location\-Payload}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_payload_handler_a0285bc55790dd82c21d5ca1c0fc6b9ec}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!deserialize\-Address\-:@{deserialize\-Address\-:}}
+\index{deserialize\-Address\-:@{deserialize\-Address\-:}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{deserialize\-Address\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Address} $\ast$ \-Payload\-Handler\-::deserialize\-Address\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Dictionary $\ast$}]{address\-Obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_payload_handler_a0285bc55790dd82c21d5ca1c0fc6b9ec}
+\hypertarget{interface_payload_handler_a70ad2aafbaf50649c9b481c88a31fe45}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!deserialize\-Place\-:@{deserialize\-Place\-:}}
+\index{deserialize\-Place\-:@{deserialize\-Place\-:}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{deserialize\-Place\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Place} $\ast$ \-Payload\-Handler\-::deserialize\-Place\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Dictionary $\ast$}]{place\-Obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_payload_handler_a70ad2aafbaf50649c9b481c88a31fe45}
+\hypertarget{interface_payload_handler_afe934ee604d56ecb57fbfc8daf701c16}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!deserialize\-Response\-:@{deserialize\-Response\-:}}
+\index{deserialize\-Response\-:@{deserialize\-Response\-:}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{deserialize\-Response\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Location\-Context} $\ast$ \-Payload\-Handler\-::deserialize\-Response\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{xml}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_payload_handler_afe934ee604d56ecb57fbfc8daf701c16}
+\hypertarget{interface_payload_handler_a77b5df6ee5e93902de11add7feb9256e}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!serialize\-Address\-:@{serialize\-Address\-:}}
+\index{serialize\-Address\-:@{serialize\-Address\-:}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{serialize\-Address\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Dictionary $\ast$ \-Payload\-Handler\-::serialize\-Address\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Address} $\ast$}]{address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_payload_handler_a77b5df6ee5e93902de11add7feb9256e}
+\hypertarget{interface_payload_handler_aae7823911df4810cfcad6d492399d10b}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!serialize\-Request\-:@{serialize\-Request\-:}}
+\index{serialize\-Request\-:@{serialize\-Request\-:}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{serialize\-Request\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Payload\-Handler\-::serialize\-Request\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Location\-Context} $\ast$}]{location\-Context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_payload_handler_aae7823911df4810cfcad6d492399d10b}
+\hypertarget{interface_payload_handler_a56bbc7ba0b29185d7e9a31e5b6cc04ce}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!with\-Init@{with\-Init}}
+\index{with\-Init@{with\-Init}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{with\-Init}]{\setlength{\rightskip}{0pt plus 5cm}id \-Payload\-Handler\-::with\-Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_payload_handler_a56bbc7ba0b29185d7e9a31e5b6cc04ce}
+
+
+\subsection{\-Property \-Documentation}
+\hypertarget{interface_payload_handler_a3d4fd27fea084503a212b0a0da04b6d2}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!data\-Buffer@{data\-Buffer}}
+\index{data\-Buffer@{data\-Buffer}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{data\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}\-N\-S\-Mutable\-String $\ast$ \-Payload\-Handler\-::data\-Buffer\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_payload_handler_a3d4fd27fea084503a212b0a0da04b6d2}
+\hypertarget{interface_payload_handler_a95790d2ec2ddc1b57ad86baf343ab0da}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!location\-Payload@{location\-Payload}}
+\index{location\-Payload@{location\-Payload}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{location\-Payload}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Payload\-Handler\-::location\-Payload\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_payload_handler_a95790d2ec2ddc1b57ad86baf343ab0da}
+\hypertarget{interface_payload_handler_a9fceda7756e28f9bf6be362a12446960}{
+\index{\-Payload\-Handler@{\-Payload\-Handler}!response\-Payload@{response\-Payload}}
+\index{response\-Payload@{response\-Payload}!PayloadHandler@{\-Payload\-Handler}}
+\subsubsection[{response\-Payload}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String} $\ast$ \-Payload\-Handler\-::response\-Payload\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_payload_handler_a9fceda7756e28f9bf6be362a12446960}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_payload_handler_8h}{\-Payload\-Handler.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_payload_handler_8m}{\-Payload\-Handler.\-m}\end{DoxyCompactItemize}

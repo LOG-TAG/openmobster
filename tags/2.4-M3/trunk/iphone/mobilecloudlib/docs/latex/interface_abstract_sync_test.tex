@@ -1,0 +1,105 @@
+\hypertarget{interface_abstract_sync_test}{
+\section{\-Abstract\-Sync\-Test \-Class \-Reference}
+\label{interface_abstract_sync_test}\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}}
+}
+
+
+{\ttfamily \#include $<$\-Abstract\-Sync\-Test.\-h$>$}
+
+\-Inheritance diagram for \-Abstract\-Sync\-Test\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.333333cm]{interface_abstract_sync_test}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_abstract_sync_test_ae4a2262d1e10634ce74695c5bb917070}{set\-Up\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$operation)
+\item 
+void \hyperlink{interface_abstract_sync_test_ac72287812c1817d576093cb5ab851d6b}{reset\-Server\-Adapter\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$payload)
+\item 
+\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$ \hyperlink{interface_abstract_sync_test_a5c5496be71beb6469101643c08daf251}{get\-Record\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id)
+\item 
+void \hyperlink{interface_abstract_sync_test_a24594e0b8ef53b84f1c361e5340dfc3c}{assert\-Record\-Presence\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$context)
+\item 
+void \hyperlink{interface_abstract_sync_test_acc43ad2297ff1500915c8cea7208c2e1}{assert\-Record\-Absence\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_abstract_sync_test_a4665b72180425740facd9b64d5906305}{channel}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_abstract_sync_test_acc43ad2297ff1500915c8cea7208c2e1}{
+\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}!assert\-Record\-Absence\-::@{assert\-Record\-Absence\-::}}
+\index{assert\-Record\-Absence\-::@{assert\-Record\-Absence\-::}!AbstractSyncTest@{\-Abstract\-Sync\-Test}}
+\subsubsection[{assert\-Record\-Absence\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Sync\-Test\-::assert\-Record\-Absence\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{record\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_sync_test_acc43ad2297ff1500915c8cea7208c2e1}
+\hypertarget{interface_abstract_sync_test_a24594e0b8ef53b84f1c361e5340dfc3c}{
+\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}!assert\-Record\-Presence\-::@{assert\-Record\-Presence\-::}}
+\index{assert\-Record\-Presence\-::@{assert\-Record\-Presence\-::}!AbstractSyncTest@{\-Abstract\-Sync\-Test}}
+\subsubsection[{assert\-Record\-Presence\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Sync\-Test\-::assert\-Record\-Presence\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{record\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_sync_test_a24594e0b8ef53b84f1c361e5340dfc3c}
+\hypertarget{interface_abstract_sync_test_a5c5496be71beb6469101643c08daf251}{
+\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}!get\-Record\-:@{get\-Record\-:}}
+\index{get\-Record\-:@{get\-Record\-:}!AbstractSyncTest@{\-Abstract\-Sync\-Test}}
+\subsubsection[{get\-Record\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Object} $\ast$ \-Abstract\-Sync\-Test\-::get\-Record\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{record\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_sync_test_a5c5496be71beb6469101643c08daf251}
+\hypertarget{interface_abstract_sync_test_ac72287812c1817d576093cb5ab851d6b}{
+\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}!reset\-Server\-Adapter\-:@{reset\-Server\-Adapter\-:}}
+\index{reset\-Server\-Adapter\-:@{reset\-Server\-Adapter\-:}!AbstractSyncTest@{\-Abstract\-Sync\-Test}}
+\subsubsection[{reset\-Server\-Adapter\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Sync\-Test\-::reset\-Server\-Adapter\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{payload}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_sync_test_ac72287812c1817d576093cb5ab851d6b}
+\hypertarget{interface_abstract_sync_test_ae4a2262d1e10634ce74695c5bb917070}{
+\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}!set\-Up\-:@{set\-Up\-:}}
+\index{set\-Up\-:@{set\-Up\-:}!AbstractSyncTest@{\-Abstract\-Sync\-Test}}
+\subsubsection[{set\-Up\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Sync\-Test\-::set\-Up\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{operation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_sync_test_ae4a2262d1e10634ce74695c5bb917070}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{interface_abstract_sync_test_a4665b72180425740facd9b64d5906305}{
+\index{\-Abstract\-Sync\-Test@{\-Abstract\-Sync\-Test}!channel@{channel}}
+\index{channel@{channel}!AbstractSyncTest@{\-Abstract\-Sync\-Test}}
+\subsubsection[{channel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ {\bf \-Abstract\-Sync\-Test\-::channel}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{interface_abstract_sync_test_a4665b72180425740facd9b64d5906305}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_abstract_sync_test_8h}{\-Abstract\-Sync\-Test.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_abstract_sync_test_8m}{\-Abstract\-Sync\-Test.\-m}\end{DoxyCompactItemize}

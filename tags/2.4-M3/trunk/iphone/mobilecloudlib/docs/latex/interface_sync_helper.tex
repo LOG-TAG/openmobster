@@ -1,0 +1,215 @@
+\hypertarget{interface_sync_helper}{
+\section{\-Sync\-Helper \-Class \-Reference}
+\label{interface_sync_helper}\index{\-Sync\-Helper@{\-Sync\-Helper}}
+}
+
+
+{\ttfamily \#include $<$\-Sync\-Helper.\-h$>$}
+
+\-Inheritance diagram for \-Sync\-Helper\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_sync_helper}
+\end{center}
+\end{figure}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_sync_helper_a87a4d553d84a6af9a7ce1709656cc5ea}{cleanup\-Change\-Log\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ \hyperlink{interface_sync_helper_a3d5feaaf51a1e2f3c4284219b6e6f522}{normal\-Sync\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ \hyperlink{interface_sync_helper_a25614c8dc347b76f49d039c6577358eb}{boot\-Sync\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ \hyperlink{interface_sync_helper_a296743c0ce82d3d03eadd32af6d9027e}{stream\-Sync\-::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_sync_helper_a8d6011a5d33536808e7c1eddfbc66a0d}{contains\-Final\-:} (\-N\-S\-Array $\ast$messages)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_sync_helper_a82eb407384a4e6fd80b763c9cc3bfc66}{init\-Success\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_sync_helper_a62a98066f665672a708cd665ad974815}{authorized\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+void \hyperlink{interface_sync_helper_a077fea806643f0327aea70bb8d94c387}{process\-Next\-Nonce\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+\-B\-O\-O\-L \hyperlink{interface_sync_helper_a512e8a3540b1e98b7b90a0064d034ee8}{has\-Errors\-:} (\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$current\-Message)
+\item 
+\hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$ \hyperlink{interface_sync_helper_a21a293ea4849bd1eadd24d45d63a8d99}{set\-Up\-Reply\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)
+\item 
+void \hyperlink{interface_sync_helper_a52073dfff575ed4ff2da93d039051125}{set\-Up\-Client\-Sync\-Final\-:::} (\hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$sync\-Command)
+\item 
+void \hyperlink{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}{process\-Sync\-Commands\-::::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} int cmd\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply\-Message)
+\item 
+void \hyperlink{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}{process\-Sync\-Commands\-::::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} int cmd\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply\-Message)
+\item 
+\hyperlink{interface_sync_command}{\-Sync\-Command} $\ast$ \hyperlink{interface_sync_helper_a064e2513483268fcc2beb49f22eb4ae1}{generate\-Sync\-Command\-::::} (\hyperlink{interface_context}{\-Context} $\ast$context,\mbox{[}$\,$\mbox{]} int cmd\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{interface_session}{\-Session} $\ast$session,\mbox{[}$\,$\mbox{]} \hyperlink{interface_sync_message}{\-Sync\-Message} $\ast$reply\-Message)
+\item 
+int \hyperlink{interface_sync_helper_ab10870648382b24787b9023032432375}{calculate\-Number\-Of\-Commands\-:} (\hyperlink{interface_session}{\-Session} $\ast$session)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_sync_helper_a62a98066f665672a708cd665ad974815}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!authorized\-:@{authorized\-:}}
+\index{authorized\-:@{authorized\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{authorized\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Sync\-Helper\-::authorized\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a62a98066f665672a708cd665ad974815}
+\hypertarget{interface_sync_helper_a25614c8dc347b76f49d039c6577358eb}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!boot\-Sync\-::@{boot\-Sync\-::}}
+\index{boot\-Sync\-::@{boot\-Sync\-::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{boot\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Message} $\ast$ \-Sync\-Helper\-::boot\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a25614c8dc347b76f49d039c6577358eb}
+\hypertarget{interface_sync_helper_ab10870648382b24787b9023032432375}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!calculate\-Number\-Of\-Commands\-:@{calculate\-Number\-Of\-Commands\-:}}
+\index{calculate\-Number\-Of\-Commands\-:@{calculate\-Number\-Of\-Commands\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{calculate\-Number\-Of\-Commands\-:}]{\setlength{\rightskip}{0pt plus 5cm}int \-Sync\-Helper\-::calculate\-Number\-Of\-Commands\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_ab10870648382b24787b9023032432375}
+\hypertarget{interface_sync_helper_a87a4d553d84a6af9a7ce1709656cc5ea}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!cleanup\-Change\-Log\-::@{cleanup\-Change\-Log\-::}}
+\index{cleanup\-Change\-Log\-::@{cleanup\-Change\-Log\-::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{cleanup\-Change\-Log\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Helper\-::cleanup\-Change\-Log\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a87a4d553d84a6af9a7ce1709656cc5ea}
+\hypertarget{interface_sync_helper_a8d6011a5d33536808e7c1eddfbc66a0d}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!contains\-Final\-:@{contains\-Final\-:}}
+\index{contains\-Final\-:@{contains\-Final\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{contains\-Final\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Sync\-Helper\-::contains\-Final\-: (
+\begin{DoxyParamCaption}
+\item[{\-N\-S\-Array $\ast$}]{messages}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a8d6011a5d33536808e7c1eddfbc66a0d}
+\hypertarget{interface_sync_helper_a064e2513483268fcc2beb49f22eb4ae1}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!generate\-Sync\-Command\-::::@{generate\-Sync\-Command\-::::}}
+\index{generate\-Sync\-Command\-::::@{generate\-Sync\-Command\-::::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{generate\-Sync\-Command\-::::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Command} $\ast$ \-Sync\-Helper\-::generate\-Sync\-Command\-:::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{cmd\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Sync\-Message} $\ast$}]{reply\-Message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a064e2513483268fcc2beb49f22eb4ae1}
+\hypertarget{interface_sync_helper_a512e8a3540b1e98b7b90a0064d034ee8}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!has\-Errors\-:@{has\-Errors\-:}}
+\index{has\-Errors\-:@{has\-Errors\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{has\-Errors\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Sync\-Helper\-::has\-Errors\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sync\-Message} $\ast$}]{current\-Message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a512e8a3540b1e98b7b90a0064d034ee8}
+\hypertarget{interface_sync_helper_a82eb407384a4e6fd80b763c9cc3bfc66}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!init\-Success\-:@{init\-Success\-:}}
+\index{init\-Success\-:@{init\-Success\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{init\-Success\-:}]{\setlength{\rightskip}{0pt plus 5cm}\-B\-O\-O\-L \-Sync\-Helper\-::init\-Success\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a82eb407384a4e6fd80b763c9cc3bfc66}
+\hypertarget{interface_sync_helper_a3d5feaaf51a1e2f3c4284219b6e6f522}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!normal\-Sync\-::@{normal\-Sync\-::}}
+\index{normal\-Sync\-::@{normal\-Sync\-::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{normal\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Message} $\ast$ \-Sync\-Helper\-::normal\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a3d5feaaf51a1e2f3c4284219b6e6f522}
+\hypertarget{interface_sync_helper_a077fea806643f0327aea70bb8d94c387}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!process\-Next\-Nonce\-:@{process\-Next\-Nonce\-:}}
+\index{process\-Next\-Nonce\-:@{process\-Next\-Nonce\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{process\-Next\-Nonce\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Helper\-::process\-Next\-Nonce\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a077fea806643f0327aea70bb8d94c387}
+\hypertarget{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!process\-Sync\-Commands\-::::@{process\-Sync\-Commands\-::::}}
+\index{process\-Sync\-Commands\-::::@{process\-Sync\-Commands\-::::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{process\-Sync\-Commands\-::::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Helper\-::process\-Sync\-Commands\-:::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{cmd\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Sync\-Message} $\ast$}]{reply\-Message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}
+\hypertarget{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!process\-Sync\-Commands\-::::@{process\-Sync\-Commands\-::::}}
+\index{process\-Sync\-Commands\-::::@{process\-Sync\-Commands\-::::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{process\-Sync\-Commands\-::::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Helper\-::process\-Sync\-Commands\-:::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} int}]{cmd\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Sync\-Message} $\ast$}]{reply\-Message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a23c00192de5175e341a6ed6d7186be51}
+\hypertarget{interface_sync_helper_a52073dfff575ed4ff2da93d039051125}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!set\-Up\-Client\-Sync\-Final\-:::@{set\-Up\-Client\-Sync\-Final\-:::}}
+\index{set\-Up\-Client\-Sync\-Final\-:::@{set\-Up\-Client\-Sync\-Final\-:::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{set\-Up\-Client\-Sync\-Final\-:::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Sync\-Helper\-::set\-Up\-Client\-Sync\-Final\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Session} $\ast$}]{session, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Sync\-Message} $\ast$}]{reply, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Sync\-Command} $\ast$}]{sync\-Command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a52073dfff575ed4ff2da93d039051125}
+\hypertarget{interface_sync_helper_a21a293ea4849bd1eadd24d45d63a8d99}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!set\-Up\-Reply\-:@{set\-Up\-Reply\-:}}
+\index{set\-Up\-Reply\-:@{set\-Up\-Reply\-:}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{set\-Up\-Reply\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Message} $\ast$ \-Sync\-Helper\-::set\-Up\-Reply\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a21a293ea4849bd1eadd24d45d63a8d99}
+\hypertarget{interface_sync_helper_a296743c0ce82d3d03eadd32af6d9027e}{
+\index{\-Sync\-Helper@{\-Sync\-Helper}!stream\-Sync\-::@{stream\-Sync\-::}}
+\index{stream\-Sync\-::@{stream\-Sync\-::}!SyncHelper@{\-Sync\-Helper}}
+\subsubsection[{stream\-Sync\-::}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sync\-Message} $\ast$ \-Sync\-Helper\-::stream\-Sync\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Context} $\ast$}]{context, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-Session} $\ast$}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static, virtual\mbox{]}}}}
+\label{interface_sync_helper_a296743c0ce82d3d03eadd32af6d9027e}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_sync_helper_8h}{\-Sync\-Helper.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_sync_helper_8m}{\-Sync\-Helper.\-m}\end{DoxyCompactItemize}
