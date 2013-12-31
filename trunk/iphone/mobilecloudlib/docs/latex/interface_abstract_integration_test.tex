@@ -1,0 +1,129 @@
+\hypertarget{interface_abstract_integration_test}{
+\section{\-Abstract\-Integration\-Test \-Class \-Reference}
+\label{interface_abstract_integration_test}\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}}
+}
+
+
+{\ttfamily \#include $<$\-Abstract\-Integration\-Test.\-h$>$}
+
+\-Inheritance diagram for \-Abstract\-Integration\-Test\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{interface_abstract_integration_test}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_abstract_integration_test_a20080f1b58ea40ef1754d2a350678159}{set\-Up\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$operation)
+\item 
+void \hyperlink{interface_abstract_integration_test_ac5932549ea8dcbee3c8508083bac3bca}{reset\-Server\-Adapter\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$payload)
+\item 
+void \hyperlink{interface_abstract_integration_test_ae5e42a89975dc51296b13bfd75abbba9}{restore\-Data} ()
+\item 
+\hyperlink{interface_mobile_object}{\-Mobile\-Object} $\ast$ \hyperlink{interface_abstract_integration_test_a60b4d2880b6ca512131f9c89eae5871d}{get\-Record\-:} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id)
+\item 
+void \hyperlink{interface_abstract_integration_test_ab1e1b03aa7487775ea7a2ba371cfec99}{assert\-Record\-Presence\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$context)
+\item 
+void \hyperlink{interface_abstract_integration_test_a7a3b5fe02a54bcdba619fe1ea66f07c3}{assert\-Record\-Absence\-::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$record\-Id,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$context)
+\item 
+void \hyperlink{interface_abstract_integration_test_aefd339da38f098c1e4e5bc22ab9f3e36}{assert\-Change\-Log\-Presence\-:::} (\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$\hyperlink{interface_abstract_integration_test_a9b68202e805cadd80325dfcd2d543f0a}{channel},\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$oid,\mbox{[}$\,$\mbox{]} \hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$operation)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{\-N\-S\-String} $\ast$ \hyperlink{interface_abstract_integration_test_a9b68202e805cadd80325dfcd2d543f0a}{channel}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Copyright (c) \{2003,2010\} \{\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com}\} \{individual contributors as indicated by the \begin{DoxyAuthor}{\-Authors}
+tag\}. \-All rights reserved. \-This program and the accompanying materials are made available under the terms of the \-Eclipse \-Public \-License v1.\-0 which accompanies this distribution, and is available at \href{http://www.eclipse.org/legal/epl-v10.html}{\tt http\-://www.\-eclipse.\-org/legal/epl-\/v10.\-html}
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{\-Author}
+\href{mailto:openmobster@gmail.com}{\tt openmobster@gmail.\-com} 
+\end{DoxyAuthor}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interface_abstract_integration_test_aefd339da38f098c1e4e5bc22ab9f3e36}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!assert\-Change\-Log\-Presence\-:::@{assert\-Change\-Log\-Presence\-:::}}
+\index{assert\-Change\-Log\-Presence\-:::@{assert\-Change\-Log\-Presence\-:::}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{assert\-Change\-Log\-Presence\-:::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Integration\-Test\-::assert\-Change\-Log\-Presence\-::: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{channel, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{oid, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{operation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_aefd339da38f098c1e4e5bc22ab9f3e36}
+\hypertarget{interface_abstract_integration_test_a7a3b5fe02a54bcdba619fe1ea66f07c3}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!assert\-Record\-Absence\-::@{assert\-Record\-Absence\-::}}
+\index{assert\-Record\-Absence\-::@{assert\-Record\-Absence\-::}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{assert\-Record\-Absence\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Integration\-Test\-::assert\-Record\-Absence\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{record\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_a7a3b5fe02a54bcdba619fe1ea66f07c3}
+\hypertarget{interface_abstract_integration_test_ab1e1b03aa7487775ea7a2ba371cfec99}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!assert\-Record\-Presence\-::@{assert\-Record\-Presence\-::}}
+\index{assert\-Record\-Presence\-::@{assert\-Record\-Presence\-::}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{assert\-Record\-Presence\-::}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Integration\-Test\-::assert\-Record\-Presence\-:: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{record\-Id, }
+\item[{\mbox{[}$\,$\mbox{]} {\bf \-N\-S\-String} $\ast$}]{context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_ab1e1b03aa7487775ea7a2ba371cfec99}
+\hypertarget{interface_abstract_integration_test_a60b4d2880b6ca512131f9c89eae5871d}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!get\-Record\-:@{get\-Record\-:}}
+\index{get\-Record\-:@{get\-Record\-:}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{get\-Record\-:}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Mobile\-Object} $\ast$ \-Abstract\-Integration\-Test\-::get\-Record\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{record\-Id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_a60b4d2880b6ca512131f9c89eae5871d}
+\hypertarget{interface_abstract_integration_test_ac5932549ea8dcbee3c8508083bac3bca}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!reset\-Server\-Adapter\-:@{reset\-Server\-Adapter\-:}}
+\index{reset\-Server\-Adapter\-:@{reset\-Server\-Adapter\-:}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{reset\-Server\-Adapter\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Integration\-Test\-::reset\-Server\-Adapter\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{payload}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_ac5932549ea8dcbee3c8508083bac3bca}
+\hypertarget{interface_abstract_integration_test_ae5e42a89975dc51296b13bfd75abbba9}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!restore\-Data@{restore\-Data}}
+\index{restore\-Data@{restore\-Data}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{restore\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Integration\-Test\-::restore\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_ae5e42a89975dc51296b13bfd75abbba9}
+\hypertarget{interface_abstract_integration_test_a20080f1b58ea40ef1754d2a350678159}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!set\-Up\-:@{set\-Up\-:}}
+\index{set\-Up\-:@{set\-Up\-:}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{set\-Up\-:}]{\setlength{\rightskip}{0pt plus 5cm}void \-Abstract\-Integration\-Test\-::set\-Up\-: (
+\begin{DoxyParamCaption}
+\item[{{\bf \-N\-S\-String} $\ast$}]{operation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{interface_abstract_integration_test_a20080f1b58ea40ef1754d2a350678159}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{interface_abstract_integration_test_a9b68202e805cadd80325dfcd2d543f0a}{
+\index{\-Abstract\-Integration\-Test@{\-Abstract\-Integration\-Test}!channel@{channel}}
+\index{channel@{channel}!AbstractIntegrationTest@{\-Abstract\-Integration\-Test}}
+\subsubsection[{channel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-N\-S\-String}$\ast$ {\bf \-Abstract\-Integration\-Test\-::channel}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{interface_abstract_integration_test_a9b68202e805cadd80325dfcd2d543f0a}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_abstract_integration_test_8h}{\-Abstract\-Integration\-Test.\-h}\item 
+projects/openmobster/googlecode/src/2.\-4-\/\-S\-N\-A\-P\-S\-H\-O\-T/trunk/iphone/mobilecloudlib/\hyperlink{_abstract_integration_test_8m}{\-Abstract\-Integration\-Test.\-m}\end{DoxyCompactItemize}
