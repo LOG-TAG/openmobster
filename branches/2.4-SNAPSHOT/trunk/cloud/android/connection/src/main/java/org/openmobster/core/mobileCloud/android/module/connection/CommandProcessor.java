@@ -16,6 +16,7 @@ import org.openmobster.core.mobileCloud.android.errors.ErrorHandler;
 import org.openmobster.core.mobileCloud.android.errors.SystemException;
 import org.openmobster.core.mobileCloud.android.service.Registry;
 import org.openmobster.core.mobileCloud.android.service.Service;
+import org.openmobster.core.mobileCloud.android.util.GeneralTools;
 import org.openmobster.core.mobileCloud.android.util.StringUtil;
 import org.openmobster.core.mobileCloud.android.util.XMLUtil;
 
@@ -24,6 +25,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
 import android.os.Bundle;
+import android.net.Uri;
 
 /**
  * 
@@ -127,7 +129,7 @@ public final class CommandProcessor extends Service
 			//Send the broadcast
 			//create an alarm pending intent
 			Context context = Registry.getActiveInstance().getContext();
-			PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+			PendingIntent alarmIntent = PendingIntent.getBroadcast(context, (int)System.currentTimeMillis(), intent, PendingIntent.FLAG_ONE_SHOT);
 			
 			AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 			alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), alarmIntent);
@@ -178,7 +180,7 @@ public final class CommandProcessor extends Service
 			pushIntent.putExtra("app-id", appId);
 			
 			//create an alarm pending intent
-			PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, pushIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+			PendingIntent alarmIntent = PendingIntent.getBroadcast(context, (int)System.currentTimeMillis(), pushIntent, PendingIntent.FLAG_ONE_SHOT);
 			
 			AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 			alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), alarmIntent);
