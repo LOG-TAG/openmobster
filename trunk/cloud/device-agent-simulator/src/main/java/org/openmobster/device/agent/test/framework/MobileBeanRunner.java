@@ -261,6 +261,7 @@ public class MobileBeanRunner
 			log.error("-------------------------------");
 			log.error("Activation Failed with: "+server+" Exception: "+e.toString());
 			log.error("-------------------------------");
+			log.error(this, e);
 			throw new RuntimeException(e.toString());
 		}
 	}
