@@ -167,7 +167,14 @@ public final class MobileObject
 	}
 		
 	public void setValue(String fieldUri, String value)
-	{	
+	{
+		String fieldName = fieldUri;
+		if(fieldUri.indexOf('.') != -1)
+		{
+			int lastIndex = fieldUri.lastIndexOf('.');
+			fieldName = fieldUri.substring(lastIndex+1);
+		}
+		
 		if(this.fields.isEmpty() || this.isCreatedOnDevice)
 		{
 			this.isCreatedOnDevice = true;
@@ -198,11 +205,27 @@ public final class MobileObject
 			fieldUri = "/"+fieldUri;
 		}
 		
+		String uri = fieldUri;
+		if(!uri.startsWith("/"))
+		{
+			uri = "/"+fieldUri;
+		}
+		uri = StringUtil.replaceAll(uri,".", "/");
+		
 		Field field = this.findField(fieldUri.replace(".", "/"));
 		if(field != null)
 		{
 			field.setValue(value);
-		}			
+		}
+		else
+		{	
+			//create this field
+			if(value != null)
+			{
+				Field newField = new Field(uri, fieldName, value);
+				this.fields.add(newField);
+			}
+		}
 	}
 	//----Indexed Properties API----------------------------------------------------------------------------------------------
 	public int getArrayLength(String arrayUri)
