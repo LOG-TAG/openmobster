@@ -1,0 +1,1 @@
+&lt;wiki:gadget url="http://openmobster.googlecode.com/svn/wiki/content/blog-gadget.xml" width="98%" height="200"/&gt;
