@@ -4,7 +4,7 @@ Automatically exported from code.google.com/p/openmobster
 
 http://code.google.com/p/openmobster/
 
-file:///home/subrahmanya/Desktop/del/ifr.png
+![alt tag](http://openmobster.googlecode.com/svn/wiki/content/app-developer-guide/html/images/architecture.png)
 
 
 Introduction
