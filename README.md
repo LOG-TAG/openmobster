@@ -4,6 +4,9 @@ Automatically exported from code.google.com/p/openmobster
 
 http://code.google.com/p/openmobster/
 
+file:///home/subrahmanya/Desktop/del/ifr.png
+
+
 Introduction
 
 OpenMobster is an open source platform for integrating Mobile Apps (on-device apps) with Cloud services. Its goal is to provide the infrastructure for the Mobile App developer to productively build apps that consume information that resides in the Cloud. It provides seamless application state/data synchronization, Push notifications, consistent server-side API/frameworks to expose Cloud services, and consistent device-side API/frameworks to productively develop native mobile apps across multiple platforms.
